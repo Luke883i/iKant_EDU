@@ -4,8 +4,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {classifyC141IdentityIntent,arbitrateC141} from '../host/c141-semantic-shadow.mjs';
-import {c140OpenPolicy} from '../host/c140-open-edu-turn.mjs';
+import {arbitrateC141} from '../host/c141-semantic-shadow.mjs';
+import {classifyV5EIdentityIntent,c140OpenPolicy} from '../host/c140-open-edu-turn.mjs';
+
 import {qualifyC114OntologyCandidate,C114_ONTOLOGY_FORMAT} from '../host/c114-ontology-language-policy.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const examples=JSON.parse(fs.readFileSync(path.join(root,'tests/fixtures/v5e-heldout-intents.json'),'utf8'));
@@ -14,13 +15,15 @@ test('V5-E disjoint preseeded held-out intent labels are evaluated without train
  assert.equal(new Set(examples.examples.map(e=>e.text)).size,32);
  let self=0,general=0;
  for(const item of examples.examples){
-  const x=classifyC141IdentityIntent(item.text),c=c140OpenPolicy({humanInput:item.text});
+  const x=classifyV5EIdentityIntent(item.text),c=c140OpenPolicy({humanInput:item.text});
   const r=arbitrateC141({humanInput:item.text,openScope:true});
   if(item.label==='SELF'){
    self++;
    assert.equal(x.self_reference,true,item.id+':'+item.text);
    assert.equal(c.allowed,undefined,item.id+':C140 must stop');
-   assert.equal(r.route,'C114_OWNER',item.id+':routing owner retained');
+   assert.equal(c.first_unclosed_edge,'C140_SELF_IDENTITY_OWNER_BOUNDED_STOP',item.id+':C140 gate');
+   assert.equal(r.original_c87_writer_executed,false,item.id+':historical C141 does not execute');
+   assert.equal(r.authority,0,item.id+':historical C141 does not grant owner authority');
   }else{
    general++;
    assert.equal(item.label,'GENERAL');

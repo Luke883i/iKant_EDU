@@ -270,6 +270,12 @@ export async function createC135EduV2Session({selection,sourceRoot,privateParent
     const guarded=c142.qualifyC142OwnerGuard({humanInput:frame.humanInput,c141Decision:decision});
     if(guarded.code==='C141_LONG_IDENTITY_OWNER_GAP')return no('C140_SELF_IDENTITY_OWNER_BOUNDED_STOP');
     if(guarded.status==='STOP')return no(guarded.code);
+    // V5-E runs separately from pinned historic C141. C135 is the original
+    // pre-effect owner: no C140 fallback when indirect self-reference is found.
+    const v5eIdentity=c140.classifyV5EIdentityIntent(frame.humanInput);
+    if(v5eIdentity.self_reference&&guarded.route!=='C114_OWNER')
+      return no(tooLong?'C140_SELF_IDENTITY_OWNER_BOUNDED_STOP':
+        'C114_INDIRECT_IDENTITY_UNQUALIFIED_PRE_EFFECT_STOP');
     // An indirect self-identity hit may be missed by older C107 planning.
     // Only the original C114 direct-identity plan can proceed; otherwise stop
     // BEFORE language callback and C87, never borrow C140 or an unrelated owner.

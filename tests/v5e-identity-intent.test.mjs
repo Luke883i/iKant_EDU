@@ -1,4 +1,5 @@
 import test from 'node:test';
+import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -60,4 +61,11 @@ test('DoD graph is closed and names all original and evidence planes',()=>{
  const manifest=JSON.parse(fs.readFileSync(path.join(root,'contracts/project-session-source.json'),'utf8'));
  for(const p of ['host/c114-ontology-language-policy.mjs','host/c135-edu-v2-owner.mjs',
   'host/c140-open-edu-turn.mjs','host/c141-semantic-shadow.mjs'])assert(manifest.paths.includes(p),p);
+});
+
+test('pinned historic C141 11-blob transplant remains byte exact',()=>{
+ const p='host/c141-semantic-shadow.mjs';
+ const b=fs.readFileSync(path.join(root,p));
+ const sha=crypto.createHash('sha1').update(Buffer.from('blob '+b.length+String.fromCharCode(0))).update(b).digest('hex');
+ assert.equal(sha,'96b519dec0a491345da043d4af53b37f618bccf7');
 });

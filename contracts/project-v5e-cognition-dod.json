@@ -73,7 +73,7 @@
     },
     {
       "id": "L02",
-      "what": "C141 direct and indirect identity classified before any writer or model callback.",
+      "what": "Historical C141 retained byte-exact; C140's bounded V5-E self-reference screen is checked by C135 before callback or writer.",
       "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
       "native_receipt_attested": false
     },

@@ -72,13 +72,6 @@
       "deletion_authorized": false
     },
     {
-      "path": "host/c141-semantic-shadow.mjs",
-      "operation": "MODIFY",
-      "reason": "Versioned V5-E cognition and evaluation software qualification under independent review",
-      "human_review": "REVIEW_REQUIRED",
-      "deletion_authorized": false
-    },
-    {
       "path": "tests/c141-owner-integration.test.mjs",
       "operation": "MODIFY",
       "reason": "Versioned V5-E cognition and evaluation software qualification under independent review",

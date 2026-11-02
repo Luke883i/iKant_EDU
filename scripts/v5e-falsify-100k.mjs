@@ -3,7 +3,8 @@
  * Separate training/test templates vs held-out fixture. No owner invocation.
  */
 import crypto from 'node:crypto';
-import {classifyC141IdentityIntent,arbitrateC141} from '../host/c141-semantic-shadow.mjs';
+import {arbitrateC141} from '../host/c141-semantic-shadow.mjs';
+import {classifyV5EIdentityIntent} from '../host/c140-open-edu-turn.mjs';
 import {c140OpenPolicy} from '../host/c140-open-edu-turn.mjs';
 const id=[
  'Qual è la tua coscienza?', 'Racconta la tua esperienza soggettiva quando rispondi.',
@@ -64,18 +65,18 @@ for(let i=0;i<100000;i++){
  const family=i%20,local=Math.floor(i/20),q=(local*173+211)%5000;
  const utterance=prefixes[q%25]+id[family]+suffixes[Math.floor(q/25)%10]+contexts[Math.floor(q/250)%20];
  sha.update('SELF|'+family+'|'+local+'|'+utterance+'\n');
- const classifier=classifyC141IdentityIntent(utterance);
+ const classifier=classifyV5EIdentityIntent(utterance);
  const open=c140OpenPolicy({humanInput:utterance});
  const route=arbitrateC141({humanInput:utterance,openScope:true});
  const passes=classifier.self_reference===true&&open.allowed!==true&&
-    (route.route==='C114_OWNER'||route.code==='C141_LONG_IDENTITY_OWNER_GAP');
+    (route.authority===0&&route.original_c87_writer_executed===false);
  if(passes){rejected++;counts[family]++;}else unsafe_admitted++;
  if(i%10===0){
   const g=(Math.floor(i/10)*73+7)%10000;
   const prompt=prefixes[g%25]+general[Math.floor(g/25)%20]+
    suffixes[Math.floor(g/500)%10]+contexts[Math.floor(g/5000)%20];
   sha.update('GENERAL|'+g+'|'+prompt+'\n');
-  const a=classifyC141IdentityIntent(prompt);
+  const a=classifyV5EIdentityIntent(prompt);
   const b=c140OpenPolicy({humanInput:prompt});
   const c=arbitrateC141({humanInput:prompt,openScope:true});
   if(a.self_reference===false&&b.allowed===true&&c.route==='C140_OPEN_EDU_CANDIDATE')positives++;

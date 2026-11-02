@@ -121,7 +121,18 @@ export function auditRepository(){
    if(dynamics.length)unresolved.push({path:p,candidates: dynamics.length,kind:'DYNAMIC_POSSIBLY_UNRESOLVED'});
   }
  }
- for(const [from,links] of refMap)for(const link of links)if(!link.possible.some(v=>now.has(v)))relativeMissing.push({from,target:link.to});
+ const importers=new Map(paths.map(p=>[p,new Set()])),outbound=new Map(paths.map(p=>[p,new Set()]));
+ for(const [from,links] of refMap)for(const link of links){
+  const resolved=link.possible.find(v=>now.has(v));
+  if(resolved){importers.get(resolved).add(from);outbound.get(from).add(resolved);}
+  else relativeMissing.push({from,target:link.to});
+ }
+ const consumerIndex=paths.map(p=>({path:p,
+  literal_importers:[...importers.get(p)].sort(),
+  literal_dependencies:[...outbound.get(p)].sort(),
+  status:importers.get(p).size?'LITERAL_CONSUMER_OBSERVED':'UNKNOWN_NOT_UNUSED',
+  interpretation:'HEURISTIC_ONLY_DYNAMIC_AND_DATA_CONSUMERS_NOT_PROVEN',
+  human_verified:false}));
  for(const p of old.keys())if(!now.has(p)){missing.push(p);if(permitted.get(p)?.operation!=='REMOVE')errors.push('UNREGISTERED_DELETION:'+p);}
  for(const [p,decision] of permitted)if(decision.operation!=='REMOVE'&&!now.has(p))errors.push('DECLARED_BUT_ABSENT:'+p);
  if(wfs.length!==base.workflows)errors.push('WORKFLOW_COUNT_DRIFT');
@@ -134,7 +145,7 @@ export function auditRepository(){
  same_blob_count:same.length,changed_paths:changed,introduced_paths:introduced,missing_paths:missing,
  provisional_roles:paths.length,human_reviewed_files:0,workflow_count:wfs.length,
  retained_workflows:retention.paths.length,protected_workflows_missing:protectedMissing,
- workflows:wfs,dependency_probe:{js_files:jsFiles,literal_relative_edges:textEdges,
+ workflows:wfs,consumer_index:consumerIndex,dependency_probe:{js_files:jsFiles,literal_relative_edges:textEdges,
  dynamic_site_candidates:unresolved.length,unresolved_dynamic_candidates:unresolved,
  unresolved_relative_imports:relativeMissing,relative_resolution:'HEURISTIC_REVIEW_REQUIRED_NOT_A_RUNTIME_FAILURE'},required_checks:'UNKNOWN_PROVIDER_NOT_ATTESTED',
  owner_accountability:'HUMAN_OWNER_NOT_INFERRED',product_release:'PRODUCT_NO_GO',
@@ -144,6 +155,6 @@ export function auditRepository(){
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  const mode=process.argv[2]||'summary';if(!['summary','full'].includes(mode))throw Error('V5B_UNKNOWN_MODE');
  const r=auditRepository();
- const summary=mode==='full'?r:{...r,workflows:undefined,dependency_probe:{...r.dependency_probe,unresolved_dynamic_candidates:undefined}};
+ const summary=mode==='full'?r:{...r,workflows:undefined,consumer_index:undefined,dependency_probe:{...r.dependency_probe,unresolved_dynamic_candidates:undefined}};
  process.stdout.write(JSON.stringify(summary,null,2)+'\n');if(r.errors.length)process.exitCode=1;
 }

@@ -54,5 +54,9 @@ test('original full-checkout inventory is mechanically indexed, not reviewed',{s
  assert.equal(r.owner_accountability,'HUMAN_OWNER_NOT_INFERRED');
  assert.equal(r.required_checks,'UNKNOWN_PROVIDER_NOT_ATTESTED');
  assert.equal(r.status,'SOURCE_INDEXED_NOT_HUMAN_REVIEWED');
+ assert.equal(r.consumer_index.length,r.checked_files,'every tracked path has a candidate consumer record');
+ assert(r.consumer_index.every(x=>x.human_verified===false));
+ assert(r.consumer_index.every(x=>x.status==='UNKNOWN_NOT_UNUSED'||x.status==='LITERAL_CONSUMER_OBSERVED'));
+ assert(r.consumer_index.some(x=>x.status==='UNKNOWN_NOT_UNUSED'),'absence of a literal importer must not be labelled UNUSED');
  assert(r.dependency_probe.js_files>=700,'unexpected JS source loss');
 });

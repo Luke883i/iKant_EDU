@@ -107,6 +107,13 @@
       "deletion_authorized": false,
       "supersedes_register": "governance/changes/v5d-oneshell.json",
       "supersedes_source_main": "b3920c1bbfb856cead312e17b027e350ae2ec123"
+    },
+    {
+      "path": "tests/c139-epistemic-edu-v2.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Version explicitly changed C114 original blob in original C139 regression without removing frozen C107 constraints",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
     }
   ]
 }

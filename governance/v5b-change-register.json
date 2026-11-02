@@ -1,0 +1,68 @@
+{
+  "schema": "ikant-v5b-change-register/v1",
+  "authority": 0,
+  "baseline_commit": "ed37cac39cd95b9e142962dd370452b39e2fd8f7",
+  "policy": "EVERY_DELTA_DECLARED_BUT_NOT_AUTOMATICALLY_APPROVED",
+  "paths": [
+    {
+      "path": "contracts/project-v5b-repository-governance-dod.json",
+      "operation": "ADD",
+      "reason": "Retrograde global/intermediate/local obligations grounded in engineering maintainer outcomes",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "governance/v5b-baseline-inventory.json",
+      "operation": "ADD",
+      "reason": "Complete Git tree record with honest provisional roles, SHA-1 bytes and no human signoffs",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "governance/v5b-change-register.json",
+      "operation": "ADD",
+      "reason": "Explicit read-only provenance and review ledger for every changed path in V5-B",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "operation": "ADD",
+      "reason": "Source-based file/dependency/workflow audit with conservative unknown classification",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "scripts/v5b-alternatives-1k.mjs",
+      "operation": "ADD",
+      "reason": "Finite reproducible study of governance implementation alternatives",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "scripts/v5b-falsify-100k.mjs",
+      "operation": "ADD",
+      "reason": "Preseeded mutation suite for non-promotions and destructive actions",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "operation": "ADD",
+      "reason": "Local and checkout safety regressions for inventory and workflow interpretation",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": ".github/workflows/project-oneshell-prompt.yml",
+      "operation": "MODIFY",
+      "reason": "Reuse existing workflow to execute V5-B audit and deterministic studies without more CI files",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    }
+  ],
+  "requires_human_review": true,
+  "required_checks_verified": false,
+  "human_signoffs": 0,
+  "release": false
+}

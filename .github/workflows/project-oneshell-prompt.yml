@@ -21,6 +21,33 @@ jobs:
           node-version: '22'
       - name: Project HEAD-only prompt
         run: node --test tests/project-oneshell-prompt.test.mjs
+      - name: V5-B repository and CI inventory (read-only)
+        run: |
+          node --test tests/v5b-repository-governance.test.mjs
+          node scripts/v5b-repository-governance-audit.mjs summary > "$RUNNER_TEMP/v5b-inventory-summary.json"
+          node scripts/v5b-repository-governance-audit.mjs full > "$RUNNER_TEMP/v5b-inventory-full.json"
+      - name: V5-B 1000 alternatives and 100k seeded tests repeated byte-identically
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/v5b-alternatives-1k.mjs > "$RUNNER_TEMP/v5b-alt-1.json"
+          node scripts/v5b-alternatives-1k.mjs > "$RUNNER_TEMP/v5b-alt-2.json"
+          cmp "$RUNNER_TEMP/v5b-alt-1.json" "$RUNNER_TEMP/v5b-alt-2.json"
+          node scripts/v5b-falsify-100k.mjs > "$RUNNER_TEMP/v5b-fuzz-1.json"
+          node scripts/v5b-falsify-100k.mjs > "$RUNNER_TEMP/v5b-fuzz-2.json"
+          cmp "$RUNNER_TEMP/v5b-fuzz-1.json" "$RUNNER_TEMP/v5b-fuzz-2.json"
+          node --input-type=module -e "import fs from 'node:fs';let a=JSON.parse(fs.readFileSync(process.argv[1]));let f=JSON.parse(fs.readFileSync(process.argv[2]));if(a.cases!==1000||a.selected.id!=='B-0001'||f.cases!==100000||f.negative_rejected!==100000||f.unsafe_admitted!==0||f.positive_controls!==10000||f.false_positive_stops!==0||f.product_release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/v5b-alt-1.json" "$RUNNER_TEMP/v5b-fuzz-1.json"
+      - name: Preserve read-only V5-B audit outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5b-source-inventory-and-governance-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/v5b-inventory-full.json
+            ${{ runner.temp }}/v5b-inventory-summary.json
+            ${{ runner.temp }}/v5b-alt-1.json
+            ${{ runner.temp }}/v5b-fuzz-1.json
+          retention-days: 30
+          if-no-files-found: error
       - name: V5-A single normative EDU entrypoint and reticular regressions
         run: |
           node scripts/project-edu-entrypoint.mjs verify

@@ -5,6 +5,8 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const REQUIRED=Object.freeze([
+ ['original_owner_paths_verified',true,'L01'],['edu_only_after_selection',true,'L02'],
+ ['minimum_bom_node_and_tools',true,'L03'],['no_host_retry_without_owner_decision',true,'L17'],
  ['first_turn','ORIENTATION_ONLY','L04'],['five_blob_readback',true,'L04'],
  ['terms_link_displayed',true,'L04'],['preaccept_extra_reads',false,'L04'],
  ['accept_message','I ACCEPT','L05'],['accept_distinct_turn',true,'L05'],
@@ -56,6 +58,10 @@ export function auditOriginalSource(root=ROOT){
   for(const needle of needles)if(!contents.includes(needle))errors.push('ORIGINAL_BOUNDARY_MISSING:'+p+':'+needle);
  }
  const localIds=new Set(contract.local.map(x=>x.id));
+ const coveredIds=new Set(REQUIRED.map(x=>x[2]));
+ if([...localIds].some(id=>!coveredIds.has(id))||[...coveredIds].some(id=>!localIds.has(id)))
+  errors.push('V5C_LOCAL_PREDICATE_COVERAGE_INCOMPLETE');
+ if(Number(process.versions.node.split('.')[0])<20)errors.push('V5C_NODE_20_REQUIRED');
  if(localIds.size!==20||contract.intermediate.length!==6||contract.global.requires.length!==6||
   contract.intermediate.some(x=>x.locals.some(id=>!localIds.has(id))))errors.push('V5C_DOD_GRAPH_INVALID');
  if(!Array.isArray(manifest.paths)||new Set(manifest.paths).size!==manifest.paths.length||
@@ -64,7 +70,8 @@ export function auditOriginalSource(root=ROOT){
   !manifest.paths.includes('host/c87-durable-ledger.mjs'))errors.push('PROJECT_SOURCE_MANIFEST_GAP');
  return Object.freeze({schema:'ikant-v5c-technical-source-boundary/v1',
   ok:errors.length===0,errors,source_manifest_paths:manifest.paths.length,
-  required_original_modules:expected.length,original_owner_executed:false,
+  required_original_modules:expected.length,local_predicate_coverage:[...coveredIds].sort(),
+  predicate_count:REQUIRED.length,original_owner_executed:false,
   native_provider_attested:false,global_dod_attested:false,
   status:errors.length?'STOP':'SOURCE_BOUNDARIES_PRESENT_NOT_RUNTIME_PROOF'});
 }

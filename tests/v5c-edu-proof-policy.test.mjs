@@ -3,6 +3,8 @@ import assert from 'node:assert/strict';
 import {assessV5CFixture,fixtureCandidate,REQUIRED,auditOriginalSource} from '../scripts/v5c-edu-proof-policy.mjs';
 test('policy includes at least twenty local requirements and does not mint runtime authority',()=>{
  assert(REQUIRED.length>=30);
+ const expected=new Set(Array.from({length:20},(_,i)=>'L'+String(i+1).padStart(2,'0')));
+ assert.deepEqual(new Set(REQUIRED.map(x=>x[2])),expected,'every local DoD has an explicit falsifiable predicate');
  const a=assessV5CFixture(fixtureCandidate());
  assert.equal(a.ok,true);assert.equal(a.global_dod_attested,false);
  assert.equal(a.original_native_event_attested,false);

@@ -29,9 +29,9 @@ jobs:
         id: v5b_diagnostic
         shell: bash
         run: |
-          node scripts/v5b-repository-governance-audit.mjs summary > "$RUNNER_TEMP/v5b-inventory-summary.json" || :
-          node scripts/v5b-repository-governance-audit.mjs full > "$RUNNER_TEMP/v5b-inventory-full.json" || :
-          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));const edge=r.errors.length?r.errors[0]:'NONE';fs.appendFileSync(process.env.GITHUB_OUTPUT,'first_edge='+edge.replace(/[^A-Za-z0-9_:.+-]/g,'_')+String.fromCharCode(10));" "$RUNNER_TEMP/v5b-inventory-summary.json"
+          node scripts/v5b-repository-governance-audit.mjs summary > "$RUNNER_TEMP/v5b-inventory-summary.json" 2> "$RUNNER_TEMP/v5b-inventory-stderr.txt" || :
+          node scripts/v5b-repository-governance-audit.mjs full > "$RUNNER_TEMP/v5b-inventory-full.json" 2> "$RUNNER_TEMP/v5b-full-stderr.txt" || :
+          node --input-type=module -e "import fs from 'node:fs';let e='NONE';try{const r=JSON.parse(fs.readFileSync(process.argv[1]));e=r.errors[0]||'NONE';}catch{e='EXCEPTION_'+fs.readFileSync(process.argv[2],'utf8').slice(0,280)}fs.appendFileSync(process.env.GITHUB_OUTPUT,'first_edge='+e.replace(/[^A-Za-z0-9_:.+-]/g,'_').slice(0,210)+String.fromCharCode(10));" "$RUNNER_TEMP/v5b-inventory-summary.json" "$RUNNER_TEMP/v5b-inventory-stderr.txt"
       - name: V5-B source-indexed gate [${{ steps.v5b_diagnostic.outputs.first_edge }}]
         run: |
           node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.errors.length){console.error(JSON.stringify(r.errors));process.exit(1)}" "$RUNNER_TEMP/v5b-inventory-summary.json"

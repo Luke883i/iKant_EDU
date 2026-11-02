@@ -118,6 +118,7 @@
     "host/project-oneshell-rail-core.mjs",
     "host/project-oneshell-visual.mjs",
     "host/project-session-capsule.mjs",
+    "host/project-v5d-oneshell-assurance.mjs",
     "host/s02-edu-versioned-consumer.mjs",
     "host/s03-owner-bound-presentation.mjs",
     "host/s03-project-six-slides.mjs",

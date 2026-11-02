@@ -6,6 +6,7 @@ import {renderOneShell} from './project-oneshell-edu.mjs';
 import {createOneShellVisualModel,verifyOneShellVisualEquivalence} from './project-oneshell-visual.mjs';
 import {classifyOneShellHumanDestination} from './project-oneshell-host-boundary.mjs';
 import {emitVerifiedHostOneShell} from './project-oneshell-emission.mjs';
+import {assessV5DProjection} from './project-v5d-oneshell-assurance.mjs';
 const ORDER=Object.freeze(['ESITO','A','B','PROVA','EDGE','NEXT']);
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const digest=s=>sha(Buffer.from(s,'utf8'));
@@ -98,7 +99,7 @@ export function makeOneShellChatPresentation({frame,humanInput=null,focusApp=nul
    '### EDGE',exactFence(slots.EDGE),
    '### NEXT',exactFence(slots.NEXT),'---'
   ].join('\n\n')+'\n';
-  return Object.freeze({ok:true,schema:plan.schema,render_plan:plan,slots,view,
+  const projection=Object.freeze({ok:true,schema:plan.schema,render_plan:plan,slots,view,
    slot_sha256:Object.freeze(Object.fromEntries(ORDER.map(k=>[k,digest(slots[k])]))),
    voice_origin:frame.voice_origin,original_voice_sha256:frame.original_voice_sha256,
    markdown_fallback_utf8:text,markdown_sha256:digest(text),report,
@@ -109,5 +110,10 @@ export function makeOneShellChatPresentation({frame,humanInput=null,focusApp=nul
    required_host_action:richUiAvailable===true?'RENDER_SUPPORTED_RICH_HOST_UI_OR_TEXT':'DISPLAY_MARKDOWN',
    native_ui_attested:false,persistent_ui_attested:false,provider_delivery_attested:false,
    authority:0,active:false});
+  // Original renderOneShell/owner gate already ran; this is a read-only
+  // cross-medium equality check, not a second source of voice or authority.
+  const gate=assessV5DProjection({frame,projection});
+  if(gate.ok!==true)return denied(gate.edge);
+  return projection;
  }catch{return denied('CHAT_OWNER_OR_REPORT_READBACK_UNVERIFIED');}
 }

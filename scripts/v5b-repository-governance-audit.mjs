@@ -133,10 +133,24 @@ export function auditRepository(){
    errors.push('BAD_CHANGE_DECLARATION:'+name+':'+row.path);continue;
   }
   const prior=permitted.get(row.path);
+  const next={...row,register:name,source_main:doc.source_main||changes.baseline_commit};
   if(prior){
-   if(!(prior.operation==='ADD'&&row.operation==='MODIFY'&&name!==REGISTER))
-    errors.push('V5B_CONFLICTING_DELTA:'+row.path);
-  }else permitted.set(row.path,row);
+   const namedPredecessor=name!==REGISTER&&name!==prior.register&&
+    next.source_main!==prior.source_main&&
+    row.supersedes_register===prior.register&&
+    row.supersedes_source_main===prior.source_main&&
+    prior.human_review==='REVIEW_REQUIRED'&&row.human_review==='REVIEW_REQUIRED';
+   const initialExtension=prior.operation==='ADD'&&prior.register===REGISTER&&
+    row.operation==='MODIFY'&&name!==REGISTER;
+   const successor=prior.operation!=='REMOVE'&&row.operation==='MODIFY'&&namedPredecessor;
+   if(!initialExtension&&!successor)errors.push('V5B_CONFLICTING_DELTA:'+row.path);
+   else {
+    // Keep baseline ADD/MODIFY classification intact for live inventory audit.
+    // Update only the latest reviewed declaration for successive slices.
+    permitted.set(row.path,{...prior,register:name,source_main:next.source_main,
+     human_review:row.human_review});
+   }
+  }else permitted.set(row.path,next);
  }
  const refMap=new Map(), unresolved=[],relativeMissing=[];let textEdges=0,jsFiles=0;
  for(const p of paths){

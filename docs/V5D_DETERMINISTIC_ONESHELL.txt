@@ -1,0 +1,11 @@
+V5-D | Guarantees and deterministic OneShell | HOST engineering, authority=0
+
+Retrograde DoD: G requires I1-I5, decomposed into L01-L17 in contracts/project-v5d-oneshell-dod.json. The source of A remains the original C135/C125/S03 owner-bound frame; this PR introduces only a read-only Host guard after the original renderOneShell validation. No C72/C135/C87/C125/S03 owner, receipt or writer is changed.
+
+Cross-medium oracle: every slot and digest equals the original; Markdown is regenerated exactly, including Unicode-preserving code fences; HTML has six unique noninteractive escaped slots, forbids actions/event handlers, and may not advertise provider-native UI. B and PROVA are literal excerpts only after the original private E12 report was independently reopened. A, EDGE and NEXT are never shortened. Genuine E12 report disclosure/download in the separate focus app is not a new ChatGPT attachment or C125 send.
+
+Falsification: scripts/v5d-falsify-100k.mjs generates 20 seeded, typed, varying semantic fault families (5k each), plus 10k safe controls on text-only/rich models. Run twice and cmp full JSON. This is deterministic engineering falsification, NOT 100k independent LLM judgments or native human events. Original UI and E12 tests run alongside the guard in existing CI; adding a test cannot establish provider delivery, installed prompts, user comprehension, native widget persistence, or product ACTIVE.
+
+Layer audits: local = original-source validated frame and tested guard; intermedial = text/HTML/report invariants; global = genuine owner/provider observations and V5-G human acceptance. Software CI may close local and selected intermedial checks, not global G. V5-G remains a separate two-independent-engineer and human-release gate, not a sixth PR. Missing field proof keeps PRODUCT_NO_GO.
+
+Rollback: revert only this Host-only guard/import, manifest entry, CI tests and versioned DoD. Do not change source lock, owners, ledger or human admission state. Requires manual reviewer decision; no auto-merge.

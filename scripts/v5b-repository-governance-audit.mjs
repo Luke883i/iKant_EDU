@@ -133,10 +133,20 @@ export function auditRepository(){
    errors.push('BAD_CHANGE_DECLARATION:'+name+':'+row.path);continue;
   }
   const prior=permitted.get(row.path);
+  const next={...row,register:name,source_main:doc.source_main||changes.baseline_commit};
   if(prior){
-   if(!(prior.operation==='ADD'&&row.operation==='MODIFY'&&name!==REGISTER))
-    errors.push('V5B_CONFLICTING_DELTA:'+row.path);
-  }else permitted.set(row.path,row);
+   const inheritedAdd=prior.operation==='ADD'&&row.operation==='MODIFY'&&name!==REGISTER;
+   // Separate semantic slices may modify one file again only with a named,
+   // matching predecessor declaration and a fresh declared source epoch.
+   const chainedModify=prior.operation==='MODIFY'&&row.operation==='MODIFY'&&
+    name!==REGISTER&&name!==prior.register&&
+    next.source_main!==prior.source_main&&
+    row.supersedes_register===prior.register&&
+    row.supersedes_source_main===prior.source_main&&
+    prior.human_review==='REVIEW_REQUIRED'&&row.human_review==='REVIEW_REQUIRED';
+   if(!inheritedAdd&&!chainedModify)errors.push('V5B_CONFLICTING_DELTA:'+row.path);
+   else permitted.set(row.path,next);
+  }else permitted.set(row.path,next);
  }
  const refMap=new Map(), unresolved=[],relativeMissing=[];let textEdges=0,jsFiles=0;
  for(const p of paths){

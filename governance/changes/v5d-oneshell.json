@@ -1,0 +1,93 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/v5d-oneshell.json",
+  "source_main": "b3920c1bbfb856cead312e17b027e350ae2ec123",
+  "baseline_source_tree": "017cdee4334f8e0510fbfa1f40218666a3b05d6c",
+  "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
+  "human_signoffs": 0,
+  "automatic_approval": false,
+  "paths": [
+    {
+      "path": "contracts/project-v5d-oneshell-dod.json",
+      "operation": "ADD",
+      "reason": "Retrograde deterministic visual, textual, and provider nonpromotion DoD matrix",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-v5d-oneshell-assurance.mjs",
+      "operation": "ADD",
+      "reason": "Read-only byte-exact cross-medium Host guard after original frame validation",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/v5d-falsify-100k.mjs",
+      "operation": "ADD",
+      "reason": "Reproducible 100k typed negative OneShell fault campaign with 10k safe controls",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/v5d-oneshell-assurance.test.mjs",
+      "operation": "ADD",
+      "reason": "Local gate, original Host integration, negative cases and DoD graph regression",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/V5D_DETERMINISTIC_ONESHELL.txt",
+      "operation": "ADD",
+      "reason": "Layered engineering and audit runbook separating native provider from CI",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/V5C_POSTMERGE_AUDIT_20261102.txt",
+      "operation": "ADD",
+      "reason": "Source-bound V5C postmerge 39-check audit, scope of CI and explicit open owner/provider proofs",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "governance/changes/v5d-oneshell.json",
+      "operation": "ADD",
+      "reason": "Explicit V5B governed per-path V5D changes and pinned predecessor lineage",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-oneshell-chat-presentation.mjs",
+      "operation": "MODIFY",
+      "reason": "Gate Host graphic and text output after original owner frame validation",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/project-session-source.json",
+      "operation": "MODIFY",
+      "reason": "Include new read-only runtime Host guard in complete original source manifest",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-session-repo-first.yml",
+      "operation": "MODIFY",
+      "reason": "Run original regression, seeded V5D campaign and bounded CI artifact, no new workflow",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/v5c-edu.json",
+      "supersedes_source_main": "62e98e9ab0c085aa34d39849a7b667794b005342"
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "operation": "MODIFY",
+      "reason": "Harden sequential change declarations with exact prior register and epoch, preserve review gate",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/v5c-edu.json",
+      "supersedes_source_main": "62e98e9ab0c085aa34d39849a7b667794b005342"
+    }
+  ]
+}

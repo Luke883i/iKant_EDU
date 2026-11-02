@@ -21,6 +21,21 @@ jobs:
           node-version: '22'
       - name: Project HEAD-only prompt
         run: node --test tests/project-oneshell-prompt.test.mjs
+      - name: V5-A single normative EDU entrypoint and reticular regressions
+        run: |
+          node scripts/project-edu-entrypoint.mjs verify
+          node --test tests/project-v5a-entrypoint.test.mjs tests/v1-product-contract.test.mjs tests/c131-product-release.test.mjs
+      - name: V5-A 1000 bounded semantic alternatives and 100k seeded negative scenarios
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/project-v5a-alternative-study.mjs > "$RUNNER_TEMP/v5a-options-one.json"
+          node scripts/project-v5a-alternative-study.mjs > "$RUNNER_TEMP/v5a-options-two.json"
+          cmp "$RUNNER_TEMP/v5a-options-one.json" "$RUNNER_TEMP/v5a-options-two.json"
+          node scripts/project-v5a-falsify-100k.mjs > "$RUNNER_TEMP/v5a-fuzz-one.json"
+          node scripts/project-v5a-falsify-100k.mjs > "$RUNNER_TEMP/v5a-fuzz-two.json"
+          cmp "$RUNNER_TEMP/v5a-fuzz-one.json" "$RUNNER_TEMP/v5a-fuzz-two.json"
+          node --input-type=module -e "import fs from 'node:fs';let a=JSON.parse(fs.readFileSync(process.argv[1]));let b=JSON.parse(fs.readFileSync(process.argv[2]));if(a.generated!==1000||a.eligible<2||a.winner.id!=='A-0001'||b.cases!==100000||b.negative_rejected!==100000||b.unsafe_admitted!==0||b.positive_controls!==10000||b.false_positive_stops!==0||b.release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/v5a-options-one.json" "$RUNNER_TEMP/v5a-fuzz-one.json"
       - name: Project responsibility matrix
         run: node --test tests/project-bootstrap-responsibility-matrix.test.mjs
       - name: Constitutional 7 laws + 3 actions, one million seeded cases twice

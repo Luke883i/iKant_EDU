@@ -15,7 +15,7 @@
     "readme": "README.md",
     "operator_dashboard": "docs/PRODUCT_DASHBOARD.md",
     "roadmap": "docs/C130_PRODUCT_DOD.md",
-    "edu_prompt": "project/edu-oneshell/PROMPT_INNESCO.txt",
+    "edu_prompt": "project/session-chat/PROMPT.txt",
     "bundle_contract": "project/edu-oneshell/00_HOST_CONTRACT.md",
     "canonical_owner": "contracts/session-chat-composition-channel.json",
     "market_positioning": "docs/PRODUCT_POSITIONING.md",

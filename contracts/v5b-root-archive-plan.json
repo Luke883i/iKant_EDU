@@ -1,0 +1,81 @@
+{
+  "schema": "ikant-v5b-root-archive/v1",
+  "authority": 0,
+  "source_main": "0b86fce541939d600bfd8565b97404ad64795185",
+  "source_tree": "c3f442f41cf9ddf4dc73e60f3b85e3b6a65214e8",
+  "purpose": "Move historical pre-PR evidence, preserve exact Git blobs and archive navigation without changing original runtime or owners.",
+  "decisions": [
+    {
+      "old_path": "README_C94_PREPR.md",
+      "archive_path": "docs/archive/prepr/README_C94_PREPR.md",
+      "blob_sha1": "da9f91118168c9245c70a49c61b13167e9b764e6",
+      "bytes": 562,
+      "content_mutation_allowed": false
+    },
+    {
+      "old_path": "README_C96_PREPR.md",
+      "archive_path": "docs/archive/prepr/README_C96_PREPR.md",
+      "blob_sha1": "2dd18fd975bf73c7900b6fb6398763a88fcadb49",
+      "bytes": 1312,
+      "content_mutation_allowed": false
+    },
+    {
+      "old_path": "README_C98_PREPR.md",
+      "archive_path": "docs/archive/prepr/README_C98_PREPR.md",
+      "blob_sha1": "52b332954ae012f8ee32a3c4ec7c77f56d595ff9",
+      "bytes": 5097,
+      "content_mutation_allowed": false
+    },
+    {
+      "old_path": "C94_BASE_LOCK.json",
+      "archive_path": "docs/archive/prepr/C94_BASE_LOCK.json",
+      "blob_sha1": "b7cadad02a255770e7c9a31b415e264b4874cd83",
+      "bytes": 419,
+      "content_mutation_allowed": false
+    }
+  ],
+  "conditional_not_moved": [
+    {
+      "path": "iKant_UI_shell.md",
+      "status": "CONDITIONAL_RETAIN",
+      "blockers": [
+        "C81 workflow path trigger",
+        "C81 documentation and Project baseline consumers",
+        "equivalence of old and Project UI specs unproven"
+      ]
+    },
+    {
+      "path": "render.mcp-prepr.yaml",
+      "status": "CONDITIONAL_RETAIN",
+      "blockers": [
+        "scripts/oneshell-v1-build.py packages this exact path",
+        "legacy C94/MCP package transitive consumer not requalified"
+      ]
+    }
+  ],
+  "must_remain_root": [
+    "README.md",
+    "ADMISSION.json",
+    "AGENTS.md",
+    "BOOTSTRAP.json",
+    "TERMS.md",
+    "BOOTSTRAP.md",
+    "ikant.mjs",
+    "stile_comunicativo.md",
+    "C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json",
+    "C13_SESSION_CHAT_FASTBOOT_CONTRACT.json",
+    "render.mcp-standalone.candidate.yaml"
+  ],
+  "evidence": {
+    "git_blob_readback_required": true,
+    "atlas_regeneration_exact": true,
+    "source_manifest_unchanged": true,
+    "no_original_owner_effect": true,
+    "ci_not_owner_receipt": true,
+    "provider_delivery_attested": false
+  },
+  "v5b_policy": "REVIEW_REQUIRED_BEFORE_MERGE",
+  "human_approval_attested": false,
+  "review_required": true,
+  "product_release": "PRODUCT_NO_GO"
+}

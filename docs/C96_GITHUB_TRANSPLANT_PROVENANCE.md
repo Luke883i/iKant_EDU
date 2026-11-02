@@ -6,7 +6,7 @@
 ## Reparented semantic history
 The standalone pre-PR ZIP contains six disconnected local development commits (`d04980e`, `39bee0a`, `47de494`, `c34bba5`, `c866fa5`, `fa3b6dc`). They are **not** GitHub-main descendants. This PR creates six **new semantic assembly commits** descended directly from the pinned GitHub main, grouped by contract, runtime, red-case tests, bounded model falsifier, qualification, and last-mile provenance. These groups preserve the final 16 Git blob objects byte for byte, **not each intermediate source revision** of the disconnected local history. The original pre-PR ZIP remains the authoritative record of those intermediate revisions.
 
-The original `README_C96_PREPR.md` and `docs/C96_AUDIT_REPORT.md` are deliberately preserved verbatim as historical snapshots. Their statements that no remote PR existed are **time-scoped to the original local pre-PR**, not claims about this transplant.
+The original [`README_C96_PREPR.md`](archive/prepr/README_C96_PREPR.md) (relocated byte-for-byte from the repository root) and `docs/C96_AUDIT_REPORT.md` are deliberately preserved verbatim as historical snapshots. Their statements that no remote PR existed are **time-scoped to the original local pre-PR**, not claims about this transplant.
 
 ## Exactness and no-drift controls
 - Source: `iKant_C96_prePR_post_PR99.zip`, `C96_PREPR_MANIFEST.json`.

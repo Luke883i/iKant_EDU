@@ -202,9 +202,9 @@
 ## L4 — Storico e integrazioni
 
 - [BOOTSTRAP.md](../BOOTSTRAP.md): Storico. Stato di review: **da verificare**.
-- [README_C94_PREPR.md](../README_C94_PREPR.md): Storico. Stato di review: **da verificare**.
-- [README_C96_PREPR.md](../README_C96_PREPR.md): Storico. Stato di review: **da verificare**.
-- [README_C98_PREPR.md](../README_C98_PREPR.md): Storico. Stato di review: **da verificare**.
+- [docs/archive/prepr/README_C94_PREPR.md](archive/prepr/README_C94_PREPR.md): Storico. Stato di review: **da verificare**.
+- [docs/archive/prepr/README_C96_PREPR.md](archive/prepr/README_C96_PREPR.md): Storico. Stato di review: **da verificare**.
+- [docs/archive/prepr/README_C98_PREPR.md](archive/prepr/README_C98_PREPR.md): Storico. Stato di review: **da verificare**.
 - [plugins/ikant-le-session-chat/README.md](../plugins/ikant-le-session-chat/README.md): Integrazione e plugin. Stato di review: **da verificare**.
 - [project-baseline/INSTALL_EASY.md](../project-baseline/INSTALL_EASY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project-baseline/PROJECT_FILES/iKant_ENGINE.md](../project-baseline/PROJECT_FILES/iKant_ENGINE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.

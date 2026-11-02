@@ -15,3 +15,26 @@ jobs:
       - run: node scripts/project-session-select.mjs
       - run: node scripts/runtime-root.mjs verify
       - run: node scripts/project-source-manifest.mjs verify
+      - name: V5-C original boundaries and source contract
+        run: |
+          node --test tests/v5c-edu-proof-policy.test.mjs tests/v5b-repository-governance.test.mjs
+          node scripts/v5c-edu-proof-policy.mjs
+      - name: V5-C 100k seeded faults, twice byte-identical
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/v5c-falsify-100k.mjs > "$RUNNER_TEMP/v5c-cases-a.json"
+          node scripts/v5c-falsify-100k.mjs > "$RUNNER_TEMP/v5c-cases-b.json"
+          cmp "$RUNNER_TEMP/v5c-cases-a.json" "$RUNNER_TEMP/v5c-cases-b.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.cases!==100000||r.negative_rejected!==100000||r.unsafe_admitted!==0||r.positive_controls!==10000||r.positive_stopped!==0||r.product_release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/v5c-cases-a.json"
+      - name: V5-C measured physical original coldstart and EDU E2E test processes
+        run: node scripts/v5c-bootstrap-profile.mjs > "$RUNNER_TEMP/v5c-bootstrap-timings.json"
+      - name: V5-C artifact of bounded CI observations, not original human receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5c-edu-source-and-bootstrap-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/v5c-cases-a.json
+            ${{ runner.temp }}/v5c-bootstrap-timings.json
+          retention-days: 30
+          if-no-files-found: error

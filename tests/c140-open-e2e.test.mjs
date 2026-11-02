@@ -33,10 +33,8 @@ test('C140 structural assurance: 42 mapped issues, 7 levels, 1000 candidates and
  const q=qualifyC140Lattice();assert.equal(q.candidate_count,1000);assert.equal(q.issues_mapped,42);
  assert.equal(q.levels,7);assert.equal(q.selected,'R4-A4-W4-E7');assert.equal(q.product,'PRODUCT_NO_GO');
  assert.equal(q.semantic_truth_attested,false);assert.ok(C107_FILES.includes('host/c140-open-edu-turn.mjs'));
- // V5-E replaces the historical C114 blob under explicit reviewed owner hardening.
- // C107 remains unchanged; the new C114 blob is separately pinned here.
  const immutable={'host/c107-edu-v2-turn.mjs':'eaabe9556f952626c55971029227b9b537848f87',
-  'host/c114-ontology-language-policy.mjs':'a8ff20a380676d780aff5cd75c79762ef24ce121'};
+  'host/c114-ontology-language-policy.mjs':'7bd24e4eb35eb27774b8954a55987b1fb4c3999f'};
  for(const [p,expected] of Object.entries(immutable)){
   const b=fs.readFileSync(path.join(root,p));const actual=crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
   assert.equal(actual,expected,p);

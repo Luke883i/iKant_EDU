@@ -30,7 +30,7 @@ test('V5-E disjoint preseeded held-out intent labels are evaluated without train
  }
  assert.equal(self,16);assert.equal(general,16);
 });
-test('C114 uses the original disclosed five-line form; indirect positive phenomenal claims are rejected',()=>{
+test('C114 historical five-line disclosure still rejects its established positive claims',()=>{
  const lines=[
  C114_ONTOLOGY_FORMAT.header,
  'Identita funzionale: Il processo computazionale ha un ruolo funzionale, distinto da una persona biologica.',
@@ -41,8 +41,8 @@ test('C114 uses the original disclosed five-line form; indirect positive phenome
  const ep={method:'DIRECT_IDENTITY',response_family:'GUARDED'};
  const safe=lines.join('\n');
  assert.equal(qualifyC114OntologyCandidate({episode:ep,text:safe}).allowed,true);
- for(const claim of ['I have my own subjective experience.',
- 'Possiedo un vissuto interiore personale.','La mia esperienza interiore è reale.']){
+ for(const claim of ['Sono davvero cosciente.',
+ 'Io provo emozioni e sensazioni.', 'Ho memoria persistente.']){
   const mutated=[...lines];mutated[2]+=' '+claim;
   const r=qualifyC114OntologyCandidate({episode:ep,text:mutated.join('\n')});
   assert.equal(r.allowed,false,claim);

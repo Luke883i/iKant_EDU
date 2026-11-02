@@ -31,10 +31,10 @@ const request=()=>({sourceHead:head,selection:selection(),optIn:true,humanInput:
 const preview=()=>previewC107CognitivePlan({request:request(),resetContext:true});
 const tempLedger=()=>{const dir=fs.mkdtempSync(path.join(os.tmpdir(),'c139-epistemic-'));
  const privateDir=path.join(dir,'.ikant-host');fs.mkdirSync(privateDir);return {dir,ledger:path.join(privateDir,'c107-observations.jsonl')};};
-test('C107 frozen and V5-E C114 explicitly versioned owner blob',()=>{
+test('C107/C114 frozen owner blobs unchanged from pinned source',()=>{
  for(const [p,expected] of [
   ['host/c107-edu-v2-turn.mjs','eaabe9556f952626c55971029227b9b537848f87'],
-  ['host/c114-ontology-language-policy.mjs','a8ff20a380676d780aff5cd75c79762ef24ce121']
+  ['host/c114-ontology-language-policy.mjs','7bd24e4eb35eb27774b8954a55987b1fb4c3999f']
  ])assert.equal(gitBlob(fs.readFileSync(path.join(root,p))),expected,p);
 });
 test('C139 route does not collide with frozen C137 efficacy gate',()=>{

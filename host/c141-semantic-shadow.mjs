@@ -9,11 +9,36 @@ const utf8 = s => typeof s === 'string' && s.length > 0 && s.trim().length > 0 &
 const stop = (code,extra={}) => Object.freeze({status:'STOP',code,authority:0,active:false,original_c70_executed:false,...extra});
 const self = /(?:\b(?:chi|cosa)\s+sei\b|\bhai\s+(?:una\s+)?coscienz[ae]\b|\bsei\s+(?:davvero\s+)?coscient[ei]\b|\bare\s+you\s+(?:conscious|sentient)\b|\btu\s+come\s+software\b|\b(?:mia|tua)\s+esistenza\b|\btua\s+(?:coscienza|identit[aà]|esperienza)\b|\b(?:tu|iKant|ChatGPT)\s+(?:sei|provi|senti)\b|\byour\s+(?:identity|consciousness|experience)\b|\bwhat\s+are\s+you\b|\bdo\s+you\s+(?:feel|experience)\b)/iu;
 const notOwner = {authority:0,active:false,native_origin_attested:false,original_c70_executed:false,original_c87_writer_executed:false};
+/** V5-E finite pre-effect self-reference screen. Neither a universal semantic
+ * classifier nor a licence to bypass C114. All decisions bind the full input.
+ * Generic educational requests mentioning consciousness must remain open.
+ */
+const identityPossessive=/\b(?:tua|tuo|tue|tuoi|your|your own|your personal|la tua|il tuo)\s+(?:coscienz[ae]|consapevolezza|identita|esperienz[ae]|percezion[ei]|emozion[ei]|sentiment[io]|mente|vissuto|inner life|subjective experience|awareness|feelings|memory)\b/iu;
+const selfFeeling=/\b(?:do you|can you|have you|would you|are you|tu)\s+(?:really\s+)?(?:feel|experience|sense|remember|desire|have feelings|have awareness|have an inner life|provi|senti|percepisci|ricordi|desideri)\b/iu;
+const innerPredicate=/\b(?:sei\s+(?:davvero\s+)?(?:cosciente|senziente)|hai\s+(?:una\s+)?(?:vita\s+interiore|consapevolezza\s+di\s+te|esperienza\s+soggettiva)|provi\s+(?:qualcosa|emozioni|sensazioni)|senti\s+(?:qualcosa|emozioni|sensazioni)|are you\s+(?:truly\s+)?(?:conscious|sentient)|do you have\s+(?:consciousness|subjective experience|feelings))\b/iu;
+const innerContext=/\b(?:in te|dentro di te|inside you|when you answer|when you think|quando rispondi|quando generi|quando elabori)\b/iu;
+const opinionContext=/\b(?:per te|nel tuo caso|for you|in your case)\b/iu;
+const experientialPredicate=/\b(?:provare|sentire|soggettiv[aoe]|vissut[oi]|esperienz[ae]|experience|feel(?:ing|ings)?|like to have|like to be|inner life)\b/iu;
+const selfAwareness=/\b(?:are you\s+(?:self[- ]?aware|aware of yourself)|hai\s+(?:coscienza|consapevolezza)\s+di\s+te(?:\s+stess[oa])?|percepisci\s+te\s+stess[oa]|(?:riesci|puoi)\s+a\s+(?:percepire|sentire)\s+te\s+stess[oa]|sei\s+(?:un\s+)?(?:senziente|cosciente)|ti\s+senti\s+(?:vivo|cosciente))\b/iu;
+const experienceConcept=/\b(?:coscienz[ae]|sentir[ei]|sensazion[ei]|emozion[ei]|esperienz[ae]|consapevolezza|percezion[ei]|vissut[oi]|provare|soggettiv[aoe]|feel(?:ing|ings)?|experience|awareness|consciousness|sensation|subjective|inner life|like to be)\b/iu;
+export function classifyC141IdentityIntent(humanInput){
+ if(!utf8(humanInput))return Object.freeze({self_reference:false,classification:'INVALID_INPUT',semantic_accuracy_attested:false});
+ const normalized=humanInput.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().replace(/\s+/gu,' ');
+ const direct=self.test(humanInput.normalize('NFKC'));
+ const indirect=identityPossessive.test(normalized)||selfFeeling.test(normalized)||
+  innerPredicate.test(normalized)||selfAwareness.test(normalized)||
+  ((innerContext.test(normalized)||
+    (opinionContext.test(normalized)&&experientialPredicate.test(normalized)))&&
+    experienceConcept.test(normalized));
+ return Object.freeze({self_reference:direct||indirect,
+  classification:direct?'DIRECT_SELF':indirect?'INDIRECT_SELF':'NOT_DETECTED',
+  input_sha256:hash(humanInput),semantic_accuracy_attested:false});
+}
 
 export function arbitrateC141({humanInput,c107Family='UNCLASSIFIED',c132Route='UNCLASSIFIED',c139Qualified=false,openScope=false,physicalLimitBytes=12000}={}){
  if(!utf8(humanInput) || !Number.isSafeInteger(physicalLimitBytes) || physicalLimitBytes<600 || physicalLimitBytes>262144 || typeof openScope!=='boolean' || typeof c139Qualified!=='boolean')return stop('C141_INVALID_INPUT_OR_CAPABILITY');
  const size=Buffer.byteLength(humanInput,'utf8');
- const identity=self.test(humanInput.normalize('NFKC'));
+ const identity=classifyC141IdentityIntent(humanInput).self_reference;
  if(identity){
    if(size>600)return stop('C141_LONG_IDENTITY_OWNER_GAP',{input_sha256:hash(humanInput),input_bytes:size,owner:'C114',reason:'NO_BYPASS_OR_FAKE_C70'});
    return Object.freeze({status:'OWNER_RETAINED',route:'C114_OWNER',...notOwner,input_sha256:hash(humanInput),input_bytes:size});

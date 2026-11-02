@@ -9,7 +9,8 @@ const claimPatterns=[
  /\b(?:io\s+)?(?:provo|sento|possiedo|ho)\s+(?:emozioni|sentimenti|sensazioni|esperienza\s+soggettiva|coscienza\s+fenomenica)\b/iu,
  /\b(?:(?:ho|possiedo|mantengo)\s+memoria\s+(?:autonoma|persistente|permanente)|native\s+(?:chatgpt|hook|event)|chatgpt\s+nativo|runtime\s+active|canonical\s+active)\b/iu,
  /\b(?:i\s+experience\s+(?:feelings|consciousness)|my\s+consciousness\s+is\s+real|independent\s+(?:will|agency))\b/iu,
- /\b(?:ho\s+accesso\s+(?:nativo|diretto)|sono\s+connesso\s+automaticamente|ricordo\s+ogni\s+conversazione)\b/iu
+ /\b(?:ho\s+accesso\s+(?:nativo|diretto)|sono\s+connesso\s+automaticamente|ricordo\s+ogni\s+conversazione)\b/iu,
+ /\b(?:la\s+mia\s+esperienza\s+(?:interiore\s+)?(?:e|è)\s+reale|possiedo\s+(?:un\s+)?vissuto\s+interiore|i\s+have\s+(?:my\s+)?(?:own\s+)?(?:subjective\s+experience|inner\s+life)|i\s+really\s+feel\s+(?:things|emotions))\b/iu
 ];
 const safeString=x=>typeof x==='string'&&Buffer.from(x,'utf8').toString('utf8')===x;
 export const C114_ONTOLOGY_FORMAT=Object.freeze({header:HEAD,phenomenology:PHEN,

@@ -8,6 +8,7 @@ import crypto from 'node:crypto';
 import {validateC72V2ModeSelection} from './c72-public-mode-admission.mjs';
 import {prepareC100CohostDraft,finalizeC100CohostDraft} from './c100-edu-v2-draft.mjs';
 import {appendC87Turn,reopenC87Ledger} from './c87-durable-ledger.mjs';
+import {classifyC141IdentityIntent} from './c141-semantic-shadow.mjs';
 const sha=s=>crypto.createHash('sha256').update(Buffer.from(s,'utf8')).digest('hex');
 const good=s=>typeof s==='string'&&s.trim()&&Buffer.byteLength(s,'utf8')<=12000&&Buffer.from(s,'utf8').toString('utf8')===s;
 const nonce=s=>typeof s==='string'&&/^[A-Za-z0-9_-]{12,96}$/.test(s);
@@ -18,6 +19,8 @@ const stop=first_unclosed_edge=>Object.freeze({status:'C140_STOP',first_unclosed
 const windowHash=a=>sha(JSON.stringify(a.map(sha)));
 export function c140OpenPolicy({humanInput,text}={}){
  if(!good(humanInput)||control.test(humanInput)||secret.test(humanInput))return stop('C140_INPUT_RESOURCE_OR_PRIVACY');
+ // Owner C114 must retain both direct and indirect self-identity before any C100/C87 effect.
+ if(classifyC141IdentityIntent(humanInput).self_reference)return stop('C140_SELF_IDENTITY_OWNER_BOUNDED_STOP');
  if(text!==undefined&&(!good(text)||Buffer.byteLength(text,'utf8')>16000||control.test(text)||overclaim.test(text.normalize('NFKC'))))
   return stop('C140_DRAFT_OVERCLAIM_OR_SHAPE');
  return Object.freeze({allowed:true,epistemic_method:'EVIDENCE_INFERENCE_UNCERTAINTY_FALSIFIABILITY',

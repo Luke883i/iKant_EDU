@@ -270,6 +270,13 @@ export async function createC135EduV2Session({selection,sourceRoot,privateParent
     const guarded=c142.qualifyC142OwnerGuard({humanInput:frame.humanInput,c141Decision:decision});
     if(guarded.code==='C141_LONG_IDENTITY_OWNER_GAP')return no('C140_SELF_IDENTITY_OWNER_BOUNDED_STOP');
     if(guarded.status==='STOP')return no(guarded.code);
+    // An indirect self-identity hit may be missed by older C107 planning.
+    // Only the original C114 direct-identity plan can proceed; otherwise stop
+    // BEFORE language callback and C87, never borrow C140 or an unrelated owner.
+    if(guarded.route==='C114_OWNER'&&
+       !(planShort?.method==='DIRECT_IDENTITY'&&
+         ['SELF_ONTOLOGY','GUARDED'].includes(planShort.response_family)))
+      return no('C114_INDIRECT_IDENTITY_UNQUALIFIED_PRE_EFFECT_STOP');
     const openScope=guarded.route==='C140_OPEN_EDU_CANDIDATE';
     if(openScope){
       const plan=c140.planC140OpenTurn({humanInput:frame.humanInput,sourceHead:src.head,

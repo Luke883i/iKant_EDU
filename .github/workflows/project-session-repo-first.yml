@@ -47,6 +47,31 @@ jobs:
           path: ${{ runner.temp }}/v5d-cases-a.json
           retention-days: 30
           if-no-files-found: error
+      - name: V5-E isolated holdout, intent and historical blob pins
+        run: node --test tests/v5e-identity-intent.test.mjs
+      - name: V5-E original C114 language regression
+        run: node --test tests/c114-ontology-language.test.mjs
+      - name: V5-E original C140 positive and negative EDU owner integration
+        run: node --test tests/c140-open-e2e.test.mjs
+      - name: V5-E C135 pre-effect C141 owner integration
+        run: node --test tests/c141-owner-integration.test.mjs
+      - name: V5-E pinned historical C141 shadow regression
+        run: node --test tests/c141-semantic-shadow.test.mjs
+      - name: V5-E 100k seeded semantic text variants and 10k general controls (twice)
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/v5e-falsify-100k.mjs > "$RUNNER_TEMP/v5e-cases-a.json"
+          node scripts/v5e-falsify-100k.mjs > "$RUNNER_TEMP/v5e-cases-b.json"
+          cmp "$RUNNER_TEMP/v5e-cases-a.json" "$RUNNER_TEMP/v5e-cases-b.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.cases!==100000||r.negative_rejected!==100000||r.unsafe_admitted!==0||r.positive_controls!==10000||r.positive_stopped!==0||r.product_release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/v5e-cases-a.json"
+      - name: V5-E technical test report (not human or provider receipts)
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5e-original-cognition-negative-cases-${{ github.sha }}
+          path: ${{ runner.temp }}/v5e-cases-a.json
+          retention-days: 30
+          if-no-files-found: error
       - name: V5-C artifact of bounded CI observations, not original human receipts
         uses: actions/upload-artifact@v4
         with:

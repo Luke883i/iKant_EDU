@@ -44,9 +44,9 @@
       "deletion_authorized": false
     },
     {
-      "path": "docs/V5C_EDU_MINIMUM_PRODUCT_BOOTSTRAP.md",
+      "path": "docs/V5C_EDU_MINIMUM_PRODUCT_BOOTSTRAP.txt",
       "operation": "ADD",
-      "reason": "COSA and COME evidence boundaries, recovery, rollback and no-go clarification",
+      "reason": "Versioned text runbook avoids unregenerated canonical Markdown atlas; original DoD is in contract and PR",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false
     },

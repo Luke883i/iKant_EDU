@@ -1,0 +1,75 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/v5c-edu.json",
+  "source_main": "62e98e9ab0c085aa34d39849a7b667794b005342",
+  "baseline_source_tree": "026375b282a7716314f413f5dc2e569b58981651",
+  "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
+  "human_signoffs": 0,
+  "automatic_approval": false,
+  "paths": [
+    {
+      "path": "contracts/project-v5c-edu-minimum-dod.json",
+      "operation": "ADD",
+      "reason": "Retrograde global/intermediate/local V5-C outcome contract; no original owner effects",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/v5c-edu-proof-policy.mjs",
+      "operation": "ADD",
+      "reason": "Typed policy and static original boundary checks for C72 through C125/S03",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/v5c-falsify-100k.mjs",
+      "operation": "ADD",
+      "reason": "Seeded 100k negative evidence faults and 10k positive case controls",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/v5c-bootstrap-profile.mjs",
+      "operation": "ADD",
+      "reason": "Actual process duration and exit status of original coldstart and EDU e2e tests",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/v5c-edu-proof-policy.test.mjs",
+      "operation": "ADD",
+      "reason": "Local negative and positive checks of the policy and original file boundaries",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/V5C_EDU_MINIMUM_PRODUCT_BOOTSTRAP.txt",
+      "operation": "ADD",
+      "reason": "Versioned text runbook avoids unregenerated canonical Markdown atlas; original DoD is in contract and PR",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "governance/changes/v5c-edu.json",
+      "operation": "ADD",
+      "reason": "Self-registered review-required V5-C additive source changes with V5B extension",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-session-repo-first.yml",
+      "operation": "MODIFY",
+      "reason": "Reuse existing session workflow to qualify V5-C original owners and bootstrap timing",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "operation": "MODIFY",
+      "reason": "Harden V5B to accept explicit additive per-slice registries without relaxing review",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    }
+  ]
+}

@@ -114,11 +114,29 @@ export function auditRepository(){
  const introduced=[],missing=[],changed=[],same=[],worktreeGenerated=[],worktreeSourceDirty=[];
  if(git('diff','--cached','--name-only').length)errors.push('V5B_STAGED_INDEX_DIFFERS_FROM_HEAD');
  const permitted=new Map();
- for(const row of changes.paths){
-  if(!isPath(row.path)||permitted.has(row.path)||!['ADD','MODIFY','REMOVE'].includes(row.operation)||
-   !['REVIEW_REQUIRED','PROVISIONAL'].includes(row.human_review)||typeof row.reason!=='string'||row.reason.length<16)
-   errors.push('BAD_CHANGE_DECLARATION:'+row.path);
-  permitted.set(row.path,row);
+ const extensions=paths.filter(p=>/^governance\/changes\/[a-z0-9_-]+\.json$/.test(p));
+ const registers=[{name:REGISTER,doc:changes}];
+ for(const p of extensions){
+  try{
+   const doc=json(p);
+   if(doc.schema!=='ikant-v5b-change-extension/v1'||doc.self_path!==p||
+      !/^[a-f0-9]{40}$/.test(doc.source_main||'')||
+      !Array.isArray(doc.paths)||!doc.paths.some(x=>x.path===p&&x.operation==='ADD'))
+     errors.push('V5B_INVALID_EXTENSION:'+p);
+   else registers.push({name:p,doc});
+  }catch{errors.push('V5B_EXTENSION_UNREADABLE:'+p);}
+ }
+ for(const {name,doc} of registers)for(const row of doc.paths){
+  if(!isPath(row.path)||!['ADD','MODIFY','REMOVE'].includes(row.operation)||
+    !['REVIEW_REQUIRED','PROVISIONAL'].includes(row.human_review)||
+    typeof row.reason!=='string'||row.reason.length<16){
+   errors.push('BAD_CHANGE_DECLARATION:'+name+':'+row.path);continue;
+  }
+  const prior=permitted.get(row.path);
+  if(prior){
+   if(!(prior.operation==='ADD'&&row.operation==='MODIFY'&&name!==REGISTER))
+    errors.push('V5B_CONFLICTING_DELTA:'+row.path);
+  }else permitted.set(row.path,row);
  }
  const refMap=new Map(), unresolved=[],relativeMissing=[];let textEdges=0,jsFiles=0;
  for(const p of paths){
@@ -169,7 +187,7 @@ export function auditRepository(){
  const audit={schema:'ikant-v5b-live-readonly-audit/v1',status:errors.length?'FAIL':'SOURCE_INDEXED_NOT_HUMAN_REVIEWED',
  source_head:base.commit,baseline_tree:base.tree,checked_files:paths.length,baseline_files:old.size,
  same_blob_count:same.length,changed_paths:changed,introduced_paths:introduced,missing_paths:missing,
-  git_provenance:'STAGED_BLOB_IDS_MATCH_HEAD_REQUIRED',generated_worktree_evidence_changes:worktreeGenerated,
+  change_register_extensions:extensions,git_provenance:'STAGED_BLOB_IDS_MATCH_HEAD_REQUIRED',generated_worktree_evidence_changes:worktreeGenerated,
   tracked_source_worktree_dirty:worktreeSourceDirty,
  provisional_roles:paths.length,human_reviewed_files:0,workflow_count:wfs.length,
  retained_workflows:retention.paths.length,protected_workflows_missing:protectedMissing,

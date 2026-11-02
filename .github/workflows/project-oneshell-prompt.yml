@@ -21,11 +21,16 @@ jobs:
           node-version: '22'
       - name: Project HEAD-only prompt
         run: node --test tests/project-oneshell-prompt.test.mjs
-      - name: V5-B repository and CI inventory (read-only)
+      - name: V5-B static syntax and pure safety tests
         run: |
-          node --test tests/v5b-repository-governance.test.mjs
+          node --check scripts/v5b-repository-governance-audit.mjs
+          V5B_SKIP_LIVE=1 node --test tests/v5b-repository-governance.test.mjs
+      - name: V5-B source-indexed live read-only audit
+        run: |
           node scripts/v5b-repository-governance-audit.mjs summary > "$RUNNER_TEMP/v5b-inventory-summary.json"
           node scripts/v5b-repository-governance-audit.mjs full > "$RUNNER_TEMP/v5b-inventory-full.json"
+      - name: V5-B live checkout assertions
+        run: node --test tests/v5b-repository-governance.test.mjs
       - name: V5-B 1000 alternatives and 100k seeded tests repeated byte-identically
         shell: bash
         run: |

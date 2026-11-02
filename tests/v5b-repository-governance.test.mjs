@@ -44,7 +44,7 @@ test('unclassified additions and broken retention are blocked',()=>{
   assert.equal(evaluateMutationGate({...referencePredicate(),[key]:value}).ok,false,key);
  }
 });
-test('original full-checkout inventory is mechanically indexed, not reviewed',()=>{
+test('original full-checkout inventory is mechanically indexed, not reviewed',{skip:process.env.V5B_SKIP_LIVE==='1'},()=>{
  const r=auditRepository();
  assert.equal(r.errors.length,0,JSON.stringify(r.errors.slice(0,40)));
  assert.equal(r.baseline_files,1471);

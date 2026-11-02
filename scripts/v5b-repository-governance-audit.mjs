@@ -97,7 +97,7 @@ export function auditRepository(){
    errors.push('BAD_CHANGE_DECLARATION:'+row.path);
   permitted.set(row.path,row);
  }
- const refMap=new Map(), unresolved=[],relativeMissing=[],textEdges=0,jsFiles=0;
+ const refMap=new Map(), unresolved=[],relativeMissing=[];let textEdges=0,jsFiles=0;
  for(const p of paths){
   if(seen.has(p))errors.push('DUPLICATE_TRACKED:'+p);seen.add(p);
   const bytes=read(p),digest=sha1Blob(bytes),oldRow=old.get(p);

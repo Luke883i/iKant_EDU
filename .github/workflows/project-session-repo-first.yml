@@ -47,9 +47,16 @@ jobs:
           path: ${{ runner.temp }}/v5d-cases-a.json
           retention-days: 30
           if-no-files-found: error
-      - name: V5-E owner-safe cognition, indirect identity and isolated holdout
-        run: |
-          node --test tests/v5e-identity-intent.test.mjs tests/c114-ontology-language.test.mjs tests/c140-open-e2e.test.mjs tests/c141-owner-integration.test.mjs tests/c141-semantic-shadow.test.mjs
+      - name: V5-E isolated holdout, intent and historical blob pins
+        run: node --test tests/v5e-identity-intent.test.mjs
+      - name: V5-E original C114 language regression
+        run: node --test tests/c114-ontology-language.test.mjs
+      - name: V5-E original C140 positive and negative EDU owner integration
+        run: node --test tests/c140-open-e2e.test.mjs
+      - name: V5-E C135 pre-effect C141 owner integration
+        run: node --test tests/c141-owner-integration.test.mjs
+      - name: V5-E pinned historical C141 shadow regression
+        run: node --test tests/c141-semantic-shadow.test.mjs
       - name: V5-E 100k seeded semantic text variants and 10k general controls (twice)
         shell: bash
         run: |

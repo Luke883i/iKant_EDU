@@ -77,6 +77,26 @@ export function referencePredicate(){return {source_lock:true,original_owner_unc
  human_authorization:false,required_check_provider_readback:false,
  original_contract_requalified:false,restore_plan_tested:false};}
 function sha1Blob(bytes){return crypto.createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');}
+/** The Git index carries versioned provenance; generated working bytes do not. */
+export function parseStagedGitEntries(raw){
+ if(typeof raw!=='string')throw Error('V5B_INDEX_INPUT_INVALID');
+ const entries=raw.split('\0').filter(Boolean).map(line=>{
+  const match=line.match(/^([0-7]{6}) ([a-f0-9]{40}) ([0-3])\t(.+)$/s);
+  if(!match||match[3]!=='0'||!isPath(match[4]))throw Error('V5B_INDEX_STAGE_OR_PATH_INVALID');
+  return Object.freeze({mode:match[1],sha:match[2],path:match[4]});
+ });
+ if(new Set(entries.map(x=>x.path)).size!==entries.length)throw Error('V5B_INDEX_DUPLICATE_PATH');
+ return entries;
+}
+export function qualifyWorkingTreeDifference(p,indexSha,workingSha){
+ if(!isPath(p)||!/^[a-f0-9]{40}$/.test(indexSha)||!/^[a-f0-9]{40}$/.test(workingSha))
+  return Object.freeze({ok:false,edge:'V5B_WORKTREE_INPUT_INVALID'});
+ if(indexSha===workingSha)return Object.freeze({ok:true,status:'SAME_AS_INDEX'});
+ if(/^artifacts\/qualification\/[a-zA-Z0-9._/-]+\.json$/.test(p))
+  return Object.freeze({ok:true,status:'TEST_GENERATED_EVIDENCE_DIFFERENT_FROM_COMMITTED_BLOB',
+   provenance:'INDEX_SHA_ONLY',evidence_claim:'WORKTREE_BYTE_CHANGE_NOT_NEW_OWNER_RECEIPT'});
+ return Object.freeze({ok:false,edge:'V5B_TRACKED_SOURCE_DIRTY'});
+}
 export function auditRepository(){
  const base=json(INVENTORY),changes=json(REGISTER),retention=json('contracts/v1-workflow-retention.json');
  const contract=json(DOD),errors=[];
@@ -87,9 +107,12 @@ export function auditRepository(){
    row.provisional_role!==provisionalRole(row.path)||row.review!=='UNREVIEWED')errors.push('BASELINE_BAD_ROW:'+row.path);
   old.set(row.path,row);
  }
- const paths=git('ls-files','-z').split('\0').filter(Boolean).sort();
+ const staged=parseStagedGitEntries(git('ls-files','--stage','-z'));
+ const paths=staged.map(x=>x.path).sort();
+ const indexShas=new Map(staged.map(x=>[x.path,x.sha]));
  const now=new Set(paths),seen=new Set(),wfs=[];
- const introduced=[],missing=[],changed=[],same=[],badMode=[];
+ const introduced=[],missing=[],changed=[],same=[],worktreeGenerated=[],worktreeSourceDirty=[];
+ if(git('diff','--cached','--name-only').length)errors.push('V5B_STAGED_INDEX_DIFFERS_FROM_HEAD');
  const permitted=new Map();
  for(const row of changes.paths){
   if(!isPath(row.path)||permitted.has(row.path)||!['ADD','MODIFY','REMOVE'].includes(row.operation)||
@@ -100,7 +123,10 @@ export function auditRepository(){
  const refMap=new Map(), unresolved=[],relativeMissing=[];let textEdges=0,jsFiles=0;
  for(const p of paths){
   if(seen.has(p))errors.push('DUPLICATE_TRACKED:'+p);seen.add(p);
-  const bytes=read(p),digest=sha1Blob(bytes),oldRow=old.get(p);
+  const bytes=read(p),digest=indexShas.get(p),oldRow=old.get(p);
+  const worktree=qualifyWorkingTreeDifference(p,digest,sha1Blob(bytes));
+  if(!worktree.ok){worktreeSourceDirty.push(p);errors.push(worktree.edge+':'+p);}
+  else if(worktree.status==='TEST_GENERATED_EVIDENCE_DIFFERENT_FROM_COMMITTED_BLOB')worktreeGenerated.push(p);
   if(!oldRow){introduced.push(p);if(permitted.get(p)?.operation!=='ADD')errors.push('UNREGISTERED_ADDITION:'+p);}
   else if(digest!==oldRow.git_blob_sha1){changed.push(p);if(permitted.get(p)?.operation!=='MODIFY')errors.push('UNREGISTERED_MODIFICATION:'+p);}
   else same.push(p);
@@ -143,6 +169,8 @@ export function auditRepository(){
  const audit={schema:'ikant-v5b-live-readonly-audit/v1',status:errors.length?'FAIL':'SOURCE_INDEXED_NOT_HUMAN_REVIEWED',
  source_head:base.commit,baseline_tree:base.tree,checked_files:paths.length,baseline_files:old.size,
  same_blob_count:same.length,changed_paths:changed,introduced_paths:introduced,missing_paths:missing,
+  git_provenance:'STAGED_BLOB_IDS_MATCH_HEAD_REQUIRED',generated_worktree_evidence_changes:worktreeGenerated,
+  tracked_source_worktree_dirty:worktreeSourceDirty,
  provisional_roles:paths.length,human_reviewed_files:0,workflow_count:wfs.length,
  retained_workflows:retention.paths.length,protected_workflows_missing:protectedMissing,
  workflows:wfs,consumer_index:consumerIndex,dependency_probe:{js_files:jsFiles,literal_relative_edges:textEdges,

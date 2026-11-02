@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository} from '../scripts/v5b-repository-governance-audit.mjs';
+import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference} from '../scripts/v5b-repository-governance-audit.mjs';
 
 test('all-path roles are explicitly provisional and never human review',()=>{
  assert.equal(provisionalRole('tests/foo.test.mjs'),'TEST_SOURCE');
@@ -42,6 +42,24 @@ test('CI and provider results do not mint original authority',()=>{
 test('unclassified additions and broken retention are blocked',()=>{
  for(const [key,value] of [['snapshot_complete',false],['retention_respected',false],['changes_explained',false],['workflow_coverage',false],['unknowns_not_promoted',false]]){
   assert.equal(evaluateMutationGate({...referencePredicate(),[key]:value}).ok,false,key);
+ }
+});
+test('stage zero index records are the source of Git provenance',()=>{
+ const a=parseStagedGitEntries('100644 '+'a'.repeat(40)+' 0\tartifacts/qualification/c32-selection.json\0');
+ assert.equal(a.length,1);
+ assert.equal(a[0].path,'artifacts/qualification/c32-selection.json');
+ assert.throws(()=>parseStagedGitEntries('100644 '+'a'.repeat(40)+' 1\tREADME.md\0'),/INDEX_STAGE/);
+ assert.throws(()=>parseStagedGitEntries('100644 '+'a'.repeat(40)+' 0\tREADME.md\0'+'100644 '+'a'.repeat(40)+' 0\tREADME.md\0'),/INDEX_DUPLICATE/);
+});
+test('regenerated C32 evidence is recorded but not treated as a source commit',()=>{
+ const old='a'.repeat(40),changed='b'.repeat(40);
+ const q=qualifyWorkingTreeDifference('artifacts/qualification/c32-session-shell-selection-1k.json',old,changed);
+ assert.equal(q.ok,true);assert.equal(q.status,'TEST_GENERATED_EVIDENCE_DIFFERENT_FROM_COMMITTED_BLOB');
+ assert.equal(q.evidence_claim,'WORKTREE_BYTE_CHANGE_NOT_NEW_OWNER_RECEIPT');
+ assert.equal(qualifyWorkingTreeDifference('artifacts/qualification/c32-session-shell-selection-1k.json',old,old).status,'SAME_AS_INDEX');
+ for(const p of ['host/c87-durable-ledger.mjs','README.md','.github/workflows/c32-session-shell.yml','governance/v5b-baseline-inventory.json']){
+  const r=qualifyWorkingTreeDifference(p,old,changed);
+  assert.equal(r.ok,false,p);assert.equal(r.edge,'V5B_TRACKED_SOURCE_DIRTY');
  }
 });
 test('original full-checkout inventory is mechanically indexed, not reviewed',{skip:process.env.V5B_SKIP_LIVE==='1'},()=>{

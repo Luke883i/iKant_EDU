@@ -1,0 +1,161 @@
+{
+  "schema": "ikant-v5a-retrograde-entrypoint-dod/v1",
+  "authority": 0,
+  "status": "CANDIDATE_HOST_ENGINEERING_NO_ORIGINAL_OWNER_EFFECT",
+  "head_baseline": "8c65bf664b572b03522af17fb119d96535670eaf",
+  "global": {
+    "id": "V5A-G",
+    "what": "Un ingegnere esterno individua un solo ingresso operativo EDU, segue un solo grafo di origine dei prompt e vede garanzie e non-garanzie senza attribuire autorita a file, CI o package",
+    "required_intermediate": [
+      "V5A-I1",
+      "V5A-I2",
+      "V5A-I3",
+      "V5A-I4"
+    ],
+    "accept": "tutti e quattro i risultati intermedi qualificati sullo stesso commit, regressioni originali verdi, review indipendente; nessuna installazione dichiarata",
+    "evidence": "diff HEAD/TREE/blob + CI sul commit + review umana + readback indipendente del bundle",
+    "status": "OPEN_UNTIL_PR_HEAD_CI_AND_HUMAN_REVIEW"
+  },
+  "intermediate": [
+    {
+      "id": "V5A-I1",
+      "what": "Fonte unica e provenienza",
+      "local": [
+        "V5A-L01",
+        "V5A-L02",
+        "V5A-L03"
+      ],
+      "falsifier": "BOOTSTRAP, generatore e catalogo divergono oppure un alias e' scritto autonomamente"
+    },
+    {
+      "id": "V5A-I2",
+      "what": "Gate umani e UX univoci",
+      "local": [
+        "V5A-L04",
+        "V5A-L05"
+      ],
+      "falsifier": "README o START_HERE impongono avvia iKant, oppure ammettono consenso nel primo turno"
+    },
+    {
+      "id": "V5A-I3",
+      "what": "Compatibilita e proprieta immutabili",
+      "local": [
+        "V5A-L06",
+        "V5A-L07",
+        "V5A-L08"
+      ],
+      "falsifier": "alias non esatto, bundle C131 rotto, C72/C135/C87/C125 modificati, o source lock repinnato"
+    },
+    {
+      "id": "V5A-I4",
+      "what": "Evidenza falsificabile senza promozione",
+      "local": [
+        "V5A-L09",
+        "V5A-L10",
+        "V5A-L11",
+        "V5A-L12"
+      ],
+      "falsifier": "CI/PR/catalogo dichiarano prodotto installed o ACTIVE; mutation run non riproducibile"
+    }
+  ],
+  "local": [
+    {
+      "id": "V5A-L01",
+      "object": "BOOTSTRAP.json",
+      "what": "project_session.prompt uguale a project/session-chat/PROMPT.txt",
+      "proof": "lettura Git + audit script"
+    },
+    {
+      "id": "V5A-L02",
+      "object": "contracts/project-prompt-generation.json",
+      "what": "source_prompt uguale allo stesso file",
+      "proof": "test generator originale"
+    },
+    {
+      "id": "V5A-L03",
+      "object": "release/catalog.json",
+      "what": "public_entrypoints.edu_prompt punta esattamente al file normativo",
+      "proof": "auditRepository"
+    },
+    {
+      "id": "V5A-L04",
+      "object": "README.md",
+      "what": "primo messaggio di nuova chat equivale ad ORIENTATION senza comando dedicato",
+      "proof": "test documentale + review"
+    },
+    {
+      "id": "V5A-L05",
+      "object": "docs/START_HERE.md",
+      "what": "turni I ACCEPT e EDU distinti senza falsa attivazione CANONICAL",
+      "proof": "test documentale + review"
+    },
+    {
+      "id": "V5A-L06",
+      "object": "project/edu-oneshell/PROMPT_INNESCO.txt",
+      "what": "byte originali canonici come prefisso + trailer di versione deterministicamente derivato",
+      "proof": "script emit-alias e confronto bytes"
+    },
+    {
+      "id": "V5A-L07",
+      "object": "scripts/c131-build-project-bundle.py",
+      "what": "legacy bundle continua a usare alias versionato; nessun cambio di carrier o owner",
+      "proof": "build due volte e cmp nel workflow originale"
+    },
+    {
+      "id": "V5A-L08",
+      "object": "owner originali C72/C135/C87/C125",
+      "what": "nessuna mutazione di sorgente o writer in questa PR",
+      "proof": "blob git originali invariati; test owners"
+    },
+    {
+      "id": "V5A-L09",
+      "object": "tests/project-v5a-entrypoint.test.mjs",
+      "what": "controesempi su sorgenti, alias, gate e noauthority",
+      "proof": "Node test checkout reale"
+    },
+    {
+      "id": "V5A-L10",
+      "object": "scripts/project-v5a-alternative-study.mjs",
+      "what": "1.000 alternative con scelta ottimale limitata al dominio modellato",
+      "proof": "2 run byte-identici e report"
+    },
+    {
+      "id": "V5A-L11",
+      "object": "scripts/project-v5a-falsify-100k.mjs",
+      "what": "100.000 casi negativi preseeded, 10.000 positivi, report ripetibile",
+      "proof": "2 run byte-identici, nessun falso PASS/STOP nei casi modellati"
+    },
+    {
+      "id": "V5A-L12",
+      "object": "PR e GitHub Actions",
+      "what": "CI e Git hash non sono ricevute runtime, installazione o release",
+      "proof": "assert PRODUCT_NO_GO + review indipendente"
+    }
+  ],
+  "minimal_semantic_slice": {
+    "canonical_prompt_unchanged": "project/session-chat/PROMPT.txt",
+    "generated_compatibility_alias": "project/edu-oneshell/PROMPT_INNESCO.txt",
+    "catalog_pointer_corrected": "release/catalog.json#public_entrypoints.edu_prompt",
+    "onboarding_consistent": [
+      "README.md",
+      "docs/START_HERE.md"
+    ],
+    "new_workflows": 0,
+    "original_owner_modifications": 0,
+    "regression": [
+      "tests/project-oneshell-prompt.test.mjs",
+      "tests/v1-product-contract.test.mjs",
+      "tests/c131-product-release.test.mjs",
+      "tests/project-v5a-entrypoint.test.mjs"
+    ]
+  },
+  "disclaimed": [
+    "native_provider_installed",
+    "owner_C72_receipt",
+    "C135_turn_execution",
+    "C87_append",
+    "C125_delivery",
+    "cognitive_uplift",
+    "product_release"
+  ]
+}

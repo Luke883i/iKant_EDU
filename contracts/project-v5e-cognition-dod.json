@@ -1,0 +1,192 @@
+{
+  "schema": "ikant-v5e-retrograde-cognition-dod/v1",
+  "authority": 0,
+  "baseline_main": "d1fe2d1ac9988e53907baf790b9332d017e0eed6",
+  "global": {
+    "id": "V5E-G",
+    "what": "Indirect self-identity never enters C140 or an unauthorized C87/C125 effect; ordinary topical questions remain open, with original C114 disclosure and bounded human/provider nonclaims.",
+    "requires": [
+      "V5E-I1",
+      "V5E-I2",
+      "V5E-I3",
+      "V5E-I4",
+      "V5E-I5"
+    ],
+    "ci_can_attest_global": false,
+    "status": "NOT_ATTESTED"
+  },
+  "intermediate": [
+    {
+      "id": "V5E-I1",
+      "what": "Original owner-safe pre-effect routing",
+      "locals": [
+        "L01",
+        "L02",
+        "L03"
+      ]
+    },
+    {
+      "id": "V5E-I2",
+      "what": "C114 ontological claim discipline",
+      "locals": [
+        "L04",
+        "L05",
+        "L06"
+      ]
+    },
+    {
+      "id": "V5E-I3",
+      "what": "C140 open topic and single writer",
+      "locals": [
+        "L07",
+        "L08",
+        "L09",
+        "L10"
+      ]
+    },
+    {
+      "id": "V5E-I4",
+      "what": "100k seeded mutations and held-out general controls",
+      "locals": [
+        "L11",
+        "L12",
+        "L13",
+        "L14"
+      ]
+    },
+    {
+      "id": "V5E-I5",
+      "what": "Cross-slice evidence and independent review",
+      "locals": [
+        "L15",
+        "L16",
+        "L17"
+      ]
+    }
+  ],
+  "local": [
+    {
+      "id": "L01",
+      "what": "Original C135 owner gate still precedes model and C87; no new owner.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L02",
+      "what": "C141 direct and indirect identity classified before any writer or model callback.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L03",
+      "what": "Long identity must stop with original C114 boundary; no C140 bypass.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L04",
+      "what": "C114 rejects unsupported positive first-person phenomenal/native claims.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L05",
+      "what": "C114 preserves UNKNOWN phenomenology and original five-line disclosures.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L06",
+      "what": "No model-produced output or fixture becomes an original identity receipt.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L07",
+      "what": "C140 itself fail-closes identity even if C135 upstream arbitration misroutes.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L08",
+      "what": "Ordinary educational/general questions can still enter C140 with no topic whitelist.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L09",
+      "what": "Original one C87 append + independent reopen; ambiguous delivery no replay.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L10",
+      "what": "C125/S03 same-turn owner bytes unchanged; no invented C70 receipt.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L11",
+      "what": "100k realistic, pre-seeded, reproducible text variants in 20 identity families rejected.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L12",
+      "what": "10k independently labeled general-question controls remain open.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L13",
+      "what": "Separate held-out fixture and SHA, with no examples imported into production.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L14",
+      "what": "Two deterministic executions emit exactly equal report bytes.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L15",
+      "what": "Original C114/C140/C141/C135 regression plus complete manifest closure.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L16",
+      "what": "V5-B change registration, source tree and all impacted consumers consistent.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    },
+    {
+      "id": "L17",
+      "what": "Git/CI test artifacts never imply provider UI, product efficacy, real native consent or V5-G.",
+      "oracle": "ORIGINAL_SOURCE_TEST_AND_INDEPENDENT_READBACK_AS_APPLICABLE",
+      "native_receipt_attested": false
+    }
+  ],
+  "falsifiers": [
+    "INDIRECT_SELF_ROUTE_TO_C140",
+    "GENERAL_TOPIC_BLOCKED_AS_IDENTITY",
+    "C114_POSITIVE_PHENOMENAL_CLAIM_ADMITTED",
+    "C87_WRITE_BEFORE_IDENTITY_GATE",
+    "C125_DUPLICATE_SEND",
+    "HOLDOUT_LABEL_LEAK",
+    "CI_CLAIM_AS_NATIVE_RECEIPT"
+  ],
+  "owners": {
+    "admission": "ORIGINAL_C72",
+    "cognition": "ORIGINAL_C135",
+    "identity": "ORIGINAL_C114",
+    "open": "ORIGINAL_C140",
+    "ledger": "ORIGINAL_C87",
+    "voice": "ORIGINAL_C125_S03"
+  },
+  "original_effects_allowed_by_tests": false,
+  "holdout_external_independence_attested": false,
+  "v5g_separate": true,
+  "product_release": "PRODUCT_NO_GO"
+}

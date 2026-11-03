@@ -127,6 +127,13 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Add read-only live GitHub repository-ID/head/tree source cutover gate plus deterministic PRE/POST fail-closed transition falsifiers; never mint native owner, human or provider authorization",
       "deletion_authorized": false
+    },
+    {
+      "path": "artifacts/qualification/c62-object-mincut-8192.json",
+      "operation": "MODIFY",
+      "reason": "Recompute exactly two data fields (original runtime root SHA256, transport byte count) in the C62 deterministic 8192 mincut proof after the byte-exact original shard/member regeneration; preserve all gate predicates and test expectations",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
     }
   ]
 }

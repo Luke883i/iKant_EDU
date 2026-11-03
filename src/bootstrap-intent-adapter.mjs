@@ -17,7 +17,7 @@ export function classifyHumanIntent(input){
 }
 
 export function compileIntentAwareFirstContact(input){
- const intent=classifyHumanIntent(input),plan=compileFirstContactPlan('iKant_LE'),pendingIntent=String(input??'');
+ const intent=classifyHumanIntent(input),plan=compileFirstContactPlan('iKant_EDU'),pendingIntent=String(input??'');
  return{next:{...plan,pending_intent:pendingIntent,preserve_pending_intent:true,first_input_bootstrap:true},intent};
 }
 
@@ -32,7 +32,7 @@ export function issueAcceptanceObservation({humanInput,sourceHead,termsObject,ob
 
 export function directActivationExecutorHandoff({preacceptHandoff,activationExecutor,humanInput,acceptanceObservedMonotonicMs}={}){
  const sourceHead=activationExecutor?.source_head,runtimeRootSha256=activationExecutor?.runtime_root_sha256,descriptor=runtimeRootDescriptor();const dv=validateRuntimeRootDescriptor(descriptor);if(!dv.ok||descriptor?.runtime_root_sha256!==runtimeRootSha256)throw new Error('canonical runtime descriptor mismatch');
- if(!preacceptHandoff||preacceptHandoff.schema!=='ikant-le-preaccept-handoff/v2'||preacceptHandoff.repository!=='Luke883i/iKant_LE'||preacceptHandoff.source_head!==sourceHead||preacceptHandoff.terms_presented!==true||preacceptHandoff.frozen!==true||preacceptHandoff.breached!==false||preacceptHandoff.authority!==0)throw new Error('preaccept handoff invalid');
+ if(!preacceptHandoff||preacceptHandoff.schema!=='ikant-le-preaccept-handoff/v2'||preacceptHandoff.repository!=='Luke883i/iKant_EDU'||preacceptHandoff.source_head!==sourceHead||preacceptHandoff.terms_presented!==true||preacceptHandoff.frozen!==true||preacceptHandoff.breached!==false||preacceptHandoff.authority!==0)throw new Error('preaccept handoff invalid');
  const termsRow=(preacceptHandoff.orientation_objects||[]).find(x=>x?.path==='TERMS.md'),termsObject=preacceptHandoff.terms_object;
  if(!termsRow||!termsObject||termsObject.path!=='TERMS.md'||termsObject.blob_sha1!==termsRow.blob_sha1||termsObject.bytes!==termsRow.bytes)throw new Error('preaccept terms binding invalid');
  const acceptanceObservation=issueAcceptanceObservation({humanInput,sourceHead,termsObject,observedMonotonicMs:acceptanceObservedMonotonicMs});

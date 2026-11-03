@@ -50,6 +50,11 @@ test('C42 invalid acceptance and executor cannot cross pre-runtime boundary',()=
  assert.throws(()=>for_ai_agent_first_entrypoint({preaccept_handoff:preaccept,activation_executor:bad,human_input:'I ACCEPT',acceptance_observed_monotonic_ms:10,runtime_root_descriptor:D}),/activation executor receipt invalid/);
 });
 
+test('C42 rejects the retired LE source name even with otherwise valid pinned bytes',()=>{
+ const retired={...preaccept,repository:'Luke883i/iKant_LE'};
+ assert.throws(()=>for_ai_agent_first_entrypoint({preaccept_handoff:retired,activation_executor:executor,human_input:'I ACCEPT',acceptance_observed_monotonic_ms:10,runtime_root_descriptor:D}),/preaccept handoff invalid/);
+});
+
 test('C42 file and warm carriers project only ultra-compressed owner-derived UX',()=>{
  const unavailable=FASTBOOT_MACHINE_CARRIERS.map((carrier,i)=>issueFastbootCapabilityReceipt({carrier,status:'UNAVAILABLE',capabilities:{...proven(),surface_supported:false},evidence:'no-machine-'+i,probeOwner:'c42',operationId:'no-machine-'+i,sourceHead:HEAD}));
  const fileAvailable=issueFastbootCapabilityReceipt({carrier:'HOST_FILE_BRIDGE',status:'AVAILABLE',capabilities:proven(),evidence:'file-ready',probeOwner:'c42',operationId:'file-ready',sourceHead:HEAD});

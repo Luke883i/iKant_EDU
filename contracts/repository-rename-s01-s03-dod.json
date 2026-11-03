@@ -14,7 +14,7 @@
     "done": [
       {
         "path": "host/c72-public-mode-admission.mjs",
-        "what": "Original C72 linked Terms derives repository from matching original ADMISSION and BOOTSTRAP."
+        "what": "Original isolated C72 owner centralizes the OLD canonical Terms URL with zero new filesystem dependencies; no unsafe auto-switch."
       },
       {
         "path": "host/project-c72-postaccept-reentry.mjs",
@@ -34,6 +34,11 @@
       }
     ],
     "open": [
+      {
+        "edge": "S01_C72_NEW_IDENTITY_PHASE_NOT_ENABLED",
+        "path": "host/c72-public-mode-admission.mjs",
+        "why": "Zero-checkout original owner must remain self-contained. Switching the canonical constant and pinning original owner receipts requires source rebake after coordinated admin cutover."
+      },
       {
         "edge": "S01_COLDSEED_PREACCEPT_WITNESS_OLD_LITERAL",
         "path": "host/project-c72-coldstart-seed.mjs",
@@ -78,7 +83,19 @@
     "prompt_installation": "UNKNOWN",
     "rename_gate": "BLOCKED",
     "why": "Repository checkout census and public GitHub code search cannot prove dynamic external callers or native provider; GitHub hosted Actions/reusable workflows cannot rely on redirects.",
-    "closure_requires": "External owners and authenticated providers must attest caller census, coordinated cutover, no event loss or accepted downtime and postrename smoke, with readback."
+    "closure_requires": "External owners and authenticated providers must attest caller census, coordinated cutover, no event loss or accepted downtime and postrename smoke, with readback.",
+    "search_scope": {
+      "owner": "Luke883i",
+      "visible_repository_count": 13,
+      "search_query": "Luke883i/iKant_LE",
+      "index_limit": "GITHUB_CODE_SEARCH_NOT_PROOF_OF_DYNAMIC_ABSENCE",
+      "matched_repositories": {
+        "Luke883i/academics": 4,
+        "Luke883i/ikant": 7
+      },
+      "others_with_no_indexed_match": 11,
+      "external_global_scope": "UNKNOWN"
+    }
   },
   "external_consumer_observations": [
     {
@@ -94,6 +111,78 @@
       "path": "scripts/falsify_hub_semantics.py",
       "blob_sha1": "f2afcd798e5c95b0344fe90caf5494e8e629e301",
       "class": "EXTERNAL_HISTORICAL_TEST_LITERAL_OWNER_REVIEW_REQUIRED",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/academics",
+      "path": "PROGRAMME.json",
+      "blob_sha1": "601fa8cb7048b4fdb4d2b1c5042845f5765f9bad",
+      "class": "EXTERNAL_PROGRAMME_GRAPH_EXACT_REPOSITORY",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/academics",
+      "path": "evidence/lumen-crossref-100-hypotheses.json",
+      "blob_sha1": "7de6db0cd613507181cb775b820763bc0f9f68db",
+      "class": "EXTERNAL_HYPOTHETICAL_REFERENCE_PRESERVE_HISTORY",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/ikant",
+      "path": ".github/workflows/engineering-governance.yml",
+      "blob_sha1": "2e376c4f8f6bbe4979a68d718fcad49a278ac4cc",
+      "class": "EXTERNAL_ACTIVE_WORKFLOW_EXACT_WRITE_ORDER_ASSERTION_CRITICAL",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/ikant",
+      "path": "scripts/federated_repository_meta_controller_falsify.py",
+      "blob_sha1": "2ff645a16a7c8aeec6905b97c6ee623b1af93d7f",
+      "class": "EXTERNAL_FEDERATION_SOURCE_TARGET_AND_ORDER_CRITICAL",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/ikant",
+      "path": "PC0_PRODUCT_COHERENCE_CONTRACT.json",
+      "blob_sha1": "5300733de38b04fe6b03594225c1f8e92541ca97",
+      "class": "EXTERNAL_PINNED_HISTORICAL_UPSTREAM_REFERENCE",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/ikant",
+      "path": "SELF_COUNTERFACTUAL_RUNTIME_CONTRACT.json",
+      "blob_sha1": "4376e28ec30b5434f551368f5719f0fd89836761",
+      "class": "EXTERNAL_EXACT_REPOSITORY_SELF_COUNTERFACTUAL",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/ikant",
+      "path": "PC0_2_LE_RELATIONAL_NUANCE_CONTRACT.json",
+      "blob_sha1": "d8c9f8c6037098b932f0a805233a99284e448ece",
+      "class": "EXTERNAL_EXACT_REPOSITORY_PINNED_LIB0",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/ikant",
+      "path": "DEPLOYMENT_REALITY_CONTRACT.json",
+      "blob_sha1": "9096b8820df19886d413390e6fdba7c75f683190",
+      "class": "EXTERNAL_DEPLOYMENT_EXACT_REPOSITORY",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/ikant",
+      "path": "tests/test_federated_repository_meta_controller.py",
+      "blob_sha1": "0dbb8a1cb9be2023b86d826a146c5f1edd81027f",
+      "class": "EXTERNAL_FEDERATION_REGRESSION_EXACT_ORDER",
       "owner_runtime_readback": "UNKNOWN",
       "evidence_level": "GIT_CONNECTOR_BLOB"
     }

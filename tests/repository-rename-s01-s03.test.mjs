@@ -89,6 +89,10 @@ test('S03 discovered external consumer is classified but cannot self-close',()=>
  assert.ok(external.length>=2);
  assert(external.some(x=>x.repository==='Luke883i/academics'&&x.path==='README.md'));
  assert(external.some(x=>x.repository==='Luke883i/academics'&&x.path==='scripts/falsify_hub_semantics.py'));
+ assert(external.some(x=>x.repository==='Luke883i/ikant'&&x.path==='.github/workflows/engineering-governance.yml'));
+ assert(external.some(x=>x.repository==='Luke883i/ikant'&&x.path==='DEPLOYMENT_REALITY_CONTRACT.json'));
+ assert.equal(dod.s03.search_scope.visible_repository_count,13);
+ assert.equal(dod.s03.search_scope.matched_repositories['Luke883i/ikant'],7);
  for(const x of external){
   assert.match(x.blob_sha1,/^[a-f0-9]{40}$/);
   assert.notEqual(x.owner_runtime_readback,'PASS');

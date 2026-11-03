@@ -5,18 +5,16 @@
 import crypto from 'node:crypto';
 import {readFileSync} from 'node:fs';
 const CONTRACT=JSON.parse(readFileSync(new URL('../contracts/c72-public-mode-admission-v2.json',import.meta.url),'utf8'));
-/** Original source-bound identity. Old repository remains canonical until explicit postrename source migration.
+/** Original self-contained OLD identity. Rename is intentionally NOT enabled in this owner yet.
  * C72 cold seed already stages BOOTSTRAP.json and ADMISSION.json; no extra transport object.
  * No GitHub provider identity or rename authority is claimed here.
  */
+// Pre-materialization C72 has no guaranteed local BOOTSTRAP/ADMISSION filesystem.
+// Keep the original name frozen here; all document comparisons belong to the
+// repository-scope source auditor, NOT a hidden optional/fallback local read.
+// Switching this owner requires a separately qualified original source epoch.
 export function c72SourceRepository(){
- const boot=JSON.parse(readFileSync(new URL('../BOOTSTRAP.json',import.meta.url),'utf8'));
- const admission=JSON.parse(readFileSync(new URL('../ADMISSION.json',import.meta.url),'utf8'));
- const repository=boot.canonical_repository;
- if(boot.canonical_branch!=='main'||admission.repository!==repository||
-    !['Luke883i/iKant_LE','Luke883i/iKant_EDU'].includes(repository))
-  throw Error('C72_SOURCE_REPOSITORY_INCONSISTENT');
- return repository;
+ return 'Luke883i/iKant_LE';
 }
 export function c72LinkedTermsURL(sourceHead){
  if(!/^[a-f0-9]{40}$/.test(sourceHead||''))throw Error('C72_SOURCE_HEAD_INVALID');

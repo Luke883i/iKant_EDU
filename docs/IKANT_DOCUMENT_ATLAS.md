@@ -190,6 +190,7 @@
 - [docs/PROJECT_HOST_TOOL_GROUNDING_ABI.md](PROJECT_HOST_TOOL_GROUNDING_ABI.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PROJECT_META_PROMPT_COBOL.md](PROJECT_META_PROMPT_COBOL.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PROJECT_P0_BRAND_C72_HOST_ENFORCEMENT.md](PROJECT_P0_BRAND_C72_HOST_ENFORCEMENT.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [docs/PROJECT_PE_BOOTSTRAP_RETROGRADE.md](PROJECT_PE_BOOTSTRAP_RETROGRADE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PROJECT_SESSION_REPO_FIRST.md](PROJECT_SESSION_REPO_FIRST.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/QUALIFICATION.md](QUALIFICATION.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/RENAME_IKANT_EDU_2DIM_E2E.md](RENAME_IKANT_EDU_2DIM_E2E.md): Documentazione specialistica. Stato di review: **da verificare**.

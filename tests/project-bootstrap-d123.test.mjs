@@ -138,13 +138,19 @@ test('D1+D3 original Git TREE and original loader: 10 reused, 181 fetched, 191 r
   'host/project-c72-coldstart-seed.mjs'];
  let hitBytes=0;for(const p of c72){const entry={path:p,sha:byPath.get(p).sha},bytes=fs.readFileSync(path.join(top,p));
   hitBytes+=bytes.length;storeBootstrapCache({cacheRoot:s.cacheRoot,head,tree,liveHead:head,entry,bytes});}
- assert.equal(hitBytes,143817);
+ const rawSizes=execFileSync('git',['ls-tree','-r','-l','-z','HEAD'],{cwd:top});
+ const sizes=new Map(rawSizes.toString('utf8').split('\0').filter(Boolean).flatMap(line=>{
+  const m=line.match(/^([0-7]{6}) blob ([a-f0-9]{40})\s+(\d+)\t(.+)$/u);
+  return m?[[m[4],Number(m[3])]]:[];}));
+ const gitBytes=paths=>paths.reduce((total,p)=>{const s=sizes.get(p);
+  assert.ok(Number.isSafeInteger(s),'missing TREE size: '+p);return total+s;},0);
+ assert.equal(hitBytes,gitBytes(c72));
  let fetches=0;const r=await materializeD123WithOriginalLoader({cacheRoot:s.cacheRoot,head,tree,liveHead:head,
   entries,treeEntries:items,manifestPaths:manifest,destination:s.destination,readMain:async()=>head,
   fetchPinned:async (p)=>{fetches++;return fs.readFileSync(path.join(top,p));}});
  assert.equal(r.status,'ORIGINAL_LOADER_SOURCE_REOPENED');assert.equal(r.original_loader_invoked,true);
  assert.equal(r.reused_files,10);assert.equal(r.fetched_files,181);assert.equal(fetches,181);
- assert.equal(r.fetched_bytes,1984502+7639-143817);
+ assert.equal(r.fetched_bytes,gitBytes(manifest)+gitBytes(['contracts/project-session-source.json'])-hitBytes);
  const original=await import('../scripts/project-repo-loader.mjs');
  const again=original.verifyLocalProjectSource(s.destination,{head,tree});
  assert.equal(again.files.length,191);assert.equal(r.total_original_loader_files,191);

@@ -24,14 +24,14 @@ D3: materializeD123WithOriginalLoader requires the pinned complete Git TREE, exa
 | D2.04 | no new owner, writer, nonce or receipt in helper | source/code audit |
 | D3.01 | 190 manifest paths plus 1 manifest file, complete Git TREE | original loader end-to-end |
 | D3.02 | 10 C72 objects reused; 181 fetched including manifest | measured local callback counters |
-| D3.03 | 143,817 raw bytes saved conditionally, full 191-object source readback | original loader checks |
+| D3.03 | 144,557 raw bytes saved conditionally, full 191-object source readback | original loader checks |
 | D3.04 | forged blobs, corrupt manifest, changed HEAD or preexisting destination never accepted | negative tests |
 | REG.01 | original BOOTSTRAP/prompt/C72/C135/C87/C125/S03/loader/manifest unchanged | Git diff |
 | REG.02 | existing original C72 and EDU qualification remain green on Node 20/22 | CI |
 | REG.03 | two independent V5-G engineering reviews and human decision | external review, not CI |
 | PROD.01 | real carrier p95 and reduction in human recovery gestures | field measurement, NOT ATTESTED |
 
-D0 measured original cold C72 as 10 files / 143,817 bytes. The EDU manifest contains 190 files / 1,984,502 bytes, but the original loader needs a 191st file (the manifest itself, 7,639 bytes in the baseline). In the ideal same-source ten-hit scenario, the Host fetches 180 other manifest files plus the manifest, avoiding 143,817 source bytes. This does not remove any integrity obligation. Original C72 acceptance still requires its 10-file path.
+The **post-D0 merged main** has 10 C72 files / 144,557 bytes (D0's older snapshot had 143,817 bytes). The EDU manifest contains 190 files / 1,985,269 bytes, but the original loader needs a 191st file (the manifest itself, 7,639 bytes in this source pin). In the ideal same-source ten-hit scenario, the Host fetches 180 other manifest files plus the manifest. The 144,557-byte saving is a **snapshot-specific observation**, not a code constant: the tests now derive all byte budgets from the actual Git TREE. This does not remove any integrity obligation. Original C72 acceptance still requires its 10-file path.
 
 ## Mutations and evidence
 

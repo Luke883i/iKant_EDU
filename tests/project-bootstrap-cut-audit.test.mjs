@@ -110,23 +110,26 @@ test('integrated checkout: 8 C72 + transit + seed, 190 EDU paths, exact byte bud
  assert.deepEqual(report.current.orientation.paths,names.slice(0,5));
  assert.deepEqual(report.current.c72.paths,[...names,transit,seed]);
  assert.equal(report.current.orientation.files,5);
- assert.equal(report.current.orientation.bytes,107796);
  assert.equal(report.current.c72.files,10);
- assert.equal(report.current.c72.bytes,143817);
  assert.equal(report.current.post_edu.files,190);
- assert.equal(report.current.post_edu.bytes,1984502);
  assert.equal(report.overlap.c72_in_post_edu,10);
  assert.equal(report.hypothetical.owner_related_subset.status,
   'NOT_EXECUTABLE_WITH_CURRENT_OWNER_GATE');
  assert.equal(report.original_owner_invoked,false);
  assert.equal(report.native_provider_attested,false);
- const raw=execFileSync('git',['ls-tree','-r','-z',tree],{cwd:root,
+ const raw=execFileSync('git',['ls-tree','-r','-l','-z',tree],{cwd:root,
   maxBuffer:32*1024*1024,timeout:30000});
  const gitBlobs=new Map();
  for(const line of raw.toString('utf8').split('\0').filter(Boolean)){
-  const m=line.match(/^([0-7]{6}) blob ([a-f0-9]{40})\t(.+)$/u);
-  if(m)gitBlobs.set(m[3],{mode:m[1],sha:m[2]});
+  const m=line.match(/^([0-7]{6}) blob ([a-f0-9]{40})\s+(\d+)\t(.+)$/u);
+  if(m)gitBlobs.set(m[4],{mode:m[1],sha:m[2],size:Number(m[3])});
  }
+ const treeBytes=paths=>paths.reduce((total,p)=>{const e=gitBlobs.get(p);
+  assert.ok(e&&Number.isSafeInteger(e.size),'independent Git TREE size missing: '+p);
+  return total+e.size;},0);
+ assert.equal(report.current.orientation.bytes,treeBytes(report.current.orientation.paths));
+ assert.equal(report.current.c72.bytes,treeBytes(report.current.c72.paths));
+ assert.equal(report.current.post_edu.bytes,treeBytes(report.current.post_edu.paths));
  const all=[...new Set([...report.current.orientation.paths,
   ...report.current.c72.paths,...report.current.post_edu.paths])];
  assert.equal(all.length,190,'all C72 files must be in Project EDU closure');
@@ -141,5 +144,5 @@ test('integrated checkout: 8 C72 + transit + seed, 190 EDU paths, exact byte bud
   bytesChecked+=bytes.length;
   assert.equal(blob(bytes),entry.sha,'Git SHA-1 differs from local readback: '+p);
  }
- assert.equal(bytesChecked,1984502,'all 190 local source bytes verified against HEAD TREE');
+ assert.equal(bytesChecked,treeBytes(report.current.post_edu.paths),'all 190 local source bytes verified against HEAD TREE');
 });

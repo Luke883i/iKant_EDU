@@ -45,6 +45,14 @@
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Add fail-closed original-bound D1-D3 focused regression on Node 20 and 22 with failure-only diagnostic artifact, preserving pre-existing C72 workflow"
+    },
+    {
+      "path": "tests/project-bootstrap-cut-audit.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace obsolete D0 hard-coded source byte budgets with independent live HEAD Git TREE sizes; retain exact blob readback and all original DoD invariants",
+      "supersedes_register": "governance/changes/zz-v5f-bootstrap-decouple-d0.json",
+      "supersedes_source_main": "f5f42603294084d29cdb6d6e2106c0331d802536"
     }
   ]
 }

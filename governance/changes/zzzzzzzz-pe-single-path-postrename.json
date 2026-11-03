@@ -737,6 +737,13 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
       "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-session-repo-first.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind observed GitHub repository ID/name CANDIDATE assertion to postrename source; keep no-owner/no-provider/no-rename-go gates unchanged",
+      "deletion_authorized": false
     }
   ]
 }

@@ -27,7 +27,7 @@ function witnessEdge(q){
  if(q?.ownerOutcome!=='NOT_INVOKED')return 'C72_OWNER_ALREADY_ATTEMPTED_OR_UNKNOWN';
  if(!obj(w)||!H40.test(w.source_head||'')||w.host_link_displayed!==true||
     w.distinct_human_message_observed!==true||!obj(w.pinned_blob_shas)||
-    !['Luke883i/iKant_LE','Luke883i/iKant_EDU'].some(name=>
+    !['Luke883i/iKant_EDU','Luke883i/iKant_EDU'].some(name=>
      w.terms_link==='https://github.com/'+name+'/blob/'+w.source_head+'/TERMS.md')||
     FIRST.some(p=>!H40.test(w.pinned_blob_shas[p]||'')))return 'C72_ORIENTATION_WITNESS_MISSING';
  if(!H40.test(q.liveHead||'')||q.liveHead!==w.source_head)return 'STOP_SOURCE_LOCK_STALE';
@@ -175,7 +175,7 @@ export async function executeC72Coldstart(q,{seedPath=fileURLToPath(import.meta.
   const admission=JSON.parse(files.get('contracts/c72-public-mode-admission-v2.json').toString('utf8'));
   const name=boot.canonical_repository;
   if(boot.canonical_branch!=='main'||!
-     ['Luke883i/iKant_LE','Luke883i/iKant_EDU'].includes(name)||
+     ['Luke883i/iKant_EDU','Luke883i/iKant_EDU'].includes(name)||
      adm.repository!==name||
      admission?.source_identity?.repository_id!==1371330383||
      admission?.source_identity?.canonical_repository!==name||

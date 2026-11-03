@@ -16,7 +16,7 @@ const CONTRACT=JSON.parse(readFileSync(new URL('../contracts/c72-public-mode-adm
 export function c72SourceRepository(){
  const name=CONTRACT?.source_identity?.canonical_repository;
  if(CONTRACT?.source_identity?.repository_id!==1371330383||
-    !['Luke883i/iKant_LE','Luke883i/iKant_EDU'].includes(name))
+    !['Luke883i/iKant_EDU','Luke883i/iKant_EDU'].includes(name))
   throw Error('C72_CANONICAL_SOURCE_UNQUALIFIED');
  return name;
 }

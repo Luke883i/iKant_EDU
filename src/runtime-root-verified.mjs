@@ -11,7 +11,7 @@ const HEX40=/^[a-f0-9]{40}$/;
 const HEX64=/^[a-f0-9]{64}$/;
 const CONSTITUTIONAL_PATHS=['README.md','AGENTS.md','TERMS.md','contracts/ikant-le.json','contracts/cognitive-kernel.json','contracts/psyche-kernel.json','contracts/self-world-kernel.json','contracts/emergence-kernel.json','contracts/life-consciousness-kernel.json','contracts/surface-b-delivery.json','contracts/chat-bootstrap-semantic.json','contracts/host-shell.json','contracts/orientation-capsule.json','BOOTSTRAP.json','ADMISSION.json'];
 const ORIENTATION_PROJECTION_REL='.ikant/orientation-projection.json';
-const ALLOWED_NAMES=new Set(['Luke883i/iKant_LE','Luke883i/iKant_EDU']);
+const ALLOWED_NAMES=new Set(['Luke883i/iKant_EDU','Luke883i/iKant_EDU']);
 function verifiedWorkspaceSource(workspace,boot=loadBootstrap(workspace)){
  const name=boot?.canonical_repository;
  if(!ALLOWED_NAMES.has(name))throw Error('RUNTIME_CANONICAL_SOURCE_UNVERIFIED');

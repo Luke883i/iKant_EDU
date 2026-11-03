@@ -46,6 +46,20 @@ jobs:
           if-no-files-found: error
       - name: Enforce D123 focused original-bound regression
         run: test "${{ steps.d123_regression.outputs.exit_code }}" = '0'
+      - name: PE post-213 31-gate original C72 cache/stager regression
+        run: node --test tests/project-pe-retrograde.test.mjs
+      - name: PE post-213 10M finite semantic falsification
+        run: |
+          node scripts/project-pe-retrograde-falsify.mjs 10000000 883 > "$RUNNER_TEMP/pe-10m-${{ matrix.node }}.json"
+          node --input-type=module -e "import fs from 'node:fs'; const r=JSON.parse(fs.readFileSync(process.argv[1],'utf8')); if(r.cases_executed!==10000000||r.families!==40||r.independent_oracle_disagreements!==0||r.monotonicity_violations!==0||r.distinct_semantic_signatures<1000) process.exit(1);" "$RUNNER_TEMP/pe-10m-${{ matrix.node }}.json"
+      - name: Preserve finite PE semantic evidence, not owner or provider receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pe-retrograde-10m-node-${{ matrix.node }}
+          path: ${{ runner.temp }}/pe-10m-${{ matrix.node }}.json
+          retention-days: 14
+          if-no-files-found: ignore
       - name: Publish partial source from merged main only
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.node == '22'
         uses: actions/upload-artifact@v4

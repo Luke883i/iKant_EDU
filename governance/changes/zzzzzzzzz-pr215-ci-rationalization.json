@@ -321,6 +321,13 @@
       "deletion_authorized": false
     },
     {
+      "path": "tests/project-c72-host-assisted-local-file.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Requalify C72 prompt semantic witness against the actual canonical EDU prompt; preserve exact physical staging, nonce and fail-closed tests.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

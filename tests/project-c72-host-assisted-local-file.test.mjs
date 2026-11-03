@@ -23,7 +23,7 @@ function setup(){
  return {outer,stage,init:{op:'init',schema:'ikant-host-c72-verified-staging/v1',
   stageDirectory:stage,source_head:head,expectedBlobShas:expected,
   priorTurnEvidence:{source_head:head,host_link_displayed:true,
-   terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+   terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
    pinned_blob_shas:Object.fromEntries(paths.slice(0,5).map(p=>[p,expected[p]]))}}};
 }
 function put(stage,i,sourceFile){

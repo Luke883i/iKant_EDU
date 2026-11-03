@@ -457,6 +457,62 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
       "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-recovery-10k.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-staged-ingress.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-cold-mode.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-receipt-transit.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-host-assisted-local-file.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-host-tool-grounding.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-onezip-full-source-transport.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-oneshell-e15-sterile.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
     }
   ]
 }

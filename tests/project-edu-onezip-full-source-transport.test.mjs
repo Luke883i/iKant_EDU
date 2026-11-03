@@ -67,7 +67,7 @@ test('verified full source -> OneZIP C72 original -> real stdio child turn -> co
   assert.equal(source.source_head,head);assert.equal(source.source_tree,tree);
   const blobs=Object.fromEntries(source.files.map(e=>[e.path,e.git_blob_sha1]));
   const prior={source_head:head,host_link_displayed:true,distinct_human_message_observed:true,
-   terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+   terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
    pinned_blob_shas:Object.fromEntries(first.map(p=>[p,blobs[p]]))};
   const common={schema:'ikant-edu-onezip-admission/v1',head,sourceRoot,privateRoot,
    humanTurnWitnessed:true,ownerOutcome:'NOT_INVOKED'};

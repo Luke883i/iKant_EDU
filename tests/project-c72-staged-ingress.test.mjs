@@ -17,7 +17,7 @@ function prepare(){
   freshHumanTurn:true,liveHead:head,stageDirectory:dir,
   priorTurnEvidence:{source_head:head,host_link_displayed:true,
    distinct_human_message_observed:true,
-   terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+   terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
    pinned_blob_shas:Object.fromEntries(docs.map(d=>[d.p,d.sha]))}};
  return {dir,request};
 }

@@ -24,7 +24,7 @@ function accept(temp){
   freshHumanTurn:true,ownerOutcome:'NOT_INVOKED',liveHead:head,
   seedBlobSha1:kit.seed.blob_sha1,expectedBlobShas:shas,
   priorTurnEvidence:{source_head:head,host_link_displayed:true,distinct_human_message_observed:true,
-    terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+    terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
     pinned_blob_shas:Object.fromEntries(kit.files.slice(0,5).map(x=>[x.path,x.blob_sha1]))},
   sourcePacket:kit.files.map(f=>({path:f.path,contentBase64:f.contentBase64}))};
  const run=spawn(seed,q,temp);

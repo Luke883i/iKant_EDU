@@ -24,7 +24,7 @@ function fixture(){
  const head='a'.repeat(40),docs=files.map(p=>{const b=fs.readFileSync(path.join(ROOT,p));return {path:p,contentBase64:b.toString('base64'),sha:blob(b)};});
  const expectedBlobShas=Object.fromEntries(docs.map(d=>[d.path,d.sha]));
  const witness={source_head:head,host_link_displayed:true,distinct_human_message_observed:true,
-  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+  terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
   pinned_blob_shas:Object.fromEntries(docs.slice(0,5).map(d=>[d.path,d.sha]))};
  const seed=fs.readFileSync(path.join(ROOT,'host/project-c72-coldstart-seed.mjs'));
  return {directory,head,docs,expectedBlobShas,witness,seedBlobSha1:blob(seed)};

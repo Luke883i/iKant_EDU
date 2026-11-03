@@ -12,7 +12,7 @@ function fixture(){
   postaccept_original_c72_transit_pin:{path:H1_TRANSIT,blob_sha1:gitSha(bytes.get(H1_TRANSIT)),source:'FIRST_TURN_BOOTSTRAP_SHA_VERIFIED'}
  }})));
  const priorTurnEvidence={source_head:HEAD,host_link_displayed:true,distinct_human_message_observed:true,
-  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+HEAD+'/TERMS.md',
+  terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+HEAD+'/TERMS.md',
   pinned_blob_shas:Object.fromEntries(H1_FILES.slice(0,5).map(p=>[p,gitSha(bytes.get(p))]))};
  const q={schema:H1_SCHEMA,sourceHead:HEAD,humanMessage:'I ACCEPT',freshHumanTurn:true,
   ownerOutcome:'NOT_INVOKED',priorTurnEvidence};
@@ -40,6 +40,7 @@ test('human distinct consent, owner outcome, source epoch cannot be reconstructe
  assert.equal(validateH1Gate({...f.q,freshHumanTurn:false}),'H1_DISTINCT_ACCEPT_REQUIRED');
  assert.equal(validateH1Gate({...f.q,ownerOutcome:'UNKNOWN'}),'H1_OWNER_ATTEMPT_ALREADY_KNOWN_OR_UNKNOWN');
  assert.equal(validateH1Gate({...f.q,sourceHead:'f'.repeat(40)}),'STOP_SOURCE_LOCK_STALE');
+ assert.equal(validateH1Gate({...f.q,priorTurnEvidence:{...f.q.priorTurnEvidence,terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+HEAD+'/TERMS.md'}}),'H1_FIRST_TURN_WITNESS_INVALID');
 });
 test('live HEAD mismatch stops before any source acquisition',async()=>{
  const f=fixture(),r=await prepareH1OriginalSources(f.q,{

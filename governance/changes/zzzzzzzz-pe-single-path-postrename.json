@@ -331,6 +331,76 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Migrate historical positive first-contact fuzz inputs to iKant_EDU; preserve explicit old-name negatives and original admission gates",
       "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-edu-h1-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-c72-e16-unified-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-h1-bound-port.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-h1-original.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-e16-unified-ingress.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-e16-unified-original.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-verified-staging.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-verified-staging-edu.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-physical-ingress.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-portable-bridge.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
     }
   ]
 }

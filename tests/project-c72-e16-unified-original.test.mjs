@@ -17,7 +17,7 @@ function fixture(){
  const transit=fs.readFileSync(path.join(ROOT,'host/project-c72-receipt-transit.mjs'));
  const expectedBlobShas=Object.fromEntries(sources.map(x=>[x.path,x.sha]));
  const priorTurnEvidence={source_head:H,host_link_displayed:true,distinct_human_message_observed:true,
-  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md',
+  terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md',
   pinned_blob_shas:Object.fromEntries(sources.slice(0,5).map(x=>[x.path,x.sha]))};
  return {sources,transit,expectedBlobShas,priorTurnEvidence};
 }

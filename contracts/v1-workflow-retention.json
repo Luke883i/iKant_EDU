@@ -94,5 +94,50 @@
     ".github/workflows/edu-cohost-outcomes.yml",
     ".github/workflows/edu-v8-holistic-qualification.yml",
     ".github/workflows/lib0-embedded-nuance.yml"
-  ]
+  ],
+  "superseded_workflows": {
+    ".github/workflows/c21-local-session-fastboot.yml": {
+      "status": "DUPLICATE_DIAGNOSTIC_RUNNER",
+      "replacements": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/c25-executor-data-plane.yml"
+      ],
+      "tests": [
+        "tests/c21-local-session-fastboot.test.mjs"
+      ],
+      "reason": "Full npm test and C21 falsification remain in canonical qualification; eliminate high-volume PR-writing diagnostic repetition."
+    },
+    ".github/workflows/c98-project-3md.yml": {
+      "status": "SUBSUMED_C98_BASELINE",
+      "replacements": [
+        ".github/workflows/c98-host-bound-prepr.yml"
+      ],
+      "tests": [
+        "tests/c98-project-baseline.test.mjs"
+      ],
+      "reason": "C98 host-bound still runs the baseline, 100k negative scripts, project-baseline path trigger and Node 20/22 matrix."
+    },
+    ".github/workflows/c98-phase2-source-exact.yml": {
+      "status": "SUBSUMED_C98_PHASE2",
+      "replacements": [
+        ".github/workflows/c98-host-bound-prepr.yml"
+      ],
+      "tests": [
+        "tests/c98-c82-port.test.mjs",
+        "tests/c98-archive-port.test.mjs",
+        "tests/c98-entry-negative.test.mjs"
+      ],
+      "reason": "C98 host-bound includes the C98 tests and original C82, H95 and field tests with both Node versions and coverage triggers."
+    },
+    ".github/workflows/c107-one-carrier-release.yml": {
+      "status": "HISTORICAL_WRITE_PUBLISHER_RETIRED",
+      "replacements": [
+        ".github/workflows/c107-carrier-consumption.yml"
+      ],
+      "tests": [
+        "tests/c107-carrier-consumer.test.mjs"
+      ],
+      "reason": "Historical prepr/v8 publisher with contents:write is retired; immutable C107 digest and readback remain verified on main."
+    }
+  }
 }

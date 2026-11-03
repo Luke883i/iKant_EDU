@@ -51,6 +51,13 @@
       "reason": "V5-B change record, review required and no automatic authorization",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false
+    },
+    {
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "reason": "Regenerate exact documentation ontology for newly added E2E rename runbook",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
     }
   ]
 }

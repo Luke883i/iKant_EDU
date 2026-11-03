@@ -190,6 +190,7 @@
 - [docs/PROJECT_P0_BRAND_C72_HOST_ENFORCEMENT.md](PROJECT_P0_BRAND_C72_HOST_ENFORCEMENT.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PROJECT_SESSION_REPO_FIRST.md](PROJECT_SESSION_REPO_FIRST.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/QUALIFICATION.md](QUALIFICATION.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [docs/RENAME_IKANT_EDU_2DIM_E2E.md](RENAME_IKANT_EDU_2DIM_E2E.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/RESEARCH_LEDGER.md](RESEARCH_LEDGER.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/S01_PUBLIC_EDU_CANONICAL_ADMISSION.md](S01_PUBLIC_EDU_CANONICAL_ADMISSION.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/S03_S09_POST137_RUNTIME_COMPLETION.md](S03_S09_POST137_RUNTIME_COMPLETION.md): Documentazione specialistica. Stato di review: **da verificare**.

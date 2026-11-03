@@ -513,6 +513,62 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
       "deletion_authorized": false
+    },
+    {
+      "path": "tests/c42-bootstrap-ontological-closure.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c43-bootstrap-recovery-hardening.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c62-evidence-runtime-cut.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/session-chat-fastboot.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/fastboot.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c33-post-187-closure.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c34-pre-runtime-handoff.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c59-runtime-dominator.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
     }
   ]
 }

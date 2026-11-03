@@ -56,7 +56,9 @@ export function runShadow(){
  const originalBoot=JSON.parse(fs.readFileSync(path.join(ROOT,'BOOTSTRAP.json'),'utf8'));
  if(originalBoot.canonical_repository!==OLD)return fail('SOURCE_NOT_OLD_CANONICAL');
  let temporary=null,worktree=null,attached=false;
- const result={schema:'ikant-rename-s01-prospective-shadow/v1',source_head:current,source_tree:base,
+ const mode=process.env.IKANT_SHADOW_MODE||'ALL';
+ if(!['REGEN_ONLY','ROOT_ONLY','ALL'].includes(mode))return fail('SHADOW_MODE_INVALID');
+ const result={schema:'ikant-rename-s01-prospective-shadow/v1',source_head:current,source_tree:base,mode,
   old_repository:OLD,future_repository:NEW,scope:'ISOLATED_GIT_WORKTREE_TEST_ONLY',
   admin_rename_performed:false,owner_invoked:false,original_receipt_issued:false,
   provider_equivalence_attested:false,external_consumers_closed:false,rename_go:false,
@@ -77,6 +79,9 @@ export function runShadow(){
   for(const rel of SHADOW_TESTS)replaceText(worktree,rel,{mustChange:false});
   command('ORIGINAL_RUNTIME_ROOT_REGEN','node',['scripts/runtime-root.mjs','regen']);
   command('ORIGINAL_SESSION_MANIFEST_REGEN','node',['scripts/project-source-manifest.mjs']);
+  if(mode==='REGEN_ONLY'){
+   result.status='SHADOW_REGEN_PROBE_PASS_NOT_CUTOVER_GO';
+  }else{
   command('SHADOW_GIT_COMMIT','git',['-c','user.name=iKant-shadow-test','-c','user.email=shadow@invalid.local','add','-A']);
   command('SHADOW_GIT_COMMIT_RECORD','git',['-c','user.name=iKant-shadow-test','-c','user.email=shadow@invalid.local',
     'commit','-m','shadow source for negative/positive prospective rename test only']);
@@ -85,8 +90,12 @@ export function runShadow(){
   command('ORIGINAL_RUNTIME_ROOT_VERIFY','node',['scripts/runtime-root.mjs','verify']);
   command('ORIGINAL_SESSION_MANIFEST_VERIFY','node',['scripts/project-source-manifest.mjs','verify']);
   command('ORIGINAL_SOURCE_PIN_VERIFY','node',['scripts/project-oneshell-source-pin-audit.mjs','metadata']);
-  command('ORIGINAL_ZERO_CHECKOUT_C72_AND_FIRST_CONTACT','node',['--test','--test-concurrency=1',...SHADOW_TESTS],180000);
-  result.status='SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO';
+  if(mode==='ROOT_ONLY')result.status='SHADOW_ROOT_PROBE_PASS_NOT_CUTOVER_GO';
+  else{
+   command('ORIGINAL_ZERO_CHECKOUT_C72_AND_FIRST_CONTACT','node',['--test','--test-concurrency=1',...SHADOW_TESTS],180000);
+   result.status='SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO';
+  }
+  }
  }catch(e){result.status='SHADOW_FAIL_NOT_CUTOVER';result.errors.push(String(e?.message||e));}
  finally{
   if(attached){
@@ -106,5 +115,5 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
   if(fs.readFileSync(process.argv[2],'utf8')!==out)throw Error('SHADOW_REPORT_READBACK_FAILED');
  }
  process.stdout.write(out);
- if(result.status!=='SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO')process.exitCode=1;
+ if(!['SHADOW_REGEN_PROBE_PASS_NOT_CUTOVER_GO','SHADOW_ROOT_PROBE_PASS_NOT_CUTOVER_GO','SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO'].includes(result.status))process.exitCode=1;
 }

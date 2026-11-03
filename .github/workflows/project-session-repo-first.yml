@@ -116,6 +116,16 @@ jobs:
           path: ${{ runner.temp }}/rename-s01-s03-readback.json
           retention-days: 30
           if-no-files-found: error
+      - name: Shadow prospective regen probe (no admin or original owner)
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=REGEN_ONLY node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-s01-regen.json"
+      - name: Shadow prospective source root and manifest probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=ROOT_ONLY node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-s01-root.json"
       - name: Shadow iKant_EDU original-source cutover, isolated test only (always NO-GO)
         shell: bash
         run: |

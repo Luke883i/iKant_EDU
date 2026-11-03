@@ -1,0 +1,79 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/zzzzzzz-pe-retrograde-after213.json",
+  "source_main": "36b12b72b8cc9e07bb8faff9410e0f92ba60191f",
+  "scope": "HOST_ENGINEERING_PE_MINCUT_AFTER_213",
+  "original_owners_unchanged": true,
+  "owner_effects_executed": false,
+  "native_provider_attested": false,
+  "merge_approval_claimed": false,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "contracts/project-pe-retrograde-dod.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-pe-retrograde.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-pe-original-bridge.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-pe-retrograde-falsify.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-pe-retrograde.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/PROJECT_PE_BOOTSTRAP_RETROGRADE.md",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-pe-retrograde.yml",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
+      "deletion_authorized": false
+    },
+    {
+      "path": "governance/changes/zzzzzzz-pe-retrograde-after213.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Regenerate exact deterministic L3 document atlas entry for new PE bootstrap DoD; original document owner unchanged",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzz-rename-shadow-atlas.json",
+      "supersedes_source_main": "94dd1c20f5093f0f27ed03d2725b3715c47c6596"
+    }
+  ]
+}

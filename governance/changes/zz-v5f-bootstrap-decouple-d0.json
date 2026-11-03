@@ -2,14 +2,14 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "f5f42603294084d29cdb6d6e2106c0331d802536",
-  "self_path": "governance/changes/v5f-bootstrap-decouple-d0.json",
+  "self_path": "governance/changes/zz-v5f-bootstrap-decouple-d0.json",
   "scope": "HOST_ENGINEERING_READ_ONLY_D0",
   "original_owner_unchanged": true,
   "active": false,
   "human_review_completed": false,
   "paths": [
     {
-      "path": "governance/changes/v5f-bootstrap-decouple-d0.json",
+      "path": "governance/changes/zz-v5f-bootstrap-decouple-d0.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Self-register read-only D0 bootstrap decoupling engineering slice without changing product owner boundaries"

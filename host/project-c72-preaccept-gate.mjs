@@ -5,7 +5,7 @@
 import {createHash} from 'node:crypto';
 import {issueC72V2LinkedTermsOffer,acceptC72V2LinkedTerms,
   presentC72V2Introduction,validateC72V2Accepted,
-  validateC72V2Orientation} from './c72-public-mode-admission.mjs';
+  validateC72V2Orientation,c72SourceRepository} from './c72-public-mode-admission.mjs';
 const ORDER=Object.freeze(['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md']);
 const H40=/^[a-f0-9]{40}$/u;
 const gitBlob=bytes=>createHash('sha1').update(Buffer.from(`blob ${bytes.length}\0`)).update(bytes).digest('hex');
@@ -43,7 +43,7 @@ export function createProjectC72PreacceptGate({readMain,readDocument}={}){
    phase='OFFER_READY';
    return Object.freeze({ok:true,edge:'TERMS_LINK_DISPLAY_REQUIRED',source_head:head,
     documents:Object.freeze(observed.map(x=>Object.freeze({...x,
-     link:`https://github.com/Luke883i/iKant_LE/blob/${head}/${x.path}`}))),
+     link:`https://github.com/${c72SourceRepository()}/blob/${head}/${x.path}`}))),
     terms_link:offer.terms_link,original_offer:offer,
     human_terms_read_attested:false,host_display_attested:false,authority:0});
   }catch(e){phase='STOP';return stop('PREACCEPT_ORIENTATION_SOURCE_UNVERIFIED');}

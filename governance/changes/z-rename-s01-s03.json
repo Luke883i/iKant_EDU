@@ -1,0 +1,86 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/z-rename-s01-s03.json",
+  "source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44",
+  "baseline_source_tree": "cd3e8e2d200d85f57cd154e40fceadd7ace491df",
+  "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
+  "human_signoffs": 0,
+  "automatic_approval": false,
+  "rename_executed": false,
+  "owner_effects_executed": false,
+  "paths": [
+    {
+      "path": "host/c72-public-mode-admission.mjs",
+      "operation": "MODIFY",
+      "reason": "Prepare original source-bound repository references without changing OLD behavior; verify original regressions in CI",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-c72-postaccept-reentry.mjs",
+      "operation": "MODIFY",
+      "reason": "Prepare original source-bound repository references without changing OLD behavior; verify original regressions in CI",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-c72-preaccept-gate.mjs",
+      "operation": "MODIFY",
+      "reason": "Prepare original source-bound repository references without changing OLD behavior; verify original regressions in CI",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/build-project-oneshell-prompt.mjs",
+      "operation": "MODIFY",
+      "reason": "Prepare original source-bound repository references without changing OLD behavior; verify original regressions in CI",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-oneshell-source-pin-audit.mjs",
+      "operation": "MODIFY",
+      "reason": "Prepare original source-bound repository references without changing OLD behavior; verify original regressions in CI",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-session-repo-first.yml",
+      "operation": "MODIFY",
+      "reason": "Prepare original source-bound repository references without changing OLD behavior; verify original regressions in CI",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/z-rename-s00.json",
+      "supersedes_source_main": "f5f42603294084d29cdb6d6e2106c0331d802536"
+    },
+    {
+      "path": "tests/repository-rename-s01-s03.test.mjs",
+      "operation": "ADD",
+      "reason": "Add source-bound rename DoD and read-only deterministic falsification artifacts without cutover authority",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/repository-rename-s01-s03-dod.json",
+      "operation": "ADD",
+      "reason": "Add source-bound rename DoD and read-only deterministic falsification artifacts without cutover authority",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/repository-rename-s01-s03-audit.mjs",
+      "operation": "ADD",
+      "reason": "Add source-bound rename DoD and read-only deterministic falsification artifacts without cutover authority",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "governance/changes/z-rename-s01-s03.json",
+      "operation": "ADD",
+      "reason": "Add source-bound rename DoD and read-only deterministic falsification artifacts without cutover authority",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    }
+  ]
+}

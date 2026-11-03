@@ -1,0 +1,111 @@
+{
+  "schema": "ikant-edu-rename-s01-s03-dod/v1",
+  "authority": 0,
+  "repository_id": 1371330383,
+  "old_repository": "Luke883i/iKant_LE",
+  "new_repository": "Luke883i/iKant_EDU",
+  "source_baseline": "fe839ed8de75da1467fbd095bb5d88af1589dc44",
+  "global": {
+    "what": "Safely prepare original source-identity bindings and mechanically falsify regressions; refuse administrative rename while any original/external evidence is unknown.",
+    "status": "RENAME_NO_GO"
+  },
+  "s01": {
+    "status": "PARTIAL_PREPARE_ONLY",
+    "done": [
+      {
+        "path": "host/c72-public-mode-admission.mjs",
+        "what": "Original C72 linked Terms derives repository from matching original ADMISSION and BOOTSTRAP."
+      },
+      {
+        "path": "host/project-c72-postaccept-reentry.mjs",
+        "what": "Original reentry uses the same source-bound C72 Terms URL."
+      },
+      {
+        "path": "host/project-c72-preaccept-gate.mjs",
+        "what": "Five-link orientation projection reads the C72 canonical repository."
+      },
+      {
+        "path": "scripts/build-project-oneshell-prompt.mjs",
+        "what": "GitHub main endpoint derives from immutable HEAD BOOTSTRAP canonical repository."
+      },
+      {
+        "path": "scripts/project-oneshell-source-pin-audit.mjs",
+        "what": "Old-phase source audit compares BOOTSTRAP, ADMISSION, orientation capsule, and rename contract."
+      }
+    ],
+    "open": [
+      {
+        "edge": "S01_COLDSEED_PREACCEPT_WITNESS_OLD_LITERAL",
+        "path": "host/project-c72-coldstart-seed.mjs",
+        "why": "Host coldseed may run before local original BOOTSTRAP materialization; cannot take unverified rename-name parameter."
+      },
+      {
+        "edge": "S01_FIRST_CONTACT_RUNTIME_ROOT_FROZEN",
+        "path": "src/first-contact.mjs",
+        "why": "BOOTSTRAP runtime root locks first-contact git blob and shard root; rebuild as one original source epoch."
+      },
+      {
+        "edge": "S01_RUNTIME_ROOT_EXACT_REPOSITORY",
+        "path": "src/runtime-root-verified.mjs",
+        "why": "Handoff and executor identity checks remain old-name-bound; need controlled root rebuild."
+      },
+      {
+        "edge": "S01_BOOTSTRAP_ADMISSION_CUTOVER_NOT_APPLIED",
+        "path": "BOOTSTRAP.json",
+        "why": "Old canonical must remain authoritative until a verified single administrative rename, then new source epoch."
+      },
+      {
+        "edge": "S01_INSTALLED_PROMPT_UNVERIFIED",
+        "path": "project/session-chat/PROMPT.txt",
+        "why": "New prompt installed and equivalent not verified by ChatGPT provider."
+      }
+    ]
+  },
+  "s02": {
+    "status": "REGRESSION_EVIDENCE_REQUIRED",
+    "test_command": "node --test tests/repository-rename-s01-s03.test.mjs tests/c72-public-mode-admission.test.mjs tests/project-c72-postaccept-reentry.test.mjs tests/project-c72-preaccept-gate.test.mjs tests/first-contact.test.mjs tests/project-c72-coldstart-seed.test.mjs tests/project-oneshell-prompt.test.mjs",
+    "pass_if": "All original regression commands green on PR HEAD with provider job readback; root member exact Git SHA unchanged; C72 linked offer SHA same as pre-change.",
+    "evidence_type": "CI_TEST_NOT_OWNER_RECEIPT",
+    "native_owner_execution_claim": false
+  },
+  "s03": {
+    "status": "EXTERNAL_CLOSURE_OPEN",
+    "hosted_actions_callers": "UNKNOWN",
+    "external_owner_closure": "UNKNOWN",
+    "connector_provider": "UNKNOWN",
+    "pages_packages_deployments": "UNKNOWN",
+    "webhooks_oauth": "UNKNOWN",
+    "prompt_installation": "UNKNOWN",
+    "rename_gate": "BLOCKED",
+    "why": "Repository checkout census and public GitHub code search cannot prove dynamic external callers or native provider; GitHub hosted Actions/reusable workflows cannot rely on redirects.",
+    "closure_requires": "External owners and authenticated providers must attest caller census, coordinated cutover, no event loss or accepted downtime and postrename smoke, with readback."
+  },
+  "external_consumer_observations": [
+    {
+      "repository": "Luke883i/academics",
+      "path": "README.md",
+      "blob_sha1": "c6e4199b711f9a5f6ff6ebaa5497f639abe58abe",
+      "class": "EXTERNAL_DOCUMENTATION_LINK_REDIRECT_EXPECTED_NOT_PROVED",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    },
+    {
+      "repository": "Luke883i/academics",
+      "path": "scripts/falsify_hub_semantics.py",
+      "blob_sha1": "f2afcd798e5c95b0344fe90caf5494e8e629e301",
+      "class": "EXTERNAL_HISTORICAL_TEST_LITERAL_OWNER_REVIEW_REQUIRED",
+      "owner_runtime_readback": "UNKNOWN",
+      "evidence_level": "GIT_CONNECTOR_BLOB"
+    }
+  ],
+  "nonclaims": [
+    "S01_CLOSED",
+    "S03_CLOSED",
+    "RENAME_READY",
+    "OWNER_ACTIVE",
+    "CHANGED_PROVIDER_PROMPT",
+    "UNKNOWN_EXTERNAL_CALLERS_ABSENT"
+  ],
+  "admin_rename_performed": false,
+  "owner_event_invoked": false
+}

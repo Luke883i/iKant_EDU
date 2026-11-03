@@ -18,6 +18,8 @@ if(git('rev-parse','HEAD')!==head||git('rev-parse','HEAD^{tree}')!==tree)throw E
 // Only immutable Git HEAD blobs are read below; qualification outputs or dirty worktree\n// cannot change the generator input. Blob/readback locks are enforced per original.
 const matrix=JSON.parse(original('contracts/project-prompt-generation.json'));
 const route=JSON.parse(original('BOOTSTRAP.json')).project_session;
+const promptRepository=JSON.parse(original('BOOTSTRAP.json')).canonical_repository;
+if(!['Luke883i/iKant_LE','Luke883i/iKant_EDU'].includes(promptRepository))throw Error('PROMPT_REPOSITORY_UNQUALIFIED');
 if(matrix.schema!=='ikant-le-project-prompt-generation/v1'||
  matrix.source_prompt!==route.prompt||matrix.runtime_owner!==route.runtime_entry||
  matrix.oneshell_contract!==route.oneshell_contract||
@@ -111,7 +113,7 @@ if(matrix.project_instruction_limit_chars!==8000||
 assertSevenThreePrompt(source);
 async function liveHead(){
  return new Promise((resolve,reject)=>{
-  const req=https.get('https://api.github.com/repos/Luke883i/iKant_LE/git/ref/heads/main',
+  const req=https.get('https://api.github.com/repos/'+promptRepository+'/git/ref/heads/main',
    {headers:{'User-Agent':'ikant-head-prompt-build','Accept':'application/vnd.github+json'},timeout:12000},res=>{
     if(res.statusCode!==200){res.resume();reject(Error('LIVE_MAIN_UNAVAILABLE'));return}
     let b='';res.setEncoding('utf8');res.on('data',s=>{b+=s;if(b.length>64000)req.destroy(Error('MAIN_RESPONSE_TOO_LARGE'))});

@@ -4,7 +4,7 @@
 import {createHash} from 'node:crypto';
 import {
  issueC72V2LinkedTermsOffer,acceptC72V2LinkedTerms,presentC72V2Introduction,
- validateC72V2Accepted,validateC72V2Orientation
+ validateC72V2Accepted,validateC72V2Orientation,c72LinkedTermsURL
 } from './c72-public-mode-admission.mjs';
 const ORDER=Object.freeze(['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md']);
 const SHA=/^[0-9a-f]{40}$/u;
@@ -28,7 +28,7 @@ export function classifyC72OwnerEvidence({discovery='UNKNOWN',callability='UNKNO
 export function reenterC72V2PostAccept({sourceHead,liveHead,humanMessage,priorTurnEvidence,documents}={}){
  if(humanMessage!=='I ACCEPT')return deny('C72_EXACT_ACCEPTANCE_REQUIRED');
  if(!SHA.test(sourceHead||'')||!SHA.test(liveHead||'')||liveHead!==sourceHead)return deny('STOP_SOURCE_LOCK_STALE');
- const termsUrl=`https://github.com/Luke883i/iKant_LE/blob/${sourceHead}/TERMS.md`;
+ const termsUrl=c72LinkedTermsURL(sourceHead);
  if(priorTurnEvidence?.source_head!==sourceHead||priorTurnEvidence?.terms_link!==termsUrl||
     priorTurnEvidence?.host_link_displayed!==true||priorTurnEvidence?.distinct_human_message_observed!==true)
     return deny('C72_PRIOR_ORIENTATION_NOT_HOST_ATTESTED');

@@ -5,6 +5,24 @@
 import crypto from 'node:crypto';
 import {readFileSync} from 'node:fs';
 const CONTRACT=JSON.parse(readFileSync(new URL('../contracts/c72-public-mode-admission-v2.json',import.meta.url),'utf8'));
+/** Original source-bound identity. Old repository remains canonical until explicit postrename source migration.
+ * C72 cold seed already stages BOOTSTRAP.json and ADMISSION.json; no extra transport object.
+ * No GitHub provider identity or rename authority is claimed here.
+ */
+export function c72SourceRepository(){
+ const boot=JSON.parse(readFileSync(new URL('../BOOTSTRAP.json',import.meta.url),'utf8'));
+ const admission=JSON.parse(readFileSync(new URL('../ADMISSION.json',import.meta.url),'utf8'));
+ const repository=boot.canonical_repository;
+ if(boot.canonical_branch!=='main'||admission.repository!==repository||
+    !['Luke883i/iKant_LE','Luke883i/iKant_EDU'].includes(repository))
+  throw Error('C72_SOURCE_REPOSITORY_INCONSISTENT');
+ return repository;
+}
+export function c72LinkedTermsURL(sourceHead){
+ if(!/^[a-f0-9]{40}$/.test(sourceHead||''))throw Error('C72_SOURCE_HEAD_INVALID');
+ return 'https://github.com/'+c72SourceRepository()+'/blob/'+sourceHead+'/TERMS.md';
+}
+
 const H40=/^[a-f0-9]{40}$/u,H64=/^[a-f0-9]{64}$/u;
 const hash=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
 const seal=x=>Object.freeze({...x,receipt_sha256:hash(x)});
@@ -47,12 +65,12 @@ export function issueC72V2LinkedTermsOffer({sourceHead,termsDigest}={}){
  const original=issueC72V2TermsOffer({sourceHead,termsDigest});
  const {receipt_sha256,...body}=original;
  return seal({...body,presentation:'PINNED_DOCUMENT_LINK',
-  terms_link:`https://github.com/Luke883i/iKant_LE/blob/${sourceHead}/TERMS.md`,
+  terms_link:c72LinkedTermsURL(sourceHead),
   terms_body_presented:false,terms_read_attested:false});
 }
 export function acceptC72V2LinkedTerms({offer,humanMessage,termsLinkPresented}={}){
  if(!validateC72V2Offer(offer)||offer.presentation!=='PINNED_DOCUMENT_LINK'||
-  offer.terms_link!==`https://github.com/Luke883i/iKant_LE/blob/${offer.source_head}/TERMS.md`||
+  offer.terms_link!==c72LinkedTermsURL(offer.source_head)||
   offer.terms_body_presented!==false||offer.terms_read_attested!==false)return denied('INVALID_LINK_OFFER');
  if(termsLinkPresented!==true)return denied('TERMS_LINK_NOT_PRESENTED');
  if(humanMessage!=='I ACCEPT')return denied('EXACT_ACCEPTANCE_REQUIRED');
@@ -70,7 +88,7 @@ export function validateC72V2Accepted(x){return is(x,'ikant-le-c72-public-accept
  x.human_message_sha256===hash('I ACCEPT')&&(x.terms_presented_host_claim===true||
   x.terms_presented_host_claim===false&&x.terms_link_presented_host_claim===true&&
   x.terms_body_presented===false&&x.terms_read_attested===false&&
-  x.terms_link===`https://github.com/Luke883i/iKant_LE/blob/${x.source_head}/TERMS.md`)&&
+  x.terms_link===c72LinkedTermsURL(x.source_head))&&
  x.selection_pending===true&&x.selected_mode===null&&x.origin_authentication==='UNVERIFIED'&&
  x.active===false&&x.canonical_runtime===false&&x.persistent===false&&
  x.native_event_attested===false&&x.owner_receipt_issued===false;}

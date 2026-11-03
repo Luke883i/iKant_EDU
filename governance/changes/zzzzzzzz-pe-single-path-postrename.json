@@ -625,6 +625,27 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
       "deletion_authorized": false
+    },
+    {
+      "path": "tests/bootstrap-fixture.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Close C17-C20 postrename source-positive regression without relaxing original C72: copy C72 contract into legacy physical runtime and read back",
+      "deletion_authorized": false
+    },
+    {
+      "path": "src/session-chat-deployment.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Close C17-C20 postrename source-positive regression without relaxing original C72: copy C72 contract into legacy physical runtime and read back",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c20-session-chat-deployment.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Close C17-C20 postrename source-positive regression without relaxing original C72: copy C72 contract into legacy physical runtime and read back",
+      "deletion_authorized": false
     }
   ]
 }

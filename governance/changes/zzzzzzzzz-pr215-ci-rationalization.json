@@ -314,6 +314,13 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/edu-onezip-experimental.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original OneZIP archive prefix to match EDU pinned ZIP parser while preserving exact Git TREE root equality and source lock.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

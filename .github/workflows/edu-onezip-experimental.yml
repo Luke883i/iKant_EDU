@@ -47,7 +47,7 @@ jobs:
           echo "EDU_TMP=$TMP" >> "$GITHUB_ENV"
           echo "EDU_HEAD=$HEAD_SHA" >> "$GITHUB_ENV"
           echo "EDU_TREE=$TREE_SHA" >> "$GITHUB_ENV"
-          git archive --format=zip --prefix="iKant_LE-${HEAD_SHA}/" HEAD > "$TMP/source.zip"
+          git archive --format=zip --prefix="iKant_EDU-${HEAD_SHA}/" HEAD > "$TMP/source.zip"
       - name: Full source 2 - recompute ZIP Git tree root
         run: python scripts/project-edu-zip-tree.py --archive "$EDU_TMP/source.zip" --head "$EDU_HEAD" --tree "$EDU_TREE" --output "$EDU_TMP/derived-tree.json"
       - name: Full source 3 - original Python archive converter

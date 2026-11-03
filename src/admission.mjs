@@ -14,15 +14,31 @@ export function applyPreacceptRemediation(state,receipt,termsDigest){const s=str
 /** Original materialized source plane: one canonical repository per checked
  * BOOTSTRAP/ADMISSION/C72 epoch. A local document is NOT GitHub provenance. */
 function canonicalSourceRepository(){
- const boot=JSON.parse(fs.readFileSync(path.join(ROOT,'BOOTSTRAP.json'),'utf8'));
- const admission=JSON.parse(fs.readFileSync(path.join(ROOT,'ADMISSION.json'),'utf8'));
- const c72=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/c72-public-mode-admission-v2.json'),'utf8'));
+ // The historical C59/C61 runtime intentionally materializes a narrow
+ // source plane: it can omit BOOTSTRAP/ADMISSION/C72 from the runtime root.
+ // Those missing files cannot authorize NEW. The committed runtime remains
+ // OLD unless an independently materialized complete NEW source agrees.
+ const original='Luke883i/iKant_LE',future='Luke883i/iKant_EDU';
+ const bootFile=path.join(ROOT,'BOOTSTRAP.json');
+ if(!fs.existsSync(bootFile))return original;
+ const boot=JSON.parse(fs.readFileSync(bootFile,'utf8'));
  const name=boot.canonical_repository;
- if(!['Luke883i/iKant_LE','Luke883i/iKant_EDU'].includes(name)||
-    boot.canonical_branch!=='main'||admission.repository!==name||
-    c72?.source_identity?.repository_id!==1371330383||
-    c72?.source_identity?.canonical_repository!==name)
+ if(![original,future].includes(name)||boot.canonical_branch!=='main')
   throw Error('ADMISSION_CANONICAL_SOURCE_DRIFT');
+ const aFile=path.join(ROOT,'ADMISSION.json');
+ const cFile=path.join(ROOT,'contracts/c72-public-mode-admission-v2.json');
+ if(name===future&&(!fs.existsSync(aFile)||!fs.existsSync(cFile)))
+  throw Error('ADMISSION_NEW_ORIGINAL_SOURCE_INCOMPLETE');
+ if(fs.existsSync(aFile)){
+  const a=JSON.parse(fs.readFileSync(aFile,'utf8'));
+  if(a.repository!==name)throw Error('ADMISSION_CANONICAL_SOURCE_DRIFT');
+ }
+ if(fs.existsSync(cFile)){
+  const c=JSON.parse(fs.readFileSync(cFile,'utf8'));
+  if(c?.source_identity?.repository_id!==1371330383||
+     c?.source_identity?.canonical_repository!==name)
+   throw Error('ADMISSION_CANONICAL_SOURCE_DRIFT');
+ }
  return name;
 }
 export function preservePendingIntent(state,input){const s=structuredClone(state);if(!s.admission.pending_intent){s.admission.pending_intent=String(input);s.admission.pending_intent_sha256=sha256(Buffer.from(String(input)));}return s;}

@@ -488,7 +488,7 @@
       "schema": "ikant-le-runtime-root/v1",
       "source_head_binding": "PREACCEPT_HANDOFF.source_head",
       "member_count": 51,
-      "source_bytes": 552778,
+      "source_bytes": 553572,
       "loader": {
         "path": "src/runtime-root-verified.mjs",
         "blob_sha1": "330af6ed1184cd0a5d4446d3a1a18b2f674ab42b"
@@ -498,8 +498,8 @@
           "index": 0,
           "path": "runtime-root/shard-000.json",
           "member_count": 7,
-          "source_bytes": 123536,
-          "blob_sha1": "866a6b5a846d381cc389f5cb6900d60267707c2b"
+          "source_bytes": 123614,
+          "blob_sha1": "aa40655139e18af02f47ac7b99f179bad70c848f"
         },
         {
           "index": 1,
@@ -526,8 +526,8 @@
           "index": 4,
           "path": "runtime-root/shard-004.json",
           "member_count": 12,
-          "source_bytes": 115840,
-          "blob_sha1": "15635a4e0f1061c9f26fc2c7ceeee399c2deb3fa"
+          "source_bytes": 116572,
+          "blob_sha1": "ec6d9bcf181045161893bb5f74d7944c5f338e68"
         },
         {
           "index": 5,
@@ -559,8 +559,8 @@
         },
         {
           "path": "src/first-contact.mjs",
-          "blob_sha1": "1401e52436c233bb7a9ff4e655e79fbeefe176f8",
-          "bytes": 4824,
+          "blob_sha1": "72034b9bb7ff07d06c1856efbc25c1e720f59793",
+          "bytes": 4902,
           "shard": 0
         },
         {
@@ -679,8 +679,8 @@
         },
         {
           "path": "src/admission.mjs",
-          "blob_sha1": "7bc9580d4d2e1e8a4ee8dae4a237e87c08538d1d",
-          "bytes": 17111,
+          "blob_sha1": "4ba3f244e89fc1aded60e4a0783d090ce7432931",
+          "bytes": 17827,
           "shard": 4
         },
         {
@@ -852,7 +852,7 @@
           "shard": 3
         }
       ],
-      "runtime_root_sha256": "e0df1150b24aa43a6387a704b1ba50ff8b80adf995d2fa2c8f3442865841cfe7"
+      "runtime_root_sha256": "bb39cdb291d55701c7714ead7f42604abfd26859dac525e96d51cbd7b149c699"
     },
     "max_post_accept_remote_reads": 8,
     "deadline_ms": 120000,

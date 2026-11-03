@@ -106,6 +106,13 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Migrate OLD-safe first-contact, original runtime-root member/shard integrity and repository-ID pinned prompt without changing administrative repository name or owner receipts",
       "deletion_authorized": false
+    },
+    {
+      "path": "project/edu-oneshell/PROMPT_INNESCO.txt",
+      "operation": "MODIFY",
+      "reason": "Regenerate the C131 V5-A derived legacy distribution alias byte-exact from the single normative Project prompt plus the original version trailer; no installed Project UI equivalence claimed",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
     }
   ]
 }

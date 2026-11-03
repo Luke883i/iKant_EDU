@@ -72,7 +72,7 @@ jobs:
           path: ${{ runner.temp }}/v5e-cases-a.json
           retention-days: 30
           if-no-files-found: error
-      - name: Current EDU source gate: CANDIDATE on PR / MAIN_POST on main
+      - name: 'Current EDU source gate - CANDIDATE on PR / MAIN_POST on main'
         if: ${{ !cancelled() }}
         shell: bash
         env:

@@ -35,3 +35,39 @@ never establishes zero-downtime or ACTIVE.
 
 The report must be reopened; SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO
 is only a technical prospective result and ALWAYS has rename_go=false.
+
+## PR #211 diagnostic and repair DoD (test-plane only)
+
+**D1 — isolate the original failure.** Run each of six unmodified original test
+files in its own prospective NEW detached worktree using TEST_0..TEST_5.
+For each case assert the same source HEAD/TREE, same fixed identity patch set,
+original runtime-root regeneration and verify, manifest regeneration and verify.
+Retain each CI step's success/failure and the report with mode, shadow HEAD,
+failing stage, and stderr/stdout tail. Test failure is diagnostic evidence,
+never evidence of a product failure outside the test.
+
+**D2 — establish root cause.** A claimed root cause must identify the exact
+original input/check (path, assertion, expected/actual binding), reproduce
+failure with the uncorrected source, and show a minimal source patch changes
+that single outcome without relaxing source identity, receipt, or owner gates.
+Do not patch a test solely to mask an original behavioral failure.
+
+**D3 — preserve original authority.** The resulting future-name binding must
+be tied to the verified source phase and identical GitHub repository ID.
+No dual canonical, no accept of old receipts as new, no first-turn human gate
+bypass, no owner replay, no synthetic CI receipt treated as native C72.
+
+**D4 — rerun identical preparation.** Re-run all six original tests under
+mode ALL on the same source preparation function plus the minimal corrected
+original binding. Independently execute original runtime-root verify,
+project-session manifest verify and source-pin audit in the shadow checkout.
+Compare identical test suite and unmodified OLD baseline after the patch.
+
+**D5 — close only the bounded technical gate.** CI must read back exact PR
+HEAD and original workflow job success, emit per-stage report. If D1-D4
+PASS, report only INTERNAL_PROSPECTIVE_PASS; do not infer administrative
+rename GO, installed prompt, C72 owner invocation or external continuity.
+
+An unknown or ambiguous GitHub file write is reconciled read-only before
+another commit; never force push. PR #211 stays draft until all required
+regressions pass. This document is not a cutover authorization.

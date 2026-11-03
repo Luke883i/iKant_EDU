@@ -57,7 +57,8 @@ export function runShadow(){
  if(originalBoot.canonical_repository!==OLD)return fail('SOURCE_NOT_OLD_CANONICAL');
  let temporary=null,worktree=null,attached=false;
  const mode=process.env.IKANT_SHADOW_MODE||'ALL';
- if(!['REGEN_ONLY','ROOT_ONLY','ALL'].includes(mode))return fail('SHADOW_MODE_INVALID');
+ const singleTests=Object.fromEntries(SHADOW_TESTS.map((file,i)=>['TEST_'+i,file]));
+ if(!['REGEN_ONLY','ROOT_ONLY','ALL',...Object.keys(singleTests)].includes(mode))return fail('SHADOW_MODE_INVALID');
  const result={schema:'ikant-rename-s01-prospective-shadow/v1',source_head:current,source_tree:base,mode,
   old_repository:OLD,future_repository:NEW,scope:'ISOLATED_GIT_WORKTREE_TEST_ONLY',
   admin_rename_performed:false,owner_invoked:false,original_receipt_issued:false,
@@ -92,8 +93,10 @@ export function runShadow(){
   command('ORIGINAL_SOURCE_PIN_VERIFY','node',['scripts/project-oneshell-source-pin-audit.mjs','metadata']);
   if(mode==='ROOT_ONLY')result.status='SHADOW_ROOT_PROBE_PASS_NOT_CUTOVER_GO';
   else{
-   command('ORIGINAL_ZERO_CHECKOUT_C72_AND_FIRST_CONTACT','node',['--test','--test-concurrency=1',...SHADOW_TESTS],180000);
-   result.status='SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO';
+   const tests=singleTests[mode]?[singleTests[mode]]:SHADOW_TESTS;
+   command(mode==='ALL'?'ORIGINAL_ALL_SIX_REGRESSIONS':mode,
+    'node',['--test','--test-concurrency=1',...tests],180000);
+   result.status=mode==='ALL'?'SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO':'SHADOW_SINGLE_TEST_PASS_NOT_CUTOVER_GO';
   }
   }
  }catch(e){result.status='SHADOW_FAIL_NOT_CUTOVER';result.errors.push(String(e?.message||e));}
@@ -115,5 +118,5 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
   if(fs.readFileSync(process.argv[2],'utf8')!==out)throw Error('SHADOW_REPORT_READBACK_FAILED');
  }
  process.stdout.write(out);
- if(!['SHADOW_REGEN_PROBE_PASS_NOT_CUTOVER_GO','SHADOW_ROOT_PROBE_PASS_NOT_CUTOVER_GO','SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO'].includes(result.status))process.exitCode=1;
+ if(!['SHADOW_REGEN_PROBE_PASS_NOT_CUTOVER_GO','SHADOW_ROOT_PROBE_PASS_NOT_CUTOVER_GO','SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO','SHADOW_SINGLE_TEST_PASS_NOT_CUTOVER_GO'].includes(result.status))process.exitCode=1;
 }

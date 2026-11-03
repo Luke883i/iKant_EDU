@@ -126,6 +126,36 @@ jobs:
         run: |
           set -euo pipefail
           IKANT_SHADOW_MODE=ROOT_ONLY node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-s01-root.json"
+      - name: S01 isolate original first-contact (shadow diagnostic)
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_0 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_0.json"
+      - name: S01 isolate original preaccept gate (shadow diagnostic)
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_1 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_1.json"
+      - name: S01 isolate original C72 postaccept reentry (shadow diagnostic)
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_2 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_2.json"
+      - name: S01 isolate original zero-checkout coldseed (shadow diagnostic)
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_3 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_3.json"
+      - name: S01 isolate original coldstart-to-EDU (shadow diagnostic)
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_4 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_4.json"
+      - name: S01 isolate original C72 receipt transit (shadow diagnostic)
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_5 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_5.json"
       - name: Shadow iKant_EDU original-source cutover, isolated test only (always NO-GO)
         shell: bash
         run: |

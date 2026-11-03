@@ -569,6 +569,62 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
       "deletion_authorized": false
+    },
+    {
+      "path": "scripts/host-rehydrate-source-zip.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/test_project_manual_full_head.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-edu-zip-tree.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-manual-source.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-complete-chain.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-oneshell-full-source.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/test_edu_zip_tree.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/test_project_manual_source.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
     }
   ]
 }

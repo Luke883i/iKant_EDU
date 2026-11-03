@@ -40,7 +40,7 @@ def convert(archive, api_tree, head, tree):
         if not safe(p) or p in bypath or not H40.fullmatch(e.get("sha", "")):
             raise ValueError("SOURCE_TREE_ENTRY_INVALID")
         bypath[p] = e
-    prefix = "iKant_LE-" + head + "/"
+    prefix = "iKant_EDU-" + head + "/"
     with zipfile.ZipFile(archive) as z:
         members = z.infolist()
         if len(members) > MAX_FILES or sum(x.file_size for x in members) > MAX_BYTES:

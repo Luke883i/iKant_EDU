@@ -21,7 +21,7 @@ def prepare(archive,commit_file,out,head,tree):
  if out.exists() or not out.parent.is_dir():raise ValueError('OUTPUT_EXISTS_OR_PARENT_MISSING')
  raw=commit_file.read_bytes()
  if git('hash-object','-t','commit','--stdin',data=raw)!=head:raise ValueError('COMMIT_OBJECT_MISMATCH')
- prefix='iKant_LE-'+head+'/'
+ prefix='iKant_EDU-'+head+'/'
  with zipfile.ZipFile(archive) as z:
   entries=z.infolist()
   if len(entries)>3000 or sum(x.file_size for x in entries)>30*1024*1024:

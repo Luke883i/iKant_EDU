@@ -206,7 +206,8 @@
     "executable_surface_count": 24,
     "canonical_active_issuer_count": 1,
     "runtime_dominator_test_required": true,
-    "project_rom_parity_required": true
+    "project_rom_parity_required": false,
+    "project_rom_historical_fixture_only": true
   },
   "project_host_rom": "contracts/project-host-rom.json",
   "executable_surface_registry": "contracts/session-chat-executable-surface-registry.json",

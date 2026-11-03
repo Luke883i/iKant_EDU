@@ -9,8 +9,9 @@
       "id": "PROJECT_HOST_ROM",
       "kind": "host_adapter",
       "ref": "docs/PROJECT_META_PROMPT_COBOL.md",
-      "classification": "CANONICAL_COLDSTART_ADAPTER",
-      "may_issue_canonical_active": false
+      "classification": "HISTORICAL_COLDSTART_ADAPTER_NONRUNTIME",
+      "may_issue_canonical_active": false,
+      "superseded_by": "project/session-chat/PROMPT.txt"
     },
     {
       "id": "AI_AGENT_FIRST_ENTRYPOINT",
@@ -98,7 +99,6 @@
     }
   ],
   "required_canonical_chain": [
-    "PROJECT_HOST_ROM",
     "AI_AGENT_FIRST_ENTRYPOINT",
     "C59_COMPOSITION_OWNER",
     "C59_SHARED_PREDICATE",

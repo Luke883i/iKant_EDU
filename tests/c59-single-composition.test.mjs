@@ -117,10 +117,14 @@ test('C59 enforcement predicate and ACTIVE readback live inside the materialized
  assert.equal(b.session_chat_composition.legacy_active_is_canonical,false);
 });
 
-test('C59 Project ROM and executable registry are repository-owned inputs to composition',()=>{
+test('C59 historical ROM is censused but excluded from the live canonical chain',()=>{
  const b=read('BOOTSTRAP.json'),c=read('contracts/session-chat-composition-channel.json'),r=read('contracts/session-chat-executable-surface-registry.json');
  assert.equal(b.session_chat_composition.project_host_rom,'contracts/project-host-rom.json');
  assert.equal(c.project_host_rom,'contracts/project-host-rom.json');
+ const rom=r.surfaces.find(x=>x.id==='PROJECT_HOST_ROM');
+ assert.equal(rom.classification,'HISTORICAL_COLDSTART_ADAPTER_NONRUNTIME');
+ assert.equal(rom.may_issue_canonical_active,false);
+ assert.equal(r.required_canonical_chain.includes('PROJECT_HOST_ROM'),false);
  assert.equal(c.executable_surface_registry,'contracts/session-chat-executable-surface-registry.json');
  assert.equal(c.minimum_semantic_lattice,'contracts/session-chat-semantic-lattice.json');
  assert.equal(r.invariants.unregistered_activation_surface_allowed,false);

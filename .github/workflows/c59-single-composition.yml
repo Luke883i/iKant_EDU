@@ -28,7 +28,6 @@ on:
       - 'plugins/ikant-le-session-chat/server/server.mjs'
       - 'runtime-root/**'
       - 'docs/SESSION_CHAT_LOCAL_PROMPT.md'
-      - 'docs/PROJECT_META_PROMPT_COBOL.md'
       - 'docs/C59_SINGLE_COMPOSITION_CHANNEL.md'
       - 'docs/C59_PR1_68_LINEAGE_AUDIT.md'
       - 'tests/bootstrap-fixture.mjs'
@@ -36,7 +35,6 @@ on:
       - 'tests/c59-single-composition.test.mjs'
       - 'tests/c59-canonical-authority-gate.test.mjs'
       - 'tests/c59-runtime-dominator.test.mjs'
-      - 'tests/c59-project-host-rom.test.mjs'
       - 'tests/c59-orientation-closure.test.mjs'
       - 'tests/c61-cold-producer.test.mjs'
       - 'scripts/c58-composition-audit-10k.mjs'
@@ -48,8 +46,6 @@ on:
       - 'scripts/c59-executable-surface-audit.mjs'
       - 'scripts/c59-semantic-lattice-select.mjs'
       - 'scripts/c59-runtime-closure-falsify-100k.mjs'
-      - 'scripts/render-project-host-rom.mjs'
-      - 'scripts/c59-project-rom-adversarial-100.mjs'
       - 'scripts/c61-cold-producer-falsify.mjs'
       - 'contracts/cold-producer-closure.json'
       - 'artifacts/qualification/c62-evidence-runtime-cut-10k.json'
@@ -82,9 +78,6 @@ jobs:
       - name: C59 materialized runtime dominator
         if: always()
         run: node --test --test-concurrency=1 tests/c59-runtime-dominator.test.mjs
-      - name: C59 Project ROM parity
-        if: always()
-        run: node --test --test-concurrency=1 tests/c59-project-host-rom.test.mjs
       - name: C59 orientation closure
         if: always()
         run: node --test --test-concurrency=1 tests/c59-orientation-closure.test.mjs
@@ -108,14 +101,6 @@ jobs:
         run: node scripts/c58-composition-audit-10k.mjs
       - name: C59 10k prompt mutations
         run: node scripts/c58-session-chat-local-prompt-falsify.mjs
-      - name: C59 Project ROM exact renderer
-        run: |
-          node scripts/render-project-host-rom.mjs > /tmp/c59-project-rom.md
-          diff -u docs/PROJECT_META_PROMPT_COBOL.md /tmp/c59-project-rom.md
-      - name: C59 Project ROM 100 adversarial mutations
-        run: |
-          node scripts/c59-project-rom-adversarial-100.mjs > /tmp/c59-project-rom-100.json
-          diff -u artifacts/qualification/c59-project-rom-adversarial-100.json /tmp/c59-project-rom-100.json
       - name: C59 PR1-68 history closure
         run: |
           node scripts/c59-pr-history-audit.mjs > /tmp/c59-history.json

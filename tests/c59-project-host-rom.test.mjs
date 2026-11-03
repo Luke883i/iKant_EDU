@@ -8,14 +8,20 @@ import {ROOT} from '../src/contract.mjs';
 const read=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
 const json=p=>JSON.parse(read(p));
 
-test('C59 Project ROM v2 document is generated exactly from the repository contract',()=>{
+test('C59 historical ROM v2 fixture remains exact and does not become EDU authority',()=>{
  const rendered=execFileSync(process.execPath,['scripts/render-project-host-rom.mjs'],{cwd:ROOT,encoding:'utf8'});
  assert.equal(read('docs/PROJECT_META_PROMPT_COBOL.md'),rendered);
  const c=json('contracts/project-host-rom.json');
  assert.equal(c.schema,'ikant-le-project-host-rom/v2');
  assert.equal(c.role,'COLD_START_ROM_ONLY');
  assert.equal(c.authority,0);
- assert.equal(c.repository,'https://github.com/Luke883i/iKant_EDU');
+ assert.equal(c.repository,'https://github.com/Luke883i/iKant_LE');
+ const registry=json('contracts/session-chat-executable-surface-registry.json');
+ const rom=registry.surfaces.find(x=>x.id==='PROJECT_HOST_ROM');
+ assert.equal(rom.classification,'HISTORICAL_COLDSTART_ADAPTER_NONRUNTIME');
+ assert.equal(rom.may_issue_canonical_active,false);
+ assert.equal(registry.required_canonical_chain.includes('PROJECT_HOST_ROM'),false);
+ assert.equal(rom.superseded_by,'project/session-chat/PROMPT.txt');
  assert.deepEqual(c.preaccept.direct_paths,['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md']);
  assert.equal(c.preaccept.exact_acceptance,'I ACCEPT');
  assert.equal(c.postaccept.invoke_only_repository_named_owner,true);

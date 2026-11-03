@@ -2,7 +2,7 @@
   "schema": "ikant-le-project-host-rom/v2",
   "authority": 0,
   "role": "COLD_START_ROM_ONLY",
-  "repository": "https://github.com/Luke883i/iKant_EDU",
+  "repository": "https://github.com/Luke883i/iKant_LE",
   "branch": "main",
   "registers": [
     "PENDING_INTENT",

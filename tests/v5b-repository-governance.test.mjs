@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference} from '../scripts/v5b-repository-governance-audit.mjs';
+import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements} from '../scripts/v5b-repository-governance-audit.mjs';
 
 test('all-path roles are explicitly provisional and never human review',()=>{
  assert.equal(provisionalRole('tests/foo.test.mjs'),'TEST_SOURCE');
@@ -67,7 +67,7 @@ test('original full-checkout inventory is mechanically indexed, not reviewed',{s
  assert.equal(r.errors.length,0,JSON.stringify(r.errors.slice(0,40)));
  assert.equal(r.baseline_files,1471);
  assert.equal(r.retained_workflows,87);
- assert.equal(r.workflow_count,121);
+ assert.equal(r.baseline_workflow_count,121);assert.equal(r.retired_workflows.length,4);assert.equal(r.workflow_count,117);
  assert.equal(r.human_reviewed_files,0);
  assert.equal(r.owner_accountability,'HUMAN_OWNER_NOT_INFERRED');
  assert.equal(r.required_checks,'UNKNOWN_PROVIDER_NOT_ATTESTED');
@@ -77,4 +77,13 @@ test('original full-checkout inventory is mechanically indexed, not reviewed',{s
  assert(r.consumer_index.every(x=>x.status==='UNKNOWN_NOT_UNUSED'||x.status==='LITERAL_CONSUMER_OBSERVED'));
  assert(r.consumer_index.some(x=>x.status==='UNKNOWN_NOT_UNUSED'),'absence of a literal importer must not be labelled UNUSED');
  assert(r.dependency_probe.js_files>=700,'unexpected JS source loss');
+});
+
+test('V5B retirement demands exact absent runner, active replacement, preserved test',()=>{
+ const before=['.github/workflows/a.yml','.github/workflows/b.yml'],live=['.github/workflows/b.yml'];
+ const m={paths:before,superseded_workflows:{'.github/workflows/a.yml':{status:'SUPERSEDED_RUNNER',reason:'Original tests remain active in a declared replacement CI workflow and are not silently removed.',replacements:['.github/workflows/b.yml'],tests:['tests/a.test.mjs']}}};
+ assert.deepEqual(auditWorkflowRetirements(before,live,m,[...live,'tests/a.test.mjs']).errors,[]);
+ assert.ok(auditWorkflowRetirements(before,live,{paths:before},live).errors.some(e=>e.startsWith('UNREGISTERED_WORKFLOW_REMOVAL')));
+ assert.ok(auditWorkflowRetirements(before,live,m,live).errors.some(e=>e.startsWith('RETIRED_WORKFLOW_TEST_MISSING')));
+ assert.ok(auditWorkflowRetirements(before,live,m,['tests/a.test.mjs']).errors.some(e=>e.startsWith('REPLACEMENT_NOT_ACTIVE')));
 });

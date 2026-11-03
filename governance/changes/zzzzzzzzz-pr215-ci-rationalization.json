@@ -1,0 +1,226 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+  "source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+  "review_status": "ENGINEERING_CANDIDATE_REQUIRES_V5G_REVIEWS",
+  "paths": [
+    {
+      "path": ".github/workflows/c10-fastboot.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c11-life-consciousness.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c14-chat-bootstrap.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c16-runtime-availability.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c17-deadline-integrity.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c18-activation-continuation.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c19-fastboot-convergence.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c22-pr25-ontological-hardening.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c23-ontology-collapse.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c32-session-shell.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c33-post-187-closure.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c59-single-composition.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/lib0-embedded-nuance.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "artifacts/qualification/c52-candidate-blob-manifest.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "artifacts/qualification/c52-runtime-physical-closure-dod.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/session-chat-executable-surface-registry.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/session-chat-local-host-kernel.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/v1-workflow-retention.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "src/bootstrap-intent-adapter.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c46-coldstart-cohost-bind.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c47-cohost-runtime-closure.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c52-physical-runtime-closure.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c59-single-composition.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c63-canonical-parallel-bridge.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-coldstart-zero-checkout.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/v1-workflow-retention.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c107-one-carrier-release.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 runner retirement documented in immutable baseline and explicit surviving successors/tests, not a release receipt.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c21-local-session-fastboot.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 runner retirement documented in immutable baseline and explicit surviving successors/tests, not a release receipt.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c98-phase2-source-exact.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 runner retirement documented in immutable baseline and explicit surviving successors/tests, not a release receipt.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c98-project-3md.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 runner retirement documented in immutable baseline and explicit surviving successors/tests, not a release receipt.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-bound CI retirement register with explicit non-approval and original baseline preservation.",
+      "deletion_authorized": false
+    }
+  ]
+}

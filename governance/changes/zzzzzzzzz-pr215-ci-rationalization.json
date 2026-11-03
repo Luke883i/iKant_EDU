@@ -335,6 +335,13 @@
       "deletion_authorized": false
     },
     {
+      "path": "artifacts/qualification/c62-object-mincut-8192.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Recalculate bounded C62 mincut artifact using current pinned BOOTSTRAP runtime root SHA and exact source bytes, preserving tests.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

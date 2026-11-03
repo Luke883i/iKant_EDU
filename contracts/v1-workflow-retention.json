@@ -138,6 +138,18 @@
         "tests/c107-carrier-consumer.test.mjs"
       ],
       "reason": "Historical prepr/v8 publisher with contents:write is retired; immutable C107 digest and readback remain verified on main."
+    },
+    ".github/workflows/c97-chat-project-uiux.yml": {
+      "status": "SUBSUMED_BY_CURRENT_ONESHELL_EDU",
+      "replacements": [
+        ".github/workflows/project-oneshell-edu.yml"
+      ],
+      "tests": [
+        "tests/c97-uiux-projection.test.mjs",
+        "tests/c32-session-shell.test.mjs",
+        "tests/c73-project-capsule.test.mjs"
+      ],
+      "reason": "The Node 20/22 OneShell EDU workflow now executes all three C97/C32/C73 suites on relevant C97 paths; universal ci.yml retains npm test/check."
     }
   }
 }

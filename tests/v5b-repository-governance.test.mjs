@@ -67,7 +67,7 @@ test('original full-checkout inventory is mechanically indexed, not reviewed',{s
  assert.equal(r.errors.length,0,JSON.stringify(r.errors.slice(0,40)));
  assert.equal(r.baseline_files,1471);
  assert.equal(r.retained_workflows,87);
- assert.equal(r.baseline_workflow_count,121);assert.equal(r.retired_workflows.length,4);assert.equal(r.workflow_count,117);
+ assert.equal(r.baseline_workflow_count,121);assert.equal(r.retired_workflows.length,5);assert.equal(r.workflow_count,116);
  assert.equal(r.human_reviewed_files,0);
  assert.equal(r.owner_accountability,'HUMAN_OWNER_NOT_INFERRED');
  assert.equal(r.required_checks,'UNKNOWN_PROVIDER_NOT_ATTESTED');

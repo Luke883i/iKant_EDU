@@ -216,6 +216,20 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/c97-chat-project-uiux.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Retired UIUX-only CI runner after transferring exact Node 20/22 C97/C32/C73 suites to the current OneShell EDU pipeline.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-oneshell-edu.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add C97/UIUX source triggers and focused Node 20/22 regressions to surviving OneShell EDU runner.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

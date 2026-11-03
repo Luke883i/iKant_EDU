@@ -139,6 +139,68 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false
+    },
+    {
+      "path": "tests/first-contact.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/rename-sourcebound-cutover.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "tests/repository-rename-s01-s03.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/z-rename-s01-s03.json",
+      "supersedes_source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44"
+    },
+    {
+      "path": "tests/repository-rename-2dim.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/z-rename-2dim.json",
+      "supersedes_source_main": "1de5b51a2578e31547e4ef98e7d35d55926d05a3"
+    },
+    {
+      "path": "tests/project-c72-preaccept-gate.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-coldstart-seed.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-coldstart-to-edu.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-postaccept-reentry.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
     }
   ]
 }

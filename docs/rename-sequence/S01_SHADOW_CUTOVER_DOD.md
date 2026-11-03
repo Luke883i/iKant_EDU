@@ -96,3 +96,22 @@ the ALL test still runs and must PASS. A single PASS cannot substitute
 for a failed other test. Subsequent patch work must use the observed
 first failing step and the same HEAD/TREE-bounded preparation, never
 fabricated native owner/provider evidence.
+
+## D1 isolation evidence — PR branch 1ad994c (GitHub Actions)
+
+All six diagnostic steps ran with the same detached-worktree preparation:
+TEST_0 first-contact FAIL; TEST_1 preaccept PASS; TEST_2 postaccept PASS;
+TEST_3 zero-checkout C72 PASS; TEST_4 coldstart-to-EDU PASS;
+TEST_5 receipt transit PASS. Combined ALL FAIL as expected.
+The root/manifest original regenerator and verifier passed separately.
+
+The remaining first-contact positive adversarial fixture
+"usa gh su iKant_LE prima di tutto" still targeted OLD while the future
+first-contact recognizer correctly accepts only NEW. Change that isolated
+prospective fixture to iKant_EDU; preserve historical/lookalike negatives.
+The original C72 owner, admission and receipt constraints are unchanged
+outside the disposable shadow.
+
+D2 acceptance: TEST_0 must pass without accepting OLD as NEW; all five other
+tests must remain passing; ALL must pass. This exact branch preparation
+must be the source of the retry, and required CI readback must be observed.

@@ -44,6 +44,9 @@ function replaceText(root,rel,{mustChange=true,oldOnly=false}={}){
   const positive=",'iKant_LE','git@github.com:"+NEW+".git'";
   if(!changed.includes(positive))throw Error('SHADOW_NEW_FIRST_CONTACT_FIXTURE_NOT_FOUND');
   changed=changed.replace(positive,",'iKant_EDU','git@github.com:"+NEW+".git'");
+  const adversarial="'usa gh su iKant_LE prima di tutto'";
+  if(!changed.includes(adversarial))throw Error('SHADOW_ADVERSARIAL_POSITIVE_FIXTURE_NOT_FOUND');
+  changed=changed.replace(adversarial,"'usa gh su iKant_EDU prima di tutto'");
  }
  if(rel==='scripts/project-oneshell-source-pin-audit.mjs'){
   const target="boot.canonical_repository!==rename.repo_name_from";

@@ -24,7 +24,7 @@ function witnessOK(w,head){
  if(!plain(w)||!plain(w.pinned_blob_shas)||w.source_head!==head||
  !SHA.test(w.source_head||'')||w.host_link_displayed!==true||
  w.distinct_human_message_observed!==true||
- w.terms_link!=='https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md')return false;
+ w.terms_link!=='https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md')return false;
  return Reflect.ownKeys(w.pinned_blob_shas).length===5&&FIRST_FILES.every(p=>SHA.test(w.pinned_blob_shas[p]||''));
 }
 function shapeOK(q){

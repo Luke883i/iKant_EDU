@@ -27,7 +27,7 @@ export function validateRelayManifest(q){
   !plain(q.expectedBlobShas)||!plain(q.priorTurnEvidence)||
   q.priorTurnEvidence.source_head!==q.source_head||
   q.priorTurnEvidence.host_link_displayed!==true||
-  q.priorTurnEvidence.terms_link!=='https://github.com/Luke883i/iKant_LE/blob/'+q.source_head+'/TERMS.md'||
+  q.priorTurnEvidence.terms_link!=='https://github.com/Luke883i/iKant_EDU/blob/'+q.source_head+'/TERMS.md'||
   !plain(q.priorTurnEvidence.pinned_blob_shas)||
   NAMES.some(p=>!SHA.test(q.expectedBlobShas[p]||''))||
   witnessNames.some(p=>q.expectedBlobShas[p]!==q.priorTurnEvidence.pinned_blob_shas[p]))

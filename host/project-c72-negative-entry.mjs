@@ -16,7 +16,7 @@ export function screenC72HostIngress(q={}){
  if(q.humanMessage!=='I ACCEPT'||q.freshHumanTurn!==true||q.ownerOutcome!=='NOT_INVOKED'||
     !SHA.test(w.source_head||'')||w.host_link_displayed!==true||
     w.distinct_human_message_observed!==true||
-    w.terms_link!=='https://github.com/Luke883i/iKant_LE/blob/'+w.source_head+'/TERMS.md'||
+    w.terms_link!=='https://github.com/Luke883i/iKant_EDU/blob/'+w.source_head+'/TERMS.md'||
     !FILES.every(p=>SHA.test(w.pinned_blob_shas[p]||''))||
     !['NODE_GITHUB_API','HOST_CALLBACKS','HOST_SOURCE_PACKET'].includes(q.carrier))
    return stop('R3_C72_FIRST_TURN_OR_CARRIER_UNVERIFIED');

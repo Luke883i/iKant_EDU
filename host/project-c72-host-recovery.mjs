@@ -96,7 +96,7 @@ export async function executeC72PostAcceptRecovery({humanMessage, freshHumanTurn
  const sha=/^[a-f0-9]{40}$/u;
  if(!sha.test(w?.source_head||'')||w?.host_link_displayed!==true||
   w?.distinct_human_message_observed!==true||
-  w?.terms_link!==`https://github.com/Luke883i/iKant_LE/blob/${w.source_head}/TERMS.md`||
+  w?.terms_link!==`https://github.com/Luke883i/iKant_EDU/blob/${w.source_head}/TERMS.md`||
   !w?.pinned_blob_shas||names.some(n=>!sha.test(w.pinned_blob_shas[n]||'')))
   return stop('C72_ORIENTATION_WITNESS_MISSING');
  // Running in Node proves the Node capability, not connector reachability.

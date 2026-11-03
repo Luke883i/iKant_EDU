@@ -226,6 +226,90 @@
       "deletion_authorized": false,
       "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "src/bootstrap-semantic.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-c72-host-recovery.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-c72-physical-ingress.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-c72-negative-entry.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-edu-h1-bound-port.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-host-effect-decision.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-c72-verified-staging.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-oneshell-continuous-cli.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/c63-canonical-parallel-bridge.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/host-shell.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/ikant-le.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "runtime-root/shard-005.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
     }
   ]
 }

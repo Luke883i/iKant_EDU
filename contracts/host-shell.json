@@ -3,7 +3,7 @@
   "human_bootstrap_gates": 1,
   "human_acceptance": "I ACCEPT",
   "first_contact": {
-    "canonical_repository": "Luke883i/iKant_LE",
+    "canonical_repository": "Luke883i/iKant_EDU",
     "manifest": "BOOTSTRAP.json",
     "admission_manifest": "ADMISSION.json",
     "convergence_before_generic_discovery": true,

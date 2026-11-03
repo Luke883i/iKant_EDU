@@ -9,7 +9,7 @@ import {isC98JSONDataTree} from './c98-c82-connector-port.mjs';
 import {executeC72PostAcceptRecovery} from './project-c72-host-recovery.mjs';
 import {screenC72HostIngress} from './project-c72-negative-entry.mjs';
 
-const SOURCE='Luke883i/iKant_LE';
+const SOURCE='Luke883i/iKant_EDU';
 const PREFIX='/repos/'+SOURCE;
 const NAMES=Object.freeze(['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md']);
 const H40=/^[a-f0-9]{40}$/u;

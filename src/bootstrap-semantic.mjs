@@ -29,7 +29,7 @@ export function validateActivationExecutorReceipt(receipt,{sourceHead,runtimeRoo
  const e=[];
  if(!receipt||receipt.schema!==ACTIVATION_EXECUTOR_SCHEMA)e.push('schema');
  if(receipt?.authority!==0)e.push('authority');
- if(receipt?.repository!=='Luke883i/iKant_LE')e.push('repository');
+ if(receipt?.repository!=='Luke883i/iKant_EDU')e.push('repository');
  if(receipt?.source_head!==sourceHead||!HEX40.test(String(sourceHead||'')))e.push('source_head');
  if(receipt?.runtime_root_sha256!==runtimeRootSha256||!HEX64.test(String(runtimeRootSha256||'')))e.push('runtime_root');
  if(receipt?.execution_plane!=='SESSION_LOCAL_NODE')e.push('execution_plane');
@@ -79,7 +79,7 @@ export function validateCanonicalCompositionHandoff(value,{sourceHead=null,runti
  if(!HEX64.test(String(d.execution_input_sha256||''))||d.execution_input_sha256!==sha256(Buffer.from(JSON.stringify(input))))e.push('direct_execution_binding');
  const directMaterial=structuredClone(d);delete directMaterial.receipt_sha256;delete directMaterial.execution_input;
  if(!HEX64.test(String(d.receipt_sha256||''))||d.receipt_sha256!==sha256(Buffer.from(JSON.stringify(directMaterial))))e.push('direct_receipt_digest');
- if(pre.schema!=='ikant-le-preaccept-handoff/v2'||pre.repository!=='Luke883i/iKant_LE'||pre.source_head!==h.source_head||pre.terms_presented!==true||pre.frozen!==true||pre.breached!==false||pre.authority!==0)e.push('preaccept');
+ if(pre.schema!=='ikant-le-preaccept-handoff/v2'||pre.repository!=='Luke883i/iKant_EDU'||pre.source_head!==h.source_head||pre.terms_presented!==true||pre.frozen!==true||pre.breached!==false||pre.authority!==0)e.push('preaccept');
  if(!HEX64.test(String(d.preaccept_handoff_sha256||''))||d.preaccept_handoff_sha256!==sha256(Buffer.from(JSON.stringify(pre))))e.push('preaccept_binding');
  if(input.human_input!=='I ACCEPT')e.push('acceptance');
  if(!HEX64.test(String(d.activation_executor_receipt_sha256||''))||d.activation_executor_receipt_sha256!==x.receipt_sha256)e.push('executor_binding');

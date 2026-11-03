@@ -110,7 +110,13 @@ export function runShadow(){
    "assert.equal(referencesCanonicalRepository('Luke883i/iKant_EDU'),true);",
    "assert.equal(referencesCanonicalRepository('iKant_LE'),false);",
    "assert.equal(referencesCanonicalRepository('Luke883i/iKant_EDU-fork'),false);",
-   "assert.equal(readFileSync('src/admission.mjs','utf8').includes(\"const CANONICAL_REPOSITORY='Luke883i/iKant_EDU'\"),true);"
+   "const boot=JSON.parse(readFileSync('BOOTSTRAP.json','utf8'));",
+   "const admission=JSON.parse(readFileSync('ADMISSION.json','utf8'));",
+   "const c72=JSON.parse(readFileSync('contracts/c72-public-mode-admission-v2.json','utf8'));",
+   "assert.equal(boot.canonical_repository,'Luke883i/iKant_EDU');",
+   "assert.equal(admission.repository,boot.canonical_repository);",
+   "assert.equal(c72.source_identity.canonical_repository,boot.canonical_repository);",
+   "assert.equal(c72.source_identity.repository_id,1371330383);"
   ].join('');
   command('NEW_IDENTITY_SINGLE_CANONICAL_NEGATIVE','node',['--input-type=module','-e',identityCheck]);
   if(mode==='ROOT_ONLY')result.status='SHADOW_ROOT_PROBE_PASS_NOT_CUTOVER_GO';

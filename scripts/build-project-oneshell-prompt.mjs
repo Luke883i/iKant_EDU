@@ -112,6 +112,23 @@ if(matrix.project_instruction_limit_chars!==8000||
  throw Error('PROJECT_INSTRUCTIONS_EXCEED_8000');
 assertSevenThreePrompt(source);
 async function liveHead(){
+ // Exact GitHub repository-ID verification: redirected legacy names do NOT
+ // automatically attest the new canonical source or installed prompt.
+ const metadata=await new Promise((resolve,reject)=>{
+  const req=https.get('https://api.github.com/repositories/1371330383',
+   {headers:{'User-Agent':'ikant-source-id-prompt-check','Accept':'application/vnd.github+json'},timeout:12000},res=>{
+    if(res.statusCode!==200){res.resume();reject(Error('GITHUB_REPOSITORY_ID_UNAVAILABLE'));return}
+    let b='';res.setEncoding('utf8');res.on('data',s=>{b+=s;if(b.length>64000)req.destroy(Error('REPO_METADATA_TOO_LARGE'))});
+    res.on('end',()=>{try{resolve(JSON.parse(b))}catch{reject(Error('REPO_METADATA_INVALID'))}});
+   });req.on('timeout',()=>req.destroy(Error('REPO_METADATA_TIMEOUT')));req.on('error',reject);
+ });
+ const admission=JSON.parse(original('ADMISSION.json'));
+ const c72=JSON.parse(original('contracts/c72-public-mode-admission-v2.json'));
+ if(metadata.id!==1371330383||metadata.full_name!==promptRepository||
+    metadata.default_branch!=='main'||admission.repository!==promptRepository||
+    c72?.source_identity?.repository_id!==1371330383||
+    c72?.source_identity?.canonical_repository!==promptRepository)
+  throw Error('STOP_PROMPT_REPO_SOURCE_IDENTITY_DRIFT');
  return new Promise((resolve,reject)=>{
   const req=https.get('https://api.github.com/repos/'+promptRepository+'/git/ref/heads/main',
    {headers:{'User-Agent':'ikant-head-prompt-build','Accept':'application/vnd.github+json'},timeout:12000},res=>{

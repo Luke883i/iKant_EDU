@@ -121,6 +121,17 @@ jobs:
         run: |
           set -euo pipefail
           IKANT_SHADOW_MODE=REGEN_ONLY node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-s01-regen.json"
+      - name: Capture exact first failing future shadow step (read-only)
+        id: rename_shadow_diag
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=ROOT_ONLY node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-diagnostic.json" > "$RUNNER_TEMP/rename-shadow-diagnostic.stdout.json" || :
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));const edge=(r.errors?.[0]||r.status||'UNKNOWN').replace(/[^A-Za-z0-9_:.-]/g,'_').slice(0,190);fs.appendFileSync(process.env.GITHUB_OUTPUT,'edge='+edge+String.fromCharCode(10));" "$RUNNER_TEMP/rename-shadow-diagnostic.json"
+      - name: Source shadow observed EDGE [${{ steps.rename_shadow_diag.outputs.edge }}]
+        if: always()
+        shell: bash
+        run: echo "Source-only diagnostics never authorize C72 or rename"
       - name: Shadow prospective source root and manifest probe
         shell: bash
         run: |
@@ -178,6 +189,32 @@ jobs:
           path: ${{ runner.temp }}/rename-s01-shadow.json
           retention-days: 30
           if-no-files-found: warn
+      - name: Repository-ID exact pre-cutover source gate (no admin or provider action)
+        if: ${{ !cancelled() }}
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          node --test tests/rename-source-cutover-gate.test.mjs
+          node scripts/rename-source-cutover-gate.mjs CANDIDATE "$RUNNER_TEMP/ikant-cutover-source-report.json" > "$RUNNER_TEMP/ikant-cutover-stdout.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.decision?.ok!==true||r.rename_go!==false||r.installed_prompt_equivalence!=='UNKNOWN'||r.github_api.id!==1371330383||r.github_api.full_name!=='Luke883i/iKant_LE')process.exit(1)" "$RUNNER_TEMP/ikant-cutover-source-report.json"
+      - name: Upload source-only cutover readback (not admin GO)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-cutover-source-${{ github.sha }}
+          path: ${{ runner.temp }}/ikant-cutover-source-report.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Source-bound first-contact runtime-root and prompt DoD
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/runtime-root.mjs verify
+          node scripts/project-source-manifest.mjs verify
+          node --test tests/rename-sourcebound-cutover.test.mjs tests/first-contact.test.mjs tests/project-oneshell-prompt.test.mjs
+          node scripts/project-oneshell-source-pin-audit.mjs metadata
       - name: Rename S01 original source-epoch and zero-checkout C72 regressions
         shell: bash
         run: |

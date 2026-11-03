@@ -23,6 +23,29 @@ jobs:
         run: |
           node scripts/project-c72-partial-source-kit.mjs "${GITHUB_SHA}" "${RUNNER_TEMP}/C72-PARTIAL-SOURCE-${GITHUB_SHA}.json"
           test -s "${RUNNER_TEMP}/C72-PARTIAL-SOURCE-${GITHUB_SHA}.json"
+      - name: D123 focused original-bound regression with diagnostic TAP
+        id: d123_regression
+        shell: bash
+        run: |
+          set +e
+          node --test tests/project-bootstrap-d123.test.mjs > "$RUNNER_TEMP/d123-${{ matrix.node }}.tap" 2>&1
+          STATUS=$?
+          set -e
+          EDGE=$(grep -m1 '^not ok ' "$RUNNER_TEMP/d123-${{ matrix.node }}.tap" | sed -E 's/^not ok [0-9]+ - //; s/[^A-Za-z0-9_-]+/_/g' | cut -c1-100 || :)
+          ERROR=$(grep -m1 '^  error: ' "$RUNNER_TEMP/d123-${{ matrix.node }}.tap" | sed -E 's/^  error: //; s/[^A-Za-z0-9_-]+/_/g' | cut -c1-70 || :)
+          if [ -z "$EDGE" ]; then EDGE=PASS; fi
+          if [ -z "$ERROR" ]; then ERROR=NONE; fi
+          printf 'exit_code=%s\nedge=%s-%s\n' "$STATUS" "$EDGE" "$ERROR" >> "$GITHUB_OUTPUT"
+      - name: Preserve D123 focused regression log on failure
+        if: steps.d123_regression.outputs.exit_code != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: d123-${{ matrix.node }}-${{ steps.d123_regression.outputs.edge }}
+          path: ${{ runner.temp }}/d123-${{ matrix.node }}.tap
+          retention-days: 7
+          if-no-files-found: error
+      - name: Enforce D123 focused original-bound regression
+        run: test "${{ steps.d123_regression.outputs.exit_code }}" = '0'
       - name: Publish partial source from merged main only
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.node == '22'
         uses: actions/upload-artifact@v4

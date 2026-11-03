@@ -1,0 +1,58 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "4145d932fb291872aafe19dcd72298d16c2785c6",
+  "self_path": "governance/changes/zz-v5g-bootstrap-d123.json",
+  "scope": "HOST_D123_OPTIONAL_SOURCE_CARRIER_ONLY",
+  "original_owner_unchanged": true,
+  "active": false,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "governance/changes/zz-v5g-bootstrap-d123.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Record additive original-preserving D1/D2/D3 source transport closure under the V5-B source change gate"
+    },
+    {
+      "path": "scripts/project-bootstrap-d123.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add optional original-bound cache, transit reconciliation and source-loader functions without modifying runtime owners"
+    },
+    {
+      "path": "tests/project-bootstrap-d123.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add negative mutation and original C72 transit plus original EDU loader integration tests"
+    },
+    {
+      "path": "docs/BOOTSTRAP_D123_CLOSURE.md",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Document D1-D3 severe DoD, performance caveats, recovery and unchanged original owner authority"
+    },
+    {
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Regenerate complete exact Markdown document atlas with the new D1-D3 design report",
+      "supersedes_register": "governance/changes/zz-v5f-bootstrap-decouple-d0.json",
+      "supersedes_source_main": "f5f42603294084d29cdb6d6e2106c0331d802536"
+    },
+    {
+      "path": ".github/workflows/project-c72-coldstart.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add fail-closed original-bound D1-D3 focused regression on Node 20 and 22 with failure-only diagnostic artifact, preserving pre-existing C72 workflow"
+    },
+    {
+      "path": "tests/project-bootstrap-cut-audit.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace obsolete D0 hard-coded source byte budgets with independent live HEAD Git TREE sizes; retain exact blob readback and all original DoD invariants",
+      "supersedes_register": "governance/changes/zz-v5f-bootstrap-decouple-d0.json",
+      "supersedes_source_main": "f5f42603294084d29cdb6d6e2106c0331d802536"
+    }
+  ]
+}

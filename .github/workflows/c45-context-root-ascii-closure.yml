@@ -30,5 +30,4 @@ jobs:
       - run: npm run falsify:c45
       - run: node --test tests/c45-context-root-ascii-closure.test.mjs
       - run: npm run runtime-root:verify
-      - run: npm run check
       - run: npm run check:c29

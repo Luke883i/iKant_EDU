@@ -38,8 +38,5 @@ jobs:
       - name: Independent one-hundred-thousand semantic falsification
         timeout-minutes: 10
         run: node scripts/c55-local-host-post-meta-falsify.mjs --cases 100000
-      - name: Canonical repository qualification
-        timeout-minutes: 10
-        run: npm run check
       - name: Runtime root remains unchanged
         run: npm run runtime-root:verify

@@ -43,8 +43,5 @@ jobs:
       - name: Assert C56 semantic evidence
         run: |
           node -e "const a=require('/tmp/c56-selection.json'),b=require('/tmp/c56-falsification.json');if(a.status!=='PASS'||a.cases!==10000||a.architecture_lattice?.total!==1048576||a.architecture_lattice?.unique_minimum!==true||a.architecture_lattice?.minimum_cost!==20||a.all_deletion_mutants_killed!==true||!(a.long_form_draft?.mismatch>0)||!(a.long_form_draft?.unsafe>0)||a.abstraction_levels?.length<9||b.status!=='PASS'||b.cases!==100000||b.abstraction_levels?.length<9||b.candidate_oracle_mismatches!==0||b.unsafe_promotions!==0||b.false_rejects!==0||b.independence?.candidate_is_not_oracle_alias!==true)process.exit(1)"
-      - name: Canonical repository qualification
-        timeout-minutes: 15
-        run: npm run check
       - name: Runtime root remains unchanged
         run: npm run runtime-root:verify

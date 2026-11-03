@@ -258,6 +258,27 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/c45-context-root-ascii-closure.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Focused CI still runs its original regressions; global npm run check is retained in fail-closed universal ci.yml.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c55-local-host-post-meta.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Focused CI still runs its original regressions; global npm run check is retained in fail-closed universal ci.yml.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c56-local-host-session-meta.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Focused CI still runs its original regressions; global npm run check is retained in fail-closed universal ci.yml.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

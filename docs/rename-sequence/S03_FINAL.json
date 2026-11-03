@@ -1,0 +1,31 @@
+{
+  "schema": "ikant-edu-rename-sequential-step/v2",
+  "id": "S03",
+  "candidate_path": "docs/rename-sequence/S03_FINAL.json",
+  "baseline": {
+    "repo_id": 1371330383,
+    "head": "f5f42603294084d29cdb6d6e2106c0331d802536",
+    "tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943"
+  },
+  "state": "PLAN_ONLY_NO_EFFECT",
+  "supersedes_blob": "cd96a0ba89e2face76a22c7b471914054fc51193",
+  "old": "cd96a0ba89e2face76a22c7b471914054fc51193",
+  "goal": "Chiudere consumer esterni SENZA spezzare caller Actions nel passaggio old->new.",
+  "pre": "S02 PASS; census con owner di ogni caller e trigger.",
+  "do": "Per ogni consumer: A) nessun caller Actions attivo: attestare assenza; B) caller presenti: preparare PR di cambio riferimento ma NON applicare il nuovo uses: prima del rename. Concordare cutover: fermare nuovi trigger, drenare esecuzioni, provare buffering/catch-up degli eventi persi e quindi rendere innocua la finestra; aggiornare i caller DOPO S05 e prima di riaprire trigger. Se trigger non sospendibili, eventi non preservabili o owner esterno assente: NO-GO per continuita'. Verificare inoltre Pages, Packages, webhook/OAuth, MCP, deploy, provider Project e connector.",
+  "proof": [
+    "EXTERNAL: lista completa dei caller, owner e trigger; assenza oppure congelamento+drain+preservazione eventi attestati.",
+    "PROVIDER: prove dei vincoli e capacità di transizione; prompt installato OLD o phase-aware comparato.",
+    "HUMAN: owner esterni autorizzano modalita' cutover; nessuna migrazione automatica."
+  ],
+  "falsify": [
+    "Sostituisci uses: old con uses: new prima che new esista: caller fallisce.",
+    "Lascia uses: old dopo il click: GitHub non reindirizza action hosted.",
+    "Congela trigger senza buffering: eventi perduti; manca garanzia di zero-loss.",
+    "Consumer critico sconosciuto o impossibilita' di quiescenza senza downtime: NO-GO."
+  ],
+  "pass": "Assenza verificata di caller a rischio OPPURE quiescenza, preservazione eventi e switch post-click eseguibili con owner e prova. Nessun UNKNOWN critico.",
+  "stop": "EXTERNAL_ZERO_BREAK_UNPROVABLE",
+  "next": "S04",
+  "nonclaim": "Quiescenza non garantisce zero-downtime; se zero interruzioni e' requisito, richiedere prova tecnica di continuita' o NO-GO."
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "ikant-edu-rename-sequential-step/v1",
+  "id": "S07",
+  "candidate_path": "docs/rename-sequence/S07_FRESH_EDU_PROOF_CLOSE.json",
+  "baseline": {
+    "repo_id": 1371330383,
+    "head": "f5f42603294084d29cdb6d6e2106c0331d802536",
+    "tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943"
+  },
+  "state": "PLAN_ONLY_NO_EFFECT",
+  "file": "S07_FRESH_EDU_PROOF_CLOSE.json",
+  "goal": "Qualificare iKant EDU nativo senza riciclare consensi o ricevute storiche.",
+  "pre": "S06 PASS; prompt Project nuovo/installato e equivalenza verificata ove richiesta.",
+  "do": "In una NUOVA chat osservare ORIENTATION al nuovo nome, poi I ACCEPT distinto, C72 originale con receipt riaperta, EDU in altro turno, source closure C135, writer/ledger C87 e voce C125/S03 con readback same-turn. Testare fallimenti, recovery senza replay ed eventuali sessioni precedenti soggette a vecchio source-lock. Chiudere RG solo con prova owner e provider; monitoraggio demandato agli owner, non simulato dall'Host.",
+  "proof": [
+    "OWNER: receipts C72, C135/C87, C125/S03 originali e ledger/ack riaperti.",
+    "PROVIDER: prompt installato, consegna e continuita' realmente osservati.",
+    "GIT: stessa epoch nuova dei componenti consumati."
+  ],
+  "falsify": [
+    "Vecchia acceptance promossa a nuova, owner duplicato, voice Host presentata come originale.",
+    "ACTIVE da CI/hash senza receipt o senza consegna.",
+    "Sessione vecchia continua dopo drift senza decisione originale."
+  ],
+  "pass": "RG chiuso soltanto se tutti I1..I6 e L01..L26 hanno evidenza propria; altrimenti PRODUCT_NO_GO.",
+  "stop": "NATIVE_OWNER_PROVIDER_REQUALIFICATION_MISSING",
+  "next": "END_OR_EXPLICIT_REMEDIATION",
+  "note": "Il rename tecnico non implica promessa ontologica, beneficio misurato o persistenza."
+}

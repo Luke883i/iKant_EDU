@@ -1,0 +1,29 @@
+{
+  "schema": "ikant-edu-rename-sequential-step/v1",
+  "id": "S01",
+  "candidate_path": "docs/rename-sequence/S01_PREPARE_ORIGINALS.json",
+  "baseline": {
+    "repo_id": 1371330383,
+    "head": "f5f42603294084d29cdb6d6e2106c0331d802536",
+    "tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943"
+  },
+  "state": "PLAN_ONLY_NO_EFFECT",
+  "file": "S01_PREPARE_ORIGINALS.json",
+  "goal": "Preparare software phase-aware senza cambiare il nome canonico prima del click.",
+  "pre": "S00 PASS; inventario critico chiuso; branch dedicato, review V5-B.",
+  "do": "Introdurre in un contratto originale una identita' verificata (repository ID+full_name+phase+HEAD/TREE). Restare OLD_CANONICAL con iKant_LE fino alla transizione amministrativa attestata; NEW_CANONICAL solo se GitHub restituisce lo stesso ID e nuovo nome. Migrare negli originali first-contact, C72 Terms/reentry/transit/coldseed, runtime-root, ADMISSION/BOOTSTRAP, loader, source pin, plugin e altri consumer classificati. Mai due canonical simultanei.",
+  "proof": [
+    "GIT: diff dei file originali, TREE e blob post-merge; identita' unica per fase.",
+    "TEST: old mode invariato; new mode rigettato prima del cutover; spoofing ID/nome/fork respinto.",
+    "OWNER: nessun evento C72 o receipt riutilizzato per il change."
+  ],
+  "falsify": [
+    "Il nuovo nome attiva C72 prima del click.",
+    "Rimane un literal operativo non gestito.",
+    "Il resolver accetta nome senza ID autenticato o crea due canonici."
+  ],
+  "pass": "PR di preparazione approvata e merged con regressioni OLD e NEW qualificate; nuova epoch dei file modificati, senza repin di sessioni esistenti.",
+  "stop": "ORIGINAL_BINDING_OR_UNIQUE_CANONICAL_FAILURE",
+  "next": "S02",
+  "note": "Il vecchio repo rimane canonico e utilizzabile finche' non esiste l'evento GitHub del rename."
+}

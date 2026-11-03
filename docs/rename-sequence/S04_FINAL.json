@@ -1,0 +1,31 @@
+{
+  "schema": "ikant-edu-rename-sequential-step/v2",
+  "id": "S04",
+  "candidate_path": "docs/rename-sequence/S04_FINAL.json",
+  "baseline": {
+    "repo_id": 1371330383,
+    "head": "f5f42603294084d29cdb6d6e2106c0331d802536",
+    "tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943"
+  },
+  "state": "PLAN_ONLY_NO_EFFECT",
+  "supersedes_blob": "0ca98b0d095d957fa1587b2728673fbb45e69aac",
+  "old": "0ca98b0d095d957fa1587b2728673fbb45e69aac",
+  "goal": "Autorizzare un solo click e congelare un cutover effettivamente riprendibile.",
+  "pre": "S00-S03 PASS, inclusa attivita' di quarantena dei caller se necessaria.",
+  "do": "Ottenere due review ingegneristiche indipendenti e approvazione admin. Aprire eventuale finestra di cutover approvata dai consumer, bloccare trigger a rischio e leggere drain+buffer, tenendo traccia delle obbligazioni di recupero. Riaprire old full_name, repository ID, HEAD/TREE/blobs, checks provider, Project prompt, permessi e l'assenza di commit concorrenti. Legare il singolo CUTOVER_ID a tutte le prove, senza inventare nonce C72.",
+  "proof": [
+    "GITHUB: old full_name/ID e HEAD/TREE freschi, check required completati.",
+    "EXTERNAL: trigger congelati e prova di preservazione eventi, o zero caller a rischio.",
+    "HUMAN: due reviewer distinti e admin originale autorizzante.",
+    "PROVIDER: installazioni o dipendenze vitali verificate."
+  ],
+  "falsify": [
+    "Trigger attivi e caller non compatibili durante la finestra.",
+    "Perdita di eventi prevista ma non accettata/provata recuperabile.",
+    "Qualsiasi fonte del gate autocertificata dall'Host oppure HEAD mutata."
+  ],
+  "pass": "Cutover GO firmato e identity tuple fresca; no UNKNOWN obbligatori.",
+  "stop": "HUMAN_OR_EXTERNAL_CUTOVER_FENCE_OPEN",
+  "next": "S05",
+  "nonclaim": "Il pass del gate strutturale non crea autorizzazione."
+}

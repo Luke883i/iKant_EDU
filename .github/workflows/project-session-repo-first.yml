@@ -88,6 +88,20 @@ jobs:
           path: ${{ runner.temp }}/rename-2dim-a.json
           retention-days: 30
           if-no-files-found: error
+      - name: S00 full tracked-source census (fail-closed, not admin GO)
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test tests/repository-rename-inventory.test.mjs
+          node scripts/repository-rename-inventory.mjs > "$RUNNER_TEMP/rename-s00-census.json"
+          node --input-type=module -e "import fs from 'node:fs';const x=JSON.parse(fs.readFileSync(process.argv[1]));if(x.status!=='NOT_READY_FOR_RENAME'||x.tracked_paths<1000||x.c72_linked_terms_migrated!==false||x.external_action_callers!=='UNKNOWN_REQUIRES_EXTERNAL_OWNER_EVIDENCE'||x.rename_performed!==false)process.exit(1)" "$RUNNER_TEMP/rename-s00-census.json"
+      - name: S00 full tracked-source census artifact (not external proof)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-rename-s00-census-${{ github.sha }}
+          path: ${{ runner.temp }}/rename-s00-census.json
+          retention-days: 30
+          if-no-files-found: error
       - name: V5-C artifact of bounded CI observations, not original human receipts
         uses: actions/upload-artifact@v4
         with:

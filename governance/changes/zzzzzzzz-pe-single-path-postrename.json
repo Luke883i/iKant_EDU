@@ -702,6 +702,41 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
       "deletion_authorized": false
+    },
+    {
+      "path": "src/local-host-meta-prompt.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/LOCAL_HOST_META_PROMPT.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/local-host-meta-prompt.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c55-local-host-post-meta-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c56-local-host-session-meta-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
     }
   ]
 }

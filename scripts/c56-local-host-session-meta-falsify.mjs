@@ -8,7 +8,7 @@ const levels=['lexical','directive-authority','evidence-provenance','retry-tempo
 function oracleErrors(p,e){
  const z=[];
  const urls=p.match(/https?:\/\/[^\s]+/g)||[];
- if(urls.length!==1||urls[0]!=='https://github.com/Luke883i/iKant_LE.')z.push('M00_REPOSITORY');
+ if(urls.length!==1||urls[0]!=='https://github.com/Luke883i/iKant_EDU.')z.push('M00_REPOSITORY');
  if(!p.includes('[for_ai_agent_first_entrypoint]')||!p.includes('Non e un nuovo owner del NEXT')||!p.includes('delega agli owner del repository'))z.push('M01_INGRESS');
  if(!p.includes("Solo la direttiva owner-derived autorizza un'azione")||!/proiezioni, stato e chat non autorizzano (?:nulla|azioni)/.test(p))z.push('M02_AUTHORIZATION');
  if(!p.includes('consuma una direttiva')||!p.includes("esegui una volta l'azione e il carrier nominati"))z.push('M03_SINGLE_EXECUTION');
@@ -36,7 +36,7 @@ function oracleErrors(p,e){
 
 function candidateAccepts(p,e){
  const groups=[
-  /https:\/\/github\.com\/Luke883i\/iKant_LE\./.test(p)&&(p.match(/https?:\/\/[^\s]+/g)||[]).length===1,
+  /https:\/\/github\.com\/Luke883i\/iKant_EDU\./.test(p)&&(p.match(/https?:\/\/[^\s]+/g)||[]).length===1,
   /\[for_ai_agent_first_entrypoint\][\s\S]*Non e un nuovo owner del NEXT:[\s\S]*delega agli owner del repository/.test(p),
   /Solo la direttiva owner-derived autorizza un'azione/.test(p)&&/proiezioni, stato e chat non autorizzano (?:nulla|azioni)/.test(p),
   /consuma una direttiva;[\s\S]*esegui una volta l'azione e il carrier nominati;[\s\S]*non fare azioni laterali/.test(p),
@@ -60,7 +60,7 @@ function candidateAccepts(p,e){
 }
 
 const mut=[
- ['REPO','lexical',(p,e)=>[p.replace('https://github.com/Luke883i/iKant_LE.','https://example.invalid.'),e]],
+ ['REPO','lexical',(p,e)=>[p.replace('https://github.com/Luke883i/iKant_EDU.','https://example.invalid.'),e]],
  ['ENTRYPOINT','directive-authority',(p,e)=>[p.replace('[for_ai_agent_first_entrypoint]','[other_entrypoint]'),e]],
  ['NEXT_OWNER','directive-authority',(p,e)=>[p.replace('Non e un nuovo owner del NEXT','E il nuovo owner del NEXT'),e]],
  ['PROJECTION_AUTH','directive-authority',(p,e)=>[p.replace("Solo la direttiva owner-derived autorizza un'azione",'Anche le proiezioni autorizzano azioni'),e]],

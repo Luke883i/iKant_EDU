@@ -20,7 +20,7 @@ case'MIX_AFTER':return{f,input:s+' '+n+' e '+h+' '+noise[rnd()%noise.length],kin
 case'MIX_BEFORE':return{f,input:h+', '+s+' '+n,kind:'OTHER',route:'HOST',next:'CANONICAL_PREACCEPT'};
 case'CONFLICT':return{f,input:s+' '+n+' e '+e+' '+n,kind:'OTHER',route:'HOST',next:'CANONICAL_PREACCEPT'};
 case'REPEAT':return{f,input:s+' '+n+' '+s+' '+n,kind:'OTHER',route:'HOST',next:'CANONICAL_PREACCEPT'};
-case'REPO_ONLY':return{f,input:h+' https://github.com/Luke883i/iKant_LE',kind:'OTHER',route:'HOST',next:'CANONICAL_PREACCEPT'};
+case'REPO_ONLY':return{f,input:h+' https://github.com/Luke883i/iKant_EDU',kind:'OTHER',route:'HOST',next:'CANONICAL_PREACCEPT'};
 case'COLON':return{f,input:'esempio: '+s+' '+n,kind:'OTHER',route:'HOST',next:'CANONICAL_PREACCEPT'};
 case'ONLY':return{f,input:s+' soltanto '+n,kind:'OTHER',route:'HOST',next:'CANONICAL_PREACCEPT'};
 case'BASTA':return{f,input:s+' '+n+' e basta',kind:'OTHER',route:'HOST',next:'CANONICAL_PREACCEPT'};

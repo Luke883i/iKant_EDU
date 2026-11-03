@@ -8,7 +8,7 @@ const HEAD='a'.repeat(40),boot=JSON.parse(fs.readFileSync(path.join(ROOT,'BOOTST
 const blob=b=>{const x=Buffer.isBuffer(b)?b:Buffer.from(b);return crypto.createHash('sha1').update(Buffer.from('blob '+x.length+'\0')).update(x).digest('hex')};
 const identities=paths.map(p=>{const b=fs.readFileSync(path.join(ROOT,p));return{path:p,blob_sha1:blob(b),bytes:b.length}});
 const payloads=paths.map(p=>({path:p,content_utf8:fs.readFileSync(path.join(ROOT,p),'utf8')})),terms=identities.find(x=>x.path==='TERMS.md');
-const base=()=>({schema:'ikant-le-preaccept-handoff/v2',repository:'Luke883i/iKant_LE',source_head:HEAD,terms_presented:true,terms_object:{...terms},frozen:true,breached:false,pending_intent:'inizializza',orientation_objects:structuredClone(identities),orientation_payloads:structuredClone(payloads),runtime_observed_terms_presentation:false,host_attested_terms_presentation:true,authority:0});
+const base=()=>({schema:'ikant-le-preaccept-handoff/v2',repository:'Luke883i/iKant_EDU',source_head:HEAD,terms_presented:true,terms_object:{...terms},frozen:true,breached:false,pending_intent:'inizializza',orientation_objects:structuredClone(identities),orientation_payloads:structuredClone(payloads),runtime_observed_terms_presentation:false,host_attested_terms_presentation:true,authority:0});
 const manifest=issueCanonicalRelayManifest({workspace:ROOT,sourceHead:HEAD,preacceptHandoff:base(),humanInput:'I ACCEPT',acceptanceObservedMonotonicMs:10,observedMonotonicMs:11});
 const manifestValidation=validateCanonicalRelayManifest(manifest,{workspace:ROOT,sourceHead:HEAD,preacceptHandoff:base()});
 const families=[

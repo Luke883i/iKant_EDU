@@ -20,14 +20,14 @@ if(families.length!==148)throw new Error('C14 family cardinality '+families.leng
 const bit=Object.fromEntries(NODES.map((n,i)=>[n,1<<i])),FULL=(1<<NODES.length)-1;
 let seed=0xC14E2026>>>0;const rnd=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32};
 const prompts={
- TARGET_INTENT_ROOT:['inizializza iKant_LE','inizializza https://github.com/Luke883i/iKant_LE','usa Luke883i/iKant_LE e poi spiegami il runtime','apri iKant_LE e analizza il problema','https://github.com/Luke883i/iKant_LE I ACCEPT'],
- SOURCE_ORIENTATION_ROOT:['inizializza iKant_LE senza fare clone','usa solo il repository canonico','apri il repo e mantieni il mio intento','studia iKant_LE dopo il consenso','inizializza localmente il repository'],
+ TARGET_INTENT_ROOT:['inizializza iKant_EDU','inizializza https://github.com/Luke883i/iKant_EDU','usa Luke883i/iKant_EDU e poi spiegami il runtime','apri iKant_EDU e analizza il problema','https://github.com/Luke883i/iKant_EDU I ACCEPT'],
+ SOURCE_ORIENTATION_ROOT:['inizializza iKant_EDU senza fare clone','usa solo il repository canonico','apri il repo e mantieni il mio intento','studia iKant_EDU dopo il consenso','inizializza localmente il repository'],
  CONSENT_ROOT:['I ACCEPT','i accept','"I ACCEPT"','I ACCEPT please','accetto i termini'],
- SOURCE_BOUND_TRANSFER:['avvia iKant_LE in questa chat','materializza il runtime dopo I ACCEPT','inizializza e rispondi alla richiesta','usa il runtime esatto del commit corrente','riprendi la mia richiesta dopo il bootstrap'],
- VERIFIED_LOCAL_ROOT:['inizializza il runtime locale','avvia iKant_LE e verifica i byte','usa il runtime materializzato','inizializza e poi analizza il repository','continua dopo la materializzazione'],
- LIVE_HOST_PROBE:['inizializza iKant_LE qui','usa questa sessione chat','avvia localmente','inizializza ambiente controllato','attiva iKant_LE'],
- RECEIPT_GATED_ACTIVE_COMMIT:['inizializza e poi spiegami il reticolo','avvia iKant_LE e continua','usa iKant_LE per analizzare questa richiesta','inizializza senza perdere la domanda','attiva e rispondi una sola volta'],
- E2E_DEADLINE:['inizializza iKant_LE','avvia subito iKant_LE','attiva la sessione','inizializza e continua','bootstrap iKant_LE']
+ SOURCE_BOUND_TRANSFER:['avvia iKant_EDU in questa chat','materializza il runtime dopo I ACCEPT','inizializza e rispondi alla richiesta','usa il runtime esatto del commit corrente','riprendi la mia richiesta dopo il bootstrap'],
+ VERIFIED_LOCAL_ROOT:['inizializza il runtime locale','avvia iKant_EDU e verifica i byte','usa il runtime materializzato','inizializza e poi analizza il repository','continua dopo la materializzazione'],
+ LIVE_HOST_PROBE:['inizializza iKant_EDU qui','usa questa sessione chat','avvia localmente','inizializza ambiente controllato','attiva iKant_EDU'],
+ RECEIPT_GATED_ACTIVE_COMMIT:['inizializza e poi spiegami il reticolo','avvia iKant_EDU e continua','usa iKant_EDU per analizzare questa richiesta','inizializza senza perdere la domanda','attiva e rispondi una sola volta'],
+ E2E_DEADLINE:['inizializza iKant_EDU','avvia subito iKant_EDU','attiva la sessione','inizializza e continua','bootstrap iKant_EDU']
 };
 const hist=new Uint32Array(256),strata={typical:0,edge:0,stress:0},coverage=Object.fromEntries(families.map(x=>[x.node+':'+x.name,0])),promptKinds={},signatures=new Set();
 for(let i=0;i<CASES;i++){

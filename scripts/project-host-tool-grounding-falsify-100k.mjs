@@ -5,7 +5,7 @@ import {planHostToolGrounding,validateGroundingMap} from '../host/project-host-t
 const N=100000,seed=0x71a2c72e,sha='a'.repeat(40),other='b'.repeat(40);
 const five=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md'];
 const witness={source_head:sha,host_link_displayed:true,distinct_human_message_observed:true,
- terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+sha+'/TERMS.md',
+ terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+sha+'/TERMS.md',
  pinned_blob_shas:Object.fromEntries(five.map(x=>[x,other]))};
 const base=()=>({phase:'POST_ACCEPT',humanMessage:'I ACCEPT',freshHumanTurn:true,
  ownerOutcome:'NOT_INVOKED',sourceHead:sha,liveHead:sha,priorTurnEvidence:witness});

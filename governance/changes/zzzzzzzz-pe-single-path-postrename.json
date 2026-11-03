@@ -401,6 +401,62 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
       "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c14-chat-bootstrap-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c42-bootstrap-ontological-closure-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c43-bootstrap-recovery-hardening-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c59-canonical-authority-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c62-evidence-runtime-cut-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-host-effect-falsify-1m.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-host-tool-grounding-falsify-100k.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c58-runtime-lifecycle-gate-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
     }
   ]
 }

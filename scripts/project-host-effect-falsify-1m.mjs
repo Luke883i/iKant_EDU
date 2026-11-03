@@ -7,7 +7,7 @@ import {createHash} from 'node:crypto';
 import fs from 'node:fs';
 import {decideK0Effect,K0_SCHEMA,FIRST_FILES,CARRIER_ORDER} from '../host/project-host-effect-decision.mjs';
 const TOTAL=1_000_000,H='a'.repeat(40),H2='c'.repeat(40);
-const TERMS='https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md';
+const TERMS='https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md';
 let state=0x193c7204;
 function rnd(){state^=state<<13;state^=state>>>17;state^=state<<5;return state>>>0;}
 const noEffect=()=>{throw Error('UNEXPECTED_EFFECT_CALLED')};

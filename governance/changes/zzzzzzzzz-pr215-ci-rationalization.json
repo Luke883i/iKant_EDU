@@ -328,6 +328,13 @@
       "deletion_authorized": false
     },
     {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Correct negative test to actually remove active successor from live set; V5B fail-closed retirement check remains unchanged.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

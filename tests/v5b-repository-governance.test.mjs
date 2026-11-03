@@ -85,5 +85,5 @@ test('V5B retirement demands exact absent runner, active replacement, preserved 
  assert.deepEqual(auditWorkflowRetirements(before,live,m,[...live,'tests/a.test.mjs']).errors,[]);
  assert.ok(auditWorkflowRetirements(before,live,{paths:before},live).errors.some(e=>e.startsWith('UNREGISTERED_WORKFLOW_REMOVAL')));
  assert.ok(auditWorkflowRetirements(before,live,m,live).errors.some(e=>e.startsWith('RETIRED_WORKFLOW_TEST_MISSING')));
- assert.ok(auditWorkflowRetirements(before,live,m,['tests/a.test.mjs']).errors.some(e=>e.startsWith('REPLACEMENT_NOT_ACTIVE')));
+ assert.ok(auditWorkflowRetirements(before,[],m,['tests/a.test.mjs']).errors.some(e=>e.startsWith('REPLACEMENT_NOT_ACTIVE')));
 });

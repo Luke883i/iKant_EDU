@@ -15,7 +15,7 @@ test('C59 Project ROM v2 document is generated exactly from the repository contr
  assert.equal(c.schema,'ikant-le-project-host-rom/v2');
  assert.equal(c.role,'COLD_START_ROM_ONLY');
  assert.equal(c.authority,0);
- assert.equal(c.repository,'https://github.com/Luke883i/iKant_LE');
+ assert.equal(c.repository,'https://github.com/Luke883i/iKant_EDU');
  assert.deepEqual(c.preaccept.direct_paths,['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md']);
  assert.equal(c.preaccept.exact_acceptance,'I ACCEPT');
  assert.equal(c.postaccept.invoke_only_repository_named_owner,true);

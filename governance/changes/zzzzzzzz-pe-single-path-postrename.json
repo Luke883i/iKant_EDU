@@ -646,6 +646,62 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Close C17-C20 postrename source-positive regression without relaxing original C72: copy C72 contract into legacy physical runtime and read back",
       "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-bootstrap-d123.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-pe-retrograde.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c61-cold-producer.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c109-chat-shell.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/c109-chat-shell.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-oneshell-phases.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/project-host-rom.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c59-project-host-rom.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
     }
   ]
 }

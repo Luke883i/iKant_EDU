@@ -230,6 +230,13 @@
       "deletion_authorized": false
     },
     {
+      "path": "scripts/local-host-meta-prompt-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Correct C26 prompt-falsification oracle to canonical EDU URL and explicitly reject retired LE source URL.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

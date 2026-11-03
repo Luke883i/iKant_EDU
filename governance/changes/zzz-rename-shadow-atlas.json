@@ -1,0 +1,28 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/zzz-rename-shadow-atlas.json",
+  "source_main": "94dd1c20f5093f0f27ed03d2725b3715c47c6596",
+  "baseline_source_tree": "3848555b2c33cfa32f9a364f43037acc3bc6e1f3",
+  "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
+  "human_signoffs": 0,
+  "automatic_approval": false,
+  "rename_executed": false,
+  "owner_effects_executed": false,
+  "paths": [
+    {
+      "path": "governance/changes/zzz-rename-shadow-atlas.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Record sorted extension for the prospectively tested rename document atlas without granting rename authority"
+    },
+    {
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Regenerate exact Markdown atlas for S01 rename test report after the previously registered D123 atlas change",
+      "supersedes_register": "governance/changes/zz-v5g-bootstrap-d123.json",
+      "supersedes_source_main": "4145d932fb291872aafe19dcd72298d16c2785c6"
+    }
+  ]
+}

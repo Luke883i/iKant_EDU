@@ -46,15 +46,6 @@
       "deletion_authorized": false,
       "supersedes_register": "governance/changes/z-rename-s01-s03.json",
       "supersedes_source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44"
-    },
-    {
-      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
-      "operation": "MODIFY",
-      "human_review": "REVIEW_REQUIRED",
-      "reason": "Regenerate exact README-to-DoD Markdown atlas after adding S01 prospective rename evidence document",
-      "deletion_authorized": false,
-      "supersedes_register": "governance/changes/zz-v5g-bootstrap-d123.json",
-      "supersedes_source_main": "4145d932fb291872aafe19dcd72298d16c2785c6"
     }
   ]
 }

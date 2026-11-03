@@ -131,3 +131,47 @@ test('D123: 4096 deterministically altered paths, heads, sha identifiers fail cl
   n++;
  }assert.equal(n,4096);
 });
+
+test('D3 adversarial checkout: 6 prewrite stops for forged remote bytes, manifest, HEAD, TREE, cache and destination',
+ {skip:!gitAvailable},()=>sandbox(async s=>{
+ const git=(...a)=>execFileSync('git',a,{cwd:top,encoding:'utf8'}).trim();
+ const head=git('rev-parse','HEAD'),tree=git('rev-parse','HEAD^{tree}');
+ const treeEntries=execFileSync('git',['ls-tree','-r','-t','-z','HEAD'],{cwd:top}).toString('utf8')
+  .split('\0').filter(Boolean).map(line=>{const m=line.match(/^([0-7]{6}) (blob|tree|commit) ([a-f0-9]{40})\t(.+)$/u);
+   assert.ok(m);return{mode:m[1],type:m[2],sha:m[3],path:m[4]};});
+ const treeMap=new Map(treeEntries.map(e=>[e.path,e]));
+ const paths=JSON.parse(fs.readFileSync(path.join(top,'contracts/project-session-source.json'),'utf8')).paths;
+ const entries=paths.map(p=>({path:p,sha:treeMap.get(p).sha}));
+ const ten=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md',
+  'contracts/c72-public-mode-admission-v2.json','host/c72-public-mode-admission.mjs',
+  'host/project-c72-postaccept-reentry.mjs','host/project-c72-receipt-transit.mjs',
+  'host/project-c72-coldstart-seed.mjs'];
+ for(const p of ten){storeBootstrapCache({cacheRoot:s.cacheRoot,head,tree,liveHead:head,
+  entry:{path:p,sha:treeMap.get(p).sha},bytes:fs.readFileSync(path.join(top,p))});}
+ const originalFetch=async p=>fs.readFileSync(path.join(top,p));
+ const base={cacheRoot:s.cacheRoot,head,tree,liveHead:head,treeEntries,entries,manifestPaths:paths,
+  destination:s.destination,fetchPinned:originalFetch,readMain:async()=>head};
+ const firstMiss=paths.find(p=>!ten.includes(p));
+ let denied=0;
+ await assert.rejects(materializeD123WithOriginalLoader({...base,fetchPinned:async p=>{
+  const b=await originalFetch(p);if(p!==firstMiss)return b;const tamper=Buffer.from(b);tamper[0]^=1;return tamper;
+ }}),/D3_PINNED_BLOB_INVALID/);assert.equal(fs.existsSync(s.destination),false);denied++;
+ await assert.rejects(materializeD123WithOriginalLoader({...base,fetchPinned:async p=>{
+  const b=await originalFetch(p);if(p!=='contracts/project-session-source.json')return b;
+  return Buffer.concat([b,Buffer.from(' ') ]);
+ }}),/D3_MANIFEST_BLOB_INVALID/);assert.equal(fs.existsSync(s.destination),false);denied++;
+ let reads=0;await assert.rejects(materializeD123WithOriginalLoader({...base,
+  readMain:async()=>++reads===1?head:DRIFT}),/STOP_SOURCE_LOCK_STALE/);
+ assert.equal(reads,2);assert.equal(fs.existsSync(s.destination),false);denied++;
+ const forged=treeEntries.map(e=>e.path==='README.md'?{...e,sha:DRIFT}:e);
+ await assert.rejects(materializeD123WithOriginalLoader({...base,treeEntries:forged}),/D3_TREE_BINDING_INVALID/);
+ assert.equal(fs.existsSync(s.destination),false);denied++;
+ const filename=path.join(s.cacheRoot,fs.readdirSync(s.cacheRoot)[0]);const original=fs.readFileSync(filename);
+ const damaged=Buffer.from(original);damaged[20]^=1;fs.writeFileSync(filename,damaged);
+ await assert.rejects(materializeD123WithOriginalLoader(base));assert.equal(fs.existsSync(s.destination),false);denied++;
+ fs.writeFileSync(filename,original);
+ fs.mkdirSync(s.destination,{mode:0o700});fs.writeFileSync(path.join(s.destination,'PRESERVE'),'fixed');
+ await assert.rejects(materializeD123WithOriginalLoader(base),/D3_DESTINATION_NOT_FRESH/);
+ assert.equal(fs.readFileSync(path.join(s.destination,'PRESERVE'),'utf8'),'fixed');denied++;
+ assert.equal(denied,6);
+}));

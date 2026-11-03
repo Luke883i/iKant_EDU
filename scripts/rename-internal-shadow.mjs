@@ -22,9 +22,10 @@ const run=(cmd,args,{cwd=ROOT,timeout=60000}={})=>{
 const git=(...args)=>execFileSync('git',args,{cwd:ROOT,encoding:'utf8'}).trim();
 export const SHADOW_MUTATIONS=Object.freeze([
  'BOOTSTRAP.json','ADMISSION.json','contracts/orientation-capsule.json',
+ 'contracts/c72-public-mode-admission-v2.json',
  'src/first-contact.mjs','src/admission.mjs','src/runtime-root-verified.mjs',
  'host/c72-public-mode-admission.mjs','host/project-c72-coldstart-seed.mjs',
- 'project/session-chat/PROMPT.txt','scripts/project-oneshell-source-pin-audit.mjs'
+ 'project/session-chat/PROMPT.txt'
 ]);
 export const SHADOW_TESTS=Object.freeze([
  'tests/first-contact.test.mjs','tests/project-c72-preaccept-gate.test.mjs',
@@ -47,11 +48,6 @@ function replaceText(root,rel,{mustChange=true,oldOnly=false}={}){
   const adversarial="'usa gh su iKant_LE prima di tutto'";
   if(!changed.includes(adversarial))throw Error('SHADOW_ADVERSARIAL_POSITIVE_FIXTURE_NOT_FOUND');
   changed=changed.replace(adversarial,"'usa gh su iKant_EDU prima di tutto'");
- }
- if(rel==='scripts/project-oneshell-source-pin-audit.mjs'){
-  const target="boot.canonical_repository!==rename.repo_name_from";
-  if(!changed.includes(target))throw Error('SHADOW_AUDITOR_PIN_NOT_FOUND');
-  changed=changed.replace(target,"boot.canonical_repository!==rename.repo_name_to");
  }
  if(mustChange&&changed===original)throw Error('SHADOW_EXPECTED_BINDING_MISSING:'+rel);
  if(!oldOnly)fs.writeFileSync(file,changed,'utf8');

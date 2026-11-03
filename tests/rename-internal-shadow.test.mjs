@@ -19,8 +19,9 @@ test('all identity-bearing original boundaries and root generator are targeted',
  for(const p of ['BOOTSTRAP.json','ADMISSION.json','contracts/orientation-capsule.json',
   'src/first-contact.mjs','src/admission.mjs','src/runtime-root-verified.mjs',
   'host/c72-public-mode-admission.mjs','host/project-c72-coldstart-seed.mjs',
-  'project/session-chat/PROMPT.txt','scripts/project-oneshell-source-pin-audit.mjs'])
+  'contracts/c72-public-mode-admission-v2.json','project/session-chat/PROMPT.txt'])
   assert(SHADOW_MUTATIONS.includes(p),p);
+ assert.equal(SHADOW_MUTATIONS.includes('scripts/project-oneshell-source-pin-audit.mjs'),false);
  for(const p of SHADOW_TESTS)assert(fs.existsSync(new URL('../'+p,import.meta.url)));
  const bootstrap=JSON.parse(read('BOOTSTRAP.json'));
  assert.equal(bootstrap.canonical_repository,'Luke883i/iKant_LE');

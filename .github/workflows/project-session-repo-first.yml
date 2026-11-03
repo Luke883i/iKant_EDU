@@ -178,6 +178,26 @@ jobs:
           path: ${{ runner.temp }}/rename-s01-shadow.json
           retention-days: 30
           if-no-files-found: warn
+      - name: Rename S01 original source-epoch and zero-checkout C72 regressions
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test tests/repository-rename-install-phase.test.mjs tests/rename-internal-shadow.test.mjs
+          node scripts/project-oneshell-source-pin-audit.mjs metadata
+      - name: Rename S03 one-million pre-seeded semantic candidate mutations
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/repository-rename-million.mjs "$RUNNER_TEMP/ikant-rename-1m-report.json" > "$RUNNER_TEMP/ikant-rename-1m-report-stdout.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.negative_cases!==1000000||r.negative_rejected!==1000000||r.positive_admitted!==2000||r.rename_go!==false||r.owner_invoked!==false||r.provider_attested!==false||r.failures.length)process.exit(1)" "$RUNNER_TEMP/ikant-rename-1m-report.json"
+      - name: Upload semantic falsification artifact (not owner or provider evidence)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rename-identity-one-million-${{ github.sha }}
+          path: ${{ runner.temp }}/ikant-rename-1m-report.json
+          retention-days: 30
+          if-no-files-found: warn
       - name: V5-C artifact of bounded CI observations, not original human receipts
         uses: actions/upload-artifact@v4
         with:

@@ -27,7 +27,8 @@ function witnessEdge(q){
  if(q?.ownerOutcome!=='NOT_INVOKED')return 'C72_OWNER_ALREADY_ATTEMPTED_OR_UNKNOWN';
  if(!obj(w)||!H40.test(w.source_head||'')||w.host_link_displayed!==true||
     w.distinct_human_message_observed!==true||!obj(w.pinned_blob_shas)||
-    w.terms_link!=='https://github.com/Luke883i/iKant_LE/blob/'+w.source_head+'/TERMS.md'||
+    !['Luke883i/iKant_LE','Luke883i/iKant_EDU'].some(name=>
+     w.terms_link==='https://github.com/'+name+'/blob/'+w.source_head+'/TERMS.md')||
     FIRST.some(p=>!H40.test(w.pinned_blob_shas[p]||'')))return 'C72_ORIENTATION_WITNESS_MISSING';
  if(!H40.test(q.liveHead||'')||q.liveHead!==w.source_head)return 'STOP_SOURCE_LOCK_STALE';
  if(!obj(q.expectedBlobShas)||C72_COLDSTART_FILES.some(p=>!H40.test(q.expectedBlobShas[p]||'')))
@@ -166,6 +167,21 @@ export async function executeC72Coldstart(q,{seedPath=fileURLToPath(import.meta.
  }
  let files;
  try{files=readSources(q);}catch(e){return stop(String(e.message||'C72_SOURCE_UNKNOWN'));}
+ // C72 zero-checkout chooses exactly one canonical name from verified ORIGINAL
+ // staged bytes, never from a caller-supplied alias, redirect or success flag.
+ try{
+  const boot=JSON.parse(files.get('BOOTSTRAP.json').toString('utf8'));
+  const adm=JSON.parse(files.get('ADMISSION.json').toString('utf8'));
+  const admission=JSON.parse(files.get('contracts/c72-public-mode-admission-v2.json').toString('utf8'));
+  const name=boot.canonical_repository;
+  if(boot.canonical_branch!=='main'||!
+     ['Luke883i/iKant_LE','Luke883i/iKant_EDU'].includes(name)||
+     adm.repository!==name||
+     admission?.source_identity?.repository_id!==1371330383||
+     admission?.source_identity?.canonical_repository!==name||
+     q.priorTurnEvidence.terms_link!=='https://github.com/'+name+'/blob/'+q.liveHead+'/TERMS.md')
+   return stop('C72_CANONICAL_SOURCE_EPOCH_MISMATCH');
+ }catch{return stop('C72_CANONICAL_SOURCE_EPOCH_UNREADABLE');}
  if(projectTransitBytes!==null){
   try{
    const pinned=JSON.parse(files.get('BOOTSTRAP.json').toString('utf8'))

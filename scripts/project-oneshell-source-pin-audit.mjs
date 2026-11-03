@@ -26,7 +26,7 @@ const contract=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/project-ones
 const errors=[];
 if(boot.canonical_branch!=='main'||boot.canonical_repository!==admission.repository||
  orientation.canonical_repository!=='https://github.com/'+boot.canonical_repository||
- boot.canonical_repository!==rename.repo_name_from)
+ ![rename.repo_name_from,rename.repo_name_to].includes(boot.canonical_repository))
  errors.push('CANONICAL_SOURCE_NOT_MAIN'); // Phase OLD only; never auto-promote aliases.
 if(boot.project_session?.postaccept_onezip_fallback?.source_epoch!=='FROZEN_COMMIT_UNTIL_NEW_SESSION')errors.push('ONEZIP_SESSION_EPOCH_INVALID');
 if(contract.source_policy!=='MAIN_COMMIT_FROZEN_FOR_SESSION_NOT_A_PR_REF')errors.push('HUMANIST_SOURCE_POLICY_INVALID');
@@ -36,6 +36,8 @@ if(/const\s+SOURCE\s*=\s*['"][a-f0-9]{40}['"]|source_head:\s*SOURCE/u.test(brand
  errors.push('HISTORICAL_ASSET_COMMIT_MISUSED_AS_RUNTIME_SOURCE_HEAD');
 
 const report={schema:'ikant-le-shell-main-pin-audit/v1',scope:dirs,files_checked:files.length,
+ source_phase:boot.canonical_repository===rename.repo_name_from?'OLD':boot.canonical_repository===rename.repo_name_to?'FUTURE_NEW_SOURCE_ONLY':'INVALID',
+ provider_identity_attested:false,rename_go:false,
  historical_pr_mentions_files:legacyMentions,pr_runtime_ref_findings:findings,errors,
  main_is_repository_of_record:true,session_is_immutable_main_commit:true,
  historical_PR_dependencies_are_not_proven_source_pins:true,

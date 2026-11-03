@@ -56,5 +56,18 @@
     "terms_body_presented": false,
     "terms_read_attested": false,
     "legacy_verbatim_unchanged": true
+  },
+  "source_identity": {
+    "repository_id": 1371330383,
+    "canonical_repository": "Luke883i/iKant_LE",
+    "planned_repository": "Luke883i/iKant_EDU",
+    "single_canonical_per_source_epoch": true,
+    "required_match": [
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "pinned_terms_link"
+    ],
+    "new_name_does_not_activate_automatically": true,
+    "provider_readback_is_separate": true
   }
 }

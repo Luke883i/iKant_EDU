@@ -14,7 +14,11 @@ const CONTRACT=JSON.parse(readFileSync(new URL('../contracts/c72-public-mode-adm
 // repository-scope source auditor, NOT a hidden optional/fallback local read.
 // Switching this owner requires a separately qualified original source epoch.
 export function c72SourceRepository(){
- return 'Luke883i/iKant_LE';
+ const name=CONTRACT?.source_identity?.canonical_repository;
+ if(CONTRACT?.source_identity?.repository_id!==1371330383||
+    !['Luke883i/iKant_LE','Luke883i/iKant_EDU'].includes(name))
+  throw Error('C72_CANONICAL_SOURCE_UNQUALIFIED');
+ return name;
 }
 export function c72LinkedTermsURL(sourceHead){
  if(!/^[a-f0-9]{40}$/.test(sourceHead||''))throw Error('C72_SOURCE_HEAD_INVALID');

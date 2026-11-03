@@ -279,6 +279,20 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/c57-host-binding-aware-meta.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Specialized negative and runtime tests remain intact; universal npm run check remains fail-closed in ci.yml.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c58-runtime-lifecycle-gate.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Specialized negative and runtime tests remain intact; universal npm run check remains fail-closed in ci.yml.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

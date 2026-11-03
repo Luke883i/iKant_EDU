@@ -60,8 +60,6 @@ jobs:
         run: /tmp/c58-host-falsify --mode full --cases 1000000000 > /tmp/c58-full-1b.json
       - name: Runtime root verify
         run: npm run runtime-root:verify
-      - name: Canonical repository check
-        run: npm run check
       - name: Upload C58 evidence
         if: always()
         uses: actions/upload-artifact@v4

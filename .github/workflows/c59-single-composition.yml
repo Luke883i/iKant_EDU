@@ -131,5 +131,3 @@ jobs:
           diff -u artifacts/qualification/c59-runtime-closure-falsification-100k.json /tmp/c59-runtime-closure.json
       - name: Runtime root exact and current
         run: npm run runtime-root:verify
-      - name: Repository check
-        run: npm run check

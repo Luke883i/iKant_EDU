@@ -1,7 +1,7 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "governance/changes/rename-ikant-edu-2dim.json",
+  "self_path": "governance/changes/z-rename-2dim.json",
   "source_main": "1de5b51a2578e31547e4ef98e7d35d55926d05a3",
   "baseline_source_tree": "b5bcce4efcaca9209217002ad4900f2f72950a77",
   "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
@@ -43,10 +43,12 @@
       "operation": "MODIFY",
       "reason": "Append bounded read-only 2DiM tests and report to existing CI without suppressing legacy checks",
       "human_review": "REVIEW_REQUIRED",
-      "deletion_authorized": false
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/v5e-cognition.json",
+      "supersedes_source_main": "d1fe2d1ac9988e53907baf790b9332d017e0eed6"
     },
     {
-      "path": "governance/changes/rename-ikant-edu-2dim.json",
+      "path": "governance/changes/z-rename-2dim.json",
       "operation": "ADD",
       "reason": "V5-B change record, review required and no automatic authorization",
       "human_review": "REVIEW_REQUIRED",
@@ -57,7 +59,9 @@
       "operation": "MODIFY",
       "reason": "Regenerate exact documentation ontology for newly added E2E rename runbook",
       "human_review": "REVIEW_REQUIRED",
-      "deletion_authorized": false
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/v5b-root-archive.json",
+      "supersedes_source_main": "0b86fce541939d600bfd8565b97404ad64795185"
     }
   ]
 }

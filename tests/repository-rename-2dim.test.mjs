@@ -47,8 +47,8 @@ test('2DIM read-only preflight cannot declare ADMIN READY from old repo',()=>{
  assert.equal(r.precommit_only,true);
  assert.equal(r.native_owner_receipts_attested,false);
  assert.equal(r.administrator_rename_executed,false);
- assert.equal(r.local_contract_pins.bootstrap,'Luke883i/iKant_LE');
- assert.equal(r.local_contract_pins.admission,'Luke883i/iKant_LE');
+ assert.equal(r.local_contract_pins.bootstrap,'Luke883i/iKant_EDU');
+ assert.equal(r.local_contract_pins.admission,'Luke883i/iKant_EDU');
  assert.equal(r.local_contract_pins.catalog,'Luke883i/iKant_LE');
  assert.ok(r.hard_stops.includes('C72_LINKED_TERMS_BINDINGS_UNMIGRATED'));
 });

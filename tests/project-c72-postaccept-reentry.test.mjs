@@ -12,7 +12,7 @@ const git=(...args)=>execFileSync('git',args,{cwd:new URL('../',import.meta.url)
 const H=git('rev-parse','HEAD');
 const paths=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md'];
 const doc=path=>{const content=readFileSync(new URL('../'+path,import.meta.url),'utf8');const bytes=Buffer.from(content);const sha=createHash('sha1').update(Buffer.from(`blob ${bytes.length}\0`)).update(bytes).digest('hex');assert.equal(sha,git('rev-parse','HEAD:'+path));return{path,source_head:H,content,blob_sha1:sha}};
-const docs=paths.map(doc), prior={pinned_blob_shas:Object.fromEntries(docs.map(d=>[d.path,d.blob_sha1])),source_head:H,terms_link:`https://github.com/Luke883i/iKant_LE/blob/${H}/TERMS.md`,host_link_displayed:true,distinct_human_message_observed:true};
+const docs=paths.map(doc), prior={pinned_blob_shas:Object.fromEntries(docs.map(d=>[d.path,d.blob_sha1])),source_head:H,terms_link:`https://github.com/Luke883i/iKant_EDU/blob/${H}/TERMS.md`,host_link_displayed:true,distinct_human_message_observed:true};
 const base=()=>({sourceHead:H,liveHead:H,humanMessage:'I ACCEPT',priorTurnEvidence:prior,documents:docs});
 test('postaccept original C72 owner only: linked receipts, introduction, EDU selection',()=>{
  const a=reenterC72V2PostAccept(base());assert.equal(a.ok,true,JSON.stringify(a));

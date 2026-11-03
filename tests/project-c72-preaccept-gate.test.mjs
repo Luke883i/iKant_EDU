@@ -14,7 +14,7 @@ const create=()=>{const calls=[];const gate=createProjectC72PreacceptGate({
 test('complete preaccept: exactly HEAD + five pinned documents, freeze, original C72',async()=>{
  const {calls,gate}=create();const r=await gate.orient();
  assert.equal(r.ok,true);assert.deepEqual(calls,['HEAD',...files]);
- assert.equal(r.documents.length,5);assert.equal(r.terms_link,`https://github.com/Luke883i/iKant_LE/blob/${H}/TERMS.md`);
+ assert.equal(r.documents.length,5);assert.equal(r.terms_link,`https://github.com/Luke883i/iKant_EDU/blob/${H}/TERMS.md`);
  assert.equal(r.original_offer.terms_read_attested,false);
  assert.equal(gate.accept('I ACCEPT').ok,false); // link display has not been observed
  assert.equal(gate.attestTermsLinkDisplayed({actuallyDisplayed:true}).ok,true);

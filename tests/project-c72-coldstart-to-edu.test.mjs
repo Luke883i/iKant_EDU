@@ -19,7 +19,7 @@ test('original C72 cold seed feeds separately selected original EDU and P1 decis
    freshHumanTurn:true,ownerOutcome:'NOT_INVOKED',liveHead:head,seedBlobSha1:kit.seed.blob_sha1,
    expectedBlobShas:Object.fromEntries(kit.files.map(d=>[d.path,d.blob_sha1])),
    priorTurnEvidence:{source_head:head,host_link_displayed:true,distinct_human_message_observed:true,
-    terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+    terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
     pinned_blob_shas:Object.fromEntries(kit.files.slice(0,5).map(d=>[d.path,d.blob_sha1]))},
    sourcePacket:kit.files.map(d=>({path:d.path,contentBase64:d.contentBase64}))};
   const run=spawnSync(process.execPath,[seed],

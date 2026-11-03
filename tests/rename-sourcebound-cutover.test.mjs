@@ -16,12 +16,12 @@ const next=()=>({repo_id:1371330383,source_repository:NEW,bootstrap_repository:N
  aliases:[NEW],old_receipt_reused:false,native_owner_proven:false,
  provider_installed_proven:false,authority:0});
 
-test('old first-contact remains exact; future name without source identity cannot become canonical',()=>{
- const old=compileFirstContactPlan('GitHub '+OLD);
- assert.equal(old.recognized,true);
- assert.equal(old.repository,OLD);
- assert.equal(old.authority,0);
- assert.equal(compileFirstContactPlan('GitHub '+NEW).recognized,false);
+test('new first-contact exact; previous repository name cannot be authority',()=>{
+ const current=compileFirstContactPlan('GitHub '+NEW);
+ assert.equal(current.recognized,true);
+ assert.equal(current.repository,NEW);
+ assert.equal(current.authority,0);
+ assert.equal(compileFirstContactPlan('GitHub '+OLD).recognized,false);
  assert.equal(referencesCanonicalRepository('https://github.com/Luke883i/iKant_EDU-fork'),false);
 });
 
@@ -55,7 +55,7 @@ test('original runtime-root source identity and all members are pinned to actual
  const b=JSON.parse(read('BOOTSTRAP.json'));
  const a=JSON.parse(read('ADMISSION.json'));
  const c=JSON.parse(read('contracts/c72-public-mode-admission-v2.json'));
- assert.equal(b.canonical_repository,OLD);
+ assert.equal(b.canonical_repository,NEW);
  assert.equal(a.repository,b.canonical_repository);
  assert.equal(c.source_identity.canonical_repository,b.canonical_repository);
  const d=runtimeRootDescriptor();
@@ -80,9 +80,9 @@ test('runtime validation refuses an inconsistent independently materialized sour
    fs.writeFileSync(dest,read(rel));
   }
   const d=runtimeRootDescriptor();
-  const input={schema:'ikant-le-activation-executor/v1',repository:OLD,
+  const input={schema:'ikant-le-activation-executor/v1',repository:NEW,
    source_head:H,runtime_root_sha256:d.runtime_root_sha256};
-  const a=JSON.parse(read('ADMISSION.json'));a.repository=NEW;
+  const a=JSON.parse(read('ADMISSION.json'));a.repository=OLD;
   fs.writeFileSync(path.join(temp,'ADMISSION.json'),JSON.stringify(a));
   assert.throws(()=>validateActivationExecutorReceipt(input,{
    workspace:temp,sourceHead:H,descriptor:d,requireSourceObjectReadback:false

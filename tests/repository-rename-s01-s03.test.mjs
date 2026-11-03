@@ -20,22 +20,22 @@ const H='a'.repeat(40),D='b'.repeat(64);
 const sha=b=>createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
 const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex');
 
-test('S01 old canonical repository remains the only operative C72 source',()=>{
- assert.equal(boot.canonical_repository,contract.repo_name_from);
+test('S01 postrename canonical repository is the unique operative C72 source',()=>{
+ assert.equal(boot.canonical_repository,contract.repo_name_to);
  assert.equal(admission.repository,boot.canonical_repository);
  assert.equal(boot.canonical_branch,'main');
- assert.equal(c72SourceRepository(),contract.repo_name_from);
- assert.equal(c72LinkedTermsURL(H),'https://github.com/'+contract.repo_name_from+'/blob/'+H+'/TERMS.md');
+ assert.equal(c72SourceRepository(),contract.repo_name_to);
+ assert.equal(c72LinkedTermsURL(H),'https://github.com/'+contract.repo_name_to+'/blob/'+H+'/TERMS.md');
  for(const wrong of ['0'.repeat(39),'z'.repeat(40),'','HEAD','main'])assert.throws(()=>c72LinkedTermsURL(wrong));
 });
 
-test('S02 original linked offer bytes and receipt digest are unchanged at OLD phase',()=>{
+test('S02 original linked owner digest preserves exact NEW source-bound Terms',()=>{
  const offer=issueC72V2LinkedTermsOffer({sourceHead:H,termsDigest:D});
  const original=issueC72V2TermsOffer({sourceHead:H,termsDigest:D});
  const {receipt_sha256,...body}=original;
  const expected={
   ...body,presentation:'PINNED_DOCUMENT_LINK',
-  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md',
+  terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md',
   terms_body_presented:false,terms_read_attested:false
  };
  assert.equal(offer.receipt_sha256,hash(expected));
@@ -48,7 +48,7 @@ test('S02 original linked offer bytes and receipt digest are unchanged at OLD ph
   assert.equal(x.active,false);
   assert.equal(x.owner_receipt_issued,false);
  }
- const spoofed={...offer,terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md'};
+ const spoofed={...offer,terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md'};
  assert.equal(acceptC72V2LinkedTerms({offer:spoofed,humanMessage:'I ACCEPT',termsLinkPresented:true}).active,false);
 });
 

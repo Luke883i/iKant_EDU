@@ -1,0 +1,27 @@
+{
+  "schema": "ikant-edu-rename-sequential-step/v2",
+  "id": "S05",
+  "candidate_path": "docs/rename-sequence/S05_FINAL.json",
+  "baseline": {
+    "repo_id": 1371330383,
+    "head": "f5f42603294084d29cdb6d6e2106c0331d802536",
+    "tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943"
+  },
+  "state": "PLAN_ONLY_NO_EFFECT",
+  "supersedes_blob": "fa3aae7561416d9b0979d338fd3f32766135c41a",
+  "old": "fa3aae7561416d9b0979d338fd3f32766135c41a",
+  "goal": "Click amministrativo singolo con caller critici in stato di transizione sicuro.",
+  "pre": "S04 PASS; CUTOVER_ID; quiescenza o assenza dei caller incompatibili verificata.",
+  "do": "Admin originale rinomina una volta lo STESSO repository in GitHub Settings da iKant_LE a iKant_EDU. Non tocca C72, ledger o receipt e non crea seconda origine. Se click ambiguo, sola ispezione READ-ONLY di GitHub per nome e ID; nessun secondo click, nonce o rollback automatico.",
+  "proof": [
+    "GITHUB: new full_name osservato sul medesimo ID e branch; evento amministrativo riconciliato.",
+    "HUMAN: evento singolo documentato ove possibile."
+  ],
+  "falsify": [
+    "ID o source diverge, nuovo repository creato, click ripetuto o trigger incompatibile lasciato attivo."
+  ],
+  "pass": "Rinomina osservata, identita' continua; procedere IMMEDIATAMENTE a S06.",
+  "stop": "ADMIN_EFFECT_AMBIGUOUS_RECONCILE_NO_REPLAY",
+  "next": "S06",
+  "nonclaim": "Un rename riuscito non prova ancora la ripresa dei caller o il prodotto."
+}

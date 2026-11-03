@@ -25,6 +25,13 @@
       "deletion_authorized": false
     },
     {
+      "path": "tests/project-pe-single-path-audit.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Fail-closed source proof tests without owner or provider authority",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

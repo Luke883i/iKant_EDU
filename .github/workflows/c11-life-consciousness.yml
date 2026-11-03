@@ -1,6 +1,17 @@
 name: C11 life-consciousness qualification
 on:
   pull_request:
+    paths:
+      - 'contracts/ikant-le.json'
+      - 'contracts/*conscious*'
+      - 'contracts/*life*'
+      - 'src/semantic-morphogenesis.mjs'
+      - 'src/contract.mjs'
+      - 'scripts/c11-*'
+      - 'tests/c11-*'
+      - 'artifacts/qualification/c11-*'
+      - 'package.json'
+      - '.github/workflows/c11-life-consciousness.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -13,10 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Deterministic regression
-        run: npm test
-      - name: Contract checks
-        run: npm run check
+      # Universal npm test/check stays in ci.yml; C11 retains semantic mutation and receipt gates.
       - name: C11 one-million semantic mutations
         run: npm run falsify:c11
       - name: Verify C11 receipt

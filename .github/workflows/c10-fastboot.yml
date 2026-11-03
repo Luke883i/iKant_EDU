@@ -1,6 +1,17 @@
 name: C10 fastboot qualification
 on:
   pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'contracts/**'
+      - 'src/first-contact.mjs'
+      - 'src/fastboot-convergence.mjs'
+      - 'src/bootstrap-intent-adapter.mjs'
+      - 'scripts/c10-*'
+      - 'tests/c10-*'
+      - 'artifacts/qualification/c10-*'
+      - 'package.json'
+      - '.github/workflows/c10-fastboot.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -13,10 +24,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Deterministic regression
-        run: npm test
-      - name: Contract check
-        run: npm run check
+      # Universal npm test/check runs once in ci.yml; C10 keeps its owner-specific falsifier.
       - name: C10 one-million fastboot mutations
         run: npm run falsify:c10
       - name: Verify C10 receipt

@@ -9,7 +9,6 @@ import {PE_LEAVES,PE_CONTRACT,validatePEReticle,assessPE,minimalPENext,
  requiredPEMessages} from '../host/project-pe-retrograde.mjs';
 import {stressPE} from '../scripts/project-pe-retrograde-falsify.mjs';
 import {preparePEC72Stage,preparePEPostEdu} from '../scripts/project-pe-original-bridge.mjs';
-import {storeBootstrapCache} from '../scripts/project-bootstrap-d123.mjs';
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const git=(...a)=>execFileSync('git',a,{cwd:ROOT,encoding:'utf8'}).trim();
 const HEAD=git('rev-parse','HEAD'),TREE=git('rev-parse','HEAD^{tree}');
@@ -80,11 +79,12 @@ test('C72 cache→original stager: cold eight fetches then zero on warm source',
  const r=privateRoot();try{
   const a=await preparePEC72Stage(params(r,'stage-first'),port);
   assert.equal(a.ok,true,JSON.stringify(a));assert.equal(a.original_stager_readback,true);
-  assert.equal(a.fetched,8);assert.equal(a.reused,0);assert.equal(a.original_owner_invoked,false);
+  assert.equal(a.fetched,10);assert.equal(a.reused,0);
+  assert.equal(a.original_c72_verified_cache_objects,10);assert.equal(a.original_owner_invoked,false);
   let fetches=0;const warm={...port,readPinned:async()=>{fetches++;throw Error('UNNECESSARY_FETCH');}};
   const b=await preparePEC72Stage(params(r,'stage-second'),warm);
   assert.equal(b.ok,true,JSON.stringify(b));assert.equal(b.fetched,0);
-  assert.equal(b.reused,8);assert.equal(fetches,0);
+  assert.equal(b.reused,10);assert.equal(fetches,0);
   for(const p of FILES){const f=path.join(r.dir,'stage-second',p);
    assert.equal(fs.readFileSync(f).equals(source(p)),true);
    assert.equal(fs.statSync(f).mode&0o077,0);}
@@ -159,10 +159,6 @@ test('integrated original C72 ACCEPT → exact EDU → D2 original transit → D
    expectedBlobShas:expected,sourcePacket:packet.slice(5,7),transitDirectory:transit
   });
   assert.equal(selected.selection.selected_mode,'EDU');
-  for(const p of ['host/project-c72-receipt-transit.mjs','host/project-c72-coldstart-seed.mjs']){
-   const bytes=source(p);storeBootstrapCache({cacheRoot:r.cacheRoot,head:HEAD,tree:TREE,
-    liveHead:HEAD,entry:{path:p,sha:sha(p)},bytes});
-  }
   const manifestPaths=JSON.parse(source('contracts/project-session-source.json').toString('utf8')).paths;
   assert.equal(manifestPaths.length,190);
   const result=await preparePEPostEdu({

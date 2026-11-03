@@ -10,6 +10,7 @@ const H40=/^[a-f0-9]{40}$/u;
 const FILES=Object.freeze(['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md',
  'contracts/c72-public-mode-admission-v2.json','host/c72-public-mode-admission.mjs',
  'host/project-c72-postaccept-reentry.mjs']);
+const EXTRAS=Object.freeze(['host/project-c72-receipt-transit.mjs','host/project-c72-coldstart-seed.mjs']);
 const hash=b=>createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
 const stop=edge=>Object.freeze({ok:false,edge,authority:0,active:false,original_owner_invoked:false,
  native_provider_attested:false,voice:'NO_VOICE'});
@@ -57,8 +58,34 @@ export async function preparePEC72Stage(q={},port={}){
    if(!Buffer.isBuffer(bytes)||hash(bytes)!==entry.sha)return stop('PE_CACHED_SOURCE_MISMATCH:'+p);
    files.push({path:p,bytes});
   }
+  // Complete 10/10 original source CACHE closure: the 8 C72 stager members
+  // plus the original transit and cold seed, with BOOTSTRAP transit pin.
+  const bootstrap=JSON.parse(files.find(f=>f.path==='BOOTSTRAP.json').bytes.toString('utf8'));
+  const transitPin=bootstrap?.project_session?.postaccept_original_c72_transit_pin;
+  if(transitPin?.path!==EXTRAS[0]||!h(transitPin.blob_sha1)||
+    seen.get(EXTRAS[0])?.sha!==transitPin.blob_sha1)
+   return stop('PE_ORIGINAL_TRANSIT_BOOTSTRAP_PIN_DRIFT');
+  const extra=[];
+  for(const p of EXTRAS){
+   const e=seen.get(p);if(e?.type!=='blob'||!h(e.sha))return stop('PE_ORIGINAL_EXTRA_TREE_MISSING');
+   const entry={path:p,sha:e.sha};
+   const cached=reopenBootstrapCache({cacheRoot:q.cacheRoot,head:q.sourceHead,tree:q.sourceTree,
+    liveHead:q.liveHead,entry});
+   let bytes;
+   if(cached.status==='HIT_REOPENED'){bytes=cached.bytes;reused++;}
+   else{
+    bytes=await port.readPinned(p,q.sourceHead);
+    if(!Buffer.isBuffer(bytes)||hash(bytes)!==e.sha)return stop('PE_ORIGINAL_EXTRA_BLOB_INVALID:'+p);
+    fetched++;bytesFetched+=bytes.length;
+    storeBootstrapCache({cacheRoot:q.cacheRoot,head:q.sourceHead,tree:q.sourceTree,
+     liveHead:q.liveHead,entry,bytes});
+   }
+   if(!Buffer.isBuffer(bytes)||hash(bytes)!==entry.sha)return stop('PE_ORIGINAL_EXTRA_REOPEN_MISMATCH');
+   extra.push({path:p,sha:e.sha,bytes});
+  }
   if(head(await port.readMain())!==q.sourceHead)return stop('STOP_SOURCE_LOCK_STALE');
-  // Physical source operation starts only after all 8 pinned bytes are verified.
+  // Only the original eight-member stager is invoked; extras remain original
+  // byte-exact carrier material, NEVER an alternate owner or receipt.
   initializeRelay(manifest);
   for(const f of files)putRelayBlob({schema:'ikant-host-c72-verified-put/v1',
    stageDirectory:q.stageDirectory,path:f.path,contentBase64:f.bytes.toString('base64')});
@@ -68,6 +95,9 @@ export async function preparePEC72Stage(q={},port={}){
   return Object.freeze({ok:true,phase:'ORIGINAL_C72_STAGE_READY_NOT_ADMITTED',
    source_head:q.sourceHead,source_tree:q.sourceTree,stageDirectory:q.stageDirectory,
    source_files:FILES.length,original_stager_readback:true,reused,fetched,bytesFetched,
+   original_c72_verified_cache_objects:FILES.length+EXTRAS.length,
+   transitBlobSha1:extra[0].sha,seedBlobSha1:extra[1].sha,
+   transitSourcePacket:Object.freeze({path:EXTRAS[0],contentBase64:extra[0].bytes.toString('base64')}),
    owner_next:'ORIGINAL_E16_COLDSEED_ONLY_WITH_TRANSIT_SEED_ATTEMPT_FENCE',
    original_owner_invoked:false,authority:0,active:false,native_provider_attested:false});
  }catch(e){

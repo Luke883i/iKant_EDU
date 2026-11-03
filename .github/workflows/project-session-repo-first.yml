@@ -72,6 +72,22 @@ jobs:
           path: ${{ runner.temp }}/v5e-cases-a.json
           retention-days: 30
           if-no-files-found: error
+      - name: 2DiM repository rename E2E preflight and 10k seeded gate mutations
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test tests/repository-rename-2dim.test.mjs
+          node scripts/repository-rename-2dim.mjs --both > "$RUNNER_TEMP/rename-2dim-a.json"
+          node scripts/repository-rename-2dim.mjs --both > "$RUNNER_TEMP/rename-2dim-b.json"
+          cmp "$RUNNER_TEMP/rename-2dim-a.json" "$RUNNER_TEMP/rename-2dim-b.json"
+          node --input-type=module -e "import fs from 'node:fs';const x=JSON.parse(fs.readFileSync(process.argv[1]));if(x.preflight.status!=='NOT_READY_FOR_RENAME'||x.mutation.negatives!==10000||x.mutation.rejected!==10000||x.mutation.positive_controls_passed!==1000||x.mutation.provider_rename_performed!==false||x.preflight.administrator_rename_executed!==false)process.exit(1)" "$RUNNER_TEMP/rename-2dim-a.json"
+      - name: 2DiM technical mutation report (NOT rename authorization)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-rename-2dim-preflight-${{ github.sha }}
+          path: ${{ runner.temp }}/rename-2dim-a.json
+          retention-days: 30
+          if-no-files-found: error
       - name: V5-C artifact of bounded CI observations, not original human receipts
         uses: actions/upload-artifact@v4
         with:

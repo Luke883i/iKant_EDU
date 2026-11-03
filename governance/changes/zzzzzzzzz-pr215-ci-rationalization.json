@@ -293,6 +293,27 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/ci.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Fail-closed CI source-only diagnostic annotations and reproducible log artifact; original tests and owner authority are unchanged.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/ci-failure-annotations.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Fail-closed CI source-only diagnostic annotations and reproducible log artifact; original tests and owner authority are unchanged.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/ci-failure-annotations.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Fail-closed CI source-only diagnostic annotations and reproducible log artifact; original tests and owner authority are unchanged.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

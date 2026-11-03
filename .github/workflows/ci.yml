@@ -16,9 +16,32 @@ jobs:
         with:
           node-version: '20'
       - name: Deterministic tests
-        run: npm test
+        shell: bash
+        run: |
+          set -o pipefail
+          npm test 2>&1 | tee "$RUNNER_TEMP/ikant-ci-tests.log"
       - name: Contract and lifecycle check
-        run: npm run check
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run check 2>&1 | tee "$RUNNER_TEMP/ikant-ci-check.log"
+      - name: Native GitHub failure annotations (source diagnostics only)
+        if: ${{ failure() }}
+        shell: bash
+        run: |
+          node scripts/ci-failure-annotations.mjs tap "$RUNNER_TEMP/ikant-ci-tests.log"
+          node scripts/ci-failure-annotations.mjs check "$RUNNER_TEMP/ikant-ci-check.log"
+      - name: Preserve full CI diagnostic logs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-ci-diagnostics-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/ikant-ci-tests.log
+            ${{ runner.temp }}/ikant-ci-check.log
+          if-no-files-found: warn
+          retention-days: 14
       - name: C5 one-million recurrent self-world semantic falsification
         run: npm run falsify:c5
       - name: Verify C5 receipt

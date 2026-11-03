@@ -201,6 +201,22 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
       "deletion_authorized": false
+    },
+    {
+      "path": "scripts/rename-source-cutover-gate.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename CANDIDATE binds one observed NEW repository ID/name; historical MAIN_PRE remains OLD, never claim provider/owner",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "tests/rename-source-cutover-gate.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Requalify strict candidate source gate positive/negative at administrative postrename repository name",
+      "deletion_authorized": false
     }
   ]
 }

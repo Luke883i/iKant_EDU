@@ -30,7 +30,7 @@ export function evaluateCutoverSource(x){
  if(!x||typeof x!=='object'||Array.isArray(x))return stop('CUTOVER_INPUT_INVALID');
  if(!['CANDIDATE','MAIN_PRE','MAIN_POST'].includes(x.mode))return stop('CUTOVER_PHASE_INVALID');
  if(x.remote_id!==REPOSITORY_ID)return stop('REPOSITORY_ID_DRIFT');
- const expected=x.mode==='MAIN_POST'?NEW:OLD;
+ const expected=x.mode==='MAIN_PRE'?OLD:NEW;
  if(x.remote_name!==expected)return stop('GITHUB_NAME_PHASE_MISMATCH');
  if(x.branch!=='main')return stop('GITHUB_DEFAULT_BRANCH_MISMATCH');
  if(!H40.test(x.local_head||'')||!H40.test(x.local_tree||''))

@@ -19,9 +19,15 @@ if(runReferences)for(const p of files){const s=fs.readFileSync(p,'utf8'),relativ
  for(const m of s.matchAll(forbidden))findings.push({path:relative,match:m[0]});
 }
 const boot=JSON.parse(fs.readFileSync(path.join(ROOT,'BOOTSTRAP.json'),'utf8'));
+const admission=JSON.parse(fs.readFileSync(path.join(ROOT,'ADMISSION.json'),'utf8'));
+const orientation=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/orientation-capsule.json'),'utf8'));
+const rename=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/repository-rename-2dim.json'),'utf8'));
 const contract=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/project-oneshell-cx-humanist.json'),'utf8'));
 const errors=[];
-if(boot.canonical_branch!=='main'||boot.canonical_repository!=='Luke883i/iKant_LE')errors.push('CANONICAL_SOURCE_NOT_MAIN');
+if(boot.canonical_branch!=='main'||boot.canonical_repository!==admission.repository||
+ orientation.canonical_repository!=='https://github.com/'+boot.canonical_repository||
+ boot.canonical_repository!==rename.repo_name_from)
+ errors.push('CANONICAL_SOURCE_NOT_MAIN'); // Phase OLD only; never auto-promote aliases.
 if(boot.project_session?.postaccept_onezip_fallback?.source_epoch!=='FROZEN_COMMIT_UNTIL_NEW_SESSION')errors.push('ONEZIP_SESSION_EPOCH_INVALID');
 if(contract.source_policy!=='MAIN_COMMIT_FROZEN_FOR_SESSION_NOT_A_PR_REF')errors.push('HUMANIST_SOURCE_POLICY_INVALID');
 if(runReferences&&findings.length)errors.push('EXECUTABLE_PR_PIN_OBSERVED');

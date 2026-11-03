@@ -68,5 +68,77 @@
     "NO_RUNTIME_ACTIVE",
     "NO_GO_ADMINISTRATIVE_RENAME",
     "NO_INSTALLED_PROMPT_EQUIVALENCE"
-  ]
+  ],
+  "cutover": {
+    "version": "S04-gated-physical-cutover/v1",
+    "state": "PREPARED_SOURCE_ONLY_NOT_ADMIN_GO",
+    "meaning": "Atomic fail-closed source selection is testable; zero-gap availability across GitHub administrator rename and Git commit is not demonstrated by separate APIs.",
+    "source_readback_script": "scripts/rename-source-cutover-gate.mjs",
+    "test": "tests/rename-source-cutover-gate.test.mjs",
+    "states": [
+      {
+        "s": "OLD_MAIN",
+        "pre": "GitHub ID 1371330383, name iKant_LE, HEAD/TREE original source coherent",
+        "effect": "No mutation",
+        "expected": "MAIN_SOURCE_COHERENT_REQUIRES_NATIVE_OWNER_HUMAN_PROVIDER"
+      },
+      {
+        "s": "ADMIN_RENAMED_OLD_SOURCE",
+        "pre": "Admin renames GitHub but BOOTSTRAP/ADMISSION/C72 still OLD",
+        "effect": "No source rebind",
+        "expected": "STOP_ORIGINAL_SOURCE_NAME_CONFLICT"
+      },
+      {
+        "s": "NEW_SOURCE_PUBLISHED_BEFORE_RENAME",
+        "pre": "Original BOOTSTRAP/ADMISSION/C72 say NEW but GitHub API still OLD",
+        "effect": "No admin rename",
+        "expected": "STOP_ORIGINAL_SOURCE_NAME_CONFLICT"
+      },
+      {
+        "s": "NEW_MAIN_AFTER_RENAME",
+        "pre": "GitHub ID unchanged, name iKant_EDU, HEAD/TREE and three original names all NEW",
+        "effect": "Verified NEW source ONLY",
+        "expected": "SOURCE_CONSISTENT_NOT_PRODUCT_ACTIVE"
+      }
+    ],
+    "do_not_assert": [
+      "zero downtime",
+      "atomic multi-system GitHub rename + Git commit",
+      "old receipts valid on new epoch",
+      "ChatGPT Project prompt installed",
+      "two independent reviews from CI",
+      "external consumer compatibility"
+    ],
+    "operational_controls": [
+      "Freeze new native C72 attempts during cutover if no seamless bridge can be attested",
+      "Keep incompatible stages fail-closed",
+      "Perform one human-admin rename only after explicit owner authorization",
+      "After rename, independently verify repository ID/name/main HEAD/TREE and ORIGINAL NEW source files",
+      "Reopen fresh C72/EDU receipts and provider installed prompt in a new epoch",
+      "If provider/owner evidence unavailable report UNKNOWN and do not mint GO"
+    ],
+    "human_admin_reviews": {
+      "required": 2,
+      "observed": "NOT_ATTESTED",
+      "source": "GitHub PR independent approved reviews + admin identity"
+    },
+    "chatgpt_project_prompt": {
+      "canonical_path": "project/session-chat/PROMPT.txt",
+      "candidate_verified_by_ci": true,
+      "installed_equivalence": "UNKNOWN",
+      "required": "Provider UI/readback from actual installed Project instructions; compare exact UTF-8 and SHA-256 with approved canonical main blob"
+    },
+    "external_consumers": {
+      "responsible_party": "USER",
+      "attested": "UNKNOWN"
+    },
+    "administrative_click": {
+      "executed": false,
+      "authorization": "NOT_ATTESTED",
+      "repository_id": 1371330383
+    },
+    "rename_go": false,
+    "provider_claims": 0,
+    "native_owner_claims": 0
+  }
 }

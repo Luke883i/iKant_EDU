@@ -113,6 +113,20 @@
       "reason": "Regenerate the C131 V5-A derived legacy distribution alias byte-exact from the single normative Project prompt plus the original version trailer; no installed Project UI equivalence claimed",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false
+    },
+    {
+      "path": "scripts/rename-source-cutover-gate.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add read-only live GitHub repository-ID/head/tree source cutover gate plus deterministic PRE/POST fail-closed transition falsifiers; never mint native owner, human or provider authorization",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/rename-source-cutover-gate.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add read-only live GitHub repository-ID/head/tree source cutover gate plus deterministic PRE/POST fail-closed transition falsifiers; never mint native owner, human or provider authorization",
+      "deletion_authorized": false
     }
   ]
 }

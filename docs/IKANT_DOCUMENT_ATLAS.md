@@ -201,6 +201,7 @@
 - [docs/V1_E2E_TRACEABILITY.md](V1_E2E_TRACEABILITY.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/V1_GOLD_MIGRATION.md](V1_GOLD_MIGRATION.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/V1_PRODUCT_DECISIONS.md](V1_PRODUCT_DECISIONS.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [docs/rename-sequence/S01_SHADOW_CUTOVER_DOD.md](rename-sequence/S01_SHADOW_CUTOVER_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
 
 ## L4 — Storico e integrazioni
 

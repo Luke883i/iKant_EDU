@@ -116,6 +116,68 @@ jobs:
           path: ${{ runner.temp }}/rename-s01-s03-readback.json
           retention-days: 30
           if-no-files-found: error
+      - name: Shadow prospective regen probe (no admin or original owner)
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=REGEN_ONLY node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-s01-regen.json"
+      - name: Shadow prospective source root and manifest probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=ROOT_ONLY node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-s01-root.json"
+      - name: S01 isolate original first-contact (shadow diagnostic)
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_0 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_0.json"
+      - name: S01 isolate original preaccept gate (shadow diagnostic)
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_1 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_1.json"
+      - name: S01 isolate original C72 postaccept reentry (shadow diagnostic)
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_2 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_2.json"
+      - name: S01 isolate original zero-checkout coldseed (shadow diagnostic)
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_3 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_3.json"
+      - name: S01 isolate original coldstart-to-EDU (shadow diagnostic)
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_4 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_4.json"
+      - name: S01 isolate original C72 receipt transit (shadow diagnostic)
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          IKANT_SHADOW_MODE=TEST_5 node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-shadow-test_5.json"
+      - name: Shadow iKant_EDU original-source cutover, isolated test only (always NO-GO)
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --test tests/rename-internal-shadow.test.mjs
+          node scripts/rename-internal-shadow.mjs "$RUNNER_TEMP/rename-s01-shadow.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.status!=='SHADOW_INTERNAL_PATH_TEST_PASS_NOT_CUTOVER_GO'||r.rename_go!==false||r.owner_invoked!==false||r.external_consumers_closed!==false||r.provider_equivalence_attested!==false||r.admin_rename_performed!==false)process.exit(1)" "$RUNNER_TEMP/rename-s01-shadow.json"
+      - name: Shadow rename test artifact (not a rename approval)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-rename-newname-shadow-${{ github.sha }}
+          path: ${{ runner.temp }}/rename-s01-shadow.json
+          retention-days: 30
+          if-no-files-found: warn
       - name: V5-C artifact of bounded CI observations, not original human receipts
         uses: actions/upload-artifact@v4
         with:

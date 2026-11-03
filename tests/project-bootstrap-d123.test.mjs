@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {execFileSync} from 'node:child_process';
+import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {storeBootstrapCache,reopenBootstrapCache,reconcileC72Original,materializeD123WithOriginalLoader} from '../scripts/project-bootstrap-d123.mjs';
 const H='a'.repeat(40),T='b'.repeat(40),DRIFT='c'.repeat(40);
@@ -65,26 +65,54 @@ test('D2 receipt without attempt, unsafe and symlink receipt fail closed',()=>sa
 }));
 const originalAvailable=fs.existsSync(path.join(top,'host/project-c72-receipt-transit.mjs'))&&
  fs.existsSync(path.join(top,'host/c72-public-mode-admission.mjs'));
-test('D2 real original owner receipts reopened in two separate Node processes, no replay',
- {skip:!originalAvailable},()=>sandbox(async s=>{
- const owner=await import('../host/c72-public-mode-admission.mjs');
- const transit=await import('../host/project-c72-receipt-transit.mjs');
- const q={directory:s.transit,head:H,tree:T,liveHead:H};
- assert.equal(transit.claimC72TransitAttempt({directory:s.transit,sourceHead:H,phase:'ACCEPT'}).ok,true);
- const offer=owner.issueC72V2LinkedTermsOffer({sourceHead:H,termsDigest:'c'.repeat(64)});
- const accepted=owner.acceptC72V2LinkedTerms({offer,humanMessage:'I ACCEPT',termsLinkPresented:true});
- const intro=owner.presentC72V2Introduction(accepted);
- assert.equal(transit.storeC72Accepted({directory:s.transit,sourceHead:H,accepted,introduction:intro}).ok,true);
+const coldAvailable=fs.existsSync(path.join(top,'host/project-c72-coldstart-seed.mjs'))&&
+ fs.existsSync(path.join(top,'scripts/project-c72-cold-mode-cli.mjs'))&&originalAvailable;
+test('D2 original coldstart/EDU receipts reopened by separate Node processes, no replay',
+ {skip:!coldAvailable},()=>sandbox(async s=>{
+ const names=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md',
+  'contracts/c72-public-mode-admission-v2.json','host/c72-public-mode-admission.mjs',
+  'host/project-c72-postaccept-reentry.mjs'];
+ const docs=names.map(p=>{const bytes=fs.readFileSync(path.join(top,p));return{
+  path:p,contentBase64:bytes.toString('base64'),sha:sha(bytes)};});
+ const expectedBlobShas=Object.fromEntries(docs.map(d=>[d.path,d.sha]));
+ const witness={source_head:H,host_link_displayed:true,distinct_human_message_observed:true,
+  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md',
+  pinned_blob_shas:Object.fromEntries(docs.slice(0,5).map(d=>[d.path,d.sha]))};
+ const seedBlobSha1=sha(fs.readFileSync(path.join(top,'host/project-c72-coldstart-seed.mjs')));
+ const call=(relative,q)=>{
+  const child=spawnSync(process.execPath,[path.join(top,relative)],{
+   input:JSON.stringify(q),encoding:'utf8',maxBuffer:4*1024*1024});
+  assert.equal(child.status,0,'original CLI failed: '+relative+' '+(child.stderr||'').slice(0,400));
+  const parsed=JSON.parse(child.stdout.trim());assert.equal(parsed.ok,true,
+   'original CLI denied: '+relative+' '+JSON.stringify(parsed));
+  return parsed;
+ };
+ const accepted=call('host/project-c72-coldstart-seed.mjs',{
+  schema:'ikant-host-c72-coldstart/v1',humanMessage:'I ACCEPT',freshHumanTurn:true,
+  ownerOutcome:'NOT_INVOKED',liveHead:H,priorTurnEvidence:witness,expectedBlobShas,
+  sourcePacket:docs.map(({path,contentBase64})=>({path,contentBase64})),seedBlobSha1,
+  transitDirectory:s.transit
+ });
+ assert.equal(accepted.original_owner_invoked,true,'original fixture path must exercise original C72');
  const script='import {reconcileC72Original} from '+JSON.stringify(new URL('../scripts/project-bootstrap-d123.mjs',import.meta.url).href)+';'+
   "const r=await reconcileC72Original({directory:process.argv[1],head:'"+H+"',tree:'"+T+"',liveHead:'"+H+"'});"+
-  "console.log(JSON.stringify({status:r.status,edge:r.edge,owner:r.owner_invoked}));";
- const run=()=>JSON.parse(execFileSync(process.execPath,['--input-type=module','-e',script,s.transit],{encoding:'utf8'}));
- assert.equal(run().status,'ACCEPT_ORIGINAL_READBACK_ONLY');
- assert.equal(transit.claimC72TransitAttempt({directory:s.transit,sourceHead:H,phase:'EDU'}).ok,true);
- const sel=owner.selectC72V2Mode({accepted,orientation:intro,humanMessage:'EDU'});
- assert.equal(transit.storeC72Selected({directory:s.transit,sourceHead:H,selection:sel}).ok,true);
- assert.equal(run().status,'EDU_ORIGINAL_READBACK_ONLY');assert.equal(run().owner,false);
- assert.equal(transit.claimC72TransitAttempt({directory:s.transit,sourceHead:H,phase:'EDU'}).ok,false);
+  "console.log(JSON.stringify({status:r.status,edge:r.edge,owner:r.owner_invoked,newReceipt:r.new_receipt_issued}));";
+ const reopen=()=>JSON.parse(execFileSync(process.execPath,
+  ['--input-type=module','-e',script,s.transit],{encoding:'utf8'}));
+ const once=reopen();assert.equal(once.status,'ACCEPT_ORIGINAL_READBACK_ONLY');
+ assert.equal(once.owner,false);assert.equal(once.newReceipt,false);
+ const selected=call('scripts/project-c72-cold-mode-cli.mjs',{
+  schema:'ikant-host-c72-later-mode/v1',humanMessage:'EDU',freshHumanTurn:true,
+  priorAcceptanceObserved:true,ownerOutcome:'NOT_INVOKED',
+  sourceHead:H,liveHead:H,expectedBlobShas,
+  sourcePacket:docs.slice(5,7).map(({path,contentBase64})=>({path,contentBase64})),
+  transitDirectory:s.transit
+ });
+ assert.equal(selected.selection.selected_mode,'EDU');
+ const twice=reopen();assert.equal(twice.status,'EDU_ORIGINAL_READBACK_ONLY');
+ assert.equal(twice.owner,false);assert.equal(twice.newReceipt,false);
+ assert.equal(twice.edge,'NONE');
+ assert.equal(reopen().status,'EDU_ORIGINAL_READBACK_ONLY','repeated read is not owner replay');
 }));
 test('D3 source request rejects invalid 190-set and drift before any file write',()=>sandbox(async s=>{
  let fetches=0;await assert.rejects(materializeD123WithOriginalLoader({cacheRoot:s.cacheRoot,

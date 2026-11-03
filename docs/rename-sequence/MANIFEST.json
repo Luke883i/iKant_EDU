@@ -1,0 +1,154 @@
+{
+  "schema": "ikant-edu-sequential-rename-manifest/v1",
+  "authority": 0,
+  "origin": {
+    "repo": "Luke883i/iKant_LE",
+    "repo_id": 1371330383,
+    "source_head": "f5f42603294084d29cdb6d6e2106c0331d802536",
+    "source_tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943",
+    "existing_contract": "contracts/repository-rename-2dim.json",
+    "existing_runbook": "docs/RENAME_IKANT_EDU_2DIM_E2E.md"
+  },
+  "format": "UNCOMMITTED_GIT_BLOBS_CANDIDATE_NOT_MAIN_NOT_OWNERS",
+  "steps": [
+    {
+      "id": "S00",
+      "blob_sha": "1a8a4773329af8c4cb46ada93d10ec3f30cee3fc",
+      "label": "SOURCE_CENSUS",
+      "covers_dod": [
+        "L01",
+        "L02",
+        "L03",
+        "L04",
+        "L10",
+        "L11",
+        "L12",
+        "L14",
+        "L15"
+      ],
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "id": "S01",
+      "blob_sha": "d1474356550cd4c2359f901328393a1c3fd36fdd",
+      "label": "PREPARE_ORIGINALS",
+      "covers_dod": [
+        "L05",
+        "L06",
+        "L07",
+        "L08",
+        "L09",
+        "L16"
+      ],
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "id": "S02",
+      "blob_sha": "eb488b2212f957c21fa37efafd68c03c71c102b0",
+      "label": "ORIGINAL_REGRESSIONS",
+      "covers_dod": [
+        "L17",
+        "L18",
+        "L19"
+      ],
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "id": "S03",
+      "blob_sha": "af6d5914d9cc61a9cde3b2af4345134e7c34bfb0",
+      "label": "EXTERNAL_CLOSURE_V2",
+      "covers_dod": [
+        "L10",
+        "L11",
+        "L12",
+        "L13",
+        "L14",
+        "L23"
+      ],
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "id": "S04",
+      "blob_sha": "66f8d18a5e65c40e6105846cf045ccca2331127e",
+      "label": "HUMAN_GO_FENCE_V2",
+      "covers_dod": [
+        "L20",
+        "L21"
+      ],
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "id": "S05",
+      "blob_sha": "5b442b273b7963bf69511e3c24745e68cb8e6dab",
+      "label": "SINGLE_ADMIN_RENAME_V2",
+      "covers_dod": [
+        "L21",
+        "L22"
+      ],
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "id": "S06",
+      "blob_sha": "30cf7891ee27094bfa6cfd727f9662784e268336",
+      "label": "POST_RENAME_PROOF_V2",
+      "covers_dod": [
+        "L22",
+        "L23",
+        "L26"
+      ],
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "id": "S07",
+      "blob_sha": "08667b1ab5418320a819e9e2eddf7020cd9a776a",
+      "label": "FRESH_EDU_PROOF_CLOSE",
+      "covers_dod": [
+        "L24",
+        "L25",
+        "L26"
+      ],
+      "status": "PLANNED_NOT_EXECUTED"
+    }
+  ],
+  "superseded_candidate_blobs": {
+    "S03": "cd96a0ba89e2face76a22c7b471914054fc51193",
+    "S04": "0ca98b0d095d957fa1587b2728673fbb45e69aac",
+    "S05": "fa3aae7561416d9b0979d338fd3f32766135c41a",
+    "S06": "83665e9172054ff9c68df40970ef27c2e7f874c0"
+  },
+  "falsification": {
+    "executable_js_blob": "abb2543d71fbbbd2a5c168b39467bb6d1ad2eb82",
+    "report_blob": "1ea2aefa3efeb29da5cd93643ac51b6f21f6f527",
+    "negative_cases": 14000,
+    "negative_rejected": 14000,
+    "positive_controls": 1000,
+    "positive_passed": 1000,
+    "type": "SYNTHETIC_GATE_MODEL_NOT_NATIVE_RUNTIME"
+  },
+  "refinement": {
+    "counterexample": "Changing external uses: old->new before GitHub rename can fail; leaving uses: old after rename can fail. Triggers and queued events require proven no-loss transition.",
+    "revised_steps": [
+      "S03",
+      "S04",
+      "S05",
+      "S06"
+    ]
+  },
+  "invariants": [
+    "ONE_GITHUB_REPOSITORY_ID_NO_SECOND_CANONICAL",
+    "ZERO_REPLAY_OF_C72_OR_LEDGER_RECEIPTS",
+    "OLD_CANONICAL_BEFORE_CLICK_NEW_CANONICAL_ONLY_AFTER_GITHUB_READBACK",
+    "NO_CLICK_WITH_UNKNOWN_CRITICAL_CONSUMERS_OR_LOSSY_ACTIONS_TRANSITION",
+    "POSTRENAME_GIT_AND_EXTERNAL_READBACK",
+    "NO_ACTIVE_BEFORE_NATIVE_OWNER_PROVIDER_PROOF"
+  ],
+  "limits": [
+    "NOT_ZERO_DOWNTIME_PROOF",
+    "UNKNOWN_EXTERNAL_CALLERS_CANNOT_BE_EXHAUSTIVELY_EXCLUDED_BY_REPO_SEARCH",
+    "EXISTING_PINNED_SESSIONS_MAY_STOP_ON_DRIFT",
+    "GIT_BLOBS_NOT_REFERENCED_BY_TREE_MAY_NOT_BE_RETAINED_PERMANENTLY"
+  ],
+  "source_epoch_rule": "New HEAD due to future code PR demands explicit new verified epoch, never implicit transfer of current sessions.",
+  "go_gate": "ALL_REQUIRED_EVIDENCES_OBSERVED_WITH_INDEPENDENT_READBACK_PLUS_HUMAN_ADMIN_APPROVAL",
+  "status": "PREPARE_ONLY_PRODUCT_NO_GO_RENAME_NOT_PERFORMED"
+}

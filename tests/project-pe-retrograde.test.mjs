@@ -3,12 +3,13 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import {execFileSync} from 'node:child_process';
+import {execFileSync,spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {PE_LEAVES,PE_CONTRACT,validatePEReticle,assessPE,minimalPENext,
  requiredPEMessages} from '../host/project-pe-retrograde.mjs';
 import {stressPE} from '../scripts/project-pe-retrograde-falsify.mjs';
 import {preparePEC72Stage,preparePEPostEdu} from '../scripts/project-pe-original-bridge.mjs';
+import {storeBootstrapCache} from '../scripts/project-bootstrap-d123.mjs';
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
 const git=(...a)=>execFileSync('git',a,{cwd:ROOT,encoding:'utf8'}).trim();
 const HEAD=git('rev-parse','HEAD'),TREE=git('rev-parse','HEAD^{tree}');
@@ -21,9 +22,9 @@ const expected=Object.fromEntries(FILES.map(p=>[p,sha(p)]));
 const witness=Object.freeze({source_head:HEAD,host_link_displayed:true,
  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+HEAD+'/TERMS.md',
  pinned_blob_shas:Object.fromEntries(FILES.slice(0,5).map(p=>[p,expected[p]]))});
-const treeEntries=execFileSync('git',['ls-tree','-r','-z','HEAD'],{cwd:ROOT})
+const treeEntries=execFileSync('git',['ls-tree','-r','-t','-z','HEAD'],{cwd:ROOT})
  .toString('utf8').split('\0').filter(Boolean).map(line=>{
-  const m=line.match(/^([0-7]{6}) (blob|commit) ([a-f0-9]{40})\t(.+)$/u);
+  const m=line.match(/^([0-7]{6}) (blob|tree|commit) ([a-f0-9]{40})\t(.+)$/u);
   assert.ok(m);return {path:m[4],mode:m[1],type:m[2],sha:m[3]};});
 const port={readMain:async()=>HEAD,readCommit:async()=>({tree:{sha:TREE}}),
  readTree:async()=>({sha:TREE,truncated:false,tree:treeEntries}),
@@ -127,4 +128,58 @@ test('finite mutation fast fixture: seeded and independent oracle',()=>{
  assert.equal(a.monotonicity_violations,0);
  assert.equal(a.cases_executed,15000);
  assert.equal(a.families,40);
+});
+
+test('integrated original C72 ACCEPT → exact EDU → D2 original transit → D3 original 191-file loader',async()=>{
+ const r=privateRoot();
+ try{
+  const staged=await preparePEC72Stage(params(r,'stage-integrated'),port);
+  assert.equal(staged.ok,true,JSON.stringify(staged));
+  const transit=path.join(r.dir,'transit');fs.mkdirSync(transit,{mode:0o700});
+  const packet=FILES.map(p=>({path:p,contentBase64:source(p).toString('base64')}));
+  const originalCLI=(relative,payload)=>{
+   const child=spawnSync(process.execPath,[path.join(ROOT,relative)],{
+    input:JSON.stringify(payload),encoding:'utf8',maxBuffer:4*1024*1024});
+   assert.equal(child.status,0,'Original CLI failed: '+relative+' '+(child.stderr||'').slice(0,500));
+   const output=JSON.parse(child.stdout.trim());
+   assert.equal(output.ok,true,'Original CLI returned STOP: '+JSON.stringify(output));
+   return output;
+  };
+  const accepted=originalCLI('host/project-c72-coldstart-seed.mjs',{
+   schema:'ikant-host-c72-coldstart/v1',humanMessage:'I ACCEPT',freshHumanTurn:true,
+   ownerOutcome:'NOT_INVOKED',liveHead:HEAD,
+   priorTurnEvidence:{...witness,distinct_human_message_observed:true},
+   expectedBlobShas:expected,sourcePacket:packet,
+   seedBlobSha1:sha('host/project-c72-coldstart-seed.mjs'),transitDirectory:transit
+  });
+  assert.equal(accepted.original_owner_invoked,true);
+  const selected=originalCLI('scripts/project-c72-cold-mode-cli.mjs',{
+   schema:'ikant-host-c72-later-mode/v1',humanMessage:'EDU',freshHumanTurn:true,
+   priorAcceptanceObserved:true,ownerOutcome:'NOT_INVOKED',sourceHead:HEAD,liveHead:HEAD,
+   expectedBlobShas:expected,sourcePacket:packet.slice(5,7),transitDirectory:transit
+  });
+  assert.equal(selected.selection.selected_mode,'EDU');
+  for(const p of ['host/project-c72-receipt-transit.mjs','host/project-c72-coldstart-seed.mjs']){
+   const bytes=source(p);storeBootstrapCache({cacheRoot:r.cacheRoot,head:HEAD,tree:TREE,
+    liveHead:HEAD,entry:{path:p,sha:sha(p)},bytes});
+  }
+  const manifestPaths=JSON.parse(source('contracts/project-session-source.json').toString('utf8')).paths;
+  assert.equal(manifestPaths.length,190);
+  const result=await preparePEPostEdu({
+   sourceHead:HEAD,sourceTree:TREE,liveHead:HEAD,cacheRoot:r.cacheRoot,
+   transitDirectory:transit,treeEntries,
+   entries:manifestPaths.map(p=>({path:p,sha:sha(p)})),manifestPaths,
+   destination:path.join(r.dir,'verified-project')
+  },port);
+  assert.equal(result.status,'ORIGINAL_LOADER_SOURCE_REOPENED',JSON.stringify(result));
+  assert.equal(result.original_edu_selection_reopened,true);
+  assert.equal(result.total_original_loader_files,191);
+  assert.equal(result.reused_files,10);
+  assert.equal(result.fetched_files,181);
+  assert.equal(result.original_owner_invoked,false);
+  assert.equal(result.active,false);
+  const original=await import('../scripts/project-repo-loader.mjs');
+  const reopened=original.verifyLocalProjectSource(path.join(r.dir,'verified-project'),{head:HEAD,tree:TREE});
+  assert.equal(reopened.files.length,191);
+ }finally{r.close();}
 });

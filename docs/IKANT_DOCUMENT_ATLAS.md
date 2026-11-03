@@ -37,6 +37,7 @@
 
 ## L3 — Approfondimenti e prove
 
+- [docs/BOOTSTRAP_D123_CLOSURE.md](BOOTSTRAP_D123_CLOSURE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/BOOTSTRAP_DECOUPLING_D0.md](BOOTSTRAP_DECOUPLING_D0.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/C100_EXPERIMENTAL_COHOST_DOD.md](C100_EXPERIMENTAL_COHOST_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
 - [docs/C100_MERGED_TRAJECTORY.md](C100_MERGED_TRAJECTORY.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.

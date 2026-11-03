@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
 import {computeBootstrapCuts} from '../scripts/project-bootstrap-cut-audit.mjs';
 
 const names=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md',
@@ -92,3 +94,52 @@ test('mutational: 256 independently changed transit bytes never pass',()=>atRoot
  fs.writeFileSync(f,base);
  assert.equal(computeBootstrapCuts(root).current.c72.files,10);
 }));
+
+/** Repo checkout control: Git commit/TREE/index sources are independent of
+ * the local BOM calculator; this is NOT a Host tool or provider receipt. */
+test('integrated checkout: 8 C72 + transit + seed, 190 EDU paths, exact byte budgets and Git HEAD blob identities',()=>{
+ const root=path.resolve(fileURLToPath(new URL('../',import.meta.url)));
+ const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8',
+  maxBuffer:32*1024*1024,timeout:30000}).trim();
+ const commit=git('rev-parse','HEAD');
+ const tree=git('rev-parse','HEAD^{tree}');
+ assert.match(commit,/^[a-f0-9]{40}$/u);
+ assert.match(tree,/^[a-f0-9]{40}$/u);
+ assert.equal(git('rev-parse',commit+'^{tree}'),tree);
+ const report=computeBootstrapCuts(root);
+ assert.deepEqual(report.current.orientation.paths,names.slice(0,5));
+ assert.deepEqual(report.current.c72.paths,[...names,transit,seed]);
+ assert.equal(report.current.orientation.files,5);
+ assert.equal(report.current.orientation.bytes,107796);
+ assert.equal(report.current.c72.files,10);
+ assert.equal(report.current.c72.bytes,143817);
+ assert.equal(report.current.post_edu.files,190);
+ assert.equal(report.current.post_edu.bytes,1984502);
+ assert.equal(report.overlap.c72_in_post_edu,10);
+ assert.equal(report.hypothetical.owner_related_subset.status,
+  'NOT_EXECUTABLE_WITH_CURRENT_OWNER_GATE');
+ assert.equal(report.original_owner_invoked,false);
+ assert.equal(report.native_provider_attested,false);
+ const raw=execFileSync('git',['ls-tree','-r','-z',tree],{cwd:root,
+  maxBuffer:32*1024*1024,timeout:30000});
+ const gitBlobs=new Map();
+ for(const line of raw.toString('utf8').split('\0').filter(Boolean)){
+  const m=line.match(/^([0-7]{6}) blob ([a-f0-9]{40})\t(.+)$/u);
+  if(m)gitBlobs.set(m[3],{mode:m[1],sha:m[2]});
+ }
+ const all=[...new Set([...report.current.orientation.paths,
+  ...report.current.c72.paths,...report.current.post_edu.paths])];
+ assert.equal(all.length,190,'all C72 files must be in Project EDU closure');
+ let bytesChecked=0;
+ for(const p of all){
+  const entry=gitBlobs.get(p);
+  assert.ok(entry,'missing pinned Git TREE path '+p);
+  const full=path.join(root,p);
+  assert.equal(fs.lstatSync(full).isSymbolicLink(),false,'symlink: '+p);
+  assert.equal(fs.statSync(full).isFile(),true,'not a regular file: '+p);
+  const bytes=fs.readFileSync(full);
+  bytesChecked+=bytes.length;
+  assert.equal(blob(bytes),entry.sha,'Git SHA-1 differs from local readback: '+p);
+ }
+ assert.equal(bytesChecked,1984502,'all 190 local source bytes verified against HEAD TREE');
+});

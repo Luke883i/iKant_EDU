@@ -71,3 +71,28 @@ rename GO, installed prompt, C72 owner invocation or external continuity.
 An unknown or ambiguous GitHub file write is reconciled read-only before
 another commit; never force push. PR #211 stays draft until all required
 regressions pass. This document is not a cutover authorization.
+
+## D1 observation and D2 remediation candidate — 3 November 2026
+
+Branch test `b1a78d6dcd9de68f17e35557f4c4a3a886a3c1b4` reported
+`TEST_0` first-contact FAIL, with TEST_1..TEST_5 SKIPPED (fail-fast).
+The original first-contact positive test includes one stand-alone
+`iKant_LE` fixture, whereas the prospective original first-contact
+recognizer was transformed for `iKant_EDU`. Separately,
+`src/admission.mjs` retains an exact old-name binding not included
+in the previous shadow mutation set. Both issues are source-derived
+candidates, not yet verified as the only causes.
+
+The repair makes the prospective positive test fixture target the new
+canonical ID while retaining historical/near-name negatives. It adds
+`src/admission.mjs` to the exact same worktree preparation set, regenerates
+shards and manifest using the same original scripts, and adds a runtime
+negative probe: NEW recognized, OLD not recognized, lookalike rejected,
+and original admission binding present only for NEW.
+
+The CI now runs the six separate tests with an explicit not-cancelled
+guard so all outcomes are observable even after a prior failure;
+the ALL test still runs and must PASS. A single PASS cannot substitute
+for a failed other test. Subsequent patch work must use the observed
+first failing step and the same HEAD/TREE-bounded preparation, never
+fabricated native owner/provider evidence.

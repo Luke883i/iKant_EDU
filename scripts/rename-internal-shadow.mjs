@@ -22,7 +22,7 @@ const run=(cmd,args,{cwd=ROOT,timeout=60000}={})=>{
 const git=(...args)=>execFileSync('git',args,{cwd:ROOT,encoding:'utf8'}).trim();
 export const SHADOW_MUTATIONS=Object.freeze([
  'BOOTSTRAP.json','ADMISSION.json','contracts/orientation-capsule.json',
- 'src/first-contact.mjs','src/runtime-root-verified.mjs',
+ 'src/first-contact.mjs','src/admission.mjs','src/runtime-root-verified.mjs',
  'host/c72-public-mode-admission.mjs','host/project-c72-coldstart-seed.mjs',
  'project/session-chat/PROMPT.txt','scripts/project-oneshell-source-pin-audit.mjs'
 ]);
@@ -38,6 +38,13 @@ function replaceText(root,rel,{mustChange=true,oldOnly=false}={}){
  const file=path.join(root,rel),original=fs.readFileSync(file,'utf8');
  let changed=original.replaceAll(OLD,NEW);
  if(rel==='src/first-contact.mjs')changed=changed.replaceAll('ikant_le','ikant_edu');
+ if(rel==='tests/first-contact.test.mjs'){
+  // A prospective positive fixture must refer to the new identifier; historical
+  // old-name and lookalike negatives intentionally remain unrecognized.
+  const positive=",'iKant_LE','git@github.com:"+NEW+".git'";
+  if(!changed.includes(positive))throw Error('SHADOW_NEW_FIRST_CONTACT_FIXTURE_NOT_FOUND');
+  changed=changed.replace(positive,",'iKant_EDU','git@github.com:"+NEW+".git'");
+ }
  if(rel==='scripts/project-oneshell-source-pin-audit.mjs'){
   const target="boot.canonical_repository!==rename.repo_name_from";
   if(!changed.includes(target))throw Error('SHADOW_AUDITOR_PIN_NOT_FOUND');
@@ -91,6 +98,17 @@ export function runShadow(){
   command('ORIGINAL_RUNTIME_ROOT_VERIFY','node',['scripts/runtime-root.mjs','verify']);
   command('ORIGINAL_SESSION_MANIFEST_VERIFY','node',['scripts/project-source-manifest.mjs','verify']);
   command('ORIGINAL_SOURCE_PIN_VERIFY','node',['scripts/project-oneshell-source-pin-audit.mjs','metadata']);
+  const identityCheck=[
+   "import assert from 'node:assert/strict';",
+   "import {referencesCanonicalRepository} from './src/first-contact.mjs';",
+   "import {readFileSync} from 'node:fs';",
+   "assert.equal(referencesCanonicalRepository('iKant_EDU'),true);",
+   "assert.equal(referencesCanonicalRepository('Luke883i/iKant_EDU'),true);",
+   "assert.equal(referencesCanonicalRepository('iKant_LE'),false);",
+   "assert.equal(referencesCanonicalRepository('Luke883i/iKant_EDU-fork'),false);",
+   "assert.equal(readFileSync('src/admission.mjs','utf8').includes(\"const CANONICAL_REPOSITORY='Luke883i/iKant_EDU'\"),true);"
+  ].join('');
+  command('NEW_IDENTITY_SINGLE_CANONICAL_NEGATIVE','node',['--input-type=module','-e',identityCheck]);
   if(mode==='ROOT_ONLY')result.status='SHADOW_ROOT_PROBE_PASS_NOT_CUTOVER_GO';
   else{
    const tests=singleTests[mode]?[singleTests[mode]]:SHADOW_TESTS;

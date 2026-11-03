@@ -17,7 +17,7 @@ test('shadow source is read-only to main and always denies administrative GO',()
 });
 test('all identity-bearing original boundaries and root generator are targeted',()=>{
  for(const p of ['BOOTSTRAP.json','ADMISSION.json','contracts/orientation-capsule.json',
-  'src/first-contact.mjs','src/runtime-root-verified.mjs',
+  'src/first-contact.mjs','src/admission.mjs','src/runtime-root-verified.mjs',
   'host/c72-public-mode-admission.mjs','host/project-c72-coldstart-seed.mjs',
   'project/session-chat/PROMPT.txt','scripts/project-oneshell-source-pin-audit.mjs'])
   assert(SHADOW_MUTATIONS.includes(p),p);

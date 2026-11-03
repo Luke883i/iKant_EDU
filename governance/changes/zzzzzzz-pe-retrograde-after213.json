@@ -53,11 +53,13 @@
       "deletion_authorized": false
     },
     {
-      "path": ".github/workflows/project-pe-retrograde.yml",
-      "operation": "ADD",
+      "path": ".github/workflows/project-c72-coldstart.yml",
+      "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
-      "deletion_authorized": false
+      "reason": "Extend retained original C72 Node20/22 workflow with fail-closed PE physical original stager test and 10M finite semantic oracle; retain all original steps and workflow count",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zz-v5g-bootstrap-d123.json",
+      "supersedes_source_main": "4145d932fb291872aafe19dcd72298d16c2785c6"
     },
     {
       "path": "governance/changes/zzzzzzz-pe-retrograde-after213.json",

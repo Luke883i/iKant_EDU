@@ -63,8 +63,6 @@ jobs:
         run: npm run falsify:c43 | tee /tmp/c43.json
       - name: Runtime root exactness
         run: npm run runtime-root:verify
-      - name: Repository invariants
-        run: npm run check
       - name: Upload C43 receipt
         if: always()
         uses: actions/upload-artifact@v4

@@ -237,6 +237,27 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/c42-bootstrap-ontological-closure.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Shared npm run check remains in universal ci.yml; this specialist workflow retains its exact independent tests and falsification.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c43-bootstrap-recovery-hardening.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Shared npm run check remains in universal ci.yml; this specialist workflow retains its exact independent tests and falsification.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c44-methodological-bootstrap.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Shared npm run check remains in universal ci.yml; this specialist workflow retains its exact independent tests and falsification.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

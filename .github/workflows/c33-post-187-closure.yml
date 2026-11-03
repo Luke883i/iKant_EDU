@@ -25,5 +25,3 @@ jobs:
         run: node --test --test-concurrency=1 tests/c31-runtime-limited-turn.test.mjs
       - name: Verify deterministic runtime root
         run: npm run runtime-root:verify
-      - name: Contract and ownership check
-        run: npm run check

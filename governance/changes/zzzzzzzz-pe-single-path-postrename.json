@@ -310,6 +310,27 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
       "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c6-enduser-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate historical positive first-contact fuzz inputs to iKant_EDU; preserve explicit old-name negatives and original admission gates",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c7-doc-api-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate historical positive first-contact fuzz inputs to iKant_EDU; preserve explicit old-name negatives and original admission gates",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/check.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate historical positive first-contact fuzz inputs to iKant_EDU; preserve explicit old-name negatives and original admission gates",
+      "deletion_authorized": false
     }
   ]
 }

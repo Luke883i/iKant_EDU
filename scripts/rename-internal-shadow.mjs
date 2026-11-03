@@ -39,6 +39,11 @@ function replaceText(root,rel,{mustChange=true,oldOnly=false}={}){
  const file=path.join(root,rel),original=fs.readFileSync(file,'utf8');
  let changed=original.replaceAll(OLD,NEW);
  if(rel==='src/first-contact.mjs')changed=changed.replaceAll('ikant_le','ikant_edu');
+ if(rel==='project/session-chat/PROMPT.txt'){
+  // Prompt resolves the live repository ID and retains a historical OLD name
+  // strictly as a negative example. It is NOT an automatic name-switch input.
+  changed=original;
+ }
  if(rel==='tests/first-contact.test.mjs'){
   // A prospective positive fixture must refer to the new identifier; historical
   // old-name and lookalike negatives intentionally remain unrecognized.
@@ -82,7 +87,7 @@ export function runShadow(){
   const t=run('git',['worktree','add','--detach',worktree,current],{cwd:ROOT,timeout:45000});
   if(!t.ok)throw Error('SHADOW_WORKTREE_UNAVAILABLE:'+t.stderr);
   attached=true;
-  for(const rel of SHADOW_MUTATIONS)result.mutations.push(replaceText(worktree,rel));
+  for(const rel of SHADOW_MUTATIONS)result.mutations.push(replaceText(worktree,rel,{mustChange:rel!=='project/session-chat/PROMPT.txt'}));
   for(const rel of SHADOW_TESTS)replaceText(worktree,rel,{mustChange:false});
   command('ORIGINAL_RUNTIME_ROOT_REGEN','node',['scripts/runtime-root.mjs','regen']);
   command('ORIGINAL_SESSION_MANIFEST_REGEN','node',['scripts/project-source-manifest.mjs']);

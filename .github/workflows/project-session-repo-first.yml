@@ -178,6 +178,14 @@ jobs:
           path: ${{ runner.temp }}/rename-s01-shadow.json
           retention-days: 30
           if-no-files-found: warn
+      - name: Source-bound first-contact runtime-root and prompt DoD
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/runtime-root.mjs verify
+          node scripts/project-source-manifest.mjs verify
+          node --test tests/rename-sourcebound-cutover.test.mjs tests/first-contact.test.mjs tests/project-oneshell-prompt.test.mjs
+          node scripts/project-oneshell-source-pin-audit.mjs metadata
       - name: Rename S01 original source-epoch and zero-checkout C72 regressions
         shell: bash
         run: |

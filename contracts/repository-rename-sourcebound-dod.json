@@ -1,0 +1,72 @@
+{
+  "schema": "ikant-edu-sourcebound-firstcontact-root-prompt-dod/v1",
+  "authority": 0,
+  "repository_id": 1371330383,
+  "source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31",
+  "source_tree": "ecac2b37ffc3f9bd8a5fe54c722a32207488188e",
+  "current_repository": "Luke883i/iKant_LE",
+  "future_repository": "Luke883i/iKant_EDU",
+  "slices": [
+    {
+      "id": "D01",
+      "what": "Future first-contact name may be classified only with coherent source Git HEAD/TREE/BOOTSTRAP/ADMISSION/C72 evidence, never as a second canonical in OLD phase.",
+      "pre": "Existing old lexical route remains unchanged",
+      "proof": "Future positive and spoofed negatives, source candidate authority=0",
+      "falsifier": "NEW recognized without source or forged provider claim accepted",
+      "state": "CI_REQUIRED"
+    },
+    {
+      "id": "D02",
+      "what": "Original admission and activation executor use exactly one canonical repository from current source plane.",
+      "pre": "Original source lock and payloads verified",
+      "proof": "OLD original owner regression; mismatch rejection before acceptance; NEW projected descriptor still hash-bound",
+      "falsifier": "mismatched BOOTSTRAP/ADMISSION/C72 accepted",
+      "state": "CI_REQUIRED"
+    },
+    {
+      "id": "D03",
+      "what": "51 member runtime root, two regenerated shards, GitSHA1 loader, pre-runtime kernel and descriptor SHA256 are exact.",
+      "pre": "No source drift vs baseline; original regen algorithm",
+      "proof": "node scripts/runtime-root.mjs verify; git HEAD:path identity for both shards, first-contact and admission; source manifest verify",
+      "falsifier": "member/shard/blob/root SHA mismatch",
+      "state": "CI_REQUIRED"
+    },
+    {
+      "id": "D04",
+      "what": "Project prompt is repository-ID bound; historical OLD is not an alias for renamed NEW; generated candidate is deterministic and under 8KiB.",
+      "pre": "Current pinned source branch HEAD/TREE",
+      "proof": "project-oneshell-prompt.test; 7x3 guard; readback of generated receipt and prompt SHA",
+      "falsifier": "redirect accepted without exact current name; prompt generator claims installed",
+      "state": "CI_REQUIRED"
+    },
+    {
+      "id": "D05",
+      "what": "Original OLD regression and future isolated shadow remain green on the same branch SHA.",
+      "pre": "Original owner not invoked in product",
+      "proof": "Original C72/first-contact/shard/manifest/prompt tests; six shadow tests and ALL",
+      "falsifier": "changed first-contact breaks C72 or opaque source arrival",
+      "state": "CI_REQUIRED"
+    },
+    {
+      "id": "D06",
+      "what": "Human reviews, other repositories, admin approval and provider prompt installation are independent administrative gates.",
+      "pre": "Engineering checks green",
+      "proof": "Two independent reviewer records and provider-origin readback before admin effect, never simulated",
+      "falsifier": "CI SUCCESS promoted to RENAME_GO",
+      "state": "OPEN_OWNER_PROVIDER"
+    }
+  ],
+  "original_owner_effect": false,
+  "provider_installed_prompt_equivalence": "UNKNOWN",
+  "external_consumers_closed": false,
+  "admin_rename_executed": false,
+  "rename_go": false,
+  "source_epoch_transfer_allowed": false,
+  "receipt_transfer_allowed": false,
+  "non_claims": [
+    "NO_NATIVE_C72_RECEIPT",
+    "NO_RUNTIME_ACTIVE",
+    "NO_GO_ADMINISTRATIVE_RENAME",
+    "NO_INSTALLED_PROMPT_EQUIVALENCE"
+  ]
+}

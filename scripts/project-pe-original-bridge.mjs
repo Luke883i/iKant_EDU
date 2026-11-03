@@ -91,7 +91,8 @@ export async function preparePEPostEdu(q={},port={}){
   const result=await materializeD123WithOriginalLoader({
    cacheRoot:q.cacheRoot,head:q.sourceHead,tree:q.sourceTree,liveHead:q.liveHead,
    treeEntries:q.treeEntries,entries:q.entries,manifestPaths:q.manifestPaths,
-   fetchPinned:port.readPinned,readMain:port.readMain,destination:q.destination});
+   fetchPinned:async (path,request)=>port.readPinned(path,request.head),
+   readMain:async()=>head(await port.readMain()),destination:q.destination});
   return Object.freeze({...result,original_edu_selection_reopened:true,
    original_owner_invoked:false,native_provider_attested:false,active:false,authority:0});
  }catch(e){return stop('PE_ORIGINAL_LOADER_UNKNOWN_NO_REPLAY:'+String(e.message||'UNKNOWN'));}

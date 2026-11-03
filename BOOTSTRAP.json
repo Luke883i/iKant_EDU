@@ -331,8 +331,8 @@
       "activation_executor_issuer": "src/runtime-root-verified.mjs#issueCanonicalActivationExecutor"
     }
   },
-  "canonical_repository": "Luke883i/iKant_LE",
-  "canonical_repository_url": "https://github.com/Luke883i/iKant_LE",
+  "canonical_repository": "Luke883i/iKant_EDU",
+  "canonical_repository_url": "https://github.com/Luke883i/iKant_EDU",
   "canonical_branch": "main",
   "first_contact_rule": "Any first human message that references this canonical repository converges to bounded pre-accept orientation before generic repository discovery.",
   "repository_transport": {
@@ -1446,7 +1446,7 @@
       "gate": "AFTER_DISTINCT_I_ACCEPT_BEFORE_ORIGINAL_C72_AND_EDU_ONLY",
       "preferred": "OBSERVED_P0_CARRIER",
       "fallback": "ONE_OFFICIAL_PINNED_COMMIT_ZIP_MANUAL_UPLOAD",
-      "archive": "https://github.com/Luke883i/iKant_LE/archive/{SOURCE_HEAD}.zip",
+      "archive": "https://github.com/Luke883i/iKant_EDU/archive/{SOURCE_HEAD}.zip",
       "zip_root_verifier": "scripts/project-edu-zip-tree.py",
       "independent_commit_tree": "GITHUB_API_COMMIT_TREE_SHA",
       "tree_entries": "DERIVED_FROM_ZIP_NOT_INDEPENDENT_GITHUB_API_TREE",

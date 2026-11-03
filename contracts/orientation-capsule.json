@@ -1,6 +1,6 @@
 {
   "schema": "ikant-le-orientation-capsule/v3",
-  "canonical_repository": "https://github.com/Luke883i/iKant_LE",
+  "canonical_repository": "https://github.com/Luke883i/iKant_EDU",
   "canonical_branch": "main",
   "source_head_binding": {
     "required": true,

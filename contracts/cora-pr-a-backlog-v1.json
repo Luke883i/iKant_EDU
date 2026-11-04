@@ -9,15 +9,62 @@
   "existing_contract": "contracts/cora-reticular-hygiene-v1.json",
   "abstract_dod": "SOURCE_IDENTITY_AND_TOTAL_CENSUS_AND_EXPLICIT_UNKNOWNS_AND_CONSUMER_CLOSURE_AND_REVERSIBLE_NONREGRESSION_AND_INDEPENDENT_REVIEW",
   "pr_a_dod": [
-    {"id":"A01", "requires":[], "proof":"Full Git HEAD/TREE/index reconciliation from original CORA readback"},
-    {"id":"A02", "requires":["A01"], "proof":"One exact original V5-B row for every tracked file and every workflow"},
-    {"id":"A03", "requires":["A02"], "proof":"Candidate decisions preserve UNKNOWN and original owner and workflow retention boundaries"},
-    {"id":"A04", "requires":["A03"], "proof":"Finite reproducible sorted backlog with source-blob witnesses, triggers, flags, consumers and next tests"},
-    {"id":"A05", "requires":["A03"], "proof":"Seeded semantic fault vectors independently falsified, 10000000 cases on Node"},
-    {"id":"A06", "requires":["A04","A05"], "proof":"Exact PR HEAD checkout test, post-merge requalification and independent review"}
+    {
+      "id": "A01",
+      "requires": [],
+      "proof": "Full Git HEAD/TREE/index reconciliation from original CORA readback"
+    },
+    {
+      "id": "A02",
+      "requires": [
+        "A01"
+      ],
+      "proof": "One exact original V5-B row for every tracked file and every workflow"
+    },
+    {
+      "id": "A03",
+      "requires": [
+        "A02"
+      ],
+      "proof": "Candidate decisions preserve UNKNOWN and original owner and workflow retention boundaries"
+    },
+    {
+      "id": "A04",
+      "requires": [
+        "A03"
+      ],
+      "proof": "Finite reproducible sorted backlog with source-blob witnesses, triggers, flags, consumers and next tests"
+    },
+    {
+      "id": "A05",
+      "requires": [
+        "A03"
+      ],
+      "proof": "Seeded semantic fault vectors independently falsified, 10000000 cases on Node"
+    },
+    {
+      "id": "A06",
+      "requires": [
+        "A04",
+        "A05"
+      ],
+      "proof": "Exact PR HEAD checkout test, post-merge requalification and independent review"
+    }
   ],
-  "profiles": ["ORIGINAL_SOURCE_GUARD", "DYNAMIC_CONSUMER", "WORKFLOW_HAZARD", "WORKFLOW_REVIEW", "DOCUMENT_VIGENCY", "NO_LITERAL_IMPORTER", "UNCLASSIFIED_RETAIN"],
-  "allowed_decisions": ["RETAIN_GUARDED", "INVESTIGATE_ONLY", "RETAIN_PENDING_REVIEW"],
+  "profiles": [
+    "ORIGINAL_SOURCE_GUARD",
+    "DYNAMIC_CONSUMER",
+    "WORKFLOW_HAZARD",
+    "WORKFLOW_REVIEW",
+    "DOCUMENT_VIGENCY",
+    "NO_LITERAL_IMPORTER",
+    "UNCLASSIFIED_RETAIN"
+  ],
+  "allowed_decisions": [
+    "RETAIN_GUARDED",
+    "INVESTIGATE_ONLY",
+    "RETAIN_PENDING_REVIEW"
+  ],
   "authority_boundaries": {
     "new_owner": false,
     "new_writer": false,
@@ -36,6 +83,11 @@
     "branch_rules": "UNKNOWN_UNTIL_GITHUB_ADMIN_READBACK",
     "product": "NO_GO"
   },
-  "commit_plan": ["C1_POLICY_AND_V5B_EXTENSION", "C2_BACKLOG_AND_10M_FALSIFIER", "C3_TEST_AND_README_RUNBOOK"],
+  "commit_plan": [
+    "C1_POLICY_AND_V5B_EXTENSION",
+    "C2_BACKLOG_AND_10M_FALSIFIER",
+    "C3_TEST_AND_README_RUNBOOK",
+    "C4_GENERATED_MARKDOWN_ATLAS_CLOSURE"
+  ],
   "release": "NO_GO"
 }

@@ -1,0 +1,85 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "abd62d81d9b899743ee738fc04b59c2e065fe765",
+  "self_path": "governance/changes/zzzzzzzzzzzzz-cora-pr-b-documentation.json",
+  "scope": "PR_B_DOCS_READABILITY_NO_ORIGINAL_OWNER_CHANGE",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "governance/changes/zzzzzzzzzzzzz-cora-pr-b-documentation.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Register source-bound documentation cleanup in original V5-B succession"
+    },
+    {
+      "path": "contracts/cora-pr-b-documentation-v1.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Finite documentation lattice derived from original CORA and V5-B rather than new owner"
+    },
+    {
+      "path": "scripts/cora-pr-b-docs.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Conservative mechanically falsifiable cross-document consistency gate"
+    },
+    {
+      "path": "tests/cora-pr-b-docs.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Test full checkout documentation, independent structural mutations, historic boundaries and generated atlas"
+    },
+    {
+      "path": "README.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add single documentation entry for repository software product and evidentiary roles",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzz-cora-pr-a-backlog.json",
+      "supersedes_source_main": "b60e3ac2b9fa9cb4167b7413d594c502c0fa9459"
+    },
+    {
+      "path": "docs/START_HERE.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Explain unusual repository software product ontology for general readers"
+    },
+    {
+      "path": "docs/PRODUCT_POSITIONING.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Bound product claims and independent user value proof without self-certification"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Distinguish owners and original modes from legacy naming and delivery"
+    },
+    {
+      "path": "docs/IKANT_LOCAL_SETUP.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Correct current source URL and first-turn orientation instructions"
+    },
+    {
+      "path": "docs/GOVERNANCE.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Define independent source/field qualification and archive authority boundary"
+    },
+    {
+      "path": "docs/IKANT_DEVELOPMENT_HISTORY.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Record precise merge lineage without exporting historical consents"
+    },
+    {
+      "path": "docs/IKANT_RUNTIME_AND_EVIDENCE.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Mark historical case study epoch versus current bound source"
+    }
+  ]
+}

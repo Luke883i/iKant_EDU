@@ -1,0 +1,279 @@
+{
+  "schema": "ikant-cora-reticular-hygiene/v1",
+  "authority": 0,
+  "active": false,
+  "product_go": false,
+  "retirement_authorized": false,
+  "origin": {
+    "target": "Luke883i/iKant_EDU",
+    "base_main": "0b582b52265dd6af5936ea9034ccae0ddb877800",
+    "cora": "Luke883i/cora",
+    "cora_head": "3fdf761167e62cc427b7339fc6c59343c1b0be8f",
+    "derived_from": "contracts/cora-minimal-absorption-v1.json",
+    "existing_V5B": "scripts/v5b-repository-governance-audit.mjs"
+  },
+  "abstract_dod": {
+    "formula": "FOR_ALL_GIT_PATHS: exact_source AND provisional_role AND consumer_unknown_preserved; AND_FOR_CLEANUP: physical_nonregression AND human_authorized_effect; AND_FOR_PRODUCT: original_runtime_readback AND independent_user_value",
+    "logic": "NON_COMPENSATORY_AND",
+    "evidence_ladder": [
+      "GIT_BLOB",
+      "SOURCE_CENSUS",
+      "CHECKOUT_TEST",
+      "HOST_OWNER_READBACK",
+      "PROVIDER",
+      "INDEPENDENT_HUMAN",
+      "USER_HOLDOUT"
+    ],
+    "unknown": "BLOCKS_PROMOTION_NOT_EQUIVALENT_TO_UNUSED",
+    "cleaning": "NO_DELETION_WITHOUT_VERIFIED_CONSUMERS_BEHAVIOR_RESTORE_AND_HUMAN_DECISION"
+  },
+  "reuse": {
+    "census": "scripts/v5b-repository-governance-audit.mjs#auditRepository",
+    "entry": "scripts/cora-minimal-absorption.mjs",
+    "callsite": "scripts/project-review-callsites.mjs",
+    "retention": "contracts/v1-workflow-retention.json",
+    "assurance": "contracts/project-review-readiness-v1.json",
+    "owners": [
+      "host/c72-public-mode-admission.mjs",
+      "host/c135-edu-v2-owner.mjs",
+      "host/c87-durable-ledger.mjs",
+      "host/c125-output-port.mjs"
+    ],
+    "owner_blob_pins": {
+      "host/c72-public-mode-admission.mjs": "eec28e35a1066802edc905c7d61c1ecbcef0082d",
+      "host/c135-edu-v2-owner.mjs": "e8bbe5741375e5d51f1caa02fdba2ecc5f6c049d",
+      "host/c87-durable-ledger.mjs": "9d4fd4038bd7e109bdbc5e0441f9e9acf497c846",
+      "host/c125-output-port.mjs": "14760e40051b2bbe0c3a2ebc9347e125fdd7d65a"
+    },
+    "baseline_workflow_tree": "5457f319ca2a8c1e1edbf8b597de05dbc1f77b92"
+  },
+  "nodes": [
+    {
+      "id": "S01",
+      "kind": "LOCAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [],
+      "description": "Pinned main/BASE/HEAD and every Git index/tree blob agree",
+      "falsifier": "A changed/absent byte or UNKNOWN source consumer cannot be promoted into a verified product claim."
+    },
+    {
+      "id": "S02",
+      "kind": "LOCAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [],
+      "description": "Every tracked path is represented once in the V5-B live census",
+      "falsifier": "A changed/absent byte or UNKNOWN source consumer cannot be promoted into a verified product claim."
+    },
+    {
+      "id": "S03",
+      "kind": "LOCAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [],
+      "description": "Every tracked path has a provisional role and unverified accountability",
+      "falsifier": "A changed/absent byte or UNKNOWN source consumer cannot be promoted into a verified product claim."
+    },
+    {
+      "id": "S04",
+      "kind": "LOCAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [],
+      "description": "Every tracked path carries literal inbound/outbound consumers and UNKNOWN where absent",
+      "falsifier": "A changed/absent byte or UNKNOWN source consumer cannot be promoted into a verified product claim."
+    },
+    {
+      "id": "S05",
+      "kind": "LOCAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [],
+      "description": "Every workflow is indexed with its source flags, triggers and review/retention boundary",
+      "falsifier": "A changed/absent byte or UNKNOWN source consumer cannot be promoted into a verified product claim."
+    },
+    {
+      "id": "S06",
+      "kind": "LOCAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [],
+      "description": "All four original owner blobs match Git-pinned BASE identities without needing checkout history",
+      "falsifier": "A changed/absent byte or UNKNOWN source consumer cannot be promoted into a verified product claim."
+    },
+    {
+      "id": "S07",
+      "kind": "LOCAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [],
+      "description": "Workflow subtree equals BASE Git tree and V5-B rejects any undeclared deletion or retirement",
+      "falsifier": "A changed/absent byte or UNKNOWN source consumer cannot be promoted into a verified product claim."
+    },
+    {
+      "id": "S08",
+      "kind": "LOCAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [],
+      "description": "The negative/physical source guard test is tracked, reproducible and fail-closed",
+      "falsifier": "A changed/absent byte or UNKNOWN source consumer cannot be promoted into a verified product claim."
+    },
+    {
+      "id": "S09",
+      "kind": "LOCAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [],
+      "description": "Root README links to one non-authoritative maintenance route and exact commands",
+      "falsifier": "A changed/absent byte or UNKNOWN source consumer cannot be promoted into a verified product claim."
+    },
+    {
+      "id": "E01",
+      "kind": "LOCAL",
+      "scope": "EXTERNAL",
+      "depends_on": [],
+      "description": "Dynamic and external consumers independently qualified, including non-JS",
+      "falsifier": "A CI-green or source-only claim cannot replace independently reopened external proof."
+    },
+    {
+      "id": "E02",
+      "kind": "LOCAL",
+      "scope": "EXTERNAL",
+      "depends_on": [],
+      "description": "Two independent engineers and accountable human decision (V5-G)",
+      "falsifier": "A CI-green or source-only claim cannot replace independently reopened external proof."
+    },
+    {
+      "id": "E03",
+      "kind": "LOCAL",
+      "scope": "EXTERNAL",
+      "depends_on": [],
+      "description": "Required checks, provider permissions, effect/rollback closure verified independently",
+      "falsifier": "A CI-green or source-only claim cannot replace independently reopened external proof."
+    },
+    {
+      "id": "E04",
+      "kind": "LOCAL",
+      "scope": "EXTERNAL",
+      "depends_on": [],
+      "description": "Native C72/C135/C87/C125/S03 delivery and independent end-user outcome",
+      "falsifier": "A CI-green or source-only claim cannot replace independently reopened external proof."
+    },
+    {
+      "id": "I_DISCOVERY",
+      "kind": "INTERMEDIATE",
+      "scope": "SOURCE_GIT",
+      "depends_on": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "description": "Complete provisional index without deletion authority"
+    },
+    {
+      "id": "I_HYGIENE",
+      "kind": "INTERMEDIATE",
+      "scope": "SOURCE_GIT",
+      "depends_on": [
+        "S06",
+        "S07",
+        "S08",
+        "S09"
+      ],
+      "description": "Small reversible verified source cleanup"
+    },
+    {
+      "id": "I_EXTERNAL",
+      "kind": "INTERMEDIATE",
+      "scope": "EXTERNAL",
+      "depends_on": [
+        "E01",
+        "E02",
+        "E03"
+      ],
+      "description": "Independently qualified consumers and governed replacement decision"
+    },
+    {
+      "id": "G_SOURCE_PREPARED",
+      "kind": "GLOBAL",
+      "scope": "SOURCE_GIT",
+      "depends_on": [
+        "I_DISCOVERY",
+        "I_HYGIENE"
+      ],
+      "description": "Source-only preparation; no end-to-end standardization"
+    },
+    {
+      "id": "G_REPOSITORY_STANDARDIZED",
+      "kind": "GLOBAL",
+      "scope": "EXTERNAL",
+      "depends_on": [
+        "G_SOURCE_PREPARED",
+        "I_EXTERNAL"
+      ],
+      "description": "Fully governed repository cleanup"
+    },
+    {
+      "id": "G_PRODUCT_QUALIFIED",
+      "kind": "GLOBAL",
+      "scope": "EXTERNAL",
+      "depends_on": [
+        "G_REPOSITORY_STANDARDIZED",
+        "E04"
+      ],
+      "description": "Real host and user-value proof, never from source alone"
+    }
+  ],
+  "goals": {
+    "prepared": "G_SOURCE_PREPARED",
+    "standardized": "G_REPOSITORY_STANDARDIZED",
+    "product": "G_PRODUCT_QUALIFIED"
+  },
+  "commits": {
+    "git_absolute_minimum": 1,
+    "reviewable_semantic_minimum": 3,
+    "assumption": "A separate auditable commit per contract, physically exercised witness, and entrypoint hygiene; these are review units not a Git lower-bound proof.",
+    "chain": [
+      {
+        "id": "C1",
+        "type": "CONTRACT_AND_GOVERNANCE",
+        "depends_on": [],
+        "files": [
+          "contracts/cora-reticular-hygiene-v1.json",
+          "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json"
+        ]
+      },
+      {
+        "id": "C2",
+        "type": "SOURCE_CENSUS_AND_FALSIFIERS",
+        "depends_on": [
+          "C1"
+        ],
+        "files": [
+          "scripts/cora-minimal-absorption.mjs",
+          "tests/cora-reticular-hygiene.test.mjs"
+        ]
+      },
+      {
+        "id": "C3",
+        "type": "USER_FACING_MAINTENANCE_ENTRY",
+        "depends_on": [
+          "C2"
+        ],
+        "files": [
+          "README.md"
+        ]
+      }
+    ]
+  },
+  "first_slice": {
+    "action": "REPLACE_EXISTENCE_ONLY_ASSURANCE_WITH_GIT_BOUND_V5B_READBACK",
+    "reversible": true,
+    "no_deleted_paths": true,
+    "no_new_workflow": true,
+    "no_owner_changes": true,
+    "workflow_decision": "RETAIN_PENDING_INDEPENDENT_CONSUMER_REVIEW"
+  },
+  "proof_boundary": {
+    "source_only": "CANDIDATE_UNTIL_EXACT_HEAD_CI_READBACK",
+    "repo_standardization": "BLOCKED_EXTERNAL",
+    "product": "BLOCKED_EXTERNAL",
+    "authorization": "NONE"
+  },
+  "release": "NO_GO"
+}

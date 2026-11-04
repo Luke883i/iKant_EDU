@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {qualifyWorkflowPatch,qualifyPrCCISource,observePrCCISource,DIRECTIVE}
  from '../scripts/cora-pr-c-ci.mjs';
+import {gitBlobSha1} from '../scripts/v5b-repository-governance-audit.mjs';
 const policy=JSON.parse(fs.readFileSync(new URL('../contracts/cora-pr-c-ci-v1.json',import.meta.url),'utf8'));
 const yaml=fs.readFileSync(new URL('../.github/workflows/docs-ontology-coverage.yml',import.meta.url),'utf8');
 const clone=()=>structuredClone(policy);
@@ -28,6 +29,9 @@ test('exact original trigger, job and commands recovered from one physical workf
  const digest=x=>crypto.createHash('sha1').update('blob '+Buffer.byteLength(x)+String.fromCharCode(0)).update(x).digest('hex');
  assert.equal(digest(previous),policy.bounded_effect.before_blob);
  assert.equal(digest(yaml),policy.bounded_effect.after_blob);
+ assert.equal(gitBlobSha1(yaml),digest(yaml),'canonical V5-B blob SHA must match independent test oracle');
+ assert.equal(gitBlobSha1(previous),digest(previous));
+ assert.equal(gitBlobSha1(Buffer.from(yaml,'utf8')),digest(yaml));
  assert.equal(previous.includes('permissions:\n  contents: read\nconcurrency:'),false);
 });
 test('CI full readback rejects provider promotion and workflow count drift',()=>{

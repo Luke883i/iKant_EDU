@@ -36,8 +36,28 @@ export function qualifyDocumentSet(c,docs,{atlasExact=false,sourceQualified=fals
   'docs/ARCHITECTURE.md','docs/IKANT_LOCAL_SETUP.md','docs/GOVERNANCE.md',
   'docs/IKANT_DEVELOPMENT_HISTORY.md','docs/IKANT_RUNTIME_AND_EVIDENCE.md']);
  const observed=new Set();const errors=[];let localLinks=0;
+ const roles={'README.md':'ENTRY','docs/START_HERE.md':'PUBLIC_GUIDE',
+  'docs/PRODUCT_POSITIONING.md':'PRODUCT_BOUNDARY','docs/ARCHITECTURE.md':'SOFTWARE_BOUNDARY',
+  'docs/IKANT_LOCAL_SETUP.md':'EXECUTION_RUNBOOK','docs/GOVERNANCE.md':'AUTHORITY_BOUNDARY',
+  'docs/IKANT_DEVELOPMENT_HISTORY.md':'HISTORICAL_LINEAGE',
+  'docs/IKANT_RUNTIME_AND_EVIDENCE.md':'EVIDENCE_BOUNDARY'};
+ const deps={B01:[],B02:['B01'],B03:['B02'],B04:['B02'],B05:['B02'],
+  B06:['B03','B04','B05'],B07:['B06'],B08:['B07']};
+ for(const [i,n] of c.nodes.entries()){
+  const id='B'+String(i+1).padStart(2,'0');
+  if(n?.id!==id||JSON.stringify(n?.needs)!==JSON.stringify(deps[id]))
+   errors.push('PR_B_RETICULAR_EDGE_MISMATCH:'+id);
+ }
+ if(JSON.stringify(c.exit_cut.source_candidate)!==JSON.stringify(Object.keys(deps).slice(0,7))||
+    JSON.stringify(c.exit_cut.engineering_complete)!==JSON.stringify(Object.keys(deps))||
+    c.exit_cut.product!=='EXTERNAL_OWNER_PROVIDER_HOLDOUT_NOT_IN_PR_B')
+  errors.push('PR_B_DOD_EXIT_CUT_DRIFT');
+ if(c.review?.human_decision!=='NOT_ATTESTED'||
+    c.review?.two_independent_engineers!=='NOT_ATTESTED'||
+    c.review?.provider_delivery!=='NOT_ATTESTED')
+  errors.push('PR_B_FALSE_EXTERNAL_REVIEW');
  for(const d of c.documents){
-  if(!expected.has(d.path)||observed.has(d.path)||d.marker!==MARK||
+  if(!expected.has(d.path)||observed.has(d.path)||d.role!==roles[d.path]||d.marker!==MARK||
      !Array.isArray(d.required)||!d.required.length){
    errors.push('DOCUMENT_CONTRACT_ROW:'+d.path);continue;
   }
@@ -46,7 +66,7 @@ export function qualifyDocumentSet(c,docs,{atlasExact=false,sourceQualified=fals
   if(typeof value!=='string'||value.length<100||value.split(MARK).length!==2){
    errors.push('DOC_MISSING_OR_MARKER:'+d.path);continue;
   }
-  for(const token of d.required)if(typeof token!=='string'||!value.includes(token))
+  for(const token of d.required)if(typeof token!=='string'||!value.toLocaleLowerCase('it').includes(token.toLocaleLowerCase('it')))
    errors.push('DOC_REQUIRED_TOKEN:'+d.path+':'+token);
   // Only PR-B's new passage is checked, never claim to prove all historic links.
   const pos=value.indexOf(MARK)+MARK.length;const rest=value.slice(pos);

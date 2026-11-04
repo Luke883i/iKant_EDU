@@ -34,7 +34,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: node --test tests/project-c72-cold-mode.test.mjs tests/p1-postmode-source-handoff.test.mjs tests/project-edu-complete-chain.test.mjs
+      - name: Original C72 and EDU complete-chain tests
+        shell: bash
+        run: |
+          set -o pipefail
+          node --test tests/project-c72-cold-mode.test.mjs tests/p1-postmode-source-handoff.test.mjs tests/project-edu-complete-chain.test.mjs 2>&1 | tee "$RUNNER_TEMP/edu-complete-chain.log"
+      - name: Capture original EDU first failure
+        if: ${{ failure() }}
+        id: edu_edge
+        run: node scripts/ci-failure-annotations.mjs first-edge tap "$RUNNER_TEMP/edu-complete-chain.log" first_edge
+      - name: "EDU first failing assertion [${{ steps.edu_edge.outputs.first_edge }}]"
+        if: ${{ failure() }}
+        run: echo "EDU original test failure, owner gate remains blocking"
       - run: python3 tests/test_project_manual_full_head.py
       - run: node scripts/project-source-manifest.mjs verify
       - name: Three independent seeded 10k WHAT/HOW, P1 and continuity campaigns

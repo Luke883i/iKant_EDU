@@ -32,6 +32,18 @@ jobs:
         run: |
           node scripts/ci-failure-annotations.mjs tap "$RUNNER_TEMP/ikant-ci-tests.log"
           node scripts/ci-failure-annotations.mjs check "$RUNNER_TEMP/ikant-ci-check.log"
+      - name: Capture original first TAP and check failures
+        if: ${{ failure() }}
+        id: ci_edge
+        run: |
+          node scripts/ci-failure-annotations.mjs first-edge tap "$RUNNER_TEMP/ikant-ci-tests.log" first_tap
+          node scripts/ci-failure-annotations.mjs first-edge check "$RUNNER_TEMP/ikant-ci-check.log" first_check
+      - name: "First TAP failure [${{ steps.ci_edge.outputs.first_tap }}]"
+        if: ${{ failure() }}
+        run: echo "First TAP failure is source-only diagnostic, no owner receipt"
+      - name: "First contract failure [${{ steps.ci_edge.outputs.first_check }}]"
+        if: ${{ failure() }}
+        run: echo "First contract failure is source-only diagnostic, no owner receipt"
       - name: Preserve full CI diagnostic logs
         if: ${{ failure() }}
         uses: actions/upload-artifact@v4

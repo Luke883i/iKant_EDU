@@ -41,8 +41,17 @@ jobs:
           node --check scripts/project-host-effect-falsify-1m.mjs
           node scripts/project-source-manifest.mjs verify
       - name: Original owner nonregression and K0 gate
+        shell: bash
         run: |
-          node --test tests/project-host-effect-decision.test.mjs tests/project-edu-h1-bound-port.test.mjs tests/project-edu-h1-original.test.mjs tests/project-c72-e16-unified-ingress.test.mjs tests/project-c72-e16-unified-original.test.mjs
+          set -o pipefail
+          node --test tests/project-host-effect-decision.test.mjs tests/project-edu-h1-bound-port.test.mjs tests/project-edu-h1-original.test.mjs tests/project-c72-e16-unified-ingress.test.mjs tests/project-c72-e16-unified-original.test.mjs 2>&1 | tee "$RUNNER_TEMP/k0-original-tests.log"
+      - name: Capture original K0 test first failure
+        if: ${{ failure() }}
+        id: k0_edge
+        run: node scripts/ci-failure-annotations.mjs first-edge tap "$RUNNER_TEMP/k0-original-tests.log" first_edge
+      - name: "K0 first failing assertion [${{ steps.k0_edge.outputs.first_edge }}]"
+        if: ${{ failure() }}
+        run: echo "K0 original test failure, owner gate remains blocking"
       - name: One million seeded realistic pre-owner cases (twice)
         shell: bash
         run: |

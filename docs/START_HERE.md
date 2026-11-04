@@ -6,6 +6,13 @@ Immagina di chiedere a un assistente: **«Come lo sai?»** Una risposta fluida p
 
 **Che cosa NON promette?** Non trasforma un'affermazione falsa in vera, un file caricato in una installazione, una traccia in una memoria autobiografica né un test sintetico in una prova sull'esperienza soggettiva. Se una verifica manca, il sistema deve dichiararlo.
 
+<!-- cora-pr-b-docs:v1 -->
+## Perche il progetto e atipico
+
+Un **repository** è un insieme di sorgenti, contratti, test, strumenti e documenti: ospita anche esperimenti e storia, che non sono tutti componenti attivi. Il **software** è il programma Node/Host che puo eseguire controlli intorno a un LLM sostituibile quando sorgenti e strumenti sono disponibili. Il **prodotto** è l'esperienza sperimentale OneShell che una persona dovrebbe poter usare; non coincide con la presenza del software nel repository.
+
+Il valore atteso e rendere più controllabili consenso, esecuzione, registrazione e limiti di una risposta, non promettere verità automatica. Il codice puo passare la CI senza essere installato nel provider; una guida leggibile non prova che il prodotto aiuti gli utenti. Per i dettagli: [natura del prodotto](PRODUCT_POSITIONING.md), [architettura](ARCHITECTURE.md) e [prove](IKANT_RUNTIME_AND_EVIDENCE.md).
+
 ## Un esempio quotidiano
 
 Chiedi: «Confronta due ipotesi scientifiche». Un normale LLM può dare una risposta. iKant, quando l'owner originale viene realmente eseguito, può documentare input, piano, verifiche, registrazione e rilettura. **Questo non certifica il confronto scientifico**: per quello servono fonti, metodi e validazione separati. Il vantaggio potenziale da misurare è sapere meglio **quali passaggi sono successi e quali no**.

@@ -4,6 +4,13 @@
 
 iKant e' un metodo sperimentale, governato dal codice, per orientare risposte di un modello linguistico e conservarne verifiche tecniche, distinguendo quello che il software ha fatto da quello che afferma.
 
+<!-- cora-pr-b-docs:v1 -->
+## Repository, software, prodotto: promesse separate
+
+**Repository:** i contratti, i test, i documenti correnti e quelli storici rendono consultabile e falsificabile la struttura, ma non sono un sistema in esecuzione. **Software:** gli owner C72/C135/C87/C125-S03 sono parti eseguibili di un sistema Node/Host attorno a un LLM sostituibile; la loro presenza nel Git non equivale alla loro invocazione. **Prodotto:** OneShell è un'esperienza sperimentale di risposta con prove e limiti, da qualificare nella sessione Host reale. CANONICAL richiede un diverso percorso originale C59 e un evento nativo qualificato.
+
+La promessa numerica nel [contratto di valore](../contracts/c72-product-value-promise.json) ha target **95%**, non misurato: **NON ATTESTATO**. Per affermare un beneficio sono richiesti utenti e task indipendenti, non conteggi di mutazioni, PR o CI. Questo documento descrive posizionamento e limiti, non approva la release. [Architettura](ARCHITECTURE.md) e [prove](IKANT_RUNTIME_AND_EVIDENCE.md) precisano i confini.
+
 ## Cosa si puo' dimostrare oggi
 
 - Identita' dei file e dei moduli attraverso impronte verificabili.

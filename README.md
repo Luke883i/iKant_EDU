@@ -16,6 +16,9 @@ Da un checkout Git completo, la verifica di mantenimento read-only è `node scri
 
 **PR-A · backlog di standardizzazione, sola lettura.** Dal medesimo checkout Git verificato, `node scripts/cora-pr-a-backlog.mjs --full` deriva dal censimento V5-B/CORA una coda ordinata di verifiche su consumer, workflow e vigenza documentale. Le decisioni sono provvisorie e non autorizzano rimozioni. Contratto, 10 milioni di mutazioni semantiche seeded (non modifiche fisiche al repo) e limiti sono in [PR-A backlog](docs/CORA_PR_A_BACKLOG.md). Per la regressione: `node --test tests/cora-pr-a-backlog.test.mjs`.
 
+<!-- cora-pr-b-docs:v1 -->
+**Standard documentale PR-B.** iKant EDU è un repository atipico: comprende **repository** di contratti, studi e codice; **software** Node/Host con owner originali; e **prodotto** OneShell sperimentale da provare con sessioni reali. Non è un nuovo modello e non basta una CI verde per attestare il provider. Percorso unico per i lettori: [guida pubblica](docs/START_HERE.md), [prodotto e promesse](docs/PRODUCT_POSITIONING.md), [architettura e owner](docs/ARCHITECTURE.md), [installazione verificabile](docs/IKANT_LOCAL_SETUP.md), [governance](docs/GOVERNANCE.md), [storia e archeologia](docs/IKANT_DEVELOPMENT_HISTORY.md), [prove e limiti](docs/IKANT_RUNTIME_AND_EVIDENCE.md). Sono descrizioni subordinate ai contratti e ai byte Git dello stesso commit, non nuove autorità.
+
 ### Review qualificata: repository, software, deployment, runtime, prodotto e governance
 
 **Repository (R)**: HEAD, TREE, blob, contratti e CI. **Software (S)**: codice eseguibile su checkout verificato. **Deployment (D)**: port realmente installato e callable nel target Host. **Runtime (T)**: specifica istanza con owner invocati e ricevute originali rilette. **Prodotto (P)**: percorso umano realmente utilizzabile. **Governance (G)**: review umana e regole amministrative verificabili. Nessuna prova R/S promuove automaticamente D/T/P/G.

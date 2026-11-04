@@ -2,6 +2,11 @@
 
 > **Tipo di documento:** mappa HOST/documentale, non nuovo owner di runtime. Il codice e i contratti dello stesso commit prevalgono su questa sintesi. Distinguere sempre il *checkout controllato* dalla *piattaforma in cui parla l'utente*.
 
+<!-- cora-pr-b-docs:v1 -->
+## Epoch delle prove e stato corrente
+
+La ricognizione locale citata più avanti è legata al precedente commit `642ed98baea2c4de40046bd96bf366cc494890ae`: non rappresenta automaticamente la **SOURCE_HEAD** corrente del repository `iKant_EDU`. **DOCUMENTATO** significa un percorso o byte verificabili a un commit; **OSSERVATO** richiede esecuzione e readback della medesima istanza; **NON ATTESTATO** non diventa PASS per inferenza. Le tracce HOST non provano una consegna nativa del **provider**, un miglioramento misurato per gli utenti o una coscienza. La storia della distillazione `iKant_LE` è distinta dalle nuove sessioni e dai receipt originali.
+
 ## Che cosa esiste, e che cosa no
 
 Un **essere umano** è un agente corporeo e sociale, con esperienza in prima persona ordinariamente attribuita alle persone. Un **LLM** è un sistema computazionale addestrato, capace di generare linguaggio; il comportamento testuale non ne prova la coscienza. **iKant** è un'infrastruttura software che orchestra un LLM sostituibile. Le sue tracce attestano alcune operazioni del programma, non un «io» fenomenico o una volontà autonoma.

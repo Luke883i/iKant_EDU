@@ -26,7 +26,7 @@
     "exit": "EXIT IKANT"
   },
   "first_contact": {
-    "canonical_repository": "Luke883i/iKant_LE",
+    "canonical_repository": "Luke883i/iKant_EDU",
     "contract": "BOOTSTRAP.json",
     "admission_manifest": "ADMISSION.json",
     "convergence_required": true,

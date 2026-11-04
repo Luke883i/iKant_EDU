@@ -12,8 +12,8 @@ const banned=[/src\//i,/contracts\//i,/\.mjs\b/i,/\.json\b/i,/\bC\d+\b/,/LOCAL_[
 
 function oracle(p,e){
  const z=[];
- if(!p.includes('https://github.com/Luke883i/iKant_LE.')||!p.includes('[for_ai_agent_first_entrypoint]'))z.push('refs');
- const urls=p.match(/https?:\/\/[^\s]+/g)||[];if(urls.length!==1||urls[0]!=='https://github.com/Luke883i/iKant_LE.')z.push('url');
+ if(!p.includes('https://github.com/Luke883i/iKant_EDU.')||!p.includes('[for_ai_agent_first_entrypoint]'))z.push('refs');
+ const urls=p.match(/https?:\/\/[^\s]+/g)||[];if(urls.length!==1||urls[0]!=='https://github.com/Luke883i/iKant_EDU.')z.push('url');
  if(banned.some(re=>re.test(p)))z.push('technical_leak');
  if(!p.includes('unico ingresso tecnico caller-facing')||!p.includes('Non e un nuovo owner del NEXT')||!p.includes('delega agli owner del repository')||!/(?:le altre proiezioni non autorizzano azioni|proiezioni, stato e chat non autorizzano azioni)/.test(p))z.push('entrypoint_scope');
  if(!p.includes('azione, handoff o arresto/blocco')||!/esegui (?:una )?(?:sola )?volta/.test(p))z.push('directive_union');
@@ -41,7 +41,7 @@ function oracle(p,e){
 function featureVector(p,e){
  const has=(...xs)=>xs.every(x=>p.includes(x));
  return{
- refs:has('https://github.com/Luke883i/iKant_LE.','[for_ai_agent_first_entrypoint]')&&(p.match(/https?:\/\/[^\s]+/g)||[]).length===1&&!banned.some(re=>re.test(p)),
+ refs:has('https://github.com/Luke883i/iKant_EDU.','[for_ai_agent_first_entrypoint]')&&(p.match(/https?:\/\/[^\s]+/g)||[]).length===1&&!banned.some(re=>re.test(p)),
  ingress:has('unico ingresso tecnico caller-facing','Non e un nuovo owner del NEXT','delega agli owner del repository')&&/(?:le altre proiezioni non autorizzano azioni|proiezioni, stato e chat non autorizzano azioni)/.test(p)&&!/unico owner del NEXT/i.test(p),
  directive:has('azione, handoff o arresto/blocco')&&/esegui (?:una )?(?:sola )?volta/.test(p),
  memory:has('Non usare la conversazione come ledger, retry memory, capability cache o stato','trattandoli come opachi')&&/non mantenere attempted carrier/i.test(p)&&!/Mantieni come memoria operativa minima/i.test(p),

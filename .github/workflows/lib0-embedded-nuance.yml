@@ -1,6 +1,14 @@
 name: LIB0 embedded relational nuance
 on:
   pull_request:
+    paths:
+      - 'contracts/embedded-*'
+      - 'src/embedded-*'
+      - 'scripts/lib0-*'
+      - 'tests/lib0-*'
+      - 'artifacts/qualification/lib0-*'
+      - 'package.json'
+      - '.github/workflows/lib0-embedded-nuance.yml'
   workflow_dispatch:
 permissions:
   contents: read
@@ -13,10 +21,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Full standalone regression
-        run: npm test
-      - name: Existing contract checks
-        run: npm run check
+      # Common npm test/check belongs to ci.yml; keep vectors and mutation evidence here.
       - name: Verify committed cross-language vectors
         run: |
           npm run vectors:lib0

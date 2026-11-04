@@ -18,7 +18,7 @@ const sha=b=>createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).updat
 const originalObjects=paths.map(p=>({path:p,bytes:original(p),blob_sha1:object(p)}));
 const expectedBlobShas=Object.fromEntries(originalObjects.map(o=>[o.path,o.blob_sha1]));
 const witness={source_head:head,host_link_displayed:true,distinct_human_message_observed:true,
- terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+ terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
  pinned_blob_shas:Object.fromEntries(originalObjects.slice(0,5).map(o=>[o.path,o.blob_sha1]))};
 const relay=path.join(repo,'scripts/project-c72-verified-staging.mjs');
 const seed=path.join(repo,'host/project-c72-coldstart-seed.mjs');

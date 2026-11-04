@@ -1,7 +1,5 @@
 name: c19-fastboot-convergence
 on:
-  push:
-    branches: ['agent/c19-host-observed-fastboot']
   pull_request:
     paths:
       - 'BOOTSTRAP.json'
@@ -26,8 +24,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
-      - run: npm test
-      - run: npm run check
       - run: npm run falsify:c15
       - run: npm run falsify:c17
       - run: npm run falsify:c18

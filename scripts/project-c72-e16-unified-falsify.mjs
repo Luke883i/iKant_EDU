@@ -15,7 +15,7 @@ function mix(x){x=(x^anchor)>>>0;x=Math.imul(x^(x>>>16),0x7feb352d);x=Math.imul(
 function frame(i){
  const u=mix(i),h=u.toString(16).padStart(8,'0').repeat(5),w={source_head:h,
   host_link_displayed:true,distinct_human_message_observed:true,
-  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+h+'/TERMS.md',
+  terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+h+'/TERMS.md',
   pinned_blob_shas:Object.fromEntries(C72_COLDSTART_FILES.slice(0,5).map(p=>[p,SHA]))};
  const q={schema:E16_INGRESS_SCHEMA,phase:'POST_ACCEPT',projectProfile:'PROJECT_EDU_E15',
   humanMessage:'I ACCEPT',freshHumanTurn:true,ownerOutcome:'NOT_INVOKED',sourceHead:h,liveHead:h,

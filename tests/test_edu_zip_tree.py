@@ -20,7 +20,7 @@ class Tests(unittest.TestCase):
  def setUp(self):
   self.t=tempfile.TemporaryDirectory();self.z=Path(self.t.name)/'source.zip'
   with zipfile.ZipFile(self.z,'w',zipfile.ZIP_DEFLATED) as f:
-   for p,b in FILES.items():f.writestr('iKant_LE-'+HEAD+'/'+p,b)
+   for p,b in FILES.items():f.writestr('iKant_EDU-'+HEAD+'/'+p,b)
  def tearDown(self):self.t.cleanup()
  def test_original_tree_root(self):
   x=root.derive(self.z,HEAD,expected());self.assertEqual(x['source_tree'],expected())
@@ -30,6 +30,6 @@ class Tests(unittest.TestCase):
  def test_wrong_head_denied(self):
   with self.assertRaisesRegex(ValueError,'PREFIX'):root.derive(self.z,'b'*40,expected())
  def test_traversal_denied(self):
-  with zipfile.ZipFile(self.z,'a') as f:f.writestr('iKant_LE-'+HEAD+'/../escape',b'x')
+  with zipfile.ZipFile(self.z,'a') as f:f.writestr('iKant_EDU-'+HEAD+'/../escape',b'x')
   with self.assertRaisesRegex(ValueError,'UNSAFE'):root.derive(self.z,HEAD,expected())
 if __name__=='__main__':unittest.main()

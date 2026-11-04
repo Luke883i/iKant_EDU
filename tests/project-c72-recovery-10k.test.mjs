@@ -18,7 +18,7 @@ const documents=Object.fromEntries(names.map(path=>{
  return [path,Object.freeze({path,source_head:head,blob_sha1,content})];
 }));
 const witness=()=>({source_head:head,
- terms_link:`https://github.com/Luke883i/iKant_LE/blob/${head}/TERMS.md`,
+ terms_link:`https://github.com/Luke883i/iKant_EDU/blob/${head}/TERMS.md`,
  host_link_displayed:true,distinct_human_message_observed:true,
  pinned_blob_shas:Object.fromEntries(names.map(p=>[p,documents[p].blob_sha1]))});
 const valid=()=>({humanMessage:'I ACCEPT',freshHumanTurn:true,

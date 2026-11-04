@@ -28,7 +28,7 @@ export function validateH1Gate(q){
  const w=q.priorTurnEvidence;
  if(!plain(w)||!plain(w.pinned_blob_shas)||!SHA.test(w.source_head||'')||
    w.host_link_displayed!==true||w.distinct_human_message_observed!==true||
-   w.terms_link!=='https://github.com/Luke883i/iKant_LE/blob/'+w.source_head+'/TERMS.md'||
+   w.terms_link!=='https://github.com/Luke883i/iKant_EDU/blob/'+w.source_head+'/TERMS.md'||
    FIRST.some(p=>!SHA.test(w.pinned_blob_shas[p]||'')))
   return 'H1_FIRST_TURN_WITNESS_INVALID';
  if(!SHA.test(q.sourceHead||'')||q.sourceHead!==w.source_head)return 'STOP_SOURCE_LOCK_STALE';

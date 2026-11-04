@@ -41,6 +41,14 @@ test('C20 deploy-once store attests exact candidate HEAD and reference runtime',
  const d=temp();try{const dep=deploySessionChatRuntime({deploymentRoot:path.join(d,'deploy'),deploymentId:'D-C20'});const head=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();assert.equal(dep.source_head,head);assert.equal(dep.repository_transfer_per_chat,false);assert.equal(dep.reference_root_reopen_verified,true);assert.equal(dep.physical_chatgpt_registration_proven,false);assert.equal(readSessionChatDeployment(path.join(d,'deploy')).deployment.receipt_sha256,dep.receipt_sha256);}finally{fs.rmSync(d,{recursive:true,force:true});}
 });
 
+test('C20 original C72 source is physically present and reopened in legacy store and runtime',{concurrency:false},()=>{
+ const d=temp(),deployment=path.join(d,'deploy'),rel='contracts/c72-public-mode-admission-v2.json';
+ try{deploySessionChatRuntime({deploymentRoot:deployment});const original=fs.readFileSync(path.join(root,rel));
+  for(const stage of ['store','reference-runtime'])assert.deepEqual(fs.readFileSync(path.join(deployment,stage,rel)),original);
+  const c=JSON.parse(original.toString('utf8'));assert.equal(c.source_identity.canonical_repository,'Luke883i/iKant_EDU');
+ }finally{fs.rmSync(d,{recursive:true,force:true});}
+});
+
 test('C20 exact I ACCEPT reaches real persisted/read-back ACTIVE with zero remote rounds',{concurrency:false},async()=>{
  const d=temp(),deployment=path.join(d,'deploy');try{deploySessionChatRuntime({deploymentRoot:deployment,deploymentId:'D-ACTIVE'});const before=openDeployedSession({deploymentRoot:deployment,sessionId:'CHAT-1'});assert.equal(before.acceptance_required,true);const active=await acceptDeployedSession({deploymentRoot:deployment,sessionId:'CHAT-1',humanInput:'I ACCEPT'});assert.equal(active.state,'ACTIVE');assert.equal(active.runtime_readback_active,true);assert.equal(active.repository_transfer_per_chat,false);assert.equal(active.transfer_mode,'WARM_CACHE_EXACT');assert.equal(active.remote_rounds,0);assert.equal(active.deadline_result,'DEADLINE_PASS');assert.match(active.acceptance_origin_ticket_sha256,/^[a-f0-9]{64}$/);assert.match(active.acceptance_origin_receipt_sha256,/^[a-f0-9]{64}$/);const after=openDeployedSession({deploymentRoot:deployment,sessionId:'CHAT-1'});assert.equal(after.active,true);assert.equal(after.acceptance_required,false);}finally{fs.rmSync(d,{recursive:true,force:true});}
 });

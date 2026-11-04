@@ -21,7 +21,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm test
-      - run: npm run check
+      # Universal tests/checks are enforced in ci.yml; this runner keeps only its scoped falsifier.
       - run: npm run falsify:c16:discover
       - run: npm run falsify:c16

@@ -13,7 +13,7 @@ const obj=p=>{const b=fs.readFileSync(path.join(ROOT,p));return{path:p,blob_sha1
 function preaccept(){
  const b=JSON.parse(fs.readFileSync(path.join(ROOT,'BOOTSTRAP.json'),'utf8')),paths=b.post_accept_fastboot.reuse_preaccept_paths,rows=paths.map(obj),terms=rows.find(x=>x.path==='TERMS.md');
  const payloads=paths.map(p=>({path:p,content_utf8:fs.readFileSync(path.join(ROOT,p),'utf8')}));
- return{schema:'ikant-le-preaccept-handoff/v2',repository:'Luke883i/iKant_LE',source_head:HEAD,terms_presented:true,terms_object:{...terms},frozen:true,breached:false,pending_intent:'inizializza',orientation_objects:rows,orientation_payloads:payloads,runtime_observed_terms_presentation:false,host_attested_terms_presentation:true,authority:0};
+ return{schema:'ikant-le-preaccept-handoff/v2',repository:'Luke883i/iKant_EDU',source_head:HEAD,terms_presented:true,terms_object:{...terms},frozen:true,breached:false,pending_intent:'inizializza',orientation_objects:rows,orientation_payloads:payloads,runtime_observed_terms_presentation:false,host_attested_terms_presentation:true,authority:0};
 }
 function copy(rel,to){const out=path.join(to,rel);fs.mkdirSync(path.dirname(out),{recursive:true});fs.copyFileSync(path.join(ROOT,rel),out);}
 

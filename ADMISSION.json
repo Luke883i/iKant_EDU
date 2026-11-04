@@ -1,6 +1,6 @@
 {
   "schema": "ikant-le-admission/v3",
-  "repository": "Luke883i/iKant_LE",
+  "repository": "Luke883i/iKant_EDU",
   "human_gate_count": 1,
   "acceptance_phrase": "I ACCEPT",
   "current_session_required": true,

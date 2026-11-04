@@ -17,7 +17,7 @@ test('8+1 original Git bytes, C72/v2 accepted and introduction reopened; replay 
  assert.match(sourceHead,/^[a-f0-9]{40}$/);
  const priorTurnEvidence={
   source_head:sourceHead,host_link_displayed:true,distinct_human_message_observed:true,
-  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+sourceHead+'/TERMS.md',
+  terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+sourceHead+'/TERMS.md',
   pinned_blob_shas:Object.fromEntries(H1_FILES.slice(0,5).map(p=>[p,gitSha(fs.readFileSync(path.join(root,p)))]))
  };
  const privateRoot=fs.mkdtempSync(path.join(os.tmpdir(),'h1-original-checkout-'));

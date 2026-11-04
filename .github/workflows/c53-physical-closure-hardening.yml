@@ -53,8 +53,6 @@ jobs:
           fi
       - name: Exact runtime-root verification
         run: npm run runtime-root:verify
-      - name: Repository contract qualification
-        run: npm run check
       - name: Claim boundary remains external
         run: |
           python - <<'PY'

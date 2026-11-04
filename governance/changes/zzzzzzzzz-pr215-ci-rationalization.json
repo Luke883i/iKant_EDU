@@ -1,0 +1,565 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+  "source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+  "review_status": "ENGINEERING_CANDIDATE_REQUIRES_V5G_REVIEWS",
+  "paths": [
+    {
+      "path": ".github/workflows/c10-fastboot.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c11-life-consciousness.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c14-chat-bootstrap.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c16-runtime-availability.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c17-deadline-integrity.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c18-activation-continuation.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c19-fastboot-convergence.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c22-pr25-ontological-hardening.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c23-ontology-collapse.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c32-session-shell.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c33-post-187-closure.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c59-single-composition.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/lib0-embedded-nuance.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "artifacts/qualification/c52-candidate-blob-manifest.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "artifacts/qualification/c52-runtime-physical-closure-dod.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/session-chat-executable-surface-registry.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/session-chat-local-host-kernel.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/v1-workflow-retention.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "src/bootstrap-intent-adapter.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c46-coldstart-cohost-bind.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c47-cohost-runtime-closure.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c52-physical-runtime-closure.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c59-single-composition.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c63-canonical-parallel-bridge.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-coldstart-zero-checkout.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/v1-workflow-retention.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve original C98 retirement statuses and V1 no-silent-deletion test using strict uppercase alphanumeric underscore syntax; reject malformed labels, preserve replacement/consumer tests, no human signoff inferred.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c107-one-carrier-release.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 runner retirement documented in immutable baseline and explicit surviving successors/tests, not a release receipt.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c21-local-session-fastboot.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 runner retirement documented in immutable baseline and explicit surviving successors/tests, not a release receipt.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c98-phase2-source-exact.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 runner retirement documented in immutable baseline and explicit surviving successors/tests, not a release receipt.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c98-project-3md.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR215 runner retirement documented in immutable baseline and explicit surviving successors/tests, not a release receipt.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c97-chat-project-uiux.yml",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Retired UIUX-only CI runner after transferring exact Node 20/22 C97/C32/C73 suites to the current OneShell EDU pipeline.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-oneshell-edu.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add C97/UIUX source triggers and focused Node 20/22 regressions to surviving OneShell EDU runner.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/local-host-meta-prompt-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Correct C26 prompt-falsification oracle to canonical EDU URL and explicitly reject retired LE source URL.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c42-bootstrap-ontological-closure.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Shared npm run check remains in universal ci.yml; this specialist workflow retains its exact independent tests and falsification.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c43-bootstrap-recovery-hardening.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Shared npm run check remains in universal ci.yml; this specialist workflow retains its exact independent tests and falsification.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c44-methodological-bootstrap.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Shared npm run check remains in universal ci.yml; this specialist workflow retains its exact independent tests and falsification.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c45-context-root-ascii-closure.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Focused CI still runs its original regressions; global npm run check is retained in fail-closed universal ci.yml.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c55-local-host-post-meta.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Focused CI still runs its original regressions; global npm run check is retained in fail-closed universal ci.yml.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c56-local-host-session-meta.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Focused CI still runs its original regressions; global npm run check is retained in fail-closed universal ci.yml.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c57-host-binding-aware-meta.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Specialized negative and runtime tests remain intact; universal npm run check remains fail-closed in ci.yml.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c58-runtime-lifecycle-gate.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Specialized negative and runtime tests remain intact; universal npm run check remains fail-closed in ci.yml.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add read-only actual TAP error detail extraction with negative injection tests and CI annotations; never convert failure to PASS or mint original owner/provider evidence.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/ci-failure-annotations.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add read-only actual TAP error detail extraction with negative injection tests and CI annotations; never convert failure to PASS or mint original owner/provider evidence.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/ci-failure-annotations.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add read-only actual TAP error detail extraction with negative injection tests and CI annotations; never convert failure to PASS or mint original owner/provider evidence.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/edu-onezip-experimental.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original OneZIP archive prefix to match EDU pinned ZIP parser while preserving exact Git TREE root equality and source lock.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-host-assisted-local-file.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Requalify C72 prompt semantic witness against the actual canonical EDU prompt; preserve exact physical staging, nonce and fail-closed tests.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "same_source_main_change": "EXPLICIT_REVIEW_REQUIRED_PR_SLICE"
+    },
+    {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add explicit fail-closed negative tests for malformed workflow-retirement status tokens, alongside the preserved positive original C98 migration status.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "artifacts/qualification/c62-object-mincut-8192.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Recalculate bounded C62 mincut artifact using current pinned BOOTSTRAP runtime root SHA and exact source bytes, preserving tests.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve fail-closed V5B retention validation while recognizing previously registered uppercase digit-bearing C98 status names; reject unsafe punctuated or unqualified status tokens.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/v5d-oneshell.json",
+      "supersedes_source_main": "b3920c1bbfb856cead312e17b027e350ae2ec123"
+    },
+    {
+      "path": ".github/workflows/c26-local-host-meta-prompt.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Remove redundant global npm check from C26 scoped local-host-prompt qualifier while preserving prompt tests and falsification, with global CI retaining blocking check.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c72-unified-mode-admission.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Remove redundant global contract check from C72 matrix while preserving all original C69-C72 admissions, value falsifiers, and exact runtime root verification.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c34-pre-runtime-handoff.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Remove duplicated global checker from C34 while retaining C34 1m falsification, focused owner handoff regressions, C33 nonregression, and source root verification.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c46-fast-cohost-bind.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Remove redundant global checker from C46 while retaining scoped C46-C48 fast cohost bind and source-bound selection falsifiers.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c52-physical-runtime-closure.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Keep exact runtime-root, C52 inherited tests, 10m physical closure saturation, bundle coverage, DoD and generated-byte checks while central CI alone owns the global contract check.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c53-physical-closure-hardening.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Keep C53 physical mutation, C52 inherited exact artifact regeneration and runtime-root verification; central CI still blocks on global repository check.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c54-host-materialization.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Keep C54 host materialization tests, original authority invariants, 100k selection, one-million falsification and exact runtime-root; central CI owns duplicated check.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/p1-p7-oneshell-release.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve exact original owner tests and offline handoff while exposing failed assertion detail as nonauthoritative GitHub step labels with tee/pipefail.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c63-canonical-parallel-host-bridge.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Keep C63 original source-root and parallel cold-path/negative source/turn/EXIT specialized tests, plus C61/C62 cold-owner regressions; remove only repeated global npm check still required centrally.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-host-k0-what-how.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve original K0/C72/EDU owner tests and all downstream original checks while exposing their first failing assertion in GitHub job step names; never mark failure green.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-edu-hostbound-manual.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve exact original owner tests and offline handoff while exposing failed assertion detail as nonauthoritative GitHub step labels with tee/pipefail.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/docs-ontology-coverage.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve document atlas completeness/falsification and source semantics; remove only duplicate npm run check from documentation specialist job while blocking contract check remains in ci.yml.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "project/edu-oneshell/PROMPT_INNESCO.txt",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Regenerate distribution-only C131 legacy alias byte-exact from the current single canonical Project prompt plus the unmodified version trailer; prevent V5-A source divergence without modifying canonical prompt, owners or installed provider.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "scripts/check.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Restore negative source rejection to the retired iKant_LE path, not the live iKant_EDU path; central checker still fails on legacy source promotion.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "same_source_main_change": "EXPLICIT_REVIEW_REQUIRED_PR_SLICE"
+    },
+    {
+      "path": "tests/project-host-effect-decision.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align K0 positive first-turn Terms witness to canonical EDU URL and add an explicit negative legacy LE witness; original K0 fail-closed owner gates unchanged.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-preaccept-contract.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind original preaccept prompt test expectations to exact current canonical prompt bytes, preserving no TREE preconsent, human gates, and postaccept-only machine contract.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/p1-postmode-source-handoff.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair verified original C72 EDU manual archive URL from retired iKant_LE repository to current iKant_EDU without weakening selection, source-head pin or explicit manual route gate.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/p1-postmode-source-handoff.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Require exact current EDU SHA-pinned ZIP URL in both automatic-absence and explicit manual selection and reject historic LE URL while preserving original C72 denial tests.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/pr215-postmode-source-url.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add an isolated authority-zero regression demonstrating that original EDU mode selection, P1 manual ZIP route and OneShell PROVA all bind to the same current SHA-pinned iKant_EDU URL and reject old LE identity.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/p0-first-run-handoff.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align original P0 first-run ZIP expectation with the verified post-EDU current repository source URL; preserve unknown-source, unavailable bridge and C72 receipt denial paths.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-host-closure-3x10k.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align 10k seeded G2 original selection/ZIP source expectation with current iKant_EDU pinned archive while leaving all G1 G2 G3 cases and negative oracles intact.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/host-handoff-rehydrate.test.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Update original Python offline ZIP fixture to iKant_EDU pinned HEAD prefix expected by source rehydrator while retaining source tree/commit readback and a new negative historical LE prefix rejection.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-host-k1-real-source.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind K1 checkout-only source proof to exact candidate HEAD, not incompatible main-base seed; assert env SHA matches Git HEAD; preserve original 10/10 9/9 and negative cases.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-bound CI retirement register with explicit non-approval and original baseline preservation.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/PROJECT_SESSION_REPO_FIRST.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Fix original Python tool extraction snippet to match the current EDU Git ZIP prefix while preserving independent HEAD/TREE and blob checks.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/test_project_manual_source.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add negative original ZIP fixture rejecting retired LE naming, while retaining exact EDU success and hostile archive controls.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "same_source_main_change": "EXPLICIT_REVIEW_REQUIRED_PR_SLICE"
+    },
+    {
+      "path": "tests/rename-internal-shadow.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace obsolete OLD identity expectation with current EDU identity; assert prospective shadow is fail-closed after real rename without owner invocation.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
+    },
+    {
+      "path": ".github/workflows/project-host-k1-original-source.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Use exact PR HEAD as checkout-only test source for K1; no main, provider, owner or installed-prompt receipt inferred.",
+      "deletion_authorized": false
+    }
+  ]
+}

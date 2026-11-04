@@ -103,7 +103,7 @@ test('G2 10k seeded contract/ZIP decisions using original EDU owner receipt, nev
   assert.equal(next,expect,'manual policy mismatch '+i);
   if(next==='UPLOAD_PINNED_SOURCE_ZIP'){
    assert.equal(valid,true);
-   assert.equal(frame.slots.PROVA,'https://github.com/Luke883i/iKant_LE/archive/'+H+'.zip');
+   assert.equal(frame.slots.PROVA,'https://github.com/Luke883i/iKant_EDU/archive/'+H+'.zip');
    const p=planP1PostModeSourceHandoff({selection:sel,sourceState:source,
     bridgeState:bridge,manualRoute:route});
    assert.equal(p.ok,true);

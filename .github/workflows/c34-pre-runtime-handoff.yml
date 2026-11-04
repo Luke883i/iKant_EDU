@@ -21,5 +21,3 @@ jobs:
         run: node --test --test-concurrency=1 tests/c33-post-187-closure.test.mjs
       - name: Verify runtime root
         run: npm run runtime-root:verify
-      - name: Shared checker
-        run: npm run check

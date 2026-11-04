@@ -44,8 +44,6 @@ jobs:
         run: node --test --test-concurrency=1 --test-name-pattern="mixed initialization" tests/session-chat-fastboot.test.mjs
       - name: C14 semantic evidence tests
         run: node --test --test-concurrency=1 tests/chat-bootstrap-semantic.test.mjs
-      - name: Contract and lifecycle check
-        run: npm run check
       - name: Verify C14 receipt
         run: |
           node - <<'NODE'

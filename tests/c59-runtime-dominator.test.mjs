@@ -16,7 +16,7 @@ test('C59 canonical owner materializes a runtime and is the authority read back 
  cleanSourceState();
  const parent=fs.mkdtempSync(path.join(os.tmpdir(),'ikant-c59-canonical-')),sink=path.join(parent,'runtime');
  try{
-  const preaccept=bootstrapHandoffV2('inizializza iKant_LE',HEAD);
+  const preaccept=bootstrapHandoffV2('inizializza iKant_EDU',HEAD);
   const executor=bootstrapEvidenceV2({sourceHead:HEAD,bytePath:'VERIFIED_OPAQUE_RELAY'}).activation_executor;
   const handoff=issueCanonicalSessionChatComposition({preacceptHandoff:preaccept,activationExecutor:executor,humanInput:'I ACCEPT',acceptanceObservedMonotonicMs:10});
   const out=await executeCanonicalSessionChatBootstrap({sink,sourceHead:HEAD,canonicalCompositionHandoff:handoff});
@@ -41,7 +41,7 @@ test('C59 canonical owner materializes a runtime and is the authority read back 
 test('C59 raw runtime activation without explicit compatibility evidence cannot consume acceptance',()=>{
  cleanSourceState();
  try{
-  const preaccept=bootstrapHandoffV2('inizializza iKant_LE',HEAD);
+  const preaccept=bootstrapHandoffV2('inizializza iKant_EDU',HEAD);
   const evidence=bootstrapEvidenceV2({sourceHead:HEAD,bytePath:'VERIFIED_OPAQUE_RELAY'});
   delete evidence.compatibility_only;
   const out=runCommand('I ACCEPT',{preacceptHandoff:preaccept,postAcceptBootstrapEvidence:evidence});
@@ -55,7 +55,7 @@ test('C59 raw runtime activation without explicit compatibility evidence cannot 
 test('C59 explicit legacy compatibility may remain ACTIVE but can never satisfy canonical readback',()=>{
  cleanSourceState();
  try{
-  const preaccept=bootstrapHandoffV2('inizializza iKant_LE',HEAD);
+  const preaccept=bootstrapHandoffV2('inizializza iKant_EDU',HEAD);
   const evidence=bootstrapEvidenceV2({sourceHead:HEAD,bytePath:'LOCAL_DIRECT'});
   const out=runCommand('I ACCEPT',{preacceptHandoff:preaccept,postAcceptBootstrapEvidence:evidence,hostSurface:'LEGACY_TEST_HARNESS'});
   assert.equal(out.code,0);

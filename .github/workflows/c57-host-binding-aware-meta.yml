@@ -36,7 +36,5 @@ jobs:
       - name: Assert C57 semantic evidence
         run: |
           node -e "const x=require('/tmp/c57.json');if(x.status!=='PASS'||x.cases!==100000||x.candidate_oracle_mismatches!==0||x.unsafe_promotions!==0||x.false_rejects!==0||x.architecture_lattice?.total!==16||x.architecture_lattice?.unique_minimum!==true||x.architecture_lattice?.minimum_cost!==4||x.all_deletion_mutants_killed!==true||x.all_prompt_polarity_mutants_killed!==true)process.exit(1)"
-      - name: Canonical repository qualification
-        run: npm run check
       - name: Runtime root unchanged
         run: npm run runtime-root:verify

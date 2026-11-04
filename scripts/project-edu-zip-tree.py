@@ -25,7 +25,7 @@ def derive(archive,head,tree):
         members=z.infolist()
         if len(members)>3000:raise ValueError('ZIP_FILE_COUNT_BOUNDS')
         for member in members:
-            prefix='iKant_LE-'+head+'/'
+            prefix='iKant_EDU-'+head+'/'
             if not member.filename.startswith(prefix):raise ValueError('PINNED_ZIP_PREFIX_MISMATCH')
             raw=member.filename[len(prefix):]
             if not raw:continue

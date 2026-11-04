@@ -39,7 +39,7 @@ for(let a=0;a<10;a++)for(let b=0;b<10;b++)for(let c=0;c<10;c++){
 if(candidates.length!==1000)throw Error('NOT_1000');
 const selected=candidates.filter(x=>x.valid&&x.covered>=40);
 if(selected.length!==1)throw Error('NOT_UNIQUE_IRREDUCIBLE');
-const H='a'.repeat(40),TERM='https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md';
+const H='a'.repeat(40),TERM='https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md';
 const SHAS=Object.fromEntries(['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md'].map(x=>[x,'b'.repeat(40)]));
 const fixture=()=>({schema:H1_SCHEMA,humanMessage:'I ACCEPT',freshHumanTurn:true,
  ownerOutcome:'NOT_INVOKED',sourceHead:H,
@@ -51,7 +51,7 @@ function oracle(q){
  const w=q.priorTurnEvidence;
  if(!w||!w.pinned_blob_shas||!/^[a-f0-9]{40}$/u.test(w.source_head||'')||
   w.host_link_displayed!==true||w.distinct_human_message_observed!==true||
-  w.terms_link!=='https://github.com/Luke883i/iKant_LE/blob/'+w.source_head+'/TERMS.md'||
+  w.terms_link!=='https://github.com/Luke883i/iKant_EDU/blob/'+w.source_head+'/TERMS.md'||
   Object.keys(SHAS).some(p=>!/^[a-f0-9]{40}$/u.test(w.pinned_blob_shas[p]||'')))
   return 'H1_FIRST_TURN_WITNESS_INVALID';
  if(!/^[a-f0-9]{40}$/u.test(q.sourceHead||'')||q.sourceHead!==w.source_head)return 'STOP_SOURCE_LOCK_STALE';

@@ -16,9 +16,9 @@ const paths=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md
 const orientation=paths.map(p=>{const b=fs.readFileSync(path.join(ROOT,p));return{path:p,blob_sha1:blob(b),bytes:b.length};});
 const terms=orientation.find(x=>x.path==='TERMS.md');
 const orientationPayloads=paths.map(p=>({path:p,content_utf8:fs.readFileSync(path.join(ROOT,p),'utf8')}));
-const preaccept={schema:'ikant-le-preaccept-handoff/v2',repository:'Luke883i/iKant_LE',source_head:HEAD,terms_presented:true,frozen:true,breached:false,orientation_objects:orientation,orientation_payloads:orientationPayloads,terms_object:{...terms},runtime_observed_terms_presentation:false,host_attested_terms_presentation:true,authority:0};
+const preaccept={schema:'ikant-le-preaccept-handoff/v2',repository:'Luke883i/iKant_EDU',source_head:HEAD,terms_presented:true,frozen:true,breached:false,orientation_objects:orientation,orientation_payloads:orientationPayloads,terms_object:{...terms},runtime_observed_terms_presentation:false,host_attested_terms_presentation:true,authority:0};
 const runtimeObjects=[{path:D.loader.path,blob_sha1:D.loader.blob_sha1,bytes:fs.readFileSync(path.join(ROOT,D.loader.path)).length},...D.shards.map(s=>({path:s.path,blob_sha1:s.blob_sha1,bytes:s.source_bytes}))];
-const executor=sign({schema:'ikant-le-activation-executor/v1',repository:'Luke883i/iKant_LE',source_head:HEAD,runtime_root_sha256:D.runtime_root_sha256,execution_plane:'SESSION_LOCAL_NODE',capability_probe_passed:true,capability_probe_before_acquisition:true,content_addressed:true,byte_path:'VERIFIED_OPAQUE_RELAY',model_mediated_bytes:true,model_role:'OPAQUE_TRANSPORT_ONLY',model_rewrite_allowed:false,semantic_equivalence_allowed:false,source_arrival_samehash_required:true,source_arrival_samehash_verified:true,opaque_relay_roundtrip_verified:true,retry_semantics:'IDEMPOTENT_BY_OBJECT_IDENTITY',retry_count:0,acquisition_complete:true,orientation_objects:orientation,runtime_objects:runtimeObjects,slo_elapsed_ms:5,authority:0});
+const executor=sign({schema:'ikant-le-activation-executor/v1',repository:'Luke883i/iKant_EDU',source_head:HEAD,runtime_root_sha256:D.runtime_root_sha256,execution_plane:'SESSION_LOCAL_NODE',capability_probe_passed:true,capability_probe_before_acquisition:true,content_addressed:true,byte_path:'VERIFIED_OPAQUE_RELAY',model_mediated_bytes:true,model_role:'OPAQUE_TRANSPORT_ONLY',model_rewrite_allowed:false,semantic_equivalence_allowed:false,source_arrival_samehash_required:true,source_arrival_samehash_verified:true,opaque_relay_roundtrip_verified:true,retry_semantics:'IDEMPOTENT_BY_OBJECT_IDENTITY',retry_count:0,acquisition_complete:true,orientation_objects:orientation,runtime_objects:runtimeObjects,slo_elapsed_ms:5,authority:0});
 const proven=()=>Object.fromEntries(FASTBOOT_CAPABILITY_FIELDS.map(k=>[k,true]));
 
 test('C42 natural start/exit intent is authority-zero and negation-safe',()=>{
@@ -48,6 +48,11 @@ test('C42 invalid acceptance and executor cannot cross pre-runtime boundary',()=
  assert.throws(()=>for_ai_agent_first_entrypoint({preaccept_handoff:preaccept,activation_executor:executor,human_input:'YES',acceptance_observed_monotonic_ms:10,runtime_root_descriptor:D}),/exact I ACCEPT/);
  const bad=sign({...executor,content_addressed:false});
  assert.throws(()=>for_ai_agent_first_entrypoint({preaccept_handoff:preaccept,activation_executor:bad,human_input:'I ACCEPT',acceptance_observed_monotonic_ms:10,runtime_root_descriptor:D}),/activation executor receipt invalid/);
+});
+
+test('C42 rejects the retired LE source name even with otherwise valid pinned bytes',()=>{
+ const retired={...preaccept,repository:'Luke883i/iKant_LE'};
+ assert.throws(()=>for_ai_agent_first_entrypoint({preaccept_handoff:retired,activation_executor:executor,human_input:'I ACCEPT',acceptance_observed_monotonic_ms:10,runtime_root_descriptor:D}),/preaccept handoff invalid/);
 });
 
 test('C42 file and warm carriers project only ultra-compressed owner-derived UX',()=>{

@@ -1,8 +1,5 @@
 name: c17-deadline-integrity
 on:
-  push:
-    branches:
-      - 'agent/c17-deadline-integrity'
   pull_request:
     paths:
       - 'src/deadline-integrity.mjs'
@@ -30,6 +27,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: npm test
-      - run: npm run check
+      # Universal tests/checks are enforced in ci.yml; this runner keeps only its scoped falsifier.
       - run: npm run falsify:c17

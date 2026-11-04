@@ -32,5 +32,4 @@ jobs:
         with: {node-version: '22'}
       - run: npm run runtime-root:verify
       - run: node --test --test-concurrency=1 tests/c23-ontology-collapse.test.mjs
-      - run: npm run check
       - run: npm run falsify:c23

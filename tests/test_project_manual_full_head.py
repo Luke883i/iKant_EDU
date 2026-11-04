@@ -29,7 +29,7 @@ class ManualFullHead(unittest.TestCase):
             rows.append({"path":rawpath.decode(),"mode":mode,"type":kind,"sha":sha})
         self.assertTrue(len(rows)>100)
         self.assertTrue(any(r["path"]=="contracts/project-session-source.json" for r in rows))
-        raw=git("archive","--format=zip","--prefix=iKant_LE-"+head+"/","HEAD")
+        raw=git("archive","--format=zip","--prefix=iKant_EDU-"+head+"/","HEAD")
         self.assertLess(len(raw),30*1024*1024)
         with zipfile.ZipFile(io.BytesIO(raw)) as z:
             self.assertLess(len(z.infolist()),3000)

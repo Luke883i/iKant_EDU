@@ -51,6 +51,12 @@ on:
       - 'scripts/project-manual-source.py'
       - 'scripts/project-source-manifest.mjs'
       - 'contracts/project-session-source.json'
+      - 'host/c97-uiux-projection.mjs'
+      - 'contracts/c97-chat-project-uiux.json'
+      - 'tests/c97-uiux-projection.test.mjs'
+      - 'tests/c32-session-shell.test.mjs'
+      - 'tests/c73-project-capsule.test.mjs'
+      - '.github/workflows/c97-chat-project-uiux.yml'
       - 'tests/project-oneshell-edu.test.mjs'
       - 'tests/project-oneshell-autopilot-100k.test.mjs'
       - 'tests/project-oneshell-continuity.test.mjs'
@@ -82,6 +88,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: node scripts/project-source-manifest.mjs verify
       - run: node --test tests/project-bootstrap-responsibility-matrix.test.mjs tests/project-c72-portable-bridge.test.mjs tests/project-c72-physical-ingress.test.mjs tests/project-c72-staged-ingress.test.mjs
+      - name: C97 current UIUX projection and C32/C73 owner regression (Node 20/22)
+        run: node --test tests/c97-uiux-projection.test.mjs tests/c32-session-shell.test.mjs tests/c73-project-capsule.test.mjs
       - run: npm run check
       - name: P0 final emission + C72 human-recovery 1000 executed adversarial scenarios
         run: |

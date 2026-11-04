@@ -16,9 +16,51 @@ jobs:
         with:
           node-version: '20'
       - name: Deterministic tests
-        run: npm test
+        shell: bash
+        run: |
+          set -o pipefail
+          npm test 2>&1 | tee "$RUNNER_TEMP/ikant-ci-tests.log"
       - name: Contract and lifecycle check
-        run: npm run check
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run check 2>&1 | tee "$RUNNER_TEMP/ikant-ci-check.log"
+      - name: Native GitHub failure annotations (source diagnostics only)
+        if: ${{ failure() }}
+        shell: bash
+        run: |
+          node scripts/ci-failure-annotations.mjs tap "$RUNNER_TEMP/ikant-ci-tests.log"
+          node scripts/ci-failure-annotations.mjs check "$RUNNER_TEMP/ikant-ci-check.log"
+      - name: Capture original first TAP and check failures
+        if: ${{ failure() }}
+        id: ci_edge
+        run: |
+          node scripts/ci-failure-annotations.mjs first-edge tap "$RUNNER_TEMP/ikant-ci-tests.log" first_tap
+          node scripts/ci-failure-annotations.mjs first-edge check "$RUNNER_TEMP/ikant-ci-check.log" first_check
+      - name: Capture exact TAP assertion detail
+        if: ${{ failure() }}
+        id: ci_detail
+        run: node scripts/ci-failure-annotations.mjs first-detail tap "$RUNNER_TEMP/ikant-ci-tests.log" first_detail
+      - name: "First TAP assertion detail [${{ steps.ci_detail.outputs.first_detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; original test remains failed"
+      - name: "First TAP failure [${{ steps.ci_edge.outputs.first_tap }}]"
+        if: ${{ failure() }}
+        run: echo "First TAP failure is source-only diagnostic, no owner receipt"
+      - name: "First contract failure [${{ steps.ci_edge.outputs.first_check }}]"
+        if: ${{ failure() }}
+        run: echo "First contract failure is source-only diagnostic, no owner receipt"
+      - name: Preserve full CI diagnostic logs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-ci-diagnostics-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/ikant-ci-tests.log
+            ${{ runner.temp }}/ikant-ci-check.log
+          if-no-files-found: warn
+          retention-days: 14
       - name: C5 one-million recurrent self-world semantic falsification
         run: npm run falsify:c5
       - name: Verify C5 receipt

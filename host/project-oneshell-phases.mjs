@@ -12,7 +12,7 @@ const paths=Object.freeze(['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS
 const denied=e=>oneShellFrame({esito:'BLOCCATO',b:'La fase richiesta non ha una ricevuta originale valida.',
  edge:e,next:'STOP'});
 const sha=x=>createHash('sha256').update(Buffer.from(x,'utf8')).digest('hex');
-const href=(h,p)=>'https://github.com/Luke883i/iKant_LE/blob/'+h+'/'+p;
+const href=(h,p)=>'https://github.com/Luke883i/iKant_EDU/blob/'+h+'/'+p;
 /** Only HOST presentation. Preaccept must not require or acquire a Git TREE.
  * Caller independently verifies main and the five permitted pinned documents;
  * this function cannot certify a GitHub API call from a plain JS object. */

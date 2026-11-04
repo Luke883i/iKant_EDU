@@ -23,7 +23,7 @@ function setup(){
  return {outer,stage,init:{op:'init',schema:'ikant-host-c72-verified-staging/v1',
   stageDirectory:stage,source_head:head,expectedBlobShas:expected,
   priorTurnEvidence:{source_head:head,host_link_displayed:true,
-   terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+   terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
    pinned_blob_shas:Object.fromEntries(paths.slice(0,5).map(p=>[p,expected[p]]))}}};
 }
 function put(stage,i,sourceFile){
@@ -72,9 +72,11 @@ test('tool-assisted local input is unsafe on relative path, public file, symlink
 });
 test('portable project prompt routes callable Host tool to physical relay before STOP',()=>{
  const p=fs.readFileSync(new URL('../project/session-chat/PROMPT.txt',import.meta.url),'utf8');
- for(const s of ['GitHub connector→argomento tool→file privato/Node','senza richiedere DNS Node',
-  'C72_SOURCE_BRIDGE_UNBOUND','readback (10/10 originali',
-  'GitHub tool disponibile','Tool non vincolato⇒STOP_UNBOUND'])
+ for(const s of ['GitHub connector→argomento tool→file privato/Node','DNS Node fallito≠relay fallito',
+  'C72_SOURCE_BRIDGE_UNBOUND','readback 10/10 e 9/9',
+  'GitHub tool disponibile','Tool non vincolato⇒STOP_UNBOUND',
+  'MACHINE_CAPS={GITHUB_SOURCE,NODE_EXEC,HOST_TOOL_ARGUMENT_COURIER}',
+  'JSON≠binding','C72 originale UNA volta'])
   assert(p.includes(s),s);
  assert(Buffer.byteLength(p,'utf8')<=8000);
 });

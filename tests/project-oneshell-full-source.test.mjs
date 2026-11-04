@@ -12,7 +12,7 @@ test('real candidate Git archive -> full source plan -> original Node full-tree 
  const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'oneshell-git-cold-'));
  const zip=path.join(tmp,'original.zip'),treeFile=path.join(tmp,'tree.json'),plan=path.join(tmp,'plan.json'),dest=path.join(tmp,'source');
  try{
-  const archive=spawnSync('git',['archive','--format=zip','--prefix=iKant_LE-'+head+'/','HEAD','-o',zip],{cwd:root,encoding:'utf8'});
+  const archive=spawnSync('git',['archive','--format=zip','--prefix=iKant_EDU-'+head+'/','HEAD','-o',zip],{cwd:root,encoding:'utf8'});
   assert.equal(archive.status,0,archive.stderr);
   const entries=execFileSync('git',['ls-tree','-r','-t','-z','HEAD'],{cwd:root});
   const rows=entries.toString('utf8').split('\0').filter(Boolean).map(v=>{

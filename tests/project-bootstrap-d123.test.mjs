@@ -76,7 +76,7 @@ test('D2 original coldstart/EDU receipts reopened by separate Node processes, no
   path:p,contentBase64:bytes.toString('base64'),sha:sha(bytes)};});
  const expectedBlobShas=Object.fromEntries(docs.map(d=>[d.path,d.sha]));
  const witness={source_head:H,host_link_displayed:true,distinct_human_message_observed:true,
-  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md',
+  terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md',
   pinned_blob_shas:Object.fromEntries(docs.slice(0,5).map(d=>[d.path,d.sha]))};
  const seedBlobSha1=sha(fs.readFileSync(path.join(top,'host/project-c72-coldstart-seed.mjs')));
  const call=(relative,q)=>{

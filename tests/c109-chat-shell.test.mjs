@@ -57,7 +57,7 @@ test('C109 installed original Node capsule serves authentic terms, original C72,
    assert.equal(x.surface_b.evidence.original_c70_executed,true);
    assert.equal(x.surface_b.native_event_attested,false);
    assert.equal(x.surface_b.documents.length,3);
-   assert.equal(x.surface_b.documents[0].url,`https://github.com/Luke883i/iKant_LE/tree/${head}`);
+   assert.equal(x.surface_b.documents[0].url,`https://github.com/Luke883i/iKant_EDU/tree/${head}`);
   }
   assert.equal(count,2);
   assert.equal(inspectC107Ledger(ledgerFile).count,2);

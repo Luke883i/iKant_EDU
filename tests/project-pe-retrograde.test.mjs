@@ -19,7 +19,7 @@ const sha=(p)=>git('rev-parse','HEAD:'+p);
 const source=(p)=>execFileSync('git',['show',HEAD+':'+p],{cwd:ROOT,maxBuffer:1000000});
 const expected=Object.fromEntries(FILES.map(p=>[p,sha(p)]));
 const witness=Object.freeze({source_head:HEAD,host_link_displayed:true,
- terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+HEAD+'/TERMS.md',
+ terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+HEAD+'/TERMS.md',
  pinned_blob_shas:Object.fromEntries(FILES.slice(0,5).map(p=>[p,expected[p]]))});
 const treeEntries=execFileSync('git',['ls-tree','-r','-t','-z','HEAD'],{cwd:ROOT})
  .toString('utf8').split('\0').filter(Boolean).map(line=>{

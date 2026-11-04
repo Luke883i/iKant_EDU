@@ -24,11 +24,11 @@ test('local-host meta-prompt v7 is a derived byte-exact document',()=>{
 
 test('prompt exposes only repository URL plus the single caller-facing entrypoint',()=>{
  const p=renderLocalHostMetaPrompt();
- assert.match(p,/https:\/\/github\.com\/Luke883i\/iKant_LE/);
+ assert.match(p,/https:\/\/github\.com\/Luke883i\/iKant_EDU/);
  assert.match(p,/\[for_ai_agent_first_entrypoint\]/);
  for(const banned of [/src\//i,/contracts\//i,/\.mjs\b/i,/\.json\b/i,/\bC\d+\b/,/LOCAL_[A-Z_]+/,/SESSION_[A-Z_]+/,/ACTIVE_READBACK/,/RUNTIME_BOUND_LIMITED/,/ikant-le-[a-z0-9-]+\/v\d+/i])assert.equal(banned.test(p),false,String(banned));
  const urls=p.match(/https?:\/\/[^\s]+/g)||[];
- assert.deepEqual(urls,['https://github.com/Luke883i/iKant_LE.']);
+ assert.deepEqual(urls,['https://github.com/Luke883i/iKant_EDU.']);
 });
 
 test('prompt does not promote the caller-facing entrypoint into NEXT ownership',()=>{
@@ -91,7 +91,7 @@ test('single entrypoint creates no parallel authority and recycles existing owne
 });
 
 test('entrypoint delegates first-contact and fastboot NEXT derivation to existing owners',()=>{
- const first=for_ai_agent_first_entrypoint({human_input:'inizializza iKant_LE'});
+ const first=for_ai_agent_first_entrypoint({human_input:'inizializza iKant_EDU'});
  assert.equal(first.next.recognized,true);
  const sourceHead='a'.repeat(40),ledger=buildFastbootChannelLedger({sourceHead,receipts:[]}),root='b'.repeat(64),expected=deriveFastbootStep({ledger,runtimeRootSha256:root}),actual=for_ai_agent_first_entrypoint({channel_ledger:ledger,runtime_root_sha256:root}).next;
  assert.deepEqual(actual,expected);

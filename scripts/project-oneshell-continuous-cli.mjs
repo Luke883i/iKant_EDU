@@ -66,7 +66,7 @@ export async function serveContinuousOneShell({configuration,input=process.stdin
  try{
   const realReadMain=async()=>{
    const {readC72GithubJSON}=await import('../host/project-c72-physical-ingress.mjs');
-   const j=await readC72GithubJSON('/repos/Luke883i/iKant_LE/git/ref/heads/main');
+   const j=await readC72GithubJSON('/repos/Luke883i/iKant_EDU/git/ref/heads/main');
    if(j?.ref!=='refs/heads/main'||j.object?.type!=='commit'||
      !/^[0-9a-f]{40}$/u.test(j.object?.sha||''))throw Error('E15_REAL_HEAD_INVALID');
    return j.object.sha;

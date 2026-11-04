@@ -39,7 +39,7 @@ test('PR HEAD original owner chain: linked C72 -> later EDU -> full manual ZIP -
     content:execFileSync('git',['show','HEAD:'+p],{cwd:root,encoding:'utf8'})}));
   const witness={source_head:head,host_link_displayed:true,
     distinct_human_message_observed:true,
-    terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+    terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
     pinned_blob_shas:Object.fromEntries(originalDocs.map(d=>[d.path,d.blob_sha1]))};
   const packet={schema:'ikant-host-c72-source-packet/v1',source_head:head,live_head:head,
     carrier_kind:'HOST_OPAQUE_TRANSFER',source_origin_attested:false,
@@ -78,9 +78,9 @@ test('PR HEAD original owner chain: linked C72 -> later EDU -> full manual ZIP -
    bridgeState:'UNKNOWN',nodeReady:true,manualExtractorReady:true,
    manualRoute:'EXPLICIT_MANUAL_POST_EDU'});
   assert.equal(manual.slots.NEXT,'UPLOAD_PINNED_SOURCE_ZIP');
-  assert.equal(manual.slots.PROVA,'https://github.com/Luke883i/iKant_LE/archive/'+head+'.zip');
+  assert.equal(manual.slots.PROVA,'https://github.com/Luke883i/iKant_EDU/archive/'+head+'.zip');
   assert.equal(selection.selected_mode,'EDU');
-  const artifact=run('git',['archive','--format=zip','--prefix=iKant_LE-'+head+'/','-o',zip,'HEAD']);
+  const artifact=run('git',['archive','--format=zip','--prefix=iKant_EDU-'+head+'/','-o',zip,'HEAD']);
   assert.equal(artifact.status,0,artifact.stderr);
   const rows=execFileSync('git',['ls-tree','-r','-t','-z','HEAD'],{cwd:root})
    .toString('utf8').split(String.fromCharCode(0)).filter(Boolean).map(x=>{

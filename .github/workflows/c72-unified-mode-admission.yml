@@ -44,4 +44,3 @@ jobs:
       - run: node scripts/c72-falsify-1m.mjs
       - run: node --test --test-concurrency=1 tests/c72-product-value.test.mjs
       - run: npm run runtime-root:verify
-      - run: npm run check

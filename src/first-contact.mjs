@@ -1,4 +1,4 @@
-const CANONICAL='Luke883i/iKant_LE';
+const CANONICAL='Luke883i/iKant_EDU';
 const FUTURE='Luke883i/iKant_EDU';
 const H40=/^[a-f0-9]{40}$/;
 const NAME_SET=new Set([CANONICAL,FUTURE]);
@@ -24,7 +24,7 @@ export const FIRST_CONTACT_FORBIDDEN=Object.freeze(['CLONE_REPOSITORY','GIT_FETC
 export const REPOSITORY_TRANSPORT=Object.freeze({required:'GITHUB_API',allowed:['GITHUB_CONNECTOR','GITHUB_REST_API'],connector_is_api_adapter:true,fallback:null,api_unavailable_terminal:'HOST_INCOMPATIBLE',unavailable_tools_must_not_be_attempted:true});
 export const SOURCE_HEAD_BINDING=Object.freeze({action:'READ_BRANCH_HEAD',branch:'main',transport:'GITHUB_API',required:true,before_orientation_files:true,pin_all_repository_reads:true});
 function normalize(value){let x=String(value??'').normalize('NFKC').replace(/[\u200B-\u200D\u2060\uFEFF]/g,'');try{x=decodeURIComponent(x);}catch{}return x.toLowerCase();}
-export function referencesCanonicalRepository(input,{qualifiedSource=null}={}){if(qualifiedSource!==null&&!qualifiedSourceCandidate(qualifiedSource))return false;const actual=normalize(input);if(qualifiedSource!==null&&referencesCanonicalRepository(actual))return false;const x=qualifiedSource===null?actual:actual.replaceAll('ikant_edu','ikant_le');return /(?:https?:\/\/)?github\.com\/luke883i\/ikant_le(?:\.git)?(?=$|[\s\/?#)\]}>.,;:'"!`])/i.test(x)||/git@github\.com:luke883i\/ikant_le(?:\.git)?(?=$|[\s)\]}>.,;:'"!`])/i.test(x)||/(^|[\s([{'"`.,;:!?<>])luke883i\/ikant_le(?=$|[\s)\]}>,.;:'"!?`])/i.test(x)||/(^|[\s([{'"`.,;:!?<>])ikant_le(?=$|[\s)\]}>,.;:'"!?`])/i.test(x);}
+export function referencesCanonicalRepository(input,{qualifiedSource=null}={}){if(qualifiedSource!==null&&!qualifiedSourceCandidate(qualifiedSource))return false;const actual=normalize(input);const x=qualifiedSource===null?actual:actual.replaceAll('ikant_edu','ikant_edu');return /(?:https?:\/\/)?github\.com\/luke883i\/ikant_edu(?:\.git)?(?=$|[\s\/?#)\]}>.,;:'"!`])/i.test(x)||/git@github\.com:luke883i\/ikant_edu(?:\.git)?(?=$|[\s)\]}>.,;:'"!`])/i.test(x)||/(^|[\s([{'"`.,;:!?<>])luke883i\/ikant_edu(?=$|[\s)\]}>,.;:'"!?`])/i.test(x)||/(^|[\s([{'"`.,;:!?<>])ikant_edu(?=$|[\s)\]}>,.;:'"!?`])/i.test(x);}
 export function compileFirstContactPlan(input,{qualifiedSource=null}={}){
  if(qualifiedSource!==null&&!qualifiedSourceCandidate(qualifiedSource))
   return{schema:'ikant-le-first-contact/v2',recognized:false,

@@ -9,7 +9,7 @@ import {
  validateC72V2Accepted
 } from '../host/c72-public-mode-admission.mjs';
 import {createProjectC72PreacceptGate} from '../host/project-c72-preaccept-gate.mjs';
-import {scanSource} from '../scripts/repository-rename-inventory.mjs';
+import {scanSource,classify} from '../scripts/repository-rename-inventory.mjs';
 
 const ROOT=new URL('../',import.meta.url);
 const boot=JSON.parse(fs.readFileSync(new URL('../BOOTSTRAP.json',import.meta.url)));
@@ -20,22 +20,22 @@ const H='a'.repeat(40),D='b'.repeat(64);
 const sha=b=>createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
 const hash=x=>createHash('sha256').update(JSON.stringify(x)).digest('hex');
 
-test('S01 old canonical repository remains the only operative C72 source',()=>{
- assert.equal(boot.canonical_repository,contract.repo_name_from);
+test('S01 postrename canonical repository is the unique operative C72 source',()=>{
+ assert.equal(boot.canonical_repository,contract.repo_name_to);
  assert.equal(admission.repository,boot.canonical_repository);
  assert.equal(boot.canonical_branch,'main');
- assert.equal(c72SourceRepository(),contract.repo_name_from);
- assert.equal(c72LinkedTermsURL(H),'https://github.com/'+contract.repo_name_from+'/blob/'+H+'/TERMS.md');
+ assert.equal(c72SourceRepository(),contract.repo_name_to);
+ assert.equal(c72LinkedTermsURL(H),'https://github.com/'+contract.repo_name_to+'/blob/'+H+'/TERMS.md');
  for(const wrong of ['0'.repeat(39),'z'.repeat(40),'','HEAD','main'])assert.throws(()=>c72LinkedTermsURL(wrong));
 });
 
-test('S02 original linked offer bytes and receipt digest are unchanged at OLD phase',()=>{
+test('S02 original linked owner digest preserves exact NEW source-bound Terms',()=>{
  const offer=issueC72V2LinkedTermsOffer({sourceHead:H,termsDigest:D});
  const original=issueC72V2TermsOffer({sourceHead:H,termsDigest:D});
  const {receipt_sha256,...body}=original;
  const expected={
   ...body,presentation:'PINNED_DOCUMENT_LINK',
-  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md',
+  terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md',
   terms_body_presented:false,terms_read_attested:false
  };
  assert.equal(offer.receipt_sha256,hash(expected));
@@ -48,7 +48,7 @@ test('S02 original linked offer bytes and receipt digest are unchanged at OLD ph
   assert.equal(x.active,false);
   assert.equal(x.owner_receipt_issued,false);
  }
- const spoofed={...offer,terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md'};
+ const spoofed={...offer,terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md'};
  assert.equal(acceptC72V2LinkedTerms({offer:spoofed,humanMessage:'I ACCEPT',termsLinkPresented:true}).active,false);
 });
 
@@ -78,7 +78,8 @@ test('S02 C72 preaccept original offers exactly five HEAD-bound links',async()=>
  assert.equal(r.documents.length,5);
  for(let i=0;i<order.length;i++){
   assert.equal(r.documents[i].path,order[i]);
-  assert.equal(r.documents[i].link,'https://github.com/'+contract.repo_name_from+'/blob/'+H+'/'+order[i]);
+  assert.equal(r.documents[i].link,'https://github.com/'+contract.repo_name_to+'/blob/'+H+'/'+order[i]);
+  assert.notEqual(r.documents[i].link,'https://github.com/'+contract.repo_name_from+'/blob/'+H+'/'+order[i]);
  }
  assert.equal(r.terms_link,c72LinkedTermsURL(H));
  assert.equal(r.original_offer.active,false);
@@ -107,7 +108,11 @@ test('S03 discovered external consumer is classified but cannot self-close',()=>
 test('S01/S02/S03 source audit: first unresolved edge is not promoted by CI',()=>{
  const census=scanSource();
  assert.equal(census.status,'NOT_READY_FOR_RENAME');
- assert(census.rows.some(x=>x.path==='host/project-c72-coldstart-seed.mjs'));
+ const coldstart='host/project-c72-coldstart-seed.mjs';
+ assert.equal(execFileSync('git',['ls-files','--',coldstart],{cwd:ROOT,encoding:'utf8'}).trim(),coldstart);
+ assert.equal(classify(coldstart),'ORIGINAL_OR_ENTRY_CRITICAL');
+ assert.doesNotMatch(fs.readFileSync(new URL('../'+coldstart,import.meta.url),'utf8'),/Luke883i\/iKant_LE|ikant[_-]le/i);
+ assert.equal(census.rows.some(x=>x.path===coldstart),false);
  assert(census.rows.some(x=>x.path==='src/first-contact.mjs'));
  assert.equal(dod.s01.status,'PARTIAL_PREPARE_ONLY');
  assert.equal(dod.s02.status,'REGRESSION_EVIDENCE_REQUIRED');

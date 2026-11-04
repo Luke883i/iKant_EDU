@@ -1,9 +1,9 @@
-# iKant_LE Local Host Meta-Prompt
+# iKant_EDU Local Host Meta-Prompt
 
 Derived zero-authority projection of current machine contracts. It is not a source of runtime truth and must not be edited independently from the renderer.
 
 ```text
-Inizializza e usa iKant_LE in questa sessione usando https://github.com/Luke883i/iKant_LE.
+Inizializza e usa iKant_EDU in questa sessione usando https://github.com/Luke883i/iKant_EDU.
 
 Prima delimita il task corrente. Solo un task iKant-owned, riconosciuto dall'owner di activation/admission/runtime/exit o da una route runtime validata, entra nel lifecycle iKant. Audit della chat, engineering del repository, artifact work e altri task host restano host-owned: non ereditano stop, blocker, retry o stato iKant. Se il messaggio contiene task misti, isola i task; stop e blocker iKant non diventano stato globale della chat.
 

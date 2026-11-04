@@ -14,7 +14,7 @@ import {bootstrapEvidence} from './bootstrap-fixture.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const terms=readTerms();
 function reset(){fs.rmSync(runtimePaths().dir,{recursive:true,force:true});}
-function handoff(pending='inizializza'){const c=readOrientationCapsule();return{schema:'ikant-le-preaccept-handoff/v1',repository:'Luke883i/iKant_LE',source_head:'a'.repeat(40),terms_presented:true,terms_digest:terms.digest,frozen:true,breached:false,pending_intent:pending,pending_intent_sha256:sha256(Buffer.from(pending)),orientation_digests:Object.fromEntries(c.paths.map(rel=>[rel,sha256(fs.readFileSync(path.join(ROOT,rel)))])),runtime_observed_terms_presentation:false,host_attested_terms_presentation:true,authority:0};}
+function handoff(pending='inizializza'){const c=readOrientationCapsule();return{schema:'ikant-le-preaccept-handoff/v1',repository:'Luke883i/iKant_EDU',source_head:'a'.repeat(40),terms_presented:true,terms_digest:terms.digest,frozen:true,breached:false,pending_intent:pending,pending_intent_sha256:sha256(Buffer.from(pending)),orientation_digests:Object.fromEntries(c.paths.map(rel=>[rel,sha256(fs.readFileSync(path.join(ROOT,rel)))])),runtime_observed_terms_presentation:false,host_attested_terms_presentation:true,authority:0};}
 function gitBlobSha1(bytes){const b=Buffer.isBuffer(bytes)?bytes:Buffer.from(bytes);return crypto.createHash('sha1').update(Buffer.from(`blob ${b.length}\0`)).update(b).digest('hex');}
 
 test('C13 bootstrap exposes exactly eight post-accept reads and a valid runtime root',()=>{

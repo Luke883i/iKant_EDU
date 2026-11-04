@@ -34,7 +34,7 @@ class ManualSource(unittest.TestCase):
         b=io.BytesIO()
         with zipfile.ZipFile(b,"w") as z:
             for p,raw in self.raw.items():
-                name="iKant_LE-"+self.head+"/"+p
+                name="iKant_EDU-"+self.head+"/"+p
                 value=change(p,raw) if change else raw
                 z.writestr(name,value)
         b.seek(0)
@@ -58,11 +58,20 @@ class ManualSource(unittest.TestCase):
                 z,a,h,t=modify(self.archive(),self.api,self.head,self.tree)
                 with self.assertRaises((ValueError,KeyError,json.JSONDecodeError)):
                     M.convert(z,a,h,t)
+    def test_retired_LE_archive_prefix_denied(self):
+        b=io.BytesIO()
+        with zipfile.ZipFile(b,"w") as z:
+            for p,raw in self.raw.items():
+                z.writestr("iKant_LE-"+self.head+"/"+p,raw)
+        b.seek(0)
+        with self.assertRaisesRegex(ValueError,"ARCHIVE_WRONG_HEAD_PREFIX"):
+            M.convert(b,self.api,self.head,self.tree)
+
     def test_zip_symlink_rejected(self):
         b=io.BytesIO()
         with zipfile.ZipFile(b,"w") as z:
-            for p,raw in self.raw.items():z.writestr("iKant_LE-"+self.head+"/"+p,raw)
-            symlink=zipfile.ZipInfo("iKant_LE-"+self.head+"/link")
+            for p,raw in self.raw.items():z.writestr("iKant_EDU-"+self.head+"/"+p,raw)
+            symlink=zipfile.ZipInfo("iKant_EDU-"+self.head+"/link")
             symlink.create_system=3
             symlink.external_attr=(stat.S_IFLNK|0o777)<<16
             z.writestr(symlink,"target")
@@ -97,7 +106,7 @@ class ManualSource(unittest.TestCase):
             temp=pathlib.Path(temp)
             archive=temp/"source.zip";j=temp/"api.json";tools=temp/"tools"
             with zipfile.ZipFile(archive,"w") as z:
-                for p,b in assets.items():z.writestr("iKant_LE-"+self.head+"/"+p,b)
+                for p,b in assets.items():z.writestr("iKant_EDU-"+self.head+"/"+p,b)
             j.write_text(json.dumps(api))
             env={**os.environ,"FROZEN_HEAD":self.head,"FROZEN_TREE":tree,
                 "API_TREE_JSON":str(j),"SOURCE_ZIP":str(archive),"FRESH_TOOL_DIR":str(tools)}

@@ -29,7 +29,7 @@ export function planP1PostModeSourceHandoff({selection,sourceState,sourceAvailab
   return Object.freeze({ok:false,action:'VERIFY_MACHINE_BRIDGE',
    first_edge:bridgeState==='AVAILABLE'?'AUTOMATIC_SOURCE_BRIDGE_AVAILABLE':'SOURCE_BRIDGE_NOT_PROVEN_ABSENT',
    source_state:state,source_zip_url:null,authority:0});
- const source_zip_url=`https://github.com/Luke883i/iKant_LE/archive/${selection.source_head}.zip`;
+ const source_zip_url=`https://github.com/Luke883i/iKant_EDU/archive/${selection.source_head}.zip`;
  return Object.freeze({ok:true,action:'REQUEST_SOURCE_ZIP',source_state:state,source_zip_url,
   message:state==='PARTIAL_SOURCE_ONLY'?
    'Hai gia il pacchetto di orientamento, ma manca il codice completo. Apri il link, scarica lo ZIP e allegalo qui. Non servono terminale o nuovi consensi.':

@@ -137,10 +137,10 @@ export function createC65PinnedGitHubSource(readPinnedFile){
   return async function fetchPinnedObject(request){
     const {sourceHead,path:rel,blob_sha1:expected}=request||{};
     if(!HEX40.test(String(sourceHead||''))||!SAFE.test(String(rel||''))||!HEX40.test(String(expected||'')))throw Error('pinned source request invalid');
-    const args=Object.freeze({repository_full_name:'Luke883i/iKant_LE',path:rel,ref:sourceHead,encoding:'base64'});
+    const args=Object.freeze({repository_full_name:'Luke883i/iKant_EDU',path:rel,ref:sourceHead,encoding:'base64'});
     const got=await readPinnedFile(args);
     const value=got?.result??got;
-    const pinnedUrl='https://github.com/Luke883i/iKant_LE/blob/'+sourceHead+'/'+rel;
+    const pinnedUrl='https://github.com/Luke883i/iKant_EDU/blob/'+sourceHead+'/'+rel;
     if(value?.sha!==expected||value?.encoding!=='base64'||value?.display_url!==pinnedUrl)throw c66TypedFailure('INTEGRITY_CONTRADICTION');
     const bytes=decode(value?.content);
     if(blob(bytes)!==expected)throw c66TypedFailure('INTEGRITY_CONTRADICTION');

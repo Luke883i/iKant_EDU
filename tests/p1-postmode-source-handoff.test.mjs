@@ -8,7 +8,7 @@ const accepted=acceptC72V2Terms({offer,humanMessage:'I ACCEPT',termsPresented:tr
 const selection=selectC72V2Mode({accepted,orientation:presentC72V2Introduction(accepted),humanMessage:'EDU'});
 test('ZIP offered only on genuine post-mode source blocker; not on uncertain state',()=>{
  const absent=planP1PostModeSourceHandoff({selection,sourceAvailable:false,bridgeState:'DEFINITIVELY_UNAVAILABLE'});
- assert.equal(absent.action,'REQUEST_SOURCE_ZIP');assert.ok(absent.source_zip_url.endsWith(`/${H}.zip`));
+ assert.equal(absent.action,'REQUEST_SOURCE_ZIP');assert.equal(absent.source_zip_url,`https://github.com/Luke883i/iKant_EDU/archive/${H}.zip`);
  assert.equal(planP1PostModeSourceHandoff({selection,sourceAvailable:true}).source_zip_url,null);
  assert.equal(planP1PostModeSourceHandoff({selection}).source_zip_url,null);
  assert.equal(planP1PostModeSourceHandoff({selection:{...selection,selected_mode:'EDU',receipt_sha256:'0'.repeat(64)},sourceAvailable:false,bridgeState:'DEFINITIVELY_UNAVAILABLE'}).action,'STOP');
@@ -30,7 +30,7 @@ test('explicit post-EDU manual ZIP is a transport decision and never a C72 bypas
  assert.equal(explicit.ok,true);
  assert.equal(explicit.action,'REQUEST_SOURCE_ZIP');
  assert.equal(explicit.bridge_absence_claimed,false);
- assert.ok(explicit.source_zip_url.endsWith('/'+H+'.zip'));
+ assert.equal(explicit.source_zip_url,`https://github.com/Luke883i/iKant_EDU/archive/${H}.zip`);
  assert.equal(planP1PostModeSourceHandoff({selection,sourceState:'SOURCE_ABSENT',
   bridgeState:'UNKNOWN'}).action,'VERIFY_MACHINE_BRIDGE');
  assert.equal(planP1PostModeSourceHandoff({selection,sourceState:'SOURCE_UNKNOWN',
@@ -42,4 +42,15 @@ test('explicit post-EDU manual ZIP is a transport decision and never a C72 bypas
  const wrong={...selection,receipt_sha256:'f'.repeat(64)};
  assert.equal(planP1PostModeSourceHandoff({selection:wrong,sourceState:'SOURCE_ABSENT',
   manualRoute:'EXPLICIT_MANUAL_POST_EDU'}).action,'STOP');
+});
+
+test('historical LE archive cannot be proposed as the EDU source for a pinned original C72 selection',()=>{
+ const result=planP1PostModeSourceHandoff({selection,sourceState:'PARTIAL_SOURCE_ONLY',
+  bridgeState:'UNKNOWN',manualRoute:'EXPLICIT_MANUAL_POST_EDU'});
+ assert.equal(result.ok,true);
+ assert.equal(result.after_mode_only,true);
+ assert.equal(result.source_zip_url,`https://github.com/Luke883i/iKant_EDU/archive/${H}.zip`);
+ assert.equal(result.source_zip_url.includes('/iKant_LE/'),false);
+ assert.equal(planP1PostModeSourceHandoff({selection:{...selection,receipt_sha256:'0'.repeat(64)},
+  sourceState:'SOURCE_ABSENT',manualRoute:'EXPLICIT_MANUAL_POST_EDU'}).action,'STOP');
 });

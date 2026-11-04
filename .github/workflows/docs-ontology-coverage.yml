@@ -26,5 +26,3 @@ jobs:
         run: |
           node scripts/ikant-document-atlas.mjs
           node --test tests/ikant-document-atlas.test.mjs
-      - name: Constitutional budget and ontology-claims guard
-        run: npm run check

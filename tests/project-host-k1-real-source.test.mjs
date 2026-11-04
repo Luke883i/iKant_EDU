@@ -10,7 +10,8 @@ import {runK1PreOwner,K1_SCHEMA} from '../host/project-host-k1-preowner.mjs';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const git=(...args)=>execFileSync('git',args,{cwd:ROOT,maxBuffer:8_000_000});
-const head=process.env.K1_PINNED_BASE_SHA||git('rev-parse','HEAD').toString().trim();
+const checkoutHead=git('rev-parse','HEAD').toString().trim();
+const head=process.env.K1_PINNED_CHECKOUT_SHA||checkoutHead;
 const H40=/^[0-9a-f]{40}$/;
 const five=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md'];
 function callbacks({wrongBytes=false,badTree=false}={}){
@@ -36,7 +37,7 @@ function callbacks({wrongBytes=false,badTree=false}={}){
 function request(){
  const pins=Object.fromEntries(five.map(p=>[p,git('rev-parse',head+':'+p).toString().trim()]));
  const witness={source_head:head,pinned_blob_shas:pins,host_link_displayed:true,
-  distinct_human_message_observed:true,terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md'};
+  distinct_human_message_observed:true,terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md'};
  return {schema:K1_SCHEMA,requestedCarrier:'SAME_NODE_CALLBACKS',
   projectProfile:'PROJECT_EDU_E15',phase:'POST_ACCEPT',sourceHead:head,liveHead:head,
   humanMessage:'I ACCEPT',freshHumanTurn:true,ownerOutcome:'NOT_INVOKED',
@@ -45,6 +46,7 @@ function request(){
 function withRoot(fn){const root=fs.mkdtempSync(path.join(os.tmpdir(),'k1-verify-'));fs.chmodSync(root,0o700);return Promise.resolve().then(()=>fn(root)).finally(()=>fs.rmSync(root,{recursive:true,force:true}));}
 test('K1 real pinned Git source: original H1 10/10, staged 9/9, seed+closure, cross-process readback; NO owner',async()=>{
  assert.ok(H40.test(head),'real Git HEAD must be a commit');
+ assert.equal(head,checkoutHead,'pinned SHA must match actual candidate checkout');
  await withRoot(async privateRoot=>{
   const r=await runK1PreOwner(request(),{...callbacks(),privateRoot});
   assert.equal(r.ok,true,JSON.stringify(r));
@@ -102,6 +104,12 @@ test('K1 reject unknown/attempted owner before any source I/O',async()=>withRoot
  const q=request();q.ownerOutcome='UNKNOWN';
  const r=await runK1PreOwner(q,{...callbacks(),privateRoot:root});
  assert.equal(r.kind,'STOP');assert.equal(r.edge,'C72_OWNER_OUTCOME_UNKNOWN_NO_REPLAY');
+}));
+test('K1 historical LE Terms link cannot authorize original source staging',async()=>withRoot(async root=>{
+ const q=request();q.priorTurnEvidence.terms_link='https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md';
+ const r=await runK1PreOwner(q,{...callbacks(),privateRoot:root});
+ assert.equal(r.kind,'STOP');assert.equal(r.edge,'K0_FIRST_TURN_WITNESS_INVALID');
+ assert.equal(r.original_owner_invoked,false);
 }));
 test('K1 reject a missing first-turn witness',async()=>withRoot(async root=>{
  const q=request();delete q.priorTurnEvidence.pinned_blob_shas['TERMS.md'];

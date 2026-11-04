@@ -23,4 +23,3 @@ jobs:
         with: {node-version: '22'}
       - run: node --test tests/local-host-meta-prompt.test.mjs
       - run: npm run falsify:host-meta
-      - run: npm run check

@@ -97,6 +97,32 @@ export function qualifyWorkingTreeDifference(p,indexSha,workingSha){
    provenance:'INDEX_SHA_ONLY',evidence_claim:'WORKTREE_BYTE_CHANGE_NOT_NEW_OWNER_RECEIPT'});
  return Object.freeze({ok:false,edge:'V5B_TRACKED_SOURCE_DIRTY'});
 }
+/** Baseline history is immutable; runner retirement is a reviewed candidate, not approval. */
+export function auditWorkflowRetirements(baselinePaths,livePaths,retention,trackedPaths){
+ const errors=[],before=new Set(baselinePaths),live=new Set(livePaths),tracked=new Set(trackedPaths),map=retention?.superseded_workflows||{},retired=Object.keys(map);
+ for(const p of retired){
+  const r=map[p];
+  if(!before.has(p)||live.has(p)||!retention?.paths?.includes(p))errors.push('INVALID_WORKFLOW_RETIREMENT:'+p);
+  if(!r||typeof r.reason!=='string'||r.reason.length<60||!Array.isArray(r.replacements)||!r.replacements.length||!Array.isArray(r.tests)||!r.tests.length||!/^[A-Z][A-Z0-9_]*$/.test(r.status||''))errors.push('UNREVIEWABLE_WORKFLOW_RETIREMENT:'+p);
+  for(const successor of r?.replacements||[])if(successor===p||!live.has(successor)||Object.hasOwn(map,successor))errors.push('REPLACEMENT_NOT_ACTIVE:'+p+':'+successor);
+  for(const suite of r?.tests||[])if(!tracked.has(suite))errors.push('RETIRED_WORKFLOW_TEST_MISSING:'+p+':'+suite);
+ }
+ for(const p of before)if(!live.has(p)&&!Object.hasOwn(map,p))errors.push('UNREGISTERED_WORKFLOW_REMOVAL:'+p);
+ const introduced=[...live].filter(p=>!before.has(p));
+ return {errors,retired:retired.sort(),introduced,expected_live_count:before.size-retired.length+introduced.length};
+}
+/** Explicitly chain distinct candidate deltas; same-main PR slices are not human approval. */
+export function qualifyRegisterSuccession(prior,next){
+ if(!prior||!next||prior.operation==='REMOVE'||next.operation!=='MODIFY')return false;
+ if(next.register===REGISTER||next.register===prior.register||
+    next.supersedes_register!==prior.register||
+    next.supersedes_source_main!==prior.source_main||
+    prior.human_review!=='REVIEW_REQUIRED'||next.human_review!=='REVIEW_REQUIRED')return false;
+ // Same source_main occurs when two PR commits share a single main base.
+ // Explicit candidate lineage is necessary, but still no human signoff is inferred.
+ return next.source_main!==prior.source_main||
+  next.same_source_main_change==='EXPLICIT_REVIEW_REQUIRED_PR_SLICE';
+}
 export function auditRepository(){
  const base=json(INVENTORY),changes=json(REGISTER),retention=json('contracts/v1-workflow-retention.json');
  const contract=json(DOD),errors=[];
@@ -135,14 +161,9 @@ export function auditRepository(){
   const prior=permitted.get(row.path);
   const next={...row,register:name,source_main:doc.source_main||changes.baseline_commit};
   if(prior){
-   const namedPredecessor=name!==REGISTER&&name!==prior.register&&
-    next.source_main!==prior.source_main&&
-    row.supersedes_register===prior.register&&
-    row.supersedes_source_main===prior.source_main&&
-    prior.human_review==='REVIEW_REQUIRED'&&row.human_review==='REVIEW_REQUIRED';
    const initialExtension=prior.operation==='ADD'&&prior.register===REGISTER&&
     row.operation==='MODIFY'&&name!==REGISTER;
-   const successor=prior.operation!=='REMOVE'&&row.operation==='MODIFY'&&namedPredecessor;
+   const successor=qualifyRegisterSuccession(prior,next);
    if(!initialExtension&&!successor)errors.push('V5B_CONFLICTING_DELTA:'+row.path);
    else {
     // Keep baseline ADD/MODIFY classification intact for live inventory audit.
@@ -193,8 +214,10 @@ export function auditRepository(){
   human_verified:false}));
  for(const p of old.keys())if(!now.has(p)){missing.push(p);if(permitted.get(p)?.operation!=='REMOVE')errors.push('UNREGISTERED_DELETION:'+p);}
  for(const [p,decision] of permitted)if(decision.operation!=='REMOVE'&&!now.has(p))errors.push('DECLARED_BUT_ABSENT:'+p);
- if(wfs.length!==base.workflows)errors.push('WORKFLOW_COUNT_DRIFT');
- const protectedMissing=retention.paths.filter(p=>!now.has(p));
+ const migration=auditWorkflowRetirements(base.rows.filter(r=>r.path.startsWith('.github/workflows/')).map(r=>r.path),wfs.map(w=>w.path),retention,paths);
+ errors.push(...migration.errors);
+ if(wfs.length!==migration.expected_live_count)errors.push('WORKFLOW_COUNT_DRIFT');
+ const protectedMissing=retention.paths.filter(p=>!now.has(p)&&!Object.hasOwn(retention.superseded_workflows||{},p));
  if(protectedMissing.length)errors.push('PROTECTED_WORKFLOW_MISSING');
  if(retention.paths.length!==base.retained_workflows||JSON.stringify([...retention.paths].sort())!==JSON.stringify(base.retained_workflow_paths))errors.push('RETENTION_DRIFT');
  // Regex scan is heuristic: unresolved text references are REVIEW debt, not proof of a broken module.\n // Module loader/E2E tests remain the behavioral oracle; never delete based on this count.
@@ -204,7 +227,7 @@ export function auditRepository(){
   change_register_extensions:extensions,git_provenance:'STAGED_BLOB_IDS_MATCH_HEAD_REQUIRED',generated_worktree_evidence_changes:worktreeGenerated,
   tracked_source_worktree_dirty:worktreeSourceDirty,
  provisional_roles:paths.length,human_reviewed_files:0,workflow_count:wfs.length,
- retained_workflows:retention.paths.length,protected_workflows_missing:protectedMissing,
+ retained_workflows:retention.paths.length,baseline_workflow_count:base.workflows,retired_workflows:migration.retired,protected_workflows_missing:protectedMissing,
  workflows:wfs,consumer_index:consumerIndex,dependency_probe:{js_files:jsFiles,literal_relative_edges:textEdges,
  dynamic_site_candidates:unresolved.length,unresolved_dynamic_candidates:unresolved,
  unresolved_relative_imports:relativeMissing,relative_resolution:'HEURISTIC_REVIEW_REQUIRED_NOT_A_RUNTIME_FAILURE'},required_checks:'UNKNOWN_PROVIDER_NOT_ATTESTED',

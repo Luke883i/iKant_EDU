@@ -8,7 +8,7 @@ const H='a'.repeat(40),SHA='b'.repeat(40);
 const blob=b=>createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
 const carrier=Buffer.from('export const transit=1;\n');
 const witness={source_head:H,host_link_displayed:true,distinct_human_message_observed:true,
- terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md',
+ terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md',
  pinned_blob_shas:Object.fromEntries(C72_COLDSTART_FILES.slice(0,5).map(p=>[p,SHA]))};
 const states={CALLBACKS:'UNKNOWN',NODE_HTTPS:'UNKNOWN',HOST_PACKET:'OBSERVED',HOST_FILE:'UNKNOWN'};
 function input(extra={}){return {

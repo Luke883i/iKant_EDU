@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {evaluateCutoverSource,OLD,NEW,REPOSITORY_ID} from '../scripts/rename-source-cutover-gate.mjs';
 const H='a'.repeat(40),T='b'.repeat(40);
 function snapshot(mode='CANDIDATE'){
- const name=mode==='MAIN_POST'?NEW:OLD;
+ const name=mode==='MAIN_PRE'?OLD:NEW;
  return {mode,remote_id:REPOSITORY_ID,remote_name:name,branch:'main',
   local_head:H,local_tree:T,remote_main_head:mode==='CANDIDATE'?null:H,
   remote_main_tree:mode==='CANDIDATE'?null:T,
@@ -12,7 +12,7 @@ function snapshot(mode='CANDIDATE'){
   prompt_source_id_present:true,prompt_installed_equivalence_claim:false,
   originals_git_sha_verified:true};
 }
-test('same GitHub ID with OLD PR source yields only structural candidate, never rename GO',()=>{
+test('same GitHub ID with postrename NEW PR source yields only structural candidate, never rename GO',()=>{
  const r=evaluateCutoverSource(snapshot());
  assert.equal(r.ok,true);
  assert.equal(r.status,'CANDIDATE_SOURCE_COHERENT_NOT_MAIN_OR_RENAME_GO');
@@ -54,7 +54,7 @@ test('falsifiers: provider forgery, fake repository ID and mismatched source byt
  const a=snapshot();
  for(const [key,value,edge] of [
   ['remote_id',REPOSITORY_ID+1,'REPOSITORY_ID_DRIFT'],
-  ['remote_name',NEW,'GITHUB_NAME_PHASE_MISMATCH'],
+  ['remote_name',OLD,'GITHUB_NAME_PHASE_MISMATCH'],
   ['branch','dev','GITHUB_DEFAULT_BRANCH_MISMATCH'],
   ['originals_git_sha_verified',false,'ORIGINAL_GIT_BYTES_UNVERIFIED'],
   ['prompt_installed_equivalence_claim',true,'PROMPT_SOURCE_OR_PROVIDER_CLAIM_INVALID'],

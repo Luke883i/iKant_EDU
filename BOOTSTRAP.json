@@ -331,8 +331,8 @@
       "activation_executor_issuer": "src/runtime-root-verified.mjs#issueCanonicalActivationExecutor"
     }
   },
-  "canonical_repository": "Luke883i/iKant_LE",
-  "canonical_repository_url": "https://github.com/Luke883i/iKant_LE",
+  "canonical_repository": "Luke883i/iKant_EDU",
+  "canonical_repository_url": "https://github.com/Luke883i/iKant_EDU",
   "canonical_branch": "main",
   "first_contact_rule": "Any first human message that references this canonical repository converges to bounded pre-accept orientation before generic repository discovery.",
   "repository_transport": {
@@ -488,18 +488,18 @@
       "schema": "ikant-le-runtime-root/v1",
       "source_head_binding": "PREACCEPT_HANDOFF.source_head",
       "member_count": 51,
-      "source_bytes": 553572,
+      "source_bytes": 553506,
       "loader": {
         "path": "src/runtime-root-verified.mjs",
-        "blob_sha1": "330af6ed1184cd0a5d4446d3a1a18b2f674ab42b"
+        "blob_sha1": "ecd8489d7e8266c117d19054e6336b6792f1f920"
       },
       "shards": [
         {
           "index": 0,
           "path": "runtime-root/shard-000.json",
           "member_count": 7,
-          "source_bytes": 123614,
-          "blob_sha1": "aa40655139e18af02f47ac7b99f179bad70c848f"
+          "source_bytes": 123544,
+          "blob_sha1": "d3af31eadb712baae3d5456e37a16ad5123d2c1e"
         },
         {
           "index": 1,
@@ -526,22 +526,22 @@
           "index": 4,
           "path": "runtime-root/shard-004.json",
           "member_count": 12,
-          "source_bytes": 116572,
-          "blob_sha1": "ec6d9bcf181045161893bb5f74d7944c5f338e68"
+          "source_bytes": 116574,
+          "blob_sha1": "1a0811df0318c92be7df30a1e3b380a9a00d8b64"
         },
         {
           "index": 5,
           "path": "runtime-root/shard-005.json",
           "member_count": 5,
-          "source_bytes": 69114,
-          "blob_sha1": "9d83890bf1fa9b7d5cc61f30f7ebe6a59633760b"
+          "source_bytes": 69115,
+          "blob_sha1": "c9c9eaae75c06770dea984e14af6b03624a740ff"
         },
         {
           "index": 6,
           "path": "runtime-root/shard-006.json",
           "member_count": 7,
-          "source_bytes": 68119,
-          "blob_sha1": "f6923e6921baed2663fb2b3bc472310d0b319b9d"
+          "source_bytes": 68120,
+          "blob_sha1": "5a92ab9f593e1ea99718f0946d228ce05e01ad0b"
         }
       ],
       "members": [
@@ -559,8 +559,8 @@
         },
         {
           "path": "src/first-contact.mjs",
-          "blob_sha1": "72034b9bb7ff07d06c1856efbc25c1e720f59793",
-          "bytes": 4902,
+          "blob_sha1": "2033eaadb28ea2dcbe298192bf65c01ecc58585e",
+          "bytes": 4830,
           "shard": 0
         },
         {
@@ -679,14 +679,14 @@
         },
         {
           "path": "src/admission.mjs",
-          "blob_sha1": "4ba3f244e89fc1aded60e4a0783d090ce7432931",
-          "bytes": 17827,
+          "blob_sha1": "cde2c7bcbec70c8d7e508884788179aa555708de",
+          "bytes": 17828,
           "shard": 4
         },
         {
           "path": "contracts/host-shell.json",
-          "blob_sha1": "19cb38fd426b2f233ec57e1c8c6a794f46306f33",
-          "bytes": 16409,
+          "blob_sha1": "ab6c80df87159d6dc0c146be792c845f11ad0c34",
+          "bytes": 16410,
           "shard": 4
         },
         {
@@ -709,8 +709,8 @@
         },
         {
           "path": "contracts/ikant-le.json",
-          "blob_sha1": "b8b48687c32811e97fb57ae4003388b15732985e",
-          "bytes": 47825,
+          "blob_sha1": "763daf82dea45c0260521dfcf037557f9bb5b083",
+          "bytes": 47826,
           "shard": 5
         },
         {
@@ -751,8 +751,8 @@
         },
         {
           "path": "contracts/orientation-capsule.json",
-          "blob_sha1": "5f9b4a617f6788fde3f7443f1a175182debee012",
-          "bytes": 2695,
+          "blob_sha1": "0f99e2a3332baf7bd1539e0a3524a49855413e24",
+          "bytes": 2696,
           "shard": 6
         },
         {
@@ -763,8 +763,8 @@
         },
         {
           "path": "src/bootstrap-semantic.mjs",
-          "blob_sha1": "4c6bafd6d01a674e95e8ca879d9974558c5d7936",
-          "bytes": 38675,
+          "blob_sha1": "642d2578c38d334b0d3d87274d8b4f04370b0f86",
+          "bytes": 38677,
           "shard": 0
         },
         {
@@ -852,7 +852,7 @@
           "shard": 3
         }
       ],
-      "runtime_root_sha256": "bb39cdb291d55701c7714ead7f42604abfd26859dac525e96d51cbd7b149c699"
+      "runtime_root_sha256": "57798d6b88621b4b0a62d1794aafcd722562cef833344e0a72c23f9604c48f77"
     },
     "max_post_accept_remote_reads": 8,
     "deadline_ms": 120000,
@@ -1055,8 +1055,8 @@
       "schema": "ikant-le-pre-runtime-kernel/v2",
       "contract": "contracts/pre-runtime-kernel.json",
       "path": "src/runtime-root-verified.mjs",
-      "blob_sha1": "330af6ed1184cd0a5d4446d3a1a18b2f674ab42b",
-      "bytes": 60216,
+      "blob_sha1": "ecd8489d7e8266c117d19054e6336b6792f1f920",
+      "bytes": 60217,
       "direct_known_path": true,
       "stdlib_only": true,
       "reuses_runtime_root_loader": true,
@@ -1446,7 +1446,7 @@
       "gate": "AFTER_DISTINCT_I_ACCEPT_BEFORE_ORIGINAL_C72_AND_EDU_ONLY",
       "preferred": "OBSERVED_P0_CARRIER",
       "fallback": "ONE_OFFICIAL_PINNED_COMMIT_ZIP_MANUAL_UPLOAD",
-      "archive": "https://github.com/Luke883i/iKant_LE/archive/{SOURCE_HEAD}.zip",
+      "archive": "https://github.com/Luke883i/iKant_EDU/archive/{SOURCE_HEAD}.zip",
       "zip_root_verifier": "scripts/project-edu-zip-tree.py",
       "independent_commit_tree": "GITHUB_API_COMMIT_TREE_SHA",
       "tree_entries": "DERIVED_FROM_ZIP_NOT_INDEPENDENT_GITHUB_API_TREE",

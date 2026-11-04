@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference} from '../scripts/v5b-repository-governance-audit.mjs';
+import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession} from '../scripts/v5b-repository-governance-audit.mjs';
 
 test('all-path roles are explicitly provisional and never human review',()=>{
  assert.equal(provisionalRole('tests/foo.test.mjs'),'TEST_SOURCE');
@@ -67,7 +67,7 @@ test('original full-checkout inventory is mechanically indexed, not reviewed',{s
  assert.equal(r.errors.length,0,JSON.stringify(r.errors.slice(0,40)));
  assert.equal(r.baseline_files,1471);
  assert.equal(r.retained_workflows,87);
- assert.equal(r.workflow_count,121);
+ assert.equal(r.baseline_workflow_count,121);assert.equal(r.retired_workflows.length,5);assert.equal(r.workflow_count,116);
  assert.equal(r.human_reviewed_files,0);
  assert.equal(r.owner_accountability,'HUMAN_OWNER_NOT_INFERRED');
  assert.equal(r.required_checks,'UNKNOWN_PROVIDER_NOT_ATTESTED');
@@ -77,4 +77,38 @@ test('original full-checkout inventory is mechanically indexed, not reviewed',{s
  assert(r.consumer_index.every(x=>x.status==='UNKNOWN_NOT_UNUSED'||x.status==='LITERAL_CONSUMER_OBSERVED'));
  assert(r.consumer_index.some(x=>x.status==='UNKNOWN_NOT_UNUSED'),'absence of a literal importer must not be labelled UNUSED');
  assert(r.dependency_probe.js_files>=700,'unexpected JS source loss');
+});
+
+test('V5B retirement demands exact absent runner, active replacement, preserved test',()=>{
+ const before=['.github/workflows/a.yml','.github/workflows/b.yml'],live=['.github/workflows/b.yml'];
+ const m={paths:before,superseded_workflows:{'.github/workflows/a.yml':{status:'SUPERSEDED_RUNNER',reason:'Original tests remain active in a declared replacement CI workflow and are not silently removed.',replacements:['.github/workflows/b.yml'],tests:['tests/a.test.mjs']}}};
+ assert.deepEqual(auditWorkflowRetirements(before,live,m,[...live,'tests/a.test.mjs']).errors,[]);
+ assert.ok(auditWorkflowRetirements(before,live,{paths:before},live).errors.some(e=>e.startsWith('UNREGISTERED_WORKFLOW_REMOVAL')));
+ assert.ok(auditWorkflowRetirements(before,live,m,live).errors.some(e=>e.startsWith('RETIRED_WORKFLOW_TEST_MISSING')));
+ assert.ok(auditWorkflowRetirements(before,[],m,['tests/a.test.mjs']).errors.some(e=>e.startsWith('REPLACEMENT_NOT_ACTIVE')));
+});
+
+test('V5-B rejects overlapping delta registers unless explicit predecessor is pinned',()=>{
+ const a={operation:'MODIFY',register:'governance/changes/earlier.json',source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED'};
+ const b={operation:'MODIFY',register:'governance/changes/later.json',source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED',
+  supersedes_register:a.register,supersedes_source_main:a.source_main};
+ assert.equal(qualifyRegisterSuccession(a,b),false,'same-main duplicate must be rejected');
+ assert.equal(qualifyRegisterSuccession(a,{...b,same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),true);
+ assert.equal(qualifyRegisterSuccession(a,{...b,source_main:'b'.repeat(40)}),true,'distinct pinned main epoch');
+ assert.equal(qualifyRegisterSuccession(a,{...b,supersedes_register:'elsewhere',same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
+ assert.equal(qualifyRegisterSuccession(a,{...b,supersedes_source_main:'b'.repeat(40),same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
+ assert.equal(qualifyRegisterSuccession(a,{...b,human_review:'PROVISIONAL',same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
+ assert.equal(qualifyRegisterSuccession(a,{...b,operation:'REMOVE',same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
+ assert.equal(qualifyRegisterSuccession(a,{...b,register:a.register,same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
+});
+
+test('V5B reviewer status supports digit-bearing C98 lineage while rejecting invalid tokens',()=>{
+ const base=['.github/workflows/c98-project-3md.yml','.github/workflows/c98-host-bound-prepr.yml'];
+ const retained={paths:base,superseded_workflows:{[base[0]]:{status:'SUBSUMED_C98_BASELINE',reason:'Specialist baseline is verified in an active replacement with exact focused regression coverage.',replacements:[base[1]],tests:['tests/c98-project-baseline.test.mjs']}}};
+ const paths=[base[1],'tests/c98-project-baseline.test.mjs'];
+ assert.deepEqual(auditWorkflowRetirements(base,[base[1]],retained,paths).errors,[]);
+ for(const status of ['SUBSUMED-C98_BASELINE','9_SUBSUMED','SUBSUMED C98','']){
+  const mutant={...retained,superseded_workflows:{[base[0]]:{...retained.superseded_workflows[base[0]],status}}};
+  assert(auditWorkflowRetirements(base,[base[1]],mutant,paths).errors.some(x=>x.startsWith('UNREVIEWABLE_WORKFLOW_RETIREMENT')),status);
+ }
 });

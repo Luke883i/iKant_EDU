@@ -15,9 +15,9 @@ const OPTIN='AUTORIZZO BOZZE COHOST SPERIMENTALI NON VERIFICATE';
 const start=new Set(['avvia ikant','attiva ikant']);
 const pin=h=>typeof h==='string'&&/^[a-f0-9]{40}$/.test(h);
 const docs=h=>[
- {title:'Sorgente congelato',url:`https://github.com/Luke883i/iKant_LE/tree/${h}`,kind:'NAVIGATION_NOT_EXECUTION'},
- {title:'Definizione C107 e DoD',url:`https://github.com/Luke883i/iKant_LE/blob/${h}/docs/C107_EXPERIMENTAL_RELEASE_DOD.md`,kind:'NAVIGATION_NOT_EVIDENCE'},
- {title:'Runtime C108',url:`https://github.com/Luke883i/iKant_LE/blob/${h}/host/c108-host-matrix.mjs`,kind:'NAVIGATION_NOT_EVIDENCE'}
+ {title:'Sorgente congelato',url:`https://github.com/Luke883i/iKant_EDU/tree/${h}`,kind:'NAVIGATION_NOT_EXECUTION'},
+ {title:'Definizione C107 e DoD',url:`https://github.com/Luke883i/iKant_EDU/blob/${h}/docs/C107_EXPERIMENTAL_RELEASE_DOD.md`,kind:'NAVIGATION_NOT_EVIDENCE'},
+ {title:'Runtime C108',url:`https://github.com/Luke883i/iKant_EDU/blob/${h}/host/c108-host-matrix.mjs`,kind:'NAVIGATION_NOT_EVIDENCE'}
 ];
 export const C109_EXACT_OPTIN=OPTIN;
 export function createC109ChatShell({sourceHead,ledgerFile,languagePort,relayPort,

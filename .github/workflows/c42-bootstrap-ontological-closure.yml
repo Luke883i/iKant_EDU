@@ -35,8 +35,6 @@ jobs:
         run: npm run falsify:c42
       - name: Runtime root unchanged and valid
         run: npm run runtime-root:verify
-      - name: Repository invariants
-        run: npm run check
       - name: Upload C42 receipt
         if: always()
         uses: actions/upload-artifact@v4

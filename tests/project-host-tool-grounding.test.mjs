@@ -6,7 +6,7 @@ import {H1_FILES,H1_TRANSIT,H1_SEED} from '../host/project-edu-h1-bound-port.mjs
 const H='a'.repeat(40),B='b'.repeat(40);
 const FIRST=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md'];
 const witness=()=>({source_head:H,host_link_displayed:true,distinct_human_message_observed:true,
- terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md',
+ terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md',
  pinned_blob_shas:Object.fromEntries(FIRST.map(x=>[x,B]))});
 const valid=()=>({phase:'POST_ACCEPT',humanMessage:'I ACCEPT',freshHumanTurn:true,
  ownerOutcome:'NOT_INVOKED',sourceHead:H,liveHead:H,priorTurnEvidence:witness()});

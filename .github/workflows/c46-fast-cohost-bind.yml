@@ -87,5 +87,3 @@ jobs:
         run: node scripts/c47-cohost-runtime-closure-falsify.mjs
       - name: C48 exact-main gate selection
         run: node scripts/c48-main-cohost-gate-falsify.mjs
-      - name: Repository check
-        run: node scripts/check.mjs

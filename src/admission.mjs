@@ -18,7 +18,7 @@ function canonicalSourceRepository(){
  // source plane: it can omit BOOTSTRAP/ADMISSION/C72 from the runtime root.
  // Those missing files cannot authorize NEW. The committed runtime remains
  // OLD unless an independently materialized complete NEW source agrees.
- const original='Luke883i/iKant_LE',future='Luke883i/iKant_EDU';
+ const original='Luke883i/iKant_EDU',future='Luke883i/iKant_EDU';
  const bootFile=path.join(ROOT,'BOOTSTRAP.json');
  if(!fs.existsSync(bootFile))return original;
  const boot=JSON.parse(fs.readFileSync(bootFile,'utf8'));

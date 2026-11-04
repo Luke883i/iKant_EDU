@@ -21,7 +21,7 @@ function fixture(){
     sourceHead:HEAD,humanInput:'I ACCEPT',runnerCount:4,
     acceptanceObservedMonotonicMs:performance.now(),
     preacceptHandoff:{
-      schema:'ikant-le-preaccept-handoff/v2',repository:'Luke883i/iKant_LE',
+      schema:'ikant-le-preaccept-handoff/v2',repository:'Luke883i/iKant_EDU',
       source_head:HEAD,terms_presented:true,terms_object:{...terms},frozen:true,breached:false,
       pending_intent:'inizializza',orientation_objects:identities,
       orientation_payloads:paths.map(p=>({path:p,content_utf8:fs.readFileSync(path.join(ROOT,p),'utf8')})),
@@ -162,11 +162,11 @@ test('C65 pinned GitHub response adapter => 8/8 actual C61 local reopen projecti
       assert.deepEqual(Object.keys(args).sort(),['encoding','path','ref','repository_full_name']);
       assert.equal(args.ref,HEAD);
       assert.equal(args.encoding,'base64');
-      assert.equal(args.repository_full_name,'Luke883i/iKant_LE');
+      assert.equal(args.repository_full_name,'Luke883i/iKant_EDU');
       const obj=byPath.get(args.path);
       const content=obj.content_base64.match(/.{1,61}/g).join('\n');
       return {result:{sha:obj.blob_sha1,encoding:'base64',content,
-        display_url:'https://github.com/Luke883i/iKant_LE/blob/'+HEAD+'/'+args.path}};
+        display_url:'https://github.com/Luke883i/iKant_EDU/blob/'+HEAD+'/'+args.path}};
     };
     const result=await executeC63AtAcceptance({
       humanInput:'I ACCEPT',sourceHead:HEAD,preacceptHandoff:f.preacceptHandoff,
@@ -191,12 +191,13 @@ test('C65 pinned GitHub response adapter => 8/8 actual C61 local reopen projecti
 test('C65 rejects GitHub API response tamper and ambiguous encoding before any owner invocation',async()=>{
   const f=fixture(),original=f.sourceObjects[0],request={sourceHead:HEAD,path:original.path,blob_sha1:original.blob_sha1};
   const good={sha:original.blob_sha1,encoding:'base64',content:original.content_base64,
-    display_url:'https://github.com/Luke883i/iKant_LE/blob/'+HEAD+'/'+original.path};
+    display_url:'https://github.com/Luke883i/iKant_EDU/blob/'+HEAD+'/'+original.path};
   assert.throws(()=>createC65PinnedGitHubSource(null),/callable/);
   for(const mutation of [
     x=>{x.sha='b'.repeat(40);},
     x=>{x.encoding='utf-8';},
-    x=>{x.display_url='https://github.com/Luke883i/iKant_LE/blob/main/'+original.path;},
+    x=>{x.display_url='https://github.com/Luke883i/iKant_EDU/blob/main/'+original.path;},
+     x=>{x.display_url='https://github.com/Luke883i/iKant_LE/blob/'+HEAD+'/'+original.path;},
     x=>{x.content='eA==';},
     x=>{x.content=undefined;},
     x=>{x.content+='A';}

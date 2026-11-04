@@ -15,7 +15,7 @@ const bytes=NAMES.map((p,i)=>Buffer.from('original fixture byte-path '+i+' '+p+'
 const expectedBlobShas=Object.fromEntries(NAMES.map((p,i)=>[p,blob(bytes[i])]));
 function manifest(dir){return {op:'init',schema:'ikant-host-c72-verified-staging/v1',
  source_head:SHA,expectedBlobShas,stageDirectory:dir,priorTurnEvidence:{source_head:SHA,
- host_link_displayed:true,terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+SHA+'/TERMS.md',
+ host_link_displayed:true,terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+SHA+'/TERMS.md',
  pinned_blob_shas:Object.fromEntries(NAMES.slice(0,5).map(p=>[p,expectedBlobShas[p]]))}};}
 const put=(dir,i,data=bytes[i])=>({op:'put',schema:'ikant-host-c72-verified-put/v1',
  stageDirectory:dir,path:NAMES[i],contentBase64:data.toString('base64')});

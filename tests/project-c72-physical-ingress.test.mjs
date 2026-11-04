@@ -11,16 +11,16 @@ const docs=names.map(path=>({path,source_head:head,
  content:execFileSync('git',['show','HEAD:'+path],{encoding:'utf8'})}));
 const witness=()=>({source_head:head,host_link_displayed:true,
  distinct_human_message_observed:true,
- terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md',
+ terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md',
  pinned_blob_shas:Object.fromEntries(docs.map(x=>[x.path,x.blob_sha1]))});
 const packet=()=>({schema:'ikant-host-c72-source-packet/v1',source_head:head,
  live_head:head,carrier_kind:'HOST_OPAQUE_TRANSFER',
  source_origin_attested:false,native_event_attested:false,documents:structuredClone(docs)});
 const getJSON=({tamper=null,calls=[]}={})=>async path=>{
  calls.push(path);
- if(path==='/repos/Luke883i/iKant_LE/git/ref/heads/main')
+ if(path==='/repos/Luke883i/iKant_EDU/git/ref/heads/main')
   return {ref:'refs/heads/main',object:{type:'commit',sha:head}};
- const m=path.match(/^\/repos\/Luke883i\/iKant_LE\/contents\/(README\.md|BOOTSTRAP\.json|ADMISSION\.json|AGENTS\.md|TERMS\.md)\?ref=([a-f0-9]{40})$/);
+ const m=path.match(/^\/repos\/Luke883i\/iKant_EDU\/contents\/(README\.md|BOOTSTRAP\.json|ADMISSION\.json|AGENTS\.md|TERMS\.md)\?ref=([a-f0-9]{40})$/);
  if(!m||m[2]!==head)throw Error('C72_TEST_REQUEST_UNEXPECTED');
  const d=docs.find(x=>x.path===m[1]);
  const content=Buffer.from(d.content,'utf8');

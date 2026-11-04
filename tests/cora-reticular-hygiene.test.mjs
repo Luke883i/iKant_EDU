@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-import {qualifyReticularLattice,qualifyReticularCensus,observeReticularCensus,qualifyWorkflowTreeEvolution} from '../scripts/cora-minimal-absorption.mjs';
+import {qualifyReticularLattice,qualifyReticularCensus,observeReticularCensus,observeReticularCensusWithAudit,qualifyWorkflowTreeEvolution} from '../scripts/cora-minimal-absorption.mjs';
 const doc=JSON.parse(fs.readFileSync(new URL('../contracts/cora-reticular-hygiene-v1.json',import.meta.url),'utf8'));
 const clone=()=>structuredClone(doc);
 
@@ -178,6 +178,23 @@ test('CORA workflow evolution is one reversible Git TREE delta, never automatic 
   const x=clone();mutate(x);
   assert.equal(qualifyReticularLattice(x).ok,false);
  }
+});
+
+test('D2 exposes one original V5-B audit together with the same CORA-qualified census',()=>{
+ assert.equal(observeReticularCensusWithAudit.length,0,'no external audit injection');
+ const {census,audit}=observeReticularCensusWithAudit();
+ assert.equal(census.ok,true,JSON.stringify(census.obligations||census));
+ assert.equal(audit.schema,'ikant-v5b-live-readonly-audit/v1');
+ assert.equal(audit.status,'SOURCE_INDEXED_NOT_HUMAN_REVIEWED');
+ assert.equal(audit.errors.length,0);
+ assert.equal(census.git.tracked,audit.checked_files);
+ assert.equal(census.git.workflow_count,audit.workflow_count);
+ assert.equal(census.rows.length,audit.consumer_index.length);
+ assert.equal(census.permission_to_change,false);
+ assert.equal(census.goals.product,'BLOCKED_EXTERNAL');
+ assert.equal(census.goals.standardized,'BLOCKED_EXTERNAL');
+ const legacy=observeReticularCensus();
+ assert.deepEqual(census,legacy,'legacy CORA observer must remain byte-equivalent on unchanged HEAD');
 });
 
 test('actual Git-indexed V5-B census covers the full checkout; owners unchanged, no workflow deletion',()=>{

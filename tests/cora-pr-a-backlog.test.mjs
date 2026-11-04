@@ -119,6 +119,13 @@ test('preseeded 10 million semantic vectors repeat and reject false owner/provid
  assert.deepEqual(x,y);
 });
 
+test('D2 PR-A source imports one CORA-owned audit snapshot without secondary V5-B scan',()=>{
+ const source=fs.readFileSync(new URL('../scripts/cora-pr-a-backlog.mjs',import.meta.url),'utf8');
+ assert.match(source,/observeReticularCensusWithAudit\(\)/);
+ assert.doesNotMatch(source,/\bauditRepository\s*\(/);
+ assert.match(source,/derivePrABacklog\(census,audit,contract\)/);
+});
+
 test('actual checkout: original V5-B and CORA full readback generates finite backlog',()=>{
  const r=observePrABacklog();
  assert.equal(r.ok,true,JSON.stringify(r));

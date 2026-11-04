@@ -98,6 +98,13 @@ test('10k reproducible semantic faults kill every attempted CI overclaim or exec
  assert.equal(first.rejected,10000);assert.equal(first.unsafe,0);
  assert.equal(first.covered,faults.length);
 });
+test('D2 PR-C source reuses original CORA audit and preserves independent pure qualifier',()=>{
+ const source=fs.readFileSync(new URL('../scripts/cora-pr-c-ci.mjs',import.meta.url),'utf8');
+ assert.match(source,/observeReticularCensusWithAudit\(\)/);
+ assert.doesNotMatch(source,/\bauditRepository\s*\(/);
+ assert.match(source,/qualifyPrCCISource\(\{policy,source:yaml,audit,cora\}\)/);
+});
+
 test('actual HEAD Git + original V5-B + CORA readback retains 116 workflows',()=>{
  const r=observePrCCISource();
  assert.equal(r.ok,true,JSON.stringify(r));

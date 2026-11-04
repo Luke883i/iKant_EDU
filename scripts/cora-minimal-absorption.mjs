@@ -295,7 +295,8 @@ export function qualifyReticularCensus(c,{audit,index,tree,head,treeSha,ownersSt
   unresolved_dynamic_candidates:audit.dependency_probe?.dynamic_site_candidates??null,
   rows};
 }
-export function observeReticularCensus(){
+/** One original V5-B audit and its CORA-qualified projection from the same observation.\n * The audit is created internally; callers cannot inject an unqualified substitute. */
+export function observeReticularCensusWithAudit(){
  const c=JSON.parse(fs.readFileSync(path.join(ROOT,reticularPath),'utf8'));
  const head=git('rev-parse','HEAD'),treeSha=git('rev-parse','HEAD^{tree}');
  const parseTree=git('ls-tree','-r','-z','--full-tree','HEAD').split('\0').filter(Boolean).map(line=>{
@@ -317,8 +318,14 @@ export function observeReticularCensus(){
  });
  const delta=qualifyWorkflowTreeEvolution(c.reuse.workflow_evolution,{entries,observedTree:workflowTree});
  const deltaSafe=delta.ok===true;
- return qualifyReticularCensus(c,{audit:auditRepository(),index,tree:parseTree,head,treeSha,
+ const audit=auditRepository();
+ const census=qualifyReticularCensus(c,{audit,index,tree:parseTree,head,treeSha,
   ownersStable,deltaSafe,readme:fs.readFileSync(path.join(ROOT,'README.md'),'utf8')});
+ return {census,audit};
+}
+/** Preserve the pre-D2 public result shape and original read-only CLI behavior. */
+export function observeReticularCensus(){
+ return observeReticularCensusWithAudit().census;
 }
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

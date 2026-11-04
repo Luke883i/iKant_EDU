@@ -3,8 +3,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {auditRepository,gitBlobSha1} from './v5b-repository-governance-audit.mjs';
-import {observeReticularCensus} from './cora-minimal-absorption.mjs';
+import {gitBlobSha1} from './v5b-repository-governance-audit.mjs';
+import {observeReticularCensusWithAudit} from './cora-minimal-absorption.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const POLICY='contracts/cora-pr-c-ci-v1.json';
 export const DIRECTIVE=[
@@ -68,8 +68,7 @@ export function qualifyPrCCISource({policy,source,audit,cora}={}){
 export function observePrCCISource(){
  const policy=JSON.parse(fs.readFileSync(path.join(ROOT,POLICY),'utf8'));
  const yaml=fs.readFileSync(path.join(ROOT,policy.bounded_effect.path),'utf8');
- const audit=auditRepository();
- const cora=observeReticularCensus();
+ const {census:cora,audit}=observeReticularCensusWithAudit();
  return qualifyPrCCISource({policy,source:yaml,audit,cora});
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

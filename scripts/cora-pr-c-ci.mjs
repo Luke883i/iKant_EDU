@@ -2,9 +2,8 @@
 /** PR-C read-only CI hygiene report derived from original V5-B and CORA. */
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-import {auditRepository} from './v5b-repository-governance-audit.mjs';
+import {auditRepository,gitBlobSha1} from './v5b-repository-governance-audit.mjs';
 import {observeReticularCensus} from './cora-minimal-absorption.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const POLICY='contracts/cora-pr-c-ci-v1.json';
@@ -16,7 +15,6 @@ export const DIRECTIVE=[
  "  cancel-in-progress: "+String.fromCharCode(36)+"{{ github.event_name == 'pull_request' }}",
  ''
 ].join('\n');
-const blobSha=s=>crypto.createHash('sha1').update('blob '+Buffer.byteLength(s)+String.fromCharCode(0)).update(s).digest('hex');
 const invalid=(edge)=>({ok:false,edge,authority:0,retirement_authorized:false,product_go:false,
  human_review_attested:false,required_checks:'UNKNOWN'});
 /** Physical byte equivalence via exact Git SHA-1 blob before/after and exact directive removal. */
@@ -33,10 +31,10 @@ export function qualifyWorkflowPatch(policy,source){
   return invalid('PR_C_POLICY_UNBOUND');
  if(typeof source!=='string'||source.split(DIRECTIVE).length!==2||
    !source.includes('\n'+DIRECTIVE+'jobs:\n')||
-   blobSha(source)!==s.after_blob)
+   gitBlobSha1(source)!==s.after_blob)
   return invalid('PR_C_WORKFLOW_NEW_BLOB_NOT_PINNED');
  const previous=source.replace(DIRECTIVE,'');
- if(blobSha(previous)!==s.before_blob)return invalid('PR_C_WORKFLOW_BASELINE_NON_EQUIVALENCE');
+ if(gitBlobSha1(previous)!==s.before_blob)return invalid('PR_C_WORKFLOW_BASELINE_NON_EQUIVALENCE');
  return {ok:true,status:'ONE_EXACT_REVERSIBLE_CI_DELTA',path:s.path,old_blob:s.before_blob,
   new_blob:s.after_blob,contents_read:true,pr_superseded_only:true,
   baseline_events_jobs_commands_byte_identical:true,authority:0,product_go:false,

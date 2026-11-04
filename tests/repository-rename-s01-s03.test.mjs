@@ -78,7 +78,8 @@ test('S02 C72 preaccept original offers exactly five HEAD-bound links',async()=>
  assert.equal(r.documents.length,5);
  for(let i=0;i<order.length;i++){
   assert.equal(r.documents[i].path,order[i]);
-  assert.equal(r.documents[i].link,'https://github.com/'+contract.repo_name_from+'/blob/'+H+'/'+order[i]);
+  assert.equal(r.documents[i].link,'https://github.com/'+contract.repo_name_to+'/blob/'+H+'/'+order[i]);
+  assert.notEqual(r.documents[i].link,'https://github.com/'+contract.repo_name_from+'/blob/'+H+'/'+order[i]);
  }
  assert.equal(r.terms_link,c72LinkedTermsURL(H));
  assert.equal(r.original_offer.active,false);

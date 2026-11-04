@@ -515,6 +515,13 @@
       "deletion_authorized": false
     },
     {
+      "path": "tests/project-host-k1-real-source.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Requalify real Git K1 pre-owner checkout fixture to current pinned EDU Terms witness and add explicit retired LE link negative; retain 10/10 9/9 and no owner invocation invariants.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

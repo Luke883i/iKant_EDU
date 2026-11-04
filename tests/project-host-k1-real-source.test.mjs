@@ -36,7 +36,7 @@ function callbacks({wrongBytes=false,badTree=false}={}){
 function request(){
  const pins=Object.fromEntries(five.map(p=>[p,git('rev-parse',head+':'+p).toString().trim()]));
  const witness={source_head:head,pinned_blob_shas:pins,host_link_displayed:true,
-  distinct_human_message_observed:true,terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md'};
+  distinct_human_message_observed:true,terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+head+'/TERMS.md'};
  return {schema:K1_SCHEMA,requestedCarrier:'SAME_NODE_CALLBACKS',
   projectProfile:'PROJECT_EDU_E15',phase:'POST_ACCEPT',sourceHead:head,liveHead:head,
   humanMessage:'I ACCEPT',freshHumanTurn:true,ownerOutcome:'NOT_INVOKED',
@@ -102,6 +102,12 @@ test('K1 reject unknown/attempted owner before any source I/O',async()=>withRoot
  const q=request();q.ownerOutcome='UNKNOWN';
  const r=await runK1PreOwner(q,{...callbacks(),privateRoot:root});
  assert.equal(r.kind,'STOP');assert.equal(r.edge,'C72_OWNER_OUTCOME_UNKNOWN_NO_REPLAY');
+}));
+test('K1 historical LE Terms link cannot authorize original source staging',async()=>withRoot(async root=>{
+ const q=request();q.priorTurnEvidence.terms_link='https://github.com/Luke883i/iKant_LE/blob/'+head+'/TERMS.md';
+ const r=await runK1PreOwner(q,{...callbacks(),privateRoot:root});
+ assert.equal(r.kind,'STOP');assert.equal(r.edge,'K0_FIRST_TURN_WITNESS_INVALID');
+ assert.equal(r.original_owner_invoked,false);
 }));
 test('K1 reject a missing first-turn witness',async()=>withRoot(async root=>{
  const q=request();delete q.priorTurnEvidence.pinned_blob_shas['TERMS.md'];

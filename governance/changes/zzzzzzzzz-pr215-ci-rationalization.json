@@ -473,6 +473,20 @@
       "deletion_authorized": false
     },
     {
+      "path": "host/p1-postmode-source-handoff.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair verified original C72 EDU manual archive URL from retired iKant_LE repository to current iKant_EDU without weakening selection, source-head pin or explicit manual route gate.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/p1-postmode-source-handoff.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Require exact current EDU SHA-pinned ZIP URL in both automatic-absence and explicit manual selection and reject historic LE URL while preserving original C72 denial tests.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

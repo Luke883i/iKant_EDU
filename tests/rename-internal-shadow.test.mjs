@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {SHADOW_MUTATIONS,SHADOW_TESTS} from '../scripts/rename-internal-shadow.mjs';
+import {SHADOW_MUTATIONS,SHADOW_TESTS,runShadow} from '../scripts/rename-internal-shadow.mjs';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 test('shadow source is read-only to main and always denies administrative GO',()=>{
  const s=read('scripts/rename-internal-shadow.mjs');
@@ -24,6 +24,15 @@ test('all identity-bearing original boundaries and root generator are targeted',
  assert.equal(SHADOW_MUTATIONS.includes('scripts/project-oneshell-source-pin-audit.mjs'),false);
  for(const p of SHADOW_TESTS)assert(fs.existsSync(new URL('../'+p,import.meta.url)));
  const bootstrap=JSON.parse(read('BOOTSTRAP.json'));
- assert.equal(bootstrap.canonical_repository,'Luke883i/iKant_LE');
+ assert.equal(bootstrap.canonical_repository,'Luke883i/iKant_EDU');
  assert(bootstrap.post_accept_fastboot.runtime_root.members.some(x=>x.path==='src/first-contact.mjs'));
+});
+
+test('historical OLD-to-NEW shadow refuses to rerun after actual administrative rename',()=>{
+ const r=runShadow();
+ assert.equal(r.status,'SHADOW_FAIL_NOT_CUTOVER');
+ assert.equal(r.edge,'SOURCE_NOT_OLD_CANONICAL');
+ assert.equal(r.rename_go,false);
+ assert.equal(r.owner_invoked,false);
+ assert.equal(r.provider_equivalence_attested,false);
 });

@@ -544,6 +544,15 @@
       "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
       "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
       "same_source_main_change": "EXPLICIT_REVIEW_REQUIRED_PR_SLICE"
+    },
+    {
+      "path": "tests/rename-internal-shadow.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace obsolete OLD identity expectation with current EDU identity; assert prospective shadow is fail-closed after real rename without owner invocation.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
     }
   ]
 }

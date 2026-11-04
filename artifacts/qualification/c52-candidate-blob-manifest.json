@@ -59,12 +59,12 @@
     },
     {
       "path": ".github/workflows/c52-physical-runtime-closure.yml",
-      "bytes": 3257,
-      "sha256": "97fed5d054536ff2997a8a867db22e4ae171cd857d22ccdfbec2fc04444faa4d"
+      "bytes": 3190,
+      "sha256": "87f6dff8e914d9aca75d7ca69949501736f334e9ada3d0008673dcf90f878d36"
     }
   ],
   "content_addressed": true,
   "manifest_excludes_self": true,
   "authority": 0,
-  "receipt_sha256": "2f227f437503d3512a44f5aced6e320524f876a93cd51dfcf50fbbc9ae816b8c"
+  "receipt_sha256": "7cd9ad2def27d8b41b9bd700bf230d2243fd04e895599b11cf52e4b664359ff8"
 }

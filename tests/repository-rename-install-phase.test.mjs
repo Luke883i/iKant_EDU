@@ -27,18 +27,19 @@ test('both future source phases have exactly one name, always authority zero',()
   assert.equal(assessRenameSourceCandidate(duplicate).edge,'DUAL_CANONICAL_OR_ALIAS');
  }
 });
-test('C72 stays OLD until original contract source is requalified, no silent alias',()=>{
+test('C72 current canonical source is NEW and the historical OLD alias cannot be promoted',()=>{
  const boot=JSON.parse(fs.readFileSync(new URL('../BOOTSTRAP.json',import.meta.url)));
  const admission=JSON.parse(fs.readFileSync(new URL('../ADMISSION.json',import.meta.url)));
  const c=JSON.parse(fs.readFileSync(new URL('../contracts/c72-public-mode-admission-v2.json',import.meta.url)));
- assert.equal(boot.canonical_repository,RENAME_OLD);
- assert.equal(admission.repository,RENAME_OLD);
- assert.equal(c.source_identity.canonical_repository,RENAME_OLD);
+ assert.equal(boot.canonical_repository,RENAME_NEW);
+ assert.equal(admission.repository,RENAME_NEW);
+ assert.equal(c.source_identity.canonical_repository,RENAME_NEW);
  assert.equal(c.source_identity.repository_id,RENAME_REPOSITORY_ID);
- assert.equal(c72SourceRepository(),RENAME_OLD);
- assert.equal(c72LinkedTermsURL(head),'https://github.com/'+RENAME_OLD+'/blob/'+head+'/TERMS.md');
+ assert.equal(c72SourceRepository(),RENAME_NEW);
+ assert.equal(c72LinkedTermsURL(head),'https://github.com/'+RENAME_NEW+'/blob/'+head+'/TERMS.md');
+ assert.notEqual(c72LinkedTermsURL(head),'https://github.com/'+RENAME_OLD+'/blob/'+head+'/TERMS.md');
 });
-test('NEW Terms witness on OLD eight Git-verified source blobs stops before owner',async()=>{
+test('OLD Terms witness on NEW eight Git-verified source blobs stops before owner',async()=>{
  const gitHead=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
  const kit=buildPartialKit({head:gitHead});
  const blobs=Object.fromEntries(kit.files.map(f=>[f.path,f.blob_sha1]));
@@ -47,12 +48,12 @@ test('NEW Terms witness on OLD eight Git-verified source blobs stops before owne
   seedBlobSha1:kit.seed.blob_sha1,expectedBlobShas:blobs,
   priorTurnEvidence:{source_head:gitHead,host_link_displayed:true,
     distinct_human_message_observed:true,
-    terms_link:'https://github.com/'+RENAME_NEW+'/blob/'+gitHead+'/TERMS.md',
+    terms_link:'https://github.com/'+RENAME_OLD+'/blob/'+gitHead+'/TERMS.md',
     pinned_blob_shas:Object.fromEntries(kit.files.slice(0,5).map(f=>[f.path,f.blob_sha1]))},
   sourcePacket:kit.files.map(f=>({path:f.path,contentBase64:f.contentBase64}))};
  const r=await executeC72Coldstart(q);
  assert.equal(r.ok,false);
- assert.equal(r.edge,'C72_CANONICAL_SOURCE_EPOCH_MISMATCH');
+ assert.equal(r.edge,'C72_ORIENTATION_WITNESS_MISSING');
  assert.equal(r.original_owner_invoked,false);
  assert.equal(r.native_event_attested,false);
  assert.equal(r.authority,0);

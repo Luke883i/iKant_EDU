@@ -508,6 +508,13 @@
       "deletion_authorized": false
     },
     {
+      "path": "tests/host-handoff-rehydrate.test.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Update original Python offline ZIP fixture to iKant_EDU pinned HEAD prefix expected by source rehydrator while retaining source tree/commit readback and a new negative historical LE prefix rejection.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

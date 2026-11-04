@@ -21,7 +21,7 @@ class Offline(unittest.TestCase):
   self.archive=self.tmp/'source.zip'
   with zipfile.ZipFile(archive) as inp,zipfile.ZipFile(self.archive,'w') as out:
    for z in inp.infolist():
-    body=inp.read(z);z.filename=z.filename.replace('x/','iKant_LE-'+self.head+'/',1)
+    body=inp.read(z);z.filename=z.filename.replace('x/','iKant_EDU-'+self.head+'/',1)
     out.writestr(z,body)
   self.out=self.tmp/'checkout'
  def tearDown(self):shutil.rmtree(self.tmp,ignore_errors=True)
@@ -43,6 +43,15 @@ class Offline(unittest.TestCase):
     if e.filename.endswith('README.md'):b+=b'mutated'
     z.writestr(e,b)
   with self.assertRaisesRegex(ValueError,'SOURCE_TREE_MISMATCH'):self.run_case(archive=evil)
+ def test_historic_le_source_prefix_is_refused(self):
+  old=self.tmp/'legacy-le.zip'
+  with zipfile.ZipFile(self.archive) as inp,zipfile.ZipFile(old,'w') as out:
+   for entry in inp.infolist():
+    body=inp.read(entry)
+    entry.filename=entry.filename.replace('iKant_EDU-'+self.head+'/', 'iKant_LE-'+self.head+'/', 1)
+    out.writestr(entry,body)
+  with self.assertRaisesRegex(ValueError,'ARCHIVE_PREFIX'):self.run_case(archive=old)
+  self.assertFalse(self.out.exists())
  def test_no_blind_overwrite(self):
   self.out.mkdir()
   with self.assertRaisesRegex(ValueError,'OUTPUT_EXISTS_OR_PARENT_MISSING'):self.run_case()

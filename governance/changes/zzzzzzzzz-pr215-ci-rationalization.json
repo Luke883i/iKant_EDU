@@ -351,7 +351,9 @@
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Explicitly requalify duplicate delta lineage for distinct PR revisions on the same immutable main source, preserving original human nonapproval and predecessor checks.",
-      "deletion_authorized": false
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/v5d-oneshell.json",
+      "supersedes_source_main": "b3920c1bbfb856cead312e17b027e350ae2ec123"
     },
     {
       "path": ".github/workflows/c26-local-host-meta-prompt.yml",

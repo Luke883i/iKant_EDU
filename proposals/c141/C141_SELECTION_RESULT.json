@@ -1,0 +1,77 @@
+{
+  "schema": "c141-local-selection/v1",
+  "synthetic": true,
+  "empirical_optimality_attested": false,
+  "source_epoch": "PR148_PROPOSED_NOT_MAIN",
+  "total": 1000,
+  "feasible": 36,
+  "selected": {
+    "id": "R3-B3-E3-P6",
+    "feasible": true,
+    "score": 271,
+    "complexity": 24,
+    "routing": "typed C135 owner arbitration with guarded shadow C141",
+    "budget": "capability-negotiated finite fragments + exact join + STOP",
+    "epistemic": "negative controls + falsifiers + independent evaluator external gate",
+    "boundary": "minimized HOST annex + provider/product gate separated",
+    "reason": "ELIGIBLE"
+  },
+  "top5": [
+    {
+      "id": "R3-B3-E3-P6",
+      "feasible": true,
+      "score": 271,
+      "complexity": 24,
+      "routing": "typed C135 owner arbitration with guarded shadow C141",
+      "budget": "capability-negotiated finite fragments + exact join + STOP",
+      "epistemic": "negative controls + falsifiers + independent evaluator external gate",
+      "boundary": "minimized HOST annex + provider/product gate separated",
+      "reason": "ELIGIBLE"
+    },
+    {
+      "id": "R4-B3-E3-P6",
+      "feasible": true,
+      "score": 265,
+      "complexity": 19,
+      "routing": "read-only conflict triage with no writer integration",
+      "budget": "capability-negotiated finite fragments + exact join + STOP",
+      "epistemic": "negative controls + falsifiers + independent evaluator external gate",
+      "boundary": "minimized HOST annex + provider/product gate separated",
+      "reason": "ELIGIBLE"
+    },
+    {
+      "id": "R3-B3-E3-P4",
+      "feasible": true,
+      "score": 257,
+      "complexity": 23,
+      "routing": "typed C135 owner arbitration with guarded shadow C141",
+      "budget": "capability-negotiated finite fragments + exact join + STOP",
+      "epistemic": "negative controls + falsifiers + independent evaluator external gate",
+      "boundary": "HOST-bound session handoff + external native gate",
+      "reason": "ELIGIBLE"
+    },
+    {
+      "id": "R3-B2-E3-P6",
+      "feasible": true,
+      "score": 255,
+      "complexity": 22,
+      "routing": "typed C135 owner arbitration with guarded shadow C141",
+      "budget": "bounded fragments with exact join only",
+      "epistemic": "negative controls + falsifiers + independent evaluator external gate",
+      "boundary": "minimized HOST annex + provider/product gate separated",
+      "reason": "ELIGIBLE"
+    },
+    {
+      "id": "R4-B3-E3-P4",
+      "feasible": true,
+      "score": 251,
+      "complexity": 18,
+      "routing": "read-only conflict triage with no writer integration",
+      "budget": "capability-negotiated finite fragments + exact join + STOP",
+      "epistemic": "negative controls + falsifiers + independent evaluator external gate",
+      "boundary": "HOST-bound session handoff + external native gate",
+      "reason": "ELIGIBLE"
+    }
+  ],
+  "checksum_sha256": "9c4ec85e42e038d1442d8a54ed9085651b2a11003b31c7f2e6774987ffa687f7"
+}

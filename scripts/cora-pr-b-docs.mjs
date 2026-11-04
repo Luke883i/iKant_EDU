@@ -66,14 +66,18 @@ export function qualifyDocumentSet(c,docs,{atlasExact=false,sourceQualified=fals
   if(typeof value!=='string'||value.length<100||value.split(MARK).length!==2){
    errors.push('DOC_MISSING_OR_MARKER:'+d.path);continue;
   }
-  for(const token of d.required)if(typeof token!=='string'||!value.toLocaleLowerCase('it').includes(token.toLocaleLowerCase('it')))
-   errors.push('DOC_REQUIRED_TOKEN:'+d.path+':'+token);
   // Only PR-B's new passage is checked, never claim to prove all historic links.
   const pos=value.indexOf(MARK)+MARK.length;const rest=value.slice(pos);
   const secondHeader=[...rest.matchAll(/^#{2,3} /gm)];
   const part=rest.slice(0,secondHeader.length>=2?secondHeader[1].index:
    secondHeader.length===1&&d.path==='README.md'?secondHeader[0].index:
    secondHeader.length===1&&d.path==='docs/IKANT_LOCAL_SETUP.md'?secondHeader[0].index:rest.length);
+  // Scope terminology to this PR-B passage; old historical prose must not mask a regression.
+  // The setup clone/turn commands are checked separately across the full runbook.
+  const evidenceScope=d.path==='docs/IKANT_LOCAL_SETUP.md'?value:part;
+  for(const token of d.required)if(typeof token!=='string'||
+      !evidenceScope.toLocaleLowerCase('it').includes(token.toLocaleLowerCase('it')))
+   errors.push('DOC_REQUIRED_TOKEN:'+d.path+':'+token);
   for(const m of part.matchAll(/\]\(([^)#]+)(?:#[^)]*)?\)/g)){
    const url=m[1];if(/^(?:https?:|mailto:|#)/i.test(url))continue;
    let target;try{target=path.resolve(ROOT,path.dirname(d.path),decodeURIComponent(url))}

@@ -494,6 +494,20 @@
       "deletion_authorized": false
     },
     {
+      "path": "tests/p0-first-run-handoff.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align original P0 first-run ZIP expectation with the verified post-EDU current repository source URL; preserve unknown-source, unavailable bridge and C72 receipt denial paths.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-host-closure-3x10k.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align 10k seeded G2 original selection/ZIP source expectation with current iKant_EDU pinned archive while leaving all G1 G2 G3 cases and negative oracles intact.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

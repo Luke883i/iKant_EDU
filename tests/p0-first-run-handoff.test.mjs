@@ -11,7 +11,7 @@ test('four observed source states are distinct and the first permitted handoff i
  for(const state of ['SOURCE_ABSENT','PARTIAL_SOURCE_ONLY']){
   const r=planP1PostModeSourceHandoff({selection,sourceState:state,bridgeState:'DEFINITIVELY_UNAVAILABLE'});
   assert.equal(r.action,'REQUEST_SOURCE_ZIP');assert.equal(r.after_mode_only,true);
-  assert.equal(r.source_zip_url,`https://github.com/Luke883i/iKant_LE/archive/${h}.zip`);
+  assert.equal(r.source_zip_url,`https://github.com/Luke883i/iKant_EDU/archive/${h}.zip`);
   assert.match(r.message,/allegalo qui/);assert.match(r.message,/Non servono terminale/);
  }
  assert.equal(planP1PostModeSourceHandoff({selection,sourceState:'FULL_SOURCE_VERIFIED'}).action,'USE_VERIFIED_SOURCE');

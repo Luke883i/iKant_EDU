@@ -1,0 +1,600 @@
+{
+  "schema": "ikant-cora-pr-f-integrated-qualification/v1",
+  "authority": 0,
+  "owner": false,
+  "release": "NO_GO",
+  "active": false,
+  "product_go": false,
+  "phase": "HOST_ENGINEERING_CANDIDATE",
+  "source": {
+    "repository": "Luke883i/iKant_EDU",
+    "base_head": "6c08e7241751c5507048b0748d14a5648be8c1cb",
+    "before_unregistered_deletions": "983337e255c627a4ef9969aef093801f1364ff99",
+    "before_tree": "ab91a756bb1282049172de1aed3c68f07ea8b21e",
+    "after_deletions_tree": "712a770f8bba8fb428f9c1a49a27b1ea4c85c126",
+    "source_restore_commit": "1ad0e5b7e891fc9ad0f556ffc2680839b304348b"
+  },
+  "abstract_dod": {
+    "statement": "EVERY_INDEPENDENT_ENGINEER_MUST_REPRODUCE_EXACT_SOURCE_AND_EXECUTABLE_BEHAVIOR_AND_GOVERNED_REVERSIBLE_CHANGE; NO_SYNTHETIC_SOURCE_CI_OR_GIT_RECEIPT_MAY_PROMOTE_EXTERNAL_RUNTIME_PROVIDER_USER_VALUE",
+    "logic": "NON_COMPENSATORY_DAG_AND",
+    "global_repository": "G_REPOSITORY_STANDARDIZED",
+    "global_product": "G_PRODUCT_QUALIFIED",
+    "external_not_compensable": true,
+    "unknown_is_not_pass": true
+  },
+  "reuse": {
+    "v5b": "scripts/v5b-repository-governance-audit.mjs#auditRepository",
+    "cora": "scripts/cora-minimal-absorption.mjs#observeReticularCensusWithAudit",
+    "original_reticulum": "contracts/cora-reticular-hygiene-v1.json",
+    "pr_a": "scripts/cora-pr-a-backlog.mjs#derivePrABacklog",
+    "pr_b": "scripts/cora-pr-b-docs.mjs#qualifyDocumentSet",
+    "pr_c": "scripts/cora-pr-c-ci.mjs#qualifyPrCCISource",
+    "atlas": "scripts/ikant-document-atlas.mjs#verify",
+    "docs": "docs/GOVERNANCE.md"
+  },
+  "reticulum": [
+    {
+      "id": "F01",
+      "scope": "SOURCE",
+      "needs": [],
+      "proof": "Exact HEAD/TREE/index identity and no unregistered Git paths",
+      "original_cora_dependencies": [
+        "S01"
+      ]
+    },
+    {
+      "id": "F02",
+      "scope": "SOURCE",
+      "needs": [
+        "F01"
+      ],
+      "proof": "Original V5-B total bijection, zero errors, unknown retained",
+      "original_cora_dependencies": [
+        "S02",
+        "S03",
+        "S04"
+      ]
+    },
+    {
+      "id": "F03",
+      "scope": "SOURCE",
+      "needs": [
+        "F01"
+      ],
+      "proof": "Original four owner blobs and 116 workflow TREE entries unchanged",
+      "original_cora_dependencies": [
+        "S05",
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "id": "F04",
+      "scope": "SOURCE",
+      "needs": [
+        "F02"
+      ],
+      "proof": "PR-B documentation, exact generated atlas, current onboarding",
+      "original_cora_dependencies": [
+        "S09"
+      ]
+    },
+    {
+      "id": "F05",
+      "scope": "SOURCE",
+      "needs": [
+        "F02",
+        "F03"
+      ],
+      "proof": "Original CORA reticulum + PR-A + PR-C have same checkout census",
+      "original_cora_dependencies": [
+        "G_SOURCE_PREPARED"
+      ]
+    },
+    {
+      "id": "F06",
+      "scope": "CI",
+      "needs": [
+        "F04",
+        "F05"
+      ],
+      "proof": "Clean-checkout execution of A/B/C/D1/D2, npm check and full reproducibility",
+      "original_cora_dependencies": [
+        "S08"
+      ]
+    },
+    {
+      "id": "F07",
+      "scope": "CI",
+      "needs": [
+        "F05"
+      ],
+      "proof": "One million seeded preseeded mutation vectors, zero escapes, deterministic replay",
+      "original_cora_dependencies": [
+        "S08"
+      ]
+    },
+    {
+      "id": "F08",
+      "scope": "EXTERNAL",
+      "needs": [
+        "F05",
+        "F06"
+      ],
+      "proof": "All changed/suspect critical consumer call paths and cleanup debt independently resolved",
+      "original_cora_dependencies": [
+        "E01"
+      ]
+    },
+    {
+      "id": "F09",
+      "scope": "SOURCE",
+      "needs": [
+        "F01",
+        "F03"
+      ],
+      "proof": "Restore all 11 unregistered deletions byte-exact; every other effect reversible",
+      "original_cora_dependencies": [
+        "I_HYGIENE"
+      ]
+    },
+    {
+      "id": "F10",
+      "scope": "EXTERNAL",
+      "needs": [
+        "F06",
+        "F07"
+      ],
+      "proof": "All required GitHub checks/rulesets independently read and green on exact HEAD",
+      "original_cora_dependencies": [
+        "E03"
+      ]
+    },
+    {
+      "id": "F11",
+      "scope": "EXTERNAL",
+      "needs": [
+        "F08",
+        "F09",
+        "F10"
+      ],
+      "proof": "Two independent qualified engineers and attributable human V5-G decision",
+      "original_cora_dependencies": [
+        "E02"
+      ]
+    },
+    {
+      "id": "F12",
+      "scope": "EXTERNAL",
+      "needs": [
+        "F11"
+      ],
+      "proof": "Independent fresh checkout and postmerge re-readback of every passed gate",
+      "original_cora_dependencies": [
+        "E03"
+      ]
+    },
+    {
+      "id": "X_PRODUCT",
+      "scope": "PRODUCT",
+      "needs": [
+        "F12"
+      ],
+      "proof": "Original C72/EDU/C135/C87/C125-S03 native delivery and independent >=95% holdout",
+      "original_cora_dependencies": [
+        "E04"
+      ]
+    },
+    {
+      "id": "I_SOURCE",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "F05"
+      ],
+      "proof": "Source provenance and documentation qualification",
+      "original_cora_dependencies": [
+        "I_DISCOVERY"
+      ]
+    },
+    {
+      "id": "I_ENGINEERING",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "F06",
+        "F07",
+        "F09"
+      ],
+      "proof": "Software, negative tests and reversible effects",
+      "original_cora_dependencies": [
+        "I_HYGIENE"
+      ]
+    },
+    {
+      "id": "I_EXTERNAL",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "F08",
+        "F10",
+        "F11",
+        "F12"
+      ],
+      "proof": "Consumer, required checks and governance with postmerge",
+      "original_cora_dependencies": [
+        "I_EXTERNAL"
+      ]
+    },
+    {
+      "id": "G_REPOSITORY_STANDARDIZED",
+      "scope": "GLOBAL",
+      "needs": [
+        "I_SOURCE",
+        "I_ENGINEERING",
+        "I_EXTERNAL"
+      ],
+      "proof": "All repository/software/governance gates noncompensatorily proven",
+      "original_cora_dependencies": [
+        "G_REPOSITORY_STANDARDIZED"
+      ]
+    },
+    {
+      "id": "G_PRODUCT_QUALIFIED",
+      "scope": "GLOBAL",
+      "needs": [
+        "G_REPOSITORY_STANDARDIZED",
+        "X_PRODUCT"
+      ],
+      "proof": "Separately demonstrated product and user value",
+      "original_cora_dependencies": [
+        "G_PRODUCT_QUALIFIED"
+      ]
+    }
+  ],
+  "metrics": [
+    {
+      "id": "M01",
+      "name": "V5B_ERRORS",
+      "unit": "count",
+      "target": 0,
+      "source": "audit.errors.length",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M02",
+      "name": "TRACKED_COVERAGE",
+      "unit": "ratio",
+      "target": 1,
+      "source": "census.rows / audit.checked_files",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M03",
+      "name": "ORIGINAL_OWNER_BLOBS",
+      "unit": "count",
+      "target": 4,
+      "source": "CORA owner pins from Git",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M04",
+      "name": "WORKFLOW_COUNT",
+      "unit": "count",
+      "target": 116,
+      "source": "git HEAD:.github/workflows + audit",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M05",
+      "name": "WORKFLOW_TREE",
+      "unit": "sha1",
+      "target": "d81958913446a13f5fb296d20771c7e57e2df224",
+      "source": "git rev-parse HEAD:.github/workflows",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M06",
+      "name": "RESTORED_BLOB_WITNESSES",
+      "unit": "count",
+      "target": 11,
+      "source": "git rev-parse HEAD:path matches pre-delete blobs",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M07",
+      "name": "UNREGISTERED_DELETIONS",
+      "unit": "count",
+      "target": 0,
+      "source": "V5B missing_paths and errors",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M08",
+      "name": "DOCUMENT_ATLAS_EXACT",
+      "unit": "boolean",
+      "target": true,
+      "source": "original verifyAtlas().atlas_exact",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M09",
+      "name": "DOCUMENT_SET_QUALIFIED",
+      "unit": "count",
+      "target": 8,
+      "source": "PR-B qualifyDocumentSet()",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M10",
+      "name": "BACKLOG_COVERAGE",
+      "unit": "ratio",
+      "target": 1,
+      "source": "PR-A rows / V5B tracked",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M11",
+      "name": "SCOPED_CI_EQUIVALENCE",
+      "unit": "boolean",
+      "target": true,
+      "source": "PR-C original source qualifier",
+      "scope": "SOURCE",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M12",
+      "name": "MUTATION_VECTORS",
+      "unit": "count",
+      "target": 1000000,
+      "source": "seeded model, not physical Git edits",
+      "scope": "CI",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M13",
+      "name": "MUTATION_SURVIVORS",
+      "unit": "count",
+      "target": 0,
+      "source": "independent bitmask oracle",
+      "scope": "CI",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M14",
+      "name": "MUTATION_FAMILY_COVERAGE",
+      "unit": "ratio",
+      "target": 1,
+      "source": "all preseeded families exercised",
+      "scope": "CI",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M15",
+      "name": "EXACT_HEAD_CHECK_FAILURES",
+      "unit": "count",
+      "target": 0,
+      "source": "GitHub checks + admin required-policy reading",
+      "scope": "EXTERNAL",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M16",
+      "name": "HUMAN_INDEPENDENT_ENGINEERS",
+      "unit": "count",
+      "target": 2,
+      "source": "two distinct actual qualified engineer reviews",
+      "scope": "EXTERNAL",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M17",
+      "name": "UNRESOLVED_CRITICAL_CONSUMERS",
+      "unit": "count",
+      "target": 0,
+      "source": "independent callpath evidence for changed critical slices",
+      "scope": "EXTERNAL",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M18",
+      "name": "POSTMERGE_READBACK",
+      "unit": "boolean",
+      "target": true,
+      "source": "fresh head/readback after authorized merge",
+      "scope": "EXTERNAL",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    },
+    {
+      "id": "M19",
+      "name": "PRODUCT_HOLDOUT_SUCCESS",
+      "unit": "ratio",
+      "target": 0.95,
+      "source": "independent real users/task holdout, NOT ATTESTED",
+      "scope": "PRODUCT",
+      "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
+    }
+  ],
+  "checklist": [
+    {
+      "id": "K01",
+      "action": "Compare current HEAD and exact Git TREE/blob identities with one complete checkout",
+      "scope": "SOURCE",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K02",
+      "action": "Run original V5-B, reconcile all tracked paths and document each UNKNOWN",
+      "scope": "SOURCE",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K03",
+      "action": "Verify four owner blobs, workflow count and SHA-1 tree",
+      "scope": "SOURCE",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K04",
+      "action": "Independently reopen eleven restored historical files, do not promote to live entrypoints",
+      "scope": "SOURCE",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K05",
+      "action": "Check generated atlas and the eight PR-B documents against current source",
+      "scope": "SOURCE",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K06",
+      "action": "Run PR-A, PR-C, D1/D2 regression suites and npm check on clean checkout",
+      "scope": "CI",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K07",
+      "action": "Run 1,000,000 seeded mutational vectors twice; retain seed, digest and complete output",
+      "scope": "CI",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K08",
+      "action": "Investigate every remaining critical/dynamic/external consumer; unknown never unused",
+      "scope": "EXTERNAL",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K09",
+      "action": "Replay rollback for each actual physical cleanup; no deletion without proof",
+      "scope": "EXTERNAL",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K10",
+      "action": "Read GitHub branch protections/required checks administratively; check exact HEAD",
+      "scope": "EXTERNAL",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K11",
+      "action": "Obtain two independent engineer reviews and accountable human V5-G approval",
+      "scope": "EXTERNAL",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K12",
+      "action": "Repeat independent full readback after merge and compare with prior clean checkout",
+      "scope": "EXTERNAL",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    },
+    {
+      "id": "K13",
+      "action": "Treat native OneShell and value >=95% as separate provider/holdout qualification",
+      "scope": "PRODUCT",
+      "checked": false,
+      "meaning": "REQUIRES_REAL_READBACK_NOT_SELF_ASSERTION"
+    }
+  ],
+  "restored_source_blobs": [
+    {
+      "path": "project-baseline/INSTALL_EASY.md",
+      "blob": "1bc7e5c7436946bfacfb35a669f957fbc82ec3e6"
+    },
+    {
+      "path": "project-baseline/PROJECT_FILES/iKant_ENGINE.md",
+      "blob": "2dd572b1911f114b0271bd7d4b5f5a984f927163"
+    },
+    {
+      "path": "project-baseline/PROJECT_FILES/iKant_GATE.md",
+      "blob": "0be68ba987120d8817b21ce6b3fee6035ff848c3"
+    },
+    {
+      "path": "project-baseline/PROJECT_FILES/iKant_UI_shell.md",
+      "blob": "9fffd530acc7f3f3f76d15c202bb8147f07aa182"
+    },
+    {
+      "path": "project-baseline/PROJECT_PROMPT.txt",
+      "blob": "9eb7725430f99f24129e2bb8daeb93da67187fc6"
+    },
+    {
+      "path": "proposals/c141/C141_1000_CANDIDATES.csv",
+      "blob": "98d6b0240333be8e09a6d947a96a36d24839de8c"
+    },
+    {
+      "path": "proposals/c141/C141_ISSUE_MATRIX.csv",
+      "blob": "a0c1100a3c2bed7a7635793e3edb3fbc79f8677e"
+    },
+    {
+      "path": "proposals/c141/C141_SELECTION_RESULT.json",
+      "blob": "4ff69113c8145e3264a999c0c1d63bb573f2ad41"
+    },
+    {
+      "path": "proposals/c141/FALSIFICATION_TRACE.md",
+      "blob": "3369b016709fcda218867832f768a43a98755127"
+    },
+    {
+      "path": "proposals/c141/PREPR_README.md",
+      "blob": "5b64d9a52d08633553302a06daf8970c4e8d6db6"
+    },
+    {
+      "path": "stile_comunicativo.md",
+      "blob": "1a7d215eb74965ac0b4a200de63be2b53e9f33fa"
+    }
+  ],
+  "mutation_campaign": {
+    "seed": 20261104,
+    "cases": 1000000,
+    "repeat": 2,
+    "families": 48,
+    "selection": "DETERMINISTIC_LCG_PRESEEDED_REALISTIC_FAULT_FAMILIES",
+    "result_meaning": "FINITE_SEMANTIC_MODEL_NOT_ONE_MILLION_PHYSICAL_GIT_RUNS",
+    "oracle": "INDEPENDENT_INTEGER_BITMASK_AND_FIRST_EDGE",
+    "source_authority": false
+  },
+  "nonpromotion": {
+    "new_owner": false,
+    "new_writer": false,
+    "product_activation": false,
+    "automatic_delete": false,
+    "automatic_merge": false,
+    "claims_required_checks_from_ci": false,
+    "claims_human_approval_from_git": false,
+    "claims_value_from_mutations": false,
+    "restored_historical_files_are_runtime": false
+  },
+  "external_debt": {
+    "critical_consumers": "UNKNOWN",
+    "required_checks_policy": "UNKNOWN_ADMIN_READBACK",
+    "engineer_review": "NOT_ATTESTED",
+    "human_decision": "NOT_ATTESTED",
+    "postmerge": "NOT_ATTESTED",
+    "provider_installation": "NOT_ATTESTED",
+    "native_delivery": "NOT_ATTESTED",
+    "user_value_95": "NOT_ATTESTED"
+  },
+  "result": "SOURCE_CANDIDATE_ONLY_UNTIL_EXTERNAL_GATES"
+}

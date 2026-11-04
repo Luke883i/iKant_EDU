@@ -38,5 +38,3 @@ jobs:
         run: node --test --test-concurrency=1 tests/c63-canonical-parallel-bridge.test.mjs tests/c69-capability-first-preview.test.mjs
       - name: C61/C62 cold-owner regressions
         run: node --test --test-concurrency=1 tests/c61-cold-producer.test.mjs tests/c62-evidence-runtime-cut.test.mjs
-      - name: Constitutional consistency
-        run: npm run check

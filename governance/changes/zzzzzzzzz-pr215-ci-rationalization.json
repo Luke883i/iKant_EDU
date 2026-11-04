@@ -412,6 +412,13 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/c63-canonical-parallel-host-bridge.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Keep C63 original source-root and parallel cold-path/negative source/turn/EXIT specialized tests, plus C61/C62 cold-owner regressions; remove only repeated global npm check still required centrally.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

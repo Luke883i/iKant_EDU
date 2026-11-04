@@ -42,7 +42,7 @@ test('D2 original reticulum: nine non-compensatory gates and external V5-G cut',
  assert(Object.values(contract.forbidden).every(x=>x===false));
 });
 
-test('V5-B source lineage has six explicit predecessors and no invented human review',()=>{
+test('V5-B source lineage has seven explicit predecessors and no invented human review',()=>{
  assert.equal(register.source_main,contract.baseline.head);
  assert.equal(register.paths.length,10);
  assert.equal(register.paths.filter(x=>x.operation==='MODIFY').length,7);
@@ -50,7 +50,7 @@ test('V5-B source lineage has six explicit predecessors and no invented human re
  assert.equal(register.original_owner_unchanged,true);
  assert.equal(register.human_review_completed,false);
  assert(register.paths.every(x=>x.human_review==='REVIEW_REQUIRED'));
- assert.equal(new Set(register.paths.map(x=>x.path)).size,9);
+ assert.equal(new Set(register.paths.map(x=>x.path)).size,register.paths.length);
  for(const row of register.paths.filter(x=>x.operation==='MODIFY')){
   assert.match(row.supersedes_register,/^governance\/changes\/.+\.json$/);
   assert.match(row.supersedes_source_main,/^[a-f0-9]{40}$/);

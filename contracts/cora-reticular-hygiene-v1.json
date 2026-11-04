@@ -45,7 +45,22 @@
       "host/c87-durable-ledger.mjs": "9d4fd4038bd7e109bdbc5e0441f9e9acf497c846",
       "host/c125-output-port.mjs": "14760e40051b2bbe0c3a2ebc9347e125fdd7d65a"
     },
-    "baseline_workflow_tree": "5457f319ca2a8c1e1edbf8b597de05dbc1f77b92"
+    "baseline_workflow_tree": "5457f319ca2a8c1e1edbf8b597de05dbc1f77b92",
+    "workflow_evolution": {
+      "schema": "ikant-cora-workflow-evolution/v1",
+      "authority": 0,
+      "source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa",
+      "baseline_tree": "5457f319ca2a8c1e1edbf8b597de05dbc1f77b92",
+      "expected_count": 116,
+      "retirement_authorized": false,
+      "allowed": [
+        {
+          "path": ".github/workflows/docs-ontology-coverage.yml",
+          "before": "792fb99a98655cb22c40a7d4002a4c1b147c2843",
+          "after": "62d1e83724dcb2d66f933bbdacdd5358dada6c1b"
+        }
+      ]
+    }
   },
   "nodes": [
     {

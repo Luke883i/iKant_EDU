@@ -113,7 +113,10 @@ export function auditWorkflowRetirements(baselinePaths,livePaths,retention,track
 }
 /** Explicitly chain distinct candidate deltas; same-main PR slices are not human approval. */
 export function qualifyRegisterSuccession(prior,next){
- if(!prior||!next||prior.operation==='REMOVE'||next.operation!=='MODIFY')return false;
+ if(!prior||!next||!['MODIFY','ADD'].includes(prior.operation)||next.operation!=='MODIFY')return false;
+ // A file initially ADDED by a prior PR may evolve only through an explicitly pinned
+ // next main epoch; same-epoch self-succession would launder an unreviewed addition.
+ if(prior.operation==='ADD'&&next.source_main===prior.source_main)return false;
  if(next.register===REGISTER||next.register===prior.register||
     next.supersedes_register!==prior.register||
     next.supersedes_source_main!==prior.source_main||

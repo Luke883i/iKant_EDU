@@ -42,6 +42,12 @@ The complete historical milestone matrix and detailed qualification requirements
 
 Deterministic tests, explicit source binding, negative falsification and zero blocking survivors remain required; CI PASS proves only tested engineering properties. Detailed historical thresholds are in [the transferred record](IKANT_DEVELOPMENT_HISTORY.md).
 
+## PR-C: cambiamenti CI circoscritti e reversibili
+
+PR-C non cambia il numero dei workflow e non ritira alcun job. Un delta di un file `.github/workflows` richiede: identita Git del checkout; dichiarazione V5-B in successione esatta; SHA-1 blob prima/dopo; ricostruzione del TREE originale per inversione del solo delta ammesso; parita byte-per-byte di trigger, job e comandi; test negativi; verifiche CI sulla HEAD. Non e sufficiente un conteggio verde, ne un'autocertificazione del workflow.
+
+La sola politica candidata per `docs-ontology-coverage.yml` applica permessi `contents: read` e un gruppo concurrency per le PR che cancella esecuzioni **superseded** della stessa PR. I push su `main` non ricevono la cancellazione in corso. La riduzione di minuti CI richiede osservazioni del provider GitHub Actions, mentre required checks e branch protection restano `UNKNOWN` in assenza della lettura amministrativa. Le persone mantengono la decisione V5-G e il diritto di bloccare il merge; CI non e un owner e una PR merged non prova un prodotto funzionante. [Metodo originale](../contracts/cora-reticular-hygiene-v1.json) · [slice bounded](../contracts/cora-pr-c-ci-v1.json).
+
 ## EDU lineage
 
 Terms/AGENTS unchanged; see docs/EDU_C127_TEXT_LINEAGE.md.

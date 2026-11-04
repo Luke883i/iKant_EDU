@@ -3,6 +3,7 @@
  * iKant owner, an installation, a production approval or an automatic cleanup.
  */
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -163,8 +164,56 @@ export function qualifyReticularLattice(c){
     Object.keys(c.reuse?.owner_blob_pins||{}).length!==owners.length||
     c.reuse?.census!=='scripts/v5b-repository-governance-audit.mjs#auditRepository')
    return fail('CORA_OWNER_OR_CENSUS_SUBSTITUTION');
+ const evolution=c.reuse.workflow_evolution,one=evolution?.allowed?.[0];
+ if(evolution?.schema!=='ikant-cora-workflow-evolution/v1'||
+    evolution.authority!==0||evolution.retirement_authorized!==false||
+    evolution.source_main!=='b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa'||
+    evolution.expected_count!==116||
+    evolution.baseline_tree!==c.reuse.baseline_workflow_tree||
+    evolution.allowed?.length!==1||
+    one?.path!=='.github/workflows/docs-ontology-coverage.yml'||
+    one?.before!=='792fb99a98655cb22c40a7d4002a4c1b147c2843'||
+    one?.after!=='62d1e83724dcb2d66f933bbdacdd5358dada6c1b')
+   return fail('CORA_WORKFLOW_EVOLUTION_UNPINNED');
  return {ok:true,authority:0,product_go:false,permission_to_change:false,
   nodes:reticularIds.length,source_leaves:9,external_leaves:4};
+}
+/** Validate the Git TREE by undoing precisely one reviewed candidate blob delta.
+ * No git history, network, mktree side effect, owner, or review permission implied. */
+export function qualifyWorkflowTreeEvolution(spec,{entries,observedTree}={}){
+ const fail=edge=>({ok:false,edge,authority:0,retirement_authorized:false,product_go:false});
+ if(spec?.schema!=='ikant-cora-workflow-evolution/v1'||spec.authority!==0||
+    spec.retirement_authorized!==false||!isHash(spec.baseline_tree)||
+    !Array.isArray(entries)||entries.length!==spec.expected_count||
+    !Array.isArray(spec.allowed)||spec.allowed.length!==1||!isHash(observedTree))
+   return fail('CORA_WORKFLOW_TREE_UNBOUND');
+ const seen=new Set();
+ for(const e of entries){
+  if(!e||!/^[a-zA-Z0-9][a-zA-Z0-9_.-]*[.]ya?ml$/.test(e.name)||
+     e.mode!=='100644'||!isHash(e.sha)||seen.has(e.name))
+   return fail('CORA_WORKFLOW_TREE_ENTRY_INVALID');
+  seen.add(e.name);
+ }
+ const digest=rows=>{
+  const list=[...rows].sort((a,b)=>Buffer.compare(Buffer.from(a.name),Buffer.from(b.name)));
+  const content=Buffer.concat(list.map(e=>Buffer.concat([
+   Buffer.from(e.mode+' '+e.name+String.fromCharCode(0),'utf8'),Buffer.from(e.sha,'hex')])));
+  const hdr=Buffer.from('tree '+content.length+String.fromCharCode(0),'utf8');
+  return crypto.createHash('sha1').update(hdr).update(content).digest('hex');
+ };
+ if(digest(entries)!==observedTree)return fail('CORA_WORKFLOW_OBSERVED_TREE_INCORRECT');
+ if(observedTree===spec.baseline_tree)return {ok:true,status:'UNCHANGED_BASELINE',authority:0,retirement_authorized:false,product_go:false};
+ const change=spec.allowed[0],name=change.path?.replace('.github/workflows/','');
+ if(!name||!isHash(change.before)||!isHash(change.after)||!seen.has(name))
+  return fail('CORA_WORKFLOW_CHANGE_NOT_PINNED');
+ const actual=entries.find(e=>e.name===name);
+ if(actual.sha!==change.after||change.before===change.after)
+  return fail('CORA_WORKFLOW_UNDECLARED_BLOB');
+ const rollback=entries.map(e=>e.name===name?{...e,sha:change.before}:e);
+ if(digest(rollback)!==spec.baseline_tree)return fail('CORA_WORKFLOW_ROLLBACK_TREE_MISMATCH');
+ return {ok:true,status:'ONE_REVERSED_DELTA_MATCHES_BASELINE',
+  before_tree:spec.baseline_tree,observed_tree:observedTree,changed_path:change.path,
+  authority:0,retirement_authorized:false,product_go:false};
 }
 function evaluateNodes(c,observed){
  const nodes=new Map(c.nodes.map(x=>[x.id,x])),states=new Map();
@@ -257,9 +306,17 @@ export function observeReticularCensus(){
   .map(x=>({path:x.path,sha:x.sha}));
  const ownerPaths=c.reuse.owners;
  const ownersStable=ownerPaths.every(p=>git('rev-parse','--verify','HEAD:'+p)===c.reuse.owner_blob_pins[p]);
- // The workflow subtree Git OID binds the complete 116-file set without shallow BASE history.
- // The original V5-B audit independently guards undeclared deletions and retirements.
- const deltaSafe=git('rev-parse','--verify','HEAD:.github/workflows')===c.reuse.baseline_workflow_tree;
+ // Reconstruct original workflow TREE by reversing only the explicitly pinned blob.
+ // Original V5-B independently checks tracked files, retention and every delta register.
+ const workflowTree=git('rev-parse','--verify','HEAD:.github/workflows');
+ const bytes=execFileSync('git',['ls-tree','-z','HEAD:.github/workflows'],{cwd:ROOT});
+ const entries=bytes.toString('utf8').split(String.fromCharCode(0)).filter(Boolean).map(line=>{
+  const m=/^([0-7]{6}) blob ([a-f0-9]{40})(.)(.+)$/.exec(line);
+  if(!m||m[3].charCodeAt(0)!==9)throw Error('CORA_WORKFLOW_NON_BLOB_ENTRY');
+  return {mode:m[1],sha:m[2],name:m[4]};
+ });
+ const delta=qualifyWorkflowTreeEvolution(c.reuse.workflow_evolution,{entries,observedTree:workflowTree});
+ const deltaSafe=delta.ok===true;
  return qualifyReticularCensus(c,{audit:auditRepository(),index,tree:parseTree,head,treeSha,
   ownersStable,deltaSafe,readme:fs.readFileSync(path.join(ROOT,'README.md'),'utf8')});
 }

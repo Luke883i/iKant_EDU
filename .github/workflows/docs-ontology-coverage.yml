@@ -14,6 +14,11 @@ on:
       - 'docs/**'
       - 'scripts/ikant-document-atlas.mjs'
       - 'tests/ikant-document-atlas.test.mjs'
+permissions:
+  contents: read
+concurrency:
+  group: docs-ontology-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   evidence:
     runs-on: ubuntu-latest

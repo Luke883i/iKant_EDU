@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-import {qualifyReticularLattice,qualifyReticularCensus,observeReticularCensus} from '../scripts/cora-minimal-absorption.mjs';
+import {qualifyReticularLattice,qualifyReticularCensus,observeReticularCensus,qualifyWorkflowTreeEvolution} from '../scripts/cora-minimal-absorption.mjs';
 const doc=JSON.parse(fs.readFileSync(new URL('../contracts/cora-reticular-hygiene-v1.json',import.meta.url),'utf8'));
 const clone=()=>structuredClone(doc);
 
@@ -137,6 +137,47 @@ test('10k deterministic reticular mutations reject owner substitution, graph cor
  assert.equal(a.rejected,10000);
  assert.equal(a.unsafe,0);
  assert.equal(a.families,mutants.length);
+});
+
+test('CORA workflow evolution is one reversible Git TREE delta, never automatic retirement',()=>{
+ const evolution=doc.reuse.workflow_evolution;
+ assert.equal(evolution.expected_count,116);
+ assert.equal(evolution.baseline_tree,doc.reuse.baseline_workflow_tree);
+ assert.equal(qualifyReticularLattice(doc).ok,true);
+ const bytes=rows=>Buffer.concat(rows.sort((a,b)=>Buffer.compare(Buffer.from(a.name),Buffer.from(b.name))).map(e=>
+  Buffer.concat([Buffer.from(e.mode+' '+e.name+String.fromCharCode(0)),Buffer.from(e.sha,'hex')])));
+ const sha=rows=>{const d=bytes(structuredClone(rows));return crypto.createHash('sha1').update(
+  Buffer.from('tree '+d.length+String.fromCharCode(0))).update(d).digest('hex')};
+ const rows=[{mode:'100644',name:'a.yml',sha:'a'.repeat(40)},
+  {mode:'100644',name:'b.yml',sha:'b'.repeat(40)}];
+ const base=sha(rows),delta={...evolution,baseline_tree:base,expected_count:2,
+  allowed:[{path:'.github/workflows/b.yml',before:'b'.repeat(40),after:'c'.repeat(40)}]};
+ const evolved=rows.map(x=>x.name==='b.yml'?{...x,sha:'c'.repeat(40)}:x);
+ const ok=qualifyWorkflowTreeEvolution(delta,{entries:evolved,observedTree:sha(evolved)});
+ assert.equal(ok.ok,true,JSON.stringify(ok));
+ assert.equal(ok.status,'ONE_REVERSED_DELTA_MATCHES_BASELINE');
+ assert.equal(ok.retirement_authorized,false);
+ assert.equal(qualifyWorkflowTreeEvolution(delta,{entries:rows,observedTree:base}).status,'UNCHANGED_BASELINE');
+ for(const [name,bad,tree] of [
+  ['omitted',evolved.slice(0,1),sha(evolved.slice(0,1))],
+  ['unregistered',[evolved[0],{...evolved[1],sha:'f'.repeat(40)}],sha([evolved[0],{...evolved[1],sha:'f'.repeat(40)}])],
+  ['wrong mode',[{...evolved[0],mode:'100755'},evolved[1]],sha([{...evolved[0],mode:'100755'},evolved[1]])],
+  ['duplicate',[evolved[1],evolved[1]],sha([evolved[1],evolved[1]])],
+  ['false tree',evolved,'f'.repeat(40)]
+ ]){
+  const result=qualifyWorkflowTreeEvolution(delta,{entries:bad,observedTree:tree});
+  assert.equal(result.ok,false,name);
+  assert.equal(result.product_go,false,name);
+ }
+ for(const mutate of [
+  x=>x.reuse.workflow_evolution.authority=1,
+  x=>x.reuse.workflow_evolution.retirement_authorized=true,
+  x=>x.reuse.workflow_evolution.allowed[0].after='f'.repeat(40),
+  x=>x.reuse.workflow_evolution.allowed[0].path='.github/workflows/ci.yml',
+  x=>x.reuse.workflow_evolution.baseline_tree='0'.repeat(40)]){
+  const x=clone();mutate(x);
+  assert.equal(qualifyReticularLattice(x).ok,false);
+ }
 });
 
 test('actual Git-indexed V5-B census covers the full checkout; owners unchanged, no workflow deletion',()=>{

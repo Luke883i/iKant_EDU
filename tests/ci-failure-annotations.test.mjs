@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {failureDetails,annotate,firstFailureLabel} from '../scripts/ci-failure-annotations.mjs';
+import {failureDetails,annotate,firstFailureLabel,firstFailureDetail} from '../scripts/ci-failure-annotations.mjs';
 test('TAP extractor retains failing test names, not passing checks',()=>{
  assert.deepEqual(failureDetails('ok 1 - pass\nnot ok 2 - wrong binding\n  error: source mismatch\n','tap'),['not ok 2 - wrong binding','error: source mismatch']);
 });
@@ -18,4 +18,11 @@ test('first failing step labels preserve the original failure and reject noisy m
  assert.equal(firstFailureLabel('{"status":"FAIL","errors":["BOOTSTRAP stale source"]}','check'),'BOOTSTRAP_stale_source');
  assert.equal(firstFailureLabel('ok 1 - pass','tap'),'UNSTRUCTURED_FAILURE');
  assert(!firstFailureLabel('not ok 4 - a::b % forged\\nmore','tap').includes('%'));
+});
+
+test('first detail exposes observed TAP actual while preserving fail-closed path',()=>{
+ const sample="not ok 6 - original EDU\n  ---\n  error: |-\n    Expected values to be strictly equal:\n    + actual - expected\n    + 'C72_SOURCE_PACKET_INVALID'\n    - true\n  code: 'ERR_ASSERTION'\n";
+ assert.match(firstFailureDetail(sample,'tap'),/C72_SOURCE_PACKET_INVALID/);
+ assert.equal(firstFailureDetail('ok 1 - pass','tap'),'UNSTRUCTURED_FAILURE');
+ assert(!firstFailureDetail('not ok 1 - x\n  error: %::warning::injected','tap').includes('%'));
 });

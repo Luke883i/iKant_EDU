@@ -46,6 +46,13 @@ jobs:
       - name: "EDU first failing assertion [${{ steps.edu_edge.outputs.first_edge }}]"
         if: ${{ failure() }}
         run: echo "EDU original test failure, owner gate remains blocking"
+      - name: Capture original EDU assertion detail
+        if: ${{ failure() }}
+        id: edu_detail
+        run: node scripts/ci-failure-annotations.mjs first-detail tap "$RUNNER_TEMP/edu-complete-chain.log" first_detail
+      - name: "EDU assertion detail [${{ steps.edu_detail.outputs.first_detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; original EDU gate remains failed"
       - run: python3 tests/test_project_manual_full_head.py
       - run: node scripts/project-source-manifest.mjs verify
       - name: Three independent seeded 10k WHAT/HOW, P1 and continuity campaigns

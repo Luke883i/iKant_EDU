@@ -58,9 +58,18 @@ jobs:
         run: |
           node --test --test-concurrency=1 tests/p1-semantic-annex.test.mjs tests/p2-project-release.test.mjs tests/p3p7-witness-boundary.test.mjs tests/p1p7-contract.test.mjs
       - name: One hundred original-owner local restart scenarios and offline source transfer
+        shell: bash
         run: |
-          node --test --test-concurrency=1 tests/p1-human-language.test.mjs tests/p1-privacy-envelope.test.mjs tests/oneshell-human-ux.test.mjs tests/p1-first-run-100.test.mjs tests/s02-edu-v2-original-owner-e2e.test.mjs
-          PYTHONDONTWRITEBYTECODE=1 python3 tests/host-handoff-rehydrate.test.py
+          set -o pipefail
+          node --test --test-concurrency=1 tests/p1-human-language.test.mjs tests/p1-privacy-envelope.test.mjs tests/oneshell-human-ux.test.mjs tests/p1-first-run-100.test.mjs tests/s02-edu-v2-original-owner-e2e.test.mjs 2>&1 | tee "$RUNNER_TEMP/p1-original-tests.log"
+          PYTHONDONTWRITEBYTECODE=1 python3 tests/host-handoff-rehydrate.test.py 2>&1 | tee "$RUNNER_TEMP/p1-original-python.log"
+      - name: Capture P1 owner test error detail
+        if: ${{ failure() }}
+        id: p1_detail
+        run: node scripts/ci-failure-annotations.mjs first-detail tap "$RUNNER_TEMP/p1-original-tests.log" first_detail
+      - name: "P1 owner assertion detail [${{ steps.p1_detail.outputs.first_detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; original owner and offline transfer tests remain blocking"
       - name: Product CI alignment with 40 requirements and fail-closed negative mutants
         run: |
           node --test tests/oneshell-ci-product-alignment.test.mjs tests/oneshell-identity-prewrite.test.mjs tests/c72-public-mode-admission.test.mjs tests/s02-unknown-delivery-stop.test.mjs tests/s03-host-slides.test.mjs tests/s07-connection-gate.test.mjs tests/s09-readiness.test.mjs

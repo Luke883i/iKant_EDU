@@ -38,6 +38,13 @@ jobs:
         run: |
           node scripts/ci-failure-annotations.mjs first-edge tap "$RUNNER_TEMP/ikant-ci-tests.log" first_tap
           node scripts/ci-failure-annotations.mjs first-edge check "$RUNNER_TEMP/ikant-ci-check.log" first_check
+      - name: Capture exact TAP assertion detail
+        if: ${{ failure() }}
+        id: ci_detail
+        run: node scripts/ci-failure-annotations.mjs first-detail tap "$RUNNER_TEMP/ikant-ci-tests.log" first_detail
+      - name: "First TAP assertion detail [${{ steps.ci_detail.outputs.first_detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; original test remains failed"
       - name: "First TAP failure [${{ steps.ci_edge.outputs.first_tap }}]"
         if: ${{ failure() }}
         run: echo "First TAP failure is source-only diagnostic, no owner receipt"

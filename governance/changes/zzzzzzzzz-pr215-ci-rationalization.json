@@ -296,21 +296,21 @@
       "path": ".github/workflows/ci.yml",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Extend unchanged fail-closed CI and original tests with source-only first failing assertion labels to surface TAP/contract errors from real GitHub job readback; no owner or human approval inferred.",
+      "reason": "Add read-only actual TAP error detail extraction with negative injection tests and CI annotations; never convert failure to PASS or mint original owner/provider evidence.",
       "deletion_authorized": false
     },
     {
       "path": "scripts/ci-failure-annotations.mjs",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Extend unchanged fail-closed CI and original tests with source-only first failing assertion labels to surface TAP/contract errors from real GitHub job readback; no owner or human approval inferred.",
+      "reason": "Add read-only actual TAP error detail extraction with negative injection tests and CI annotations; never convert failure to PASS or mint original owner/provider evidence.",
       "deletion_authorized": false
     },
     {
       "path": "tests/ci-failure-annotations.test.mjs",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Extend unchanged fail-closed CI and original tests with source-only first failing assertion labels to surface TAP/contract errors from real GitHub job readback; no owner or human approval inferred.",
+      "reason": "Add read-only actual TAP error detail extraction with negative injection tests and CI annotations; never convert failure to PASS or mint original owner/provider evidence.",
       "deletion_authorized": false
     },
     {
@@ -408,7 +408,7 @@
       "path": ".github/workflows/p1-p7-oneshell-release.yml",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Preserve P1-P7 source-root gate and all product/owner release regressions while removing repeated global check from release candidate runner, with ci.yml still blocking it.",
+      "reason": "Preserve exact original owner tests and offline handoff while exposing failed assertion detail as nonauthoritative GitHub step labels with tee/pipefail.",
       "deletion_authorized": false
     },
     {
@@ -429,7 +429,7 @@
       "path": ".github/workflows/project-edu-hostbound-manual.yml",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Preserve original K0/C72/EDU owner tests and all downstream original checks while exposing their first failing assertion in GitHub job step names; never mark failure green.",
+      "reason": "Preserve exact original owner tests and offline handoff while exposing failed assertion detail as nonauthoritative GitHub step labels with tee/pipefail.",
       "deletion_authorized": false
     },
     {

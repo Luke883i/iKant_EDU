@@ -88,9 +88,192 @@ export function sourcePathsPresent(c,root=ROOT){
  return {ok:missing.length===0,status:missing.length?'SOURCE_PATHS_NOT_OBSERVED':'LOCAL_SOURCE_PATHS_PRESENT_ONLY',
   inspected:names.length,missing,authority:0,active:false,product_go:false,permission_to_change:false};
 }
+
+/** PR217 reticular extension: one V5-B source, not a second inventory authority.
+ * Git index, commit tree and working bytes are independently reconciled.
+ * All owner/accountability and external-delivery columns remain UNKNOWN.
+ */
+import {execFileSync} from 'node:child_process';
+import {auditRepository,parseStagedGitEntries,provisionalRole} from './v5b-repository-governance-audit.mjs';
+const reticularPath='contracts/cora-reticular-hygiene-v1.json';
+const reticularIds=[
+ 'S01','S02','S03','S04','S05','S06','S07','S08','S09',
+ 'E01','E02','E03','E04',
+ 'I_DISCOVERY','I_HYGIENE','I_EXTERNAL',
+ 'G_SOURCE_PREPARED','G_REPOSITORY_STANDARDIZED','G_PRODUCT_QUALIFIED'
+];
+const expectedEdges={
+ I_DISCOVERY:['S01','S02','S03','S04','S05'],
+ I_HYGIENE:['S06','S07','S08','S09'],
+ I_EXTERNAL:['E01','E02','E03'],
+ G_SOURCE_PREPARED:['I_DISCOVERY','I_HYGIENE'],
+ G_REPOSITORY_STANDARDIZED:['G_SOURCE_PREPARED','I_EXTERNAL'],
+ G_PRODUCT_QUALIFIED:['G_REPOSITORY_STANDARDIZED','E04']
+};
+const isHash=x=>typeof x==='string'&&/^[a-f0-9]{40}$/.test(x);
+const git=(...args)=>execFileSync('git',args,{cwd:ROOT,encoding:'utf8',maxBuffer:32_000_000}).trim();
+export function qualifyReticularLattice(c){
+ const fail=edge=>({ok:false,edge,authority:0,product_go:false,permission_to_change:false});
+ if(!c||typeof c!=='object'||Array.isArray(c)||c.schema!=='ikant-cora-reticular-hygiene/v1'||
+    c.authority!==0||c.active!==false||c.product_go!==false||c.retirement_authorized!==false)
+   return fail('CORA_LATTICE_IDENTITY');
+ if(c.origin?.target!=='Luke883i/iKant_EDU'||!isHash(c.origin?.base_main)||
+    c.origin?.cora!=='Luke883i/cora'||c.origin?.cora_head!=='3fdf761167e62cc427b7339fc6c59343c1b0be8f'||
+    c.origin?.existing_V5B!=='scripts/v5b-repository-governance-audit.mjs')
+   return fail('CORA_SOURCE_EPOCH_UNBOUND');
+ if(c.abstract_dod?.logic!=='NON_COMPENSATORY_AND'||
+    c.abstract_dod?.unknown!=='BLOCKS_PROMOTION_NOT_EQUIVALENT_TO_UNUSED'||
+    !c.abstract_dod?.cleaning?.startsWith('NO_DELETION_WITHOUT_')||
+    c.proof_boundary?.authorization!=='NONE'||
+    c.proof_boundary?.product!=='BLOCKED_EXTERNAL'||
+    c.proof_boundary?.repo_standardization!=='BLOCKED_EXTERNAL'||
+    c.release!=='NO_GO')
+   return fail('CORA_EVIDENCE_PROMOTION');
+ if(!Array.isArray(c.nodes)||c.nodes.length!==reticularIds.length||
+    new Set(c.nodes.map(x=>x.id)).size!==reticularIds.length||
+    !reticularIds.every(id=>c.nodes.some(x=>x.id===id)))
+   return fail('CORA_LATTICE_NODE_COVERAGE');
+ const by=new Map(c.nodes.map(x=>[x.id,x]));
+ for(const id of reticularIds){
+  const n=by.get(id),want=expectedEdges[id]||[];
+  if(!n||!Array.isArray(n.depends_on)||JSON.stringify(n.depends_on)!==JSON.stringify(want)||
+     typeof n.description!=='string'||n.description.length<20||
+     (id.startsWith('E')||id==='I_EXTERNAL'||id.startsWith('G_')&&id!=='G_SOURCE_PREPARED'
+       ? n.scope!=='EXTERNAL' : n.scope!=='SOURCE_GIT'))
+   return fail('CORA_DAG_EDGE_OR_SCOPE');
+  if(id.startsWith('S')&&(!n.falsifier||n.falsifier.length<35))
+   return fail('CORA_NO_LOCAL_FALSIFIER');
+ }
+ if(c.goals?.prepared!=='G_SOURCE_PREPARED'||c.goals?.standardized!=='G_REPOSITORY_STANDARDIZED'||
+    c.goals?.product!=='G_PRODUCT_QUALIFIED')
+   return fail('CORA_DAG_ROOT_PROMOTION');
+ if(c.commits?.git_absolute_minimum!==1||c.commits?.reviewable_semantic_minimum!==3||
+    JSON.stringify(c.commits.chain?.map(x=>[x.id,x.depends_on]))!==
+    JSON.stringify([['C1',[]],['C2',['C1']],['C3',['C2']]]))
+   return fail('CORA_COMMIT_DAG_INVALID');
+ if(c.first_slice?.no_deleted_paths!==true||c.first_slice?.no_new_workflow!==true||
+    c.first_slice?.no_owner_changes!==true||
+    c.first_slice?.workflow_decision!=='RETAIN_PENDING_INDEPENDENT_CONSUMER_REVIEW')
+   return fail('CORA_UNAUTHORIZED_RETIREMENT');
+ const owners=['host/c72-public-mode-admission.mjs','host/c135-edu-v2-owner.mjs',
+  'host/c87-durable-ledger.mjs','host/c125-output-port.mjs'];
+ if(JSON.stringify(c.reuse?.owners)!==JSON.stringify(owners)||
+    !isHash(c.reuse?.baseline_workflow_tree)||
+    !owners.every(p=>isHash(c.reuse?.owner_blob_pins?.[p]))||
+    Object.keys(c.reuse?.owner_blob_pins||{}).length!==owners.length||
+    c.reuse?.census!=='scripts/v5b-repository-governance-audit.mjs#auditRepository')
+   return fail('CORA_OWNER_OR_CENSUS_SUBSTITUTION');
+ return {ok:true,authority:0,product_go:false,permission_to_change:false,
+  nodes:reticularIds.length,source_leaves:9,external_leaves:4};
+}
+function evaluateNodes(c,observed){
+ const nodes=new Map(c.nodes.map(x=>[x.id,x])),states=new Map();
+ function walk(id){
+  if(states.has(id))return states.get(id);
+  const n=nodes.get(id);
+  if(!n.depends_on.length){
+   const result=n.scope==='EXTERNAL'?'BLOCKED_EXTERNAL':
+    observed[id]===true?'SOURCE_CANDIDATE':'DEBT_BLOCKED';
+   states.set(id,result);return result;
+  }
+  const deps=n.depends_on.map(walk);
+  const result=deps.includes('BLOCKED_EXTERNAL')?'BLOCKED_EXTERNAL':
+   deps.includes('DEBT_BLOCKED')?'DEBT_BLOCKED':'SOURCE_CANDIDATE';
+  states.set(id,result);return result;
+ }
+ for(const id of reticularIds)walk(id);
+ return Object.fromEntries(states);
+}
+/** Pure scoped reconciliation permits both real full-checkout and adversarial fixtures. */
+export function qualifyReticularCensus(c,{audit,index,tree,head,treeSha,ownersStable=false,deltaSafe=false,readme='' }={}){
+ const gate=qualifyReticularLattice(c);
+ if(!gate.ok)return gate;
+ const errors=[],rows=[],seen=new Set(),indexMap=new Map(),treeMap=new Map();
+ const fail=edge=>({ok:false,edge,errors,authority:0,product_go:false,permission_to_change:false});
+ if(!isHash(head)||!isHash(treeSha)||!Array.isArray(index)||!Array.isArray(tree)||
+    !audit||audit.schema!=='ikant-v5b-live-readonly-audit/v1')
+   return fail('CORA_GIT_INPUT_UNBOUND');
+ for(const [kind,items,dst] of [['index',index,indexMap],['tree',tree,treeMap]]){
+  for(const x of items){
+   if(typeof x?.path!=='string'||!isHash(x?.sha)||dst.has(x.path)){errors.push('INVALID_OR_DUPLICATE_'+kind);continue}
+   dst.set(x.path,x.sha);
+  }
+ }
+ if(indexMap.size!==treeMap.size||indexMap.size!==audit.checked_files)errors.push('GIT_PATH_COUNT_MISMATCH');
+ for(const [p,sha] of indexMap)if(treeMap.get(p)!==sha)errors.push('INDEX_TREE_BLOB_MISMATCH:'+p);
+ for(const p of treeMap.keys())if(!indexMap.has(p))errors.push('TREE_ONLY_PATH:'+p);
+ if(audit.status!=='SOURCE_INDEXED_NOT_HUMAN_REVIEWED'||audit.errors?.length||
+    audit.required_checks!=='UNKNOWN_PROVIDER_NOT_ATTESTED'||audit.product_release!=='PRODUCT_NO_GO')
+   errors.push('V5B_OR_PROVIDER_PROMOTION');
+ const consumers=new Map((audit.consumer_index||[]).map(x=>[x.path,x]));
+ const workflows=new Map((audit.workflows||[]).map(x=>[x.path,x]));
+ if(consumers.size!==indexMap.size||workflows.size!==audit.workflow_count)
+  errors.push('V5B_CENSUS_INCOMPLETE');
+ for(const [p,sha] of [...indexMap].sort(([a],[b])=>a.localeCompare(b))){
+  const x=consumers.get(p),role=provisionalRole(p),w=workflows.get(p);
+  if(seen.has(p)||!x||x.path!==p||x.human_verified!==false||
+     !['UNKNOWN_NOT_UNUSED','LITERAL_CONSUMER_OBSERVED'].includes(x.status)||
+     !Array.isArray(x.literal_importers)||!Array.isArray(x.literal_dependencies))
+   errors.push('CONSUMER_OR_ROLE_UNQUALIFIED:'+p);
+  if(p.startsWith('.github/workflows/')&&(!w||!Array.isArray(w.events)||!Array.isArray(w.jobs)||!Array.isArray(w.flags)))
+   errors.push('WORKFLOW_SOURCE_UNQUALIFIED:'+p);
+  seen.add(p);
+  rows.push({path:p,git_blob_sha1:sha,provisional_role:role,
+   accountability:'HUMAN_OWNER_UNKNOWN',consumer_status:x?.status||'UNKNOWN_NOT_UNUSED',
+   literal_importers:x?.literal_importers||[],literal_dependencies:x?.literal_dependencies||[],
+   workflow:w?{events:w.events,jobs:w.jobs,flags:w.flags,required_check_status:w.required_check_status}:null,
+   consolidation:'RETAIN_PENDING_CONSUMER_AND_HUMAN_REVIEW'});
+ }
+ if(indexMap.size!==seen.size)errors.push('SOURCE_SET_NOT_BIJECTIVE');
+ if(errors.length)return fail('CORA_SOURCE_CENSUS_REFUTED');
+ const observations={
+  S01:true,S02:true,S03:rows.every(x=>x.provisional_role!==''),
+  S04:rows.every(x=>x.consumer_status!=='UNUSED'),
+  S05:rows.filter(x=>x.workflow).length===audit.workflow_count,
+  S06:ownersStable===true,S07:deltaSafe===true,
+  S08:indexMap.has('tests/cora-reticular-hygiene.test.mjs')&&indexMap.has('tests/cora-minimal-absorption.test.mjs'),
+  S09:readme.includes('<!-- cora-reticular-source-hygiene:v1 -->')
+ };
+ const states=evaluateNodes(c,observations);
+ return {ok:Object.values(observations).every(Boolean),
+  status:Object.values(observations).every(Boolean)?'SOURCE_CANDIDATE_REQUIRES_INDEPENDENT_CI':'SOURCE_DOD_OPEN',
+  authority:0,active:false,product_go:false,permission_to_change:false,
+  git:{head,tree:treeSha,tracked:rows.length,workflow_count:audit.workflow_count},
+  obligations:observations,goals:{prepared:states.G_SOURCE_PREPARED,
+   standardized:states.G_REPOSITORY_STANDARDIZED,product:states.G_PRODUCT_QUALIFIED},
+  external:{dynamic_consumers:'UNKNOWN',independent_review:'UNKNOWN',required_checks:'UNKNOWN',
+   native_delivery:'UNKNOWN'},
+  unresolved_dynamic_candidates:audit.dependency_probe?.dynamic_site_candidates??null,
+  rows};
+}
+export function observeReticularCensus(){
+ const c=JSON.parse(fs.readFileSync(path.join(ROOT,reticularPath),'utf8'));
+ const head=git('rev-parse','HEAD'),treeSha=git('rev-parse','HEAD^{tree}');
+ const parseTree=git('ls-tree','-r','-z','--full-tree','HEAD').split('\0').filter(Boolean).map(line=>{
+  const m=/^([0-7]{6}) blob ([a-f0-9]{40})\t(.+)$/s.exec(line);
+  if(!m)throw Error('CORA_NON_BLOB_TREE_ENTRY');return {path:m[3],sha:m[2]};
+ });
+ const index=parseStagedGitEntries(execFileSync('git',['ls-files','--stage','-z'],{cwd:ROOT}).toString('utf8'))
+  .map(x=>({path:x.path,sha:x.sha}));
+ const ownerPaths=c.reuse.owners;
+ const ownersStable=ownerPaths.every(p=>git('rev-parse','--verify','HEAD:'+p)===c.reuse.owner_blob_pins[p]);
+ // The workflow subtree Git OID binds the complete 116-file set without shallow BASE history.
+ // The original V5-B audit independently guards undeclared deletions and retirements.
+ const deltaSafe=git('rev-parse','--verify','HEAD:.github/workflows')===c.reuse.baseline_workflow_tree;
+ return qualifyReticularCensus(c,{audit:auditRepository(),index,tree:parseTree,head,treeSha,
+  ownersStable,deltaSafe,readme:fs.readFileSync(path.join(ROOT,'README.md'),'utf8')});
+}
+
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- const doc=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/cora-minimal-absorption-v1.json'),'utf8'));
- const result=sourcePathsPresent(doc);
- process.stdout.write(JSON.stringify(result)+'\n');
- if(!result.ok)process.exitCode=1;
+ if(process.argv[2]==='--reticulum'){
+  const r=observeReticularCensus(),full=process.argv[3]==='--full';
+  const out=full?r:{...r,rows:undefined};
+  process.stdout.write(JSON.stringify(out,null,2)+'\n');
+  if(!r.ok)process.exitCode=1;
+ }else{
+  const doc=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/cora-minimal-absorption-v1.json'),'utf8'));
+  const result=sourcePathsPresent(doc);
+  process.stdout.write(JSON.stringify(result)+'\n');
+  if(!result.ok)process.exitCode=1;
+ }
 }

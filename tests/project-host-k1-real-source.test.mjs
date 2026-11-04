@@ -10,7 +10,8 @@ import {runK1PreOwner,K1_SCHEMA} from '../host/project-host-k1-preowner.mjs';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const git=(...args)=>execFileSync('git',args,{cwd:ROOT,maxBuffer:8_000_000});
-const head=process.env.K1_PINNED_BASE_SHA||git('rev-parse','HEAD').toString().trim();
+const checkoutHead=git('rev-parse','HEAD').toString().trim();
+const head=process.env.K1_PINNED_CHECKOUT_SHA||checkoutHead;
 const H40=/^[0-9a-f]{40}$/;
 const five=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md'];
 function callbacks({wrongBytes=false,badTree=false}={}){
@@ -45,6 +46,7 @@ function request(){
 function withRoot(fn){const root=fs.mkdtempSync(path.join(os.tmpdir(),'k1-verify-'));fs.chmodSync(root,0o700);return Promise.resolve().then(()=>fn(root)).finally(()=>fs.rmSync(root,{recursive:true,force:true}));}
 test('K1 real pinned Git source: original H1 10/10, staged 9/9, seed+closure, cross-process readback; NO owner',async()=>{
  assert.ok(H40.test(head),'real Git HEAD must be a commit');
+ assert.equal(head,checkoutHead,'pinned SHA must match actual candidate checkout');
  await withRoot(async privateRoot=>{
   const r=await runK1PreOwner(request(),{...callbacks(),privateRoot});
   assert.equal(r.ok,true,JSON.stringify(r));

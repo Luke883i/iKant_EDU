@@ -31,6 +31,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
@@ -42,7 +43,7 @@ jobs:
           node scripts/project-source-manifest.mjs verify
       - name: Actual original pinned Git blobs + independent Node subprocess (NO C72)
         env:
-          K1_PINNED_BASE_SHA: ${{ github.event.pull_request.base.sha || github.sha }}
+          K1_PINNED_CHECKOUT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           export K1_EVIDENCE_JSON="$RUNNER_TEMP/k1-evidence.json"
           node --test tests/project-host-k1-real-source.test.mjs tests/project-host-effect-decision.test.mjs tests/project-host-k1-install.test.mjs

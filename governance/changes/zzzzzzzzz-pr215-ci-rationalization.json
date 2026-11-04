@@ -518,7 +518,7 @@
       "path": "tests/project-host-k1-real-source.test.mjs",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Requalify real Git K1 pre-owner checkout fixture to current pinned EDU Terms witness and add explicit retired LE link negative; retain 10/10 9/9 and no owner invocation invariants.",
+      "reason": "Rebind K1 checkout-only source proof to exact candidate HEAD, not incompatible main-base seed; assert env SHA matches Git HEAD; preserve original 10/10 9/9 and negative cases.",
       "deletion_authorized": false
     },
     {
@@ -553,6 +553,13 @@
       "deletion_authorized": false,
       "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
       "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
+    },
+    {
+      "path": ".github/workflows/project-host-k1-original-source.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Use exact PR HEAD as checkout-only test source for K1; no main, provider, owner or installed-prompt receipt inferred.",
+      "deletion_authorized": false
     }
   ]
 }

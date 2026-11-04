@@ -9,6 +9,11 @@
 
 **In una frase:** iKant è un *sistema software sperimentale* che circonda un LLM sostituibile e tenta di rendere controllabili il metodo di risposta, le autorizzazioni, gli stati, le verifiche e la consegna. Non è un altro LLM, una persona digitale né un certificatore automatico della verità.
 
+<!-- cora-reticular-source-hygiene:v1 -->
+**Standardizzazione CORA (source-only).** La [mappa reticolare R/S/P](contracts/cora-reticular-hygiene-v1.json) estende il [contratto minimale](contracts/cora-minimal-absorption-v1.json), senza nuovi owner, writer o workflow. Il censimento riusa V5-B e conserva ogni consumer dinamico ignoto come **UNKNOWN**, mai come file inutilizzato. Nessuna cancellazione, dismissione di workflow, review umana o prova di prodotto deriva automaticamente dalla CI.
+
+Da un checkout Git completo, la verifica di mantenimento read-only è `node scripts/cora-minimal-absorption.mjs --reticulum`; il registro per **ogni** file e workflow è disponibile con `node scripts/cora-minimal-absorption.mjs --reticulum --full` (output JSON, potenzialmente voluminoso). I falsificatori si eseguono con `node --test tests/cora-reticular-hygiene.test.mjs`. Il risultato `SOURCE_CANDIDATE` non equivale a standardizzazione conclusa: consumer esterni, review indipendente, required checks effettivi e runtime nativo restano gate separati.
+
 ### Review qualificata: repository, software, deployment, runtime, prodotto e governance
 
 **Repository (R)**: HEAD, TREE, blob, contratti e CI. **Software (S)**: codice eseguibile su checkout verificato. **Deployment (D)**: port realmente installato e callable nel target Host. **Runtime (T)**: specifica istanza con owner invocati e ricevute originali rilette. **Prodotto (P)**: percorso umano realmente utilizzabile. **Governance (G)**: review umana e regole amministrative verificabili. Nessuna prova R/S promuove automaticamente D/T/P/G.

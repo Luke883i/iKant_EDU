@@ -9,7 +9,7 @@ import {
  validateC72V2Accepted
 } from '../host/c72-public-mode-admission.mjs';
 import {createProjectC72PreacceptGate} from '../host/project-c72-preaccept-gate.mjs';
-import {scanSource} from '../scripts/repository-rename-inventory.mjs';
+import {scanSource,classify} from '../scripts/repository-rename-inventory.mjs';
 
 const ROOT=new URL('../',import.meta.url);
 const boot=JSON.parse(fs.readFileSync(new URL('../BOOTSTRAP.json',import.meta.url)));
@@ -108,7 +108,11 @@ test('S03 discovered external consumer is classified but cannot self-close',()=>
 test('S01/S02/S03 source audit: first unresolved edge is not promoted by CI',()=>{
  const census=scanSource();
  assert.equal(census.status,'NOT_READY_FOR_RENAME');
- assert(census.rows.some(x=>x.path==='host/project-c72-coldstart-seed.mjs'));
+ const coldstart='host/project-c72-coldstart-seed.mjs';
+ assert.equal(execFileSync('git',['ls-files','--',coldstart],{cwd:ROOT,encoding:'utf8'}).trim(),coldstart);
+ assert.equal(classify(coldstart),'ORIGINAL_OR_ENTRY_CRITICAL');
+ assert.doesNotMatch(fs.readFileSync(new URL('../'+coldstart,import.meta.url),'utf8'),/Luke883i\/iKant_LE|ikant[_-]le/i);
+ assert.equal(census.rows.some(x=>x.path===coldstart),false);
  assert(census.rows.some(x=>x.path==='src/first-contact.mjs'));
  assert.equal(dod.s01.status,'PARTIAL_PREPARE_ONLY');
  assert.equal(dod.s02.status,'REGRESSION_EVIDENCE_REQUIRED');

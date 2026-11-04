@@ -132,7 +132,7 @@ export function observePrFSource(){
   M04:audit.workflow_count,
   M05:workflowTree,
   M06:restoreRows.filter(x=>x.match).length,
-  M07:(audit.missing_paths||[]).length,
+  M07:(audit.errors||[]).filter(x=>x.startsWith('UNREGISTERED_DELETION:')).length,
   M08:atlas.atlas_exact===true,
   M09:br.ok?br.checked_documents:0,
   M10:ar.ok?ar.counted_files/audit.checked_files:0,
@@ -160,7 +160,8 @@ export function observePrFSource(){
   first_edge:sourceCandidate?'F06_CLEAN_CHECKOUT_NOT_PROVEN':
    ['F01','F02','F03','F04','F05'].find(x=>!witnesses[x]),
   source:{head,tree,tracked:allPaths.size,workflow_tree:workflowTree,
-   source_baseline:c.source.base_head},metrics,witnesses,model,
+   source_baseline:c.source.base_head,
+   previously_registered_missing_paths:(audit.missing_paths||[]).length},metrics,witnesses,model,
   original_reticulum:census.goals,
   recovery:{restored:restoreRows,original_tree:c.source.before_tree,
    recovered_original_tree_in_F0_commit:c.source.source_restore_commit,

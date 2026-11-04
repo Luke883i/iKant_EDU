@@ -313,7 +313,7 @@
       "name": "UNREGISTERED_DELETIONS",
       "unit": "count",
       "target": 0,
-      "source": "V5B missing_paths and errors",
+      "source": "V5-B original errors with UNREGISTERED_DELETION prefix only; historical approved missing paths reported separately",
       "scope": "SOURCE",
       "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
     },

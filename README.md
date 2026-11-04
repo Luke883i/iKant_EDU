@@ -14,6 +14,8 @@
 
 Da un checkout Git completo, la verifica di mantenimento read-only è `node scripts/cora-minimal-absorption.mjs --reticulum`; il registro per **ogni** file e workflow è disponibile con `node scripts/cora-minimal-absorption.mjs --reticulum --full` (output JSON, potenzialmente voluminoso). I falsificatori si eseguono con `node --test tests/cora-reticular-hygiene.test.mjs`. Il risultato `SOURCE_CANDIDATE` non equivale a standardizzazione conclusa: consumer esterni, review indipendente, required checks effettivi e runtime nativo restano gate separati.
 
+**PR-A · backlog di standardizzazione, sola lettura.** Dal medesimo checkout Git verificato, `node scripts/cora-pr-a-backlog.mjs --full` deriva dal censimento V5-B/CORA una coda ordinata di verifiche su consumer, workflow e vigenza documentale. Le decisioni sono provvisorie e non autorizzano rimozioni. Contratto, 10 milioni di mutazioni semantiche seeded (non modifiche fisiche al repo) e limiti sono in [PR-A backlog](docs/CORA_PR_A_BACKLOG.md). Per la regressione: `node --test tests/cora-pr-a-backlog.test.mjs`.
+
 ### Review qualificata: repository, software, deployment, runtime, prodotto e governance
 
 **Repository (R)**: HEAD, TREE, blob, contratti e CI. **Software (S)**: codice eseguibile su checkout verificato. **Deployment (D)**: port realmente installato e callable nel target Host. **Runtime (T)**: specifica istanza con owner invocati e ricevute originali rilette. **Prodotto (P)**: percorso umano realmente utilizzabile. **Governance (G)**: review umana e regole amministrative verificabili. Nessuna prova R/S promuove automaticamente D/T/P/G.

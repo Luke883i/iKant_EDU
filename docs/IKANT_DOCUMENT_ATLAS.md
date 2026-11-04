@@ -142,6 +142,7 @@
 - [docs/C99_LAST30_CIRCULARITY_AUDIT.md](C99_LAST30_CIRCULARITY_AUDIT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
 - [docs/C99_PROXY_HOST_INPUT_HARDENING.md](C99_PROXY_HOST_INPUT_HARDENING.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
 - [docs/C99_V6_USER_UPLOAD_EVIDENCE.md](C99_V6_USER_UPLOAD_EVIDENCE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [docs/CORA_PR_A_BACKLOG.md](CORA_PR_A_BACKLOG.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/CP11_REBASED_SEMANTIC_DOD.md](CP11_REBASED_SEMANTIC_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/EDU_BOOTSTRAP_PARETO_10K.md](EDU_BOOTSTRAP_PARETO_10K.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/EDU_C125_UI_DOD.md](EDU_C125_UI_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.

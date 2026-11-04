@@ -77,11 +77,14 @@ export function evaluateFReticulation(c,witness={}){
  if(!contract.ok)return contract;
  const states=new Map();
  for(const n of c.reticulum){
-  if(n.needs.length===0){
-   states.set(n.id,witness[n.id]===true?'MODEL_TRUE':'UNKNOWN_NOT_ATTESTED');
-  }else {
-   states.set(n.id,n.needs.every(d=>states.get(d)==='MODEL_TRUE')?
-    'MODEL_TRUE':'BLOCKED_DEPENDENCY');
+  const dependenciesProven=n.needs.every(d=>states.get(d)==='MODEL_TRUE');
+  if(n.scope==='INTERMEDIATE'||n.scope==='GLOBAL'){
+   states.set(n.id,dependenciesProven?'MODEL_TRUE':'BLOCKED_DEPENDENCY');
+  }else if(witness[n.id]!==true){
+   states.set(n.id,'UNKNOWN_NOT_ATTESTED');
+  }else{
+   // A source/CI/external/product proof is mandatory even if all predecessors pass.
+   states.set(n.id,dependenciesProven?'MODEL_TRUE':'BLOCKED_DEPENDENCY');
   }
  }
  const state=Object.fromEntries(states),source=state.I_SOURCE==='MODEL_TRUE';

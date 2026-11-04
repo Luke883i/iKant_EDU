@@ -68,7 +68,7 @@ test('real original source observer reconciles all five slices and refuses exter
  assert.equal(r.first_edge,'F06_CLEAN_CHECKOUT_NOT_PROVEN');
 });
 test('truth table: one missing mandatory gate blocks; even all-true model has no authority',()=>{
- const leaf=contract.reticulum.filter(n=>n.needs.length===0).map(n=>n.id);
+ const leaf=contract.reticulum.filter(n=>!['INTERMEDIATE','GLOBAL'].includes(n.scope)).map(n=>n.id);
  assert.equal(leaf.length,13);
  const everything=Object.fromEntries(leaf.map(k=>[k,true]));
  const full=evaluateFReticulation(contract,everything);

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements} from '../scripts/v5b-repository-governance-audit.mjs';
+import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession} from '../scripts/v5b-repository-governance-audit.mjs';
 
 test('all-path roles are explicitly provisional and never human review',()=>{
  assert.equal(provisionalRole('tests/foo.test.mjs'),'TEST_SOURCE');
@@ -86,4 +86,18 @@ test('V5B retirement demands exact absent runner, active replacement, preserved 
  assert.ok(auditWorkflowRetirements(before,live,{paths:before},live).errors.some(e=>e.startsWith('UNREGISTERED_WORKFLOW_REMOVAL')));
  assert.ok(auditWorkflowRetirements(before,live,m,live).errors.some(e=>e.startsWith('RETIRED_WORKFLOW_TEST_MISSING')));
  assert.ok(auditWorkflowRetirements(before,[],m,['tests/a.test.mjs']).errors.some(e=>e.startsWith('REPLACEMENT_NOT_ACTIVE')));
+});
+
+test('V5-B rejects overlapping delta registers unless explicit predecessor is pinned',()=>{
+ const a={operation:'MODIFY',register:'governance/changes/earlier.json',source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED'};
+ const b={operation:'MODIFY',register:'governance/changes/later.json',source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED',
+  supersedes_register:a.register,supersedes_source_main:a.source_main};
+ assert.equal(qualifyRegisterSuccession(a,b),false,'same-main duplicate must be rejected');
+ assert.equal(qualifyRegisterSuccession(a,{...b,same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),true);
+ assert.equal(qualifyRegisterSuccession(a,{...b,source_main:'b'.repeat(40)}),true,'distinct pinned main epoch');
+ assert.equal(qualifyRegisterSuccession(a,{...b,supersedes_register:'elsewhere',same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
+ assert.equal(qualifyRegisterSuccession(a,{...b,supersedes_source_main:'b'.repeat(40),same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
+ assert.equal(qualifyRegisterSuccession(a,{...b,human_review:'PROVISIONAL',same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
+ assert.equal(qualifyRegisterSuccession(a,{...b,operation:'REMOVE',same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
+ assert.equal(qualifyRegisterSuccession(a,{...b,register:a.register,same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
 });

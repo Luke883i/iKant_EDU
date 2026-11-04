@@ -111,6 +111,18 @@ export function auditWorkflowRetirements(baselinePaths,livePaths,retention,track
  const introduced=[...live].filter(p=>!before.has(p));
  return {errors,retired:retired.sort(),introduced,expected_live_count:before.size-retired.length+introduced.length};
 }
+/** Explicitly chain distinct candidate deltas; same-main PR slices are not human approval. */
+export function qualifyRegisterSuccession(prior,next){
+ if(!prior||!next||prior.operation==='REMOVE'||next.operation!=='MODIFY')return false;
+ if(next.register===REGISTER||next.register===prior.register||
+    next.supersedes_register!==prior.register||
+    next.supersedes_source_main!==prior.source_main||
+    prior.human_review!=='REVIEW_REQUIRED'||next.human_review!=='REVIEW_REQUIRED')return false;
+ // Same source_main occurs when two PR commits share a single main base.
+ // Explicit candidate lineage is necessary, but still no human signoff is inferred.
+ return next.source_main!==prior.source_main||
+  next.same_source_main_change==='EXPLICIT_REVIEW_REQUIRED_PR_SLICE';
+}
 export function auditRepository(){
  const base=json(INVENTORY),changes=json(REGISTER),retention=json('contracts/v1-workflow-retention.json');
  const contract=json(DOD),errors=[];
@@ -149,14 +161,9 @@ export function auditRepository(){
   const prior=permitted.get(row.path);
   const next={...row,register:name,source_main:doc.source_main||changes.baseline_commit};
   if(prior){
-   const namedPredecessor=name!==REGISTER&&name!==prior.register&&
-    next.source_main!==prior.source_main&&
-    row.supersedes_register===prior.register&&
-    row.supersedes_source_main===prior.source_main&&
-    prior.human_review==='REVIEW_REQUIRED'&&row.human_review==='REVIEW_REQUIRED';
    const initialExtension=prior.operation==='ADD'&&prior.register===REGISTER&&
     row.operation==='MODIFY'&&name!==REGISTER;
-   const successor=prior.operation!=='REMOVE'&&row.operation==='MODIFY'&&namedPredecessor;
+   const successor=qualifyRegisterSuccession(prior,next);
    if(!initialExtension&&!successor)errors.push('V5B_CONFLICTING_DELTA:'+row.path);
    else {
     // Keep baseline ADD/MODIFY classification intact for live inventory audit.

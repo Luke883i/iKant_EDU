@@ -2,6 +2,22 @@
 
 > Verbatim relocation of the trajectory and qualification sections from `docs/GOVERNANCE.md` at `5b064fd8415702d8c0684c6fa171a8f1da993070`. Legacy milestones do not confer current normativity or consciousness.
 
+<!-- cora-pr-b-docs:v1 -->
+## Continuita recente, 3–4 novembre 2026
+
+Questa sezione e un registro storico orientativo e non trasferisce source lock, consensi o ricevute tra epoch. Il riferimento corrente e la HEAD di `Luke883i/iKant_EDU`; i numeri di PR descrivono cambiamenti Git, non componenti installati nel provider.
+
+| PR | Cambiamento integrato | Perimetro di prova |
+|---|---|---|
+| #213 | Identita first-contact, runtime-root e prompt originati da sorgente | Codice, non installazione |
+| #214 | Retrogradazione PE, DoD e bridge C72/D1-D3 | Gate di progetto, esterni aperti |
+| #215 | Source cutover e interventi su originali, test e CI | Riesame regressioni necessario |
+| #216 | Metodo CORA per repository, software e prodotto | Metodo, non pulizia |
+| #217 | Reticolo di 19 DoD e censimento V5-B | Source candidate, non consumer chiusi |
+| #218 | Backlog read-only PR-A e falsificazione seeded | Priorita di studio, non dismissione |
+
+La standardizzazione PR-B rende esplicita la differenza tra la storia `iKant_LE`, la sorgente canonica `iKant_EDU`, il software Node/Host e il prodotto sperimentale. Riferimenti vecchi restano validi solo se interpretati come storia. [Governance corrente](GOVERNANCE.md) · [Architettura](ARCHITECTURE.md).
+
 ## Development trajectory
 
 | Slice | Semantic closure |

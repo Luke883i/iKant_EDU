@@ -1,6 +1,24 @@
-# iKant_LE architecture
+# iKant EDU — architettura, owner e confini
 
 Machine contracts, original runtime and tests remain authoritative; this page is a navigational description.
+
+<!-- cora-pr-b-docs:v1 -->
+## Source, software e prodotto non sono sinonimi
+
+Il **repository** e un inventario di sorgenti operativi, test, contratti, documentazione, prove di studio e archeologia. Il **software** e la composizione Node/Host intorno a un LLM sostituibile, non un LLM addestrato da questo repository. Il **prodotto** e l'interazione OneShell EDU, distinguendo un frame reso localmente da una consegna nativa del provider. La descrizione storica `iKant_LE` indica una provenienza del progetto, non la sorgente operativa `Luke883i/iKant_EDU`.
+
+Il confine funzionale attuale e **C72** per ammissione, **C135** per turno cognitivo EDU, **C87** per writer unico e readback, **C125/S03** per uscita same-turn. **C59** governa una composizione CANONICAL distinta e non viene attivato dalla sola connessione MCP. La precedenza reale resta dei contratti e degli owner originali; questo testo non modifica routing, permission, receipt o stato ACTIVE. [Governance](GOVERNANCE.md) · [Guida operativa](IKANT_LOCAL_SETUP.md) · [Registro delle prove](IKANT_RUNTIME_AND_EVIDENCE.md).
+
+## Sei distinzioni di qualifica
+
+| Confine | Prova ammissibile | Prova che non basta |
+|---|---|---|
+| R — repository | HEAD/TREE/blob, inventario V5-B | Una PR dal titolo `merged` |
+| S — software | Test su checkout e call-path originali | Un test sintetico isolato |
+| D — deployment | Adapter installato e callback realmente callable | File ZIP o prompt disponibile |
+| T — runtime | Owner invocati, evento, ledger e readback | Contratto presente su Git |
+| P — prodotto | Consegna e outcome osservati con utenti | Documentazione o CI verde |
+| G — governance | Revisori indipendenti e decisione umana | Approval dedotta da workflow |
 
 ## Product and control plane
 

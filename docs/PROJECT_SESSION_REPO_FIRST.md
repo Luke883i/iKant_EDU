@@ -90,7 +90,7 @@ names=['scripts/project-manual-source.py','scripts/project-repo-loader.mjs']
 with zipfile.ZipFile(os.environ['SOURCE_ZIP']) as z:
     verified=[]
     for name in names:
-        info=z.getinfo('iKant_LE-'+head+'/'+name)
+        info=z.getinfo('iKant_EDU-'+head+'/'+name)
         assert info.file_size<200000 and not(info.flag_bits & 1)
         mode=(info.external_attr>>16)&0o170000
         assert mode in (0,stat.S_IFREG) and info.compress_type in (0,8)

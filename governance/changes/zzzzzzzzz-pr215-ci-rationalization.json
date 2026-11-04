@@ -527,6 +527,13 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-bound CI retirement register with explicit non-approval and original baseline preservation.",
       "deletion_authorized": false
+    },
+    {
+      "path": "docs/PROJECT_SESSION_REPO_FIRST.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Fix original Python tool extraction snippet to match the current EDU Git ZIP prefix while preserving independent HEAD/TREE and blob checks.",
+      "deletion_authorized": false
     }
   ]
 }

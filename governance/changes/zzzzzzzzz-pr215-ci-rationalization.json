@@ -487,6 +487,13 @@
       "deletion_authorized": false
     },
     {
+      "path": "tests/pr215-postmode-source-url.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add an isolated authority-zero regression demonstrating that original EDU mode selection, P1 manual ZIP route and OneShell PROVA all bind to the same current SHA-pinned iKant_EDU URL and reject old LE identity.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

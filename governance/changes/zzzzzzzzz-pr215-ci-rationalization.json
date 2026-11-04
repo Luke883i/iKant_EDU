@@ -449,6 +449,30 @@
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
+      "path": "scripts/check.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Restore negative source rejection to the retired iKant_LE path, not the live iKant_EDU path; central checker still fails on legacy source promotion.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "same_source_main_change": "EXPLICIT_REVIEW_REQUIRED_PR_SLICE"
+    },
+    {
+      "path": "tests/project-host-effect-decision.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align K0 positive first-turn Terms witness to canonical EDU URL and add an explicit negative legacy LE witness; original K0 fail-closed owner gates unchanged.",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-preaccept-contract.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind original preaccept prompt test expectations to exact current canonical prompt bytes, preserving no TREE preconsent, human gates, and postaccept-only machine contract.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

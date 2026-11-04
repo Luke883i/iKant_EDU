@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {decideK0Effect,k0SafePlan,FIRST_FILES,CARRIER_ORDER,K0_SCHEMA} from '../host/project-host-effect-decision.mjs';
 const H='a'.repeat(40);
 const witness={source_head:H,host_link_displayed:true,distinct_human_message_observed:true,
- terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md',
+ terms_link:'https://github.com/Luke883i/iKant_EDU/blob/'+H+'/TERMS.md',
  pinned_blob_shas:Object.fromEntries(FIRST_FILES.map(p=>[p,'b'.repeat(40)]))};
 const base=()=>({schema:K0_SCHEMA,phase:'POST_ACCEPT',projectProfile:'PROJECT_EDU_E15',humanMessage:'I ACCEPT',
  freshHumanTurn:true,ownerOutcome:'NOT_INVOKED',sourceHead:H,liveHead:H,priorTurnEvidence:witness});
@@ -15,6 +15,11 @@ test('orientation reads exactly the first five without extra or owner',()=>{
 test('unbound / advertised flags cannot authorize owner',()=>{
  assert.equal(decideK0Effect(base()).first_edge,'K0_CAPABILITY_PORT_UNBOUND');
  assert.equal(decideK0Effect(base(),{HOST_PACKET:{OBSERVED:true,probeOK:true}}).kind,'STOP');
+});
+test('retired LE terms witness never authorizes a K0 probe',()=>{
+ const stale={...base(),priorTurnEvidence:{...witness,
+  terms_link:'https://github.com/Luke883i/iKant_LE/blob/'+H+'/TERMS.md'}};
+ assert.equal(decideK0Effect(stale,{HOST_PACKET:binding()}).first_edge,'K0_FIRST_TURN_WITNESS_INVALID');
 });
 test('callable ports yield PROBE_REQUIRED, never owner execution',()=>{
  const x=decideK0Effect(base(),{HOST_PACKET:binding(),SAME_NODE_CALLBACKS:binding()});

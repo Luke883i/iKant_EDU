@@ -9,9 +9,9 @@ Immagina di chiedere a un assistente: **«Come lo sai?»** Una risposta fluida p
 <!-- cora-pr-b-docs:v1 -->
 ## Perche il progetto e atipico
 
-Un **repository** e un insieme di sorgenti, contratti, test, strumenti e documenti: ospita anche esperimenti e storia, che non sono tutti componenti attivi. Il **software** e il programma Node/Host che puo eseguire controlli intorno a un LLM sostituibile quando sorgenti e strumenti sono disponibili. Il **prodotto** e l'esperienza sperimentale OneShell che una persona dovrebbe poter usare; non coincide con la presenza del software nel repository.
+Un **repository** è un insieme di sorgenti, contratti, test, strumenti e documenti: ospita anche esperimenti e storia, che non sono tutti componenti attivi. Il **software** è il programma Node/Host che puo eseguire controlli intorno a un LLM sostituibile quando sorgenti e strumenti sono disponibili. Il **prodotto** è l'esperienza sperimentale OneShell che una persona dovrebbe poter usare; non coincide con la presenza del software nel repository.
 
-Il valore atteso e rendere piu controllabili consenso, esecuzione, registrazione e limiti di una risposta, non promettere verita automatica. Il codice puo passare la CI senza essere installato nel provider; una guida leggibile non prova che il prodotto aiuti gli utenti. Per i dettagli: [natura del prodotto](PRODUCT_POSITIONING.md), [architettura](ARCHITECTURE.md) e [prove](IKANT_RUNTIME_AND_EVIDENCE.md).
+Il valore atteso e rendere più controllabili consenso, esecuzione, registrazione e limiti di una risposta, non promettere verità automatica. Il codice puo passare la CI senza essere installato nel provider; una guida leggibile non prova che il prodotto aiuti gli utenti. Per i dettagli: [natura del prodotto](PRODUCT_POSITIONING.md), [architettura](ARCHITECTURE.md) e [prove](IKANT_RUNTIME_AND_EVIDENCE.md).
 
 ## Un esempio quotidiano
 

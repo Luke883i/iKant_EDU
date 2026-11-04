@@ -5,7 +5,7 @@
 <!-- cora-pr-b-docs:v1 -->
 ## Continuita recente, 3–4 novembre 2026
 
-Questa sezione e un registro storico orientativo e non trasferisce source lock, consensi o ricevute tra epoch. Il riferimento corrente e la HEAD di `Luke883i/iKant_EDU`; i numeri di PR descrivono cambiamenti Git, non componenti installati nel provider.
+Questa sezione è un registro storico orientativo e non trasferisce source lock, consensi o ricevute tra epoch. Il riferimento corrente è la HEAD di `Luke883i/iKant_EDU`; i numeri di PR descrivono cambiamenti Git, non componenti installati nel provider.
 
 | PR | Cambiamento integrato | Perimetro di prova |
 |---|---|---|

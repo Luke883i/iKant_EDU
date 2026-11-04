@@ -23,9 +23,9 @@ Canonical `SESSION_CHAT_LOCAL` follows C72 intro, exact later CANONICAL and orig
 <!-- cora-pr-b-docs:v1 -->
 ## CORA / V5-B: documentazione e governo delle prove
 
-PR #216 ha assorbito solo il metodo CORA. PR #217 ha aggiunto il reticolo; PR #218 ha reso disponibile il backlog di source-review. Il repository e atipico: accanto al software originale conserva contratti macchina, asset di ricerca, esperimenti, test, documenti storici e proiezioni HOST. Un file storico non va trattato come un owner attivo solo perche e ancora tracciato. Le decisioni di manutenzione sono subordinate al censimento **V5-B**, all'identita Git e al reticolo CORA, non a un nuovo registro documentale.
+PR #216 ha assorbito solo il metodo CORA. PR #217 ha aggiunto il reticolo; PR #218 ha reso disponibile il backlog di source-review. Il repository è atipico: accanto al software originale conserva contratti macchina, asset di ricerca, esperimenti, test, documenti storici e proiezioni HOST. Un file storico non va trattato come un owner attivo solo perché è ancora tracciato. Le decisioni di manutenzione sono subordinate al censimento **V5-B**, all'identita Git e al reticolo CORA, non a un nuovo registro documentale.
 
-La qualifica separa repository (R), software (S), deployment (D), runtime (T), prodotto (P), governance (G). Un **owner** C72/C135/C87/C125 non si sostituisce con un testo README; approvazione **review** e richiesta a ingegneri indipendenti e decisione umana. La source evidence non prova deployment o provider; consumer ignoti restano **UNKNOWN**, non unused. Le scelte di semplificazione richiedono il registro V5-B, test comportamentali, restore e readback. Il documento non e un permesso di merge, rimozione o release.
+La qualifica separa repository (R), software (S), deployment (D), runtime (T), prodotto (P), governance (G). Un **owner** C72/C135/C87/C125 non si sostituisce con un testo README; approvazione **review** è richiesta a ingegneri indipendenti e decisione umana. La source evidence non prova deployment o provider; consumer ignoti restano **UNKNOWN**, non unused. Le scelte di semplificazione richiedono il registro V5-B, test comportamentali, restore e readback. Il documento non è un permesso di merge, rimozione o release.
 
 ## Development trajectory
 

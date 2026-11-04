@@ -5,9 +5,9 @@ Machine contracts, original runtime and tests remain authoritative; this page is
 <!-- cora-pr-b-docs:v1 -->
 ## Source, software e prodotto non sono sinonimi
 
-Il **repository** e un inventario di sorgenti operativi, test, contratti, documentazione, prove di studio e archeologia. Il **software** e la composizione Node/Host intorno a un LLM sostituibile, non un LLM addestrato da questo repository. Il **prodotto** e l'interazione OneShell EDU, distinguendo un frame reso localmente da una consegna nativa del provider. La descrizione storica `iKant_LE` indica una provenienza del progetto, non la sorgente operativa `Luke883i/iKant_EDU`.
+Il **repository** è un inventario di sorgenti operativi, test, contratti, documentazione, prove di studio e archeologia. Il **software** è la composizione Node/Host intorno a un LLM sostituibile, non un LLM addestrato da questo repository. Il **prodotto** è l'interazione OneShell EDU, distinguendo un frame reso localmente da una consegna nativa del provider. La descrizione storica `iKant_LE` indica una provenienza del progetto, non la sorgente operativa `Luke883i/iKant_EDU`.
 
-Il confine funzionale attuale e **C72** per ammissione, **C135** per turno cognitivo EDU, **C87** per writer unico e readback, **C125/S03** per uscita same-turn. **C59** governa una composizione CANONICAL distinta e non viene attivato dalla sola connessione MCP. La precedenza reale resta dei contratti e degli owner originali; questo testo non modifica routing, permission, receipt o stato ACTIVE. [Governance](GOVERNANCE.md) · [Guida operativa](IKANT_LOCAL_SETUP.md) · [Registro delle prove](IKANT_RUNTIME_AND_EVIDENCE.md).
+Il confine funzionale attuale è **C72** per ammissione, **C135** per turno cognitivo EDU, **C87** per writer unico e readback, **C125/S03** per uscita same-turn. **C59** governa una composizione CANONICAL distinta e non viene attivato dalla sola connessione MCP. La precedenza reale resta dei contratti e degli owner originali; questo testo non modifica routing, permission, receipt o stato ACTIVE. [Governance](GOVERNANCE.md) · [Guida operativa](IKANT_LOCAL_SETUP.md) · [Registro delle prove](IKANT_RUNTIME_AND_EVIDENCE.md).
 
 ## Sei distinzioni di qualifica
 

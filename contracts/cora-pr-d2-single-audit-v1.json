@@ -50,7 +50,7 @@
       "requires": [
         "D2-01"
       ],
-      "proof": "Explicit V5-B predecessor and later source epoch for six modified files and three added files"
+      "proof": "Explicit V5-B predecessor and later source epoch for seven modified files and three added files"
     },
     {
       "id": "D2-03",

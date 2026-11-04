@@ -50,7 +50,10 @@ test('V5-B explicitly records all modified and new files without inventing appro
 });
 test('one production blob SHA-1 implementation: original V5-B exported, Cora PR-C imports it',()=>{
  assert.match(v5b,/export function gitBlobSha1\(input\)/);
- assert.match(consumer,/import \{auditRepository,gitBlobSha1\}/);
+ assert.match(consumer,/import \{gitBlobSha1\} from '\.\/v5b-repository-governance-audit\.mjs';/);
+ assert.match(consumer,/observeReticularCensusWithAudit\(\)/);
+ assert.doesNotMatch(consumer,/\bauditRepository\s*\(/,'PR-C must not repeat V5-B source audit');
+ assert.match(consumer,/qualifyPrCCISource\(\{policy,source:yaml,audit,cora\}\)/);
  assert.doesNotMatch(consumer,/createHash\('sha1'\)/);
  assert.doesNotMatch(consumer,/const blobSha=/);
  assert.match(consumer,/gitBlobSha1\(source\)/);

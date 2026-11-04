@@ -44,8 +44,8 @@ test('D2 original reticulum: nine non-compensatory gates and external V5-G cut',
 
 test('V5-B source lineage has six explicit predecessors and no invented human review',()=>{
  assert.equal(register.source_main,contract.baseline.head);
- assert.equal(register.paths.length,9);
- assert.equal(register.paths.filter(x=>x.operation==='MODIFY').length,6);
+ assert.equal(register.paths.length,10);
+ assert.equal(register.paths.filter(x=>x.operation==='MODIFY').length,7);
  assert.equal(register.paths.filter(x=>x.operation==='ADD').length,3);
  assert.equal(register.original_owner_unchanged,true);
  assert.equal(register.human_review_completed,false);

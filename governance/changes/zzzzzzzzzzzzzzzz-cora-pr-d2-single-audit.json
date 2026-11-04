@@ -72,6 +72,14 @@
       "human_review": "REVIEW_REQUIRED",
       "supersedes_register": "governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json",
       "supersedes_source_main": "9b4d29ecc840f55b1d67dae98f5727d31b89b435"
+    },
+    {
+      "path": "tests/cora-pr-d1-blob-dedup.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Update D1 import invariant to verify shared SHA1 and D2 single V5-B audit without reinstating duplicate scans",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json",
+      "supersedes_source_main": "9b4d29ecc840f55b1d67dae98f5727d31b89b435"
     }
   ]
 }

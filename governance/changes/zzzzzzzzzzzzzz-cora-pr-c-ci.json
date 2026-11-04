@@ -1,0 +1,111 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa",
+  "self_path": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+  "scope": "PR_C_SCOPED_CI_WORKFLOW_EVOLUTION",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "operation": "ADD",
+      "reason": "Record exact PR-C workflow change and original V5-B lineage without granting changes",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "contracts/cora-pr-c-ci-v1.json",
+      "operation": "ADD",
+      "reason": "Define bounded CI workflow reticular DoD and explicit external non-promotions",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "scripts/cora-pr-c-ci.mjs",
+      "operation": "ADD",
+      "reason": "Read-only exact trigger and command equivalence plus workflow risk summary over original V5-B",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "tests/cora-pr-c-ci.test.mjs",
+      "operation": "ADD",
+      "reason": "Mutation and physical Git source tests of one scoped CI non-destructive change",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "operation": "MODIFY",
+      "reason": "Allow only source-epoch pinned ADD to MODIFY V5-B register succession",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Falsify replacement, fake-source and unreviewed ADD succession",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "contracts/cora-reticular-hygiene-v1.json",
+      "operation": "MODIFY",
+      "reason": "Preserve baseline TREE pin while allowing one complete and reversible scoped workflow delta",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
+      "supersedes_source_main": "0b582b52265dd6af5936ea9034ccae0ddb877800"
+    },
+    {
+      "path": "scripts/cora-minimal-absorption.mjs",
+      "operation": "MODIFY",
+      "reason": "Verify exact rollback Git TREE for declared CI delta rather than disable CORA source gate",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
+      "supersedes_source_main": "0b582b52265dd6af5936ea9034ccae0ddb877800"
+    },
+    {
+      "path": "tests/cora-reticular-hygiene.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Reject any unpinned workflow change, count drift, forged permission or owner promotion",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
+      "supersedes_source_main": "0b582b52265dd6af5936ea9034ccae0ddb877800"
+    },
+    {
+      "path": ".github/workflows/docs-ontology-coverage.yml",
+      "operation": "MODIFY",
+      "reason": "Reduce redundant same PR document checks with exact preserved triggers and steps",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "README.md",
+      "operation": "MODIFY",
+      "reason": "Expose one concrete read-only CI hygiene entry and exact separation of required-check authority",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzz-cora-pr-b-documentation.json",
+      "supersedes_source_main": "abd62d81d9b899743ee738fc04b59c2e065fe765"
+    },
+    {
+      "path": "docs/GOVERNANCE.md",
+      "operation": "MODIFY",
+      "reason": "State trigger-preserving CI delta and review decision requirements",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzz-cora-pr-b-documentation.json",
+      "supersedes_source_main": "abd62d81d9b899743ee738fc04b59c2e065fe765"
+    }
+  ]
+}

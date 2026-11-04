@@ -102,6 +102,25 @@ test('V5-B rejects overlapping delta registers unless explicit predecessor is pi
  assert.equal(qualifyRegisterSuccession(a,{...b,register:a.register,same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
 });
 
+test('V5-B permits only pinned future-epoch ADD to MODIFY succession, never silent replay',()=>{
+ const prior={operation:'ADD',register:'governance/changes/initial.json',
+  source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED'};
+ const next={operation:'MODIFY',register:'governance/changes/next.json',
+  source_main:'b'.repeat(40),human_review:'REVIEW_REQUIRED',
+  supersedes_register:prior.register,supersedes_source_main:prior.source_main};
+ assert.equal(qualifyRegisterSuccession(prior,next),true);
+ const reject=[
+  {...next,source_main:prior.source_main},
+  {...next,register:prior.register},
+  {...next,supersedes_register:'governance/changes/unbound.json'},
+  {...next,supersedes_source_main:'f'.repeat(40)},
+  {...next,human_review:'PROVISIONAL'},
+  {...next,operation:'REMOVE'}];
+ for(const v of reject)assert.equal(qualifyRegisterSuccession(prior,v),false,JSON.stringify(v));
+ assert.equal(qualifyRegisterSuccession({...prior,operation:'REMOVE'},next),false);
+ assert.equal(qualifyRegisterSuccession({...prior,human_review:'PROVISIONAL'},next),false);
+});
+
 test('V5B reviewer status supports digit-bearing C98 lineage while rejecting invalid tokens',()=>{
  const base=['.github/workflows/c98-project-3md.yml','.github/workflows/c98-host-bound-prepr.yml'];
  const retained={paths:base,superseded_workflows:{[base[0]]:{status:'SUBSUMED_C98_BASELINE',reason:'Specialist baseline is verified in an active replacement with exact focused regression coverage.',replacements:[base[1]],tests:['tests/c98-project-baseline.test.mjs']}}};

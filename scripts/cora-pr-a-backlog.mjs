@@ -3,8 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {auditRepository} from './v5b-repository-governance-audit.mjs';
-import {observeReticularCensus} from './cora-minimal-absorption.mjs';
+import {observeReticularCensusWithAudit} from './cora-minimal-absorption.mjs';
 
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const CONTRACT='contracts/cora-pr-a-backlog-v1.json';
@@ -131,9 +130,8 @@ export function derivePrABacklog(census,audit,contract){
 }
 export function observePrABacklog(){
  const contract=JSON.parse(fs.readFileSync(path.join(ROOT,CONTRACT),'utf8'));
- const census=observeReticularCensus();
+ const {census,audit}=observeReticularCensusWithAudit();
  if(!census.ok)return invalid('PR_A_UPSTREAM_CENSUS_FAILED');
- const audit=auditRepository();
  return derivePrABacklog(census,audit,contract);
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

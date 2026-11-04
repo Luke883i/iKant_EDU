@@ -534,6 +534,16 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Fix original Python tool extraction snippet to match the current EDU Git ZIP prefix while preserving independent HEAD/TREE and blob checks.",
       "deletion_authorized": false
+    },
+    {
+      "path": "tests/test_project_manual_source.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add negative original ZIP fixture rejecting retired LE naming, while retaining exact EDU success and hostile archive controls.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "same_source_main_change": "EXPLICIT_REVIEW_REQUIRED_PR_SLICE"
     }
   ]
 }

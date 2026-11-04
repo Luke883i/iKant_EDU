@@ -58,6 +58,15 @@ class ManualSource(unittest.TestCase):
                 z,a,h,t=modify(self.archive(),self.api,self.head,self.tree)
                 with self.assertRaises((ValueError,KeyError,json.JSONDecodeError)):
                     M.convert(z,a,h,t)
+    def test_retired_LE_archive_prefix_denied(self):
+        b=io.BytesIO()
+        with zipfile.ZipFile(b,"w") as z:
+            for p,raw in self.raw.items():
+                z.writestr("iKant_LE-"+self.head+"/"+p,raw)
+        b.seek(0)
+        with self.assertRaisesRegex(ValueError,"ARCHIVE_WRONG_HEAD_PREFIX"):
+            M.convert(b,self.api,self.head,self.tree)
+
     def test_zip_symlink_rejected(self):
         b=io.BytesIO()
         with zipfile.ZipFile(b,"w") as z:

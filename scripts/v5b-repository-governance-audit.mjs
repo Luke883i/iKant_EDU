@@ -103,7 +103,7 @@ export function auditWorkflowRetirements(baselinePaths,livePaths,retention,track
  for(const p of retired){
   const r=map[p];
   if(!before.has(p)||live.has(p)||!retention?.paths?.includes(p))errors.push('INVALID_WORKFLOW_RETIREMENT:'+p);
-  if(!r||typeof r.reason!=='string'||r.reason.length<60||!Array.isArray(r.replacements)||!r.replacements.length||!Array.isArray(r.tests)||!r.tests.length||!/^[A-Z_]+$/.test(r.status||''))errors.push('UNREVIEWABLE_WORKFLOW_RETIREMENT:'+p);
+  if(!r||typeof r.reason!=='string'||r.reason.length<60||!Array.isArray(r.replacements)||!r.replacements.length||!Array.isArray(r.tests)||!r.tests.length||!/^[A-Z][A-Z0-9_]*$/.test(r.status||''))errors.push('UNREVIEWABLE_WORKFLOW_RETIREMENT:'+p);
   for(const successor of r?.replacements||[])if(successor===p||!live.has(successor)||Object.hasOwn(map,successor))errors.push('REPLACEMENT_NOT_ACTIVE:'+p+':'+successor);
   for(const suite of r?.tests||[])if(!tracked.has(suite))errors.push('RETIRED_WORKFLOW_TEST_MISSING:'+p+':'+suite);
  }

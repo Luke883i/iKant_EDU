@@ -101,3 +101,14 @@ test('V5-B rejects overlapping delta registers unless explicit predecessor is pi
  assert.equal(qualifyRegisterSuccession(a,{...b,operation:'REMOVE',same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
  assert.equal(qualifyRegisterSuccession(a,{...b,register:a.register,same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),false);
 });
+
+test('V5B reviewer status supports digit-bearing C98 lineage while rejecting invalid tokens',()=>{
+ const base=['.github/workflows/c98-project-3md.yml','.github/workflows/c98-host-bound-prepr.yml'];
+ const retained={paths:base,superseded_workflows:{[base[0]]:{status:'SUBSUMED_C98_BASELINE',reason:'Specialist baseline is verified in an active replacement with exact focused regression coverage.',replacements:[base[1]],tests:['tests/c98-project-baseline.test.mjs']}}};
+ const paths=[base[1],'tests/c98-project-baseline.test.mjs'];
+ assert.deepEqual(auditWorkflowRetirements(base,[base[1]],retained,paths).errors,[]);
+ for(const status of ['SUBSUMED-C98_BASELINE','9_SUBSUMED','SUBSUMED C98','']){
+  const mutant={...retained,superseded_workflows:{[base[0]]:{...retained.superseded_workflows[base[0]],status}}};
+  assert(auditWorkflowRetirements(base,[base[1]],mutant,paths).errors.some(x=>x.startsWith('UNREVIEWABLE_WORKFLOW_RETIREMENT')),status);
+ }
+});

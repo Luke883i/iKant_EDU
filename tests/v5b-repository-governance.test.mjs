@@ -1,7 +1,28 @@
+import crypto from 'node:crypto';
+const requireIndependentSha=bytes=>crypto.createHash('sha1').update('blob '+bytes.length+String.fromCharCode(0)).update(bytes).digest('hex');
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession} from '../scripts/v5b-repository-governance-audit.mjs';
+import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession,gitBlobSha1} from '../scripts/v5b-repository-governance-audit.mjs';
 
+test('canonical Git hash helper is byte-accurate for UTF-8 and binary, reject object coercion',()=>{
+ const cryptoSha=bytes=>{
+  const b=Buffer.isBuffer(bytes)?bytes:Buffer.from(bytes);
+  return requireIndependentSha(b);
+ };
+ assert.equal(gitBlobSha1(''),'e69de29bb2d1d6434b8b29ae775ad8c2e48c5391');
+ for(const x of ['', 'hello', 'caffè', '🚀', '\u0000', 'a\r\nb', '\uFEFFx',
+  '🇮🇹 café\n', 'a\uD800', 'iKant_EDU'] ){
+  const b=Buffer.from(x,'utf8');
+  assert.equal(gitBlobSha1(x),gitBlobSha1(b));
+  assert.equal(gitBlobSha1(new Uint8Array(b)),gitBlobSha1(b));
+  assert.equal(gitBlobSha1(x),cryptoSha(b));
+ }
+ const binary=Buffer.from([0,255,0,195,40,128]);
+ assert.equal(gitBlobSha1(binary),cryptoSha(binary));
+ for(const value of [null,undefined,12,false,{},['a'],new ArrayBuffer(2)]){
+  assert.throws(()=>gitBlobSha1(value),/V5B_GIT_BLOB_INPUT_TYPE/);
+ }
+});
 test('all-path roles are explicitly provisional and never human review',()=>{
  assert.equal(provisionalRole('tests/foo.test.mjs'),'TEST_SOURCE');
  assert.equal(provisionalRole('.github/workflows/a.yml'),'CI_WORKFLOW');

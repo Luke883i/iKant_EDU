@@ -76,7 +76,15 @@ export function referencePredicate(){return {source_lock:true,original_owner_unc
  consumers_verified:false,byte_equivalence_checked:false,behavioral_equivalence_checked:false,
  human_authorization:false,required_check_provider_readback:false,
  original_contract_requalified:false,restore_plan_tested:false};}
-function sha1Blob(bytes){return crypto.createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');}
+/** Canonical Git blob SHA-1. Header length counts raw bytes, never JS code units. */
+export function gitBlobSha1(input){
+ if(typeof input!=='string'&&!Buffer.isBuffer(input)&&!(input instanceof Uint8Array))
+  throw new TypeError('V5B_GIT_BLOB_INPUT_TYPE');
+ const bytes=typeof input==='string'?Buffer.from(input,'utf8'):
+  Buffer.from(input.buffer,input.byteOffset,input.byteLength);
+ return crypto.createHash('sha1').update(Buffer.from('blob '+bytes.byteLength+String.fromCharCode(0)))
+  .update(bytes).digest('hex');
+}
 /** The Git index carries versioned provenance; generated working bytes do not. */
 export function parseStagedGitEntries(raw){
  if(typeof raw!=='string')throw Error('V5B_INDEX_INPUT_INVALID');
@@ -180,7 +188,7 @@ export function auditRepository(){
  for(const p of paths){
   if(seen.has(p))errors.push('DUPLICATE_TRACKED:'+p);seen.add(p);
   const bytes=read(p),digest=indexShas.get(p),oldRow=old.get(p);
-  const worktree=qualifyWorkingTreeDifference(p,digest,sha1Blob(bytes));
+  const worktree=qualifyWorkingTreeDifference(p,digest,gitBlobSha1(bytes));
   if(!worktree.ok){worktreeSourceDirty.push(p);errors.push(worktree.edge+':'+p);}
   else if(worktree.status==='TEST_GENERATED_EVIDENCE_DIFFERENT_FROM_COMMITTED_BLOB')worktreeGenerated.push(p);
   if(!oldRow){introduced.push(p);if(permitted.get(p)?.operation!=='ADD')errors.push('UNREGISTERED_ADDITION:'+p);}

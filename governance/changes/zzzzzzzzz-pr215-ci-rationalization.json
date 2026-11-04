@@ -184,7 +184,7 @@
       "path": "tests/v1-workflow-retention.test.mjs",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
+      "reason": "Preserve original C98 retirement statuses and V1 no-silent-deletion test using strict uppercase alphanumeric underscore syntax; reject malformed labels, preserve replacement/consumer tests, no human signoff inferred.",
       "deletion_authorized": false
     },
     {

@@ -20,7 +20,7 @@ test('retain every baseline workflow unless a new reviewed migration contract su
   const m=migration[p];
   if(m){
    assert.equal(fs.existsSync(path.join(root,p)),false,'retired workflow still active: '+p);
-   assert.ok(/^[A-Z_]+$/.test(m.status),'missing status: '+p);
+   assert.ok(/^[A-Z][A-Z0-9_]*$/.test(m.status),'missing status: '+p);
    assert.ok(m.reason.length>=60,'no justification: '+p);
    assert.ok(m.replacements.length>=1&&m.tests.length>=1,'migration coverage missing: '+p);
    for(const q of m.replacements){assert.notEqual(p,q);assert.ok(!migration[q]);assert.ok(fs.statSync(path.join(root,q)).isFile());}
@@ -30,4 +30,10 @@ test('retain every baseline workflow unless a new reviewed migration contract su
    assert.equal(st.isFile()&&!st.isSymbolicLink(),true,'missing unsuperseded workflow: '+p);
   }
  }
+});
+
+test('digit-bearing C98 retirement statuses are valid, malformed statuses are not',()=>{
+ const pattern=/^[A-Z][A-Z0-9_]*$/;
+ for(const good of ['SUBSUMED_C98_BASELINE','SUBSUMED_C98_PHASE2'])assert.equal(pattern.test(good),true);
+ for(const bad of ['SUBSUMED-C98_BASELINE','SUBSUMED C98','9SUBSUMED','', 'subsumed_C98'])assert.equal(pattern.test(bad),false);
 });

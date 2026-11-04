@@ -52,10 +52,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Runtime root and repository contract
-        run: |
-          npm run check
-          npm run runtime-root:verify
+      - name: Runtime-root exactness
+        run: npm run runtime-root:verify
       - name: Exact repository source and local annex/owner boundaries
         run: |
           node --test --test-concurrency=1 tests/p1-semantic-annex.test.mjs tests/p2-project-release.test.mjs tests/p3p7-witness-boundary.test.mjs tests/p1p7-contract.test.mjs

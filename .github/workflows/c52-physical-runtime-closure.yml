@@ -45,8 +45,6 @@ jobs:
         run: node scripts/c52-build-dod.mjs
       - name: Qualification artifacts are deterministic committed bytes
         run: git diff --exit-code -- artifacts/qualification/c52-physical-closure-10m.json artifacts/qualification/c52-physical-closure-lattice.json artifacts/qualification/c52-bundle-coverage.json artifacts/qualification/c52-candidate-blob-manifest.json artifacts/qualification/c52-runtime-physical-closure-dod.json
-      - name: Repository contract check
-        run: npm run check
       - name: Claim boundary cannot be laundered by CI
         run: |
           node - <<'NODE'

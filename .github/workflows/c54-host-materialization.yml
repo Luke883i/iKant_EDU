@@ -141,8 +141,6 @@ jobs:
         run: node scripts/c54-build-dod.mjs --selection /tmp/c54-selection.json --falsification /tmp/c54-falsification.json --output /tmp/c54-dod.json
       - name: Exact runtime-root unchanged
         run: npm run runtime-root:verify
-      - name: Repository qualification
-        run: npm run check
       - name: Read-only CI invariant
         run: |
           test -z "$(git status --porcelain)"

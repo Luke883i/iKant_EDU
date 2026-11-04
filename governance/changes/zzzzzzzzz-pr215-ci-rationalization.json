@@ -382,6 +382,34 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/c52-physical-runtime-closure.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Keep exact runtime-root, C52 inherited tests, 10m physical closure saturation, bundle coverage, DoD and generated-byte checks while central CI alone owns the global contract check.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c53-physical-closure-hardening.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Keep C53 physical mutation, C52 inherited exact artifact regeneration and runtime-root verification; central CI still blocks on global repository check.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c54-host-materialization.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Keep C54 host materialization tests, original authority invariants, 100k selection, one-million falsification and exact runtime-root; central CI owns duplicated check.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/p1-p7-oneshell-release.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve P1-P7 source-root gate and all product/owner release regressions while removing repeated global check from release candidate runner, with ci.yml still blocking it.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

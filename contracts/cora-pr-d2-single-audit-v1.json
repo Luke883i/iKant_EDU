@@ -1,0 +1,125 @@
+{
+  "schema": "ikant-cora-pr-d2-single-v5b-readback/v1",
+  "authority": 0,
+  "phase": "HOST_ENGINEERING",
+  "release": "NO_GO",
+  "product_go": false,
+  "baseline": {
+    "repo": "Luke883i/iKant_EDU",
+    "head": "e8999ac9dc83f5482cd065e7d358ecee21a9cb45",
+    "tree": "aefd7a0a95ab965997aeda6df5bb8fc32be35c9d",
+    "workflow_count": 116
+  },
+  "existing_owners": {
+    "census": "scripts/cora-minimal-absorption.mjs#observeReticularCensus",
+    "inventory": "scripts/v5b-repository-governance-audit.mjs#auditRepository",
+    "pr_a": "scripts/cora-pr-a-backlog.mjs#observePrABacklog",
+    "pr_c": "scripts/cora-pr-c-ci.mjs#observePrCCISource",
+    "reticulum": "contracts/cora-reticular-hygiene-v1.json"
+  },
+  "slice": {
+    "kind": "REMOVE_DUPLICATE_FULL_V5B_AUDIT_PASS",
+    "before_scans_per_entrypoint": {
+      "pr_a": 2,
+      "pr_b_via_pr_a": 2,
+      "pr_c": 2
+    },
+    "after_scans_per_entrypoint": {
+      "pr_a": 1,
+      "pr_b_via_pr_a": 1,
+      "pr_c": 1
+    },
+    "new_inventory": false,
+    "new_owner": false,
+    "external_audit_injection": false,
+    "workflow_change": false,
+    "owner_change": false,
+    "destructive_change": false,
+    "source_snapshot_owner": "scripts/cora-minimal-absorption.mjs#observeReticularCensusWithAudit",
+    "legacy_wrapper": "scripts/cora-minimal-absorption.mjs#observeReticularCensus",
+    "identity_rule": "SAME_AUDIT_OBJECT_VALIDATED_BY_ORIGINAL_CORA_AND_CONSUMERS"
+  },
+  "reticular_dod": [
+    {
+      "id": "D2-01",
+      "requires": [],
+      "proof": "BASE HEAD/TREE and original owner/workflow blob witness pinned"
+    },
+    {
+      "id": "D2-02",
+      "requires": [
+        "D2-01"
+      ],
+      "proof": "Explicit V5-B predecessor and later source epoch for six modified files and three added files"
+    },
+    {
+      "id": "D2-03",
+      "requires": [
+        "D2-02"
+      ],
+      "proof": "CORA runs original auditRepository once per invocation; returns same audit object and qualified census"
+    },
+    {
+      "id": "D2-04",
+      "requires": [
+        "D2-03"
+      ],
+      "proof": "PR-A and transitive PR-B reuse same original V5-B audit, no additional pass"
+    },
+    {
+      "id": "D2-05",
+      "requires": [
+        "D2-03"
+      ],
+      "proof": "PR-C source qualifier uses same audit snapshot, no additional pass"
+    },
+    {
+      "id": "D2-06",
+      "requires": [
+        "D2-04",
+        "D2-05"
+      ],
+      "proof": "Legacy API and resulting outputs equivalent on full Git checkout, original UNKNOWN nonpromotion preserved"
+    },
+    {
+      "id": "D2-07",
+      "requires": [
+        "D2-06"
+      ],
+      "proof": "Deterministic seeded negative mutation fixtures, source-callgraph guards and independent prior double-audit comparator"
+    },
+    {
+      "id": "D2-08",
+      "requires": [
+        "D2-07"
+      ],
+      "proof": "Exact HEAD independent CI, no original workflow/owner delta and Git readback"
+    },
+    {
+      "id": "D2-09",
+      "requires": [
+        "D2-08"
+      ],
+      "proof": "Two qualified independent engineers, human V5-G decision and postmerge readback"
+    }
+  ],
+  "abstract_dod": "SAME_SOURCE_AND_SINGLE_OWNER_AUDIT_AND_NO_SEMANTIC_DRIFT_AND_FALSIFIABLE_CONSUMER_REUSE_AND_INDEPENDENT_EXTERNAL_REVIEW",
+  "forbidden": {
+    "invent_second_inventory": false,
+    "accept_external_injected_audit": false,
+    "unknown_means_unused": false,
+    "mutations_prove_provider": false,
+    "ci_is_human_approval": false,
+    "change_owner": false,
+    "change_workflow": false,
+    "claim_product_release": false
+  },
+  "evidence": {
+    "source": "CANDIDATE_ONLY_UNTIL_EXACT_HEAD_CI",
+    "approval": "NOT_ATTESTED",
+    "provider": "NOT_ATTESTED",
+    "user_value": "NOT_ATTESTED",
+    "required_checks": "UNKNOWN"
+  },
+  "result": "SOURCE_ONLY_NOT_REPOSITORY_STANDARDIZED"
+}

@@ -440,6 +440,15 @@
       "deletion_authorized": false
     },
     {
+      "path": "project/edu-oneshell/PROMPT_INNESCO.txt",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Regenerate distribution-only C131 legacy alias byte-exact from the current single canonical Project prompt plus the unmodified version trailer; prevent V5-A source divergence without modifying canonical prompt, owners or installed provider.",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

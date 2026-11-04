@@ -433,6 +433,13 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/docs-ontology-coverage.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve document atlas completeness/falsification and source semantics; remove only duplicate npm run check from documentation specialist job while blocking contract check remains in ci.yml.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

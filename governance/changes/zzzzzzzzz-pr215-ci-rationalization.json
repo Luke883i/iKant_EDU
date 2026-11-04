@@ -354,6 +354,34 @@
       "deletion_authorized": false
     },
     {
+      "path": ".github/workflows/c26-local-host-meta-prompt.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Remove redundant global npm check from C26 scoped local-host-prompt qualifier while preserving prompt tests and falsification, with global CI retaining blocking check.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c72-unified-mode-admission.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Remove redundant global contract check from C72 matrix while preserving all original C69-C72 admissions, value falsifiers, and exact runtime root verification.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c34-pre-runtime-handoff.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Remove duplicated global checker from C34 while retaining C34 1m falsification, focused owner handoff regressions, C33 nonregression, and source root verification.",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/c46-fast-cohost-bind.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Remove redundant global checker from C46 while retaining scoped C46-C48 fast cohost bind and source-bound selection falsifiers.",
+      "deletion_authorized": false
+    },
+    {
       "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

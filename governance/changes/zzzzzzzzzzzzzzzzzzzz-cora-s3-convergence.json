@@ -12,13 +12,17 @@
       "path": "scripts/cora-three-streams-audit.mjs",
       "operation": "MODIFY",
       "reason": "Use original pinned commit for historical PR226 source and fail closed when shallow Git omits baseline objects",
-      "human_review": "REVIEW_REQUIRED"
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
+      "supersedes_source_main": "c4227761ed2f0bfff1cb628922a07245742b43e2"
     },
     {
       "path": "tests/cora-three-streams-audit.test.mjs",
       "operation": "MODIFY",
       "reason": "Source-locked historical baseline regression now fails closed instead of forging missing shallow Git ancestry",
-      "human_review": "REVIEW_REQUIRED"
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
+      "supersedes_source_main": "c4227761ed2f0bfff1cb628922a07245742b43e2"
     },
     {
       "path": "host/project-c72-transport-frontier.mjs",

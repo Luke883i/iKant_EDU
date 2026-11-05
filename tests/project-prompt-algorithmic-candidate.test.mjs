@@ -2,6 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {createHash} from 'node:crypto';
 const source=fs.readFileSync('project/session-chat/PROMPT_INNESCO_ALGORITHMIC_CANDIDATE.txt','utf8');
 const codes='001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 016 017 018 019 020 021 022 023 024 025 026 030 031 032 033 034 040 041 042 043 044 045 046 047 048 049 050 051 052 053 054 055 060 061 062 063 064 065 070 071 080 081 082 083 090 091 092 095 096'.split(' ');
 const guard=new Map([
@@ -68,13 +69,18 @@ const attacks=[
 ];
 test('complete script: 64 numbered instructions, cross-function calls, UTF-8 <=8000B',()=>{assert.deepEqual(validate(source),{lines:64,bytes:Buffer.byteLength(source),runtime_attested:false});});
 test('10000 seeded negative mutants / 25 independent threat classes (source-only)',()=>{
- const coverage=Array(25).fill(0);
+ const coverage=Array(25).fill(0), seen=new Set();
+ const dialects=['COBOL','BASIC','JSON','XML','YAML','PASCAL','MATH','SQL','LATIN','ITALIAN'];
  for(let i=0;i<10000;i++){
   const f=i%25,[before,after]=attacks[f];
-  assert(source.includes(before));const changed=source.replace(before,after);
-  assert.notEqual(changed,source);assert.throws(()=>validate(changed),'mutant '+i);coverage[f]++;
+  assert(source.includes(before));
+  const variant=source.replace('002 | PURPOSE :=','002 | PURPOSE ['+dialects[i%10]+'-'+i+'] :=');
+  validate(variant); // 10k unique benign surface variations must preserve guard acceptance.
+  const changed=variant.replace(before,after);
+  assert.notEqual(changed,variant);assert.throws(()=>validate(changed),'mutant '+i);
+  seen.add(createHash('sha256').update(changed).digest('hex'));coverage[f]++;
  }
- assert(coverage.every(n=>n===400));
+ assert(coverage.every(n=>n===400));assert.equal(seen.size,10000);
 });
 test('negative structure: reorder, insert, COBOL-like fake owner and CRLF are denied',()=>{
  for(const v of [source.replace('001 | ','002 | '),source.replace('003 | ','003 | BYPASS_GATE '),source.replace('096 | END PROGRAM','096 | FAKE_RECEIPT'),source.replaceAll('\n','\r\n')])assert.throws(()=>validate(v));

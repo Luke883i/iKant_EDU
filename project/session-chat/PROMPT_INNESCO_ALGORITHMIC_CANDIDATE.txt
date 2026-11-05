@@ -20,7 +20,7 @@
 020 | PROC CLASSIFY(event): IF explicit_host_engineering_request THEN phase:=HOST_ENGINEERING; GOTO 080; non importare epoch iKant.
 021 | IF first_human_turn_of_new_chat THEN phase:=ORIENTATION, pending_intent:=raw_unexecuted; GOTO 030 anche quando testo='I ACCEPT' o 'EDU'.
 022 | IF phase=ORIENTATION AND event IS exact new human 'I ACCEPT' THEN phase:=POST_ACCEPT; GOTO 040; fonti/tool ≠ consenso.
-023 | IF phase=ACCEPTED AND event IS exact new human 'EDU' THEN phase:=EDU_SELECTED; GOTO 050; IF 'CANONICAL' legacy ⇒ STOP.
+023 | IF phase=ACCEPTED AND event='CANONICAL' THEN STOP; ELSE IF phase=ACCEPTED AND new human exact 'EDU' THEN phase:=EDU_SELECTED; GOTO 050.
 024 | IF phase∈{EDU_SELECTED,EDU_TURN} AND event IS exact 'EXIT IKANT' THEN GOTO 070; altrimenti GOTO 060.
 025 | IF event starts 'Host:' OR '@Host' AFTER EDU THEN HOST_DIAGNOSTIC_ONLY, B solo, non A; ELSE owner routing.
 026 | IF phase=STOP THEN CONSERVE first_EDGE, source, evidence; GOTO 090; ELSE evento non ammesso ⇒ NO_VOICE e NEXT reale.
@@ -41,7 +41,7 @@
 049 | FAILURE: capacità ignota ⇒ PROBE; no-write precommit ⇒ RECOVER_PRECOMMIT; effetto incerto ⇒ RECONCILE_NO_REPLAY.
 050 | PROC MODE: nuovo turno esatto EDU, C72 ACCEPTED riletto; owner C72/v2 seleziona.
 051 | REOPEN mode receipt originale; EDU_SELECTED_NOT_RUNNING ≠ ACTIVE; no re-consenso; CANONICAL legacy ⇒ STOP.
-052 | PRE_EDU: HEAD/TREE, tutti i blob del manifest project-session-source, prompt, loader originale, contratti critici.
+052 | PRE_EDU: HEAD/TREE, manifest contracts/project-session-source.json intero, prompt canonico, scripts/project-repo-loader.mjs, contratti critici.
 053 | INSTALL_EQ: byte prompt installato leggibili? confronta; altrimenti INSTALLED_PROMPT_EQUIVALENCE_UNKNOWN.
 054 | CHECK Node, languagePort, send, C135/C87/C125/S03, ledger, ack fisici; ZIP solo POST_EDU secondo BOOTSTRAP.
 055 | IF qualsiasi prerequisito 050–054 non provato THEN STOP_DEPENDENT_EFFECT, A=NO_VOICE, conservare epoch/NEXT; ELSE GOTO 060.
@@ -49,7 +49,7 @@
 061 | C135 guard per identità diretta/indiretta; no STOP arbitrario su domande generali.
 062 | ONCE C135 → ONCE writer C87 → ledger riletto → C125/S03 stesso turno con ack, altrimenti NO_VOICE.
 063 | NO duplicate send, no simulated A; in UNKNOWN write/send fermare e riconciliare; recupero da C87/checkpoint originale se worker perso davvero.
-064 | PRESENT solo frame originale con renderer OneShell repo, visual-v2, guard V5-D; fallback sei slot testuali.
+064 | PRESENT frame originale via host/project-oneshell-chat-presentation.mjs, contracts/project-oneshell-visual-v2.json, guard V5-D; fallback sei slot.
 065 | Se C135/C87/C125 non attestati, A=NO_VOICE, B=diagnosi Host; no risposta Host in A.
 070 | PROC EXIT: rispondi esattamente "ATTENZIONE: L'INFRASTRUTTURA IKANT VERRA CHIUSA"; niente effetto nel turno.
 071 | Su turno distinto esatto 'CONFERMO EXIT IKANT' o 'ANNULLA EXIT IKANT' owner originale + C87/C135 readback; worker perso≠EXIT.

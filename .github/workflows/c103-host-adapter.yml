@@ -6,7 +6,7 @@ on:
       - 'contracts/c103-host-adapter-minimum.json'
       - 'docs/C103_HOST_ADAPTER_INTEROPERABILITY.md'
       - 'scripts/c103-falsify-100k.mjs'
-      - 'test/c103-host-adapter.test.mjs'
+      - 'tests/c103-host-adapter.test.mjs'
       - '.github/workflows/c103-host-adapter.yml'
   workflow_dispatch:
 permissions:
@@ -24,10 +24,10 @@ jobs:
         run: |
           node --check host/c103-host-adapter-conformance.mjs
           node --check scripts/c103-falsify-100k.mjs
-          node --check test/c103-host-adapter.test.mjs
+          node --check tests/c103-host-adapter.test.mjs
           node -e 'const c=require("./contracts/c103-host-adapter-minimum.json");if(c.authority!==0||c.nonclaims.new_owner!==false||c.nonclaims.new_writer!==false)process.exit(2)'
       - name: Original C101 C102 C87 physical integration
-        run: node --test test/c103-host-adapter.test.mjs
+        run: node --test tests/c103-host-adapter.test.mjs
       - name: 100000 synthetic negative mutations
         run: |
           node scripts/c103-falsify-100k.mjs > c103-results.json

@@ -4,7 +4,7 @@ on:
     paths:
       - 'host/c102-soft-host-bridge.mjs'
       - 'scripts/c102-soft-host-cli.mjs'
-      - 'test/c102-real-source.test.mjs'
+      - 'tests/c102-real-source.test.mjs'
       - 'docs/C102_SOFT_HOST_RUNTIME.md'
       - '.github/workflows/c102-soft-host.yml'
   workflow_dispatch:
@@ -24,4 +24,4 @@ jobs:
           node --check host/c102-soft-host-bridge.mjs
           node --check scripts/c102-soft-host-cli.mjs
       - name: Execute original C101 cognitive chain through original C87 ledger
-        run: node --test test/c102-real-source.test.mjs
+        run: node --test tests/c102-real-source.test.mjs

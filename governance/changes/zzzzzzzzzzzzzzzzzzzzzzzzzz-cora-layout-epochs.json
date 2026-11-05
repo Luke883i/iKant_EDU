@@ -397,6 +397,14 @@
       "reason": "Extend existing CORA workflow Git-tree source gate from one frozen YAML delta to the exact six registered original plus migrated blobs; preserve base historic TREE, 116 jobs, no retirement and negative mutation qualification",
       "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzz-cora-pr-d2-single-audit.json",
       "supersedes_source_main": "e8999ac9dc83f5482cd065e7d358ecee21a9cb45"
+    },
+    {
+      "path": "tests/cora-pr-d1-blob-dedup.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace obsolete direct current=TREE historical assertion with existing PR-F byte-exact historic-versus-current Git witness; retain all 116 records and original owner blob checks",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzz-cora-pr-d2-single-audit.json",
+      "supersedes_source_main": "e8999ac9dc83f5482cd065e7d358ecee21a9cb45"
     }
   ],
   "workflow_migration": {

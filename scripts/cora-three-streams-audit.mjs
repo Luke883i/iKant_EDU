@@ -82,6 +82,12 @@ const blobHash=b=>createHash('sha1').update(Buffer.from('blob '+b.length+String.
 export function observeThreeStreamSource(){
  try{
   const head=git('rev-parse','HEAD'),tree=git('rev-parse','HEAD^{tree}');
+  // Immutable post-PR226 historical witness; current S3 source is checked separately.
+  const baseline='c4227761ed2f0bfff1cb628922a07245742b43e2';
+  try{git('cat-file','-e',baseline+'^{commit}');
+   git('merge-base','--is-ancestor',baseline,head);
+  }catch{return {ok:false,edge:'STREAM_HISTORICAL_BASELINE_NOT_LOCALLY_AVAILABLE',
+   source_pins:[],authority:0,standardized:false,product_go:false,archive_allowed:false};}
   const load=p=>JSON.parse(data('show',head+':'+p).toString('utf8'));
   const profile=load('contracts/cora-three-streams-retrograde-v1.json');
   const valid=validateStreamProfile(profile);if(!valid.ok)return valid;
@@ -89,7 +95,7 @@ export function observeThreeStreamSource(){
    return {ok:false,edge:'STREAM_ORIGINAL_F_CONTRACT_INVALID',authority:0,standardized:false};
   const sources={},observations=[];
   for(const [p,expected] of Object.entries(FIXED_PINS)){
-   const b=data('show',head+':'+p),sha=git('rev-parse',head+':'+p);
+   const b=data('show',baseline+':'+p),sha=git('rev-parse',baseline+':'+p);
    if(sha!==expected||blobHash(b)!==sha)
     return {ok:false,edge:'STREAM_SOURCE_PIN_DRIFT:'+p,authority:0,standardized:false};
    sources[p]=b.toString('utf8');observations.push({path:p,sha1:sha,bytes:b.length});
@@ -102,7 +108,7 @@ export function observeThreeStreamSource(){
    R09:profile.source.cora_original_pin!==profile.source.cora_observed_head});
   if(git('rev-parse','HEAD')!==head)
    return {ok:false,edge:'STREAM_SOURCE_HEAD_DRIFT',authority:0,standardized:false};
-  return {ok:true,status:'SOURCE_CANDIDATE_ALL_THREE_STREAMS_OPEN',head,tree,
+  return {ok:true,status:'HISTORICAL_SOURCE_BASELINE_AND_THREE_STREAMS_OPEN',head,tree,baseline,
    source_pins:observations,semantic_candidates:candidates,reticulum:cut,
    original_f:'SCHEMA_VALID_NOT_REEXECUTED',cora_cli:'NOT_EXECUTED',
    consumer_closure:'UNKNOWN',rollback:'NOT_EXECUTED',

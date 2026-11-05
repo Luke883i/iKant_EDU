@@ -1,0 +1,211 @@
+{
+  "schema": "ikant-host-cora-s3-source-convergence/v1",
+  "authority": 0,
+  "owner": false,
+  "active": false,
+  "release": "NO_GO",
+  "source": {
+    "repo": "Luke883i/iKant_EDU",
+    "base_head": "e719ebfdb8dfa2f1a0382f56ab95fbbdc0f3e005",
+    "base_tree": "9fe5a7d8d757b180aa55df0db86119f446872e03",
+    "original": "contracts/cora-three-streams-retrograde-v1.json",
+    "pr_f": "contracts/cora-pr-f-integrated-qualification-v1.json",
+    "frontier_base_sha": "7b16982373779bdd7ff7b8c0535f515731fc5867",
+    "frontier_after_sha": "88bb9955cea54a98c4c47fe7dec6f385a8e7edf2"
+  },
+  "owners": {
+    "host/c72-public-mode-admission.mjs": "eec28e35a1066802edc905c7d61c1ecbcef0082d",
+    "host/c135-edu-v2-owner.mjs": "e8bbe5741375e5d51f1caa02fdba2ecc5f6c049d",
+    "host/c87-durable-ledger.mjs": "9d4fd4038bd7e109bdbc5e0441f9e9acf497c846",
+    "host/c125-output-port.mjs": "14760e40051b2bbe0c3a2ebc9347e125fdd7d65a"
+  },
+  "stable": {
+    "BOOTSTRAP.json": "36c7d5beedb54c453fd4d38e551aa123a92c92f1",
+    "contracts/project-host-tool-grounding-abi.json": "5d882060167f12d76cb2250fca87bd3e808d241a",
+    "project/session-chat/PROMPT.txt": "277b1a5b7a8b9e5fe09702b6cf854b8682791db4",
+    "project/edu-oneshell/PROMPT_INNESCO.txt": "dd7a3cb190a7a731ef68701b4e11b68fb71708c2",
+    "project-baseline/PROJECT_PROMPT.txt": "9eb7725430f99f24129e2bb8daeb93da67187fc6",
+    "project/oneshell-v7/PROMPT_TEMPLATE.txt": "47d83b4fa2cc68699f9fc63ffa107410a970e24f",
+    "host/project-oneshell-continuous.mjs": "0355428b71ec4d6aa13ec4b81323ee1c9336b102",
+    "contracts/c72-public-mode-admission-v2.json": "0bdb99589d907072917ba31f2938c9b600f39a05"
+  },
+  "abstract": {
+    "logic": "NON_COMPENSATORY_DAG_AND",
+    "claim": "S3_SOURCE_CONVERGENCE_REQUIRES_SOURCE_IDENTITIES_PROMPT_ALIAS_OWNER_DELEGATION_CARRIER_NEGATIVE_FALSIFICATION; FULL_S3_REQUIRES_ORIGINAL_OWNER_READBACK_PROVIDER_ACK_EXTERNAL_CONSUMERS_AND_HUMAN_V5G",
+    "unknown_is_not_pass": true,
+    "source_is_not_runtime": true,
+    "model_is_not_approval": true
+  },
+  "nodes": [
+    {
+      "id": "S3R1",
+      "scope": "SOURCE",
+      "needs": [],
+      "proof": "pinned BASE/HEAD/TREE and original owner blobs"
+    },
+    {
+      "id": "S3R2",
+      "scope": "SOURCE",
+      "needs": [
+        "S3R1"
+      ],
+      "proof": "operative manual ZIP canonical repository identity"
+    },
+    {
+      "id": "S3R3",
+      "scope": "SOURCE",
+      "needs": [
+        "S3R1"
+      ],
+      "proof": "separate advisory carrier priorities with no owner promotion"
+    },
+    {
+      "id": "S3R4",
+      "scope": "SOURCE",
+      "needs": [
+        "S3R1"
+      ],
+      "proof": "canonical prompt and C131 derived byte prefix; historical templates retained"
+    },
+    {
+      "id": "S3R5",
+      "scope": "SOURCE",
+      "needs": [
+        "S3R1"
+      ],
+      "proof": "single declared original owner chain and delegation"
+    },
+    {
+      "id": "S3R6",
+      "scope": "SOURCE",
+      "needs": [
+        "S3R1"
+      ],
+      "proof": "EDU/CANONICAL selection distinct from provider ACTIVE and CORA skew"
+    },
+    {
+      "id": "S3R7",
+      "scope": "SOURCE",
+      "needs": [
+        "S3R2",
+        "S3R3",
+        "S3R4",
+        "S3R5",
+        "S3R6"
+      ],
+      "proof": "negative function test, SOURCE only without original owner effects"
+    },
+    {
+      "id": "I_S3_SOURCE",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "S3R1",
+        "S3R2",
+        "S3R3",
+        "S3R4",
+        "S3R5",
+        "S3R6",
+        "S3R7"
+      ],
+      "proof": "AND of pinned source witnesses"
+    },
+    {
+      "id": "S3E1",
+      "scope": "EXTERNAL",
+      "needs": [
+        "I_S3_SOURCE"
+      ],
+      "proof": "dynamic and external consumer closure independently proved"
+    },
+    {
+      "id": "S3E2",
+      "scope": "EXTERNAL",
+      "needs": [
+        "I_S3_SOURCE"
+      ],
+      "proof": "original owner C72/C135/C87/C125 receipt and ledger readback"
+    },
+    {
+      "id": "S3E3",
+      "scope": "EXTERNAL",
+      "needs": [
+        "S3E2"
+      ],
+      "proof": "native provider delivery identity and acknowledgement"
+    },
+    {
+      "id": "S3E4",
+      "scope": "EXTERNAL",
+      "needs": [
+        "I_S3_SOURCE"
+      ],
+      "proof": "two independent engineers and human decision"
+    },
+    {
+      "id": "I_S3_COMPLETE",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "I_S3_SOURCE",
+        "S3E1",
+        "S3E2",
+        "S3E3",
+        "S3E4"
+      ],
+      "proof": "complete S3 after native external cut"
+    }
+  ],
+  "cases": [
+    {
+      "id": "C1",
+      "classification": "CARRIER_ADVISORY_PRIORITY",
+      "owner_change": false
+    },
+    {
+      "id": "C2",
+      "classification": "OPERATIVE_LEGACY_ZIP_CORRECTED",
+      "owner_change": false
+    },
+    {
+      "id": "C3",
+      "classification": "PROMPT_ALIAS_DERIVED",
+      "owner_change": false
+    },
+    {
+      "id": "C4",
+      "classification": "HISTORICAL_PROMPTS_RETAINED",
+      "owner_change": false
+    },
+    {
+      "id": "C5",
+      "classification": "RUNTIME_DELEGATION_UNATTESTED",
+      "owner_change": false
+    },
+    {
+      "id": "C6",
+      "classification": "CANONICAL_NOT_ACTIVE",
+      "owner_change": false
+    },
+    {
+      "id": "C7",
+      "classification": "CORA_UPSTREAM_SKEW",
+      "owner_change": false
+    },
+    {
+      "id": "C8",
+      "classification": "NO_PREMATURE_ARCHIVE",
+      "owner_change": false
+    }
+  ],
+  "boundaries": {
+    "archive_allowed": false,
+    "delete_allowed": false,
+    "workflow_retirement_allowed": false,
+    "prompt_install_allowed": false,
+    "owner_invoke_allowed": false,
+    "product_go": false,
+    "standardized": false,
+    "independent_review": "NOT_ATTESTED",
+    "provider": "NOT_ATTESTED"
+  },
+  "first_edge": "S3E1_DYNAMIC_AND_EXTERNAL_CONSUMERS_NOT_ATTESTED"
+}

@@ -21,12 +21,6 @@
       "human_review": "REVIEW_REQUIRED"
     },
     {
-      "path": "docs/CORA_M1_EVIDENCE_CUT.md",
-      "operation": "ADD",
-      "reason": "Reproducible M1 source and external evidence map without a second governance contract",
-      "human_review": "REVIEW_REQUIRED"
-    },
-    {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
       "operation": "ADD",
       "reason": "Append-only original V5-B change-register source declaration with all reviews outstanding",

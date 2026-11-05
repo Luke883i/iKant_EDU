@@ -1,0 +1,36 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "e8a49c2b1a6ffcff15380518d166b8b55ee890a4",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzz-cora-m2-owner-provider-metrics.json",
+  "scope": "HOST_ENGINEERING_M2_OWNER_PROVIDER_METRICS_NONPROMOTING_SOURCE_ONLY",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "paths": [
+    {
+      "path": "contracts/cora-m2-owner-provider-metrics-v1.json",
+      "operation": "ADD",
+      "reason": "Non-authoritative reticular M2 original owner/provider DoD, 16 nodes, 14 metrics, 14 checklist items and 8 Git pins",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/cora-m2-owner-provider-metrics.mjs",
+      "operation": "ADD",
+      "reason": "Read-only source metrology replaying original PR-F/S3/M1 and exact original C72/C135/C87/C125/S03 blobs",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/cora-m2-owner-provider-metrics.test.mjs",
+      "operation": "ADD",
+      "reason": "Pure model falsifiers, explicit original source boundaries and 100k finite logical vectors with zero field promotion",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzz-cora-m2-owner-provider-metrics.json",
+      "operation": "ADD",
+      "reason": "V5-B original change-register extension for M2; human review uncompleted",
+      "human_review": "REVIEW_REQUIRED"
+    }
+  ]
+}

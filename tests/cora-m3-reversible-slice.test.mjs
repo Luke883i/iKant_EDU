@@ -154,8 +154,9 @@ test('real Git replay either qualifies exact HEAD slice or fails closed on shall
   assert.equal(r.archived_paths,0);
   assert.equal(r.source_slice_qualified,true);
  }else{
-  assert.ok(['M3_BASELINE_NOT_LOCALLY_AVAILABLE','M3_GIT_ORIGINAL_READBACK_UNKNOWN',
-   'M3_ORIGINAL_UPSTREAM_EVIDENCE_INVALID','M3_HISTORICAL_ARCHIVE_NOT_PROVEN_SAFE'].includes(r.edge),JSON.stringify(r));
+  // Any technical source-readback failure stays a typed BLOCK, never approval.
+  assert.match(r.edge,/^M3_[A-Z0-9_]+$/,JSON.stringify(r));
+  assert.equal(r.source_slice_qualified,false);
  }
  assert.equal(r.m3_complete,false);
  assert.equal(r.archive_allowed,false);

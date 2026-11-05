@@ -1,0 +1,46 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "40d1fe252aab05b028cb82b80dd4818b977d5e2a",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzz-cora-m3-reversible-slice.json",
+  "scope": "CORA_M3_BOUNDED_REVERSIBLE_SOURCE_HARDENING_ARCHIVE_RETAIN_UNTIL_INDEPENDENT_PROOF",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "paths": [
+    {
+      "path": "scripts/cora-m2-owner-provider-metrics.mjs",
+      "operation": "MODIFY",
+      "reason": "Harden original M2 validator exact node proof text, exact nonpromotion/policy keys, remove unused fs import; single bounded reversible source delta",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzz-cora-m2-owner-provider-metrics.json",
+      "supersedes_source_main": "e8a49c2b1a6ffcff15380518d166b8b55ee890a4"
+    },
+    {
+      "path": "tests/cora-m2-owner-provider-metrics.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Regression on old false acceptance of forged DoD proof and additional nonpromotion/policy keys",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzz-cora-m2-owner-provider-metrics.json",
+      "supersedes_source_main": "e8a49c2b1a6ffcff15380518d166b8b55ee890a4"
+    },
+    {
+      "path": "scripts/cora-m3-reversible-slice.mjs",
+      "operation": "ADD",
+      "reason": "Read-only M3 original V5-B/PR-A/PR-F/M1/M2 source gate, exact Git blob patch, non-promoting external cuts",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/cora-m3-reversible-slice.test.mjs",
+      "operation": "ADD",
+      "reason": "24 targeted negative mutations, 20k deterministic AND cuts and private byte-exact physical rollback rehearsal",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzz-cora-m3-reversible-slice.json",
+      "operation": "ADD",
+      "reason": "Original V5-B registrar extension; human review and physical field gates remain open",
+      "human_review": "REVIEW_REQUIRED"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "6c08e7241751c5507048b0748d14a5648be8c1cb",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json",
+  "scope": "PR_F_INDEPENDENT_ENGINEERING_QUALIFICATION_AND_EXACT_DELETION_RECOVERY",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json",
+      "operation": "ADD",
+      "reason": "Read-only source qualification extension in original V5-B",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "contracts/cora-pr-f-integrated-qualification-v1.json",
+      "operation": "ADD",
+      "reason": "Derived retrospective F reticulum, metric targets and checklist, no new owner",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/cora-pr-f-qualification.mjs",
+      "operation": "ADD",
+      "reason": "Read-only original V5-B/CORA/PR-A/PR-B/PR-C integrated checkout witness",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/cora-pr-f-falsify-1m.mjs",
+      "operation": "ADD",
+      "reason": "Deterministic realistic preseeded finite semantic adversarial campaign",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/cora-pr-f-qualification.test.mjs",
+      "operation": "ADD",
+      "reason": "Test original witness equivalence and million-vector adversarial oracle",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "README.md",
+      "operation": "MODIFY",
+      "reason": "Expose F0 recovery, exact qualification instructions and non-compensatory source/external boundary",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    }
+  ]
+}

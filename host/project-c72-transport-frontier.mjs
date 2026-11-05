@@ -68,7 +68,7 @@ export function chooseEDUSourceTransport(input={}){
  if(!['ABSENT','PARTIAL'].includes(q.source))return stop('EDU_SOURCE_EVIDENCE_INVALID');
  if(q.manualRoute==='EXPLICIT_MANUAL_POST_EDU')
   return Object.freeze({kind:'HUMAN_GATE',action:'REQUEST_ORIGINAL_PINNED_ZIP',
-   source_zip_url:'https://github.com/Luke883i/iKant_LE/archive/'+q.sourceHead+'.zip',
+   source_zip_url:'https://github.com/Luke883i/iKant_EDU/archive/'+q.sourceHead+'.zip',
    require:'INDEPENDENT_TREE_BLOB_EXTRACTION_AND_ORIGINAL_LOADER',authority:0,
    owner_invoked:false,active:false});
  if(q.hostBridge==='OBSERVED')return pending('MATERIALIZE_AND_REOPEN_SOURCE','SOURCE',

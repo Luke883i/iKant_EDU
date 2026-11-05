@@ -1,0 +1,54 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "e719ebfdb8dfa2f1a0382f56ab95fbbdc0f3e005",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzz-cora-s3-convergence.json",
+  "scope": "HOST_ENGINEERING_S3_SEMANTIC_CONVERGENCE_SOURCE_GATES_ONLY",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "paths": [
+    {
+      "path": "scripts/cora-three-streams-audit.mjs",
+      "operation": "MODIFY",
+      "reason": "Use original pinned commit for historical PR226 source and fail closed when shallow Git omits baseline objects",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/cora-three-streams-audit.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Source-locked historical baseline regression now fails closed instead of forging missing shallow Git ancestry",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "host/project-c72-transport-frontier.mjs",
+      "operation": "MODIFY",
+      "reason": "Correct operative Host post-EDU manual ZIP from legacy iKant_LE to pinned canonical iKant_EDU",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "contracts/cora-s3-source-convergence-v1.json",
+      "operation": "ADD",
+      "reason": "S3 ownerless source/field non-compensatory reticulum, C1-C8 classification and independent external gates",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/cora-s3-convergence.mjs",
+      "operation": "ADD",
+      "reason": "Executable read-only original owner pinned Git readback, source identity and negative Host routing verifier",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/cora-s3-convergence.test.mjs",
+      "operation": "ADD",
+      "reason": "Original transport negative tests, reticular source-vs-field checks and 50k deterministic profile falsification",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzz-cora-s3-convergence.json",
+      "operation": "ADD",
+      "reason": "Original V5-B change-register extension for S3 with human review uncompleted",
+      "human_review": "REVIEW_REQUIRED"
+    }
+  ]
+}

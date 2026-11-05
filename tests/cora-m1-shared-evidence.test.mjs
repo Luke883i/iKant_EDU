@@ -6,7 +6,8 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {parseGitObjects,qualifyM1Snapshot,evaluateM1Reticulum,observeM1Source}
  from '../scripts/cora-m1-shared-evidence.mjs';
-import {validateFContract} from '../scripts/cora-pr-f-qualification.mjs';
+import {validateFContract,observePrFSource} from '../scripts/cora-pr-f-qualification.mjs';
+import {observePrGEvidence} from '../scripts/cora-pr-g-evidence-readback.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const CONTRACT=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/cora-pr-f-integrated-qualification-v1.json'),'utf8'));
 const SHA=x=>x.repeat(40);
@@ -166,8 +167,11 @@ test('M1 100k finite logical mutation vectors do not become real CI, owner or pr
  assert.equal(one.survivors,0);
  assert.equal(one.models,0);
 });
-test('real M1 source-gate readback on checkout, while all external gates remain open',()=>{
- const r=observeM1Source();
+const liveM1=observeM1Source();
+const liveG=observePrGEvidence();
+const liveF=observePrFSource();
+test('M1_'+liveM1.first_edge+'_G_'+liveG.first_edge+'_F_'+liveF.first_edge,()=>{
+ const r=liveM1;
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.status,'M1_SHARED_SOURCE_EVIDENCE_CUT_ONLY');
  assert.equal(r.workflows,116);

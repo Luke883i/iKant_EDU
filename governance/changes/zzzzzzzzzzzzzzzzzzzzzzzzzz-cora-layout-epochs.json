@@ -365,6 +365,14 @@
       "reason": "Preserve PR-F/G frozen historical workflow Git TREE and independently reconcile exactly five registered live CI changes, with explicit source-only M1 anti-promotion regression",
       "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
       "supersedes_source_main": "c889fa80326c2da09391da6d4edbc17e1bb9d052"
+    },
+    {
+      "path": "tests/cora-m1-shared-evidence.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Expose the original exact first source-edge and PR-F/G dependency status inside native TAP test name, without relaxing any assertion, for deterministic CI diagnosis",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
+      "supersedes_source_main": "c889fa80326c2da09391da6d4edbc17e1bb9d052"
     }
   ],
   "workflow_migration": {

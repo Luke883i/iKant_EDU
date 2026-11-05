@@ -88,3 +88,20 @@ test('versioned C134/P1 archived fixtures preserve all six original Git blobs an
  }
  assert.equal(Object.keys(original).length,6);
 });
+
+test('CORA layout: every source reader and CI path filter points only to passive relocated epochs',()=>{
+ const consumers=[
+  ['scripts/c134-source-epoch.mjs','tests/fixtures/epochs/c134-epoch/','runtime/c134-epoch/'],
+  ['scripts/p1-stage-composite-epoch.mjs','tests/fixtures/epochs/p1-composite-epoch/','runtime/p1-composite-epoch/'],
+  ['scripts/p0p1-seeded-falsify.mjs','../tests/fixtures/epochs/p1-composite-epoch/','../runtime/p1-composite-epoch/'],
+  ['.github/workflows/c134-versioned-cognitive-source.yml','tests/fixtures/epochs/c134-epoch/**','runtime/c134-epoch/**'],
+  ['.github/workflows/p1-p7-oneshell-release.yml','tests/fixtures/epochs/p1-composite-epoch/**','runtime/p1-composite-epoch/**']
+ ];
+ for(const [file,current,obsolete] of consumers){
+  const content=fs.readFileSync(path.join(root,file),'utf8');
+  assert.ok(content.includes(current),'missing new consumer path in '+file);
+  assert.ok(!content.includes(obsolete),'stale old consumer path in '+file);
+ }
+ assert.equal(fs.existsSync(path.join(root,'runtime')),false);
+ assert.equal(fs.existsSync(path.join(root,'runtime-root/shard-000.json')),true);
+});

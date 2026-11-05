@@ -1,0 +1,206 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "25501ccba48b7d9cbc66842ddd3dff8b05267884",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json",
+  "scope": "CORA_LAYOUT_C134_P1_FIXTURE_RELOCATION_WITH_CURRENT_PRODUCT_UNCHANGED",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "moved_originals": [
+    {
+      "old": "runtime/c134-epoch/manifest.json",
+      "new": "tests/fixtures/epochs/c134-epoch/manifest.json",
+      "sha": "2c1c35af82a20259be3063278d45a2d7f926c6aa",
+      "bytes": 1715
+    },
+    {
+      "old": "runtime/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "new": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "sha": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "bytes": 11918
+    },
+    {
+      "old": "runtime/c134-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "new": "tests/fixtures/epochs/c134-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "sha": "ca9e94d42fb45802c7995bb53959dba8b8e3b31e",
+      "bytes": 4912
+    },
+    {
+      "old": "runtime/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "new": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "sha": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "bytes": 13362
+    },
+    {
+      "old": "runtime/c134-epoch/overlays/src/c83-semantic-router.mjs",
+      "new": "tests/fixtures/epochs/c134-epoch/overlays/src/c83-semantic-router.mjs",
+      "sha": "4ee62fea620baeb4c039544bdbf114c69b060999",
+      "bytes": 3771
+    },
+    {
+      "old": "runtime/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "new": "tests/fixtures/epochs/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "sha": "988da5ae52552edef57c104d7896eb28bc7b3066",
+      "bytes": 5194
+    }
+  ],
+  "root_directory_effect": {
+    "retired": "runtime/",
+    "new_root_created": false,
+    "destination": "tests/fixtures/epochs/",
+    "original_files": 6,
+    "source_changed": false
+  },
+  "consumer_proof": "SOURCE_SEARCH_PLUS_EXISTING_C134_P1_TESTS_AND_CI_PENDING",
+  "external_proof": "NOT_ATTESTED",
+  "no_native_provider_claim": true,
+  "paths": [
+    {
+      "path": "runtime/c134-epoch/manifest.json",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "2c1c35af82a20259be3063278d45a2d7f926c6aa",
+      "target": "tests/fixtures/epochs/c134-epoch/manifest.json"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/manifest.json",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "2c1c35af82a20259be3063278d45a2d7f926c6aa",
+      "from": "runtime/c134-epoch/manifest.json"
+    },
+    {
+      "path": "runtime/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "target": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "from": "runtime/c134-epoch/overlays/host/c107-experimental-turn.mjs"
+    },
+    {
+      "path": "runtime/c134-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "ca9e94d42fb45802c7995bb53959dba8b8e3b31e",
+      "target": "tests/fixtures/epochs/c134-epoch/overlays/host/c114-ontology-language-policy.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "ca9e94d42fb45802c7995bb53959dba8b8e3b31e",
+      "from": "runtime/c134-epoch/overlays/host/c114-ontology-language-policy.mjs"
+    },
+    {
+      "path": "runtime/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "target": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "from": "runtime/c134-epoch/overlays/host/edu-c70-method-v7.mjs"
+    },
+    {
+      "path": "runtime/c134-epoch/overlays/src/c83-semantic-router.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "4ee62fea620baeb4c039544bdbf114c69b060999",
+      "target": "tests/fixtures/epochs/c134-epoch/overlays/src/c83-semantic-router.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/overlays/src/c83-semantic-router.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "4ee62fea620baeb4c039544bdbf114c69b060999",
+      "from": "runtime/c134-epoch/overlays/src/c83-semantic-router.mjs"
+    },
+    {
+      "path": "runtime/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "988da5ae52552edef57c104d7896eb28bc7b3066",
+      "target": "tests/fixtures/epochs/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "988da5ae52552edef57c104d7896eb28bc7b3066",
+      "from": "runtime/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs"
+    },
+    {
+      "path": "scripts/c134-source-epoch.mjs",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/p1-stage-composite-epoch.mjs",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/p0p1-seeded-falsify.mjs",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c134-versioned-cognitive-source.yml",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/p1-p7-oneshell-release.yml",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "docs/C134_COGNITIVE_SOURCE_EPOCH.md",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/c134-cognitive-epoch.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json",
+      "operation": "ADD",
+      "reason": "Original V5-B change ledger: six exact Git blob moves from runtime/ to existing test fixtures, seven consumer updates and explicit no-provider gate",
+      "human_review": "REVIEW_REQUIRED"
+    }
+  ]
+}

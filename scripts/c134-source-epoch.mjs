@@ -9,7 +9,7 @@ const G=b=>crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).
 const sorted=x=>Array.isArray(x)?x.map(sorted):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,sorted(x[k])])):x;
 export function qualifyC134Source({root=ROOT}={}){
  try{
-  const m=JSON.parse(fs.readFileSync(path.join(root,'runtime/c134-epoch/manifest.json'),'utf8'));
+  const m=JSON.parse(fs.readFileSync(path.join(root,'tests/fixtures/epochs/c134-epoch/manifest.json'),'utf8'));
   if(m.schema!=='ikant-c134-versioned-cognitive-overlay/v1'||m.authority!==0||
      m.parent_main_commit!=='016fe816099cf66e7a5931e27c586e3fad7fa9eb'||
      m.source_kind!=='EXPERIMENTAL_COMPOSITE_NOT_GIT_COMMIT'||
@@ -24,7 +24,7 @@ export function qualifyC134Source({root=ROOT}={}){
    if(!/^(?:host|src)\/[a-z0-9-]+\.mjs$/.test(o.path)||seen.has(o.path))
     return {ok:false,edge:'C134_PATH_OR_DUPLICATE'};
    seen.add(o.path);
-   const file=path.join(root,'runtime/c134-epoch/overlays',o.path),st=fs.lstatSync(file);
+   const file=path.join(root,'tests/fixtures/epochs/c134-epoch/overlays',o.path),st=fs.lstatSync(file);
    if(st.isSymbolicLink()||!st.isFile()||
       fs.realpathSync(path.dirname(file))!==path.dirname(file))
     return {ok:false,edge:'C134_OVERLAY_PATH_UNSAFE'};
@@ -57,7 +57,7 @@ export function stageC134Source({root=ROOT,isolatedRoot}={}){
     return {ok:false,edge:'C134_HISTORIC_BASE_MISMATCH'};
   }
   for(const m of q.members){
-   const target=path.join(isolatedRoot,m.path),b=fs.readFileSync(path.join(root,'runtime/c134-epoch/overlays',m.path));
+   const target=path.join(isolatedRoot,m.path),b=fs.readFileSync(path.join(root,'tests/fixtures/epochs/c134-epoch/overlays',m.path));
    const tmp=target+'.c134-'+process.pid;
    fs.writeFileSync(tmp,b,{flag:'wx',mode:0o600});
    try{fs.renameSync(tmp,target)}finally{if(fs.existsSync(tmp))fs.unlinkSync(tmp)}

@@ -2,7 +2,7 @@ name: c134-versioned-cognitive-source
 on:
   pull_request:
     paths:
-      - 'runtime/c134-epoch/**'
+      - 'tests/fixtures/epochs/c134-epoch/**'
       - 'scripts/c134-source-epoch.mjs'
       - 'tests/c134-cognitive-epoch.test.mjs'
       - 'contracts/c134-source-epoch.json'
@@ -13,7 +13,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'runtime/c134-epoch/**'
+      - 'tests/fixtures/epochs/c134-epoch/**'
       - 'scripts/c134-source-epoch.mjs'
       - 'tests/c134-cognitive-epoch.test.mjs'
       - 'contracts/c134-source-epoch.json'

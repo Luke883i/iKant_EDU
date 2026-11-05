@@ -1,9 +1,0 @@
-{
-  "schema":"ikant-le-c96-adversarial-first-pass/v1",
-  "basis":"actual Node.js 22 execution of tests/c96-hardening.test.mjs before refinement",
-  "mutant_families":["HOST_GITHUB_FILE_WITH_EXTRA_UNDECLARED_READARCHIVE","HOST_GITHUB_ARTIFACT_WITH_EXTRA_UNDECLARED_READFILE"],
-  "cases":2,
-  "unexpected_accepts":2,
-  "result":"FAIL_BEFORE_REFINEMENT",
-  "meaning":"A mismatched carrier kind/extra callback bypassed the typed carrier descriptor gate. This is a structural flaw, not host authorization proof."
-}

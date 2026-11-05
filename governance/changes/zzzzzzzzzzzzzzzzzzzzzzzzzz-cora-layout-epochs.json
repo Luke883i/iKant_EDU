@@ -373,6 +373,30 @@
       "human_review": "REVIEW_REQUIRED",
       "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
       "supersedes_source_main": "c889fa80326c2da09391da6d4edbc17e1bb9d052"
+    },
+    {
+      "path": "contracts/cora-reticular-hygiene-v1.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Extend existing CORA workflow Git-tree source gate from one frozen YAML delta to the exact six registered original plus migrated blobs; preserve base historic TREE, 116 jobs, no retirement and negative mutation qualification",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    },
+    {
+      "path": "scripts/cora-minimal-absorption.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Extend existing CORA workflow Git-tree source gate from one frozen YAML delta to the exact six registered original plus migrated blobs; preserve base historic TREE, 116 jobs, no retirement and negative mutation qualification",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    },
+    {
+      "path": "tests/cora-reticular-hygiene.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Extend existing CORA workflow Git-tree source gate from one frozen YAML delta to the exact six registered original plus migrated blobs; preserve base historic TREE, 116 jobs, no retirement and negative mutation qualification",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
     }
   ],
   "workflow_migration": {
@@ -411,6 +435,8 @@
     "provider_status": "NOT_ATTESTED",
     "human_review": "REVIEW_REQUIRED",
     "rulesets_status": "UNKNOWN",
-    "source_gate_closure": "FROZEN_GIT_TREE_RECONSTRUCTION_NONPROMOTING"
+    "source_gate_closure": "FROZEN_GIT_TREE_RECONSTRUCTION_NONPROMOTING",
+    "cora_original_tree": "5457f319ca2a8c1e1edbf8b597de05dbc1f77b92",
+    "cora_validated_delta_count": 6
   }
 }

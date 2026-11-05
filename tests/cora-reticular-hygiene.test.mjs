@@ -139,9 +139,10 @@ test('10k deterministic reticular mutations reject owner substitution, graph cor
  assert.equal(a.families,mutants.length);
 });
 
-test('CORA workflow evolution is one reversible Git TREE delta, never automatic retirement',()=>{
+test('CORA workflow evolution is exactly one or six reversible Git TREE deltas, never retirement',()=>{
  const evolution=doc.reuse.workflow_evolution;
  assert.equal(evolution.expected_count,116);
+ assert.equal(evolution.allowed.length,6);
  assert.equal(evolution.baseline_tree,doc.reuse.baseline_workflow_tree);
  assert.equal(qualifyReticularLattice(doc).ok,true);
  const bytes=rows=>Buffer.concat(rows.sort((a,b)=>Buffer.compare(Buffer.from(a.name),Buffer.from(b.name))).map(e=>
@@ -158,6 +159,28 @@ test('CORA workflow evolution is one reversible Git TREE delta, never automatic 
  assert.equal(ok.status,'ONE_REVERSED_DELTA_MATCHES_BASELINE');
  assert.equal(ok.retirement_authorized,false);
  assert.equal(qualifyWorkflowTreeEvolution(delta,{entries:rows,observedTree:base}).status,'UNCHANGED_BASELINE');
+ const sixBase=Array.from({length:6},(_,i)=>({mode:'100644',name:'fixture'+i+'.yml',sha:(i+1).toString(16).repeat(40)}));
+ const sixDelta={...evolution,expected_count:6,baseline_tree:sha(sixBase),
+  allowed:sixBase.map((e,i)=>({path:'.github/workflows/'+e.name,before:e.sha,
+   after:(i+7).toString(16).repeat(40)}))};
+ const sixCurrent=sixBase.map((e,i)=>({...e,sha:(i+7).toString(16).repeat(40)}));
+ const qualified=qualifyWorkflowTreeEvolution(sixDelta,{entries:sixCurrent,observedTree:sha(sixCurrent)});
+ assert.equal(qualified.ok,true,JSON.stringify(qualified));
+ assert.equal(qualified.status,'SIX_REVERSED_DELTAS_MATCH_BASELINE');
+ assert.equal(qualified.changed_paths.length,6);
+ assert.equal(qualified.retirement_authorized,false);
+ for(const tamper of [
+  x=>x.allowed.pop(),
+  x=>x.allowed[1].path=x.allowed[0].path,
+  x=>x.allowed[2].before='f'.repeat(40),
+  x=>x.allowed[3].after='f'.repeat(40),
+  x=>x.allowed[4].path='.github/workflows/other.yml'
+ ]){
+  const bad=structuredClone(sixDelta);tamper(bad);
+  const result=qualifyWorkflowTreeEvolution(bad,{entries:sixCurrent,observedTree:sha(sixCurrent)});
+  assert.equal(result.ok,false,'forged multi-delta not rejected');
+  assert.equal(result.product_go,false);
+ }
  for(const [name,bad,tree] of [
   ['omitted',evolved.slice(0,1),sha(evolved.slice(0,1))],
   ['unregistered',[evolved[0],{...evolved[1],sha:'f'.repeat(40)}],sha([evolved[0],{...evolved[1],sha:'f'.repeat(40)}])],
@@ -174,6 +197,8 @@ test('CORA workflow evolution is one reversible Git TREE delta, never automatic 
   x=>x.reuse.workflow_evolution.retirement_authorized=true,
   x=>x.reuse.workflow_evolution.allowed[0].after='f'.repeat(40),
   x=>x.reuse.workflow_evolution.allowed[0].path='.github/workflows/ci.yml',
+  x=>x.reuse.workflow_evolution.allowed.pop(),
+  x=>x.reuse.workflow_evolution.revised_migration_epoch='0'.repeat(40),
   x=>x.reuse.workflow_evolution.baseline_tree='0'.repeat(40)]){
   const x=clone();mutate(x);
   assert.equal(qualifyReticularLattice(x).ok,false);

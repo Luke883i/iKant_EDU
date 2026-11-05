@@ -154,3 +154,16 @@ test('actual HEAD source readback: seven source metrics, seven external metrics 
  assert.equal(q.provider,'NOT_ATTESTED');
  assert.equal(q.product_go,false);
 });
+
+test('M3 hardening: altered DoD proof, injected nonpromotion/policy fields are denied',()=>{
+ const a=copy(PROFILE);a.nodes[0].proof='A plausible but different proof statement that used to pass';
+ const b=copy(PROFILE);b.nonpromotion.fake_original_receipt=false;
+ const c=copy(PROFILE);c.metric_policy.external_claim_override=false;
+ for(const [n,p] of [[1,a],[2,b],[3,c]]){
+  const q=validateM2Profile(p);
+  assert.equal(q.ok,false,'mutation '+n+': '+JSON.stringify(q));
+  assert.equal(q.m2_complete,false);
+  assert.equal(q.provider_attested,false);
+ }
+ assert.equal(validateM2Profile(PROFILE).ok,true);
+});

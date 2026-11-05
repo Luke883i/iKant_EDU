@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 /** M2 original-owner/provider METROLOGY ONLY. Cannot issue owner or provider receipts. */
 import path from 'node:path';
-import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
@@ -15,6 +14,9 @@ const PINS={"contracts/c72-public-mode-admission-v2.json":"0bdb99589d907072917ba
 const NODES=[["M2S0","SOURCE",[]],["M2S1","SOURCE",["M2S0"]],["M2S2","SOURCE",["M2S0"]],["M2S3","SOURCE",["M2S0"]],["M2S4","SOURCE",["M2S0"]],["M2S5","SOURCE",["M2S0"]],["M2S6","SOURCE",["M2S0"]],["I_M2_SOURCE","INTERMEDIATE",["M2S0","M2S1","M2S2","M2S3","M2S4","M2S5","M2S6"]],["M2E1","EXTERNAL",["I_M2_SOURCE"]],["M2E2","EXTERNAL",["M2E1"]],["M2E3","EXTERNAL",["M2E2"]],["M2E4","EXTERNAL",["M2E3"]],["M2E5","EXTERNAL",["M2E4"]],["M2E6","EXTERNAL",["M2E5"]],["M2E7","EXTERNAL",["M2E3","M2E4","M2E5"]],["G_M2","GLOBAL",["I_M2_SOURCE","M2E6","M2E7"]]];
 const METRICS=[["SRC_HEAD_TREE","M2S0","GIT","sha1_and_head_tree_exact",2,"SOURCE_GIT"],["SRC_M1_REUSE","M2S1","LOCAL","original_m1_reconciliation",1,"SOURCE_GIT"],["SRC_C72","M2S2","GIT","original_c72_and_contract_pins",2,"SOURCE_GIT"],["SRC_C135","M2S3","GIT","original_c135_pin",1,"SOURCE_GIT"],["SRC_C87","M2S4","GIT","original_c87_pin",1,"SOURCE_GIT"],["SRC_C125_S03","M2S5","GIT","original_c125_and_s03_pins",2,"SOURCE_GIT"],["SRC_DELEGATION","M2S6","GIT","oneshell_edu_and_continuous_pins",2,"SOURCE_GIT"],["HUMAN_ACCEPT","M2E1","OWNER","distinct_exact_accept_original_receipt_reopened",1,"NOT_ATTESTED"],["HUMAN_EDU","M2E2","OWNER","distinct_exact_edu_original_selection_reopened",1,"NOT_ATTESTED"],["COGNITIVE_TURN","M2E3","OWNER","original_c135_bound_language_turn",1,"NOT_ATTESTED"],["LEDGER_EVENT","M2E4","OWNER","single_writer_atomic_append_and_reopen",1,"NOT_ATTESTED"],["SAME_TURN_VOICE","M2E5","OWNER","owner_s03_byte_identity_and_c125_at_most_once",1,"NOT_ATTESTED"],["NATIVE_DELIVERY","M2E6","PROVIDER","native_delivery_identity_and_ack",1,"NOT_ATTESTED"],["NO_REPLAY","M2E7","OWNER","nonce_and_uncertain_send_no_retry_oracle",1,"NOT_ATTESTED"]];
 const CHECKS=[["CK01","M2S0","Pinned current HEAD, TREE and original commit identity",false,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK02","M2S1","M1 original shared source evidence independently recomputed",false,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK03","M2S2","C72 owner, terms/EDU mode contract blobs unchanged",false,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK04","M2S3","Original C135 owner and source-bound runtime blob unchanged",false,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK05","M2S4","Original C87 ledger sole-writer and reopen source unchanged",false,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK06","M2S5","Original C125 output port and S03 same-turn source unchanged",false,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK07","M2S6","Original OneShell start and continuous delegation source unchanged",false,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK08","M2E1","Separate exact human I ACCEPT and original C72 ACCEPTED receipt reopened",true,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK09","M2E2","Distinct exact EDU event and owner mode selection receipt reopened",true,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK10","M2E3","Original C135 real turn output bound to event and languagePort",true,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK11","M2E4","Exactly one C87 event, nonce fence, private ledger reopened in distinct reader",true,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK12","M2E5","Same-turn original C125/S03 bytes with single send attempt or NO_VOICE",true,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK13","M2E6","Actual native provider identity, delivery and acknowledgment separately observed",true,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"],["CK14","M2E7","Replay and uncertain-write/send safety demonstrated with actual attempt fence",true,"UNOBSERVED_UNTIL_INDEPENDENT_READBACK"]];
+const ORIGINAL_PROOFS=["Pinned current HEAD, TREE and original commit identity","M1 original shared source evidence independently recomputed","C72 owner, terms/EDU mode contract blobs unchanged","Original C135 owner and source-bound runtime blob unchanged","Original C87 ledger sole-writer and reopen source unchanged","Original C125 output port and S03 same-turn source unchanged","Original OneShell start and continuous delegation source unchanged","All source prerequisites under same HEAD, not original event receipt","Separate exact human I ACCEPT and original C72 ACCEPTED receipt reopened","Distinct exact EDU event and owner mode selection receipt reopened","Original C135 real turn output bound to event and languagePort","Exactly one C87 event, nonce fence, private ledger reopened in distinct reader","Same-turn original C125/S03 bytes with single send attempt or NO_VOICE","Actual native provider identity, delivery and acknowledgment separately observed","Replay and uncertain-write/send safety demonstrated with actual attempt fence","Only independent external originals can close M2; local model never promotes"];
+const NONPROMOTION_KEYS=["ledger_written","m2_complete","original_receipt_issued","owner_invoked","permission_to_retry","product_go","provider_attested","repository_standardized","voice_sent"];
+const METRIC_POLICY_KEYS=["external_metric_states","field_evidence_requires_original_receipts_and_independent_readback","finite_mutations_are_not_independent_trials","numeric_ratio_never_proves_field_success","provider_evidence_requires_native_authenticated_ack","source_coverage_is_not_m2_completion","source_metric_states"];
 const H40=/^[a-f0-9]{40}$/u;
 const fail=edge=>({ok:false,first_edge:edge,authority:0,active:false,owner_invoked:false,
  original_receipt_issued:false,provider_attested:false,ledger_written:false,
@@ -48,7 +50,9 @@ export function validateM2Profile(p){
   p.metric_policy?.finite_mutations_are_not_independent_trials!==true||
   p.metric_policy?.field_evidence_requires_original_receipts_and_independent_readback!==true||
   p.metric_policy?.provider_evidence_requires_native_authenticated_ack!==true||
-  p.nonpromotion&&Object.values(p.nonpromotion).some(x=>x!==false)||
+  JSON.stringify(Object.keys(p.nonpromotion||{}).sort())!==JSON.stringify(NONPROMOTION_KEYS)||
+  Object.values(p.nonpromotion||{}).some(x=>x!==false)||
+  JSON.stringify(Object.keys(p.metric_policy||{}).sort())!==JSON.stringify(METRIC_POLICY_KEYS)||
   !p.nonpromotion||p.not_a_receipt!==true||
   p.first_unclosed!=='M2E1_ORIGINAL_C72_RECEIPT_NOT_ATTESTED')
    return fail('M2_AUTHORITY_SOURCE_OR_POLICY_DRIFT');
@@ -60,7 +64,7 @@ export function validateM2Profile(p){
  for(let i=0;i<NODES.length;i++){
   const n=p.nodes[i],e=NODES[i];
   if(n?.id!==e[0]||n.scope!==e[1]||JSON.stringify(n.needs)!==JSON.stringify(e[2])||
-   typeof n.proof!=='string'||n.proof.length<25||
+   n.proof!==ORIGINAL_PROOFS[i]||
    n.needs.some(x=>!seen.has(x))||seen.has(n.id))return fail('M2_DAG_ORIGINAL_DEPENDENCY_DRIFT');
   seen.add(n.id);
  }

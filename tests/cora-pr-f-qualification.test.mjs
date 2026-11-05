@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
-import {validateFContract,evaluateFReticulation,observePrFSource}
+import {validateFContract,evaluateFReticulation,observePrFSource,verifyFrozenWorkflowTree}
  from '../scripts/cora-pr-f-qualification.mjs';
 import {FAMILIES,assessSemanticCut,runFMutations}
  from '../scripts/cora-pr-f-falsify-1m.mjs';
@@ -33,8 +33,13 @@ test('real Git tree contains the eleven original historical blobs, without trans
   assert.equal(g('rev-parse','HEAD:'+path),blob,'restore mismatch '+path);
  }
  assert.equal(contract.nonpromotion.restored_historical_files_are_runtime,false);
- assert.equal(g('rev-parse','HEAD:.github/workflows'),
-  'd81958913446a13f5fb296d20771c7e57e2df224');
+ const historical=verifyFrozenWorkflowTree(contract);
+ assert.equal(historical.ok,true,JSON.stringify(historical));
+ assert.equal(historical.historic_tree,'d81958913446a13f5fb296d20771c7e57e2df224');
+ assert.equal(historical.current_tree,g('rev-parse','HEAD:.github/workflows'));
+ assert.equal(historical.source_only,true);
+ assert.equal(historical.provider_attested,false);
+ assert.equal(historical.review_attested,false);
 });
 test('real original source observer reconciles all five slices and refuses external promotion',()=>{
  const r=observePrFSource();
@@ -161,4 +166,13 @@ test('positive and negative controls can never become provider, human, or active
   assert.equal(z.first_edge,'FORGED_EXTERNAL_OR_AUTHORITY');
   assert.equal(z.product_go,false);
  }
+});
+
+test('falsify workflow witness if original frozen M05 tree is rewritten',()=>{
+ const forged=clone(contract);
+ forged.metrics.find(x=>x.id==='M05').target='f'.repeat(40);
+ const w=verifyFrozenWorkflowTree(forged);
+ assert.equal(w.ok,false,'forged frozen workflow TREE was wrongly admitted');
+ assert.equal(w.provider_attested,false);
+ assert.equal(w.review_attested,false);
 });

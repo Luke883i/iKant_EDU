@@ -39,6 +39,15 @@ export function qualifyGEvidence({f,callsite,contract,head,tree,trackedDigest}={
   !SHA.test(f.source?.workflow_tree||'')||
   f.source.workflow_tree!=='d81958913446a13f5fb296d20771c7e57e2df224')
   return fail('G_HEAD_TREE_OR_WORKFLOW_DRIFT');
+ const currentWorkflowTree=f.source.current_workflow_tree??f.source.workflow_tree;
+ const workflowHistory=f.source.workflow_history;
+ if(!SHA.test(currentWorkflowTree||'')||
+  currentWorkflowTree!==f.source.workflow_tree&&(
+   workflowHistory?.ok!==true||workflowHistory.current_tree!==currentWorkflowTree||
+   workflowHistory.historic_tree!==f.source.workflow_tree||
+   workflowHistory.migration_count!==5||workflowHistory.source_only!==true||
+   workflowHistory.provider_attested!==false||workflowHistory.review_attested!==false))
+  return fail('G_WORKFLOW_MIGRATION_BOUNDARY_INVALID');
  const metrics=f.metrics||{};
  if(metrics.M01!==0||metrics.M02!==1||metrics.M03!==4||
   metrics.M04!==116||metrics.M05!==f.source.workflow_tree||
@@ -98,7 +107,10 @@ export function qualifyGEvidence({f,callsite,contract,head,tree,trackedDigest}={
  };
  const evidence={
   source:{head,tree,tracked:f.source.tracked,
-   workflow_tree:f.source.workflow_tree,owner_pins_observed:metrics.M03,
+   workflow_tree:f.source.workflow_tree,
+   current_workflow_tree:currentWorkflowTree,
+   workflow_history:workflowHistory??null,
+   owner_pins_observed:metrics.M03,
    historically_registered_missing_paths:f.source.previously_registered_missing_paths,
    restored_original_blobs:metrics.M06},
   original_F_nodes:contract.reticulum.map(n=>({id:n.id,requires:n.needs,

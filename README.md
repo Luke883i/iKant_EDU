@@ -128,11 +128,11 @@ Il *full stack* non è solo un server web. I livelli interagiscono ma non hanno 
 | Strato | Implementazione nel repository | Che cosa può attestare |
 |---|---|---|
 | **Sorgente e regole** | [Git](./), [contratti JSON](contracts/), [Termini](TERMS.md), [regole HOST](AGENTS.md) | Versione, specifica, hash e autorizzazioni dichiarate. |
-| **Core runtime** | [Node.js](src/), [entry point](ikant.mjs), [componenti runtime](runtime/), [runtime-root](runtime-root/) | Esecuzioni e stato verificabili *se* l'owner è realmente invocato. |
+| **Core runtime** | [moduli Node.js](src/), [entry point](ikant.mjs), [sorgenti bootstrap](runtime-root/) | Esecuzioni e stato verificabili *se* l'owner è realmente invocato. |
 | **Infrastruttura cognitiva** | [Owner e policy](host/), [substrato funzionale](docs/IKANT_COGNITIVE_SUBSTRATE.md), [registri/contratti](contracts/) | Metodo, routing, vincoli, esito o arresto nel perimetro della versione. |
 | **Stato e artefatti** | Ledger locale hash-linked, writer esclusivo, controllo di riapertura; DOCX quando richiesto dal tier. | Persistenza locale specifica, non consegna nativa o correttezza fattuale. |
 | **Integrazioni e UI** | [MCP Streamable HTTP e app candidata](plugins/ikant-le-session-chat/), [server](plugins/ikant-le-session-chat/server/server.mjs), [proiezione Project](project/) | Trasporto e presentazione osservabili; una app in Git non è un plugin registrato. |
-| **Qualificazione** | [Test](tests/), [test storici](test/), [script](scripts/), [pilot](pilot/), [artefatti di qualifica](artifacts/), [release](release/) | Proprietà incluse nei test e ricevute; non efficacia umana universale. |
+| **Qualificazione** | [Test](tests/), [fixture storiche](tests/fixtures/epochs/), [script](scripts/), [pilot](pilot/), [artefatti di qualifica](artifacts/), [release](release/) | Proprietà incluse nei test e ricevute; non efficacia umana universale. |
 
 **Tecnologie effettive:** Node.js **20+** / JavaScript ESM, JSON per contratti ed eventi, Git e SHA per provenienza, Markdown per documentazione, Python 3 per strumenti ausiliari, MCP SDK e OAuth per il servizio esterno; DOCX per la Surface B quando il contratto del turno lo richiede. L'LLM, l'infrastruttura del provider e ChatGPT come UI non fanno automaticamente parte del checkout.
 

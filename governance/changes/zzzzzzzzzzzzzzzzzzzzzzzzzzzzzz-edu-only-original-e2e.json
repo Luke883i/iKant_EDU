@@ -314,6 +314,14 @@
       "supersedes_source_main": "9b4d29ecc840f55b1d67dae98f5727d31b89b435"
     },
     {
+      "path": "tests/cora-s3-convergence.test.mjs",
+      "operation": "MODIFY",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzz-cora-s3-convergence.json",
+      "supersedes_source_main": "e719ebfdb8dfa2f1a0382f56ab95fbbdc0f3e005",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind the exact S3 positive fixture to the original prospective EDU-only mode/prompt boundary and add dual-mode, early-mode and pinned-legacy negatives; retain all 50k deterministic falsifiers and external NO_GO."
+    },
+    {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

@@ -335,10 +335,11 @@ export function observeReticularCensusWithAudit(){
  const delta=qualifyWorkflowTreeEvolution(c.reuse.workflow_evolution,{entries,observedTree:workflowTree});
  const deltaSafe=delta.ok===true;
  const audit=auditRepository();
- const census=qualifyReticularCensus(c,{audit,index,tree:parseTree,head,treeSha,
-  ownersStable,deltaSafe,readme:fs.readFileSync(path.join(ROOT,'README.md'),'utf8')});
- return {census:{...census,original_owner_source_epoch_readback:ownerEpochReadback,
-  new_epoch_is_not_owner_receipt:true},audit};
+ const census={...qualifyReticularCensus(c,{audit,index,tree:parseTree,head,treeSha,
+  ownersStable,deltaSafe,readme:fs.readFileSync(path.join(ROOT,'README.md'),'utf8')}),
+  original_owner_source_epoch_readback:ownerEpochReadback,
+  new_epoch_is_not_owner_receipt:true};
+ return {census,audit};
 }
 /** Preserve the pre-D2 public result shape and original read-only CLI behavior. */
 export function observeReticularCensus(){

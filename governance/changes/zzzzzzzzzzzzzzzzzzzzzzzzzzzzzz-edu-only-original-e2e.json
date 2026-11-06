@@ -198,6 +198,18 @@
       "reason": "Preserve C59 historical owner and composition checks while independently falsifying any public EDU Terms that delegate to the separate native/MCP legacy composition."
     },
     {
+      "path": "README.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Remove obsolete two public Project modes and present C72 prospective EDU-only admission plus a genuinely independent MCP route, retaining C59 as historical compatibility."
+    },
+    {
+      "path": "AGENTS.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "New-epoch first contact accepts only a later exact EDU mode. Keep historical SESSION_CHAT_LOCAL one-composition guidance explicitly segregated from the Project's active entry."
+    },
+    {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

@@ -146,19 +146,18 @@ Il percorso repo-first usa [un solo prompt Project](project/session-chat/PROMPT.
 
 ## Modalità e bootstrap
 
-### Tre superfici, due modalità pubbliche
+### Due superfici indipendenti, una sola selezione Project EDU
 
-La scelta di ammissione C72/v2 ha **esattamente due opzioni, EDU e CANONICAL**. Il server **MCP_EXTERNAL** è una *superficie di distribuzione separata*, non una terza scelta del consenso.
+Il percorso Project C72/v2 offre **esattamente una selezione successiva al consenso: EDU**. **MCP_EXTERNAL** è una superficie di distribuzione indipendente, con autorizzazione, runtime e qualificazione propri; non è una modalità di consenso Project.
 
 | Forma | Che cos'è | Ingresso e prova richiesti | Che cosa NON comporta |
 |---|---|---|---|
 | **EDU** (sperimentale, raccomandata) | Percorso guidato nel Project o in un HOST che disponga davvero degli adapter e degli owner EDU. | Ammissione umana nuova C72/v2, fonte verificata, runtime eseguito, C87/readback/C125 per la voce. | Non implica `ACTIVE`, identità nativa o stato persistente fra chat. |
-| **CANONICAL** (owner nativo) | Composizione originale `SESSION_CHAT_LOCAL` capace di pretendere il grado canonico solo quando qualificata. | Evento autentico del provider, C59, gates C72/C87 e prova della consegna. | La selezione o un generico server MCP **non** attivano CANONICAL. |
 | **MCP_EXTERNAL** (servizio indipendente) | Server Node/Streamable HTTP con OAuth, strumenti e un runtime di compatibilità C20; deploy candidato Render. | Installazione autonoma, IdP reale, TLS, disco, test HTTP/SDK e collegamento umano del client. | Non è modo C72, non è C59 e non prova UI nativa o `ACTIVE` canonico. |
 
-**Non confondere il lessico storico:** C72/v1 esponeva `EXPERIMENTAL` come ricevuta legacy. C72/v1 ≠ C72/v2 (ingresso e consenso) e `EXPERIMENTAL` non è una terza modalità pubblica attuale. Esiste **one canonical `SESSION_CHAT_LOCAL` composition (C59)**: richiede eventi autentici e verifiche che una configurazione MCP esterna non può autocertificare.
+**Archeologia separata:** C72/v1 e il profilo storico (one canonical `SESSION_CHAT_LOCAL` composition, C59) conservano i propri contratti e ricevute legati alle precedenti epoch. Non sono selezioni del percorso Project EDU e non autorizzano il servizio MCP. Nessun receipt viene convertito fra superfici.
 
-**Come iniziare EDU:** in una *nuova* chat, il primo messaggio umano avvia soltanto l'orientamento sui cinque documenti originali e sui Terms; in un turno umano successivo e distinto inviare `I ACCEPT`, quindi in un ulteriore turno distinto `EDU`. `CANONICAL` resta legacy/non attivo. Non serve `avvia iKant` come gate: il primo turno e' ORIENTATION indipendentemente dal testo. Per compatibilita' storica la vecchia istruzione usava `avvia iKant` e proponeva `EDU` o `CANONICAL`; questa formulazione e' LEGACY, non costituisce il percorso di ammissione C72/v2 e non autorizza ACTIVE. La scelta non anticipa l'esito dei gate. Ordine dei cinque documenti: [README](README.md) → [BOOTSTRAP](BOOTSTRAP.json) → [ADMISSION](ADMISSION.json) → [AGENTS](AGENTS.md) → [TERMS](TERMS.md). Identificatori del percorso per l'audit: `README.md -> BOOTSTRAP.json -> ADMISSION.json -> AGENTS.md -> TERMS.md`. Prompt e ZIP **non installano Node** o un plugin. [Guida Project passo passo](docs/IKANT_LOCAL_SETUP.md) · [Ammissione C72](docs/S01_PUBLIC_EDU_CANONICAL_ADMISSION.md).
+**Come iniziare EDU:** in una *nuova* chat, il primo messaggio umano avvia soltanto l'orientamento sui cinque documenti originali e sui Terms; in un turno umano successivo e distinto inviare `I ACCEPT`, quindi in un ulteriore turno distinto `EDU`. Non serve `avvia iKant` come gate: il primo turno è ORIENTATION indipendentemente dal testo. Le istruzioni a due modalità appartengono soltanto agli archivi storici e non costituiscono un ingresso attuale. La scelta non anticipa l'esito dei gate. Ordine dei cinque documenti: [README](README.md) → [BOOTSTRAP](BOOTSTRAP.json) → [ADMISSION](ADMISSION.json) → [AGENTS](AGENTS.md) → [TERMS](TERMS.md). Identificatori del percorso per l'audit: `README.md -> BOOTSTRAP.json -> ADMISSION.json -> AGENTS.md -> TERMS.md`. Prompt e ZIP **non installano Node** o un plugin. [Guida Project passo passo](docs/IKANT_LOCAL_SETUP.md) · [Ammissione C72](docs/S01_PUBLIC_EDU_CANONICAL_ADMISSION.md).
 
 ## MCP esterno: Render e ChatGPT
 
@@ -220,7 +219,7 @@ Un collegamento riuscito richiede **prove esterne**: handshake MCP, elenco tool,
 
 ## Metodo end-to-end, sviluppo e lettori
 
-**Percorso EDU (se qualificato):** C72/v2 (consenso e scelta) → S02/C135 (versione e orchestrazione) → metodi originali C70/C107 e routing C114/C139/C140 → LLM esterno → un C87 originale → readback fisico → C125 e presentazione HOST. C141 resta shadow e C142 è una guardia negativa; nessuno aggiunge un writer. **CANONICAL** richiede inoltre la composizione originale C59 e l'evento nativo indipendente. **MCP_EXTERNAL** usa un resource server esterno e un runtime di compatibilità, senza acquisire automaticamente quella identità.
+**Percorso EDU (se qualificato):** C72/v2 (consenso e scelta) → S02/C135 (versione e orchestrazione) → metodi originali C70/C107 e routing C114/C139/C140 → LLM esterno → un C87 originale → readback fisico → C125 e presentazione HOST. C141 resta shadow e C142 è una guardia negativa; nessuno aggiunge un writer. La precedente composizione locale C59 conserva soltanto rilevanza di compatibilità storica. **MCP_EXTERNAL** usa un resource server esterno e un runtime proprio, senza acquisire identità o ricevute EDU.
 
 **Per verificare il codice:** checkout dell'HEAD corretto, Node.js 20+, `npm test`, `npm run check`, `npm run runtime-root:verify`; leggere risultati ed errori effettivi, non inferire un esito positivo dall'istruzione. Per il servizio MCP seguire la distinta qualifica SDK/OAuth del [runbook](docs/MCP_STANDALONE_RENDER_RUNBOOK.txt). Per la verifica del reticolo Markdown: [atlante](docs/IKANT_DOCUMENT_ATLAS.md), [dizionario Cx](docs/IKANT_CX_LEXICON.md), [contratti documentali](docs/IKANT_DOCUMENT_ONTOLOGY_DOD.md).
 

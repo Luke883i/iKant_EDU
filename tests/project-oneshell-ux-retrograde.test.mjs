@@ -137,6 +137,8 @@ test('prospective EDU source offers only EDU, without treating static source as 
  assert.equal(report.original_owner_invoked,false);
  assert.equal(report.actual_chat_visibility_attested,false);
  assert.deepEqual(report.active_choice_violations,[]);
+ assert(report.files.some(x=>x.path==='README.md'));
+ assert(report.files.some(x=>x.path==='AGENTS.md'));
  assert.equal(report.status,'EDU_ONLY_SOURCE_CANDIDATE_NOT_RUNTIME_ATTESTED');
  assert.equal(report.files.length,EDU_VISIBLE_SOURCE_PATHS.length);
  // Historical/internal occurrences may remain: string search is not a UI oracle.

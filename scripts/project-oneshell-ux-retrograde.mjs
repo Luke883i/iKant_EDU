@@ -100,7 +100,7 @@ export function analyzeHumanTurnCut(root='.'){
 /** Bounded source-visible inventory. Literal occurrences != actual rendered choice,
  * but a nonzero source count blocks claims that the EDU UX has already been cleaned. */
 export const EDU_VISIBLE_SOURCE_PATHS=Object.freeze([
- 'TERMS.md','ADMISSION.json','contracts/c72-public-mode-admission-v2.json',
+ 'README.md','AGENTS.md','TERMS.md','ADMISSION.json','contracts/c72-public-mode-admission-v2.json',
  'host/c72-public-mode-admission.mjs','host/project-oneshell-phases.mjs',
  'project/session-chat/PROMPT.txt','project/edu-oneshell/PROMPT_INNESCO.txt'
 ]);
@@ -114,11 +114,17 @@ export function inspectEDUOnlyVisibleSource(root='.'){
  const onboarding=asJson('ADMISSION.json').default_onboarding.modes;
  const bootstrap=asJson('BOOTSTRAP.json').user_onboarding_c72.mode_choices;
  const texts=Object.fromEntries([
-  'TERMS.md','project/session-chat/PROMPT.txt','project/edu-oneshell/PROMPT_INNESCO.txt',
+  'README.md','AGENTS.md','TERMS.md','project/session-chat/PROMPT.txt','project/edu-oneshell/PROMPT_INNESCO.txt',
   'host/c72-public-mode-admission.mjs','host/project-oneshell-phases.mjs'
  ].map(path=>[path,gitBytes(root,path).toString('utf8')]));
  const onlyEdu=v=>Array.isArray(v)&&v.length===1&&v[0]==='EDU';
  const violations=[];
+ if(!texts['README.md'].includes('una sola selezione successiva al consenso: EDU')||
+    texts['README.md'].includes('esattamente due opzioni, EDU e CANONICAL'))
+  violations.push('README_DUAL_MODE_ONBOARDING');
+ if(!texts['AGENTS.md'].includes('one later exact `EDU` message only')||
+    texts['AGENTS.md'].includes('wait for explicit `EDU` or `CANONICAL`'))
+  violations.push('AGENTS_DUAL_MODE_ONBOARDING');
  for(const [label,v] of [['C72_CONTRACT',modes],['ADMISSION',onboarding],['BOOTSTRAP',bootstrap]])
   if(!onlyEdu(v))violations.push('DUAL_MODE_SOURCE:'+label);
  if(/\bCANONICAL\b/u.test(texts['TERMS.md']))violations.push('TERMS_LEGACY_MODE_VISIBLE');

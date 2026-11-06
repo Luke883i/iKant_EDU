@@ -29,7 +29,7 @@
       "id": "ACCEPTED",
       "owner": "C72_V2",
       "a": "NO_VOICE",
-      "next": "AWAIT_EDU_OR_CANONICAL"
+      "next": "AWAIT_EDU"
     },
     {
       "id": "MODE_SELECTED",

@@ -13,6 +13,63 @@ const json=p=>JSON.parse(read(p).toString('utf8'));
 export const INVENTORY='governance/v5b-baseline-inventory.json';
 export const REGISTER='governance/v5b-change-register.json';
 export const DOD='contracts/project-v5b-repository-governance-dod.json';
+
+/** Source-only amendment witness for a prospective C72 version. Historical pins
+ * are NEVER overwritten; current blobs qualify only if the existing V5-B
+ * register declares exact before/after Git SHA-1 and a new epoch with human
+ * review still OPEN. No owner, consent, native source or provider attestation. */
+export const C72_SOURCE_EPOCH_REGISTER='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json';
+const C72_SOURCE_BASE='9efdcb4b5d67e3de52a8805cf52b446dd5ff0857';
+const C72_SOURCE_AMENDED=new Set([
+ 'host/c72-public-mode-admission.mjs',
+ 'contracts/c72-public-mode-admission-v2.json',
+ 'BOOTSTRAP.json',
+ 'project/session-chat/PROMPT.txt',
+ 'project/edu-oneshell/PROMPT_INNESCO.txt'
+]);
+export function qualifyRegisteredC72SourceEpoch({path,historicalBlobSha1,observedBlobSha1,registration}={}){
+ const failed=edge=>Object.freeze({ok:false,edge,authority:0,owner_invoked:false,native_event_attested:false});
+ const sha=s=>typeof s==='string'&&/^[a-f0-9]{40}$/.test(s);
+ if(typeof path!=='string'||!sha(historicalBlobSha1)||!sha(observedBlobSha1))
+  return failed('C72_EPOCH_GIT_OBJECTS_INVALID');
+ if(historicalBlobSha1===observedBlobSha1)
+  return Object.freeze({ok:true,status:'UNCHANGED_HISTORICAL_PIN_AT_CURRENT_HEAD',
+    old_sha1:historicalBlobSha1,observed_sha1:observedBlobSha1,amended:false,
+    review_attested:false,owner_invoked:false,native_event_attested:false,authority:0});
+ if(!C72_SOURCE_AMENDED.has(path))return failed('C72_EPOCH_UNREGISTERED_OWNER_OR_PATH_CHANGE');
+ let doc=registration;
+ if(doc===undefined){try{doc=json(C72_SOURCE_EPOCH_REGISTER);}catch{return failed('C72_EPOCH_REGISTER_UNREADABLE');}}
+ const e=doc?.source_epoch_amendment;
+ if(doc?.schema!=='ikant-v5b-change-extension/v1'||
+    doc.authority!==0||doc.source_main!==C72_SOURCE_BASE||doc.self_path!==C72_SOURCE_EPOCH_REGISTER||
+    doc.release!=='NO_GO'||doc.human_review_completed!==false||
+    doc.original_owner_unchanged!==false||
+    doc.owner_amendment_scope!=='ORIGINAL_C72_V2_SOURCE_EPOCH_ONLY'||
+    doc.historical_receipts_must_remain_pinned!==true||
+    doc.mcp_external_owner_unchanged!==true||
+    e?.schema!=='ikant-cora-registered-source-epoch-succession/v1'||
+    e.baseline_main!==C72_SOURCE_BASE||e.owner!=='C72'||
+    e.owner_original_preserved_in_historical_epoch!==true||
+    e.previous_receipts_never_upgraded!==true||e.prospective_not_native_approved!==true||
+    e.provider_receipt!=='NOT_ATTESTED'||e.owner_invoked!==false||
+    e.readback_level!=='GIT_SOURCE_ONLY'||e.independent_engineering_reviews!=='NOT_ATTESTED'||
+    e.mcp_remains_independent!==true)
+  return failed('C72_EPOCH_BOUNDARY_OR_STATUS_INVALID');
+ const rows=doc.paths?.filter(x=>x.path===path)||[];
+ const row=rows.length===1?rows[0]:null;
+ if(!row||row.operation!=='MODIFY'||row.human_review!=='REVIEW_REQUIRED'||
+    row.original_source_blob_sha1!==historicalBlobSha1||
+    row.prospective_source_blob_sha1!==observedBlobSha1)
+  return failed('C72_EPOCH_EXACT_SOURCE_BLOB_NOT_REGISTERED');
+ return Object.freeze({ok:true,status:'PROSPECTIVE_C72_SOURCE_ONLY_REVIEW_REQUIRED',
+   amended:true,path,old_sha1:historicalBlobSha1,observed_sha1:observedBlobSha1,
+   baseline_main:C72_SOURCE_BASE,
+   historical_blob_reopened_in_current_epoch:false,
+   historical_receipt_reusable:false,review_attested:false,
+   owner_invoked:false,native_event_attested:false,provider_attested:false,
+   authority:0});
+}
+
 const isPath=p=>typeof p==='string'&&p.length>0&&!p.startsWith('/')&&!p.includes('\\')&&!p.split('/').some(s=>s===''||s==='.'||s==='..');
 export function provisionalRole(p){
  return p.startsWith('.github/workflows/')?'CI_WORKFLOW':p.startsWith('tests/')||p.startsWith('test/')?'TEST_SOURCE':

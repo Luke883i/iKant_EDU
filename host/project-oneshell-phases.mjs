@@ -31,21 +31,18 @@ export function oneShellAccepted({accepted,orientation}={}){
   return denied('C72_ORIGINAL_ACCEPTANCE_AND_INTRODUCTION_REQUIRED');
  return oneShellFrame({esito:'TERMINI ACCETTATI · HOST',b:orientation.text,
   prova:'C72_ORIENTATION_SHA256:'+sha(JSON.stringify(orientation)),
-  edge:'HUMAN_MODE_SELECTION_PENDING',next:'AWAIT_EDU_OR_CANONICAL'});
+  edge:'HUMAN_MODE_SELECTION_PENDING',next:'AWAIT_EDU'});
 }
 export function oneShellSelected({selection,accepted,orientation}={}){
  if(!validateC72V2Accepted(accepted)||!validateC72V2Orientation(orientation,accepted)||
-    !validateC72V2ModeSelection(selection,{sourceHead:accepted?.source_head})||
+    !validateC72V2ModeSelection(selection,{mode:'EDU',sourceHead:accepted?.source_head})||
     selection.acceptance_receipt_sha256!==accepted.receipt_sha256||
     selection.orientation_receipt_sha256!==orientation.receipt_sha256)
   return denied('C72_ORIGINAL_MODE_RECEIPT_REQUIRED');
- const edu=selection.selected_mode==='EDU';
- return oneShellFrame({esito:edu?'EDU SELEZIONATA':'CANONICAL LEGACY NON QUALIFICATA',
-  b:edu?'La selezione autorizza soltanto i controlli della sorgente e del runtime EDU.':
-    'Percorso CANONICAL legacy, destinato alla dismissione nel Project; nessun bootstrap CANONICAL o ACTIVE viene avviato. Non attestato come funzionante.',
+ return oneShellFrame({esito:'EDU SELEZIONATA',
+  b:'La selezione autorizza soltanto i controlli della sorgente e del runtime EDU.',
   prova:'C72_SELECTION_SHA256:'+selection.receipt_sha256,
-  edge:edu?selection.first_unclosed_edge:'CANONICAL_LEGACY_PRODUCT_NO_GO',
-  next:edu?'VERIFY_SOURCE':'STOP'});
+  edge:selection.first_unclosed_edge,next:'VERIFY_SOURCE'});
 }
 /** Closed source verification over materialized bytes, never the caller's assertion. */
 export function oneShellMaterialized({selection,sourceRoot,head,tree}={}){
@@ -98,22 +95,17 @@ export function createOneShellAdmissionFlow({head,termsUtf8}={}){
    const introduction=presentC72V2Introduction(candidate);
    if(!validateC72V2Orientation(introduction,candidate))return rejected('C72_INTRODUCTION_DENIED');
    const frame=oneShellAccepted({accepted:candidate,orientation:introduction});
-   if(frame.slots.NEXT!=='AWAIT_EDU_OR_CANONICAL')return rejected('C72_INTRODUCTION_PROJECTION_DENIED');
+   if(frame.slots.NEXT!=='AWAIT_EDU')return rejected('C72_INTRODUCTION_PROJECTION_DENIED');
    accepted=candidate;orientation=introduction;phase='WAIT_MODE';
    return frame;
   }
   if(phase==='WAIT_MODE'){
-   if(humanMessage!=='EDU'&&humanMessage!=='CANONICAL')return rejected('C72_EXACT_MODE_REQUIRED');
+   if(humanMessage!=='EDU')return rejected('C72_EXACT_MODE_REQUIRED');
    const candidate=selectC72V2Mode({accepted,orientation,humanMessage});
    if(!validateC72V2ModeSelection(candidate,{sourceHead:head}))
     return rejected('C72_SELECTION_DENIED');
    const frame=oneShellSelected({selection:candidate,accepted,orientation});
-   // Legacy CANONICAL is an original C72 selection receipt, not an EDU start.
-   // Its Project frame must STOP but the valid receipt remains inspectable.
-   if(candidate.selected_mode==='CANONICAL'){
-    if(frame.slots.NEXT!=='STOP'||frame.slots.EDGE!=='CANONICAL_LEGACY_PRODUCT_NO_GO')
-     return rejected('C72_LEGACY_STOP_PROJECTION_DENIED');
-   }else if(frame.slots.NEXT!=='VERIFY_SOURCE')
+   if(frame.slots.NEXT!=='VERIFY_SOURCE')
     return rejected('C72_SELECTION_PROJECTION_DENIED');
    selection=candidate;phase='MODE_SELECTED';
    return frame;

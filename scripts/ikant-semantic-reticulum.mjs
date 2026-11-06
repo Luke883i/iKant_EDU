@@ -23,7 +23,7 @@ export function validateStandalone(s){
   ['human_vs_llm',/Umano:/.test(s)&&/LLM:/.test(s)?/Umano:/u:/NEVER_MATCH_LITERAL/u],
   ['neuroscience',/neuroni.*sinapsi|sinapsi.*neuroni/is],
   ['epistemic_scope',/NON ATTESTATO/],
-  ['modes',/EDU[\s\S]*CANONICAL/],
+  ['modes',/C72\/v2 offre \*\*esattamente una selezione successiva al consenso: EDU\*\*/],
   ['source_path',/C87[\s\S]*C125/],
   ['history',/storia/i],['stack',/Node\.js/],
   ['expandable_details',/<details>[\s\S]*<summary>[\s\S]*<\/details>/],

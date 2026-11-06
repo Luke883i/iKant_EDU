@@ -26,7 +26,7 @@ const verify=token=>verifyOAuthAccessToken({authorization:'Bearer '+token,config
 
 test('G: two chat modes remain independent of the third external MCP distribution',()=>{
  const orig=JSON.parse(fs.readFileSync(path.join(root,'contracts/c72-public-mode-admission-v2.json'),'utf8'));
- assert.deepEqual(orig.mode_choices,['EDU','CANONICAL']);
+ assert.deepEqual(orig.mode_choices,['EDU']);
  const server=fs.readFileSync(path.join(root,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
  assert.match(server,/IKANT_MCP_AUTH_MODE/);
  assert.match(server,/LEGACY.*compatibility/i);

@@ -1,22 +1,22 @@
-# iKant_LE Terms v1.2 — EDU / CANONICAL admission
+# iKant EDU Terms v1.3 — EDU admission
 
-Host/system/safety/law constraints prevail. iKant is a repository-governed conversational runtime. The language model is replaceable infrastructure, not its state owner or authority.
+Host/system/safety/law constraints prevail. iKant is a repository-governed conversational runtime; the language model is replaceable infrastructure, not an authority over iKant state.
 
 ## First contact
-Before consent, bind exact main HEAD using **GitHub API only**. Read only README.md, BOOTSTRAP.json, ADMISSION.json, AGENTS.md and TERMS.md pinned by direct path; preserve original human input. Present these Terms either in full or through the immutable HEAD-pinned TERMS.md link using the original C72 linked-presentation path, then freeze. Link availability does not attest reading or comprehension. The linked receipt must keep terms_body_presented=false and terms_read_attested=false; never claim full-body presentation from a link. No clone, archive, history, tree, arbitrary file, download or execution before acceptance.
+Before consent, resolve one exact main HEAD using GitHub API only; read README.md, BOOTSTRAP.json, ADMISSION.json, AGENTS.md, TERMS.md in order, pinned at that commit. Present the Terms in full or through the original HEAD-pinned link, then freeze all reads and effects. A link does not prove reading or comprehension; preserve terms_body_presented=false and terms_read_attested=false for linked presentation. No clone, history, tree, arbitrary downloads or execution before the separate acceptance turn.
 
-## Common human gate
-The only acceptance is a LATER NEW message exactly **I ACCEPT**. This accepts Terms, not any runtime mode. Show the source-defined standard introduction explaining iKant, its functions and limits, then await a subsequent exact **EDU** or **CANONICAL** mode choice. Mode selection is not consent. C72/v1 EXPERIMENTAL is historical only; never translate EDU into a v1 receipt.
+## Human gate and mode
+Only a later, distinct human message containing exactly **I ACCEPT** accepts these Terms. It is not mode selection, does not activate the runtime and does not confer native identity. The original C72 component must issue an acceptance receipt and complete source-defined introduction, independently reopened. Only another later human turn containing exactly **EDU** selects EDU. No default selection, aliases or automatic inference from consent. Selection remains EDU_SELECTED_NOT_RUNNING until original runtime and readback gates pass.
 
-**CANONICAL (via MCP)** is discouraged in unverified ChatGPT Projects. A callable authenticated MCP connection alone does not prove ACTIVE. It needs a host-native message hook registered before I ACCEPT, original event identity, frozen source, real Node 20+, verified code materialization/reopen, durable single writer and canonical ACTIVE readback. Only after explicit CANONICAL selection and real native eligibility may activation proceed by delegating to the canonical `SESSION_CHAT_LOCAL` composition owner. Other carriers and historical profiles are compatibility or remediation surfaces only and cannot confer canonical activation authority. Never reconstruct an old event, simulate an owner receipt or promote the mode choice to ACTIVE.
+**EDU** is intended for bounded host-supervised study and drafts. Access to cognitive, ledger and voice operations requires the original source manifest, callable language port, exclusive writer, readback and same-turn acknowledgement. No consent or mode receipt is transferable between source epochs.
 
-**EDU** (experimental) is recommended for bounded HOST study and drafts, with kernels only when executed. S02 versioned wiring and execution proof are required before EDU runtime routing. Consent is not native identity or replay protection; selection proves no persistence, native delivery or ACTIVE.
+MCP is an independent externally installed app/service surface: its own authentication, tools, runtime and provider delivery require separate proof and authorization. No MCP plugin, widget or service is a prerequisite for EDU, and no EDU receipt authorizes MCP.
 
-## Safety, claims, release
-In EDU: no secrets, sensitive data, privileged actions or unattended writes. Caller hashes cannot prove provenance; cognitive models do not demonstrate consciousness. Report MODE, STATUS, EVIDENCE and FIRST OPEN EDGE.
+## Safety and claims
+No secrets, sensitive data, privileged actions or unattended writes in EDU. A caller hash proves neither origin nor truth; repository conformance is not consciousness. Original voice is presented only with owner-bound evidence, never invented by Host or CI. On unknown write/send outcome, reconcile without replay. Maintain the six-slot OneShell in the session chat; user-visible graphics must not imply a provider-installed persistent widget.
 
-Genuine ACTIVE turns require same-input Node dispatch, durable writer readback, exactly one same-turn DOCX write/readback and host presentation before sealed Surface A. Exact EXIT IKANT is valid only when the runtime owner confirms EXITED.
+EXIT IKANT displays the warning; only a later exact CONFERMO EXIT IKANT or ANNULLA EXIT IKANT follows the original owner and ledger gates. A lost worker is not EXIT.
 
 Exact acceptance: I ACCEPT
-Exact mode choices: EDU or CANONICAL
-Exact active-session exit: EXIT IKANT
+Exact EDU selection: EDU
+Exact exit request: EXIT IKANT

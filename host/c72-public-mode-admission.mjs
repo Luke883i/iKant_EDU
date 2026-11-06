@@ -1,4 +1,4 @@
-/** C72 public admission v2: two choices. No runtime ownership or v1 receipt substitution.
+/** C72 public admission v2: one prospective EDU choice. No runtime ownership or v1 receipt substitution.
  * Historical C72/v1 stays immutable for prior tests and explicit legacy consumers.
  * SHA-256 is an integrity check on caller data, NOT a provider event signature.
  */
@@ -42,13 +42,13 @@ export function c72PublicAdmissionContract(){return structuredClone(CONTRACT);}
 export function issueC72V2TermsOffer({sourceHead,termsDigest}={}){
  if(!H40.test(sourceHead||'')||!H64.test(termsDigest||''))throw Error('source head and terms digest required');
  return seal({schema:'ikant-le-c72-public-terms-offer/v2',source_head:sourceHead,
-  terms_digest:termsDigest,terms_gate:'I ACCEPT',allowed_modes:['EDU','CANONICAL'],
+  terms_digest:termsDigest,terms_gate:'I ACCEPT',allowed_modes:['EDU'],
   presentation_required:true,origin_authentication:'UNVERIFIED',
   active:false,native_event_attested:false,authority:0});
 }
 export function validateC72V2Offer(x){return is(x,'ikant-le-c72-public-terms-offer/v2')&&
  H40.test(x.source_head||'')&&H64.test(x.terms_digest||'')&&x.terms_gate==='I ACCEPT'&&
- same(x.allowed_modes,['EDU','CANONICAL'])&&x.presentation_required===true&&
+ same(x.allowed_modes,['EDU'])&&x.presentation_required===true&&
  x.origin_authentication==='UNVERIFIED'&&x.active===false&&x.native_event_attested===false;}
 export function acceptC72V2Terms({offer,humanMessage,termsPresented}={}){
  if(!validateC72V2Offer(offer))return denied('INVALID_OFFER');
@@ -99,8 +99,8 @@ const base=[
  'Il modello HOST è sostituibile, mentre i moduli originali verificano soltanto le operazioni realmente osservate.',
  'Le risposte separano fatti osservati, ipotesi, decisioni, ricevute e limiti; nessuna impronta prova la verità del testo.',
  'EDU è la modalità sperimentale consigliata per prove locali e bozze guidate, senza dichiarare instradamento nativo o persistenza tra chat.',
- 'CANONICAL è il percorso di prodotto via MCP autenticato, ma richiede ingresso originale, writer, readback e consegna: MCP connesso non significa ACTIVE.',
- 'Dopo il consenso I ACCEPT scegli esattamente EDU oppure CANONICAL; scegliere non installa alcun plugin e non avvia il runtime.'
+ 'MCP è una superficie applicativa esterna distinta da EDU e usa autorizzazioni, runtime e prove provider indipendenti.',
+ 'Dopo il consenso I ACCEPT scegli esattamente EDU in un turno successivo; la selezione non installa servizi esterni e non avvia il runtime.'
 ];
 const variantsA=['Le autorizzazioni rimangono limitate al turno.',
  'Ogni scrittura deve essere riletta e verificata.',
@@ -114,20 +114,20 @@ const variantsA=['Le autorizzazioni rimangono limitate al turno.',
  'Gli strumenti esterni richiedono permessi espliciti.'];
 const variantsB=['La scelta consigliata iniziale resta EDU.',
  'La modalità selezionata rimane inattiva fino alla prova.',
- 'Un evento non autenticato non attiva CANONICAL.',
+ 'Un evento non autenticato non autorizza il runtime EDU.',
  'Ogni nuova sorgente richiede un nuovo controllo.',
  'Una bozza non equivale a una consegna nativa.',
  'Il codice non sostituisce il servizio installato.',
  'Le note HOST sono distinte dalla voce originale.',
  'La cronologia di chat non vale come registro durevole.',
- 'La modalità CANONICAL non ha fallback automatico.',
+ 'Nessun servizio esterno sostituisce automaticamente EDU.',
  'Le prove dell’utente rimangono correggibili.'];
 export function evaluateC72V2Introductions(){
  const candidates=[];
  for(let a=0;a<10;a++)for(let b=0;b<10;b++){
   const text=[...base,variantsA[a],variantsB[b]].join(' ');
   const words=text.trim().split(/\s+/u).length;
-  const valid=words>=90&&words<=200&&text.includes('EDU')&&text.includes('CANONICAL')&&
+  const valid=words>=90&&words<=200&&text.includes('EDU')&&!text.includes('CANONICAL')&&
    text.includes('I ACCEPT')&&!text.includes('EXPERIMENTAL');
   candidates.push({index:a*10+b,text,words,valid,score:(valid?10000:0)-Math.abs(words-150)*3});
  }
@@ -143,7 +143,7 @@ export function presentC72V2Introduction(accepted){
   terms_digest:accepted.terms_digest,acceptance_receipt_sha256:accepted.receipt_sha256,
   text:rank.selected.text,candidate_index:rank.selected.index,
   candidates_evaluated:rank.evaluated,unique_candidates:rank.unique,
-  mode_options:['EDU','CANONICAL'],default_recommendation:'EDU',
+  mode_options:['EDU'],default_recommendation:'EDU',
   scores_are_empirical:false,active:false,authority:0});
 }
 export function validateC72V2Orientation(x,accepted){
@@ -152,12 +152,12 @@ export function validateC72V2Orientation(x,accepted){
  return x.source_head===accepted.source_head&&x.terms_digest===accepted.terms_digest&&
  x.acceptance_receipt_sha256===accepted.receipt_sha256&&x.text===rank.selected.text&&
  x.candidate_index===rank.selected.index&&x.candidates_evaluated===100&&
- x.unique_candidates===100&&same(x.mode_options,['EDU','CANONICAL'])&&
+ x.unique_candidates===100&&same(x.mode_options,['EDU'])&&
  x.default_recommendation==='EDU'&&x.scores_are_empirical===false&&x.active===false;
 }
 export function selectC72V2Mode({accepted,orientation,humanMessage}={}){
  if(!validateC72V2Orientation(orientation,accepted))return denied('INVALID_ORIENTATION_BOUNDARY');
- if(humanMessage!=='EDU'&&humanMessage!=='CANONICAL')return denied('INVALID_MODE_SELECTION');
+ if(humanMessage!=='EDU')return denied('INVALID_MODE_SELECTION');
  return seal({schema:'ikant-le-c72-public-selection/v2',source_head:accepted.source_head,
   terms_digest:accepted.terms_digest,acceptance_receipt_sha256:accepted.receipt_sha256,
   orientation_receipt_sha256:orientation.receipt_sha256,selected_mode:humanMessage,
@@ -170,7 +170,7 @@ export function validateC72V2ModeSelection(x,{mode=null,sourceHead=null}={}){
  if(!is(x,'ikant-le-c72-public-selection/v2'))return false;
  if(!H40.test(x.source_head||'')||!H64.test(x.terms_digest||'')||
  !H64.test(x.acceptance_receipt_sha256||'')||!H64.test(x.orientation_receipt_sha256||''))return false;
- if(x.selected_mode!=='EDU'&&x.selected_mode!=='CANONICAL')return false;
+ if(x.selected_mode!=='EDU')return false;
  if(mode!==null&&mode!==x.selected_mode)return false;
  if(sourceHead!==null&&sourceHead!==x.source_head)return false;
  return x.status===CONTRACT.status[x.selected_mode]&&x.first_unclosed_edge===CONTRACT.first_edge[x.selected_mode]&&

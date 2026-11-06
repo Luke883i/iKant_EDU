@@ -75,7 +75,7 @@ for(let i=0;i<cases;i++){
   const bad=flow.advance({humanMessage:'EDU'});
   if(bad.slots.NEXT!=='STOP'||flow.phase()!=='WAIT_ACCEPT')unexpected++;
   const ac=flow.advance({humanMessage:'I ACCEPT',termsLinkPresented:true});
-  if(ac.slots.NEXT!=='AWAIT_EDU_OR_CANONICAL'||ac.slots.A!=='NO_VOICE')unexpected++;
+  if(ac.slots.NEXT!=='AWAIT_EDU'||ac.slots.A!=='NO_VOICE')unexpected++;
   const selected=flow.advance({humanMessage:'EDU'});
   if(selected.slots.NEXT!=='VERIFY_SOURCE'||flow.selection()?.selected_mode!=='EDU')unexpected++;
   firstMessageGateChecks++;

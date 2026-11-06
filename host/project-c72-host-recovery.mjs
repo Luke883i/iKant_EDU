@@ -27,8 +27,8 @@ export function planC72HostRecovery({phase='AWAIT_ACCEPTANCE',humanMessage='',
   return deny('C72_HOST_EVIDENCE_INVALID','Il sistema non può convalidare gli indicatori tecnici.');
  if(phase==='AWAIT_MODE'){
   if(ownerAcceptanceVerified!==true)return deny('C72_ORIGINAL_RECEIPT_NOT_ATTESTED','Il consenso non è ancora stato validato dal componente originale.');
-  if(!freshHumanTurn)return gate('AWAIT_EDU_OR_CANONICAL','C72_MODE_SELECTION_PENDING','Scrivi EDU oppure CANONICAL in un nuovo messaggio.');
-  if(humanMessage!=='EDU'&&humanMessage!=='CANONICAL')return gate('AWAIT_EDU_OR_CANONICAL','C72_EXACT_MODE_REQUIRED','Invia soltanto EDU oppure CANONICAL, senza altre parole.');
+  if(!freshHumanTurn)return gate('AWAIT_EDU','C72_MODE_SELECTION_PENDING','Scrivi EDU in un nuovo messaggio.');
+  if(humanMessage!=='EDU')return gate('AWAIT_EDU','C72_EXACT_MODE_REQUIRED','Invia soltanto EDU, senza altre parole.');
   return auto('INVOKE_ORIGINAL_C72_MODE_OWNER','C72_MODE_ORIGINAL_SELECTION_REQUIRED','Il sistema verifica la selezione con il componente originale.');
  }
  if(phase==='AWAIT_ACCEPTANCE'){
@@ -38,7 +38,7 @@ export function planC72HostRecovery({phase='AWAIT_ACCEPTANCE',humanMessage='',
  if(phase==='ACCEPTANCE_PENDING'&&ownerAcceptanceVerified!==true&&humanMessage==='EDU')
   return deny('C72_ACCEPTANCE_PENDING_NOT_MODE','EDU non sostituisce la ricevuta di consenso.');
  if(ownerAcceptanceVerified===true)
-  return gate('AWAIT_EDU_OR_CANONICAL','C72_MODE_SELECTION_PENDING','In un nuovo messaggio, scrivi EDU oppure CANONICAL.');
+  return gate('AWAIT_EDU','C72_MODE_SELECTION_PENDING','In un nuovo messaggio, scrivi EDU.');
  if(ownerOutcome==='UNKNOWN')return deny('C72_OWNER_OUTCOME_UNKNOWN','L’esito della chiamata è incerto: controllo solo le prove esistenti, senza ripetere la scrittura.');
  if(ownerOutcome==='FAILED')return deny('C72_OWNER_EXECUTION_FAILED','Il componente ha restituito un errore verificato.');
  if(ownerOutcome==='SUCCEEDED')return deny('C72_ORIGINAL_RECEIPT_NOT_ATTESTED','Manca la verifica della ricevuta originale.');

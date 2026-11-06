@@ -41,7 +41,7 @@ test('one linked HEAD contract appears in BOOTSTRAP, prompt matrix and prompt on
  assert(prompt.includes('PR merged + richiesta Host'));
  assert(prompt.indexOf('Registro Host solo tecnico POST-ACCEPT')>prompt.indexOf('L4 GATE UMANI.'));
  assert(prompt.indexOf('L3 SOURCE_LOCK.')<prompt.indexOf('A1 CLASSIFICA.'));
- assert(prompt.includes('CANONICAL legacy⇒STOP'));
+ assert(prompt.includes('Ogni scelta legacy⇒STOP'));
  assert(Buffer.byteLength(prompt,'utf8')+210<=8000);
  assert.equal(execFileSync('git',['show','HEAD:'+matrix.source_prompt],{encoding:'utf8'}),prompt);
 });

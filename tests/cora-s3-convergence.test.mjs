@@ -76,7 +76,7 @@ test('original post-EDU selector points to canonical repo and never grants admis
  assert.equal(entry.kind,'STOP');
 });
 test('semantic classification requires exact canonical source and leaves ranking/delegation external',()=>{
- const prompt='iKant EDU canonical CANONICAL legacy '+'P'.repeat(400);
+ const prompt='iKant EDU ulteriore turno esatto EDU⇒selezione. '+'P'.repeat(400);
  const q={
   abi:JSON.stringify({authority:0,carrier_priority:[
    {id:'HOST_TOOL_ARG_RELAY'},{id:'SAME_NODE_CALLBACKS'},
@@ -85,7 +85,8 @@ test('semantic classification requires exact canonical source and leaves ranking
   prompt,derived:prompt+'\nPROJECT_SOURCE=project/session-chat/PROMPT.txt; NOT_INSTALLED',
   legacy:'iKant_LE',v7:'iKant_LE',
   continuous:"from './project-oneshell-edu.mjs'; from './c72-public-mode-admission.mjs'",
-  c72:JSON.stringify({authoritative_claims:{selection_is_active:false},status:{EDU:'EDU_SELECTED_NOT_RUNNING'}})
+  c72:JSON.stringify({mode_choices:['EDU'],authoritative_claims:{selection_is_active:false},
+   status:{EDU:'EDU_SELECTED_NOT_RUNNING'}})
  };
  const r=classifyS3Sources(q);
  assert.equal(r.S3R2,true);
@@ -93,6 +94,21 @@ test('semantic classification requires exact canonical source and leaves ranking
  assert.equal(r.S3R4,true);
  assert.equal(r.S3R5,true);
  assert.equal(r.S3R6,true);
+ // Future EDU-only source rejects a mixed legacy mode offer, not just a renamed label.
+ const dual=classifyS3Sources({...q,c72:JSON.stringify({
+  mode_choices:['EDU','CANONICAL'],authoritative_claims:{selection_is_active:false},
+  status:{EDU:'EDU_SELECTED_NOT_RUNNING'}
+ })});
+ assert.equal(dual.S3R6,false);
+ const early=classifyS3Sources({...q,prompt:prompt.replace('ulteriore turno esatto EDU⇒selezione.','EDU/CANONICAL')});
+ assert.equal(early.S3R6,false);
+ // Historical source classifications remain distinguishable, never migrated into the new epoch.
+ const legacyPrompt='iKant EDU CANONICAL legacy '+'P'.repeat(400);
+ const pinnedLegacy=classifyS3Sources({...q,prompt:legacyPrompt,
+  c72:JSON.stringify({mode_choices:['EDU','CANONICAL'],
+   authoritative_claims:{selection_is_active:false},
+   status:{EDU:'EDU_SELECTED_NOT_RUNNING'}})});
+ assert.equal(pinnedLegacy.S3R6,true);
  assert.equal(r.owner_concurrency_proven,false);
  assert.equal(r.provider_attested,false);
  const old=classifyS3Sources({...q,frontier:q.frontier.replace('iKant_EDU','iKant_LE')});

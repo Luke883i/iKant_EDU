@@ -12,8 +12,8 @@ const history=read('docs/IKANT_DEVELOPMENT_HISTORY.md');
 
 test('human-first README preserves constitutional routing and introduces an understandable cognitive model',()=>{
  for(const phrase of ['**Umano:**','**LLM:**','**iKant:**','**HOST:**','**Verificatore:**',
-  'GitHub API only','**EDU**','**CANONICAL**','C72/v2 (ingresso e consenso)',
-  'one canonical `SESSION_CHAT_LOCAL` composition (C59)',
+  'GitHub API only','**EDU**','**MCP_EXTERNAL**','Il percorso Project C72/v2 offre',
+  'one canonical `SESSION_CHAT_LOCAL` composition, C59',
   'GitHub DNS/egress from the container is not a dependency',
   'DOCUMENTATO / OSSERVATO / INFERITO / NON ATTESTATO',
   'IKANT_NEUROCOGNITIVE_BRIDGE.md'])assert.ok(home.includes(phrase),phrase);

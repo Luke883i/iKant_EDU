@@ -5,7 +5,7 @@ import {renderOneShell} from './project-oneshell-edu.mjs';
 
 const AUTO = new Set(['VERIFY_SOURCE','VERIFY_MACHINE_BRIDGE',
  'API_TREE_SOURCE_MATERIALIZATION','START_C135_EDU']);
-const HUMAN = new Set(['AWAIT_I_ACCEPT','AWAIT_EDU_OR_CANONICAL',
+const HUMAN = new Set(['AWAIT_I_ACCEPT','AWAIT_EDU',
  'AWAIT_HUMAN_INPUT','WAIT_NEXT_HUMAN_INPUT']);
 const MANUAL = new Set(['UPLOAD_PINNED_SOURCE_ZIP']);
 const SHA = /^[0-9a-f]{40}$/;

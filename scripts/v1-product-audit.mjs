@@ -21,7 +21,7 @@ for(const p of ['README.md',...Object.values(catalog.public_entrypoints),v1.publ
 const prompt=read('project/edu-oneshell/PROMPT_INNESCO.txt');
 assert(prompt.includes(pkg.version),'prompt and product version drift');
 const readme=read('README.md');
-for(const word of ['# iKant','Cosa ottieni oggi','EXPERIMENTAL','CANONICAL','GitHub API only','README.md -> BOOTSTRAP.json','docs/START_HERE.md','docs/V1_E2E_TRACEABILITY.md','release/catalog.json'])
+for(const word of ['# iKant','Cosa ottieni oggi','C72/v1','CANONICAL','GitHub API only','README.md -> BOOTSTRAP.json','docs/START_HERE.md','docs/V1_E2E_TRACEABILITY.md','release/catalog.json'])
  assert(readme.includes(word),'missing beginner-level README invariant: '+word);
 const m=read('docs/V1_E2E_TRACEABILITY.md');
 for(let i=1;i<=13;i++)assert(m.includes('V1-'+String(i).padStart(2,'0')),'missing DoD edge '+i);

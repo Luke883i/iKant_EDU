@@ -115,14 +115,13 @@
     "human_gate": "I ACCEPT",
     "after_gate": "PRESENT_SOURCE_DEFINED_V2_INTRO_AND_AWAIT_MODE",
     "modes": [
-      "EDU",
-      "CANONICAL"
+      "EDU"
     ],
     "recommended": "EDU",
-    "single_consent_for_all_modes": true,
+    "single_consent_for_all_modes": false,
     "explicit_mode_required": true,
-    "canonical_owner_only_after_choice": true,
-    "native_origin_required_for_canonical_only": true,
+    "canonical_owner_only_after_choice": false,
+    "native_origin_required_for_canonical_only": false,
     "legacy_c72_v1_receipts": "HISTORICAL_COMPATIBILITY_ONLY",
     "no_mode_aliasing": true,
     "selection_not_runtime_activation": true,

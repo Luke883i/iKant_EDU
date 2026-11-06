@@ -30,7 +30,7 @@ test('100000 seeded realistic hostile HOST observations: no promotion across gat
  // xorshift32, preseeded stratified scenarios; 100000 distinct CASE_i envelopes.
  let state=0x159c72a;const rand=()=>{state^=state<<13;state^=state>>>17;
    state^=state<<5;return state>>>0;};
- const pool=['AWAIT_I_ACCEPT','AWAIT_EDU_OR_CANONICAL','VERIFY_SOURCE',
+ const pool=['AWAIT_I_ACCEPT','AWAIT_EDU','VERIFY_SOURCE',
   'VERIFY_MACHINE_BRIDGE','API_TREE_SOURCE_MATERIALIZATION','START_C135_EDU',
   'UPLOAD_PINNED_SOURCE_ZIP','WAIT_NEXT_HUMAN_INPUT','STOP','SYNTHETIC_ACTIVE'];
  const results={AUTO:0,HUMAN_GATE:0,MANUAL_HANDOFF:0,STOP:0};
@@ -64,7 +64,8 @@ test('100000 seeded realistic hostile HOST observations: no promotion across gat
   digest.update(action.kind+':'+action.edge+'\n');
  }
  assert.equal(Object.values(results).reduce((a,b)=>a+b,0),100000);
- assert.equal(digest.digest('hex'),'aeba9d932e4deb5835b4c1409fb3a53d820323a08bc23b8b095342ffc538dc18');
+ assert.deepEqual(results,{AUTO:10120,HUMAN_GATE:10360,MANUAL_HANDOFF:10027,STOP:69493});
+ assert.equal(digest.digest('hex'),'efd565b96144b3f9b6868e4ea574160b2c19d57bc1c6e92d49fbf11106ccca1b');
  console.log('MUTATION_COUNTS',JSON.stringify(results));
 });
 

@@ -36,7 +36,9 @@
       "path": ".github/workflows/project-session-repo-first.yml",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Add one explicit source-only UX0 16-gate and ten-thousand negative regression step to the existing Project session PR and main workflow; no new workflow, branch protection or provider guarantee."
+      "reason": "Add one explicit source-only UX0 16-gate and ten-thousand negative regression step to the existing Project session PR and main workflow; no new workflow, branch protection or provider guarantee.",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
     },
     {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzz-oneshell-ux-retrograde.json",

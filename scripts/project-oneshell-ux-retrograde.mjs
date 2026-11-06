@@ -144,7 +144,7 @@ export function inspectUXSurfaceSeparation(graph=UX_RETICLE){
  return Object.freeze({schema:'ikant-host-ux-surface-separation/v1',authority:0,
   edu_and_mcp_independent:breaches.length===0,forbidden_cross_surface_edges:Object.freeze(breaches),
   shared_invariant:'SOURCE_ONLY',
-  edu_requires_mcp:false===mcpOnly.has('SOURCE')&&!breaches.length,
-  mcp_requires_edu:false===eduOnly.has('SOURCE')&&!breaches.length,
+  edu_requires_mcp:breaches.some(x=>x.startsWith('EDU_DEPENDS_ON_MCP:')),
+  mcp_requires_edu:breaches.some(x=>x.startsWith('MCP_DEPENDS_ON_EDU:')),
   authenticated_provider_or_owner:false,product_release:'NO_GO'});
 }

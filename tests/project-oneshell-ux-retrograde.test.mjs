@@ -99,6 +99,8 @@ test('EDU completion is NOT downstream of MCP registration or widget state',()=>
  const independent=inspectUXSurfaceSeparation();
  assert.equal(independent.edu_and_mcp_independent,true);
  assert.deepEqual(independent.forbidden_cross_surface_edges,[]);
+ assert.equal(independent.edu_requires_mcp,false);
+ assert.equal(independent.mcp_requires_edu,false);
  assert.equal(independent.product_release,'NO_GO');
  const declared=claimed();
  delete declared.APP_REGISTERED;delete declared.UI_INSTANCE;
@@ -124,6 +126,8 @@ test('two deliberate cross-surface dependency regressions are rejected by topolo
   const result=inspectUXSurfaceSeparation(withEdge(id,dep));
   assert.equal(result.edu_and_mcp_independent,false,id+':'+dep);
   assert(result.forbidden_cross_surface_edges.length>=1);
+  if(id==='APP_REGISTERED'||id==='UI_INSTANCE')assert.equal(result.mcp_requires_edu,true);
+  else assert.equal(result.edu_requires_mcp,true);
  }
  assert.throws(()=>inspectUXSurfaceSeparation(withEdge('EDU','IN_CHAT')),/UX_GRAPH_CYCLE/);
 });

@@ -1,4 +1,5 @@
 import test from 'node:test';
+import {qualifyRegisteredC72SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
@@ -139,11 +140,21 @@ test('10k seeded binary and semantic fault vectors reject all altered byte hashi
  assert.equal(a.unsafe,0);
  assert.equal(a.families,12);
 });
-test('real Git checkout preserves original owner blobs and all 116 workflow records',()=>{
+test('real Git checkout preserves historical owner pin ledger and qualifies only registered C72 prospective source',()=>{
  const cora=JSON.parse(fs.readFileSync(new URL('../contracts/cora-reticular-hygiene-v1.json',import.meta.url),'utf8'));
  const expected=cora.reuse.owner_blob_pins;
- for(const [file,sha] of Object.entries(expected))
-  assert.equal(git('rev-parse','HEAD:'+file),sha,'owner drift '+file);
+ let unchanged=0,amended=0;
+ for(const [file,sha] of Object.entries(expected)){
+  const x=qualifyRegisteredC72SourceEpoch({path:file,historicalBlobSha1:sha,
+   observedBlobSha1:git('rev-parse','HEAD:'+file)});
+  assert.equal(x.ok,true,file+':'+x.edge);
+  assert.equal(x.owner_invoked,false);
+  if(x.amended){amended++;assert.equal(file,'host/c72-public-mode-admission.mjs');
+   assert.equal(x.historical_receipt_reusable,false);
+   assert.equal(x.review_attested,false);
+  }else unchanged++;
+ }
+ assert.equal(unchanged,3);assert.equal(amended,1);
  const originalPRF=JSON.parse(fs.readFileSync(new URL(
   '../contracts/cora-pr-f-integrated-qualification-v1.json',import.meta.url),'utf8'));
  const historic=verifyFrozenWorkflowTree(originalPRF);

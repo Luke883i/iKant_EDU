@@ -17,7 +17,9 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
       "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
-      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "original_source_blob_sha1": "eec28e35a1066802edc905c7d61c1ecbcef0082d",
+      "prospective_source_blob_sha1": "f8f3713115137732fde380f02bfc0ec6874214f5"
     },
     {
       "path": "contracts/c72-public-mode-admission-v2.json",
@@ -25,7 +27,9 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
       "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
-      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "original_source_blob_sha1": "0bdb99589d907072917ba31f2938c9b600f39a05",
+      "prospective_source_blob_sha1": "cbcfc0178e3b8566d2972893260ccfabd1cf660a"
     },
     {
       "path": "ADMISSION.json",
@@ -41,7 +45,9 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
       "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
-      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "original_source_blob_sha1": "36c7d5beedb54c453fd4d38e551aa123a92c92f1",
+      "prospective_source_blob_sha1": "10cdd15c890b1d8ca071796babc4e5cc2d35efb8"
     },
     {
       "path": "TERMS.md",
@@ -97,7 +103,9 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Align one canonical Project source prompt, distribution projection and lexical guard to prospective exact EDU mode; not installed.",
       "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
-      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "original_source_blob_sha1": "277b1a5b7a8b9e5fe09702b6cf854b8682791db4",
+      "prospective_source_blob_sha1": "4c828707c1d3dff3bee91282ccaa83f1a2c4b286"
     },
     {
       "path": "project/edu-oneshell/PROMPT_INNESCO.txt",
@@ -105,7 +113,9 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Align one canonical Project source prompt, distribution projection and lexical guard to prospective exact EDU mode; not installed.",
       "supersedes_register": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
-      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+      "original_source_blob_sha1": "dd7a3cb190a7a731ef68701b4e11b68fb71708c2",
+      "prospective_source_blob_sha1": "f68e9a58fe10d2a152acb2641c9a90c31678c53e"
     },
     {
       "path": "scripts/project-prompt-seven-three-guard.mjs",
@@ -248,10 +258,65 @@
       "reason": "Preserve frozen C84 85-PR and historical local-owner proof while asserting current README has one EDU-only C72 selection and MCP_EXTERNAL independent of current Project C72."
     },
     {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Attach strictly fenced, read-only V5-B source epoch succession qualification; never turn C72 owner change into original prior-epoch SHA or native receipt."
+    },
+    {
+      "path": "scripts/cora-minimal-absorption.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Observe original C72 historical owner pin and separate prospective C72 source-epoch candidate without laundering its review or native owner state."
+    },
+    {
+      "path": "scripts/cora-pr-f-qualification.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Restore PR-F source gate using byte-exact historical C72 and separately registered new-epoch owner with source-only, review-pending provenance."
+    },
+    {
+      "path": "scripts/cora-s3-convergence.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify historical S3 snapshot and registered prospective EDU-only source changes separately; do not rewrite past S3 owner pins."
+    },
+    {
+      "path": "scripts/cora-m2-owner-provider-metrics.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Maintain original M2 owner/provider metric contract while classifying new C72 source lineage as pending review, never provider/native evidence."
+    },
+    {
+      "path": "tests/cora-pr-d1-blob-dedup.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Restore historic C72 exact hash and separately assert new registered source-epoch SHA; catch missing/mutated registry proofs."
+    },
+    {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Falsify source-epoch succession using before/after SHA mismatches and wrong owner, while retaining normal V5-B git-bijective policy."
+    },
+    {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "V5-B succession for prospective EDU-only owner+terms+consumer+tests. Original owner is deliberately amended; requires new epoch, review and independent release proof."
     }
-  ]
+  ],
+  "source_epoch_amendment": {
+    "schema": "ikant-cora-registered-source-epoch-succession/v1",
+    "baseline_main": "9efdcb4b5d67e3de52a8805cf52b446dd5ff0857",
+    "owner": "C72",
+    "owner_original_preserved_in_historical_epoch": true,
+    "prospective_not_native_approved": true,
+    "previous_receipts_never_upgraded": true,
+    "provider_receipt": "NOT_ATTESTED",
+    "owner_invoked": false,
+    "readback_level": "GIT_SOURCE_ONLY",
+    "independent_engineering_reviews": "NOT_ATTESTED",
+    "mcp_remains_independent": true
+  }
 }

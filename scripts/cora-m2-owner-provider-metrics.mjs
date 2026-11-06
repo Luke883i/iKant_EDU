@@ -6,6 +6,7 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {validateS3Profile} from './cora-s3-convergence.mjs';
+import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {validateFContract} from './cora-pr-f-qualification.mjs';
 import {observeM1Source} from './cora-m1-shared-evidence.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -114,8 +115,13 @@ export function observeM2Source(){
   for(const [fpath,expect] of Object.entries(PINS)){
    const b=data('show',head+':'+fpath);
    const sha=git('rev-parse',head+':'+fpath);
-   if(sha!==expect||hash(b)!==expect)return fail('M2_ORIGINAL_OWNER_BLOB_CHANGED:'+fpath);
-   observed[fpath]={sha1:sha,bytes:b.length};
+   const epoch=qualifyRegisteredC72SourceEpoch({
+    path:fpath,historicalBlobSha1:expect,observedBlobSha1:sha});
+   if(epoch.ok!==true||hash(b)!==sha)
+    return fail('M2_ORIGINAL_OWNER_BLOB_CHANGED:'+fpath);
+   observed[fpath]={sha1:sha,bytes:b.length,historical_sha1:expect,
+    source_epoch_status:epoch.status,prospective_amendment:epoch.amended===true,
+    review_attested:false,native_owner_receipt_attested:false};
   }
   const ownerM1=observeM1Source();
   if(ownerM1.ok!==true||ownerM1.status!=='M1_SHARED_SOURCE_EVIDENCE_CUT_ONLY'||

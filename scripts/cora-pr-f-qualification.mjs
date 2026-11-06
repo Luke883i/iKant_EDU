@@ -6,6 +6,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {observeReticularCensusWithAudit} from './cora-minimal-absorption.mjs';
+import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {derivePrABacklog} from './cora-pr-a-backlog.mjs';
 import {qualifyDocumentSet} from './cora-pr-b-docs.mjs';
 import {qualifyPrCCISource} from './cora-pr-c-ci.mjs';
@@ -180,8 +181,14 @@ export function observePrFSource(){
  const head=git('rev-parse','HEAD'),tree=git('rev-parse','HEAD^{tree}');
  const workflowTree=git('rev-parse','HEAD:.github/workflows');
  const workflowHistory=verifyFrozenWorkflowTree(c);
- const ownerRows=Object.entries(base.reuse.owner_blob_pins).map(([p,sha])=>({
-  path:p,match:git('rev-parse','HEAD:'+p)===sha}));
+ const ownerRows=Object.entries(base.reuse.owner_blob_pins).map(([p,sha])=>{
+  const observed=git('rev-parse','HEAD:'+p);
+  const epoch=qualifyRegisteredC72SourceEpoch({path:p,
+   historicalBlobSha1:sha,observedBlobSha1:observed});
+  return {path:p,match:epoch.ok===true,original_pin_unchanged:observed===sha,
+   source_epoch_status:epoch.status||epoch.edge,
+   native_owner_receipt_attested:false};
+ });
  const restoreRows=c.restored_source_blobs.map(x=>({
   path:x.path,match:git('rev-parse','HEAD:'+x.path)===x.blob}));
  const ar=derivePrABacklog(census,audit,load('contracts/cora-pr-a-backlog-v1.json'));
@@ -233,6 +240,10 @@ export function observePrFSource(){
   source:{head,tree,tracked:allPaths.size,workflow_tree:metrics.M05,
     current_workflow_tree:workflowTree,workflow_history:workflowHistory,
    source_baseline:c.source.base_head,
+   owner_epoch_source_only:ownerRows,
+   original_owner_blob_unchanged_count:ownerRows.filter(x=>x.original_pin_unchanged).length,
+   prospective_owner_source_revision_count:ownerRows.filter(x=>!x.original_pin_unchanged&&x.match).length,
+   human_review_attested:false,owner_receipt_from_git:false,
    previously_registered_missing_paths:(audit.missing_paths||[]).length},metrics,witnesses,model,
   original_reticulum:census.goals,
   recovery:{restored:restoreRows,original_tree:c.source.before_tree,

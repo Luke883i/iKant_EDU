@@ -95,7 +95,7 @@ export function sourcePathsPresent(c,root=ROOT){
  * All owner/accountability and external-delivery columns remain UNKNOWN.
  */
 import {execFileSync} from 'node:child_process';
-import {auditRepository,parseStagedGitEntries,provisionalRole} from './v5b-repository-governance-audit.mjs';
+import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
 const reticularPath='contracts/cora-reticular-hygiene-v1.json';
 const reticularIds=[
  'S01','S02','S03','S04','S05','S06','S07','S08','S09',
@@ -318,7 +318,11 @@ export function observeReticularCensusWithAudit(){
  const index=parseStagedGitEntries(execFileSync('git',['ls-files','--stage','-z'],{cwd:ROOT}).toString('utf8'))
   .map(x=>({path:x.path,sha:x.sha}));
  const ownerPaths=c.reuse.owners;
- const ownersStable=ownerPaths.every(p=>git('rev-parse','--verify','HEAD:'+p)===c.reuse.owner_blob_pins[p]);
+ const ownerEpochReadback=ownerPaths.map(p=>qualifyRegisteredC72SourceEpoch({
+  path:p,historicalBlobSha1:c.reuse.owner_blob_pins[p],
+  observedBlobSha1:git('rev-parse','--verify','HEAD:'+p)
+ }));
+ const ownersStable=ownerEpochReadback.every(e=>e.ok===true);
  // Reconstruct original workflow TREE by reversing only the explicitly pinned blob.
  // Original V5-B independently checks tracked files, retention and every delta register.
  const workflowTree=git('rev-parse','--verify','HEAD:.github/workflows');
@@ -333,7 +337,8 @@ export function observeReticularCensusWithAudit(){
  const audit=auditRepository();
  const census=qualifyReticularCensus(c,{audit,index,tree:parseTree,head,treeSha,
   ownersStable,deltaSafe,readme:fs.readFileSync(path.join(ROOT,'README.md'),'utf8')});
- return {census,audit};
+ return {census:{...census,original_owner_source_epoch_readback:ownerEpochReadback,
+  new_epoch_is_not_owner_receipt:true},audit};
 }
 /** Preserve the pre-D2 public result shape and original read-only CLI behavior. */
 export function observeReticularCensus(){

@@ -7,6 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {chooseEDUSourceTransport,chooseC72HostTransport,C72_TRANSPORT_ORDER}
  from '../host/project-c72-transport-frontier.mjs';
 import {validateFContract} from './cora-pr-f-qualification.mjs';
+import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {validateStreamProfile} from './cora-three-streams-audit.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const BASE='e719ebfdb8dfa2f1a0382f56ab95fbbdc0f3e005';
@@ -87,9 +88,15 @@ export function classifyS3Sources({bootstrap,abi,frontier,prompt,derived,legacy,
  source.prompt.includes('iKant EDU');
  const delegation=source.continuous.includes("from './project-oneshell-edu.mjs'")&&
  source.continuous.includes("from './c72-public-mode-admission.mjs'");
+ const oldMode=Array.isArray(admitted.mode_choices)&&
+  JSON.stringify(admitted.mode_choices)===JSON.stringify(['EDU','CANONICAL'])&&
+  source.prompt.includes('CANONICAL legacy');
+ const newMode=Array.isArray(admitted.mode_choices)&&
+  JSON.stringify(admitted.mode_choices)===JSON.stringify(['EDU'])&&
+  source.prompt.includes('ulteriore turno esatto EDU⇒selezione.')&&
+  !source.prompt.includes('EDU/CANONICAL');
  const mode=admitted.authoritative_claims?.selection_is_active===false&&
- admitted.status?.EDU==='EDU_SELECTED_NOT_RUNNING'&&
- source.prompt.includes('CANONICAL legacy');
+ admitted.status?.EDU==='EDU_SELECTED_NOT_RUNNING'&&(oldMode||newMode);
  return {S3R2:correctZip,S3R3:carrier,S3R4:prefix&&history,S3R5:delegation,
  S3R6:mode,old_zip_detected:oldZip,
  classifications:{C1:carrier?'SEPARATE_HOST_ADVISORY_RANKINGS_RUNTIME_UNKNOWN':'UNKNOWN',
@@ -126,8 +133,14 @@ export function observeS3Source(){
   const all={},observations=[];
   for(const [f,sha] of pinned){
    const b=get(head,f),observed=git('rev-parse',head+':'+f);
-   if(observed!==sha||gitHash(b)!==sha)return denied('S3_CRITICAL_BLOB_DRIFT:'+f);
-   all[f]=b.toString('utf8');observations.push({path:f,sha:observed,bytes:b.length});
+   const epoch=qualifyRegisteredC72SourceEpoch({
+    path:f,historicalBlobSha1:sha,observedBlobSha1:observed});
+   if(epoch.ok!==true||gitHash(b)!==observed)
+    return denied('S3_CRITICAL_BLOB_DRIFT:'+f);
+   all[f]=b.toString('utf8');observations.push({
+    path:f,sha:observed,bytes:b.length,historical_sha1:sha,
+    source_epoch_status:epoch.status,prospective_amendment:epoch.amended===true,
+    review_attested:false,owner_receipt_attested:false});
   }
   const classified=classifyS3Sources({
    bootstrap:all['BOOTSTRAP.json'],abi:all['contracts/project-host-tool-grounding-abi.json'],
@@ -155,6 +168,7 @@ export function observeS3Source(){
    source_status:logical.source_model_complete?'S3_SOURCE_MODEL_QUALIFIED':'S3_SOURCE_MODEL_INCOMPLETE',
    model:logical,observations,classifications:classified.classifications,
    negative_admission_gate:negative,first_edge:logical.source_model_complete?p.first_edge:logical.first_edge,
+   source_epoch_revisions:observations.filter(x=>x.prospective_amendment).map(x=>x.path),
    consumers:'UNKNOWN',owner_receipt:'NOT_INVOKED',provider:'NOT_ATTESTED',
    original_ledger:'NOT_ATTESTED',review:'NOT_ATTESTED',archive_allowed:false,
    standardized:false,active:false,product_go:false,authority:0};

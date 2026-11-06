@@ -1,8 +1,9 @@
+import fsForTest from 'node:fs';
 import crypto from 'node:crypto';
 const requireIndependentSha=bytes=>crypto.createHash('sha1').update('blob '+bytes.length+String.fromCharCode(0)).update(bytes).digest('hex');
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession,gitBlobSha1} from '../scripts/v5b-repository-governance-audit.mjs';
+import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession,gitBlobSha1,qualifyRegisteredC72SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 
 test('canonical Git hash helper is byte-accurate for UTF-8 and binary, reject object coercion',()=>{
  const cryptoSha=bytes=>{
@@ -151,4 +152,29 @@ test('V5B reviewer status supports digit-bearing C98 lineage while rejecting inv
   const mutant={...retained,superseded_workflows:{[base[0]]:{...retained.superseded_workflows[base[0]],status}}};
   assert(auditWorkflowRetirements(base,[base[1]],mutant,paths).errors.some(x=>x.startsWith('UNREVIEWABLE_WORKFLOW_RETIREMENT')),status);
  }
+});
+
+test('prospective C72 source-epoch register is exact, cannot upgrade prior receipts',()=>{
+ const fs=fsForTest;
+ const path='host/c72-public-mode-admission.mjs';
+ const old='eec28e35a1066802edc905c7d61c1ecbcef0082d';
+ const current='f8f3713115137732fde380f02bfc0ec6874214f5';
+ const base=JSON.parse(fs.readFileSync(new URL('../governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json',import.meta.url),'utf8'));
+ const run=(registration,observed=current,prior=old)=>qualifyRegisteredC72SourceEpoch({
+  path,historicalBlobSha1:prior,observedBlobSha1:observed,registration});
+ const result=run(base);assert.equal(result.ok,true);assert.equal(result.amended,true);
+ assert.equal(result.historical_receipt_reusable,false);
+ assert.equal(result.native_event_attested,false);
+ assert.equal(result.review_attested,false);
+ assert.equal(result.status,'PROSPECTIVE_C72_SOURCE_ONLY_REVIEW_REQUIRED');
+ assert.equal(run({...base,source_main:'f'.repeat(40)}).ok,false);
+ assert.equal(run({...base,human_review_completed:true}).ok,false);
+ assert.equal(run({...base,source_epoch_amendment:{...base.source_epoch_amendment,owner_invoked:true}}).ok,false);
+ assert.equal(run({...base,source_epoch_amendment:{...base.source_epoch_amendment,mcp_remains_independent:false}}).ok,false);
+ const bad=structuredClone(base);bad.paths.find(x=>x.path===path).prospective_source_blob_sha1='f'.repeat(40);
+ assert.equal(run(bad).ok,false);
+ assert.equal(run(base,'f'.repeat(40)).ok,false);
+ assert.equal(run(base,current,'f'.repeat(40)).ok,false);
+ assert.equal(qualifyRegisteredC72SourceEpoch({path:'host/c135-edu-v2-owner.mjs',historicalBlobSha1:old,observedBlobSha1:current,registration:base}).ok,false);
+ const unchanged=run(base,old);assert.equal(unchanged.ok,true);assert.equal(unchanged.amended,false);
 });

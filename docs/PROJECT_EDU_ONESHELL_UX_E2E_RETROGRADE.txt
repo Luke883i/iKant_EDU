@@ -24,6 +24,15 @@ App-like **inside the ChatGPT conversation** is a separate provider capability: 
 
 The current 8/8 cold C72 source closure is an IMPLEMENTATION requirement, not an ontological product minimum; alternatives must be qualified through original owners, not bypassed by a Host prompt. The same applies to the post-EDU full manifest until observed dynamic imports/file reads prove a smaller original equivalent.
 
+
+## User-gesture min-cut: distinguish the *current* law from the intended product
+
+Current legal turn graph = FIRST_CONTACT -> separate I ACCEPT -> separate EDU -> first cognitive question (four human messages counting the question). The original C72/v2 owner requires humanMessage to be exactly EDU or CANONICAL at mode selection. The observed preferred default EDU is only a recommendation, not implicit permission to collapse consent and selection. Current user-gesture minimum must therefore remain three pre-cognition messages.
+
+A simpler **future constitutional candidate** = FIRST_CONTACT -> I ACCEPT, with an explicitly disclosed and contract-approved default EDU -> first cognitive question (three total messages). This would remove one human gesture, but requires a deliberate original-owner/source-epoch amendment to mode selection, unambiguous Terms disclosure and explicit human decision; 2 independent V5-G reviews, negative tests for consent/silent mode coercion/rollback and a FRESH C72 admission in a new epoch. The Host and prompt cannot perform this conversion now. If the original law is unchanged, displaying EDU by default in a UI is not an original selection receipt.
+
+This alternative is subject to user comprehension, consent scope and app safety; reducing the number of messages is not automatically more important than meaningful informed choice.
+
 ## Target architecture and state ownership
 
 - Source epoch: exact Git commit/TREE/blob, freeze after Terms; no automatic repin.

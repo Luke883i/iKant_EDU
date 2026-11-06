@@ -78,3 +78,21 @@ export function assessUXReticle(declared={}){
   product_release:'NO_GO',may_invoke_owner:false,may_install:false,
   caution:'Callers can fabricate evidence records: only independent native readback can establish actual gates.'});
 }
+
+/** Analyze only the source-defined human-turn lower bound; never relax C72. */
+export function analyzeHumanTurnCut(root='.'){
+ const c72=gitBytes(root,'host/c72-public-mode-admission.mjs').toString('utf8');
+ if(!c72.includes("if(humanMessage!=='EDU'&&humanMessage!=='CANONICAL')"))
+  throw Error('UX_C72_MODE_OWNER_SEMANTICS_CHANGED_REQUALIFY');
+ return Object.freeze({
+  current_pre_cognition_human_messages:3,
+  current_including_first_question:4,
+  future_auto_edu_candidate_pre_cognition_messages:2,
+  future_auto_edu_candidate_including_question:3,
+  current_exact_edu_turn_required:true,
+  future_auto_edu_authorized:false,
+  original_c72_contract_change_required:true,
+  original_terms_disclosure_and_independent_review_required:true,
+  release:'NO_GO'
+ });
+}

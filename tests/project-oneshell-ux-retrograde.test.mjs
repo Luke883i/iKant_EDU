@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
-import {UX_SOURCE_PATHS,UX_RETICLE,inspectUXSource,assessUXReticle}
+import {UX_SOURCE_PATHS,UX_RETICLE,inspectUXSource,assessUXReticle,analyzeHumanTurnCut}
  from '../scripts/project-oneshell-ux-retrograde.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const git=(...a)=>execFileSync('git',a,{cwd:root,encoding:'utf8'}).trim();
@@ -82,4 +82,15 @@ test('type confusion, unknown gates, claims do not create an authorization',()=>
  const forged=claimed();
  forged.IN_CHAT={plane:'GIT',observed:true,independent_readback:true,witness_ref:'git-hash-pretend'};
  assert.equal(assessUXReticle(forged).first_unclosed_edge,'UX_IN_CHAT_EVIDENCE_NOT_ATTESTED');
+});
+
+test('actual C72 requires distinct EDU; one-turn auto-EDU is a future constitutional candidate only',()=>{
+ const cut=analyzeHumanTurnCut(root);
+ assert.equal(cut.current_pre_cognition_human_messages,3);
+ assert.equal(cut.current_including_first_question,4);
+ assert.equal(cut.future_auto_edu_candidate_pre_cognition_messages,2);
+ assert.equal(cut.current_exact_edu_turn_required,true);
+ assert.equal(cut.future_auto_edu_authorized,false);
+ assert.equal(cut.original_c72_contract_change_required,true);
+ assert.equal(cut.release,'NO_GO');
 });

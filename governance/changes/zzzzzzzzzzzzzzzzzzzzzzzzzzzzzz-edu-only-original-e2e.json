@@ -322,6 +322,12 @@
       "reason": "Rebind the exact S3 positive fixture to the original prospective EDU-only mode/prompt boundary and add dual-mode, early-mode and pinned-legacy negatives; retain all 50k deterministic falsifiers and external NO_GO."
     },
     {
+      "path": "tests/ikant-cx-postedit-review.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Requalify the historical C59 local composition reference and new prospective EDU-only public README vocabulary without reintroducing any CANONICAL selection or MCP-as-EDU owner."
+    },
+    {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

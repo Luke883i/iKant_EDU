@@ -20,7 +20,7 @@ test('SOURCE: original V1 compact envelope, existing editorial and neuro invaria
 });
 test('PRODUCT: bounded cognitive model, real full stack, original authority separation',()=>{
  for(const term of ['ricorrenza','attenzione','valenza','provenienza',
- 'Full stack reale','MCP_EXTERNAL','**EDU**','**CANONICAL**',
+ 'Full stack reale','MCP_EXTERNAL','**EDU**','**MCP_EXTERNAL**',
  'Fenomenologia: UNKNOWN','PRODUCT_NO_GO','RQ1','RQ2','RQ3',
  'C87','C125','C59','non installano Node'])
   assert.ok(home.includes(term),'missing '+term);

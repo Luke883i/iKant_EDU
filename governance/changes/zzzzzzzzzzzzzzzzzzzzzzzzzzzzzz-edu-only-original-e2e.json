@@ -201,13 +201,39 @@
       "path": "README.md",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Remove obsolete two public Project modes and present C72 prospective EDU-only admission plus a genuinely independent MCP route, retaining C59 as historical compatibility."
+      "reason": "Remove obsolete two public Project modes and present C72 prospective EDU-only admission plus a genuinely independent MCP route, retaining C59 as historical compatibility.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzz-cora-pr-g-evidence.json",
+      "supersedes_source_main": "838c8f7c26353b5256ab236bcc662a2cd6775ffa"
     },
     {
       "path": "AGENTS.md",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "New-epoch first contact accepts only a later exact EDU mode. Keep historical SESSION_CHAT_LOCAL one-composition guidance explicitly segregated from the Project's active entry."
+    },
+    {
+      "path": "scripts/readme-contract-select.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace legacy dual-choice required README anchors with exact prospective EDU-only Project and independent MCP requirements while retaining all 100 negative mutations."
+    },
+    {
+      "path": "tests/readme-product-maturity-1000.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Reject old two-mode public README and require MCP_EXTERNAL separated from Project EDU in editorial product regression."
+    },
+    {
+      "path": "tests/ikant-neurocognitive-lineage-docs.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve cognitive/ontological and historical C59 evidence; update README source anchors to prospective EDU-only entry."
+    },
+    {
+      "path": "scripts/ikant-semantic-reticulum.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Strengthen documentary semantic source guard from unrelated EDU and CANONICAL mentions to an exact one-choice EDU onboarding assertion."
     },
     {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",

@@ -31,7 +31,7 @@ on:
       - 'contracts/seeded/p0p1-*'
       - 'contracts/p0p1-*'
       - 'host/p0-*'
-      - 'runtime/p1-composite-epoch/**'
+      - 'tests/fixtures/epochs/p1-composite-epoch/**'
       - 'scripts/p1-stage-composite-epoch.mjs'
       - 'host/c114-ontology-language-policy.mjs'
       - 'host/c107-host-language-port.mjs'

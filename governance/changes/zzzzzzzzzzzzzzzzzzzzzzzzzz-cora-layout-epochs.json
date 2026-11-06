@@ -1,0 +1,450 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "25501ccba48b7d9cbc66842ddd3dff8b05267884",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json",
+  "scope": "CORA_LAYOUT_C134_P1_FIXTURE_RELOCATION_WITH_CURRENT_PRODUCT_UNCHANGED",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "moved_originals": [
+    {
+      "old": "runtime/c134-epoch/manifest.json",
+      "new": "tests/fixtures/epochs/c134-epoch/manifest.json",
+      "sha": "2c1c35af82a20259be3063278d45a2d7f926c6aa",
+      "bytes": 1715
+    },
+    {
+      "old": "runtime/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "new": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "sha": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "bytes": 11918
+    },
+    {
+      "old": "runtime/c134-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "new": "tests/fixtures/epochs/c134-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "sha": "ca9e94d42fb45802c7995bb53959dba8b8e3b31e",
+      "bytes": 4912
+    },
+    {
+      "old": "runtime/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "new": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "sha": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "bytes": 13362
+    },
+    {
+      "old": "runtime/c134-epoch/overlays/src/c83-semantic-router.mjs",
+      "new": "tests/fixtures/epochs/c134-epoch/overlays/src/c83-semantic-router.mjs",
+      "sha": "4ee62fea620baeb4c039544bdbf114c69b060999",
+      "bytes": 3771
+    },
+    {
+      "old": "runtime/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "new": "tests/fixtures/epochs/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "sha": "988da5ae52552edef57c104d7896eb28bc7b3066",
+      "bytes": 5194
+    },
+    {
+      "old": "test/c101-hardening.test.mjs",
+      "new": "tests/c101-hardening.test.mjs",
+      "sha": "7506874d23387553e7d30ed3cb21d01c95000132",
+      "bytes": 4194
+    },
+    {
+      "old": "test/c101-local-machine.test.mjs",
+      "new": "tests/c101-local-machine.test.mjs",
+      "sha": "aa505b839d67b6a5f289375062d893604b89c3e2",
+      "bytes": 4217
+    },
+    {
+      "old": "test/c102-real-source.test.mjs",
+      "new": "tests/c102-real-source.test.mjs",
+      "sha": "7465cdbcae1d81ef9077839c3ab91338391676af",
+      "bytes": 4676
+    },
+    {
+      "old": "test/c103-host-adapter.test.mjs",
+      "new": "tests/c103-host-adapter.test.mjs",
+      "sha": "8768a2e31fb96f414cbd8bf645c912f453181655",
+      "bytes": 3610
+    }
+  ],
+  "root_directory_effect": {
+    "retired": [
+      "runtime/",
+      "test/"
+    ],
+    "new_root_created": false,
+    "destinations": [
+      "tests/fixtures/epochs/",
+      "tests/"
+    ],
+    "original_files": 10,
+    "source_changed": false
+  },
+  "consumer_proof": "GITHUB_SEARCH_ALL_EXACT_LEGACY_PATHS_AND_ORIGINAL_TESTS_PLUS_CI_PENDING",
+  "external_proof": "NOT_ATTESTED",
+  "no_native_provider_claim": true,
+  "paths": [
+    {
+      "path": "runtime/c134-epoch/manifest.json",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "2c1c35af82a20259be3063278d45a2d7f926c6aa",
+      "target": "tests/fixtures/epochs/c134-epoch/manifest.json"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/manifest.json",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "2c1c35af82a20259be3063278d45a2d7f926c6aa",
+      "from": "runtime/c134-epoch/manifest.json"
+    },
+    {
+      "path": "runtime/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "target": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "from": "runtime/c134-epoch/overlays/host/c107-experimental-turn.mjs"
+    },
+    {
+      "path": "runtime/c134-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "ca9e94d42fb45802c7995bb53959dba8b8e3b31e",
+      "target": "tests/fixtures/epochs/c134-epoch/overlays/host/c114-ontology-language-policy.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "ca9e94d42fb45802c7995bb53959dba8b8e3b31e",
+      "from": "runtime/c134-epoch/overlays/host/c114-ontology-language-policy.mjs"
+    },
+    {
+      "path": "runtime/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "target": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "from": "runtime/c134-epoch/overlays/host/edu-c70-method-v7.mjs"
+    },
+    {
+      "path": "runtime/c134-epoch/overlays/src/c83-semantic-router.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "4ee62fea620baeb4c039544bdbf114c69b060999",
+      "target": "tests/fixtures/epochs/c134-epoch/overlays/src/c83-semantic-router.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/c134-epoch/overlays/src/c83-semantic-router.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "4ee62fea620baeb4c039544bdbf114c69b060999",
+      "from": "runtime/c134-epoch/overlays/src/c83-semantic-router.mjs"
+    },
+    {
+      "path": "runtime/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "operation": "REMOVE",
+      "reason": "Original non-active versioned-study epoch moved byte-for-byte to existing tests/fixtures/epochs source-only directory, with consumers migrated; restore by Git blob if behavior disagrees",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "988da5ae52552edef57c104d7896eb28bc7b3066",
+      "target": "tests/fixtures/epochs/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs"
+    },
+    {
+      "path": "tests/fixtures/epochs/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs",
+      "operation": "ADD",
+      "reason": "Identical source Git blob, preserved historical fixture and original versioned overlays; no current runtime promoted or owner changed",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "988da5ae52552edef57c104d7896eb28bc7b3066",
+      "from": "runtime/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs"
+    },
+    {
+      "path": "scripts/c134-source-epoch.mjs",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/p1-stage-composite-epoch.mjs",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/p0p1-seeded-falsify.mjs",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c134-versioned-cognitive-source.yml",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/p1-p7-oneshell-release.yml",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "docs/C134_COGNITIVE_SOURCE_EPOCH.md",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/c134-cognitive-epoch.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Only path references, trigger filters, historical C134 documentation or byte-identical relocation regression updated; preserve prior C72/C135/C87/C125 owners",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json",
+      "operation": "ADD",
+      "reason": "Original V5-B change ledger: six exact Git blob moves from runtime/ to existing test fixtures, seven consumer updates and explicit no-provider gate",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "test/c101-hardening.test.mjs",
+      "operation": "REMOVE",
+      "reason": "Retire redundant test/ root; exact original test source moves byte-for-byte into existing tests/ source-runner directory",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "7506874d23387553e7d30ed3cb21d01c95000132",
+      "target": "tests/c101-hardening.test.mjs"
+    },
+    {
+      "path": "tests/c101-hardening.test.mjs",
+      "operation": "ADD",
+      "reason": "Preserve exact original C101/C102/C103 test module under canonical tests/ with its original Git SHA1 and unchanged relative imports",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "7506874d23387553e7d30ed3cb21d01c95000132",
+      "from": "test/c101-hardening.test.mjs"
+    },
+    {
+      "path": "test/c101-local-machine.test.mjs",
+      "operation": "REMOVE",
+      "reason": "Retire redundant test/ root; exact original test source moves byte-for-byte into existing tests/ source-runner directory",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "aa505b839d67b6a5f289375062d893604b89c3e2",
+      "target": "tests/c101-local-machine.test.mjs"
+    },
+    {
+      "path": "tests/c101-local-machine.test.mjs",
+      "operation": "ADD",
+      "reason": "Preserve exact original C101/C102/C103 test module under canonical tests/ with its original Git SHA1 and unchanged relative imports",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "aa505b839d67b6a5f289375062d893604b89c3e2",
+      "from": "test/c101-local-machine.test.mjs"
+    },
+    {
+      "path": "test/c102-real-source.test.mjs",
+      "operation": "REMOVE",
+      "reason": "Retire redundant test/ root; exact original test source moves byte-for-byte into existing tests/ source-runner directory",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "7465cdbcae1d81ef9077839c3ab91338391676af",
+      "target": "tests/c102-real-source.test.mjs"
+    },
+    {
+      "path": "tests/c102-real-source.test.mjs",
+      "operation": "ADD",
+      "reason": "Preserve exact original C101/C102/C103 test module under canonical tests/ with its original Git SHA1 and unchanged relative imports",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "7465cdbcae1d81ef9077839c3ab91338391676af",
+      "from": "test/c102-real-source.test.mjs"
+    },
+    {
+      "path": "test/c103-host-adapter.test.mjs",
+      "operation": "REMOVE",
+      "reason": "Retire redundant test/ root; exact original test source moves byte-for-byte into existing tests/ source-runner directory",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "8768a2e31fb96f414cbd8bf645c912f453181655",
+      "target": "tests/c103-host-adapter.test.mjs"
+    },
+    {
+      "path": "tests/c103-host-adapter.test.mjs",
+      "operation": "ADD",
+      "reason": "Preserve exact original C101/C102/C103 test module under canonical tests/ with its original Git SHA1 and unchanged relative imports",
+      "human_review": "REVIEW_REQUIRED",
+      "original_blob_sha1": "8768a2e31fb96f414cbd8bf645c912f453181655",
+      "from": "test/c103-host-adapter.test.mjs"
+    },
+    {
+      "path": ".github/workflows/c101-local-cohost.yml",
+      "operation": "MODIFY",
+      "reason": "Replace obsolete singular test/ path with canonical tests/ in live CI trigger, test command, instruction or consumer contract; original software owner unchanged",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c102-soft-host.yml",
+      "operation": "MODIFY",
+      "reason": "Replace obsolete singular test/ path with canonical tests/ in live CI trigger, test command, instruction or consumer contract; original software owner unchanged",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c103-host-adapter.yml",
+      "operation": "MODIFY",
+      "reason": "Replace obsolete singular test/ path with canonical tests/ in live CI trigger, test command, instruction or consumer contract; original software owner unchanged",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "docs/C102_SOFT_HOST_RUNTIME.md",
+      "operation": "MODIFY",
+      "reason": "Replace obsolete singular test/ path with canonical tests/ in live CI trigger, test command, instruction or consumer contract; original software owner unchanged",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "contracts/c103-host-adapter-minimum.json",
+      "operation": "MODIFY",
+      "reason": "Replace obsolete singular test/ path with canonical tests/ in live CI trigger, test command, instruction or consumer contract; original software owner unchanged",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/cora-pr-f-qualification.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve PR-F/G frozen historical workflow Git TREE and independently reconcile exactly five registered live CI changes, with explicit source-only M1 anti-promotion regression",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json",
+      "supersedes_source_main": "6c08e7241751c5507048b0748d14a5648be8c1cb"
+    },
+    {
+      "path": "tests/cora-pr-f-qualification.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve PR-F/G frozen historical workflow Git TREE and independently reconcile exactly five registered live CI changes, with explicit source-only M1 anti-promotion regression",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json",
+      "supersedes_source_main": "6c08e7241751c5507048b0748d14a5648be8c1cb"
+    },
+    {
+      "path": "scripts/cora-pr-g-evidence-readback.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve PR-F/G frozen historical workflow Git TREE and independently reconcile exactly five registered live CI changes, with explicit source-only M1 anti-promotion regression",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzz-cora-pr-g-evidence.json",
+      "supersedes_source_main": "838c8f7c26353b5256ab236bcc662a2cd6775ffa"
+    },
+    {
+      "path": "tests/cora-pr-g-evidence-readback.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve PR-F/G frozen historical workflow Git TREE and independently reconcile exactly five registered live CI changes, with explicit source-only M1 anti-promotion regression",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzz-cora-pr-g-evidence.json",
+      "supersedes_source_main": "838c8f7c26353b5256ab236bcc662a2cd6775ffa"
+    },
+    {
+      "path": "scripts/cora-m1-shared-evidence.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve PR-F/G frozen historical workflow Git TREE and independently reconcile exactly five registered live CI changes, with explicit source-only M1 anti-promotion regression",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
+      "supersedes_source_main": "c889fa80326c2da09391da6d4edbc17e1bb9d052"
+    },
+    {
+      "path": "tests/cora-m1-shared-evidence.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Expose the original exact first source-edge and PR-F/G dependency status inside native TAP test name, without relaxing any assertion, for deterministic CI diagnosis",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
+      "supersedes_source_main": "c889fa80326c2da09391da6d4edbc17e1bb9d052"
+    },
+    {
+      "path": "contracts/cora-reticular-hygiene-v1.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Extend existing CORA workflow Git-tree source gate from one frozen YAML delta to the exact six registered original plus migrated blobs; preserve base historic TREE, 116 jobs, no retirement and negative mutation qualification",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    },
+    {
+      "path": "scripts/cora-minimal-absorption.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Extend existing CORA workflow Git-tree source gate from one frozen YAML delta to the exact six registered original plus migrated blobs; preserve base historic TREE, 116 jobs, no retirement and negative mutation qualification",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzz-cora-pr-d2-single-audit.json",
+      "supersedes_source_main": "e8999ac9dc83f5482cd065e7d358ecee21a9cb45"
+    },
+    {
+      "path": "tests/cora-reticular-hygiene.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Extend existing CORA workflow Git-tree source gate from one frozen YAML delta to the exact six registered original plus migrated blobs; preserve base historic TREE, 116 jobs, no retirement and negative mutation qualification",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzz-cora-pr-d2-single-audit.json",
+      "supersedes_source_main": "e8999ac9dc83f5482cd065e7d358ecee21a9cb45"
+    },
+    {
+      "path": "tests/cora-pr-d1-blob-dedup.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace obsolete direct current=TREE historical assertion with existing PR-F byte-exact historic-versus-current Git witness; retain all 116 records and original owner blob checks",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzz-cora-pr-d2-single-audit.json",
+      "supersedes_source_main": "e8999ac9dc83f5482cd065e7d358ecee21a9cb45"
+    }
+  ],
+  "workflow_migration": {
+    "original_root_head": "25501ccba48b7d9cbc66842ddd3dff8b05267884",
+    "historic_tree": "d81958913446a13f5fb296d20771c7e57e2df224",
+    "current_tree": "3eba2af5e3371645fb9573c357948f6466c259ae",
+    "paths": [
+      {
+        "path": ".github/workflows/c134-versioned-cognitive-source.yml",
+        "before": "78ef8fba75f8587e7f13f04767a9bc9fd981df44",
+        "after": "79cebb7bbd85646532cdd9deb5fef3fff2579dca"
+      },
+      {
+        "path": ".github/workflows/p1-p7-oneshell-release.yml",
+        "before": "1a8d982b6bc45985f77b464f11d6f4f539950f5d",
+        "after": "005a5e4666ce5c810d9c075b36a79eb083ab9354"
+      },
+      {
+        "path": ".github/workflows/c101-local-cohost.yml",
+        "before": "b7ef35bb51caa942bd47c1969fd7de4c51339df7",
+        "after": "7d16f6ad04486a7c375e3f4b79d9b061edd1e248"
+      },
+      {
+        "path": ".github/workflows/c102-soft-host.yml",
+        "before": "8944402f1d0a765075d5480efa1925083e28df86",
+        "after": "1bab8ba99a3adb54ce6755ccd9c7b10a7e82295a"
+      },
+      {
+        "path": ".github/workflows/c103-host-adapter.yml",
+        "before": "8f5349172923f4d6a5d151ea80cfcd501be4b754",
+        "after": "580e02fab03d6529064a575d2374f02d29e1a974"
+      }
+    ],
+    "authority": 0,
+    "original_git_tree_rebuild_required": true,
+    "provider_status": "NOT_ATTESTED",
+    "human_review": "REVIEW_REQUIRED",
+    "rulesets_status": "UNKNOWN",
+    "source_gate_closure": "FROZEN_GIT_TREE_RECONSTRUCTION_NONPROMOTING",
+    "cora_original_tree": "5457f319ca2a8c1e1edbf8b597de05dbc1f77b92",
+    "cora_validated_delta_count": 6
+  }
+}

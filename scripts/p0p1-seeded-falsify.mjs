@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 import {chooseP0P1Contracts} from './p0p1-select-contracts.mjs';
 import {planP1PostModeSourceHandoff} from '../host/p1-postmode-source-handoff.mjs';
 import {assessP0ThreadPanelReadiness} from '../host/p0-thread-panel-readiness.mjs';
-import {qualifyC114OntologyCandidate,C114_ONTOLOGY_FORMAT} from '../runtime/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs';
+import {qualifyC114OntologyCandidate,C114_ONTOLOGY_FORMAT} from '../tests/fixtures/epochs/p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs';
 import {qualifyP1CompositeOverlay} from './p1-stage-composite-epoch.mjs';
 import {issueC72V2TermsOffer,acceptC72V2Terms,presentC72V2Introduction,selectC72V2Mode} from '../host/c72-public-mode-admission.mjs';
 if(qualifyP1CompositeOverlay().ok!==true)throw Error('VERSIONED_P1_C134_OVERLAY_UNQUALIFIED');

@@ -86,8 +86,12 @@ test('exact main checkout independently reproduces original PR-F plus complete c
  assert.equal(r.status,'SOURCE_PACKET_READY_EXTERNAL_DOD_BLOCKED');
  assert.equal(r.source.head,git('rev-parse','HEAD'));
  assert.equal(r.source.tree,git('rev-parse','HEAD^{tree}'));
- assert.equal(r.source.workflow_tree,git('rev-parse','HEAD:.github/workflows'));
+ assert.equal(r.source.current_workflow_tree,git('rev-parse','HEAD:.github/workflows'));
  assert.equal(r.source.workflow_tree,workflowTree);
+ assert.equal(r.source.workflow_history?.historic_tree,workflowTree);
+ assert.equal(r.source.workflow_history?.current_tree,r.source.current_workflow_tree);
+ assert.equal(r.source.workflow_history?.source_only,true);
+ assert.equal(r.source.workflow_history?.provider_attested,false);
  const scanned=censusRepo(ROOT);
  assert.equal(r.consumers.dynamic_unknown,scanned.unknown_target_count);
  assert.equal(r.consumers.lexical_callsites,scanned.callsite_count);
@@ -192,4 +196,13 @@ test('external promotional claims remain impotent without original review and pr
  assert.equal(r.repository_standardized,false);
  assert.equal(r.permission_to_merge,false);
  assert.equal(r.product_go,false);
+});
+
+test('reject unbound changed workflow tree in source-only G packet',()=>{
+ const forged=fixture();
+ forged.f.source.current_workflow_tree='e'.repeat(40);
+ const r=qualifyGEvidence(forged);
+ assert.equal(r.ok,false);
+ assert.equal(r.first_edge,'G_WORKFLOW_MIGRATION_BOUNDARY_INVALID');
+ assert.equal(r.permission_to_merge,undefined);
 });

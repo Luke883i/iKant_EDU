@@ -58,8 +58,36 @@
           "path": ".github/workflows/docs-ontology-coverage.yml",
           "before": "792fb99a98655cb22c40a7d4002a4c1b147c2843",
           "after": "62d1e83724dcb2d66f933bbdacdd5358dada6c1b"
+        },
+        {
+          "path": ".github/workflows/c134-versioned-cognitive-source.yml",
+          "before": "78ef8fba75f8587e7f13f04767a9bc9fd981df44",
+          "after": "79cebb7bbd85646532cdd9deb5fef3fff2579dca"
+        },
+        {
+          "path": ".github/workflows/p1-p7-oneshell-release.yml",
+          "before": "1a8d982b6bc45985f77b464f11d6f4f539950f5d",
+          "after": "005a5e4666ce5c810d9c075b36a79eb083ab9354"
+        },
+        {
+          "path": ".github/workflows/c101-local-cohost.yml",
+          "before": "b7ef35bb51caa942bd47c1969fd7de4c51339df7",
+          "after": "7d16f6ad04486a7c375e3f4b79d9b061edd1e248"
+        },
+        {
+          "path": ".github/workflows/c102-soft-host.yml",
+          "before": "8944402f1d0a765075d5480efa1925083e28df86",
+          "after": "1bab8ba99a3adb54ce6755ccd9c7b10a7e82295a"
+        },
+        {
+          "path": ".github/workflows/c103-host-adapter.yml",
+          "before": "8f5349172923f4d6a5d151ea80cfcd501be4b754",
+          "after": "580e02fab03d6529064a575d2374f02d29e1a974"
         }
-      ]
+      ],
+      "revised_migration_epoch": "25501ccba48b7d9cbc66842ddd3dff8b05267884",
+      "historical_baseline_preserved": true,
+      "external_review": "NOT_ATTESTED"
     }
   },
   "nodes": [

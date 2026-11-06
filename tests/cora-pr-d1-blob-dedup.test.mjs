@@ -5,6 +5,7 @@ import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {gitBlobSha1} from '../scripts/v5b-repository-governance-audit.mjs';
 import {qualifyWorkflowPatch,DIRECTIVE} from '../scripts/cora-pr-c-ci.mjs';
+import {verifyFrozenWorkflowTree} from '../scripts/cora-pr-f-qualification.mjs';
 
 const contract=JSON.parse(fs.readFileSync(new URL('../contracts/cora-pr-d1-blob-dedup-v1.json',import.meta.url),'utf8'));
 const register=JSON.parse(fs.readFileSync(new URL('../governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json',import.meta.url),'utf8'));
@@ -143,8 +144,14 @@ test('real Git checkout preserves original owner blobs and all 116 workflow reco
  const expected=cora.reuse.owner_blob_pins;
  for(const [file,sha] of Object.entries(expected))
   assert.equal(git('rev-parse','HEAD:'+file),sha,'owner drift '+file);
- assert.equal(git('rev-parse','HEAD:.github/workflows'),
-  'd81958913446a13f5fb296d20771c7e57e2df224');
+ const originalPRF=JSON.parse(fs.readFileSync(new URL(
+  '../contracts/cora-pr-f-integrated-qualification-v1.json',import.meta.url),'utf8'));
+ const historic=verifyFrozenWorkflowTree(originalPRF);
+ assert.equal(historic.ok,true,JSON.stringify(historic));
+ assert.equal(historic.historic_tree,'d81958913446a13f5fb296d20771c7e57e2df224');
+ assert.equal(historic.current_tree,git('rev-parse','HEAD:.github/workflows'));
+ assert.equal(historic.source_only,true);
+ assert.equal(historic.provider_attested,false);
  const fileCount=git('ls-tree','-r','--name-only','HEAD:.github/workflows').split('\n').filter(Boolean).length;
  assert.equal(fileCount,116);
 });

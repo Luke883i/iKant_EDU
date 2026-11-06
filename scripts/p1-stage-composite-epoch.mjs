@@ -12,7 +12,7 @@ const originalPath='host/c114-ontology-language-policy.mjs';
 // Pin exact reviewed overlay; string-presence checks are not an integrity boundary.
 const EXPECTED_OVERLAY_SHA256='18e925bb51ffad40946fce491eb7432879b53c0bf91f3e6465f31ab9102503a0';
 const EXPECTED_OVERLAY_GIT_BLOB='988da5ae52552edef57c104d7896eb28bc7b3066';
-const overlayPath=path.join(root,'runtime/p1-composite-epoch/overlays',originalPath);
+const overlayPath=path.join(root,'tests/fixtures/epochs/p1-composite-epoch/overlays',originalPath);
 const gitBlob=b=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex');
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const stop=edge=>({ok:false,first_edge:edge,authority:0,native_provider_attested:false,active:false});
@@ -22,7 +22,7 @@ export function qualifyP1CompositeOverlay(){
  if(!parent.ok)return stop('P1_C134_SOURCE_UNQUALIFIED');
  const member=parent.members.find(m=>m.path===originalPath);
  if(!member)return stop('P1_C134_PIN_MISSING');
- const b=fs.readFileSync(overlayPath),base=fs.readFileSync(path.join(root,'runtime/c134-epoch/overlays',originalPath));
+ const b=fs.readFileSync(overlayPath),base=fs.readFileSync(path.join(root,'tests/fixtures/epochs/c134-epoch/overlays',originalPath));
  if(gitBlob(base)!==member.next_git_blob_sha1||sha(base)!==member.next_sha256)
   return stop('P1_C134_OVERLAY_DRIFT');
  if(sha(b)!==EXPECTED_OVERLAY_SHA256||gitBlob(b)!==EXPECTED_OVERLAY_GIT_BLOB)

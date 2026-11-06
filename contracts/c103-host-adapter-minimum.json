@@ -38,7 +38,7 @@
   },
   "checks": {
     "verifier": "host/c103-host-adapter-conformance.mjs",
-    "source_integration": "test/c103-host-adapter.test.mjs",
+    "source_integration": "tests/c103-host-adapter.test.mjs",
     "synthetic_mutations": "scripts/c103-falsify-100k.mjs",
     "synthetic_cases": 100000
   }

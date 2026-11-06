@@ -69,3 +69,39 @@ test('self software original C114 guard preserved, negation and citation are not
   assert.equal(c.qualifyC134NonSelfCandidate({text:'La frase "io sono cosciente" e citata.'}).allowed,true);
  }finally{fs.rmSync(x.parent,{recursive:true,force:true})}
 });
+
+test('versioned C134/P1 archived fixtures preserve all six original Git blobs and retire old runtime root',()=>{
+ const original={
+  'c134-epoch/manifest.json':'2c1c35af82a20259be3063278d45a2d7f926c6aa',
+  'c134-epoch/overlays/host/c107-experimental-turn.mjs':'76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6',
+  'c134-epoch/overlays/host/c114-ontology-language-policy.mjs':'ca9e94d42fb45802c7995bb53959dba8b8e3b31e',
+  'c134-epoch/overlays/host/edu-c70-method-v7.mjs':'0a9bd9c4058effac611a49b898be6f06fd4beb94',
+  'c134-epoch/overlays/src/c83-semantic-router.mjs':'4ee62fea620baeb4c039544bdbf114c69b060999',
+  'p1-composite-epoch/overlays/host/c114-ontology-language-policy.mjs':'988da5ae52552edef57c104d7896eb28bc7b3066'
+ };
+ const blob=b=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+String.fromCharCode(0)),b])).digest('hex');
+ for(const [relative,expected] of Object.entries(original)){
+  assert.equal(fs.existsSync(path.join(root,'runtime',relative)),false,'stale current runtime: '+relative);
+  const next=path.join(root,'tests/fixtures/epochs',relative),st=fs.lstatSync(next);
+  assert.equal(st.isFile()&&!st.isSymbolicLink(),true,relative);
+  assert.equal(blob(fs.readFileSync(next)),expected,relative);
+ }
+ assert.equal(Object.keys(original).length,6);
+});
+
+test('CORA layout: every source reader and CI path filter points only to passive relocated epochs',()=>{
+ const consumers=[
+  ['scripts/c134-source-epoch.mjs','tests/fixtures/epochs/c134-epoch/','runtime/c134-epoch/'],
+  ['scripts/p1-stage-composite-epoch.mjs','tests/fixtures/epochs/p1-composite-epoch/','runtime/p1-composite-epoch/'],
+  ['scripts/p0p1-seeded-falsify.mjs','../tests/fixtures/epochs/p1-composite-epoch/','../runtime/p1-composite-epoch/'],
+  ['.github/workflows/c134-versioned-cognitive-source.yml','tests/fixtures/epochs/c134-epoch/**','runtime/c134-epoch/**'],
+  ['.github/workflows/p1-p7-oneshell-release.yml','tests/fixtures/epochs/p1-composite-epoch/**','runtime/p1-composite-epoch/**']
+ ];
+ for(const [file,current,obsolete] of consumers){
+  const content=fs.readFileSync(path.join(root,file),'utf8');
+  assert.ok(content.includes(current),'missing new consumer path in '+file);
+  assert.ok(!content.includes(obsolete),'stale old consumer path in '+file);
+ }
+ assert.equal(fs.existsSync(path.join(root,'runtime')),false);
+ assert.equal(fs.existsSync(path.join(root,'runtime-root/shard-000.json')),true);
+});

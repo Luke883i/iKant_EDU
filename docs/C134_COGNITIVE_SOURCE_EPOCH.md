@@ -2,7 +2,7 @@
 
 **Per chi usa iKant:** abbiamo preparato una nuova versione del programma che non confonde automaticamente l'identità umana con l'identità del software. Una domanda umana può ricevere una risposta argomentata; una domanda esplicita sull'identità di iKant mantiene la disclosure rigorosa.
 
-**Garanzia fondamentale:** i quattro file modificati sono conservati come **sorgente composita separata** sotto `runtime/c134-epoch/overlays/`, con hash Git precedenti e nuovi, SHA-256 e manifesto. I moduli storici C107/C124 rimangono intatti. L'identificatore composito NON è un commit GitHub, NON autentica l'intero repository e non conferisce CANONICAL ACTIVE.
+**Garanzia fondamentale:** i quattro file modificati sono conservati come **sorgente composita separata** sotto `tests/fixtures/epochs/c134-epoch/overlays/`, con hash Git precedenti e nuovi, SHA-256 e manifesto. I moduli storici C107/C124 rimangono intatti. L'identificatore composito NON è un commit GitHub, NON autentica l'intero repository e non conferisce CANONICAL ACTIVE.
 
 ## Differenze in quattro livelli
 

@@ -27,6 +27,6 @@ Deny claims: no owner receipt, no C84/C59, no automatic ChatGPT interception, no
 5. After adversarial ledger corruption, inspection and subsequent turns fail closed.
 6. Native ChatGPT per-message interception is separately OPEN, and the file-backed host runtime must not be described as running inside GPT weights or automatically on every chat turn.
 
-`node --test test/c102-real-source.test.mjs`
+`node --test tests/c102-real-source.test.mjs`
 
 This scope is an independently qualified local runtime, not an installed ChatGPT Project integration. The existing v2 Project prompt bundle may reference it as an optional host capability only after real execution and source readback. No Project settings are changed by this PR.

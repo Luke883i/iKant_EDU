@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /** Host engineering PR-F source candidate: reuse original owners; no new receipt. */
 import fs from 'node:fs';
+import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
@@ -19,6 +20,74 @@ const IDS=['F01','F02','F03','F04','F05','F06','F07','F08','F09',
 const SOURCE_IDS=new Set(['F01','F02','F03','F04','F05','F09']);
 const git=(...args)=>execFileSync('git',args,{cwd:ROOT,encoding:'utf8',timeout:20000}).trim();
 const load=p=>JSON.parse(fs.readFileSync(path.join(ROOT,p),'utf8'));
+
+/** Preserve PR-F's frozen workflow TREE as source history after an explicit rename.
+ * Reconstruct the original Git tree from current tracked entries and precisely
+ * five registered historic blob IDs. Never turn this into CI/provider approval.
+ */
+export function verifyFrozenWorkflowTree(contract){
+ const frozen=contract?.metrics?.find(x=>x.id==='M05')?.target;
+ let current;
+ try{current=git('rev-parse','HEAD:.github/workflows');}
+ catch{return {ok:false,edge:'F_WORKFLOW_CURRENT_TREE_UNKNOWN'};}
+ const deny=edge=>({ok:false,edge,historic_tree:null,current_tree:current,
+  source_only:true,provider_attested:false,review_attested:false});
+ if(!SHA.test(frozen||'')||!SHA.test(current))return deny('F_WORKFLOW_TREE_INVALID');
+ if(current===frozen)return {ok:true,historic_tree:frozen,current_tree:current,
+  migration_count:0,source_only:true,provider_attested:false,review_attested:false};
+ try{
+  const register=load('governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json');
+  const m=register.workflow_migration;
+  if(register.schema!=='ikant-v5b-change-extension/v1'||
+   register.authority!==0||m?.authority!==0||
+   m.original_root_head!==register.source_main||
+   m.historic_tree!==frozen||m.current_tree!==current||
+   m.original_git_tree_rebuild_required!==true||
+   m.human_review!=='REVIEW_REQUIRED'||m.rulesets_status!=='UNKNOWN'||
+   !Array.isArray(m.paths)||m.paths.length!==5)
+   return deny('F_WORKFLOW_REGISTER_NOT_GROUNDED');
+  const changes=new Map();
+  for(const change of m.paths){
+   if(!/^\.github\/workflows\/[a-z0-9-]+\.yml$/u.test(change.path)||
+    !SHA.test(change.before||'')||!SHA.test(change.after||'')||
+    change.before===change.after||
+    !register.paths.some(x=>x.path===change.path&&x.operation==='MODIFY'))
+    return deny('F_WORKFLOW_MIGRATION_ROW_INVALID');
+   const name=change.path.slice('.github/workflows/'.length);
+   if(changes.has(name))return deny('F_WORKFLOW_MIGRATION_DUPLICATE');
+   changes.set(name,change);
+  }
+  const bytes=execFileSync('git',['ls-tree','-z','HEAD:.github/workflows'],
+   {cwd:ROOT,timeout:20000,maxBuffer:2000000});
+  const rows=bytes.toString('utf8').split('\0').filter(Boolean).map(item=>{
+   const match=/^(100644|100755) blob ([a-f0-9]{40})\t([^\t/]+)$/u.exec(item);
+   if(!match)throw Error('F_WORKFLOW_TREE_ENTRY_INVALID');
+   return {mode:match[1],sha:match[2],name:match[3]};
+  });
+  if(rows.length!==116||new Set(rows.map(x=>x.name)).size!==116)
+   return deny('F_WORKFLOW_TREE_CARDINALITY_INVALID');
+  const seen=new Set();
+  const restored=[];
+  for(const row of rows){
+   const change=changes.get(row.name);
+   if(change){
+    if(row.sha!==change.after)return deny('F_WORKFLOW_CURRENT_BLOB_UNEXPECTED');
+    seen.add(row.name);
+    restored.push({...row,sha:change.before});
+   }else restored.push(row);
+  }
+  if(seen.size!==5)return deny('F_WORKFLOW_MIGRATION_NOT_EXACT');
+  restored.sort((a,b)=>Buffer.compare(Buffer.from(a.name),Buffer.from(b.name)));
+  const tree=Buffer.concat(restored.map(x=>Buffer.concat([
+   Buffer.from(x.mode+' '+x.name+'\0'),Buffer.from(x.sha,'hex')])));
+  const reconstructed=createHash('sha1').update(Buffer.from('tree '+tree.length+'\0'))
+   .update(tree).digest('hex');
+  if(reconstructed!==frozen)return deny('F_FROZEN_WORKFLOW_TREE_NOT_RECONSTRUCTED');
+  return {ok:true,historic_tree:reconstructed,current_tree:current,
+   migration_count:5,source_only:true,provider_attested:false,review_attested:false};
+ }catch{return deny('F_WORKFLOW_SOURCE_RECONSTRUCTION_UNKNOWN');}
+}
+
 const fails=(edge,context={})=>({ok:false,first_edge:edge,authority:0,active:false,
  product_go:false,repo_standardized:false,status:'DEBT_BLOCKED',...context});
 
@@ -110,6 +179,7 @@ export function observePrFSource(){
  const base=load('contracts/cora-reticular-hygiene-v1.json');
  const head=git('rev-parse','HEAD'),tree=git('rev-parse','HEAD^{tree}');
  const workflowTree=git('rev-parse','HEAD:.github/workflows');
+ const workflowHistory=verifyFrozenWorkflowTree(c);
  const ownerRows=Object.entries(base.reuse.owner_blob_pins).map(([p,sha])=>({
   path:p,match:git('rev-parse','HEAD:'+p)===sha}));
  const restoreRows=c.restored_source_blobs.map(x=>({
@@ -130,7 +200,7 @@ export function observePrFSource(){
   M02:census.rows.length/audit.checked_files,
   M03:ownerRows.filter(x=>x.match).length,
   M04:audit.workflow_count,
-  M05:workflowTree,
+  M05:workflowHistory.ok?workflowHistory.historic_tree:workflowTree,
   M06:restoreRows.filter(x=>x.match).length,
   M07:(audit.errors||[]).filter(x=>x.startsWith('UNREGISTERED_DELETION:')).length,
   M08:atlas.atlas_exact===true,
@@ -145,7 +215,8 @@ export function observePrFSource(){
   F02:audit.errors.length===0&&audit.checked_files===census.rows.length&&
    census.rows.every(x=>x.consumer_status!=='UNUSED'),
   F03:ownerRows.length===4&&ownerRows.every(x=>x.match)&&
-   audit.workflow_count===116&&workflowTree===c.metrics.find(x=>x.id==='M05').target,
+   audit.workflow_count===116&&workflowHistory.ok===true&&
+   workflowHistory.historic_tree===c.metrics.find(x=>x.id==='M05').target,
   F04:br.ok===true&&metrics.M08===true&&br.checked_documents===8,
   F05:ar.ok===true&&cr.ok===true&&ar.counted_files===audit.checked_files&&
    ar.product_go===false&&cr.product_go===false&&
@@ -159,7 +230,8 @@ export function observePrFSource(){
    'PR_F_SOURCE_CANDIDATE_EXTERNAL_GATES_OPEN':'PR_F_SOURCE_DOD_OPEN',
   first_edge:sourceCandidate?'F06_CLEAN_CHECKOUT_NOT_PROVEN':
    ['F01','F02','F03','F04','F05'].find(x=>!witnesses[x]),
-  source:{head,tree,tracked:allPaths.size,workflow_tree:workflowTree,
+  source:{head,tree,tracked:allPaths.size,workflow_tree:metrics.M05,
+    current_workflow_tree:workflowTree,workflow_history:workflowHistory,
    source_baseline:c.source.base_head,
    previously_registered_missing_paths:(audit.missing_paths||[]).length},metrics,witnesses,model,
   original_reticulum:census.goals,

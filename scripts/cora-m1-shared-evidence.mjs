@@ -113,7 +113,7 @@ export function qualifyM1Snapshot({gitObjects,audit,callsite,g,contract}={}){
  if(g?.ok!==true||g.status!=='SOURCE_PACKET_READY_EXTERNAL_DOD_BLOCKED'||
   g.original_DOD!=='contracts/cora-pr-f-integrated-qualification-v1.json'||
   g.source?.head!==gitObjects.head||g.source?.tree!==gitObjects.tree||
-  g.source?.workflow_tree!==gitObjects.workflow_tree||
+  (g.source?.current_workflow_tree??g.source?.workflow_tree)!==gitObjects.workflow_tree||
   g.source?.tracked!==rows.length||
   g.consumers?.lexical_callsites!==callsite.callsite_count||
   g.consumers?.dynamic_unknown!==callsite.unknown_target_count||

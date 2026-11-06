@@ -43,9 +43,11 @@ assert.match(read('docs/GOVERNANCE.md'),/Separate EXPERIMENTAL acquisition/);
 // C84 historical transport evidence stays frozen; public admission follows C72/v2.
 const publicReadme=read('README.md');
 assert.match(publicReadme,/\*\*EDU\*\*[\s\S]{0,100}sperimentale/i);
-assert.match(publicReadme,/\*\*CANONICAL\*\*/);
+assert.match(publicReadme,/\*\*MCP_EXTERNAL\*\*/);
+assert.match(publicReadme,/Il percorso Project C72\/v2 offre \*\*esattamente una selezione successiva al consenso: EDU\*\*/);
+assert.doesNotMatch(publicReadme,/\*\*CANONICAL\*\*/);
 assert.match(publicReadme,/one canonical `SESSION_CHAT_LOCAL` composition/);
-assert.match(publicReadme,/C72\/v1[\s\S]{0,140}EXPERIMENTAL/);
+assert.match(publicReadme,/Archeologia separata:[^\n]*C72\/v1/);
 assert.match(publicReadme,/MCP_EXTERNAL/);
 assert.match(publicReadme,/C59/);
 assert.doesNotMatch(publicReadme,/CANONICAL \(via MCP\)/);

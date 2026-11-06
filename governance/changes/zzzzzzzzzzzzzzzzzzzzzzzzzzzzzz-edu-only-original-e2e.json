@@ -242,6 +242,12 @@
       "reason": "Retain standalone V1 pre-release/authority regression and historical C72/v1 breadcrumb without requiring experimental/CANONICAL as a present public Project mode."
     },
     {
+      "path": "scripts/c84-host-composition-qualify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve frozen C84 85-PR and historical local-owner proof while asserting current README has one EDU-only C72 selection and MCP_EXTERNAL independent of current Project C72."
+    },
+    {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

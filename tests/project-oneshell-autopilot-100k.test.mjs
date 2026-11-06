@@ -64,7 +64,8 @@ test('100000 seeded realistic hostile HOST observations: no promotion across gat
   digest.update(action.kind+':'+action.edge+'\n');
  }
  assert.equal(Object.values(results).reduce((a,b)=>a+b,0),100000);
- assert.match(digest.digest('hex'),/^[a-f0-9]{64}$/);
+ assert.deepEqual(results,{AUTO:10120,HUMAN_GATE:10360,MANUAL_HANDOFF:10027,STOP:69493});
+ assert.equal(digest.digest('hex'),'efd565b96144b3f9b6868e4ea574160b2c19d57bc1c6e92d49fbf11106ccca1b');
  console.log('MUTATION_COUNTS',JSON.stringify(results));
 });
 

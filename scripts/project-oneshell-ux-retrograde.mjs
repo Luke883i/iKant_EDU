@@ -119,7 +119,7 @@ export function inspectEDUOnlyVisibleSource(root='.'){
  ].map(path=>[path,gitBytes(root,path).toString('utf8')]));
  const onlyEdu=v=>Array.isArray(v)&&v.length===1&&v[0]==='EDU';
  const violations=[];
- if(!texts['README.md'].includes('una sola selezione successiva al consenso: EDU')||
+ if(!texts['README.md'].includes('esattamente una selezione successiva al consenso: EDU')||
     texts['README.md'].includes('esattamente due opzioni, EDU e CANONICAL'))
   violations.push('README_DUAL_MODE_ONBOARDING');
  if(!texts['AGENTS.md'].includes('one later exact `EDU` message only')||

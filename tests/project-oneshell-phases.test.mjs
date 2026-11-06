@@ -20,7 +20,7 @@ test('all eight semantic phases have owner scope and six stable OneShell slots',
  assert.equal(oneShellOrientation({head:'f'.repeat(40),offer}).slots.NEXT,'STOP');
  assert.equal(oneShellOrientation({head,offer:{...offer,terms_read_attested:true}}).slots.NEXT,'STOP');
  const a=oneShellAccepted({accepted,orientation});
- assert.equal(a.slots.B,orientation.text);assert.equal(a.slots.NEXT,'AWAIT_EDU_OR_CANONICAL');
+ assert.equal(a.slots.B,orientation.text);assert.equal(a.slots.NEXT,'AWAIT_EDU');
  assert.equal(oneShellAccepted({accepted:{...accepted,receipt_sha256:'f'.repeat(64)},orientation}).slots.NEXT,'STOP');
  const e=oneShellSelected({selection:edu,accepted,orientation});
  assert.equal(e.slots.NEXT,'VERIFY_SOURCE');
@@ -40,7 +40,7 @@ test('exact separate human messages drive only original C72 v2 receipts inside O
  assert.equal(flow.phase(),'WAIT_ACCEPT');
  assert.equal(flow.advance({humanMessage:'I ACCEPT'}).slots.NEXT,'STOP');
  const introduction=flow.advance({humanMessage:'I ACCEPT',termsLinkPresented:true});
- assert.equal(introduction.slots.NEXT,'AWAIT_EDU_OR_CANONICAL');
+ assert.equal(introduction.slots.NEXT,'AWAIT_EDU');
  assert.equal(flow.advance({humanMessage:'I ACCEPT'}).slots.NEXT,'STOP');
  assert.equal(flow.advance({humanMessage:'EDU'}).slots.NEXT,'VERIFY_SOURCE');
  assert.equal(flow.selection().selected_mode,'EDU');
@@ -50,7 +50,7 @@ test('exact separate human messages drive only original C72 v2 receipts inside O
  other.advance({humanMessage:'avvia iKant'});
  other.advance({humanMessage:'I ACCEPT',termsLinkPresented:true});
  assert.equal(other.advance({humanMessage:'CANONICAL'}).slots.NEXT,'STOP');
- assert.equal(other.selection().selected_mode,'CANONICAL');
+ assert.equal(other.selection(),null);
 });
 
 test('any first human utterance triggers ONLY orientation, not consent or a runtime turn',()=>{
@@ -63,7 +63,7 @@ test('any first human utterance triggers ONLY orientation, not consent or a runt
   assert.equal(flow.selection(),null);
   assert.equal(flow.phase(),'WAIT_ACCEPT');
   assert.equal(flow.advance({humanMessage:'EDU'}).slots.NEXT,'STOP');
-  assert.equal(flow.advance({humanMessage:'I ACCEPT',termsLinkPresented:true}).slots.NEXT,'AWAIT_EDU_OR_CANONICAL');
+  assert.equal(flow.advance({humanMessage:'I ACCEPT',termsLinkPresented:true}).slots.NEXT,'AWAIT_EDU');
   assert.equal(flow.advance({humanMessage:'EDU'}).slots.NEXT,'VERIFY_SOURCE');
  }
  const flow=createOneShellAdmissionFlow({head,termsUtf8:'verified terms'});
@@ -71,10 +71,10 @@ test('any first human utterance triggers ONLY orientation, not consent or a runt
  assert.equal(flow.phase(),'WAIT_TRIGGER');
 });
 
-test('CANONICAL remains original C72-readable legacy but never starts Project bootstrap',()=>{
+test('legacy mode is no longer selectable in prospective EDU but old Git receipts remain historical',()=>{
+ assert.equal(canonical.status,'INVALID_MODE_SELECTION');
  const result=oneShellSelected({selection:canonical,accepted,orientation});
- assert.match(result.slots.ESITO,/LEGACY/);
- assert.equal(result.slots.EDGE,'CANONICAL_LEGACY_PRODUCT_NO_GO');
+ assert.equal(result.slots.EDGE,'C72_ORIGINAL_MODE_RECEIPT_REQUIRED');
  assert.equal(result.slots.NEXT,'STOP');
  assert.equal(result.slots.A,'NO_VOICE');
  assert.equal(oneShellSelected({selection:edu,accepted,orientation}).slots.NEXT,'VERIFY_SOURCE');
@@ -94,6 +94,6 @@ test('cold orientation uses HEAD + original Terms only; a TREE is neither requir
  assert.equal(flow.advance({humanMessage:'I ACCEPT'}).slots.NEXT,'AWAIT_I_ACCEPT');
  assert.equal(flow.phase(),'WAIT_ACCEPT');
  const acceptedFrame=flow.advance({humanMessage:'I ACCEPT',termsLinkPresented:true});
- assert.equal(acceptedFrame.slots.NEXT,'AWAIT_EDU_OR_CANONICAL');
+ assert.equal(acceptedFrame.slots.NEXT,'AWAIT_EDU');
  assert.equal(flow.advance({humanMessage:'EDU'}).slots.NEXT,'VERIFY_SOURCE');
 });

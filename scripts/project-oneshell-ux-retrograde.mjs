@@ -82,7 +82,7 @@ export function assessUXReticle(declared={}){
 /** Analyze only the source-defined human-turn lower bound; never relax C72. */
 export function analyzeHumanTurnCut(root='.'){
  const c72=gitBytes(root,'host/c72-public-mode-admission.mjs').toString('utf8');
- if(!c72.includes("if(humanMessage!=='EDU'&&humanMessage!=='CANONICAL')"))
+ if(!c72.includes("if(humanMessage!=='EDU')return denied('INVALID_MODE_SELECTION')"))
   throw Error('UX_C72_MODE_OWNER_SEMANTICS_CHANGED_REQUALIFY');
  return Object.freeze({
   current_pre_cognition_human_messages:3,
@@ -107,14 +107,39 @@ export const EDU_VISIBLE_SOURCE_PATHS=Object.freeze([
 export function inspectEDUOnlyVisibleSource(root='.'){
  const findings=EDU_VISIBLE_SOURCE_PATHS.map(path=>{
   const body=gitBytes(root,path).toString('utf8');
-  const matches=[...body.matchAll(/\bCANONICAL\b/gu)];
-  return Object.freeze({path,literal_canonical_mentions:matches.length});
+  return Object.freeze({path,literal_canonical_mentions:[...body.matchAll(/\bCANONICAL\b/gu)].length});
  });
- const count=findings.reduce((n,f)=>n+f.literal_canonical_mentions,0);
- return Object.freeze({schema:'ikant-host-edu-visible-source-census/v1',authority:0,
-  scope:'SOURCE_ONLY_NOT_NATIVE_RENDER',canonical_mentions:count,
-  files:Object.freeze(findings),status:count>0?'EDU_ONLY_UX_NOT_IMPLEMENTED':'SOURCE_CANDIDATE_ONLY_NOT_OWNER_PROOF',
-  original_owner_amended:false,actual_chat_visibility_attested:false,release:'NO_GO'});
+ const asJson=path=>JSON.parse(gitBytes(root,path).toString('utf8'));
+ const modes=asJson('contracts/c72-public-mode-admission-v2.json').mode_choices;
+ const onboarding=asJson('ADMISSION.json').default_onboarding.modes;
+ const bootstrap=asJson('BOOTSTRAP.json').user_onboarding_c72.mode_choices;
+ const texts=Object.fromEntries([
+  'TERMS.md','project/session-chat/PROMPT.txt','project/edu-oneshell/PROMPT_INNESCO.txt',
+  'host/c72-public-mode-admission.mjs','host/project-oneshell-phases.mjs'
+ ].map(path=>[path,gitBytes(root,path).toString('utf8')]));
+ const onlyEdu=v=>Array.isArray(v)&&v.length===1&&v[0]==='EDU';
+ const violations=[];
+ for(const [label,v] of [['C72_CONTRACT',modes],['ADMISSION',onboarding],['BOOTSTRAP',bootstrap]])
+  if(!onlyEdu(v))violations.push('DUAL_MODE_SOURCE:'+label);
+ if(/\bCANONICAL\b/u.test(texts['TERMS.md']))violations.push('TERMS_LEGACY_MODE_VISIBLE');
+ if(/\bCANONICAL\b/u.test(texts['project/session-chat/PROMPT.txt']))
+  violations.push('PROMPT_LEGACY_MODE_VISIBLE');
+ if(/\bCANONICAL\b/u.test(texts['project/edu-oneshell/PROMPT_INNESCO.txt']))
+  violations.push('DISTRIBUTION_LEGACY_MODE_VISIBLE');
+ if(!texts['host/c72-public-mode-admission.mjs'].includes("allowed_modes:['EDU']")||
+    !texts['host/c72-public-mode-admission.mjs'].includes("mode_options:['EDU']")||
+    !texts['host/c72-public-mode-admission.mjs'].includes("if(humanMessage!=='EDU')return denied('INVALID_MODE_SELECTION')"))
+  violations.push('C72_OWNER_DUAL_SELECTION_OR_UNKNOWN');
+ if(texts['host/project-oneshell-phases.mjs'].includes('AWAIT_EDU_OR_CANONICAL')||
+    !texts['host/project-oneshell-phases.mjs'].includes("next:'AWAIT_EDU'"))
+  violations.push('ONE_SHELL_LEGACY_CHOICE_VISIBLE');
+ return Object.freeze({schema:'ikant-host-edu-visible-source-census/v2',authority:0,
+  scope:'SOURCE_ONLY_NOT_OWNER_EFFECT_OR_NATIVE_RENDER',
+  literal_canonical_mentions:findings.reduce((n,f)=>n+f.literal_canonical_mentions,0),
+  active_choice_violations:Object.freeze(violations),
+  files:Object.freeze(findings),
+  status:violations.length?'EDU_ONLY_UX_NOT_IMPLEMENTED':'EDU_ONLY_SOURCE_CANDIDATE_NOT_RUNTIME_ATTESTED',
+  original_owner_invoked:false,actual_chat_visibility_attested:false,release:'NO_GO'});
 }
 /** Two assurance lanes share source integrity, never each other's owner,
  * consent, widget requirement, native receipt or product value metric.

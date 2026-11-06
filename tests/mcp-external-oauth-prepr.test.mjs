@@ -32,7 +32,7 @@ test('GLOBAL: external MCP identity never becomes EDU or CANONICAL authority',as
  assert.equal(hasOAuthScope(v,'ikant:connect'),true);
  assert.equal(hasOAuthScope(v,'ikant:write'),true);
  const unrelated=fs.readFileSync(path.join(repo,'contracts/c72-public-mode-admission-v2.json'),'utf8');
- assert.deepEqual(JSON.parse(unrelated).mode_choices,['EDU','CANONICAL']);
+ assert.deepEqual(JSON.parse(unrelated).mode_choices,['EDU']);
  assert.equal(fs.readFileSync(path.join(repo,'src/session-chat-deployment.mjs'),'utf8').includes('LEGACY_C20_COMPATIBILITY_ONLY'),true);
 });
 test('INTERMEDIATE: discovery/challenge exactly match configured resource, no Host injection',()=>{

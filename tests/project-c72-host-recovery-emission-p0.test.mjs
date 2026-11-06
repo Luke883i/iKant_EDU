@@ -40,7 +40,7 @@ test('human experience: exact consent, automatic diagnosis and no fake owner rec
  assert.equal(unavailable.kind,'STOP');assert.match(unavailable.human_next,/Nessuna azione tecnica richiesta a te/);
  const mode=planC72HostRecovery({phase:'AWAIT_MODE',ownerAcceptanceVerified:true,
  freshHumanTurn:true,humanMessage:'Scelgo EDU'});
- assert.equal(mode.action,'AWAIT_EDU_OR_CANONICAL');
+ assert.equal(mode.action,'AWAIT_EDU');
  assert.equal(planC72HostRecovery({...good,catalog:'EMPTY',node:'UNKNOWN'}).action,'VERIFY_NODE_20');
 });
 test('1000 executed adversarial E2E combinations: recovery + canonical glyph + trace readback',()=>{

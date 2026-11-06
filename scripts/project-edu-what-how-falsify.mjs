@@ -47,7 +47,7 @@ for(let i=0;i<COUNT;i++){
   const receipt=flow.advance({humanMessage:consent,termsLinkPresented:link});
   valid=consent==='I ACCEPT'&&link;
   if(valid){
-   if(receipt.slots.NEXT!=='AWAIT_EDU_OR_CANONICAL')errors++;
+   if(receipt.slots.NEXT!=='AWAIT_EDU')errors++;
    const mode=(c&15)===0?'CANONICAL':'EDU';
    const state=flow.advance({humanMessage:mode});selection=flow.selection();
    valid=mode==='EDU';if(state.slots.NEXT!==(valid?'VERIFY_SOURCE':'STOP'))errors++;

@@ -70,7 +70,7 @@ export function createProjectC72PreacceptGate({readMain,readDocument}={}){
   const i=presentC72V2Introduction(a);
   if(!validateC72V2Orientation(i,a))return stop('C72_ORIGINAL_INTRO_NOT_VERIFIED');
   accepted=a;orientation=i;phase='ACCEPTED';
-  return Object.freeze({ok:true,edge:'AWAIT_EDU_OR_CANONICAL',
+  return Object.freeze({ok:true,edge:'AWAIT_EDU',
    accepted:a,introduction:i,authority:0,native_event_attested:false});
  }
  function denySourceAction(action){

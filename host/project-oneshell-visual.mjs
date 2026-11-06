@@ -34,7 +34,7 @@ function stateFromOriginal(frame){
  if(frame.voice_origin==='HOST_BOUND_LOCAL'&&A!=='NO_VOICE')return 'VOCE_VERIFICATA';
  if(NEXT==='AWAIT_HUMAN_INPUT')return 'PRONTO';
  if(NEXT==='AWAIT_I_ACCEPT')return 'ORIENTAMENTO';
- if(NEXT==='AWAIT_EDU_OR_CANONICAL')return 'CONSENSO';
+ if(NEXT==='AWAIT_EDU')return 'CONSENSO';
  if(NEXT==='UPLOAD_PINNED_SOURCE_ZIP')return 'ATTESA_SORGENTI';
  if(NEXT.includes('AWAIT')||NEXT.includes('VERIFY')||NEXT.includes('MATERIALIZATION')||NEXT.includes('START_C135'))return 'ATTESA';
  return 'FASE_SCONOSCIUTA';

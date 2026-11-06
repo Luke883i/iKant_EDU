@@ -5,7 +5,7 @@ const words=[
  ['Host≠iKant','C72','C135','C87','C125/S03','≠ owner/ricevuta/runtime'],
  ['realmente invocabili QUI','GitHub via connettore/API disponibile','non presupporre HTTPS','STOP_UNBOUND','UNKNOWN≠assente','MACHINE_CAPS={GITHUB_SOURCE,NODE_EXEC,HOST_TOOL_ARGUMENT_COURIER}','CARRIERS={HOST_TOOL_ARG_RELAY>SAME_NODE_CALLBACKS>HOST_SOURCE_PACKET>NODE_GITHUB_HTTPS}','JSON≠binding'],
  ['Luke883i/iKant_LE/main','SHA-1+permalink','Congela HEAD/witness','STOP_SOURCE_LOCK_STALE'],
- ['PRIMO messaggio','ORIENTATION','HOST_ENGINEERING','I ACCEPT⇒C72','EDU/CANONICAL','CANONICAL legacy⇒STOP','EXIT IKANT','CONFERMO EXIT IKANT','ANNULLA EXIT IKANT'],
+ ['PRIMO messaggio','ORIENTATION','HOST_ENGINEERING','I ACCEPT⇒C72','EDU⇒selezione','Ogni scelta legacy⇒STOP','EXIT IKANT','CONFERMO EXIT IKANT','ANNULLA EXIT IKANT'],
  ['Avanza ⇔','evento umano distinto','effetto osservato','readback indipendente','ricevuta owner','non certificano origine'],
  ['UNKNOWN⇒STOP senza retry','POST-ACCEPT','mai consenso/stato/receipt','C87/checkpoint'],
  ['ESITO | A | B | PROVA | EDGE | NEXT','NO_VOICE','owner-bound','Host:','@Host','SEMANTIC_RETENTION_NOT_ATTESTED'],

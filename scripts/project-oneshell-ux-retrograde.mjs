@@ -27,11 +27,11 @@ const rows=[
  ['VOICE','OWNER',['LEDGER'],'C125/S03 same-turn original bytes and qualified ACK'],
  ['SIX_SLOTS','LOCAL',['VOICE'],'Original OneShell frame, A exact, B technical, no forged status'],
  ['IN_CHAT','PROVIDER',['SIX_SLOTS'],'Actual six-slot output seen in ChatGPT, or explicit text fallback'],
- ['APP_REGISTERED','PROVIDER',['IN_CHAT'],'Real MCP app registration, authenticated UI resource and rendering'],
- ['UI_INSTANCE','PROVIDER',['APP_REGISTERED'],'Widget view-state restored within same UI instance; never C87 state'],
+ ['APP_REGISTERED','PROVIDER',['SOURCE'],'Independent MCP app registration, authentication and UI resource; not downstream of EDU'],
+ ['UI_INSTANCE','PROVIDER',['APP_REGISTERED'],'MCP widget-only ephemeral view state, independent of original EDU ledger'],
  ['SECOND_TURN','OWNER',['LEDGER','IN_CHAT'],'Second distinct C135 turn, same ledger or verified C87 recovery, no duplicate send'],
  ['EXIT','OWNER',['SECOND_TURN'],'EXIT warning and separate human confirmation/cancellation with original readback'],
- ['HUMAN_VALUE','VALUE_USER',['EXIT','UI_INSTANCE'],'Independent host users/tasks and C72 value promise, not CI']
+ ['HUMAN_VALUE','VALUE_USER',['EXIT','IN_CHAT'],'EDU independent holdout and C72 value promise; never requires MCP view state']
 ];
 export const UX_RETICLE=Object.freeze(rows.map(([id,plane,requires,meaning])=>Object.freeze({id,plane,requires:Object.freeze(requires),meaning})));
 const validPlanes=new Set(['GIT','LOCAL','OWNER','PROVIDER','VALUE_USER']);
@@ -95,4 +95,56 @@ export function analyzeHumanTurnCut(root='.'){
   original_terms_disclosure_and_independent_review_required:true,
   release:'NO_GO'
  });
+}
+
+/** Bounded source-visible inventory. Literal occurrences != actual rendered choice,
+ * but a nonzero source count blocks claims that the EDU UX has already been cleaned. */
+export const EDU_VISIBLE_SOURCE_PATHS=Object.freeze([
+ 'TERMS.md','ADMISSION.json','contracts/c72-public-mode-admission-v2.json',
+ 'host/c72-public-mode-admission.mjs','host/project-oneshell-phases.mjs',
+ 'project/session-chat/PROMPT.txt','project/edu-oneshell/PROMPT_INNESCO.txt'
+]);
+export function inspectEDUOnlyVisibleSource(root='.'){
+ const findings=EDU_VISIBLE_SOURCE_PATHS.map(path=>{
+  const body=gitBytes(root,path).toString('utf8');
+  const matches=[...body.matchAll(/\bCANONICAL\b/gu)];
+  return Object.freeze({path,literal_canonical_mentions:matches.length});
+ });
+ const count=findings.reduce((n,f)=>n+f.literal_canonical_mentions,0);
+ return Object.freeze({schema:'ikant-host-edu-visible-source-census/v1',authority:0,
+  scope:'SOURCE_ONLY_NOT_NATIVE_RENDER',canonical_mentions:count,
+  files:Object.freeze(findings),status:count>0?'EDU_ONLY_UX_NOT_IMPLEMENTED':'SOURCE_CANDIDATE_ONLY_NOT_OWNER_PROOF',
+  original_owner_amended:false,actual_chat_visibility_attested:false,release:'NO_GO'});
+}
+/** Two assurance lanes share source integrity, never each other's owner,
+ * consent, widget requirement, native receipt or product value metric.
+ * Structural check only: cannot validate field execution. */
+export function inspectUXSurfaceSeparation(graph=UX_RETICLE){
+ if(!Array.isArray(graph))throw Error('UX_GRAPH_INVALID');
+ const seen=new Set(),byId=new Map();
+ for(const n of graph){
+  if(!n||typeof n.id!=='string'||seen.has(n.id)||!Array.isArray(n.requires))
+   throw Error('UX_GRAPH_BAD_NODE');
+  seen.add(n.id);byId.set(n.id,n);
+ }
+ const parents=(id,visited=new Set())=>{
+  if(visited.has(id))throw Error('UX_GRAPH_CYCLE');
+  const node=byId.get(id);if(!node)throw Error('UX_GRAPH_MISSING_NODE:'+id);
+  const next=new Set(visited);next.add(id);const result=new Set();
+  for(const dep of node.requires){result.add(dep);for(const a of parents(dep,next))result.add(a);}
+  return result;
+ };
+ const eduTerminals=['IN_CHAT','HUMAN_VALUE'];
+ const mcpTerminals=['APP_REGISTERED','UI_INSTANCE'];
+ const eduOnly=new Set(['TERMS','CONSENT','C72','EDU','EXECUTABLE','COGNITION','LEDGER','VOICE','SIX_SLOTS','IN_CHAT','SECOND_TURN','EXIT','HUMAN_VALUE']);
+ const mcpOnly=new Set(mcpTerminals);
+ const breaches=[];
+ for(const id of eduTerminals){for(const a of parents(id))if(mcpOnly.has(a))breaches.push('EDU_DEPENDS_ON_MCP:'+a);}
+ for(const id of mcpTerminals){for(const a of parents(id))if(eduOnly.has(a))breaches.push('MCP_DEPENDS_ON_EDU:'+a);}
+ return Object.freeze({schema:'ikant-host-ux-surface-separation/v1',authority:0,
+  edu_and_mcp_independent:breaches.length===0,forbidden_cross_surface_edges:Object.freeze(breaches),
+  shared_invariant:'SOURCE_ONLY',
+  edu_requires_mcp:false===mcpOnly.has('SOURCE')&&!breaches.length,
+  mcp_requires_edu:false===eduOnly.has('SOURCE')&&!breaches.length,
+  authenticated_provider_or_owner:false,product_release:'NO_GO'});
 }

@@ -1,0 +1,63 @@
+# iKant EDU - OneShell UX end-to-end: retrograde semantic plan
+
+HOST_ENGINEERING candidate, authority=0, PRODUCT_NO_GO. This is an engineering view derived from BOOTSTRAP.json, original owners, existing renderer and product-value contract; it is NOT an owner, a second source of truth, an installed app, or a new consent event. The 36-atom ontological promise concerns repository conformance, not phenomenal consciousness.
+
+## Define the real human promise
+
+After an eligible first-message ORIENTATION displaying pinned Terms, a different exact I ACCEPT enters original C72 once; later exact EDU selects mode. The next substantive input enters original C135, exactly one C87 writer/readback, C125/S03 same-turn ACK, then unmodified original A in a consistent six-section OneShell: ESITO | A | B | PROVA | EDGE | NEXT.
+
+The shell should dominate the chat visually without a competing Host cognitive voice. A occupies most of the width, B is compact, PROVA can be inspected without destroying exact source, EDGE and NEXT are intact. A normal second message continues the same original C87 lineage or a proved C87 recovery. EXIT IKANT warns and requires a separate confirmation/cancel. No extra human terminal steps or repeated acceptance when auto carrier is actually available.
+
+App-like **inside the ChatGPT conversation** is a separate provider capability: an app must be registered, authenticated, and actually rendered as a widget. Existing HTML, a local demo and repeating six Markdown headings do not establish native mounting or persistence. Widget-scoped presentation state is NOT C87 persistence.
+
+## Retrograde product DAG: GLOBAL = conjunction, not average score
+
+| Slice | User DoD | Original modules | Strong negative |
+|---|---|---|---|
+| S0 Entry | HEAD/five witnesses/Terms visible, only later human consent | first contact, BOOTSTRAP, C72 | first-message or quoted I ACCEPT rejected |
+| S1 Admission | distinct I ACCEPT, original ACCEPT/introduction receipt reopened, distinct EDU | C72/v2, E16/H1/PE transit | partial 5/8, HEAD drift, UNKNOWN attempt no replay |
+| S2 Readiness | exact original source, Node, installed-prompt check, live languagePort | project-session-source, original loader | fake or partial source closure |
+| S3 First voice | C135 -> one C87 write/reopen -> C125/S03 same-turn ACK, exact A | C135, C87, C125/S03 | duplicate writer, wrong voice/ACK |
+| S4 Six-slot chat | same original frame, one contiguous six-slot visual/text shell | project-oneshell-chat-presentation, visual-v2, V5-D | forged A, shortened EDGE or unsourced brand |
+| S5 Native app | real MCP EDU app registration, provider UI resource/render and display mode; six slots and widget-only view memory | existing MCP renderer only as transport candidate | widgetState treated as ledger or legacy app relabelled EDU |
+| S6 Continuity/value | second owner turn, original C87 recovery, EXIT two gates, accessibility, measured latency and end-user value | oneshell-continuous, C87, c72-product-value-promise | false persistence, double send, user-value inference from CI |
+
+The current 8/8 cold C72 source closure is an IMPLEMENTATION requirement, not an ontological product minimum; alternatives must be qualified through original owners, not bypassed by a Host prompt. The same applies to the post-EDU full manifest until observed dynamic imports/file reads prove a smaller original equivalent.
+
+## Target architecture and state ownership
+
+- Source epoch: exact Git commit/TREE/blob, freeze after Terms; no automatic repin.
+- Human gate: two distinct consent and mode messages, never inferred from assistant, files, quotes or UI.
+- Cognition/ledger/voice: only C72/C135/C87/C125/S03 original interfaces, one writer, proof and readback.
+- Presentation: original OneShell six slots from one verified frame; NO_VOICE otherwise; B never substitutes A.
+- ChatGPT fallback: real six-slot text/rich Host rendering, not persistent native UI.
+- Registered MCP app: same original data, authenticated tool/resource and provider acknowledgement. Native PiP/fullscreen only if supported and actually requested.
+- Optional window.openai.widgetState/setWidgetState: view-only flags (folded B, PROVA, report), UI instance lifetime only. Never consent, A, private evidence, C87, or cross-session user state.
+- Cross-session continuity: only authorized server-side original C87/checkpoint and verified recovery, never widgetState.
+- Provider app registration and per-turn delivery require separately observed proof; current plugin server advertises legacy app-only compatibility and is not EDU authority.
+
+## Minimum sequential semantic PR chain (7 bounded steps)
+
+UX0 (THIS PR): read-only source-bound 16-gate graph, 10k distinct typed negative cases, V5-B registration; a feature-detected view-only widget preference enhancement on the existing legacy app, explicitly NOT an EDU activation.
+
+UX1: original C72 minimum physically callable path, warm/cache and cold/partial staging, same attempt fence, original receipt reopened. No skipping original file requirements without reviewed owner change; measure bytes/calls, not guessed speed.
+
+UX2: original EDU selection and complete source loader plus a live languagePort and installed prompt equivalence check. Source closure may only shrink after independently traced dynamic file uses and mutation tests.
+
+UX3: first and second C135/C87/C125/S03 owner-bound turns, one C87 writer per turn, readback, no double send, worker-loss checkpoint rebind only when proven.
+
+UX4: six-slot original frame -> stable accessible mobile-first Host renderer and text fallback; original byte/hash and layout tests; no synthetic native provider claim.
+
+UX5: registered authenticated EDU-bound MCP App resource (not legacy relabel), actual widget in ChatGPT, scoped UI view state, optional PiP on supported clients, verified provider delivery and rehydration. This may require explicit human provider configuration.
+
+UX6: complete continuity/EXIT/negative recovery, real p50/p95 and task-success metrics, independent provider/client checks, V5-G two independent engineers and human decision; postmerge actual HEAD readback and fresh C72 for new epoch.
+
+Each PR must preserve old owners and have: exact BASE/TREE -> minimal code delta -> falsifiers -> real tests -> readback -> no-promotion verdict -> reversible rollback -> independent review. No invented state, plugin install or receipt from CI.
+
+## Source-only model and first external EDGE
+
+The model at scripts/project-oneshell-ux-retrograde.mjs checks real Git blobs and exposes a 16-node dependency ladder, without invoking owners. Its evidence records are CALLER CLAIMS, not authenticated source/owner/provider receipts; even 16/16 declared gates must report ALL_DECLARED_NOT_AUTHENTICATED, NO_GO, and no product release.
+
+The 10,000 negative variants are source/model tests, not 10,000 LLM interrogations or user studies. The first field product gap is a live, original C72->C135->C87->C125/S03 path in this ChatGPT host. The first graphical gap is native registration and readback for a verified EDU-bound widget. Current repository flags persistent_display=false, native_widget_persistence=false, provider UI not attested and C72 value NOT_MEASURED.
+
+Global release requires zero false ACTIVE/native claims; no unauthorized owner, duplicate write/send or lost A; two original turns; native in-conversation six-slot app with fallback, mobile accessibility, verified widget instance state and recovery; measurable host latency; external C72 value study (>=500 independent tasks, >=50 host sessions, >=20 users and one-sided Wilson 95% lower bounds); two independent reviewers and human decision. No local source-only check can satisfy these external gates.

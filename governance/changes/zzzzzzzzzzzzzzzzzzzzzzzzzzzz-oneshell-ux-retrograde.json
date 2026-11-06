@@ -33,6 +33,12 @@
       "reason": "Existing legacy app view-only widget-state preference for disclosure of B PROVA and report; no owner, service or state promotion."
     },
     {
+      "path": ".github/workflows/project-session-repo-first.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Add one explicit source-only UX0 16-gate and ten-thousand negative regression step to the existing Project session PR and main workflow; no new workflow, branch protection or provider guarantee."
+    },
+    {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzz-oneshell-ux-retrograde.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

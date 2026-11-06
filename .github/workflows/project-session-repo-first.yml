@@ -15,6 +15,8 @@ jobs:
       - run: node scripts/project-session-select.mjs
       - run: node scripts/runtime-root.mjs verify
       - run: node scripts/project-source-manifest.mjs verify
+      - name: UX0 OneShell end-to-end source reticle and 10000 negative cases
+        run: node --test tests/project-oneshell-ux-retrograde.test.mjs
       - name: V5-C original boundaries and source contract
         run: |
           node --test tests/v5c-edu-proof-policy.test.mjs tests/v5b-repository-governance.test.mjs

@@ -261,43 +261,57 @@
       "path": "scripts/v5b-repository-governance-audit.mjs",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Attach strictly fenced, read-only V5-B source epoch succession qualification; never turn C72 owner change into original prior-epoch SHA or native receipt."
+      "reason": "Attach strictly fenced, read-only V5-B source epoch succession qualification; never turn C72 owner change into original prior-epoch SHA or native receipt.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json",
+      "supersedes_source_main": "9b4d29ecc840f55b1d67dae98f5727d31b89b435"
     },
     {
       "path": "scripts/cora-minimal-absorption.mjs",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Observe original C72 historical owner pin and separate prospective C72 source-epoch candidate without laundering its review or native owner state."
+      "reason": "Observe original C72 historical owner pin and separate prospective C72 source-epoch candidate without laundering its review or native owner state.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json",
+      "supersedes_source_main": "25501ccba48b7d9cbc66842ddd3dff8b05267884"
     },
     {
       "path": "scripts/cora-pr-f-qualification.mjs",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Restore PR-F source gate using byte-exact historical C72 and separately registered new-epoch owner with source-only, review-pending provenance."
+      "reason": "Restore PR-F source gate using byte-exact historical C72 and separately registered new-epoch owner with source-only, review-pending provenance.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json",
+      "supersedes_source_main": "25501ccba48b7d9cbc66842ddd3dff8b05267884"
     },
     {
       "path": "scripts/cora-s3-convergence.mjs",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Qualify historical S3 snapshot and registered prospective EDU-only source changes separately; do not rewrite past S3 owner pins."
+      "reason": "Qualify historical S3 snapshot and registered prospective EDU-only source changes separately; do not rewrite past S3 owner pins.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzz-cora-s3-convergence.json",
+      "supersedes_source_main": "e719ebfdb8dfa2f1a0382f56ab95fbbdc0f3e005"
     },
     {
       "path": "scripts/cora-m2-owner-provider-metrics.mjs",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Maintain original M2 owner/provider metric contract while classifying new C72 source lineage as pending review, never provider/native evidence."
+      "reason": "Maintain original M2 owner/provider metric contract while classifying new C72 source lineage as pending review, never provider/native evidence.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzz-cora-m2-owner-provider-metrics.json",
+      "supersedes_source_main": "e8a49c2b1a6ffcff15380518d166b8b55ee890a4"
     },
     {
       "path": "tests/cora-pr-d1-blob-dedup.test.mjs",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Restore historic C72 exact hash and separately assert new registered source-epoch SHA; catch missing/mutated registry proofs."
+      "reason": "Restore historic C72 exact hash and separately assert new registered source-epoch SHA; catch missing/mutated registry proofs.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json",
+      "supersedes_source_main": "25501ccba48b7d9cbc66842ddd3dff8b05267884"
     },
     {
       "path": "tests/v5b-repository-governance.test.mjs",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Falsify source-epoch succession using before/after SHA mismatches and wrong owner, while retaining normal V5-B git-bijective policy."
+      "reason": "Falsify source-epoch succession using before/after SHA mismatches and wrong owner, while retaining normal V5-B git-bijective policy.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json",
+      "supersedes_source_main": "9b4d29ecc840f55b1d67dae98f5727d31b89b435"
     },
     {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",

@@ -83,7 +83,7 @@ test('S01 rejects legacy text, replay by schema, changed bindings and illicit pr
 test('S01 manifest points to real current terms and does not promise migrated legacy runtime',()=>{
  const text=fs.readFileSync(new URL('../TERMS.md',import.meta.url),'utf8');
  assert.match(text,/Exact EDU selection: EDU/);
- assert.match(text,/S02 versioned wiring/);
+ assert.match(text,/MCP is an independent externally installed app\/service surface/);
  const bootstrap=JSON.parse(fs.readFileSync(new URL('../BOOTSTRAP.json',import.meta.url)));
  assert.equal(bootstrap.user_onboarding_c72.consumers_require_S02_versioned_wiring,true);
  const old=JSON.parse(fs.readFileSync(new URL('../contracts/c72-unified-mode-admission.json',import.meta.url)));

@@ -23,7 +23,9 @@
       "path": "contracts/c72-public-mode-admission-v2.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
-      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration."
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
     },
     {
       "path": "ADMISSION.json",
@@ -188,6 +190,12 @@
       "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
       "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-mcp-boundary.json",
       "supersedes_source_main": "cad1f573c1ddf4a947572a4caaf631cd099c822a"
+    },
+    {
+      "path": "tests/c59-orientation-closure.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve C59 historical owner and composition checks while independently falsifying any public EDU Terms that delegate to the separate native/MCP legacy composition."
     },
     {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",

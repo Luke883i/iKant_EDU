@@ -11,8 +11,10 @@ test('C59 orientation capsule presents one canonical SESSION_CHAT_LOCAL composit
  const readme=text('README.md'),agents=text('AGENTS.md'),terms=text('TERMS.md'),boot=json('BOOTSTRAP.json');
  assert.match(readme,/one canonical `SESSION_CHAT_LOCAL` composition/);
  assert.match(agents,/follow exactly one composition/);
- assert.match(terms,/delegating to the canonical `SESSION_CHAT_LOCAL` composition owner/);
- assert.match(terms,/compatibility or remediation surfaces only and cannot confer canonical activation authority/);
+ // EDU Terms no longer select or delegate to the separate legacy local/MCP composition.
+ assert.match(terms,/MCP is an independent externally installed app\/service surface/);
+ assert.match(terms,/No MCP plugin, widget or service is a prerequisite for EDU/);
+ assert.doesNotMatch(terms,/CANONICAL/);
  assert.doesNotMatch(terms,/A carrier may be API\/base64/);
  assert.equal(boot.session_chat_composition.canonical,true);
  assert.equal(boot.session_chat_composition.canonical_authority,'C59_CANONICAL');

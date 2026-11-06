@@ -236,6 +236,12 @@
       "reason": "Strengthen documentary semantic source guard from unrelated EDU and CANONICAL mentions to an exact one-choice EDU onboarding assertion."
     },
     {
+      "path": "scripts/v1-product-audit.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Retain standalone V1 pre-release/authority regression and historical C72/v1 breadcrumb without requiring experimental/CANONICAL as a present public Project mode."
+    },
+    {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",

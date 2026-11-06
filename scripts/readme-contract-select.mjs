@@ -38,7 +38,7 @@ export function selectContracts(){
 export const requiredFragments=Object.freeze([
  'infrastruttura cognitiva verificabile',
  'Umano:', 'LLM:', 'iKant:', 'HOST:',
- '**EDU**', '**MCP_EXTERNAL**', '`EXPERIMENTAL`',
+ '**EDU**', '**MCP_EXTERNAL**', 'C72/v1',
  '`avvia iKant`', '`I ACCEPT`', '**esattamente una selezione successiva al consenso: EDU**',
  'Node.js **20+**', 'Python 3',
  '**DOCUMENTATO / OSSERVATO / INFERITO / NON ATTESTATO**',

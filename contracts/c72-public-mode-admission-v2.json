@@ -4,13 +4,10 @@
   "default_for_new_admission": true,
   "human_gate": "I ACCEPT",
   "mode_choices": [
-    "EDU",
-    "CANONICAL"
+    "EDU"
   ],
   "recommended_mode": "EDU",
   "mode_is_not_transport": true,
-  "canonical_transport_target": "MCP",
-  "canonical_mcp_connectivity_is_not_active": true,
   "legacy_v1": {
     "module": "host/c72-unified-mode-admission.mjs",
     "contract": "contracts/c72-unified-mode-admission.json",
@@ -33,21 +30,14 @@
     "text_hash_attests_native_human_origin": false
   },
   "status": {
-    "EDU": "EDU_SELECTED_NOT_RUNNING",
-    "CANONICAL": "CANONICAL_REQUESTED_NOT_ACTIVE"
+    "EDU": "EDU_SELECTED_NOT_RUNNING"
   },
   "first_edge": {
-    "EDU": "EDU_OWNER_CONSUMER_V2_NOT_QUALIFIED",
-    "CANONICAL": "AUTHENTICATED_NATIVE_MCP_INGRESS_NOT_ATTESTED"
+    "EDU": "EDU_OWNER_CONSUMER_V2_NOT_QUALIFIED"
   },
   "terms_scope": "SOURCE_HEAD_BOUND_CURRENT_SESSION_ONLY",
   "runtime_consumer_boundary": "S02_VERSIONED_EDU_CONSUMER_WIRING_REQUIRED",
   "no_cross_version_receipt_upgrade": true,
-  "mcp_requirement": {
-    "credentialed_endpoint_required": true,
-    "provider_event_identity_required": true,
-    "owner_active_readback_required": true
-  },
   "ui_claims_are_projections_only": true,
   "linked_terms_presentation": {
     "owner": "host/c72-public-mode-admission.mjs",
@@ -69,5 +59,6 @@
     ],
     "new_name_does_not_activate_automatically": true,
     "provider_readback_is_separate": true
-  }
+  },
+  "external_mcp_surface": "INDEPENDENT_FROM_EDU_NO_RECEIPT_OR_STATE_TRANSFER"
 }

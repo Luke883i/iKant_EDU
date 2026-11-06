@@ -1318,8 +1318,7 @@
     "default_for_new_chat": true,
     "terms_gate": "I ACCEPT",
     "mode_choices": [
-      "EDU",
-      "CANONICAL"
+      "EDU"
     ],
     "recommended_mode": "EDU",
     "after_gate": [

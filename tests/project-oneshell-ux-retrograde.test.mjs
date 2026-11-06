@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
-import {UX_SOURCE_PATHS,UX_RETICLE,inspectUXSource,assessUXReticle,analyzeHumanTurnCut}
+import {UX_SOURCE_PATHS,UX_RETICLE,inspectUXSource,assessUXReticle,analyzeHumanTurnCut,inspectEDUOnlyVisibleSource,inspectUXSurfaceSeparation,EDU_VISIBLE_SOURCE_PATHS}
  from '../scripts/project-oneshell-ux-retrograde.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const git=(...a)=>execFileSync('git',a,{cwd:root,encoding:'utf8'}).trim();
@@ -93,4 +93,63 @@ test('actual C72 requires distinct EDU; one-turn auto-EDU is a future constituti
  assert.equal(cut.future_auto_edu_authorized,false);
  assert.equal(cut.original_c72_contract_change_required,true);
  assert.equal(cut.release,'NO_GO');
+});
+
+test('EDU completion is NOT downstream of MCP registration or widget state',()=>{
+ const independent=inspectUXSurfaceSeparation();
+ assert.equal(independent.edu_and_mcp_independent,true);
+ assert.deepEqual(independent.forbidden_cross_surface_edges,[]);
+ assert.equal(independent.edu_requires_mcp,false);
+ assert.equal(independent.mcp_requires_edu,false);
+ assert.equal(independent.product_release,'NO_GO');
+ const declared=claimed();
+ delete declared.APP_REGISTERED;delete declared.UI_INSTANCE;
+ const report=assessUXReticle(declared);
+ assert.equal(report.product_release,'NO_GO');
+ assert(!report.unresolved.some(x=>['HUMAN_VALUE','IN_CHAT','SECOND_TURN','EXIT'].includes(x.gate)));
+ assert(report.unresolved.some(x=>x.gate==='APP_REGISTERED'));
+ assert(report.unresolved.some(x=>x.gate==='UI_INSTANCE'));
+});
+test('MCP can qualify its own declared presentation shape without C72/EDU gating',()=>{
+ const declared={SOURCE:claimed().SOURCE,APP_REGISTERED:claimed().APP_REGISTERED,UI_INSTANCE:claimed().UI_INSTANCE};
+ const report=assessUXReticle(declared);
+ assert(report.declared_claims.includes('APP_REGISTERED'));
+ assert(report.declared_claims.includes('UI_INSTANCE'));
+ assert(!report.declared_claims.includes('EDU'));
+ assert.equal(report.provider_native_ui_attested,false);
+ assert.equal(report.product_release,'NO_GO');
+});
+test('two deliberate cross-surface dependency regressions are rejected by topology oracle',()=>{
+ const withEdge=(id,dep)=>UX_RETICLE.map(g=>g.id===id?{...g,requires:[...g.requires,dep]}:g);
+ for(const [id,dep] of [['IN_CHAT','APP_REGISTERED'],['HUMAN_VALUE','UI_INSTANCE'],
+                       ['APP_REGISTERED','EDU'],['UI_INSTANCE','C72']]){
+  const result=inspectUXSurfaceSeparation(withEdge(id,dep));
+  assert.equal(result.edu_and_mcp_independent,false,id+':'+dep);
+  assert(result.forbidden_cross_surface_edges.length>=1);
+  if(id==='APP_REGISTERED'||id==='UI_INSTANCE')assert.equal(result.mcp_requires_edu,true);
+  else assert.equal(result.edu_requires_mcp,true);
+ }
+ assert.throws(()=>inspectUXSurfaceSeparation(withEdge('EDU','IN_CHAT')),/UX_GRAPH_CYCLE/);
+});
+test('current CANONICAL UX exposure must remain OPEN until new original C72 epoch',()=>{
+ const report=inspectEDUOnlyVisibleSource(root);
+ assert.equal(report.release,'NO_GO');
+ assert.equal(report.original_owner_amended,false);
+ assert.equal(report.actual_chat_visibility_attested,false);
+ assert(report.canonical_mentions>0,'current source cannot be falsely declared EDU-only');
+ assert.equal(report.files.length,EDU_VISIBLE_SOURCE_PATHS.length);
+ for(const path of ['TERMS.md','ADMISSION.json','contracts/c72-public-mode-admission-v2.json',
+   'host/c72-public-mode-admission.mjs','project/session-chat/PROMPT.txt']){
+  assert(report.files.find(x=>x.path===path)?.literal_canonical_mentions>0,path);
+ }
+ assert.equal(report.status,'EDU_ONLY_UX_NOT_IMPLEMENTED');
+});
+test('no rewritten historical receipt and no MCP route renaming in blueprint-only diff',()=>{
+ const original=fs.readFileSync(path.join(root,'host/c72-public-mode-admission.mjs'),'utf8');
+ assert(original.includes("if(humanMessage!=='EDU'&&humanMessage!=='CANONICAL')"));
+ const legacy=fs.readFileSync(path.join(root,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
+ assert(legacy.includes("Legacy deployed compatibility")||legacy.includes("legacy deployed"));
+ const blueprint=fs.readFileSync(path.join(root,'docs/PROJECT_EDU_ONESHELL_UX_E2E_RETROGRADE.txt'),'utf8');
+ for(const anchor of ['C1 — EDU entry','C2 — MCP is not EDU','P1 — EDU_ONLY_SOURCE','P2 — EDU_MIN_E2E',
+ 'P3 — EDU_ONESHELL_IN_CHAT','G2 VALUE','Two independent V5-G']) assert(blueprint.includes(anchor),anchor);
 });

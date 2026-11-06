@@ -1,0 +1,199 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "9efdcb4b5d67e3de52a8805cf52b446dd5ff0857",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
+  "scope": "HOST_ENGINEERING_P1_EDU_ONLY_C72_AND_P2_P3_EXISTING_E2E_REQUALIFICATION",
+  "original_owner_unchanged": false,
+  "owner_amendment_scope": "ORIGINAL_C72_V2_SOURCE_EPOCH_ONLY",
+  "historical_receipts_must_remain_pinned": true,
+  "mcp_external_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "paths": [
+    {
+      "path": "host/c72-public-mode-admission.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "contracts/c72-public-mode-admission-v2.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration."
+    },
+    {
+      "path": "ADMISSION.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "BOOTSTRAP.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "TERMS.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration."
+    },
+    {
+      "path": "host/project-oneshell-phases.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "host/project-c72-host-recovery.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "host/project-c72-preaccept-gate.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
+      "supersedes_register": "governance/changes/z-rename-s01-s03.json",
+      "supersedes_source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44"
+    },
+    {
+      "path": "host/project-oneshell-autopilot.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration."
+    },
+    {
+      "path": "host/project-oneshell-visual.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration."
+    },
+    {
+      "path": "contracts/project-oneshell-semantic-slides.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration."
+    },
+    {
+      "path": "project/session-chat/PROMPT.txt",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align one canonical Project source prompt, distribution projection and lexical guard to prospective exact EDU mode; not installed.",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "project/edu-oneshell/PROMPT_INNESCO.txt",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align one canonical Project source prompt, distribution projection and lexical guard to prospective exact EDU mode; not installed.",
+      "supersedes_register": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+      "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a"
+    },
+    {
+      "path": "scripts/project-prompt-seven-three-guard.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery."
+    },
+    {
+      "path": "tests/c72-public-mode-admission.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery."
+    },
+    {
+      "path": "tests/project-oneshell-phases.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery."
+    },
+    {
+      "path": "tests/project-c72-host-recovery-emission-p0.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery."
+    },
+    {
+      "path": "tests/project-oneshell-autopilot-100k.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery."
+    },
+    {
+      "path": "tests/project-host-followthrough.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery."
+    },
+    {
+      "path": "tests/mcp-external-v2-refinement.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Update only the exact reference to Project C72 EDU mode choices while leaving the independent MCP route and contract intact."
+    },
+    {
+      "path": "tests/mcp-external-oauth-prepr.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Update only the exact reference to Project C72 EDU mode choices while leaving the independent MCP route and contract intact."
+    },
+    {
+      "path": "scripts/project-oneshell-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery."
+    },
+    {
+      "path": "scripts/project-edu-what-how-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery."
+    },
+    {
+      "path": "scripts/project-oneshell-ux-retrograde.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-mcp-boundary.json",
+      "supersedes_source_main": "cad1f573c1ddf4a947572a4caaf631cd099c822a"
+    },
+    {
+      "path": "tests/project-oneshell-ux-retrograde.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify original EDU-only mode boundary, existing source E2E, six-slot renderer, anti-replay, and separated MCP assertions without claiming native delivery.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-mcp-boundary.json",
+      "supersedes_source_main": "cad1f573c1ddf4a947572a4caaf631cd099c822a"
+    },
+    {
+      "path": "docs/PROJECT_EDU_ONESHELL_UX_E2E_RETROGRADE.txt",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective original EDU-only admission and Project user-facing consumer change with source epoch lock, no legacy receipt migration.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-mcp-boundary.json",
+      "supersedes_source_main": "cad1f573c1ddf4a947572a4caaf631cd099c822a"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "V5-B succession for prospective EDU-only owner+terms+consumer+tests. Original owner is deliberately amended; requires new epoch, review and independent release proof."
+    }
+  ]
+}

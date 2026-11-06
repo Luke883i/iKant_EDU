@@ -4,7 +4,7 @@
 
 ## 0. Two corrections / what the user actually wants
 
-**C1 — EDU entry must not advertise CANONICAL.** In a newly qualified EDU source epoch, the first-contact Terms, C72 offer, original acceptance introduction, mode receipt, OneShell NEXT, generated Project prompt, and all visible selectable labels must present only EDU. A human's exact "CANONICAL" cannot silently map to EDU or to an MCP call: it is a non-effecting, explicable rejection on the EDU route. Historical original CANONICAL code/receipts remain as pinned Git archaeology with explicit compatibility; DO NOT rewrite old signed/hashed receipts. An owner-qualified change to original C72/v2 and Terms is required before claiming this is accomplished. The **current** source deliberately still exposes CANONICAL; it is an OPEN EDGE, not a passing future fixture.
+**C1 — EDU entry must not advertise CANONICAL.** In a newly qualified EDU source epoch, the first-contact Terms, C72 offer, original acceptance introduction, mode receipt, OneShell NEXT, generated Project prompt, and all visible selectable labels must present only EDU. A human's exact "CANONICAL" cannot silently map to EDU or to an MCP call: it is a non-effecting, explicable rejection on the EDU route. Historical original CANONICAL code/receipts remain as pinned Git archaeology with explicit compatibility; DO NOT rewrite old signed/hashed receipts. This PR's prospective source candidate revises original C72/v2 and the Terms together, but installation, actual owner receipts and live Host rendering are still UNKNOWN. The base epoch at 9efdcb4b5d67e3de52a8805cf52b446dd5ff0857 exposed two modes and remains a pinned historical reference; no old receipt is upgraded.
 
 **C2 — MCP is not EDU's downstream widget.** EDU is a Project/session-chat original path; MCP is a separate installed external-app/service surface and may follow its own admission/identity/owner/runtime rules. Shared identity/provenance/integrity/no-false-A/anti-replay/rendering design do NOT make MCP C72/EDU receipts interchangeable. An MCP app does not need an accepted EDU turn; EDU does not require MCP registration to deliver its original six-slot host/chat representation. Historical "CANONICAL via MCP" is a legacy coupling to remove from *prospective EDU UX*, not permission to rename MCP or rebrand the legacy app as EDU.
 
@@ -124,3 +124,36 @@ Time SLOs are **proposed targets**, not measured product facts. Warm and cold co
 The canonical source currently FAILS the proposed prospective EDU-only-visible gate, while existing C72 and prompt are unmodified. This document is an engineering blueprint; the future owner amendment P1 must implement it with new original source-epoch tests. Structural changes to the pre-existing 16-gate read-only UX0 lattice will remove the wrong MCP dependency without calling original owners. Synthetic mutation counts test a local oracle, NOT 10k original events or users.
 
 **Engineering decision today: PLAN_READY_SOURCE_ONLY; EDU_ONLY_UX_NOT_YET_IMPLEMENTED; EDU_OWNER_E2E_NOT_ATTESTED; MCP_NATIVE_NOT_ATTESTED; VALUE_NOT_MEASURED; PRODUCT_NO_GO.** First next effect is a narrowly scoped **P1 owner+Terms+prompt-consumer amendment proposal**, with a clean epoch and no legacy receipt transfer. Parallel independent MCP work never blocks EDU. Cleanup follows verified consumer substitution, not the opposite.
+
+
+## 8. Source change candidate after v2 blueprint (new epoch, NOT product release)
+
+Base HEAD before prospective amendment: \`9efdcb4b5d67e3de52a8805cf52b446dd5ff0857\`.
+The new application candidate has the original \`host/c72-public-mode-admission.mjs\` issue offers, 100 distinct introductions, selection and validators only for a distinct exact EDU. \`TERMS.md\` now explains MCP as an independent service; \`ADMISSION.json\`, \`BOOTSTRAP.json\`, the six-slot Host phase and recovery projections, prompt \`project/session-chat/PROMPT.txt\`, sibling projection and 7x3 guard share EDU-only wording. This is still a candidate until all source/CI gates and V5-G review close. It must NOT be installed or used to accept a new human on an unverified HEAD.
+
+**Legacy compatibility:** already-issued C72 receipts and old source remain identifiable at their original Git commits. Old mode-selection receipts are not authorized in the prospective source epoch; there is no silent epoch upgrade, alternate C72 issuer or fallback to MCP. The MCP app and its existing independent tests still retain legacy identifiers without being relabelled as Project EDU. Raw historical documentation may mention CANONICAL without constituting an active selectable EDU UI choice.
+
+### Machine-measurable subsets and actual limits
+
+- **P1 source:** JSON original owner/Terms/prompt exact restrictions; a new-mode offer and intro contain only EDU; exact CANONICAL, embedded/quoted/Unicode alias and first-message consent do not emit original EDU receipt; changed owners are no longer tied to an MCP transport gate. Original Node tests and negative finite-model campaigns demonstrate code-path decisions, NOT physical human identity.
+- **P2 source/Node:** existing \`tests/project-edu-complete-chain.test.mjs\` and \`tests/project-oneshell-continuous.test.mjs\` test original Node code, C72 mode process, original C135/C87/C125/S03, two-turn continuity, readbacks and recovery using a test-supplied language reply/port. THESE DO NOT ATTEST native ChatGPT provider input, production cognition or human task value.
+- **P3 Host presentation:** existing renderer guards six slots and exact byte arrays in Node. A real user-visible in-chat capability, responsive GUI, provider delivery, mounting and frame state still need an independent field observation. A broken/missing native UI must keep honest text fallback.
+- **MCP:** independent credential/resource and service tests are required for standalone app release. No MCP test, widget asset, OAuth scope, ledger or receipt may be interpreted as an EDU admission or voice.
+- **Repository:** only modified paths in this PR, declared in existing V5-B; no archival/deletion without PR-G consumer closure. No new workflow bypassing the frozen CORA workflow lattice.
+
+### PR application acceptance checklist (hard AND)
+
+- [ ] Readback of every changed Git blob and unchanged main baseline, including Terms digest; no source drift between owner and prompt.
+- [ ] New C72 single-choice offer, introduction and mode receipts, all original validators and negative original mode requests; no auto EDU derived from I ACCEPT.
+- [ ] Pinned old C72 source remains available at old SHA and old receipts are never reissued or validated as the new source epoch.
+- [ ] OneShell post-consent NEXT and Host recovery show EDU only; unchanged six-slot layout, NO_VOICE outside verified owner and C87 writer exclusivity.
+- [ ] Current Project prompt and exact 7x3 guard pass together; installed prompt equivalence remains UNKNOWN without real provider readback.
+- [ ] Cross-surface DAG has zero EDU↔MCP transitive prerequisites, and MCP service/legacy contract tests stay independent.
+- [ ] Existing 10k/100k mutations and Node 20+ original E2E/continuity tests pass in CI without silently weakening falsifiers.
+- [ ] 100% V5-B change registration, frozen CORA workflow tree unaffected, independent source and postmerge readback.
+- [ ] Two independent V5-G engineers and a human release decision; explicit rollback preserving all original receipts and nonce fences.
+- [ ] Real-host first message → I ACCEPT → EDU → two cognitive turns → EXIT with original owner logs and actual six-slot user visibility; no MCP prerequisite.
+- [ ] Warm/cold p50/p95 timestamps (source retrieval, acceptance receipt, owner input → A+ACK) from real host, separate cohorts; proposed p95 goals remain unverified.
+- [ ] C72 independent product-value holdout at least 500 tasks / 50 sessions / 20 users and required Wilson lower bound. No CI-only value certificate.
+
+Release decision: **SOURCE_CANDIDATE_NOT_INSTALLED; OWNER_HOST_NATIVE_UNPROVED; MCP_INDEPENDENT; UX_VISIBILITY_UNKNOWN; PRODUCT_NO_GO** until independent evidence closes each relevant gate. Failed checks cannot be dismissed by modifying a hard-gate threshold.

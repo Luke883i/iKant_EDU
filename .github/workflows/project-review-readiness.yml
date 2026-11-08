@@ -41,6 +41,64 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+      - name: M3 full Git checkout source closure and source mirror (HOST read-only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          root="${RUNNER_TEMP}/ikant-m3"
+          mkdir -p "$root"
+          base=b29e52b8bc1c8d4a9acdfdf9438632842504c8ac
+          test "$(git rev-parse "${base}^{tree}")" = "6234ec6d3a02b28d5f95e9ddcfac4a2eb4f5556f"
+          git merge-base --is-ancestor "$base" HEAD
+          git rev-parse HEAD > "$root/candidate-head.txt"
+          git rev-parse 'HEAD^{tree}' > "$root/candidate-tree.txt"
+          git status --porcelain --untracked-files=no > "$root/tracked-worktree-status.txt"
+          test ! -s "$root/tracked-worktree-status.txt"
+          git ls-tree -r -z HEAD > "$root/candidate-ls-tree.z"
+          git archive --format=tar "$base" > "$root/original-main-source.tar"
+          git archive --format=tar HEAD > "$root/candidate-source.tar"
+          sha256sum "$root/original-main-source.tar" "$root/candidate-source.tar" > "$root/archive-sha256.txt"
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+          import {execFileSync} from 'node:child_process';
+          const dest=process.env.RUNNER_TEMP+'/ikant-m3';
+          const raw=fs.readFileSync(dest+'/candidate-ls-tree.z').toString('utf8');
+          const rows=raw.split('\0').filter(Boolean);
+          let seen=0,bytes=0,workflows=0;
+          for(const r of rows){
+           const m=/^(100644|100755) blob ([0-9a-f]{40})\t(.+)$/u.exec(r);
+           if(!m)throw Error('M3_UNSUPPORTED_GIT_MODE');
+           const data=fs.readFileSync(m[3]);
+           const actual=crypto.createHash('sha1').update('blob '+data.length+'\0').update(data).digest('hex');
+           if(actual!==m[2])throw Error('M3_BLOB_MISMATCH:'+m[3]);
+           seen++;bytes+=data.length;if(m[3].startsWith('.github/workflows/'))workflows++;
+          }
+          if(seen!==1600||workflows!==116)throw Error('M3_COVERAGE_FAIL');
+          fs.writeFileSync(dest+'/native-source-readback.json',JSON.stringify({
+           schema:'ikant-m3-original-checkout-readback/v1',authority:0,
+           head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+           tree:execFileSync('git',['rev-parse','HEAD^{tree}'],{encoding:'utf8'}).trim(),
+           verified_blobs:seen,verified_workflows:workflows,verified_bytes:bytes,
+           source_level:'GIT_BLOB_AND_WORKTREE',consumer_closure:'UNKNOWN',
+           owner_outcome:'NOT_INVOKED',permission_to_archive:false
+          },null,2)+'\n');
+          NODE
+          node scripts/project-review-callsites.mjs > "$root/native-callsites.json"
+          set +e
+          node scripts/v5b-repository-governance-audit.mjs > "$root/native-v5b.log" 2>&1; v5b_rc=$?
+          node scripts/cora-minimal-absorption.mjs --reticulum --full > "$root/native-cora.json" 2>&1; cora_rc=$?
+          node scripts/cora-pr-g-evidence-readback.mjs > "$root/native-prg.json" 2>&1; prg_rc=$?
+          set -e
+          printf '{"v5b_exit":%s,"cora_exit":%s,"prg_exit":%s,"approval":"NOT_ATTESTED","provider":"UNKNOWN"}\n' "$v5b_rc" "$cora_rc" "$prg_rc" > "$root/native-audit-exits.json"
+      - name: Preserve M3 source evidence before existing qualification cycles
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-m3-original-checkout-${{ matrix.node }}-${{ github.sha }}
+          path: ${{ runner.temp }}/ikant-m3/
+          if-no-files-found: warn
+          retention-days: 30
       - name: Exact source, code and governance syntax
         run: |
           node --check host/project-edu-h1-bound-port.mjs

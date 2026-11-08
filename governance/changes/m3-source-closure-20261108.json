@@ -1,0 +1,30 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/m3-source-closure-20261108.json",
+  "source_main": "b29e52b8bc1c8d4a9acdfdf9438632842504c8ac",
+  "scope": "HOST_ENGINEERING_M3_READONLY_SOURCE_PROOF",
+  "paths": [
+    {
+      "path": "governance/changes/m3-source-closure-20261108.json",
+      "operation": "ADD",
+      "reason": "Declare prospective read-only CI provenance adaptation for M3 while preserving original owners and requiring human review",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": ".github/workflows/project-review-readiness.yml",
+      "operation": "MODIFY",
+      "reason": "Extend the existing GitHub runner with exact full-checkout hash witness, archived source readback and original read-only audits; no new workflow or owner",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    }
+  ],
+  "requires_human_review": true,
+  "required_checks_verified": false,
+  "human_signoffs": 0,
+  "release": false,
+  "source_only": true,
+  "provider_status": "UNKNOWN",
+  "cutover_permission": false
+}

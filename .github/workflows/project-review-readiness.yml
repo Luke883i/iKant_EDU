@@ -74,7 +74,7 @@ jobs:
            if(actual!==m[2])throw Error('M3_BLOB_MISMATCH:'+m[3]);
            seen++;bytes+=data.length;if(m[3].startsWith('.github/workflows/'))workflows++;
           }
-          if(seen!==1600||workflows!==116)throw Error('M3_COVERAGE_FAIL');
+          if(seen!==1601||workflows!==116)throw Error('M3_COVERAGE_FAIL');
           fs.writeFileSync(dest+'/native-source-readback.json',JSON.stringify({
            schema:'ikant-m3-original-checkout-readback/v1',authority:0,
            head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),

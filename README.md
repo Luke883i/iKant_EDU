@@ -3,7 +3,7 @@
 
 # iKant — risposte guidate, infrastruttura cognitiva verificabile
 
-**Purpose:** an experimental deterministic meta-controller around a replaceable language model. Its explicitly controlled states, capabilities, evidence and decisions are software constructs, not an independently verified mind, an autonomous authority, or a general truth oracle. Read its local runtime/host contracts to understand supported behavior and limits. **Provisional CORA-Score:** Dev_CORA **3/5** · Bonifica_CORA **2/5**; [rubric](https://github.com/Luke883i/cora#cora-score--indicative-assurance-bands-not-a-product-certification).
+**Purpose:** an experimental deterministic meta-controller around a replaceable language model. Its explicitly controlled states, capabilities, evidence and decisions are software constructs, not an independently verified mind, an autonomous authority, or a general truth oracle. Read its local runtime/host contracts to understand supported behavior and limits.
 
 
 **In una frase:** iKant è un *sistema software sperimentale* che circonda un LLM sostituibile e tenta di rendere controllabili il metodo di risposta, le autorizzazioni, gli stati, le verifiche e la consegna. Non è un altro LLM, una persona digitale né un certificatore automatico della verità.

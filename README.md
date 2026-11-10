@@ -1,13 +1,10 @@
 <!-- programme-header:v2 -->
 > **ROA Research Programme · A-OSP ecosystem** — [Author & programme hub](https://github.com/Luke883i/academics) · [ROA theory](https://github.com/Luke883i/ROA) · [CORA assurance](https://github.com/Luke883i/cora). Every repository is independently readable. Membership does not imply formal derivation, shared runtime, scientific validation, certification, or production readiness. Repository-local code, evidence, and governance remain authoritative.
 
-## Independent entrypoint
+# iKant — risposte guidate, infrastruttura cognitiva verificabile
 
 **Purpose:** an experimental deterministic meta-controller around a replaceable language model. Its explicitly controlled states, capabilities, evidence and decisions are software constructs, not an independently verified mind, an autonomous authority, or a general truth oracle. Read its local runtime/host contracts to understand supported behavior and limits. **Provisional CORA-Score:** Dev_CORA **3/5** · Bonifica_CORA **2/5**; [rubric](https://github.com/Luke883i/cora/blob/main/docs/CORA_SCORE.md).
 
----
-
-# iKant — risposte guidate, infrastruttura cognitiva verificabile
 
 **In una frase:** iKant è un *sistema software sperimentale* che circonda un LLM sostituibile e tenta di rendere controllabili il metodo di risposta, le autorizzazioni, gli stati, le verifiche e la consegna. Non è un altro LLM, una persona digitale né un certificatore automatico della verità.
 

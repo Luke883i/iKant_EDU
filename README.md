@@ -1,9 +1,11 @@
-[![ROA Research Programme](https://img.shields.io/badge/ROA-Research_Programme-1f6feb)](https://github.com/Luke883i/academics)
-[![Programme Role](https://img.shields.io/badge/role-LIBRARY_SERVICES_VERTICAL-6f42c1)](https://github.com/Luke883i/academics#repository-map)
+<!-- programme-header:v2 -->
+> **ROA Research Programme · A-OSP ecosystem** — [Author & programme hub](https://github.com/Luke883i/academics) · [ROA theory](https://github.com/Luke883i/ROA) · [CORA assurance](https://github.com/Luke883i/cora). Every repository is independently readable. Membership does not imply formal derivation, shared runtime, scientific validation, certification, or production readiness. Repository-local code, evidence, and governance remain authoritative.
 
-<!-- roa-programme-header:v1 hub=Luke883i/academics framework=Luke883i/ROA role=LIBRARY_SERVICES_VERTICAL -->
+## Independent entrypoint
 
-> iKant_LE partecipa al programma di ricerca [ROA](https://github.com/Luke883i/academics), con riferimento teorico a [ROA](https://github.com/Luke883i/ROA). L'appartenenza è una relazione di coordinamento, **non** dimostra derivazione formale, conformità empirica o prontezza produttiva. Il codice e i contratti di questo repository restano la fonte autorevole per LE.
+**Purpose:** an experimental deterministic meta-controller around a replaceable language model. Its explicitly controlled states, capabilities, evidence and decisions are software constructs, not an independently verified mind, an autonomous authority, or a general truth oracle. Read its local runtime/host contracts to understand supported behavior and limits. **Provisional CORA-Score:** Dev_CORA **3/5** · Bonifica_CORA **2/5**; [rubric](https://github.com/Luke883i/cora/blob/main/docs/CORA_SCORE.md).
+
+---
 
 # iKant — risposte guidate, infrastruttura cognitiva verificabile
 

@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
-import {capturePr2RuntimeReceipt,verifyPr2RuntimeReceipt} from '../scripts/pr2-runtime-evidence.mjs';
+import {capturePr2RuntimeReceipt,verifyPr2RuntimeReceipt,pr2ChildTestEnv} from '../scripts/pr2-runtime-evidence.mjs';
 const source=()=>({
  head:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
  tree:execFileSync('git',['rev-parse','HEAD^{tree}'],{encoding:'utf8'}).trim()
@@ -44,4 +44,11 @@ test('PR2 actual original Node owners + MCP policy execute and produce re-readab
   assert.ok(r.readback.unresolved_ids.includes('M08'));
   assert.ok(r.readback.unresolved_ids.includes('T06'));
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+
+test('PR2 Node test runner identity must not leak into child node --test',()=>{
+ const env=pr2ChildTestEnv({NODE_TEST_CONTEXT:'child-v8',NODE_TEST_WORKER_ID:'worker-1',PATH:'/usr/bin'});
+ assert.equal('NODE_TEST_CONTEXT' in env,false);
+ assert.equal('NODE_TEST_WORKER_ID' in env,false);
+ assert.equal(env.NODE_ENV,'test');assert.equal(env.PATH,'/usr/bin');
 });

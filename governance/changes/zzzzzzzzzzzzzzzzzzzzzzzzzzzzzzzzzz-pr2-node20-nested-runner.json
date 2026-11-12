@@ -1,0 +1,41 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "d2bea0af14f916d677637355c1c502cdb080284f",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-node20-nested-runner.json",
+  "scope": "PR2_NODE20_NESTED_TEST_CONTEXT_ISOLATION_HARDENING",
+  "release": "NO_GO",
+  "human_review_completed": false,
+  "original_owner_unchanged": true,
+  "mcp_external_owner_unchanged": true,
+  "native_provider_attested": false,
+  "product_go": false,
+  "paths": [
+    {
+      "path": "scripts/pr2-runtime-evidence.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "historical_git_blob_sha1": "59a9dac81917d1a97ec586a7c1eb44ecfafc4a6b",
+      "prospective_git_blob_sha1": "8aaa99961f0865e54533e38de92c15854e90bed5",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-source-readback.json",
+      "supersedes_source_main": "0ba7a45017e7da464c954897e4baff6865d17661",
+      "reason": "Physical CI Node 20 counterexample: nested node --test inherited NODE_TEST_CONTEXT, yielded no test events despite zero exit code."
+    },
+    {
+      "path": "tests/pr2-runtime-evidence.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "historical_git_blob_sha1": "16c5765cc57df0db7954b06d98ac3a484001412a",
+      "prospective_git_blob_sha1": "d4f7cf1ffbab0f18e9f7c566672f7640509f9f46",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-source-readback.json",
+      "supersedes_source_main": "0ba7a45017e7da464c954897e4baff6865d17661",
+      "reason": "Assert no Node test child inherits runner-only environment variables, preventing silent zero-tests."
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-node20-nested-runner.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-only next epoch against actual PR2 code, no runtime or human release promotion."
+    }
+  ]
+}

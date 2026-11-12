@@ -25,6 +25,15 @@ const selectors=Object.freeze(Object.fromEntries(evidenceIds.map(id=>[id,
   ['T01','T02','T03'].includes(id)?'EXACT_HEAD_CI_SEPARATE':
   id.startsWith('M')?'MCP_POLICY':'PROJECT_OWNER'])));
 const git=(...args)=>execFileSync('git',args,{cwd:ROOT,encoding:'utf8',timeout:30000,maxBuffer:2500000}).trim();
+/** Node 20/22 mark the current test child through NODE_TEST_CONTEXT.
+ * Propagating that marker to another node --test process silently skips every
+ * nested test (sometimes exit code 0). Do not inherit runner identity. */
+export function pr2ChildTestEnv(env=process.env){
+ const next={...env,NODE_ENV:'test'};
+ delete next.NODE_TEST_CONTEXT;
+ delete next.NODE_TEST_WORKER_ID;
+ return next;
+}
 const fail=edge=>Object.freeze({ok:false,first_edge:edge,product_go:false,native_provider_attested:false});
 function tap(t){
  const num=x=>{const m=t.match(new RegExp('^# '+x+' (\\d+)\\s*$','m'));return m?Number(m[1]):null;};
@@ -101,7 +110,7 @@ export function capturePr2RuntimeReceipt({destination,timeoutMs=90000}={}){
  for(const suite of SUITES){
   const p=spawnSync(process.execPath,['--test','--test-concurrency=1',...suite.files],{
    cwd:ROOT,encoding:'utf8',timeout:timeoutMs,maxBuffer:8*1024*1024,
-   env:{...process.env,NODE_ENV:'test'}});
+   env:pr2ChildTestEnv()});
   const stdout=p.stdout||'',stderr=p.stderr||'';
   const stats=tap(stdout);
   if(p.status!==0||p.signal||stderr.trim()||!stats)throw Error(

@@ -27,7 +27,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Focused real-source and hostile preimage tests for shallow Git checkout.",
       "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-test-fix.json",
-      "supersedes_source_main": "a6f4ae90db4a18e3ba323ccaaa9554a95f6fb9c9",
+      "supersedes_source_main": "482747b083e8c61320cd14f1aa8c3bb50b8a0b01",
       "historical_git_blob_sha1": "50b77185b3ffa0f33438f19c3403850cb79efc08",
       "prospective_git_blob_sha1": "8f601ef1485be07288e6fc547506ccae122ab053"
     },

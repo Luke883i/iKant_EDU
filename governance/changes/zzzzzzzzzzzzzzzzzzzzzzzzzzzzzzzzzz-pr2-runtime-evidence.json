@@ -1,0 +1,69 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "4f2e778a1c64c7df5868ac22e431c62c44f2188a",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-runtime-evidence.json",
+  "scope": "PR2_ORIGINAL_OWNER_RUNTIME_EVIDENCE_WITH_SCOPED_NODE_AND_MCP_POLICY",
+  "release": "NO_GO",
+  "human_review_completed": false,
+  "historical_receipts_must_remain_pinned": true,
+  "original_owner_unchanged": true,
+  "mcp_external_owner_unchanged": true,
+  "product_go": false,
+  "native_provider_attested": false,
+  "independent_review_attested": false,
+  "interpretation": "Actual tests and SHA-bound logs are local original-Node evidence only; not SDK HTTP/provider/human review.",
+  "paths": [
+    {
+      "path": "contracts/pr2-runtime-dod-of-dod.v1.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "prospective_git_blob_sha1": "36cc28785796b3b2604b368a67efdba353276191",
+      "reason": "New non-authoritative PR2 runtime evidence reader or DoD oracle; original product owners untouched."
+    },
+    {
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Regenerate original full-document atlas for PR2 guide, no historical deletion.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json",
+      "supersedes_source_main": "09798d194c1fc6a8557465b8d8875fd1972de940",
+      "historical_git_blob_sha1": "50d480c66aa956247605f374889432692a4170bc",
+      "prospective_git_blob_sha1": "bc8738c41df37be8fef16a82b8cbc818a182f75e"
+    },
+    {
+      "path": "docs/PR2_RUNTIME_DOD_OF_DOD.md",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "prospective_git_blob_sha1": "37146a08c795667ca861fda4a9cbd5c553321a41",
+      "reason": "New non-authoritative PR2 runtime evidence reader or DoD oracle; original product owners untouched."
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-runtime-evidence.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-only successor for runtime readback; no evidence claims promoted to product GO."
+    },
+    {
+      "path": "scripts/pr2-runtime-evidence.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "prospective_git_blob_sha1": "873adac0c53c432c01eef4de44cb32d09269d8e5",
+      "reason": "New non-authoritative PR2 runtime evidence reader or DoD oracle; original product owners untouched."
+    },
+    {
+      "path": "tests/pr2-dod-of-dod.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "prospective_git_blob_sha1": "f3cf2b8110872e76b02dcfa349cb36cc71ceb11a",
+      "reason": "New non-authoritative PR2 runtime evidence reader or DoD oracle; original product owners untouched."
+    },
+    {
+      "path": "tests/pr2-runtime-evidence.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "prospective_git_blob_sha1": "bdc0d10e788ba1744a8c3a6d98bdc523854f4e1b",
+      "reason": "New non-authoritative PR2 runtime evidence reader or DoD oracle; original product owners untouched."
+    }
+  ]
+}

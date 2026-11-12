@@ -7,11 +7,11 @@ import {fileURLToPath} from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const load=x=>fs.readFileSync(path.join(ROOT,x));
 const git=(...args)=>execFileSync('git',args,{cwd:ROOT,encoding:'utf8',timeout:30000,maxBuffer:16*1024*1024}).trim();
-const sha=b=>crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\\0')).update(b).digest('hex');
+const sha=b=>crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
 export function inspectPr3Cut(source=JSON.parse(load('contracts/pr3-repository-contraction.v1.json'))){
  const problems=[];
  const old=source.cut.source,to=source.cut.destination;
- const tracked=git('ls-files','-z').split('\\0').filter(Boolean);
+ const tracked=git('ls-files','-z').split('\0').filter(Boolean);
  const set=new Set(tracked),root=tracked.filter(p=>!p.includes('/')).sort();
  const rootsOriginal=source.source_root_paths.slice().sort();
  const desired=rootsOriginal.filter(p=>p!==old);

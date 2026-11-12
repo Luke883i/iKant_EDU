@@ -1,0 +1,29 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "482747b083e8c61320cd14f1aa8c3bb50b8a0b01",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-test-fix.json",
+  "scope": "PR1_SAME_BRANCH_TEST_GIT_HEADER_BUGFIX_NO_OWNER_CHANGE",
+  "release": "NO_GO",
+  "human_review_completed": false,
+  "original_owner_unchanged": true,
+  "product_go": false,
+  "native_provider_attested": false,
+  "paths": [
+    {
+      "path": "tests/pr1-product-truth-identity.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Correct Git blob null-terminated header test oracle; original owner bytes unchanged.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json",
+      "supersedes_source_main": "09798d194c1fc6a8557465b8d8875fd1972de940",
+      "historical_git_blob_sha1": "e278a3770e639b5fd1694dfc4839a2566743e23f"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-test-fix.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Record prospective original-main PR1 test successor, without upgrading historical receipts or native provider claim."
+    }
+  ]
+}

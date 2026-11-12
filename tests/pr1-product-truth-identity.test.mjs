@@ -12,7 +12,7 @@ const protectedOwners={
  'host/c87-durable-ledger.mjs':'9d4fd4038bd7e109bdbc5e0441f9e9acf497c846',
  'host/c125-exclusive-shell.mjs':'760a90ad43b04588599ab9385abc389419ecc813'
 };
-const gitBlob=bytes=>createHash('sha1').update(Buffer.from('blob '+bytes.length+'\\0')).update(bytes).digest('hex');
+const gitBlob=bytes=>createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
 test('PR1: full 64/64 mapping is not native closure',()=>{
  assert.equal(registry.schema,'ikant-pr1-64-coverage-v1');assert.equal(registry.total,64);
  assert.equal(registry.at_least_99pct_threshold,64);assert.equal(registry.product_go,false);

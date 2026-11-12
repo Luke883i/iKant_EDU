@@ -45,6 +45,24 @@ export function verifyPr2RuntimeReceipt(receipt,logs,{expectedHead,expectedTree}
  if(!Array.isArray(receipt.suites)||receipt.suites.length!==SUITES.length||
   !receipt.dod||JSON.stringify(Object.keys(receipt.dod).sort())!==JSON.stringify([...evidenceIds].sort()))
   return fail('PR2_DENOMINATOR_OR_SUITE_MISMATCH');
+ // Read the source from this exact checkout; a digest typed into the receipt
+ // cannot substitute for independently reopening Git's current source object.
+ const expectedFiles=[...new Set(SUITES.flatMap(s=>s.files))].sort();
+ if(!Array.isArray(receipt.source.test_blobs)||receipt.source.test_blobs.length!==expectedFiles.length)
+  return fail('PR2_SOURCE_BLOB_DENOMINATOR');
+ const rows=new Map(receipt.source.test_blobs.map(x=>[x?.path,x]));
+ if(rows.size!==expectedFiles.length)return fail('PR2_DUPLICATE_BLOB_WITNESS');
+ for(const file of expectedFiles){
+  const row=rows.get(file);
+  if(!row||row.path!==file||!HEX40.test(row.git_blob_sha1||'')||!HEX64.test(row.sha256||''))
+   return fail('PR2_SOURCE_BLOB_WITNESS_INVALID:'+file);
+  try{
+   const bytes=fs.readFileSync(path.join(ROOT,file));
+   if(git('rev-parse','HEAD:'+file)!==row.git_blob_sha1||
+      git('hash-object','--',file)!==row.git_blob_sha1||sha(bytes)!==row.sha256)
+    return fail('PR2_SOURCE_BLOB_READBACK_MISMATCH:'+file);
+  }catch{return fail('PR2_SOURCE_BLOB_NOT_REOPENED:'+file);}
+ }
  for(const [i,s] of SUITES.entries()){
   const r=receipt.suites[i],body=logs?.[s.id];
   if(r?.id!==s.id||JSON.stringify(r.files)!==JSON.stringify(s.files)||

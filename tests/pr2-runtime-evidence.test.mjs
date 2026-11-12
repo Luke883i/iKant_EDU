@@ -34,6 +34,12 @@ test('PR2 actual original Node owners + MCP policy execute and produce re-readab
   assert.equal(verifyPr2RuntimeReceipt(r.receipt,forgedLog,{expectedHead:source().head,expectedTree:source().tree}).ok,false);
   const payload=mutate(r.receipt);payload.suites[0].tap_sha256='f'.repeat(64);
   assert.equal(verifyPr2RuntimeReceipt(payload,logs,{expectedHead:source().head,expectedTree:source().tree}).ok,false);
+  const wrongBlob=mutate(r.receipt);wrongBlob.source.test_blobs[0].sha256='0'.repeat(64);
+  assert.equal(verifyPr2RuntimeReceipt(wrongBlob,logs,{expectedHead:source().head,expectedTree:source().tree}).ok,false);
+  const deletedBlob=mutate(r.receipt);deletedBlob.source.test_blobs.pop();
+  assert.equal(verifyPr2RuntimeReceipt(deletedBlob,logs,{expectedHead:source().head,expectedTree:source().tree}).ok,false);
+  const duplicateBlob=mutate(r.receipt);duplicateBlob.source.test_blobs[0]=duplicateBlob.source.test_blobs[1];
+  assert.equal(verifyPr2RuntimeReceipt(duplicateBlob,logs,{expectedHead:source().head,expectedTree:source().tree}).ok,false);
   assert.ok(r.readback.unresolved_ids.includes('M07'));
   assert.ok(r.readback.unresolved_ids.includes('M08'));
   assert.ok(r.readback.unresolved_ids.includes('T06'));

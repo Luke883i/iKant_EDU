@@ -1,0 +1,28 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "d37c9f5b3f03a054454c921450c65c42ff0c9e3b",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr3-bundle-dod-coverage.json",
+  "scope": "PR3_BUNDLE_I9_I10_GLOBAL_GATE_CROSSWALK_AND_DO_D_OF_D",
+  "release": "NO_GO",
+  "human_review_completed": false,
+  "original_owner_unchanged": true,
+  "mcp_external_owner_unchanged": true,
+  "native_provider_attested": false,
+  "product_go": false,
+  "paths": [
+    {
+      "path": "tests/pr3-bundle-coverage.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "prospective_git_blob_sha1": "a30e034516652e74fb05a26cbe7f295c0c6783bd",
+      "reason": "Verify all 22 historical I9 and I10 global gate mappings to exact original 64 and 7 PR3 local obligations, without laundering old PASS."
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr3-bundle-dod-coverage.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Prospective source-only addition after PR3 physical root cut, still no authority upgrade."
+    }
+  ]
+}

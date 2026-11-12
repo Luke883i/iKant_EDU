@@ -63,3 +63,17 @@ test('PR1: protected owner blobs unchanged',()=>{
  for(const [p,sha] of Object.entries(protectedOwners))
   assert.equal(gitBlob(readFileSync(new URL('../'+p,import.meta.url))),sha,p);
 });
+
+test('PR1: exact historical source reconstruction works without old Git objects',async()=>{
+ const {qualifyPr1OneShellPresentation}=await import('../scripts/cora-m2-owner-provider-metrics.mjs');
+ const bytes=readFileSync(new URL('../host/project-oneshell-edu.mjs',import.meta.url));
+ const registry=JSON.parse(read('governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json'));
+ const pinned=registry.paths.find(x=>x.path==='host/project-oneshell-edu.mjs').historical_git_blob_sha1;
+ const value=qualifyPr1OneShellPresentation({historicalBlobSha1:pinned,observedBytes:bytes,observedSha1:gitBlob(bytes),registration:registry});
+ assert.equal(value.ok,true);assert.equal(value.provider_attested,false);assert.equal(value.review_attested,false);
+ const altered=Buffer.from(bytes);altered[10]^=1;
+ const reject=qualifyPr1OneShellPresentation({historicalBlobSha1:pinned,observedBytes:altered,observedSha1:gitBlob(altered),registration:registry});
+ assert.equal(reject.ok,false);assert.equal(reject.first_edge,'PR1_M2_HISTORICAL_PREIMAGE_HASH_MISMATCH');
+ const forged=qualifyPr1OneShellPresentation({historicalBlobSha1:'0'.repeat(40),observedBytes:bytes,observedSha1:gitBlob(bytes),registration:registry});
+ assert.equal(forged.ok,false);
+});

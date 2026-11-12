@@ -1,0 +1,235 @@
+{
+  "schema": "ikant-pr2-previous-bundle-crosswalk/v1",
+  "source_predecessor_bundle": "I10/X cumulative contains sealed I9",
+  "source_attestation": "SHA256 supplied from uploaded bundle; repository holds reference only, NOT bytes",
+  "native_product_go": false,
+  "original_64_registry": "contracts/pr1-64-coverage.v1.json",
+  "historical_gates_not_current_proof": true,
+  "bundles": [
+    {
+      "iteration": "I9",
+      "original_entry": "reports/I9_DOD_FINAL.json",
+      "original_sha256": "01738b400ae0deb5e47cf93f7068b65a48a79f9b8c4f5a39ba8d4685026aaa44",
+      "gates": [
+        {
+          "id": "G1_SOURCE_V5B",
+          "original_status": "PASS_SOURCE_INDEXED_LOCAL",
+          "obligationIds": [
+            "S01",
+            "S02",
+            "S04"
+          ]
+        },
+        {
+          "id": "G2_LOCAL_SOFTWARE",
+          "original_status": "PASS_FULL_SUITE_LOCAL",
+          "obligationIds": [
+            "T01",
+            "T02",
+            "T03"
+          ]
+        },
+        {
+          "id": "G3_SYNTHETIC_EDU_PRODUCT",
+          "original_status": "PASS_SYNTHETIC_LOCAL_ONLY",
+          "obligationIds": [
+            "P03",
+            "P04",
+            "P05",
+            "P07",
+            "P08",
+            "T04"
+          ]
+        },
+        {
+          "id": "G4_REPOSITORY_MINIMALITY",
+          "original_status": "OPEN_16_ROOT_HELD",
+          "obligationIds": [
+            "R01",
+            "R02",
+            "R03",
+            "R04",
+            "R10"
+          ]
+        },
+        {
+          "id": "G5_CI_SUPPLY_CHAIN",
+          "original_status": "OPEN_313_TAGGED_ACTION_REFERENCES",
+          "obligationIds": [
+            "R11",
+            "R12",
+            "R13",
+            "R14"
+          ]
+        },
+        {
+          "id": "G6_NATIVE_PROVIDER",
+          "original_status": "BLOCKED_EXTERNAL",
+          "obligationIds": [
+            "P11",
+            "M09",
+            "M10"
+          ]
+        },
+        {
+          "id": "G7_SECURITY_PRIVACY_DEPLOYMENT",
+          "original_status": "NOT_QUALIFIED",
+          "obligationIds": [
+            "G03",
+            "G04",
+            "G08"
+          ]
+        },
+        {
+          "id": "G8_HUMAN_GOVERNANCE",
+          "original_status": "NOT_ATTESTED",
+          "obligationIds": [
+            "G01",
+            "G02",
+            "G07"
+          ]
+        },
+        {
+          "id": "G9_EDUCATIONAL_EFFECT",
+          "original_status": "NOT_MEASURED",
+          "obligationIds": [
+            "G05",
+            "G06",
+            "G09"
+          ]
+        },
+        {
+          "id": "G10_CORA_SOURCE_REPLAY",
+          "original_status": "SOURCE_REPLAYED_WITH_DEBT",
+          "obligationIds": [
+            "S06",
+            "T10"
+          ]
+        },
+        {
+          "id": "G11_APPEND_ONLY_HISTORY",
+          "original_status": "PASS_LOCAL_BYTE_READBACK",
+          "obligationIds": [
+            "S03",
+            "S05",
+            "S07"
+          ]
+        },
+        {
+          "id": "G12_RELEASE_AUTHORIZATION",
+          "original_status": "NO_GO",
+          "obligationIds": [
+            "G07",
+            "G10"
+          ]
+        }
+      ]
+    },
+    {
+      "iteration": "I10",
+      "original_entry": "reports/I10_DOD.json",
+      "original_sha256": "9469d26cbc9d13e991c941e67da550f1d7d0a8013ac446323b501ca88b648610",
+      "gates": [
+        {
+          "id": "G1_SOURCE",
+          "original_status": "PASS_LOCAL",
+          "obligationIds": [
+            "S01",
+            "S02",
+            "S04",
+            "R11"
+          ]
+        },
+        {
+          "id": "G2_DOCS",
+          "original_status": "PASS_SOURCE",
+          "obligationIds": [
+            "P01",
+            "M01",
+            "M02",
+            "R06",
+            "R07",
+            "R08"
+          ]
+        },
+        {
+          "id": "G3_PROJECT",
+          "original_status": "PASS_SYNTHETIC",
+          "obligationIds": [
+            "P03",
+            "P04",
+            "P05",
+            "P07",
+            "P08",
+            "T04"
+          ]
+        },
+        {
+          "id": "G4_MCP_POLICY",
+          "original_status": "PASS_LOCAL_POLICY",
+          "obligationIds": [
+            "M03",
+            "M04",
+            "M06"
+          ]
+        },
+        {
+          "id": "G5_MCP_HTTP",
+          "original_status": "BLOCKED_SDK_UNINSTALLED",
+          "obligationIds": [
+            "M05",
+            "M07",
+            "M08"
+          ]
+        },
+        {
+          "id": "G6_CHATGPT_NATIVE",
+          "original_status": "BLOCKED_EXTERNAL",
+          "obligationIds": [
+            "P11",
+            "M09",
+            "M10",
+            "G02"
+          ]
+        },
+        {
+          "id": "G7_CODE",
+          "original_status": "PASS_1536_OF_1538_WITH_2_SKIPS",
+          "obligationIds": [
+            "T01",
+            "T02",
+            "T03"
+          ]
+        },
+        {
+          "id": "G8_CORAREPLAY",
+          "original_status": "PASS_SCOPED",
+          "obligationIds": [
+            "S06",
+            "T10"
+          ]
+        },
+        {
+          "id": "G9_REPO_MIN",
+          "original_status": "HOLD_UNQUALIFIED_CUTSET",
+          "obligationIds": [
+            "R01",
+            "R04",
+            "R10",
+            "R12"
+          ]
+        },
+        {
+          "id": "G10_HUMAN",
+          "original_status": "NOT_ATTESTED",
+          "obligationIds": [
+            "P12",
+            "G05",
+            "G06",
+            "G09"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -163,6 +163,7 @@
 - [docs/GENESIS_AUDIT.md](GENESIS_AUDIT.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/HOST_IKANT_EDU_BRAND_RUNTIME_PR.md](HOST_IKANT_EDU_BRAND_RUNTIME_PR.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/HOST_NEGATIVE_SEMANTIC_R3.md](HOST_NEGATIVE_SEMANTIC_R3.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [docs/I10_TWO_PRODUCTS.md](I10_TWO_PRODUCTS.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/IKANT_ONESHELL_BRAND_P0_AND_REGISTRATION_READINESS.md](IKANT_ONESHELL_BRAND_P0_AND_REGISTRATION_READINESS.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/LOCAL_HOST_META_PROMPT.md](LOCAL_HOST_META_PROMPT.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/MCP_EXTERNAL_ADVANCED_V2_PREPR.md](MCP_EXTERNAL_ADVANCED_V2_PREPR.md): Documentazione specialistica. Stato di review: **da verificare**.
@@ -177,6 +178,7 @@
 - [docs/ONESHell_MINIMUM_CONVERGENCE.md](ONESHell_MINIMUM_CONVERGENCE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/ONESHell_PRODUCT_CI_RELEASE_GATE.md](ONESHell_PRODUCT_CI_RELEASE_GATE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/POST118_RISK_AND_SCOPE.md](POST118_RISK_AND_SCOPE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [docs/PR1_PRODUCT_TRUTH_DOD.md](PR1_PRODUCT_TRUTH_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PRODUCT_DASHBOARD.md](PRODUCT_DASHBOARD.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PROJECT_C72_BOOTSTRAP_WITNESS_AND_BRIDGE_P0.md](PROJECT_C72_BOOTSTRAP_WITNESS_AND_BRIDGE_P0.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PROJECT_C72_HOST_PORT_P0.md](PROJECT_C72_HOST_PORT_P0.md): Documentazione specialistica. Stato di review: **da verificare**.

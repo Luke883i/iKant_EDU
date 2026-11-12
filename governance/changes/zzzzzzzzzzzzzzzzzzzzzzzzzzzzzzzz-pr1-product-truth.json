@@ -1,0 +1,139 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "09798d194c1fc6a8557465b8d8875fd1972de940",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json",
+  "scope": "PR1_PRODUCT_TRUTH_IDENTITY_UPSTREAM_REAL_MAIN_SOURCE_ONLY",
+  "release": "NO_GO",
+  "human_review_completed": false,
+  "historical_receipts_must_remain_pinned": true,
+  "original_owner_unchanged": true,
+  "mcp_external_owner_unchanged": true,
+  "source_tree_baseline": "8d7e3f4b0a87bc7a7175b46a2eff17a5ac082d85",
+  "product_go": false,
+  "native_provider_attested": false,
+  "independent_review_attested": false,
+  "interpretation": "Git source-only prospective review required; a registry does not prove runtime or truthful content.",
+  "paths": [
+    {
+      "path": "README.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
+      "supersedes_source_main": "9efdcb4b5d67e3de52a8805cf52b446dd5ff0857",
+      "historical_git_blob_sha1": "c570f8c88ca78269e0019ea9f2526052f569ea16",
+      "prospective_git_blob_sha1": "6a49beed639a0954dc75720e6d207f8e5cda625c"
+    },
+    {
+      "path": "contracts/pr1-64-coverage.v1.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "prospective_git_blob_sha1": "b98d119c17ca138800b4e77236f61b4ee52a0eee"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzz-cora-pr-b-documentation.json",
+      "supersedes_source_main": "abd62d81d9b899743ee738fc04b59c2e065fe765",
+      "historical_git_blob_sha1": "6c5aa7d719a4daf85016465baae320bd6e622c7f",
+      "prospective_git_blob_sha1": "38de08565704e93cd601fab2c154a94ffc275efd"
+    },
+    {
+      "path": "docs/I10_TWO_PRODUCTS.md",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "prospective_git_blob_sha1": "095e108193060fb624d8a3dbf291bbcf11336c0f"
+    },
+    {
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzz-cora-pr-a-backlog.json",
+      "supersedes_source_main": "b60e3ac2b9fa9cb4167b7413d594c502c0fa9459",
+      "historical_git_blob_sha1": "54a61a9befc0e839560eff6957fdc2c0f05b7e92",
+      "prospective_git_blob_sha1": "50d480c66aa956247605f374889432692a4170bc"
+    },
+    {
+      "path": "docs/IKANT_LOCAL_SETUP.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzz-cora-pr-b-documentation.json",
+      "supersedes_source_main": "abd62d81d9b899743ee738fc04b59c2e065fe765",
+      "historical_git_blob_sha1": "a62a7da73e0c4a3d8750a01b99b7eca6c228f0cb",
+      "prospective_git_blob_sha1": "670a5adf1f49418af1fb2e4164935b7bfca666fa"
+    },
+    {
+      "path": "docs/PR1_PRODUCT_TRUTH_DOD.md",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "prospective_git_blob_sha1": "e9b45f1398631e1b46a7978303179df3cadc660c"
+    },
+    {
+      "path": "docs/START_HERE.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzz-cora-pr-b-documentation.json",
+      "supersedes_source_main": "abd62d81d9b899743ee738fc04b59c2e065fe765",
+      "historical_git_blob_sha1": "127fcabafd3ff18e6c5457e4c46e79c36dd88776",
+      "prospective_git_blob_sha1": "4500e76ff517e13834b2a03ad61afdeb5224d011"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade."
+    },
+    {
+      "path": "host/project-oneshell-edu.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "historical_git_blob_sha1": "ddafa388f93b6aa1664fbf4a1ce73ba59fb752e1",
+      "prospective_git_blob_sha1": "f7076b3f9de15a7ed3a6ee1bedebd9f81f3604a8"
+    },
+    {
+      "path": "host/project-oneshell-visual.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
+      "supersedes_source_main": "9efdcb4b5d67e3de52a8805cf52b446dd5ff0857",
+      "historical_git_blob_sha1": "9e193f8314b77409efa33d35de5ae3ff0734b992",
+      "prospective_git_blob_sha1": "3ffaa6a066c866d557ca1b1870a17654d3ec409a"
+    },
+    {
+      "path": "plugins/ikant-le-session-chat/README.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "historical_git_blob_sha1": "8cbd5f8028156a87b7ae4939777f90503c6650a2",
+      "prospective_git_blob_sha1": "1722c9eb0fbeda6466bffe5aa833a8e0abb956c1"
+    },
+    {
+      "path": "scripts/cora-m2-owner-provider-metrics.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json",
+      "supersedes_source_main": "9efdcb4b5d67e3de52a8805cf52b446dd5ff0857",
+      "historical_git_blob_sha1": "f4fab3a6cea1e3feb9a294ff71132a844c41dd86",
+      "prospective_git_blob_sha1": "02e1013e1f60479996449045172d254203440642"
+    },
+    {
+      "path": "tests/pr1-product-truth-identity.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "PR1 main-source-only product truth and separate Project/MCP identity; no native-provider authorization or historical receipt upgrade.",
+      "prospective_git_blob_sha1": "e278a3770e639b5fd1694dfc4839a2566743e23f"
+    }
+  ]
+}

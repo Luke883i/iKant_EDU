@@ -1,0 +1,97 @@
+{
+  "schema": "ikant-pr3-repository-contraction/v1",
+  "authority": 0,
+  "product_go": false,
+  "original_main": "36646712e5f27fef337784e1a00b3849dfb38b48",
+  "original_tree": "f3462a53ed65dab3d338b2aca84c7a0486dd0d1a",
+  "source_file_count": 1619,
+  "source_root_count": 16,
+  "source_root_paths": [
+    ".gitignore",
+    "ADMISSION.json",
+    "AGENTS.md",
+    "BOOTSTRAP.json",
+    "BOOTSTRAP.md",
+    "C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json",
+    "C13_SESSION_CHAT_FASTBOOT_CONTRACT.json",
+    "LICENSE",
+    "README.md",
+    "TERMS.md",
+    "iKant_UI_shell.md",
+    "ikant.mjs",
+    "package.json",
+    "render.mcp-prepr.yaml",
+    "render.mcp-standalone.candidate.yaml",
+    "stile_comunicativo.md"
+  ],
+  "cut": {
+    "kind": "MOVE_EXACT_BLOB_NOT_SHIM",
+    "source": "render.mcp-prepr.yaml",
+    "destination": "docs/archive/prepr/render.mcp-prepr.yaml",
+    "git_blob_sha1": "67ad97ad545b688af2125c74ed57ef5a6bd2aebd",
+    "bytes": 1107,
+    "source_status": "HISTORIC_PREPR_BLUEPRINT_NOT_DEPLOYED",
+    "destination_role": "ARCHIVE_HISTORICAL",
+    "root_count_after": 15,
+    "old_path_not_present": true,
+    "content_mutation_allowed": false,
+    "owner_unchanged": true
+  },
+  "consumer_assessment": [
+    {
+      "path": "scripts/oneshell-v1-build.py",
+      "classification": "HISTORICAL_GIT_PINNED_BUILDER",
+      "reason": "HEAD=afb6f1cb... / original(path) uses git show HEAD:path, not live working-copy filename",
+      "action": "KEEP_HISTORICAL_SCRIPT_AND_HEAD_PIN"
+    },
+    {
+      "path": "docs/MCP_EXTERNAL_PREPR_20261020.md",
+      "classification": "HISTORICAL_DOC",
+      "reason": "Dated 2026-10-20, proposed pre-PR not deployed",
+      "action": "LINK_ARCHIVE_AND_KEEP_OLD_LABEL_HISTORICAL"
+    },
+    {
+      "path": "contracts/v5b-root-archive-plan.json",
+      "classification": "HISTORICAL_HOLD_DECISION",
+      "reason": "Past CONDITIONAL_RETAIN is preserved as historical verdict and superseded prospectively",
+      "action": "PRESERVE_ORIGINAL_AND_RECORD_NEW_CUT"
+    },
+    {
+      "path": "governance/v5b-baseline-inventory.json",
+      "classification": "IMMUTABLE_HISTORICAL_INVENTORY",
+      "reason": "Original source indexed version, not live-path guarantee",
+      "action": "KEEP_BYTES"
+    },
+    {
+      "path": "tests/v5b-root-archive.test.mjs",
+      "classification": "EXISTING_REGRESSION_ORACLE",
+      "reason": "Assert original plan remains intact plus prospective exact-byte move",
+      "action": "STRENGTHEN_TEST_AND_RETAIN_PREIMAGE"
+    }
+  ],
+  "other_roots": "HOLD_DYNAMIC_AND_EXTERNAL_CONSUMERS_NOT_ATTESTED",
+  "external_manual_render_config": "UNKNOWN_REQUIRES_OPERATOR_REVIEW",
+  "no_auto_delete_of_other_roots": true,
+  "original_must_remain_root_plan_unmodified": true,
+  "protected_original_owners": {
+    "host/c72-public-mode-admission.mjs": "f8f3713115137732fde380f02bfc0ec6874214f5",
+    "host/c135-edu-v2-owner.mjs": "e8bbe5741375e5d51f1caa02fdba2ecc5f6c049d",
+    "host/c87-durable-ledger.mjs": "9d4fd4038bd7e109bdbc5e0441f9e9acf497c846",
+    "host/c125-exclusive-shell.mjs": "760a90ad43b04588599ab9385abc389419ecc813"
+  },
+  "dod": {
+    "abstract": "Less filesystem/maintenance effort while preserving original behavior and evidence",
+    "global": "All 64 obligations uniquely routed, PR3 exactly 7, no claim transferred from prior bundles",
+    "intermediate": "Source-indexed root inventory; consumer graph and UNKNOWN; exact blob archive and historical owner preservation; CI source equivalence",
+    "local": [
+      "R01",
+      "R02",
+      "R03",
+      "R04",
+      "R05",
+      "R09",
+      "R10"
+    ],
+    "pass_requires": "Exact checkout HEAD and index, source/destination Git object readback, protected owner pin, negative mutants and consumer classification; native/external authority never inferred"
+  }
+}

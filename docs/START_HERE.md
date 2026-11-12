@@ -17,6 +17,10 @@ Il valore atteso e rendere più controllabili consenso, esecuzione, registrazion
 
 Chiedi: «Confronta due ipotesi scientifiche». Un normale LLM può dare una risposta. iKant, quando l'owner originale viene realmente eseguito, può documentare input, piano, verifiche, registrazione e rilettura. **Questo non certifica il confronto scientifico**: per quello servono fonti, metodi e validazione separati. Il vantaggio potenziale da misurare è sapere meglio **quali passaggi sono successi e quali no**.
 
+## Due prodotti: sessione Project e servizio MCP
+
+Per parlare con iKant EDU **nella chat di un Project**, si installano istruzioni Project e si rispettano i tre turni distinti (ORIENTATION, `I ACCEPT`, `EDU`); il codice Node non viene installato dal prompt. Per usare l'**app MCP esterna**, occorre invece un server realmente distribuito, OAuth e un collegamento del client: non e un'altra modalita C72, ne prova C59 CANONICAL. [Confronto e passi verificabili](I10_TWO_PRODUCTS.md).
+
 ## Da dove iniziare
 
 Per una prova guidata, scegli **EDU**, modalità sperimentale. Al primo messaggio umano della nuova chat si esegue soltanto l'orientamento ai cinque documenti originali e ai Termini (ORIENTATION); al secondo messaggio distinto, esattamente `I ACCEPT`, si avvia l'ammissione originale; al terzo messaggio distinto, esattamente `EDU`, si seleziona la modalità. Non serve inviare `avvia iKant` come prerequisito. Per **CANONICAL** servono la composizione originale C59, un evento autentico del provider e ricevute verificabili: selezionarlo non lo accende. Il [server MCP esterno](MCP_STANDALONE_RENDER_RUNBOOK.txt) ha OAuth e deployment propri; collegarlo a ChatGPT non è una terza modalità C72 e non crea identità CANONICAL.

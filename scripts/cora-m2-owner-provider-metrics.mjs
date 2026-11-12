@@ -95,6 +95,37 @@ export function modelM2Cut(p,claims={}){
   ledger_written:false,voice_sent:false,original_receipt_issued:false,
   repository_standardized:false,product_go:false,permission_to_retry:false};
 }
+/** Prospective PR1 presentation-only change; immutable original pins retained. */
+export function qualifyPr1OneShellPresentation({historicalBlobSha1,observedBytes,observedSha1,registration}={}){
+ const denied=edge=>({ok:false,first_edge:edge,authority:0,provider_attested:false,original_receipt_issued:false});
+ if(!H40.test(historicalBlobSha1||'')||!Buffer.isBuffer(observedBytes)||typeof observedSha1!=='string')
+  return denied('PR1_M2_INVALID_BYTES');
+ const before="esito:'RISPOSTA EDU VERIFICATA',b:'Risposta originale iKant verificata: il suo valore dipende da utilita, limiti, decisione umana e riscontri; consegna nativa non attestata.'";
+ const after="esito:'TURNO EDU TRACCIATO',b:'Integrita e readback del turno verificati localmente; verita fattuale della risposta NON valutata. Consegna nativa ChatGPT NON attestata.'";
+ const current=observedBytes.toString('utf8');
+ if(current.split(after).length!==2)return denied('PR1_M2_PROSPECTIVE_ANCHOR_MISMATCH');
+ const original=Buffer.from(current.replace(after,before),'utf8');
+ if(hash(original)!==historicalBlobSha1)return denied('PR1_M2_HISTORICAL_PREIMAGE_HASH_MISMATCH');
+ const old=original.toString('utf8');
+ if(old.split(before).length!==2)return denied('PR1_M2_HISTORICAL_ANCHOR_MISMATCH');
+ const candidate=Buffer.from(old.replace(before,after),'utf8');
+ if(!candidate.equals(observedBytes)||hash(candidate)!==observedSha1)
+  return denied('PR1_M2_UNAUTHORIZED_SOURCE_DELTA');
+ const regPath='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
+ const row=registration?.paths?.filter(x=>x.path==='host/project-oneshell-edu.mjs')||[];
+ if(registration?.schema!=='ikant-v5b-change-extension/v1'||
+   registration?.source_main!=='09798d194c1fc6a8557465b8d8875fd1972de940'||
+   registration?.self_path!==regPath||registration?.release!=='NO_GO'||
+   registration?.human_review_completed!==false||registration?.original_owner_unchanged!==true||
+   registration?.native_provider_attested!==false||registration?.product_go!==false||
+   row.length!==1||row[0].operation!=='MODIFY'||row[0].human_review!=='REVIEW_REQUIRED'||
+   row[0].historical_git_blob_sha1!==historicalBlobSha1||
+   row[0].prospective_git_blob_sha1!==observedSha1)
+  return denied('PR1_M2_SUCCESSOR_UNQUALIFIED');
+ return {ok:true,status:'PR1_PRESENTATION_SOURCE_ONLY_REVIEW_REQUIRED',amended:true,
+  review_attested:false,owner_invoked:false,provider_attested:false,authority:0};
+}
+
 /** Original Git source readback and M1 cross-check. External metrics are not injectable. */
 export function observeM2Source(){
  try{
@@ -115,8 +146,13 @@ export function observeM2Source(){
   for(const [fpath,expect] of Object.entries(PINS)){
    const b=data('show',head+':'+fpath);
    const sha=git('rev-parse',head+':'+fpath);
-   const epoch=qualifyRegisteredC72SourceEpoch({
+   let epoch=qualifyRegisteredC72SourceEpoch({
     path:fpath,historicalBlobSha1:expect,observedBlobSha1:sha});
+   if(fpath==='host/project-oneshell-edu.mjs'&&sha!==expect){
+    const regPath='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
+    epoch=qualifyPr1OneShellPresentation({historicalBlobSha1:expect,
+     observedBytes:b,observedSha1:sha,registration:JSON.parse(data('show',head+':'+regPath).toString('utf8'))});
+   }
    if(epoch.ok!==true||hash(b)!==sha)
     return fail('M2_ORIGINAL_OWNER_BLOB_CHANGED:'+fpath);
    observed[fpath]={sha1:sha,bytes:b.length,historical_sha1:expect,

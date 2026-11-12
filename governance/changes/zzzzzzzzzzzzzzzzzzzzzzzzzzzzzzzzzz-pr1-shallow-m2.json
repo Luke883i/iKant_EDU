@@ -1,0 +1,41 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "a6f4ae90db4a18e3ba323ccaaa9554a95f6fb9c9",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-shallow-m2.json",
+  "scope": "PR1_SOURCE_ONLY_M2_PREIMAGE_RECONSTRUCTION_FOR_SHALLOW_CHECKOUT",
+  "release": "NO_GO",
+  "human_review_completed": false,
+  "original_owner_unchanged": true,
+  "product_go": false,
+  "native_provider_attested": false,
+  "independent_review_attested": false,
+  "paths": [
+    {
+      "path": "scripts/cora-m2-owner-provider-metrics.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Reconstruct immutable historical Git blob by reversing one exact allowed source transformation; SHA-1 readback identical in shallow checkout; no network/no historical object fetch.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json",
+      "supersedes_source_main": "09798d194c1fc6a8557465b8d8875fd1972de940",
+      "historical_git_blob_sha1": "02e1013e1f60479996449045172d254203440642",
+      "prospective_git_blob_sha1": "bdccb31f32066dc1c71b2632cb0633dfa17b649c"
+    },
+    {
+      "path": "tests/pr1-product-truth-identity.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Focused real-source and hostile preimage tests for shallow Git checkout.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-test-fix.json",
+      "supersedes_source_main": "482747b083e8c61320cd14f1aa8c3bb50b8a0b01",
+      "historical_git_blob_sha1": "50b77185b3ffa0f33438f19c3403850cb79efc08",
+      "prospective_git_blob_sha1": "8f601ef1485be07288e6fc547506ccae122ab053"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-shallow-m2.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Conservative record of prospective exact source/test changes; does not certify provider or review."
+    }
+  ]
+}

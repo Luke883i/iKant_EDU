@@ -3,6 +3,18 @@
 
 # iKant — risposte guidate, infrastruttura cognitiva verificabile
 
+## Inizia dal prodotto corretto
+
+**iKant_EDU** e un meta-controller sperimentale su LLM sostituibile. Il repository contiene **due superfici di prodotto separate** che riusano alcune primitive, senza condividere automaticamente consenso, sessione o autorita.
+
+| Obiettivo | Ingresso attuale | Prova e limite |
+|---|---|---|
+| Usare EDU in una chat Project | [Prompt originale](project/session-chat/PROMPT.txt) e [guida al bootstrap](docs/IKANT_LOCAL_SETUP.md): primo messaggio di orientamento, poi `I ACCEPT` e `EDU` in due turni distinti | Il prompt non installa Node e non attesta una chiamata al provider. L'esecuzione C72/C135/C87/C125 richiede un ponte HOST reale. |
+| Collegare un'app MCP esterna | [Server e manuale MCP](plugins/ikant-le-session-chat/README.md), [runbook](docs/MCP_STANDALONE_RENDER_RUNBOOK.txt) | Deployment HTTPS, OAuth, disco e collegamento client propri. MCP non seleziona EDU e non rende C59 CANONICAL attivo. |
+| Verificare il software senza provider | `npm run check`, `npm test`, `npm run runtime-root:verify` | Prove source/local, non accuratezza fattuale delle risposte o disponibilita del prodotto ChatGPT. |
+
+**Confine epistemico:** un turno tracciato e rileggibile **non e** una risposta fattualmente verificata. `PRODUCT_GO=false` fino a qualifica nativa indipendente. [Limitazioni e documentazione](docs/START_HERE.md).
+
 **Purpose:** an experimental deterministic meta-controller around a replaceable language model. Its explicitly controlled states, capabilities, evidence and decisions are software constructs, not an independently verified mind, an autonomous authority, or a general truth oracle. Read its local runtime/host contracts to understand supported behavior and limits.
 
 

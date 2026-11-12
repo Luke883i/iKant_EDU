@@ -126,7 +126,7 @@ export async function startOneShellEdu({selection,sourceRoot,sourceBinding=null,
     source_head:turn.source_head,source_tree:turn.source_tree,
     original_c125_utf8:s.c125_original_bytes,original_c125_sha256:s.c125_original_sha256,
     original_c87_readback:readback.original_c87_readback,authority:0,native_delivery_attested:false});
-  return originalOwnerFrame({esito:'RISPOSTA EDU VERIFICATA',b:'Risposta originale iKant verificata: il suo valore dipende da utilita, limiti, decisione umana e riscontri; consegna nativa non attestata.',
+  return originalOwnerFrame({esito:'TURNO EDU TRACCIATO',b:'Integrita e readback del turno verificati localmente; verita fattuale della risposta NON valutata. Consegna nativa ChatGPT NON attestata.',
    prova:'sha256:'+s.c125_original_sha256,edge:'NATIVE_CHATGPT_DELIVERY_NOT_ATTESTED',
    next:'WAIT_NEXT_HUMAN_INPUT',s03:s});
   }catch{blocked=true;lastEvidence=null;return failure('EDU_TURN_OUTCOME_UNKNOWN_RECONCILE_READ_ONLY');}

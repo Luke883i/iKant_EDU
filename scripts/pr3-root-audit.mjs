@@ -32,6 +32,10 @@ export function inspectPr3Cut(source=JSON.parse(load('contracts/pr3-repository-c
   if(!set.has(file)||git('rev-parse','HEAD:'+file)!==pin||git('hash-object','--',file)!==pin)
    problems.push('PR3_ORIGINAL_OWNER_CHANGED:'+file);
  }
+ for(const [p,pin] of Object.entries(source.historical_object_pins||{})){
+  if(!set.has(p)||git('rev-parse','HEAD:'+p)!==pin||git('hash-object','--',p)!==pin)
+   problems.push('PR3_HISTORICAL_SOURCE_CHANGED:'+p);
+ }
  const historical=load('contracts/v5b-root-archive-plan.json').toString('utf8');
  if(!historical.includes('"path": "render.mcp-prepr.yaml"')||
     !historical.includes('"status": "CONDITIONAL_RETAIN"'))

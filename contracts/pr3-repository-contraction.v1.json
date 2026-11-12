@@ -93,5 +93,9 @@
       "R10"
     ],
     "pass_requires": "Exact checkout HEAD and index, source/destination Git object readback, protected owner pin, negative mutants and consumer classification; native/external authority never inferred"
+  },
+  "historical_object_pins": {
+    "contracts/v5b-root-archive-plan.json": "f728b4e0a7c81de53c774c14b73ff5b62241789a",
+    "scripts/oneshell-v1-build.py": "50e1b16bc785120587c092515bbaf5e7995198dd"
   }
 }

@@ -179,6 +179,7 @@
 - [docs/ONESHell_PRODUCT_CI_RELEASE_GATE.md](ONESHell_PRODUCT_CI_RELEASE_GATE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/POST118_RISK_AND_SCOPE.md](POST118_RISK_AND_SCOPE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PR1_PRODUCT_TRUTH_DOD.md](PR1_PRODUCT_TRUTH_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [docs/PR2_RUNTIME_DOD_OF_DOD.md](PR2_RUNTIME_DOD_OF_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PRODUCT_DASHBOARD.md](PRODUCT_DASHBOARD.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PROJECT_C72_BOOTSTRAP_WITNESS_AND_BRIDGE_P0.md](PROJECT_C72_BOOTSTRAP_WITNESS_AND_BRIDGE_P0.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [docs/PROJECT_C72_HOST_PORT_P0.md](PROJECT_C72_HOST_PORT_P0.md): Documentazione specialistica. Stato di review: **da verificare**.

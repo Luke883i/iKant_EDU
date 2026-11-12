@@ -31,7 +31,7 @@ function sourceBrand(){
 function stateFromOriginal(frame){
  const {ESITO,A,EDGE,NEXT}=frame.slots;
  if(NEXT==='STOP'||ESITO==='BLOCCATO')return 'BLOCCATO';
- if(frame.voice_origin==='HOST_BOUND_LOCAL'&&A!=='NO_VOICE')return 'VOCE_VERIFICATA';
+ if(frame.voice_origin==='HOST_BOUND_LOCAL'&&A!=='NO_VOICE')return 'VOCE_TRACCIATA';
  if(NEXT==='AWAIT_HUMAN_INPUT')return 'PRONTO';
  if(NEXT==='AWAIT_I_ACCEPT')return 'ORIENTAMENTO';
  if(NEXT==='AWAIT_EDU')return 'CONSENSO';

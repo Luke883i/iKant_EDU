@@ -1,4 +1,4 @@
-# Avviare iKant: Project, sorgenti, runtime locale e CANONICAL
+# Avviare iKant: Project EDU, audit locale e servizio MCP esterno
 
 Questa guida distingue **la preparazione dei file** dall'**esecuzione del codice** e dall'**integrazione nativa**. Non chiedere segreti in chat. Prima di usare un pacchetto registrare il commit di `main` da cui proviene; la sua identità non può essere dedotta dal titolo dello ZIP.
 
@@ -37,11 +37,15 @@ npm run runtime-root:verify
 
 I test controllano il *repository*, non provano un LLM online, i benefici su utenti o una chiamata nativa ChatGPT. Per il collegamento EDU documentato: [`host/c135-edu-v2-owner.mjs`](../host/c135-edu-v2-owner.mjs), [`host/s02-edu-versioned-consumer.mjs`](../host/s02-edu-versioned-consumer.mjs), [specifica C135](C135_EDU_COGNITIVE_OWNER.md).
 
-## Percorso C — CANONICAL con integrazione MCP reale
+## Percorso C — App MCP esterna, indipendente dal Project EDU
 
-CANONICAL richiede connessione MCP **autenticata e consentita**, identità dell'evento fornita dal provider, composizione C59 originale `SESSION_CHAT_LOCAL`, runtime originale verificato, writer durevole, readback e consegna attestata. Il [codice sorgente del plugin](../plugins/ikant-le-session-chat/) e un eventuale file `mcp.template.json` **non** sono prova che il plugin sia registrato o che l'interfaccia sia attiva. L'ammissione CANONICAL non crea credenziali, servizi o stato `ACTIVE`.
+Il servizio in `plugins/ikant-le-session-chat/server/server.mjs` non e una modalita C72/v2, non e la composizione storica C59 CANONICAL e **non installa da solo il client ChatGPT**. E un server Node compatibile con il profilo legacy deployed C20 e, in configurazione `standalone`, richiede OAuth con scope `ikant:connect`/`ikant:write`, deployment HTTPS, Identity Provider e disco persistente. Il codice o il template MCP sono candidati; non costituiscono una prova di server pubblico o di connessione ChatGPT.
 
-Se non è possibile attestare ciascun confine: **fermati al primo requisito mancante**, non creare fallback non autorizzati e non dichiarare `ACTIVE`.
+Per iniziare, consultare il [manuale del plugin](../plugins/ikant-le-session-chat/README.md), il [runbook del deployment](MCP_STANDALONE_RENDER_RUNBOOK.txt) e la [matrice dei due prodotti](I10_TWO_PRODUCTS.md). I controlli statici e gli IdP sintetici non provano un IdP reale. Un esito di scrittura sconosciuto implica STOP e riconciliazione in sola lettura, senza retry automatico.
+
+## Percorso D — C59 CANONICAL e archeologia storica, non installazione MCP
+
+C59 `SESSION_CHAT_LOCAL` e un'architettura storica distinta: il suo percorso originale richiede fonte, carrier, evento nativo, writer e readback qualificati. La presenza del servizio MCP **non** attesta queste condizioni, non seleziona CANONICAL e non autorizza `ACTIVE`. [Identita dei percorsi](I10_TWO_PRODUCTS.md) e [contratto C59](C59_SINGLE_COMPOSITION_CHANNEL.md).
 
 ## Come orientarsi in caso di dubbi
 

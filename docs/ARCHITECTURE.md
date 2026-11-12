@@ -26,7 +26,7 @@ Node.js software around a replaceable HOST LLM, not another model or a conscious
 
 ## Public admission and legacy carriers
 
-C72/v2: distinct new consent and later EDU/CANONICAL choice (historical gate label `C72_INTRO -> MODE_SELECTION`). EDU uses S02 (ponte di versione)/C135 (coordinatore) → C107/C70/C126 → C87/readback → C125 HOST-local output. CANONICAL requires C59 `SESSION_CHAT_LOCAL` and authenticated native event. C72/v1 EXPERIMENTAL is legacy only. Selection and plugin availability are not activation. [Cx explained](IKANT_CX_LEXICON.md), [runtime](IKANT_RUNTIME_AND_EVIDENCE.md), [setup](IKANT_LOCAL_SETUP.md).
+C72/v2: distinct new consent and public EDU-only selection; the EDU/CANONICAL choice is a historical gate label (`C72_INTRO -> MODE_SELECTION`), not a current public option. EDU uses S02 (ponte di versione)/C135 (coordinatore) → C107/C70/C126 → C87/readback → C125 HOST-local output. CANONICAL requires C59 `SESSION_CHAT_LOCAL` and authenticated native event. C72/v1 EXPERIMENTAL is legacy only. Selection and plugin availability are not activation. [Cx explained](IKANT_CX_LEXICON.md), [runtime](IKANT_RUNTIME_AND_EVIDENCE.md), [setup](IKANT_LOCAL_SETUP.md).
 
 ## Persistence and turn spine
 

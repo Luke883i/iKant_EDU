@@ -1,31 +1,39 @@
-# iKant_LE SESSION_CHAT reference app
+# iKant_EDU — App MCP esterna (compatibilita C20)
 
-This package is the **C58 ensure-bound SESSION_CHAT profile** built on the C20 deployed-session substrate. Startup ensures or reopens one exact local deployment before the model-visible open binding exists; it does not weaken the one-shot C15/C17/C18/C19 path.
+**Tipo di prodotto:** server MCP HTTP autonomo, non l'ingresso EDU del ChatGPT Project. Usa primitive condivise del repository, ma possiede deployment, autorizzazione e sessione propri. Non crea C72/v2, non realizza l'owner storico C59 CANONICAL, non prova `ACTIVE` canonico e non rende automaticamente un plugin disponibile in ChatGPT.
 
-## Start the local binding
+## Quale profilo stai installando?
+
+| Profilo | Stato | Guardie principali | Limite |
+|---|---|---|---|
+| **standalone OAuth** | Candidato per server pubblico | `IKANT_MCP_DEPLOYMENT_PROFILE=standalone`; `IKANT_MCP_AUTH_MODE=oauth`; issuer/JWKS/resource HTTPS, scope `ikant:connect` e `ikant:write`; persistenza durevole | IdP, HTTPS, volume e collegamento ChatGPT devono essere provati esternamente. |
+| **legacy gateway** | Riferimento locale/storico C58/C20 | Gateway identity / nonce, `ensureSessionChatDeployment`, `open`, `accept`, `turn`; client/host attendibile | Non e un percorso di distribuzione standalone qualificato, ne C59 CANONICAL. |
+
+La superficie offre `ikant_le_open` come tool model-visible; i turni di accettazione e le scritture sono app-only e soggetti a controlli di scope. Lo stato della sessione, i receipt e la provenienza non possono essere dedotti dalla sola descrizione dello strumento.
+
+## Verifica locale prima di qualsiasi deployment
+
+Dal root del repository intenzionalmente pin-nato:
 
 ```bash
-cd plugins/ikant-le-session-chat/server
-npm install --ignore-scripts --no-audit --no-fund
-PORT=8788 IKANT_LE_DEPLOYMENT_ROOT=/var/lib/ikant-le/session-chat npm start
+npm run check:mcp
+node --test tests/mcp-standalone-runtime-assurance.test.mjs tests/s06-mcp-transport-security.test.mjs
+npm run check
 ```
 
-Server startup performs one deterministic `ensure`: if the deployment is absent it creates the exact current source-bound deployment; if it exists it reopens and verifies it against the current repository HEAD and runtime-root. Source/root drift or a corrupt partial deployment fails closed before the MCP tool is exposed. Explicit `deploy` remains available for operators that want to provision the store separately.
+L'E2E HTTP su un server reale in laboratorio e in `tests/mcp-standalone-http-qualification.probe.mjs`; richiede le dipendenze SDK del server, OpenSSL e un IdP TLS **sintetico**, non collegamento a ChatGPT. Seguire il [runbook standalone](../../docs/MCP_STANDALONE_RENDER_RUNBOOK.txt) per i prerequisiti di ambiente, sicurezza, storage, rilascio e qualificazione. `npm run check` verifica il software locale, non un health check remoto.
 
-## Connect ChatGPT
+## Uso in ChatGPT: non confondere distribuzione e connessione
 
-ChatGPT requires a reachable MCP server. Use a remote HTTPS deployment or a supported Secure MCP Tunnel for a private/local server, then register the `/mcp` endpoint as a custom app in Developer Mode.
+1. Distribuisci il **repository intero** sul server Node, con HTTPS, disco durevole e IdP OAuth reale; non basta copiare `server.mjs`.
+2. Verifica `/healthz`, discovery `/.well-known/oauth-protected-resource/mcp`, `401` senza bearer token, handshake, `tools/list`, scope di scrittura e readback dopo restart; conserva prove contro la revisione esatta.
+3. Connetti `/mcp` nella schermata di configurazione custom MCP del client che effettivamente usi. L'esistenza del server non attesta questa azione; controlla il flusso OAuth reale, la sessione e il primo tool call osservato.
+4. Se un write puo essere avvenuto ma la risposta e incerta, **STOP e riconcilia in sola lettura**; nessun retry cieco.
 
-Per chat the app performs **no repository transfer**. It binds the host session to the deployed store, shows the pinned Terms, and on exact `I ACCEPT`:
+## Distinzione dalla sessione-chat EDU
 
-1. captures a MONOTONIC acceptance-origin ticket at app/runtime ingress;
-2. materializes a session-local root from the deployed content-addressed store using `WARM_CACHE_EXACT`;
-3. binds the origin ticket to acceptance-origin receipt v2;
-4. invokes the canonical iKant_LE runtime;
-5. requires live probe, writer/persistence, final deadline PASS, ACTIVE commit and ledger readback.
+L'altro prodotto usa `project/session-chat/PROMPT.txt` e i tre gate ORIENTATION → `I ACCEPT` → `EDU`, con owner C72/C135/C87/C125 soltanto quando invocabili. L'app MCP non e un fallback del Project e non ne riusa il consenso. [Tabella di tracciabilita e limiti](../../docs/I10_TWO_PRODUCTS.md) · [guida Project](../../docs/IKANT_LOCAL_SETUP.md).
 
-Only `ikant_le_open` is model-visible. Acceptance and substantive ACTIVE turns are app-only. The server refuses to start unless the configured deployment can be fully reopened and validated, so a visible connected binding is never backed by a missing or corrupt deployment. Use `docs/SESSION_CHAT_LOCAL_PROMPT.md` as the session-side cold-start instruction; it reduces the model role to the binary HOST_ONLY vs IKANT_OPEN route. `npm run prompt:session-chat-local` prints the exact canonical bytes; add `-- --receipt` to print its version/hash receipt.
+**Epistemic status:** `SOURCE_PRESENT`; `LOCAL_TESTS_SCOPED`; `PROVIDER_NATIVE_NOT_ATTESTED`; `PRODUCT_GO=false`.
 
-## Claim boundary
-
-Repository tests can prove the reference deployment, real local materialization, real Node runtime activation, persistence/readback, MCP server startup and 100M semantic qualification. They **cannot** prove that a particular ChatGPT account has registered the app or that an external tunnel/HTTPS deployment is reachable. Physical session-chat ACTIVE requires that external roundtrip.
+**Compatibilita test C57:** Only `ikant_le_open` is model-visible. Acceptance and substantive ACTIVE turns are app-only. Questa frase descrive il vecchio profilo di compatibilita deployed, **non** un'asserzione di ACTIVE canonico o di installazione nativa.

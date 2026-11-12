@@ -1,0 +1,93 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "36646712e5f27fef337784e1a00b3849dfb38b48",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr3-root-contraction.json",
+  "scope": "PR3_PHYSICAL_ROOT_ARCHIVE_CUT_SEMANTIC_CONSUMER_QUALIFICATION",
+  "release": "NO_GO",
+  "original_owner_unchanged": true,
+  "mcp_external_owner_unchanged": true,
+  "historical_receipts_must_remain_pinned": true,
+  "human_review_completed": false,
+  "product_go": false,
+  "native_provider_attested": false,
+  "independent_review_attested": false,
+  "interpretation": "Exact Git source move for historical Render pre-PR blueprint; not a deployed service or a qualification of all remaining root files.",
+  "paths": [
+    {
+      "path": "contracts/pr3-repository-contraction.v1.json",
+      "operation": "ADD",
+      "reason": "Seven PR3 DoDs, pinned source and actual root reduction, classified historical consumers and remaining unknowns.",
+      "prospective_git_blob_sha1": "c99f92ac2b8db756dc326ba239131670f184ed34",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "docs/archive/prepr/render.mcp-prepr.yaml",
+      "operation": "ADD",
+      "reason": "Preserve exact historical 1,107-byte blueprint under versioned pre-PR archive; Git blob unchanged.",
+      "prospective_git_blob_sha1": "67ad97ad545b688af2125c74ed57ef5a6bd2aebd",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "reason": "Regenerate exact original document atlas for PR3 DoD, no deletion of archived or source Markdown.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-runtime-evidence.json",
+      "supersedes_source_main": "4f2e778a1c64c7df5868ac22e431c62c44f2188a",
+      "historical_git_blob_sha1": "bc8738c41df37be8fef16a82b8cbc818a182f75e",
+      "prospective_git_blob_sha1": "d036bcf5b201c162a4f823d9824398378e0f9676",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "docs/MCP_EXTERNAL_PREPR_20261020.md",
+      "operation": "MODIFY",
+      "reason": "Explain historical blueprint source path and current archive, preserving dated engineering status.",
+      "historical_git_blob_sha1": "2807d8ddd2b0a8bd22381f875c331661ca92fa99",
+      "prospective_git_blob_sha1": "eab9ca4b877c80e5302ce2d397e9550a2e6163d9",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "docs/PR3_REPOSITORY_CONTRACTION_DOD.md",
+      "operation": "ADD",
+      "reason": "DoD-of-DoD with full/partial status, explicit historical source and native-provider restrictions.",
+      "prospective_git_blob_sha1": "45f2a2a15668d71580d84009ae7628c1c9c54e59",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr3-root-contraction.json",
+      "operation": "ADD",
+      "reason": "Real main successor decision to migrate a conditional HOLD; human review remains required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "render.mcp-prepr.yaml",
+      "operation": "REMOVE",
+      "reason": "Physically retire root alias of historical pre-PR deployment blueprint; byte-exact archive persists and live consumers excluded; external manual Render path UNKNOWN.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/pr3-root-audit.mjs",
+      "operation": "ADD",
+      "reason": "Independent Git-index root count, SHA-1 archive/source history, original-owner and consumer readback.",
+      "prospective_git_blob_sha1": "aab8d38b7ec9a4ecad9268d6ebf4bfc1640da4b3",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/pr3-root-audit.test.mjs",
+      "operation": "ADD",
+      "reason": "Falsify root alias, incorrect blob pin, assumed external deployment and incomplete consumer enumeration.",
+      "prospective_git_blob_sha1": "d6242530f86dc68005ff27e5bc0e90fc1e934136",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/v5b-root-archive.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Maintain immutable historical HOLD decision and now check byte-exact prospective archival successor.",
+      "supersedes_register": "governance/changes/v5b-root-archive.json",
+      "supersedes_source_main": "0b86fce541939d600bfd8565b97404ad64795185",
+      "historical_git_blob_sha1": "5ce7a16b37161deb8ba2280b78d4f45a3948353c",
+      "prospective_git_blob_sha1": "fe76026c73890bbe7aed416de4b5fbcae68eed11",
+      "human_review": "REVIEW_REQUIRED"
+    }
+  ]
+}

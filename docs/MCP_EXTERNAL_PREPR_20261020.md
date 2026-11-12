@@ -25,6 +25,9 @@ Canonical references: https://developers.openai.com/plugins/build/auth ; https:/
 
 `render.mcp-prepr.yaml`: **proposed, not deployed** Render web service; no secrets in source. Configure production OAuth variables in Render environment and authorization provider settings separately.
 
+**Current layout (PR3 prospective):** the exact historical blueprint is now archived at [`docs/archive/prepr/render.mcp-prepr.yaml`](archive/prepr/render.mcp-prepr.yaml). The former root path above describes its 2026-10-20 source epoch only. `render.mcp-standalone.candidate.yaml` remains at the repository root; no running Render service, UI client or operator path has been modified or authenticated.
+
+
 ## Start sequence and explicit operator gates
 
 1. Repository owner reviews, merges only after full CI against current pinned `main`, and deploys this external MCP service on a paid Render instance using a pinned source. Attach disk, verify filesystem permissions, restart persistency and disk backup/recovery. Do not pre-deploy the proposed change on a live production tenant.

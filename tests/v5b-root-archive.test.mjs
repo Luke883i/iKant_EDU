@@ -48,10 +48,22 @@ test('generated document atlas remains exact and retains historical documents in
 test('canonical roots and consumers remain unchanged; risky conditional moves are excluded',()=>{
  assert.deepEqual(plan.conditional_not_moved.map(x=>x.path),
   ['iKant_UI_shell.md','render.mcp-prepr.yaml']);
+ const successor=JSON.parse(load('contracts/pr3-repository-contraction.v1.json'));
+ assert.equal(successor.schema,'ikant-pr3-repository-contraction/v1');
+ assert.equal(successor.original_main,'36646712e5f27fef337784e1a00b3849dfb38b48');
  for(const row of plan.conditional_not_moved){
+  // Historical HOLD remains original evidence. A later PR3 source epoch must
+  // qualify the only permitted physical cut without rewriting that decision.
   assert.equal(row.status,'CONDITIONAL_RETAIN');
-  assert.equal(fs.existsSync(path.join(ROOT,row.path)),true,row.path);
   assert.ok(row.blockers.length>=1);
+  if(row.path===successor.cut.source){
+   assert.equal(fs.existsSync(path.join(ROOT,row.path)),false,row.path);
+   const archive=load(successor.cut.destination);
+   assert.equal(archive.length,successor.cut.bytes);
+   assert.equal(sha(archive),successor.cut.git_blob_sha1);
+   assert.equal(successor.cut.content_mutation_allowed,false);
+   assert.equal(successor.external_manual_render_config,'UNKNOWN_REQUIRES_OPERATOR_REVIEW');
+  }else assert.equal(fs.existsSync(path.join(ROOT,row.path)),true,row.path);
  }
  for(const p of plan.must_remain_root)assert.equal(fs.existsSync(path.join(ROOT,p)),true,p);
  const source=JSON.parse(load('contracts/project-session-source.json'));

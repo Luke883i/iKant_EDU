@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {generateKeyPairSync,sign} from 'node:crypto';
-import {inspectS05SignedStudy} from '../pilot/s05-independent-witness.mjs';
+import {inspectS05SignedStudy} from './pilot/s05-independent-witness.mjs';
 const {publicKey,privateKey}=generateKeyPairSync('ed25519');
 const key=publicKey.export({type:'spki',format:'pem'});
 const envelope={version:'ikant-s05-study-envelope/v1',source_head:'a'.repeat(40),auditor_event:'study_event_00001',trials:Array.from({length:30},(_,i)=>({participant_pseudonym:'participant_'+String(i).padStart(12,'0'),trial_id:'test_trial_'+String(i).padStart(12,'0'),completed:true,elapsed_ms:10000+i,manual_steps:2,errors:0}))};

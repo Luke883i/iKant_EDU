@@ -1,4 +1,4 @@
-import test from 'node:test';import assert from 'node:assert/strict';import {evaluateS07Candidate} from '../pilot/s07-connection-gate.mjs';
+import test from 'node:test';import assert from 'node:assert/strict';import {evaluateS07Candidate} from './pilot/s07-connection-gate.mjs';
 test('S07 no fabricated MCP installation from repo code, manifest or JSON',()=>{
  for(const projection of [{},{tool_name:'ikant-le-session-chat',callable:true},
   {installed:true,active:true},{tool_name:'ikant-le-session-chat',callable:true,ownerReceipt:'fake'}]){

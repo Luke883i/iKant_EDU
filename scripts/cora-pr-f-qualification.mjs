@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-import {observeReticularCensusWithAudit} from './cora-minimal-absorption.mjs';
+import {observeReticularCensusWithAudit,reopenW1WorkflowEpoch} from './cora-minimal-absorption.mjs';
 import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {derivePrABacklog} from './cora-pr-a-backlog.mjs';
 import {qualifyDocumentSet} from './cora-pr-b-docs.mjs';
@@ -42,7 +42,8 @@ export function verifyFrozenWorkflowTree(contract){
   if(register.schema!=='ikant-v5b-change-extension/v1'||
    register.authority!==0||m?.authority!==0||
    m.original_root_head!==register.source_main||
-   m.historic_tree!==frozen||m.current_tree!==current||
+   m.historic_tree!==frozen||
+   m.current_tree!==git('rev-parse','b2f550043d5fca89ab1d1efc2ee06a0c7c163f2c:.github/workflows')||
    m.original_git_tree_rebuild_required!==true||
    m.human_review!=='REVIEW_REQUIRED'||m.rulesets_status!=='UNKNOWN'||
    !Array.isArray(m.paths)||m.paths.length!==5)
@@ -67,9 +68,17 @@ export function verifyFrozenWorkflowTree(contract){
   });
   if(rows.length!==116||new Set(rows.map(x=>x.name)).size!==116)
    return deny('F_WORKFLOW_TREE_CARDINALITY_INVALID');
+  const w1Source='b2f550043d5fca89ab1d1efc2ee06a0c7c163f2c';
+  const w1Path='.github/workflows/s03-s09-mvp1-candidate.yml';
+  const w1Register=load('governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json');
+  const w1=reopenW1WorkflowEpoch({entries:rows,observedTree:current,
+   previousTree:m.current_tree,register:w1Register,
+   historyBlob:git('rev-parse',w1Source+':'+w1Path),
+   liveBlob:git('rev-parse','HEAD:'+w1Path)});
+  if(!w1.ok)return deny('F_WORKFLOW_W1_SOURCE_NOT_QUALIFIED:'+w1.edge);
   const seen=new Set();
   const restored=[];
-  for(const row of rows){
+  for(const row of w1.entries){
    const change=changes.get(row.name);
    if(change){
     if(row.sha!==change.after)return deny('F_WORKFLOW_CURRENT_BLOB_UNEXPECTED');

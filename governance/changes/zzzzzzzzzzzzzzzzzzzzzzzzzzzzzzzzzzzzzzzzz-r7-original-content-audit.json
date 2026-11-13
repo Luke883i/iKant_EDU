@@ -28,16 +28,11 @@
       "reason": "Actual full HEAD source audit, tampered source cards, false semantic promotion and adversarial source-epoch regression."
     },
     {
-      "path": "docs/R7_ORIGINAL_CONTENT_COVERAGE.md",
-      "operation": "ADD",
-      "human_review": "REVIEW_REQUIRED",
-      "reason": "Eleven per-file semantic proof obligations, historical epoch distinction and independent qualification limits."
-    },
-    {
       "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-original-content-audit.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-only R7 change register under original V5-B explicit source governance."
     }
-  ]
+  ],
+  "documentation": "PR description and append-only R7 archive remain the audit specification; no duplicate Markdown atlas entry."
 }

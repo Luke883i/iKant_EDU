@@ -1,0 +1,64 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "8cb80d2230919220ac4b7a1cfcd80950d8467848",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-w7-legacy-project-source-retirement.json",
+  "scope": "R7_W7_NET_NEGATIVE_REMOVAL_OF_OBSOLETE_PROJECT_HOST_PROMPT_V16_V17_V18",
+  "status": "SOURCE_ONLY_CANDIDATE_REQUIRES_CI_AND_REVIEW",
+  "product_go": false,
+  "release": "NO_GO",
+  "human_review_completed": false,
+  "original_owner_unchanged": true,
+  "baseline_tree": "4cff62ed12f79390a059784bcbf9770788a3a4d1",
+  "current_product_bootstrap": "project/session-chat/PROMPT.txt",
+  "source_retention": "ORIGINAL_GIT_MAIN_BLOB_SHA_ONLY; no second source-copy, no runtime authority",
+  "external_consumers": "UNKNOWN_NOT_PROVEN_ABSENT",
+  "behavioral_equivalence": "REQUIRES_EXACT_HEAD_TESTS; source-only references are not full consumer proof",
+  "net_deleted_original_bytes": 9760,
+  "historical_sources": [
+    {
+      "path": "project/EDU_HOST_PROJECT_DELTA_V16.txt",
+      "original_git_blob_sha1": "e7f82858d18b8b498233f04bb3a227627ac5c765",
+      "original_bytes": 4497,
+      "restore_ref": "8cb80d2230919220ac4b7a1cfcd80950d8467848:project/EDU_HOST_PROJECT_DELTA_V16.txt"
+    },
+    {
+      "path": "project/EDU_HOST_PROJECT_DELTA_V17.txt",
+      "original_git_blob_sha1": "8f9345908b126f9d17e963e42738ce760c6ec5e5",
+      "original_bytes": 3836,
+      "restore_ref": "8cb80d2230919220ac4b7a1cfcd80950d8467848:project/EDU_HOST_PROJECT_DELTA_V17.txt"
+    },
+    {
+      "path": "project/EDU_HOST_PROJECT_DELTA_V18.txt",
+      "original_git_blob_sha1": "3c2e49ceee4cb7d89ef11365777e6289901ad139",
+      "original_bytes": 1427,
+      "restore_ref": "8cb80d2230919220ac4b7a1cfcd80950d8467848:project/EDU_HOST_PROJECT_DELTA_V18.txt"
+    }
+  ],
+  "paths": [
+    {
+      "path": "project/EDU_HOST_PROJECT_DELTA_V16.txt",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Obsolete noncanonical Project HOST prompt epoch; no indexed direct current consumer found. Preserve immutable original Git blob and fail closed on external consumer risk."
+    },
+    {
+      "path": "project/EDU_HOST_PROJECT_DELTA_V17.txt",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Obsolete noncanonical Project HOST prompt epoch; no indexed direct current consumer found. Preserve immutable original Git blob and fail closed on external consumer risk."
+    },
+    {
+      "path": "project/EDU_HOST_PROJECT_DELTA_V18.txt",
+      "operation": "REMOVE",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Obsolete noncanonical Project HOST prompt epoch; no indexed direct current consumer found. Preserve immutable original Git blob and fail closed on external consumer risk."
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-w7-legacy-project-source-retirement.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-bound restoration pins and explicit scoped R7 retention decision for three obsolete host prompt epochs."
+    }
+  ]
+}

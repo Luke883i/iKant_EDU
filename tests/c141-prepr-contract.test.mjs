@@ -2,6 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+import os from 'node:os';
+import path from 'node:path';
 import {qualifyC141Designs} from '../scripts/c141-design-1000.mjs';
 import {planC141Fragments,rejoinC141Fragments,arbitrateC141} from '../host/c141-semantic-shadow.mjs';
 const c=JSON.parse(fs.readFileSync(new URL('../contracts/c141-semantic-prepr-v1.json',import.meta.url),'utf8'));
@@ -61,4 +65,20 @@ test('full byte overflow must not be silently accepted or truncated',()=>{
 test('configured chunk ceiling correctly fails closed',()=>{
  const r=planC141Fragments('✓'.repeat(800),{fragmentBytes:16,maxFragments:8,maxTotalBytes:262144});
  assert.equal(r.code,'C141_FRAGMENT_COUNT_DENIAL');
+});
+
+test('C141 CLI generates outside the repository and never reinstalls retired proposals',()=>{
+ const proposals=new URL('../proposals/',import.meta.url);
+ assert.equal(fs.existsSync(proposals),false);
+ const cli=fileURLToPath(new URL('../scripts/c141-design-1000.mjs',import.meta.url));
+ const result=JSON.parse(execFileSync(process.execPath,[cli],{encoding:'utf8'}));
+ assert.equal(result.selected,'R3-B3-E3-P6');
+ const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'ikant-c141-proof-'));
+ try{
+  const py=fileURLToPath(new URL('../scripts/c141-build-contract.py',import.meta.url));
+  execFileSync('python3',[py,tmp],{encoding:'utf8'});
+  assert.equal(fs.existsSync(path.join(tmp,'c141-semantic-prepr-v1.json')),true);
+  assert.equal(fs.existsSync(path.join(tmp,'C141_ISSUE_MATRIX.csv')),true);
+ }finally{fs.rmSync(tmp,{force:true,recursive:true});}
+ assert.equal(fs.existsSync(proposals),false);
 });

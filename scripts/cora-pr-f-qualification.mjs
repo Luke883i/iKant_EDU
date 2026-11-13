@@ -5,7 +5,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-import {observeReticularCensusWithAudit} from './cora-minimal-absorption.mjs';
+import {observeReticularCensusWithAudit,reopenW1WorkflowEpoch} from './cora-minimal-absorption.mjs';
 import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {derivePrABacklog} from './cora-pr-a-backlog.mjs';
 import {qualifyDocumentSet} from './cora-pr-b-docs.mjs';
@@ -42,7 +42,8 @@ export function verifyFrozenWorkflowTree(contract){
   if(register.schema!=='ikant-v5b-change-extension/v1'||
    register.authority!==0||m?.authority!==0||
    m.original_root_head!==register.source_main||
-   m.historic_tree!==frozen||m.current_tree!==current||
+   m.historic_tree!==frozen||
+   m.current_tree!=='3eba2af5e3371645fb9573c357948f6466c259ae'||
    m.original_git_tree_rebuild_required!==true||
    m.human_review!=='REVIEW_REQUIRED'||m.rulesets_status!=='UNKNOWN'||
    !Array.isArray(m.paths)||m.paths.length!==5)
@@ -67,9 +68,15 @@ export function verifyFrozenWorkflowTree(contract){
   });
   if(rows.length!==116||new Set(rows.map(x=>x.name)).size!==116)
    return deny('F_WORKFLOW_TREE_CARDINALITY_INVALID');
+  const w1Register=load('governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json');
+  const w1=reopenW1WorkflowEpoch({entries:rows,observedTree:current,
+   previousTree:m.current_tree,register:w1Register,
+   historyBlob:'eea411a6fd465ee3b1f35d0c2fa8fd615c116750',
+   liveBlob:git('rev-parse','HEAD:.github/workflows/s03-s09-mvp1-candidate.yml')});
+  if(!w1.ok)return deny('F_WORKFLOW_W1_SOURCE_NOT_QUALIFIED:'+w1.edge);
   const seen=new Set();
   const restored=[];
-  for(const row of rows){
+  for(const row of w1.entries){
    const change=changes.get(row.name);
    if(change){
     if(row.sha!==change.after)return deny('F_WORKFLOW_CURRENT_BLOB_UNEXPECTED');
@@ -141,6 +148,15 @@ export function validateFContract(c){
  return {ok:true,authority:0,status:'SCHEMA_VALID_NOT_EXECUTION',nodes:IDS.length};
 }
 
+/** Original SOURCE trees remain immutable when registered current paths retire. */
+export function qualifyRestoredSource({pinned,historical,current}={}){
+ const match=SHA.test(pinned||'')&&historical===pinned&&
+   (current===null||current===pinned);
+ return Object.freeze({match,origin:'PINNED_HISTORICAL_TREE',
+  presence:current===null?'HISTORICAL_ONLY':current===pinned?
+   'CURRENT_AND_HISTORICAL':'UNQUALIFIED_CURRENT_CHANGE',
+  native_proof_attested:false});
+}
 /** A logical projection; supplying true values cannot forge a human/provider receipt. */
 export function evaluateFReticulation(c,witness={}){
  const contract=validateFContract(c);
@@ -189,8 +205,23 @@ export function observePrFSource(){
    source_epoch_status:epoch.status||epoch.edge,
    native_owner_receipt_attested:false};
  });
- const restoreRows=c.restored_source_blobs.map(x=>({
-  path:x.path,match:git('rev-parse','HEAD:'+x.path)===x.blob}));
+ const objectOrNull=ref=>{try{return git('rev-parse','--verify',ref);}catch{return null;}};
+ const capsule=load('tests/fixtures/epochs/c141-prepr-source.json');
+ const historicFiles=new Map(capsule.files.map(x=>[x.path,x]));
+ const gitHash=bytes=>createHash('sha1').update(Buffer.from('blob '+bytes.length+String.fromCharCode(0))).update(bytes).digest('hex');
+ const restoreRows=c.restored_source_blobs.map(x=>{
+  const current=objectOrNull('HEAD:'+x.path);
+  const origin=objectOrNull(c.source.before_tree+':'+x.path);
+  const cached=historicFiles.get(x.path);
+  const fromCapsule=cached&&capsule.origin.original_before_tree===c.source.before_tree&&
+   cached.git_blob_sha1===x.blob&&Buffer.byteLength(cached.utf8,'utf8')===cached.bytes&&
+   gitHash(Buffer.from(cached.utf8,'utf8'))===x.blob?x.blob:null;
+  const historical=origin||((current===x.blob)?current:fromCapsule);
+  return {path:x.path,...qualifyRestoredSource({pinned:x.blob,historical,current}),
+   evidence_origin:origin===x.blob?'HISTORICAL_GIT_TREE_REOPENED':
+     current===x.blob?'CURRENT_BLOB_MATCHES_ORIGINAL_PIN':
+     fromCapsule===x.blob?'PINNED_OFFLINE_CAPSULE_BYTES':'SOURCE_UNAVAILABLE'};
+ });
  const ar=derivePrABacklog(census,audit,load('contracts/cora-pr-a-backlog-v1.json'));
  const brC=load('contracts/cora-pr-b-documentation-v1.json');
  const docs=Object.fromEntries(brC.documents.map(d=>[d.path,fs.readFileSync(path.join(ROOT,d.path),'utf8')]));

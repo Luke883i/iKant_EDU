@@ -1,5 +1,4 @@
 /** Local PRE-PR: exhaustive 5x5x5x8 engineering score, not evidence of empirical superiority. */
-import fs from 'node:fs';
 import crypto from 'node:crypto';
 const sha=x=>crypto.createHash('sha256').update(x).digest('hex');
 const factors={
@@ -41,9 +40,6 @@ export function qualifyC141Designs({complexityPenalty=2,weights=[4,4,5,4]}={}){
 }
 if(process.argv[1]&&new URL(`file://${process.argv[1]}`).href===import.meta.url){
  const result=qualifyC141Designs();
- const dir=new URL('../proposals/c141/',import.meta.url);fs.mkdirSync(dir,{recursive:true});
- fs.writeFileSync(new URL('C141_1000_CANDIDATES.csv',dir),['id,feasible,score,complexity,reason',...result.all.map(x=>[x.id,x.feasible,x.score,x.complexity,x.reason].join(','))].join('\n')+'\n');
- fs.writeFileSync(new URL('C141_SELECTION_RESULT.json',dir),JSON.stringify({...result,all:undefined},null,2)+'\n');
  if(result.total!==1000||result.selected.id!==selected)process.exitCode=1;
  console.log(JSON.stringify({tested:result.total,feasible:result.feasible,selected:result.selected.id,score:result.selected.score,sha256:result.checksum_sha256,top3:result.top5.slice(0,3).map(x=>x.id)},null,2));
 }

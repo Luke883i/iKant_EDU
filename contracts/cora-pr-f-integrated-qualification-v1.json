@@ -304,7 +304,7 @@
       "name": "RESTORED_BLOB_WITNESSES",
       "unit": "count",
       "target": 11,
-      "source": "git rev-parse HEAD:path matches pre-delete blobs",
+      "source": "Pinned BEFORE_TREE:path source blob, with unchanged current blob or explicitly registered removal",
       "scope": "SOURCE",
       "status": "NOT_ATTESTED_UNTIL_ORIGINAL_READBACK"
     },

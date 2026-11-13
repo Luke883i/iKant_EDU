@@ -179,6 +179,40 @@ export function qualifyReticularLattice(c){
  return {ok:true,authority:0,product_go:false,permission_to_change:false,
   nodes:reticularIds.length,source_leaves:9,external_leaves:4};
 }
+/** Reopen exactly one reviewed source-era workflow before CORA's existing six-delta replay.
+ * This proves source identity, not review, provider operation or authorization.
+ */
+export function reopenW1WorkflowEpoch({entries,observedTree,previousTree,register,historyBlob,liveBlob}={}){
+ const deny=edge=>({ok:false,edge,source_only:true,review_attested:false,product_go:false});
+ const source='b2f550043d5fca89ab1d1efc2ee06a0c7c163f2c';
+ const file='.github/workflows/s03-s09-mvp1-candidate.yml';
+ const original='eea411a6fd465ee3b1f35d0c2fa8fd615c116750';
+ const amended='ff86094e725bf876f09ac0587fe2ce6d3218c065';
+ const regPath='governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json';
+ if(!Array.isArray(entries)||!isHash(observedTree)||!isHash(previousTree)||
+    !Array.isArray(register?.paths)||register.schema!=='ikant-v5b-change-extension/v1'||
+    register.authority!==0||register.self_path!==regPath||register.source_main!==source||
+    register.automatic_approval!==false||register.human_signoffs!==0||
+    register.paths.filter(x=>x.path===file&&x.operation==='MODIFY'&&
+      x.human_review==='REVIEW_REQUIRED').length!==1||
+    historyBlob!==original||liveBlob!==amended)
+   return deny('W1_REGISTERED_EPOCH_OR_SOURCE_UNQUALIFIED');
+ const row=entries.find(x=>x.name==='s03-s09-mvp1-candidate.yml');
+ if(!row||row.mode!=='100644'||row.sha!==amended)
+   return deny('W1_CURRENT_WORKFLOW_BLOB_UNEXPECTED');
+ const digest=rows=>{
+  const sorted=[...rows].sort((a,b)=>Buffer.compare(Buffer.from(a.name),Buffer.from(b.name)));
+  if(new Set(sorted.map(x=>x.name)).size!==sorted.length)return null;
+  const body=Buffer.concat(sorted.map(x=>Buffer.concat([
+   Buffer.from(x.mode+' '+x.name+String.fromCharCode(0)),Buffer.from(x.sha,'hex')])));
+  return crypto.createHash('sha1').update(Buffer.from('tree '+body.length+String.fromCharCode(0))).update(body).digest('hex');
+ };
+ if(digest(entries)!==observedTree)return deny('W1_CURRENT_TREE_NOT_EXACT');
+ const restored=entries.map(x=>x.name===row.name?{...x,sha:original}:x);
+ if(digest(restored)!==previousTree)return deny('W1_PREVIOUS_TREE_NOT_RECONSTRUCTED');
+ return {ok:true,entries:restored,previous_tree:previousTree,current_tree:observedTree,
+  source_only:true,review_attested:false,product_go:false};
+}
 /** Validate the Git TREE by undoing precisely one reviewed candidate blob delta.
  * No git history, network, mktree side effect, owner, or review permission implied. */
 /** Git source-only: preserve one-delta legacy fixture and six pinned live changes.
@@ -332,7 +366,15 @@ export function observeReticularCensusWithAudit(){
   if(!m||m[3].charCodeAt(0)!==9)throw Error('CORA_WORKFLOW_NON_BLOB_ENTRY');
   return {mode:m[1],sha:m[2],name:m[4]};
  });
- const delta=qualifyWorkflowTreeEvolution(c.reuse.workflow_evolution,{entries,observedTree:workflowTree});
+ const w1register=JSON.parse(fs.readFileSync(path.join(ROOT,'governance/changes/'+
+  'z'.repeat(40)+'-r7-pilot-root-contraction.json'),'utf8'));
+ const w1=reopenW1WorkflowEpoch({entries,observedTree:workflowTree,
+  previousTree:'3eba2af5e3371645fb9573c357948f6466c259ae',
+  register:w1register,
+  historyBlob:'eea411a6fd465ee3b1f35d0c2fa8fd615c116750',
+  liveBlob:git('rev-parse','--verify','HEAD:.github/workflows/s03-s09-mvp1-candidate.yml')});
+ const delta=w1.ok?qualifyWorkflowTreeEvolution(c.reuse.workflow_evolution,
+  {entries:w1.entries,observedTree:w1.previous_tree}):w1;
  const deltaSafe=delta.ok===true;
  const audit=auditRepository();
  const census={...qualifyReticularCensus(c,{audit,index,tree:parseTree,head,treeSha,

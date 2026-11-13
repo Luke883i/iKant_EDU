@@ -143,7 +143,7 @@ Il *full stack* non è solo un server web. I livelli interagiscono ma non hanno 
 | **Infrastruttura cognitiva** | [Owner e policy](host/), [substrato funzionale](docs/IKANT_COGNITIVE_SUBSTRATE.md), [registri/contratti](contracts/) | Metodo, routing, vincoli, esito o arresto nel perimetro della versione. |
 | **Stato e artefatti** | Ledger locale hash-linked, writer esclusivo, controllo di riapertura; DOCX quando richiesto dal tier. | Persistenza locale specifica, non consegna nativa o correttezza fattuale. |
 | **Integrazioni e UI** | [MCP Streamable HTTP e app candidata](plugins/ikant-le-session-chat/), [server](plugins/ikant-le-session-chat/server/server.mjs), [proiezione Project](project/) | Trasporto e presentazione osservabili; una app in Git non è un plugin registrato. |
-| **Qualificazione** | [Test](tests/), [fixture storiche](tests/fixtures/epochs/), [script](scripts/), [pilot](pilot/), [artefatti di qualifica](artifacts/), [release](release/) | Proprietà incluse nei test e ricevute; non efficacia umana universale. |
+| **Qualificazione** | [Test](tests/), [fixture storiche](tests/fixtures/epochs/), [script](scripts/), [pilot](tests/pilot/), [artefatti di qualifica](artifacts/), [release](release/) | Proprietà incluse nei test e ricevute; non efficacia umana universale. |
 
 **Tecnologie effettive:** Node.js **20+** / JavaScript ESM, JSON per contratti ed eventi, Git e SHA per provenienza, Markdown per documentazione, Python 3 per strumenti ausiliari, MCP SDK e OAuth per il servizio esterno; DOCX per la Surface B quando il contratto del turno lo richiede. L'LLM, l'infrastruttura del provider e ChatGPT come UI non fanno automaticamente parte del checkout.
 
@@ -248,7 +248,7 @@ Questo è un **censimento ragionato dei documenti essenziali**, non un elenco di
 | **Ingressi e identità** | [Setup locale e Project](docs/IKANT_LOCAL_SETUP.md) · [C72](docs/C72_UNIFIED_ADMISSION_AND_VALUE.md) · [S01](docs/S01_PUBLIC_EDU_CANONICAL_ADMISSION.md) · [C59](docs/C59_SINGLE_COMPOSITION_CHANNEL.md) |
 | **EDU e ricerca semantica** | [C139](docs/C139_EDU_EPISTEMIC_ROUTE.md) · [C140](docs/C140_SEMANTIC_RUNTIME_PR.md) · [shadow C141](host/c141-semantic-shadow.mjs) · [guard C142](host/c142-semantic-owner-guard.mjs) |
 | **MCP, OAuth, deployment** | [Runbook attuale](docs/MCP_STANDALONE_RENDER_RUNBOOK.txt) · [BluePrint](render.mcp-standalone.candidate.yaml) · [Server](plugins/ikant-le-session-chat/server/server.mjs) · [Boundary OAuth](plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs) · [MCP precedente](docs/MCP_EXTERNAL_ADVANCED_V2_PREPR.md) |
-| **Prove e release** | [Contratti](contracts/) · [Test](tests/) · [Pilot](pilot/) · [DoD ontologico](docs/IKANT_DOCUMENT_ONTOLOGY_DOD.md) · [Audit editoriale](docs/IKANT_EDITORIAL_CONTRACT_AUDIT.md) |
+| **Prove e release** | [Contratti](contracts/) · [Test](tests/) · [Pilot](tests/pilot/) · [DoD ontologico](docs/IKANT_DOCUMENT_ONTOLOGY_DOD.md) · [Audit editoriale](docs/IKANT_EDITORIAL_CONTRACT_AUDIT.md) |
 | **Storia e documentazione navigabile** | [Sviluppo](docs/IKANT_DEVELOPMENT_HISTORY.md) · [Reticolo](docs/IKANT_SEMANTIC_RETICULUM.md) · [Atlante](docs/IKANT_DOCUMENT_ATLAS.md) · [Materializzazione OneShell](docs/ONESHELL_V1_MATERIALIZATION.txt) |
 
 <details>

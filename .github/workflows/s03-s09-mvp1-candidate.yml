@@ -4,7 +4,7 @@ on:
     paths:
       - 'contracts/s0*-*'
       - 'host/s03-*'
-      - 'pilot/s0*-*'
+      - 'tests/pilot/s0*-*'
       - 'scripts/s04-*'
       - 'scripts/s09-*'
       - 'scripts/s03-s09-*'

@@ -1,0 +1,26 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-pilot-root-contraction.json",
+  "source_main": "b2f550043d5fca89ab1d1efc2ee06a0c7c163f2c",
+  "policy": "REVIEW_REQUIRED_NO_AUTOMATIC_DELETE_OR_RELEASE",
+  "human_signoffs": 0,
+  "automatic_approval": false,
+  "paths": [
+    {"path":"pilot/s05-first-run-metrics.mjs","operation":"REMOVE","reason":"Byte-identical move to tests/pilot; original owner unchanged; no archive authority","human_review":"REVIEW_REQUIRED"},
+    {"path":"tests/pilot/s05-first-run-metrics.mjs","operation":"ADD","reason":"Preserve original Git blob with exact SHA; caller imports rebound","human_review":"REVIEW_REQUIRED"},
+    {"path":"pilot/s05-independent-witness.mjs","operation":"REMOVE","reason":"Byte-identical move to tests/pilot; original owner unchanged; no archive authority","human_review":"REVIEW_REQUIRED"},
+    {"path":"tests/pilot/s05-independent-witness.mjs","operation":"ADD","reason":"Preserve original Git blob with exact SHA; caller imports rebound","human_review":"REVIEW_REQUIRED"},
+    {"path":"pilot/s07-connection-gate.mjs","operation":"REMOVE","reason":"Byte-identical move to tests/pilot; original owner unchanged; no archive authority","human_review":"REVIEW_REQUIRED"},
+    {"path":"tests/pilot/s07-connection-gate.mjs","operation":"ADD","reason":"Preserve original Git blob with exact SHA; caller imports rebound","human_review":"REVIEW_REQUIRED"},
+    {"path":"pilot/s08-canonical-boundary.mjs","operation":"REMOVE","reason":"Byte-identical move to tests/pilot; original owner unchanged; no archive authority","human_review":"REVIEW_REQUIRED"},
+    {"path":"tests/pilot/s08-canonical-boundary.mjs","operation":"ADD","reason":"Preserve original Git blob with exact SHA; caller imports rebound","human_review":"REVIEW_REQUIRED"},
+    {"path":"tests/s05-first-run-metrics.test.mjs","operation":"MODIFY","reason":"Change one relative import to relocated original pilot module","human_review":"REVIEW_REQUIRED"},
+    {"path":"tests/s05-independent-witness.test.mjs","operation":"MODIFY","reason":"Change one relative import to relocated original pilot module","human_review":"REVIEW_REQUIRED"},
+    {"path":"tests/s07-connection-gate.test.mjs","operation":"MODIFY","reason":"Change one relative import to relocated original pilot module","human_review":"REVIEW_REQUIRED"},
+    {"path":"tests/s08-canonical-boundary.test.mjs","operation":"MODIFY","reason":"Change one relative import to relocated original pilot module","human_review":"REVIEW_REQUIRED"},
+    {"path":"README.md","operation":"MODIFY","reason":"Update two pilot navigation links; leave product and owner claims unchanged","human_review":"REVIEW_REQUIRED","supersedes_register":"governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json","supersedes_source_main":"09798d194c1fc6a8557465b8d8875fd1972de940"},
+    {"path":".github/workflows/s03-s09-mvp1-candidate.yml","operation":"MODIFY","reason":"Retarget existing pilot path trigger; no new workflow or job","human_review":"REVIEW_REQUIRED"},
+    {"path":"governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-pilot-root-contraction.json","operation":"ADD","reason":"Single source register for R7 scoped migration; no new runtime, owner, test, or contract","human_review":"REVIEW_REQUIRED"}
+  ]
+}

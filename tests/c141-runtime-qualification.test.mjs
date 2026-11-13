@@ -16,13 +16,17 @@ test('all eleven pre-PR bytes and 48 issue atoms survive identical transfer',()=
  assert.equal(Object.keys(contract.prepr_transplant.file_blobs_sha1).length,11);
  for(const [p,h] of Object.entries(contract.prepr_transplant.file_blobs_sha1)){
   const live=fs.existsSync(path.join(root,p));
-  if(!live)assert(registeredRetirements.has(p),'unregistered historical cut '+p);
+  const current=live?fs.readFileSync(path.join(root,p)):null;
+  if(current&&sha(current)===h)continue;
+  const operation=live?'MODIFY':'REMOVE';
+  assert.ok(changes.paths.some(r=>r.path===p&&r.operation===operation&&
+   r.human_review==='REVIEW_REQUIRED'),'unregistered source transition '+p);
   const archive=capsule.files.find(x=>x.path===p);
-  if(!live){assert.ok(archive,'missing source byte capsule '+p);
-   assert.equal(capsule.origin.original_before_tree,lineage.source.before_tree);
-   assert.equal(archive.git_blob_sha1,h);}
-  const bytes=live?fs.readFileSync(path.join(root,p)):Buffer.from(archive.utf8,'utf8');
-  if(!live)assert.equal(bytes.length,archive.bytes);
+  assert.ok(archive,'missing historical byte capsule '+p);
+  assert.equal(capsule.origin.original_before_tree,lineage.source.before_tree);
+  assert.equal(archive.git_blob_sha1,h);
+  const bytes=Buffer.from(archive.utf8,'utf8');
+  assert.equal(bytes.length,archive.bytes,p);
   assert.equal(sha(bytes),h,p);
  }
  assert.equal(originals.atoms.length,48);

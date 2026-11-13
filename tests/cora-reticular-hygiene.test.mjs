@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
-import {qualifyReticularLattice,qualifyReticularCensus,observeReticularCensus,observeReticularCensusWithAudit,qualifyWorkflowTreeEvolution} from '../scripts/cora-minimal-absorption.mjs';
+import {qualifyReticularLattice,qualifyReticularCensus,observeReticularCensus,observeReticularCensusWithAudit,qualifyWorkflowTreeEvolution,reopenW1WorkflowEpoch} from '../scripts/cora-minimal-absorption.mjs';
 const doc=JSON.parse(fs.readFileSync(new URL('../contracts/cora-reticular-hygiene-v1.json',import.meta.url),'utf8'));
 const clone=()=>structuredClone(doc);
 
@@ -235,4 +235,41 @@ test('actual Git-indexed V5-B census covers the full checkout; owners unchanged,
  assert.equal(r.goals.standardized,'BLOCKED_EXTERNAL');
  assert.equal(r.goals.product,'BLOCKED_EXTERNAL');
  assert.equal(r.product_go,false);assert.equal(r.permission_to_change,false);
+});
+
+test('W1 trigger move preserves original source-tree proof and refuses forgery',()=>{
+ const original='eea411a6fd465ee3b1f35d0c2fa8fd615c116750';
+ const amended='ff86094e725bf876f09ac0587fe2ce6d3218c065';
+ const digest=rows=>{
+  const sorted=[...rows].sort((a,b)=>Buffer.compare(Buffer.from(a.name),Buffer.from(b.name)));
+  const body=Buffer.concat(sorted.map(x=>Buffer.concat([
+   Buffer.from(x.mode+' '+x.name+String.fromCharCode(0)),Buffer.from(x.sha,'hex')])));
+  return crypto.createHash('sha1').update(Buffer.from('tree '+body.length+String.fromCharCode(0))).update(body).digest('hex');
+ };
+ const before=[{name:'a.yml',mode:'100644',sha:'a'.repeat(40)},
+  {name:'s03-s09-mvp1-candidate.yml',mode:'100644',sha:original}];
+ const after=before.map(x=>x.name==='s03-s09-mvp1-candidate.yml'?{...x,sha:amended}:x);
+ const register={schema:'ikant-v5b-change-extension/v1',authority:0,
+  self_path:'governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json',
+  source_main:'b2f550043d5fca89ab1d1efc2ee06a0c7c163f2c',
+  automatic_approval:false,human_signoffs:0,
+  paths:[{path:'.github/workflows/s03-s09-mvp1-candidate.yml',
+   operation:'MODIFY',human_review:'REVIEW_REQUIRED'}]};
+ const args={entries:after,observedTree:digest(after),previousTree:digest(before),
+  register,historyBlob:original,liveBlob:amended};
+ const good=reopenW1WorkflowEpoch(args);
+ assert.equal(good.ok,true,JSON.stringify(good));assert.equal(good.review_attested,false);
+ assert.equal(good.product_go,false);assert.equal(digest(good.entries),digest(before));
+ for(const wrong of [
+  {historyBlob:'b'.repeat(40)},{liveBlob:'f'.repeat(40)},
+  {observedTree:'e'.repeat(40)},{previousTree:'f'.repeat(40)},
+  {register:{...register,source_main:'f'.repeat(40)}},
+  {register:{...register,human_signoffs:1}},
+  {register:{...register,paths:[]}},
+  {entries:after.map(x=>({...x,mode:'100755'}))}
+ ]){
+  const invalid=reopenW1WorkflowEpoch({...args,...wrong});
+  assert.equal(invalid.ok,false,JSON.stringify(wrong));
+  assert.equal(invalid.product_go,false);
+ }
 });

@@ -236,6 +236,64 @@ def verify(report, root, expected_head):
             or [x.get("id") for x in c["dod_dimensions"]]!=list(DIMS)
             or any(x.get("status")!="REQUIRES_FILE_SPECIFIC_WITNESS" for x in c["dod_dimensions"])):
             raise ValueError("R7_FALSE_FILE_MEANING_OR_DOD:"+p)
+    # Recompute meaning-card descriptors from an independent Git archive,
+    # rather than trusting self-reported structure or roles.
+    for p,c in bypath.items():
+        raw=archived[p]; fam=family(p,raw)
+        text=raw.decode("utf-8") if fam!="binary" else ""
+        if (c.get("structure")!=structure(p,fam,text)
+            or c.get("role_hypothesis")!=role(p)
+            or c.get("first_lines")!=[s.strip()[:180] for s in text.splitlines() if s.strip()][:3]
+            or c.get("symbols")!=(SYMBOL.findall(text)[:64] if fam=="javascript" else [])
+            or c.get("effects_signals")!=sorted(set(EFFECT.findall(text)))
+            or c.get("dynamic_path_signal")!=bool(DYNAMIC.search(text))
+            or c.get("temporal_signals")!=sorted(set(x.lower() for x in TEMPORAL.findall(text)))
+            or c.get("source_indexed") is not True):
+            raise ValueError("R7_CARD_DERIVATION_NOT_REPRODUCIBLE:"+p)
+    # The edge register must be COMPLETE with respect to the declared
+    # extractors; merely requiring a literal substring admits omissions.
+    expected_edges=[];expected_unresolved=[]
+    paths=set(entries)
+    for p in sorted(entries):
+        raw=archived[p]; fam=family(p,raw)
+        text=raw.decode("utf-8") if fam!="binary" else ""
+        refs=[]
+        if fam=="javascript":
+            refs.extend(("JS_STATIC",m.group(2)) for m in JS_REF.finditer(text))
+            refs.extend(("IMPORT_META_URL",m.group(2)) for m in URL_REF.finditer(text))
+        if fam=="markdown":
+            refs.extend(("MD_LINK",m.group(1)) for m in MD_REF.finditer(text))
+        for kind,ref in refs:
+            target=resolve(p,ref,paths)
+            if target:
+                expected_edges.append((p,target,kind,ref,entries[p][0],entries[target][0]))
+            elif ref.startswith(("./","../")):
+                expected_unresolved.append((p,ref,kind,"UNKNOWN_NOT_UNUSED"))
+        for token in set(FULL_PATH.findall(text)):
+            if token in paths and token!=p:
+                expected_edges.append((p,token,"PATH_MENTION",token,entries[p][0],entries[token][0]))
+    def edge_key(e):
+        return (e.get("consumer"),e.get("target"),e.get("type"),
+                e.get("expression"),e.get("consumer_blob"),e.get("target_blob"))
+    if collections.Counter(edge_key(x) for x in report.get("edges",[]))!=collections.Counter(expected_edges):
+        raise ValueError("R7_EDGE_COMPLETENESS_OR_PROVENANCE")
+    unresolved_keys=[(x.get("consumer"),x.get("reference"),x.get("type"),x.get("status"))
+                     for x in report.get("unresolved",[])]
+    if collections.Counter(unresolved_keys)!=collections.Counter(expected_unresolved):
+        raise ValueError("R7_UNRESOLVED_REFERENCES_FORGED")
+    roots=collections.Counter(p.split("/")[0] for p in entries if "/" in p)
+    m=report.get("measurements",{})
+    expected_measures={
+      "unique_blobs":len(set(x[0] for x in entries.values())),
+      "root_files":sum("/" not in p for p in entries),
+      "root_dirs":dict(sorted(roots.items())),
+      "total_bytes":sum(len(x) for x in archived.values()),
+      "unresolved_static_refs":len(expected_unresolved),
+      "dynamic_signal_files":sum(c["dynamic_path_signal"] for c in cards),
+      "nontext_files":sum(c["family"]=="binary" for c in cards),
+      "syntax_parse_failed":sum(c["structure"]["status"]=="PARSE_FAILED" for c in cards)}
+    if any(m.get(k)!=v for k,v in expected_measures.items()):
+        raise ValueError("R7_AGGREGATED_METRIC_NOT_REPRODUCIBLE")
     edges=report.get("edges",[]); ins=collections.Counter();outs=collections.Counter()
     for e in edges:
         p,t=e.get("consumer"),e.get("target")

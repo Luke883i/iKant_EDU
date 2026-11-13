@@ -141,6 +141,15 @@ export function validateFContract(c){
  return {ok:true,authority:0,status:'SCHEMA_VALID_NOT_EXECUTION',nodes:IDS.length};
 }
 
+/** Original SOURCE trees remain immutable when registered current paths retire. */
+export function qualifyRestoredSource({pinned,historical,current}={}){
+ const match=SHA.test(pinned||'')&&historical===pinned&&
+   (current===null||current===pinned);
+ return Object.freeze({match,origin:'PINNED_HISTORICAL_TREE',
+  presence:current===null?'HISTORICAL_ONLY':current===pinned?
+   'CURRENT_AND_HISTORICAL':'UNQUALIFIED_CURRENT_CHANGE',
+  native_proof_attested:false});
+}
 /** A logical projection; supplying true values cannot forge a human/provider receipt. */
 export function evaluateFReticulation(c,witness={}){
  const contract=validateFContract(c);
@@ -189,8 +198,11 @@ export function observePrFSource(){
    source_epoch_status:epoch.status||epoch.edge,
    native_owner_receipt_attested:false};
  });
+ const objectOrNull=ref=>{try{return git('rev-parse','--verify',ref);}catch{return null;}};
  const restoreRows=c.restored_source_blobs.map(x=>({
-  path:x.path,match:git('rev-parse','HEAD:'+x.path)===x.blob}));
+  path:x.path,...qualifyRestoredSource({pinned:x.blob,
+   historical:objectOrNull(c.source.before_tree+':'+x.path),
+   current:objectOrNull('HEAD:'+x.path)})}));
  const ar=derivePrABacklog(census,audit,load('contracts/cora-pr-a-backlog-v1.json'));
  const brC=load('contracts/cora-pr-b-documentation-v1.json');
  const docs=Object.fromEntries(brC.documents.map(d=>[d.path,fs.readFileSync(path.join(ROOT,d.path),'utf8')]));

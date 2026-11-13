@@ -32,7 +32,6 @@
 - [docs/IKANT_RUNTIME_AND_EVIDENCE.md](IKANT_RUNTIME_AND_EVIDENCE.md): Modelli e prove. Stato di review: **da verificare**.
 - [docs/IKANT_SEMANTIC_RETICULUM.md](IKANT_SEMANTIC_RETICULUM.md): Modelli e prove. Stato di review: **da verificare**.
 - [iKant_UI_shell.md](../iKant_UI_shell.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
-- [proposals/c141/FALSIFICATION_TRACE.md](../proposals/c141/FALSIFICATION_TRACE.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
 - [stile_comunicativo.md](../stile_comunicativo.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
 
 ## L3 — Approfondimenti e prove
@@ -235,5 +234,4 @@
 - [project/oneshell-v7/08_RELEASE_BOUNDARY.md](../project/oneshell-v7/08_RELEASE_BOUNDARY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/oneshell-v7/09_ADAPTER_RECIPES.md](../project/oneshell-v7/09_ADAPTER_RECIPES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/oneshell-v7/10_MVP_DO_D.md](../project/oneshell-v7/10_MVP_DO_D.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [proposals/c141/PREPR_README.md](../proposals/c141/PREPR_README.md): Storico. Stato di review: **da verificare**.
 

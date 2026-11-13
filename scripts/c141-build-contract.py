@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import csv,json,hashlib,pathlib,subprocess
+import csv,json,hashlib,pathlib,subprocess,sys,tempfile
 root=pathlib.Path(__file__).resolve().parents[1]
 orig=json.loads((root/'contracts/c140-e2e-semantic-assurance.json').read_text())
 repo={'repo':'Luke883i/iKant_LE','main_source_head':'3d174674527d74d1b2e52df3e970d14a748cd4b1','main_tree':'edc1e859d6688ebfd17788e115748ff200289736','pr148_head':'3e9796801bc21b96b5487086c51659fed93fafc4','pr148_tree':'4055f4f2ed485ca134a0d417c154bc43b56f411c'}
@@ -54,9 +54,11 @@ contract={
  'release':'PRODUCT_NO_GO',
  'nonclaims':['No proof of unlimited physical I/O','No independent semantic truth check','No actual owner C135 integration','No C87 or C125 invocation from C141 shadow','No cross-chat native persistence','No human pilot','No source epoch rotation']
 }
-con=(root/'contracts/c141-semantic-prepr-v1.json');con.write_text(json.dumps(contract,ensure_ascii=False,indent=2)+'\n')
-with (root/'proposals/c141/C141_ISSUE_MATRIX.csv').open('w',newline='') as f:
+out=pathlib.Path(sys.argv[1]) if len(sys.argv)==2 else pathlib.Path(tempfile.mkdtemp(prefix='ikant-c141-'))
+out.mkdir(parents=True,exist_ok=True)
+con=out/'c141-semantic-prepr-v1.json';con.write_text(json.dumps(contract,ensure_ascii=False,indent=2)+'\n')
+with (out/'C141_ISSUE_MATRIX.csv').open('w',newline='') as f:
  w=csv.writer(f,lineterminator="\n");w.writerow(['id','level','pr148_coverage','feasibility','next_action','issue','improvement','owner','metric','falsifier'])
  for x in atoms:w.writerow([x['id'],x['level'],x['coverage_pr148'],x['can_i_do'],x['next_action'],x['issue'],x['improvement'],x['owner'],x['metric'],x['falsifier']])
 from collections import Counter
-print(json.dumps({'atoms':len(atoms),'pr148_coverage':Counter(x['coverage_pr148'] for x in atoms),'can_i_do':Counter(x['can_i_do'] for x in atoms),'scopes':{k:len(v) for k,v in contract['scopes'].items()},'links':len(links)},indent=2))
+print(json.dumps({'output_dir':str(out),'atoms':len(atoms),'pr148_coverage':Counter(x['coverage_pr148'] for x in atoms),'can_i_do':Counter(x['can_i_do'] for x in atoms),'scopes':{k:len(v) for k,v in contract['scopes'].items()},'links':len(links)},indent=2))

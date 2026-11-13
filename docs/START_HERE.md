@@ -42,6 +42,6 @@ Se incontri `C72`, `C87` o `C59`, non sono nomi di un modello né livelli di int
 - **Devo contribuire al codice:** [architettura](ARCHITECTURE.md), [contratti](../contracts/) e [test](../tests/).
 - **Studio le risposte epistemiche:** [C139, percorso EDU candidato e limiti](C139_EDU_EPISTEMIC_ROUTE.md) (non equivale a prodotto attivo).
 - **Verifico la PR EDU aperta:** [routing EDU aperto, falsificatori e DoD non ancora chiusi](C140_SEMANTIC_RUNTIME_PR.md) (nessuna attivazione nativa attestata).
-- **Studio il successore semantico:** [proposta e matrice delle issue](../proposals/c141/PREPR_README.md) e [falsificazioni conservate](../proposals/c141/FALSIFICATION_TRACE.md) (sorgenti e prove, non prodotto attivo).
+- **Studio il percorso semantico EDU:** [confini e limiti C140](C140_SEMANTIC_RUNTIME_PR.md), [shadow C141](../host/c141-semantic-shadow.mjs) e [test originali](../tests/c141-semantic-shadow.test.mjs). Le route candidate non provano delivery o efficacia.
 
 La versione ufficiale è identificata dal commit di `main`, non dal nome di una chat o di un allegato. [Torna al quadro d'insieme](../README.md).

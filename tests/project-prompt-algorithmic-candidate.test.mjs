@@ -2,6 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const source=fs.readFileSync('project/session-chat/PROMPT_INNESCO_ALGORITHMIC_CANDIDATE.txt','utf8');
 const codes='001 002 003 004 005 006 007 008 009 010 011 012 013 014 015 016 017 018 019 020 021 022 023 024 025 026 030 031 032 033 034 040 041 042 043 044 045 046 047 048 049 050 051 052 053 054 055 060 061 062 063 064 065 070 071 080 081 082 083 090 091 092 095 096'.split(' ');
@@ -84,4 +85,32 @@ test('10000 seeded negative mutants / 25 independent threat classes (source-only
 });
 test('negative structure: reorder, insert, COBOL-like fake owner and CRLF are denied',()=>{
  for(const v of [source.replace('001 | ','002 | '),source.replace('003 | ','003 | BYPASS_GATE '),source.replace('096 | END PROGRAM','096 | FAKE_RECEIPT'),source.replaceAll('\n','\r\n')])assert.throws(()=>validate(v));
+});
+
+
+test('R7 W7: historical HOST V16-V18 retired without replacing current EDU prompt or leaving tracked literal consumers',()=>{
+ const registryPath='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-w7-legacy-project-source-retirement.json';
+ const registry=JSON.parse(fs.readFileSync(registryPath,'utf8'));
+ const original=[
+  ['V16','e7f82858d18b8b498233f04bb3a227627ac5c765',4497],
+  ['V17','8f9345908b126f9d17e963e42738ce760c6ec5e5',3836],
+  ['V18','3c2e49ceee4cb7d89ef11365777e6289901ad139',1427]
+ ];
+ const sha=b=>createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex');
+ const canonical=fs.readFileSync('project/session-chat/PROMPT.txt');
+ assert.equal(sha(canonical),'4c828707c1d3dff3bee91282ccaa83f1a2c4b286');
+ assert.equal(registry.product_go,false);
+ assert.equal(registry.human_review_completed,false);
+ assert.equal(registry.external_consumers,'UNKNOWN_NOT_PROVEN_ABSENT');
+ assert.equal(registry.historical_sources.length,3);
+ for(const [version,hash,bytes] of original){
+  const file='project/EDU_HOST_PROJECT_DELTA_'+version+'.txt';
+  assert.equal(fs.existsSync(file),false,'no shadow source: '+file);
+  assert.ok(registry.historical_sources.some(x=>x.path===file&&x.original_git_blob_sha1===hash&&x.original_bytes===bytes));
+  const grep=spawnSync('git',['grep','-I','-l','-F','EDU_HOST_PROJECT_DELTA_'+version,
+    'HEAD','--','.',':(exclude)'+registryPath,
+    ':(exclude)tests/project-prompt-algorithmic-candidate.test.mjs'],{encoding:'utf8'});
+  assert.equal(grep.status,1,'unexpected tracked live consumer for '+file+': '+grep.stdout+' '+grep.stderr);
+ }
+ assert.equal(original.reduce((n,x)=>n+x[2],0),9760);
 });

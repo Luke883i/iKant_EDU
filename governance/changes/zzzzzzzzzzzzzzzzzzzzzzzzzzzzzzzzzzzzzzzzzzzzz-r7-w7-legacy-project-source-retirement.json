@@ -59,6 +59,14 @@
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-bound restoration pins and explicit scoped R7 retention decision for three obsolete host prompt epochs."
+    },
+    {
+      "path": "tests/project-prompt-algorithmic-candidate.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Extend existing Project source-only test to prove current prompt Git blob unchanged, historical V16-V18 absent, and all tracked literal reference consumers absent; unknown external consumers remain explicitly open.",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzz-algorithmic-prompt-candidate.json",
+      "supersedes_source_main": "25501ccba48b7d9cbc66842ddd3dff8b05267884"
     }
   ]
 }

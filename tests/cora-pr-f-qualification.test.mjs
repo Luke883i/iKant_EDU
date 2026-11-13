@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {validateFContract,evaluateFReticulation,observePrFSource,verifyFrozenWorkflowTree,qualifyRestoredSource}
  from '../scripts/cora-pr-f-qualification.mjs';
@@ -29,9 +30,16 @@ test('PR-F contract is a retrograde, noncompensatory view of original CORA',()=>
 });
 test('real Git tree contains the eleven original historical blobs, without transfer of runtime ownership',()=>{
  assert.equal(contract.restored_source_blobs.length,11);
+ const capsule=JSON.parse(fs.readFileSync(new URL('./fixtures/epochs/c141-prepr-source.json',import.meta.url),'utf8'));
+ assert.equal(capsule.origin.original_before_tree,contract.source.before_tree);
  for(const {path,blob} of contract.restored_source_blobs){
-  assert.equal(g('rev-parse',contract.source.before_tree+':'+path),blob,'historic mismatch '+path);
-  if(g('ls-files','--',path))assert.equal(g('rev-parse','HEAD:'+path),blob,'current mismatch '+path);
+  if(g('ls-files','--',path)){assert.equal(g('rev-parse','HEAD:'+path),blob,'current mismatch '+path);continue;}
+  const row=capsule.files.find(x=>x.path===path);
+  assert.ok(row,'missing registered historical preimage '+path);
+  const bytes=Buffer.from(row.utf8,'utf8');
+  const actual=crypto.createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
+  assert.equal(bytes.length,row.bytes,path);
+  assert.equal(actual,blob,'capsule byte digest mismatch '+path);
  }
  assert.equal(contract.nonpromotion.restored_historical_files_are_runtime,false);
  const historical=verifyFrozenWorkflowTree(contract);

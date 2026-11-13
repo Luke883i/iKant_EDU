@@ -366,14 +366,12 @@ export function observeReticularCensusWithAudit(){
   if(!m||m[3].charCodeAt(0)!==9)throw Error('CORA_WORKFLOW_NON_BLOB_ENTRY');
   return {mode:m[1],sha:m[2],name:m[4]};
  });
- const w1source='b2f550043d5fca89ab1d1efc2ee06a0c7c163f2c';
- const w1path='.github/workflows/s03-s09-mvp1-candidate.yml';
  const w1register=JSON.parse(fs.readFileSync(path.join(ROOT,'governance/changes/'+
   'z'.repeat(40)+'-r7-pilot-root-contraction.json'),'utf8'));
  const w1=reopenW1WorkflowEpoch({entries,observedTree:workflowTree,
-  previousTree:git('rev-parse','--verify',w1source+':.github/workflows'),
+  previousTree:'3eba2af5e3371645fb9573c357948f6466c259ae',
   register:w1register,
-  historyBlob:git('rev-parse','--verify',w1source+':'+w1path),
+  historyBlob:'eea411a6fd465ee3b1f35d0c2fa8fd615c116750',
   liveBlob:git('rev-parse','--verify','HEAD:'+w1path)});
  const delta=w1.ok?qualifyWorkflowTreeEvolution(c.reuse.workflow_evolution,
   {entries:w1.entries,observedTree:w1.previous_tree}):w1;

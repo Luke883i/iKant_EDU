@@ -3,12 +3,13 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {execFileSync} from 'node:child_process';
+
 const root=path.resolve(new URL('../',import.meta.url).pathname);
 const contract=JSON.parse(fs.readFileSync(path.join(root,'contracts/c141-runtime-qualification-v2.json'),'utf8'));
 const sha=b=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob ${b.length}\0`),b])).digest('hex');
 const originals=JSON.parse(fs.readFileSync(path.join(root,'contracts/c141-semantic-prepr-v1.json'),'utf8'));
 const lineage=JSON.parse(fs.readFileSync(path.join(root,'contracts/cora-pr-f-integrated-qualification-v1.json'),'utf8'));
+const capsule=JSON.parse(fs.readFileSync(path.join(root,'tests/fixtures/epochs/c141-prepr-source.json'),'utf8'));
 const changes=JSON.parse(fs.readFileSync(path.join(root,'governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-pilot-root-contraction.json'),'utf8'));
 const registeredRetirements=new Set(changes.paths.filter(r=>r.operation==='REMOVE').map(r=>r.path));
 test('all eleven pre-PR bytes and 48 issue atoms survive identical transfer',()=>{
@@ -16,8 +17,12 @@ test('all eleven pre-PR bytes and 48 issue atoms survive identical transfer',()=
  for(const [p,h] of Object.entries(contract.prepr_transplant.file_blobs_sha1)){
   const live=fs.existsSync(path.join(root,p));
   if(!live)assert(registeredRetirements.has(p),'unregistered historical cut '+p);
-  const bytes=live?fs.readFileSync(path.join(root,p)):
-   execFileSync('git',['show',lineage.source.before_tree+':'+p],{cwd:root});
+  const archive=capsule.files.find(x=>x.path===p);
+  if(!live){assert.ok(archive,'missing source byte capsule '+p);
+   assert.equal(capsule.origin.original_before_tree,lineage.source.before_tree);
+   assert.equal(archive.git_blob_sha1,h);}
+  const bytes=live?fs.readFileSync(path.join(root,p)):Buffer.from(archive.utf8,'utf8');
+  if(!live)assert.equal(bytes.length,archive.bytes);
   assert.equal(sha(bytes),h,p);
  }
  assert.equal(originals.atoms.length,48);

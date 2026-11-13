@@ -72,7 +72,7 @@ export function verifyFrozenWorkflowTree(contract){
   const w1=reopenW1WorkflowEpoch({entries:rows,observedTree:current,
    previousTree:m.current_tree,register:w1Register,
    historyBlob:'eea411a6fd465ee3b1f35d0c2fa8fd615c116750',
-   liveBlob:git('rev-parse','HEAD:'+w1Path)});
+   liveBlob:git('rev-parse','HEAD:.github/workflows/s03-s09-mvp1-candidate.yml')});
   if(!w1.ok)return deny('F_WORKFLOW_W1_SOURCE_NOT_QUALIFIED:'+w1.edge);
   const seen=new Set();
   const restored=[];

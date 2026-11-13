@@ -372,7 +372,7 @@ export function observeReticularCensusWithAudit(){
   previousTree:'3eba2af5e3371645fb9573c357948f6466c259ae',
   register:w1register,
   historyBlob:'eea411a6fd465ee3b1f35d0c2fa8fd615c116750',
-  liveBlob:git('rev-parse','--verify','HEAD:'+w1path)});
+  liveBlob:git('rev-parse','--verify','HEAD:.github/workflows/s03-s09-mvp1-candidate.yml')});
  const delta=w1.ok?qualifyWorkflowTreeEvolution(c.reuse.workflow_evolution,
   {entries:w1.entries,observedTree:w1.previous_tree}):w1;
  const deltaSafe=delta.ok===true;

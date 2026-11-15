@@ -26,7 +26,7 @@ function verify(expected){
  const names=new Set();
  for(const f of m.files){
   if(typeof f.path!=='string'||f.path.includes('..')||
-    !/^(README\.md|(?:host|src|contracts|assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(f.path)||
+    !/^(README\.md|(?:host|src|contracts|project\/assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(f.path)||
     names.has(f.path)||!H64.test(f.sha256)||!Number.isInteger(f.bytes))
     throw Error('BUNDLE_FILE_MANIFEST_INVALID');
   names.add(f.path);

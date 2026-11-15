@@ -9,7 +9,7 @@ import {validateC72ModeSelection} from './c72-unified-mode-admission.mjs';
    All source transport must be supplied by a genuinely invoked host adapter. */
 const S='ikant-le-c104-resumable-materialization/v1';
 const H40=/^[a-f0-9]{40}$/, H64=/^[a-f0-9]{64}$/;
-const PATH=/^(?:README\.md|(?:host|src|scripts|contracts|assets\/brand)\/[A-Za-z0-9_.\/-]+)$/;
+const PATH=/^(?:README\.md|(?:host|src|scripts|contracts|project\/assets\/brand)\/[A-Za-z0-9_.\/-]+)$/;
 const ID=/^[A-Za-z0-9_.-]{2,48}$/;
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
 const blob=b=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex');

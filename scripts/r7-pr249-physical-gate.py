@@ -17,7 +17,6 @@ V13_TREE = "07f135d6d54ff69b78cc9e7215daa0bdafa9f84c"
 ROOTS = [".github", "contracts", "host", "project", "scripts", "src", "tests"]
 ROOT_FILES = [".gitignore", "ADMISSION.json", "AGENTS.md", "BOOTSTRAP.json", "LICENSE", "README.md", "TERMS.md", "ikant.mjs", "package.json"]
 ALLOWED_ADDITIONS = {
-    ".github/workflows/r7-pr249-assurance.yml",
     "contracts/r7-pr249-founding-contract.json",
     "scripts/r7-pr249-falsify.mjs",
     "scripts/r7-pr249-physical-gate.py",
@@ -76,18 +75,49 @@ def assess(repo, fixture=False):
             issues.append("ROOT_SET_DRIFT")
         if root_files != sorted(ROOT_FILES):
             issues.append("ROOT_FILE_SET_DRIFT")
+        # PR249 owns only a prospective seven-root source epoch; this is not a
+        # human owner approval, and old V13 blobs remain reachable in Git.
+        founding_path = repo / 'contracts/r7-pr249-founding-contract.json'
+        contract = json.loads(founding_path.read_text(encoding='utf-8'))
+        epoch = contract.get('pr249_epoch', {})
+        if (contract.get('schema') != 'ikant-r7-pr249-founding-contract/v1'
+                or contract.get('authority') != 0 or contract.get('product_go') is not False
+                or epoch.get('schema') != 'ikant-r7-pr249-source-successor/v1'
+                or epoch.get('source_commit') != V13
+                or epoch.get('source_tree') != V13_TREE
+                or epoch.get('review_required') is not True
+                or epoch.get('product_go') is not False):
+            issues.append('PR249_EPOCH_CONTRACT_INVALID')
+        approved_mods = {r['path']:r for r in epoch.get('modified_originals', [])
+                         if isinstance(r, dict) and isinstance(r.get('path'), str)}
+        exact_mods = {'.github/workflows/c53-physical-closure-hardening.yml',
+                      'scripts/cora-minimal-absorption.mjs',
+                      'project/docs/IKANT_DOCUMENT_ATLAS.md',
+                      'project/docs/START_HERE.md',
+                      'scripts/v5b-repository-governance-audit.mjs'}
+        if set(approved_mods) != exact_mods:
+            issues.append('PR249_MODIFICATION_REGISTER_DRIFT')
+        if sorted(epoch.get('additions', [])) != sorted(ALLOWED_ADDITIONS):
+            issues.append('PR249_ADDITION_REGISTER_DRIFT')
         for path, orig in source.items():
             cur = current.get(path)
             if cur is None:
                 issues.append("SOURCE_PATH_LOST:" + path)
             elif cur != orig:
-                issues.append("SOURCE_BLOB_OR_MODE_DRIFT:" + path)
+                row = approved_mods.get(path)
+                if (row is None or path not in exact_mods or cur[0]!=orig[0] or
+                        cur[1]!='blob' or row.get('original_sha')!=orig[2] or
+                        row.get('prospective_sha')!=cur[2]):
+                    issues.append("SOURCE_BLOB_OR_MODE_DRIFT:" + path)
         extras = sorted(set(current) - set(source))
         for path in extras:
             if path not in ALLOWED_ADDITIONS:
                 issues.append("UNREGISTERED_ADDITION:" + path)
             elif current[path][0] != "100644" or current[path][1] != "blob":
                 issues.append("ADDITION_MODE_OR_KIND_DRIFT:" + path)
+            elif (path!='contracts/r7-pr249-founding-contract.json' and
+                  current[path][2] != epoch.get('addition_pins',{}).get(path)):
+                issues.append("ADDITION_BLOB_DRIFT:" + path)
         if len(source) != 1639:
             issues.append("V13_FILE_CARDINALITY_DRIFT")
         if not issues:

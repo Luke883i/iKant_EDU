@@ -3,7 +3,7 @@
 
 
 <!-- r7-v11-seven-roots:source-candidate -->
-**Seven-root R7 V11 migration (SOURCE CANDIDATE, not release).** The proposed seven canonical roots and the nine retained root files are described in [R7 V11 migration](project/docs/R7_V11_SEVEN_ROOTS.md). The strict semantic source check is `npm run contraction:source-verify`; `npm run maintain:verify` is a fail-closed global admission gate. The full native suite, external consumers, CORA-ENGINE and independent owner review must still pass on the same HEAD; a topological cut is not equivalence.
+**Seven-root R7 V11 migration (SOURCE CANDIDATE, not release).** The proposed seven canonical roots and the nine retained root files are described in `project/docs/R7_V11_SEVEN_ROOTS.md`. The strict semantic source check is `npm run contraction:source-verify`; `npm run maintain:verify` is a fail-closed global admission gate. The full native suite, external consumers, CORA-ENGINE and independent owner review must still pass on the same HEAD; a topological cut is not equivalence.
 
 # iKant — risposte guidate, infrastruttura cognitiva verificabile
 

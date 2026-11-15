@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - 'src/session-chat-deployment.mjs'
-      - 'plugins/ikant-le-session-chat/**'
+      - 'project/plugins/ikant-le-session-chat/**'
       - 'scripts/session-chat-runtime-cli.mjs'
       - 'scripts/c20-dual-profile-falsify.c'
       - 'tests/c20-session-chat-deployment.test.mjs'
@@ -27,11 +27,11 @@ jobs:
       - run: npm run falsify:c19
       - run: npm run falsify:c20
       - name: Install pinned MCP reference dependencies
-        run: npm --prefix plugins/ikant-le-session-chat/server install --ignore-scripts --no-audit --no-fund
+        run: npm --prefix project/plugins/ikant-le-session-chat/server install --ignore-scripts --no-audit --no-fund
       - name: Auto-ensure reference runtime and smoke MCP server
         run: |
           export IKANT_LE_DEPLOYMENT_ROOT="$RUNNER_TEMP/ikant-le-deployment"
-          PORT=8788 IKANT_LE_DEPLOYMENT_ROOT="$IKANT_LE_DEPLOYMENT_ROOT" npm --prefix plugins/ikant-le-session-chat/server start > "$RUNNER_TEMP/mcp.log" 2>&1 &
+          PORT=8788 IKANT_LE_DEPLOYMENT_ROOT="$IKANT_LE_DEPLOYMENT_ROOT" npm --prefix project/plugins/ikant-le-session-chat/server start > "$RUNNER_TEMP/mcp.log" 2>&1 &
           pid=$!
           for i in $(seq 1 20); do
             if curl -fsS http://127.0.0.1:8788/ > "$RUNNER_TEMP/mcp-health.json"; then break; fi

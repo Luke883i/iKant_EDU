@@ -4,7 +4,7 @@ test('C44 prompt methodology',()=>{const p=renderLocalHostMetaPrompt();assert.ma
 
 test('C44 registries remain owner-owned',()=>{const m=boot.for_ai_agent_first_entrypoint.methodology;assert.equal(m.new_registry,false);assert.equal(m.conversation_is_retry_memory,false);assert.equal(m.on_impediment,'REENTER_ENTRYPOINT_REQUEST_NEXT');assert.equal(m.owner_selected_retry_only,true);assert.equal(m.tool_error_is_carrier_fact,false)});
 
-test('C44 style context runtime member',()=>{const r=readSessionStyleContext();assert.equal(r.path,'stile_comunicativo.md');assert.equal(r.effect,'VOICE_STYLE_ONLY');assert.equal(r.authority,0);assert.match(r.sha256,/^[a-f0-9]{64}$/);assert.ok(boot.post_accept_fastboot.runtime_root.members.some(x=>x.path==='stile_comunicativo.md'))});
+test('C44 style context runtime member',()=>{const r=readSessionStyleContext();assert.equal(r.path,'project/docs/stile_comunicativo.md');assert.equal(r.effect,'VOICE_STYLE_ONLY');assert.equal(r.authority,0);assert.match(r.sha256,/^[a-f0-9]{64}$/);assert.ok(boot.post_accept_fastboot.runtime_root.members.some(x=>x.path==='project/docs/stile_comunicativo.md'))});
 
 test('C44 bootstrap ASCII shell',()=>{const l=buildFastbootChannelLedger({sourceHead:'a'.repeat(40),receipts:[]}),x=for_ai_agent_first_entrypoint({channel_ledger:l,runtime_root_sha256:boot.post_accept_fastboot.runtime_root.runtime_root_sha256});assert.match(x.readiness.public_shell,/BOOTSTRAP/);for(const line of x.readiness.public_shell.split('\n'))assert.equal(line.length,ASCII_SHELL_WIDTH)});
 

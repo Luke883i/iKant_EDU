@@ -19,7 +19,7 @@ test('100 deterministic editorial contracts, scoped winner, no empirical claim',
 });
 test('README human-first route and local links, all original owners untouched',()=>{
  assert.deepEqual(verifyReadme(readme,root),{ok:true,errors:[]});
- for(const p of ['docs/IKANT_RUNTIME_AND_EVIDENCE.md','docs/IKANT_RESEARCH_QUESTIONS.md','docs/IKANT_LOCAL_SETUP.md'])
+ for(const p of ['project/docs/IKANT_RUNTIME_AND_EVIDENCE.md','project/docs/IKANT_RESEARCH_QUESTIONS.md','project/docs/IKANT_LOCAL_SETUP.md'])
    assert.ok(fs.statSync(path.join(root,p)).size>1000);
 });
 test('100 altered semantic anchors fail closed, never accepted as original contract',()=>{
@@ -41,7 +41,7 @@ test('false ACTIVE and imaginary consciousness are rejected',()=>{
  assert.equal(verifyReadme(readme+'\nè una coscienza dimostrata',root).ok,false);
 });
 test('relative doc links must exist, and no silent experimental-v2 conflation',()=>{
- assert.equal(verifyReadme(readme+'\n[rottura](docs/NOT_AN_ACTUAL_FILE.md)',root).ok,false);
+ assert.equal(verifyReadme(readme+'\n[rottura](project/docs/NOT_AN_ACTUAL_FILE.md)',root).ok,false);
  assert.ok(readme.includes('C72/v1'));
  assert.ok(readme.includes('C72/v2'));
 });

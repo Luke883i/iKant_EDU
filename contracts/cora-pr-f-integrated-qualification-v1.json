@@ -30,7 +30,7 @@
     "pr_b": "scripts/cora-pr-b-docs.mjs#qualifyDocumentSet",
     "pr_c": "scripts/cora-pr-c-ci.mjs#qualifyPrCCISource",
     "atlas": "scripts/ikant-document-atlas.mjs#verify",
-    "docs": "docs/GOVERNANCE.md"
+    "docs": "project/docs/GOVERNANCE.md"
   },
   "reticulum": [
     {
@@ -521,23 +521,23 @@
   ],
   "restored_source_blobs": [
     {
-      "path": "project-baseline/INSTALL_EASY.md",
+      "path": "project/baseline/INSTALL_EASY.md",
       "blob": "1bc7e5c7436946bfacfb35a669f957fbc82ec3e6"
     },
     {
-      "path": "project-baseline/PROJECT_FILES/iKant_ENGINE.md",
+      "path": "project/baseline/PROJECT_FILES/iKant_ENGINE.md",
       "blob": "2dd572b1911f114b0271bd7d4b5f5a984f927163"
     },
     {
-      "path": "project-baseline/PROJECT_FILES/iKant_GATE.md",
+      "path": "project/baseline/PROJECT_FILES/iKant_GATE.md",
       "blob": "0be68ba987120d8817b21ce6b3fee6035ff848c3"
     },
     {
-      "path": "project-baseline/PROJECT_FILES/iKant_UI_shell.md",
+      "path": "project/baseline/PROJECT_FILES/iKant_UI_shell.md",
       "blob": "9fffd530acc7f3f3f76d15c202bb8147f07aa182"
     },
     {
-      "path": "project-baseline/PROJECT_PROMPT.txt",
+      "path": "project/baseline/PROJECT_PROMPT.txt",
       "blob": "9eb7725430f99f24129e2bb8daeb93da67187fc6"
     },
     {
@@ -561,7 +561,7 @@
       "blob": "5b64d9a52d08633553302a06daf8970c4e8d6db6"
     },
     {
-      "path": "stile_comunicativo.md",
+      "path": "project/docs/stile_comunicativo.md",
       "blob": "1a7d215eb74965ac0b4a200de63be2b53e9f33fa"
     }
   ],

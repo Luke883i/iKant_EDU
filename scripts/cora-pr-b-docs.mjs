@@ -32,15 +32,15 @@ export function qualifyDocumentSet(c,docs,{atlasExact=false,sourceQualified=fals
   !Array.isArray(c.nodes)||c.nodes.length!==8||
   !Array.isArray(c.exit_cut?.source_candidate)||c.exit_cut.source_candidate.length!==7)
   return stop('PR_B_CONTRACT_OR_AUTHORITY');
- const expected=new Set(['README.md','docs/START_HERE.md','docs/PRODUCT_POSITIONING.md',
-  'docs/ARCHITECTURE.md','docs/IKANT_LOCAL_SETUP.md','docs/GOVERNANCE.md',
-  'docs/IKANT_DEVELOPMENT_HISTORY.md','docs/IKANT_RUNTIME_AND_EVIDENCE.md']);
+ const expected=new Set(['README.md','project/docs/START_HERE.md','project/docs/PRODUCT_POSITIONING.md',
+  'project/docs/ARCHITECTURE.md','project/docs/IKANT_LOCAL_SETUP.md','project/docs/GOVERNANCE.md',
+  'project/docs/IKANT_DEVELOPMENT_HISTORY.md','project/docs/IKANT_RUNTIME_AND_EVIDENCE.md']);
  const observed=new Set();const errors=[];let localLinks=0;
- const roles={'README.md':'ENTRY','docs/START_HERE.md':'PUBLIC_GUIDE',
-  'docs/PRODUCT_POSITIONING.md':'PRODUCT_BOUNDARY','docs/ARCHITECTURE.md':'SOFTWARE_BOUNDARY',
-  'docs/IKANT_LOCAL_SETUP.md':'EXECUTION_RUNBOOK','docs/GOVERNANCE.md':'AUTHORITY_BOUNDARY',
-  'docs/IKANT_DEVELOPMENT_HISTORY.md':'HISTORICAL_LINEAGE',
-  'docs/IKANT_RUNTIME_AND_EVIDENCE.md':'EVIDENCE_BOUNDARY'};
+ const roles={'README.md':'ENTRY','project/docs/START_HERE.md':'PUBLIC_GUIDE',
+  'project/docs/PRODUCT_POSITIONING.md':'PRODUCT_BOUNDARY','project/docs/ARCHITECTURE.md':'SOFTWARE_BOUNDARY',
+  'project/docs/IKANT_LOCAL_SETUP.md':'EXECUTION_RUNBOOK','project/docs/GOVERNANCE.md':'AUTHORITY_BOUNDARY',
+  'project/docs/IKANT_DEVELOPMENT_HISTORY.md':'HISTORICAL_LINEAGE',
+  'project/docs/IKANT_RUNTIME_AND_EVIDENCE.md':'EVIDENCE_BOUNDARY'};
  const deps={B01:[],B02:['B01'],B03:['B02'],B04:['B02'],B05:['B02'],
   B06:['B03','B04','B05'],B07:['B06'],B08:['B07']};
  for(const [i,n] of c.nodes.entries()){
@@ -71,10 +71,10 @@ export function qualifyDocumentSet(c,docs,{atlasExact=false,sourceQualified=fals
   const secondHeader=[...rest.matchAll(/^#{2,3} /gm)];
   const part=rest.slice(0,secondHeader.length>=2?secondHeader[1].index:
    secondHeader.length===1&&d.path==='README.md'?secondHeader[0].index:
-   secondHeader.length===1&&d.path==='docs/IKANT_LOCAL_SETUP.md'?secondHeader[0].index:rest.length);
+   secondHeader.length===1&&d.path==='project/docs/IKANT_LOCAL_SETUP.md'?secondHeader[0].index:rest.length);
   // Scope terminology to this PR-B passage; old historical prose must not mask a regression.
   // The setup clone/turn commands are checked separately across the full runbook.
-  const evidenceScope=d.path==='docs/IKANT_LOCAL_SETUP.md'?value:part;
+  const evidenceScope=d.path==='project/docs/IKANT_LOCAL_SETUP.md'?value:part;
   for(const token of d.required)if(typeof token!=='string'||
       !evidenceScope.toLocaleLowerCase('it').includes(token.toLocaleLowerCase('it')))
    errors.push('DOC_REQUIRED_TOKEN:'+d.path+':'+token);
@@ -89,7 +89,7 @@ export function qualifyDocumentSet(c,docs,{atlasExact=false,sourceQualified=fals
   }
  }
  if(observed.size!==expected.size)errors.push('DOCUMENT_SCOPE_NOT_BIJECTIVE');
- const setup=docs?.['docs/IKANT_LOCAL_SETUP.md']||'';
+ const setup=docs?.['project/docs/IKANT_LOCAL_SETUP.md']||'';
  if(!setup.includes('git clone https://github.com/Luke883i/iKant_EDU.git')||
    !setup.includes('cd iKant_EDU')||
    /git clone https:\/\/github\.com\/Luke883i\/iKant_LE\.git/.test(setup)||
@@ -99,14 +99,14 @@ export function qualifyDocumentSet(c,docs,{atlasExact=false,sourceQualified=fals
  if(!setup.includes('ORIENTATION')||!setup.includes('I ACCEPT')||
     !setup.includes('EDU')||!setup.includes('SOURCE_HEAD'))
   errors.push('CONSENT_OR_SOURCE_BOUNDARY_LOST');
- const product=docs?.['docs/PRODUCT_POSITIONING.md']||'';
+ const product=docs?.['project/docs/PRODUCT_POSITIONING.md']||'';
  if(!product.includes('95%')||!product.includes('NON ATTESTATO')||
     !product.includes('../contracts/c72-product-value-promise.json'))
   errors.push('PRODUCT_VALUE_FALSLY_PROMOTED');
- const arch=docs?.['docs/ARCHITECTURE.md']||'';
+ const arch=docs?.['project/docs/ARCHITECTURE.md']||'';
  for(const owner of ['C72','C135','C87','C125','C59'])
   if(!arch.includes(owner))errors.push('OWNER_MISSING:'+owner);
- const history=docs?.['docs/IKANT_DEVELOPMENT_HISTORY.md']||'';
+ const history=docs?.['project/docs/IKANT_DEVELOPMENT_HISTORY.md']||'';
  for(let n=213;n<=218;n++)if(!history.includes('#'+n))errors.push('SOURCE_HISTORY_MISSING:'+n);
  if(!atlasExact)errors.push('GENERATED_MARKDOWN_ATLAS_DRIFT');
  if(!sourceQualified)errors.push('ORIGINAL_V5B_SOURCE_NOT_QUALIFIED');

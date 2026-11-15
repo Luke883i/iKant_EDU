@@ -73,7 +73,7 @@ test('one HEAD gives byte identical generated prompt and receipts; no stale or m
 
   // A changed working tree cannot contaminate Git-show HEAD content: the exact
   // release output and source receipt must stay byte-identical.
-  const dirty=path.join(process.cwd(),'artifacts','qualification','oneshell-test-dirty-'+process.pid+'.tmp');
+  const dirty=path.join(process.cwd(),'tests','artifacts','qualification','oneshell-test-dirty-'+process.pid+'.tmp');
   try{
    fs.writeFileSync(dirty,'worktree artifact is NOT an input to git show HEAD');
    const third=path.join(dir,'c'),out=run('candidate',head,tree,third);

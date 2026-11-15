@@ -32,7 +32,7 @@ test('C29 typed relay contract contains no blanket canonical ban on verified opa
 });
 
 test('C29 checked-in mutation receipts encode unique minimum and 10m fail-closed falsification',()=>{
- const d=JSON.parse(fs.readFileSync(path.join(ROOT,'artifacts/qualification/c29-promise-definition-10k.json'),'utf8')),n=JSON.parse(fs.readFileSync(path.join(ROOT,'artifacts/qualification/c29-engineering-needs-1k.json'),'utf8')),f=JSON.parse(fs.readFileSync(path.join(ROOT,'artifacts/qualification/c29-ontological-promise-10m.json'),'utf8'));
+ const d=JSON.parse(fs.readFileSync(path.join(ROOT,'tests/artifacts/qualification/c29-promise-definition-10k.json'),'utf8')),n=JSON.parse(fs.readFileSync(path.join(ROOT,'tests/artifacts/qualification/c29-engineering-needs-1k.json'),'utf8')),f=JSON.parse(fs.readFileSync(path.join(ROOT,'tests/artifacts/qualification/c29-ontological-promise-10m.json'),'utf8'));
  assert.equal(d.candidates,10000);assert.equal(d.unique_candidates,10000);assert.equal(d.winner_cost,0);assert.equal(d.winner_cost_ties,1);assert.equal(d.threshold_bps,9901);
  assert.equal(n.cases,1000);assert.equal(n.baseline_score_bps,9400);assert.deepEqual(n.baseline_failed_atoms,['C3','I2']);assert.equal(n.minimal_action_packages.filter(x=>x.respects_promise).length,1);
  assert.equal(f.cases,10000000);assert.equal(f.status,'PASS');assert.equal(f.candidate_oracle_mismatches,0);assert.equal(f.unsafe_respected,0);assert.equal(f.all_mutants_killed,true);assert.equal(f.all_atoms_failed_at_least_once,true);

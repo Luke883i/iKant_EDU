@@ -1,5 +1,5 @@
 import test from 'node:test';
-import {qualifyRegisteredC72SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
+import {qualifyR7OwnerSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
@@ -7,9 +7,11 @@ import {execFileSync} from 'node:child_process';
 import {gitBlobSha1} from '../scripts/v5b-repository-governance-audit.mjs';
 import {qualifyWorkflowPatch,DIRECTIVE} from '../scripts/cora-pr-c-ci.mjs';
 import {verifyFrozenWorkflowTree} from '../scripts/cora-pr-f-qualification.mjs';
+import {mapR7SourcePath,reopenR7SourceEpoch} from '../scripts/r7-v13-epoch-bridge.mjs';
+const r7Plan=JSON.parse(fs.readFileSync(new URL('../contracts/r7-v11-seven-root-contract.json',import.meta.url),'utf8'));
 
 const contract=JSON.parse(fs.readFileSync(new URL('../contracts/cora-pr-d1-blob-dedup-v1.json',import.meta.url),'utf8'));
-const register=JSON.parse(fs.readFileSync(new URL('../governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json',import.meta.url),'utf8'));
+const register=JSON.parse(fs.readFileSync(new URL('../contracts/governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json',import.meta.url),'utf8'));
 const prior=JSON.parse(fs.readFileSync(new URL('../contracts/cora-pr-c-ci-v1.json',import.meta.url),'utf8'));
 const yaml=fs.readFileSync(new URL('../.github/workflows/docs-ontology-coverage.yml',import.meta.url),'utf8');
 const v5b=fs.readFileSync(new URL('../scripts/v5b-repository-governance-audit.mjs',import.meta.url),'utf8');
@@ -46,7 +48,9 @@ test('V5-B explicitly records all modified and new files without inventing appro
  assert.equal(register.paths.filter(x=>x.operation==='ADD').length,3);
  assert(register.paths.every(x=>x.human_review==='REVIEW_REQUIRED'&&x.destructive_effect===false));
  for(const r of register.paths.filter(x=>x.operation==='MODIFY')){
-  assert.equal(r.supersedes_register,contract.reuse.predecessor_register);
+  assert.equal(mapR7SourcePath(r.supersedes_register,r7Plan),contract.reuse.predecessor_register);
+  const predecessor=reopenR7SourceEpoch(r.supersedes_register);
+  assert.equal(predecessor.ok,true,JSON.stringify(predecessor));
   assert.equal(r.supersedes_source_main,'b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa');
  }
 });
@@ -145,16 +149,16 @@ test('real Git checkout preserves historical owner pin ledger and qualifies only
  const expected=cora.reuse.owner_blob_pins;
  let unchanged=0,amended=0;
  for(const [file,sha] of Object.entries(expected)){
-  const x=qualifyRegisteredC72SourceEpoch({path:file,historicalBlobSha1:sha,
+  const x=qualifyR7OwnerSourceEpoch({path:file,historicalBlobSha1:sha,
    observedBlobSha1:git('rev-parse','HEAD:'+file)});
   assert.equal(x.ok,true,file+':'+x.edge);
   assert.equal(x.owner_invoked,false);
-  if(x.amended){amended++;assert.equal(file,'host/c72-public-mode-admission.mjs');
+  if(x.amended){amended++;assert(['host/c72-public-mode-admission.mjs','host/c135-edu-v2-owner.mjs'].includes(file));
    assert.equal(x.historical_receipt_reusable,false);
    assert.equal(x.review_attested,false);
   }else unchanged++;
  }
- assert.equal(unchanged,3);assert.equal(amended,1);
+ assert.equal(unchanged,2);assert.equal(amended,2);
  const originalPRF=JSON.parse(fs.readFileSync(new URL(
   '../contracts/cora-pr-f-integrated-qualification-v1.json',import.meta.url),'utf8'));
  const historic=verifyFrozenWorkflowTree(originalPRF);

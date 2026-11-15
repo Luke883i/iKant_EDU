@@ -4,7 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const HERE=path.dirname(fileURLToPath(import.meta.url)),ROOT=path.resolve(HERE,'..');
 const CASES=Number(process.argv.includes('--cases')?process.argv[process.argv.indexOf('--cases')+1]:10000000);
-const OUT=process.argv.includes('--out')?process.argv[process.argv.indexOf('--out')+1]:'artifacts/qualification/c51-supersystem-selection-10m.json';
+const OUT=process.argv.includes('--out')?process.argv[process.argv.indexOf('--out')+1]:'tests/artifacts/qualification/c51-supersystem-selection-10m.json';
 const MECH=[
  'K0_EVIDENCE_PINNED_ROOTS','K1_EXECUTABLE_BOOTSTRAP_ADAPTER','K2_OWNER_DERIVED_ONE_NEXT_REENTRY','K3_COHOST_ROOT_PRESERVED','K4_ROUTE_INTERPOSITION_GUARD','K5_UNRESOLVED_TURN_SERIALIZATION','K6_NATIVE_SESSION_IDENTITY','K7_NATIVE_PARTICIPANT_LEASE','K8_PERSISTENT_TURN_SCHEDULER','K9_EXACT_NATIVE_DELIVERY_READBACK','K10_AXIS_ORTHOGONALITY','K11_FAIL_CLOSED_EXTERNAL_GAPS','K12_AUTHORITY_OWNER_PRESERVATION'
 ];

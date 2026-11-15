@@ -5,10 +5,10 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const docs=['README.md','docs/START_HERE.md','docs/IKANT_RUNTIME_AND_EVIDENCE.md',
-  'docs/IKANT_RESEARCH_QUESTIONS.md','docs/IKANT_LOCAL_SETUP.md','docs/ARCHITECTURE.md'];
-const lexicon='docs/IKANT_CX_LEXICON.md';
-const review='docs/IKANT_CX_POST_EDIT_REVIEW.md';
+const docs=['README.md','project/docs/START_HERE.md','project/docs/IKANT_RUNTIME_AND_EVIDENCE.md',
+  'project/docs/IKANT_RESEARCH_QUESTIONS.md','project/docs/IKANT_LOCAL_SETUP.md','project/docs/ARCHITECTURE.md'];
+const lexicon='project/docs/IKANT_CX_LEXICON.md';
+const review='project/docs/IKANT_CX_POST_EDIT_REVIEW.md';
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const codeIds=s=>[...new Set((s.match(/\bC\d+(?:\/v\d+)?\b|\bS\d{2}\b/g)||[])
   .map(id=>id.split('/')[0]))].sort();
@@ -45,7 +45,7 @@ test('post-edit: all Cx/S02 abbreviations have explicit linked meanings',()=>{
  assert.ok(r.ids.length>=17,'must cover technical as well as onboarding codes');
 });
 test('post-edit: actual first encounters explain scope and route users to lexicon',()=>{
- const r=read('README.md'),a=read('docs/ARCHITECTURE.md'),n=read('docs/START_HERE.md');
+ const r=read('README.md'),a=read('project/docs/ARCHITECTURE.md'),n=read('project/docs/START_HERE.md');
  assert.match(r,/Archeologia separata:[^\n]*one canonical `SESSION_CHAT_LOCAL` composition, C59/);
  assert.match(r,/Il percorso Project C72\/v2 offre \*\*esattamente una selezione successiva al consenso: EDU\*\*/);
  assert.match(r,/\*\*MCP_EXTERNAL\*\* è una superficie di distribuzione indipendente/);
@@ -61,10 +61,10 @@ test('post-edit falsification: wrong source link fails',()=>{
  assert.ok(inspect(docs,modified).errors.some(x=>x.includes('no-such-ledger.mjs')));
 });
 test('research/people/engineering pathways remain distinct, falsifiable, non-ACTIVE',()=>{
- assert.match(read('docs/START_HERE.md'),/persona|chiunque/u);
- assert.match(read('docs/IKANT_RESEARCH_QUESTIONS.md'),/Confutazione/u);
- assert.match(read('docs/IKANT_RUNTIME_AND_EVIDENCE.md'),/OSSERVATO/u);
- assert.match(read('docs/IKANT_LOCAL_SETUP.md'),/non.*install/u);
+ assert.match(read('project/docs/START_HERE.md'),/persona|chiunque/u);
+ assert.match(read('project/docs/IKANT_RESEARCH_QUESTIONS.md'),/Confutazione/u);
+ assert.match(read('project/docs/IKANT_RUNTIME_AND_EVIDENCE.md'),/OSSERVATO/u);
+ assert.match(read('project/docs/IKANT_LOCAL_SETUP.md'),/non.*install/u);
  assert.match(read(lexicon),/non.*garanti/iu);
  assert.match(read(review),/Gate aperto/u);
  assert.match(read(review),/persone|ingegnere/u);

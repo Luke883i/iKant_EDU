@@ -8,7 +8,7 @@
   "reuse": {
     "inventory": "scripts/v5b-repository-governance-audit.mjs#auditRepository",
     "reticulum": "contracts/cora-reticular-hygiene-v1.json",
-    "predecessor_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json"
+    "predecessor_register": "contracts/governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json"
   },
   "scope": {
     "kind": "SINGLE_GIT_BLOB_SHA1_IMPLEMENTATION",

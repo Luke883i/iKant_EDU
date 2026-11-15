@@ -48,9 +48,9 @@ export function auditRepository(root){
  const r=p=>fs.readFileSync(path.join(root,p));
  const json=p=>JSON.parse(r(p).toString('utf8'));
  const boot=json('BOOTSTRAP.json'),generation=json('contracts/project-prompt-generation.json');
- const catalog=json('release/catalog.json'),pkg=json('package.json');
+ const catalog=json('project/release/catalog.json'),pkg=json('package.json');
  const source=r(SOURCE),alias=r(ALIAS);
- const start=r('docs/START_HERE.md').toString('utf8'),readme=r('README.md').toString('utf8');
+ const start=r('project/docs/START_HERE.md').toString('utf8'),readme=r('README.md').toString('utf8');
  const bundle=r('scripts/c131-build-project-bundle.py').toString('utf8');
  const expected=deriveLegacyAlias(source,pkg.version);
  const docs=start.includes('primo messaggio')&&start.includes('I ACCEPT')&&start.includes('EDU')&&

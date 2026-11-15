@@ -10,7 +10,7 @@ const sha=b=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from(`blob $
 const originals=JSON.parse(fs.readFileSync(path.join(root,'contracts/c141-semantic-prepr-v1.json'),'utf8'));
 const lineage=JSON.parse(fs.readFileSync(path.join(root,'contracts/cora-pr-f-integrated-qualification-v1.json'),'utf8'));
 const capsule=JSON.parse(fs.readFileSync(path.join(root,'tests/fixtures/epochs/c141-prepr-source.json'),'utf8'));
-const changes=JSON.parse(fs.readFileSync(path.join(root,'governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-pilot-root-contraction.json'),'utf8'));
+const changes=JSON.parse(fs.readFileSync(path.join(root,'contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-pilot-root-contraction.json'),'utf8'));
 const registeredRetirements=new Set(changes.paths.filter(r=>r.operation==='REMOVE').map(r=>r.path));
 test('all eleven pre-PR bytes and 48 issue atoms survive identical transfer',()=>{
  assert.equal(Object.keys(contract.prepr_transplant.file_blobs_sha1).length,11);

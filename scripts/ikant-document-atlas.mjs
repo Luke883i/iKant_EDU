@@ -4,7 +4,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const IGNORE=new Set(['.git','node_modules','.ikant','dist','artifacts','coverage']);
-export const ATLAS='docs/IKANT_DOCUMENT_ATLAS.md';
+export const ATLAS='project/docs/IKANT_DOCUMENT_ATLAS.md';
 function files(dir=''){
  const full=path.join(ROOT,dir);
  return fs.readdirSync(full,{withFileTypes:true}).flatMap(e=>{
@@ -16,11 +16,11 @@ function files(dir=''){
 }
 export function family(p){
  if(p==='README.md')return ['L0','Orientamento'];
- if(p==='docs/START_HERE.md'||p==='docs/IKANT_DOCUMENT_ATLAS.md'||p==='docs/PRODUCT_POSITIONING.md'||p==='docs/IKANT_LOCAL_SETUP.md')return ['L1','Lettura guidata'];
- if(/^docs\/(?:ARCHITECTURE|GOVERNANCE|IKANT_(?:RUNTIME|RESEARCH|DOCUMENT_ONTOLOGY|DOCUMENT_ATLAS|CX|EDITORIAL|COGNITIVE|DEVELOPMENT|SEMANTIC|NEUROCOGNITIVE))/.test(p))return ['L2','Modelli e prove'];
- if(p.startsWith('docs/archive/prepr/'))return ['L4','Storico'];
- if(/^docs\/C\d+/.test(p))return ['L3','Contratti Cx e ricerca tecnica'];
- if(p.startsWith('docs/'))return ['L3','Documentazione specialistica'];
+ if(p==='project/docs/START_HERE.md'||p==='project/docs/IKANT_DOCUMENT_ATLAS.md'||p==='project/docs/PRODUCT_POSITIONING.md'||p==='project/docs/IKANT_LOCAL_SETUP.md')return ['L1','Lettura guidata'];
+ if(/^project\/docs\/(?:ARCHITECTURE|GOVERNANCE|IKANT_(?:RUNTIME|RESEARCH|DOCUMENT_ONTOLOGY|DOCUMENT_ATLAS|CX|EDITORIAL|COGNITIVE|DEVELOPMENT|SEMANTIC|NEUROCOGNITIVE))/.test(p))return ['L2','Modelli e prove'];
+ if(p.startsWith('project/docs/archive/prepr/'))return ['L4','Storico'];
+ if(/^project\/docs\/C\d+/.test(p))return ['L3','Contratti Cx e ricerca tecnica'];
+ if(p.startsWith('project/docs/'))return ['L3','Documentazione specialistica'];
  if(p.startsWith('project/')||p.startsWith('project-baseline/'))return ['L4','Materiale Project e compatibilità'];
  if(/PREPR|BOOTSTRAP\.md/.test(p))return ['L4','Storico'];
  if(p.startsWith('plugins/'))return ['L4','Integrazione e plugin'];
@@ -52,7 +52,7 @@ export function renderAtlas(a){
  for(const [level,label] of [['L0','Ingresso'],['L1','Guide'],['L2','Modelli e regole'],['L3','Approfondimenti e prove'],['L4','Storico e integrazioni']]){
   out+=`## ${level} — ${label}\n\n`;
   for(const r of a.rows.filter(r=>r.level===level)){
-    const target=path.posix.relative('docs',r.path)||path.posix.basename(r.path);
+    const target=path.posix.relative('project/docs',r.path)||path.posix.basename(r.path);
     out+=`- [${r.path}](${target}): ${r.role}. Stato di review: **da verificare**.\n`;
   }
   out+='\n';

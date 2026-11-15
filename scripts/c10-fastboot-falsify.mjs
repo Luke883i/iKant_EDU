@@ -3,7 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 const ROOT=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');
 const args=process.argv.slice(2);const get=(k,d)=>{const i=args.indexOf(k);return i>=0?args[i+1]:d};
-const CASES=Number(get('--cases','1000000'));const OUTPUT=get('--output','artifacts/qualification/c10-fastboot.json');
+const CASES=Number(get('--cases','1000000'));const OUTPUT=get('--output','tests/artifacts/qualification/c10-fastboot.json');
 if(CASES!==1_000_000)throw new Error('C10 qualification cardinality is fixed at 1,000,000');
 const FEATURES=['headBinding','receiptHandoff','singleParallelCapsuleRound','derivedZeroAuthority','activateFirst','strictReceipt'];
 const families=['decoratedAccept','embeddedAccept','termsDigestBad','headDrift','missingReceipt','orientationDigestBad','receiptBreached','preacceptExec','preacceptDiscovery','exploreBeforeActive','cloneFallback','rawFallback','archiveFallback','treeBeforeActive','historyBeforeActive','prBeforeActive','testsBeforeActive','falsifyBeforeActive','fullRepoBeforeActive','multiRoundFetch','runtimePathMissing','runtimePathCorrupt','runtimeRefMismatch','fastbootAuthority','secondSot','nonFreshState','nodeBad','fsBad','cryptoBad','clockBad','artifactBad','falseActive','pendingLost','pendingHashBad','pendingNotResumed','directModel','hostOverride','staleCache','receiptPromotesState','orientationDigestMissing'];

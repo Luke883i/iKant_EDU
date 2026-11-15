@@ -8,11 +8,11 @@ on:
       - 'scripts/s04-*'
       - 'scripts/s09-*'
       - 'scripts/s03-s09-*'
-      - 'plugins/ikant-le-session-chat/server/**'
+      - 'project/plugins/ikant-le-session-chat/server/**'
       - 'tests/s0*-*'
       - 'tests/c115-project-edu-baseline.test.mjs'
       - 'project/edu-oneshell/**'
-      - 'docs/S03_S09_POST137_RUNTIME_COMPLETION.md'
+      - 'project/docs/S03_S09_POST137_RUNTIME_COMPLETION.md'
       - '.github/workflows/s03-s09-mvp1-candidate.yml'
   push:
     branches: [main]

@@ -8,7 +8,7 @@
     {
       "id": "PROJECT_HOST_ROM",
       "kind": "host_adapter",
-      "ref": "docs/PROJECT_META_PROMPT_COBOL.md",
+      "ref": "project/docs/PROJECT_META_PROMPT_COBOL.md",
       "classification": "HISTORICAL_COLDSTART_ADAPTER_NONRUNTIME",
       "may_issue_canonical_active": false,
       "superseded_by": "project/session-chat/PROMPT.txt"
@@ -79,7 +79,7 @@
     {
       "id": "DEPLOYED_PLUGIN",
       "kind": "external_binding",
-      "ref": "plugins/ikant-le-session-chat/server/server.mjs",
+      "ref": "project/plugins/ikant-le-session-chat/server/server.mjs",
       "classification": "EXCLUDED_PROFILE_COMPATIBILITY",
       "may_issue_canonical_active": false
     },
@@ -122,12 +122,12 @@
       "src/**/*.mjs",
       "ikant.mjs",
       "scripts/session-chat-runtime-cli.mjs",
-      "plugins/ikant-le-session-chat/server/server.mjs"
+      "project/plugins/ikant-le-session-chat/server/server.mjs"
     ],
     "token_rule": "I ACCEPT|ACTIVE literal|RUNTIME_BOUND_LIMITED|HANDOFF_PRE_RUNTIME|LOCAL_DIRECT|VERIFIED_OPAQUE_RELAY|WARM_CACHE_EXACT|runCommand|resumeActivation|executePreRuntimeBootstrap|executeCanonicalSessionChatBootstrap|acceptDeployedSession|acceptLocalLimitedSession|issueCanonicalSessionChatComposition|runCanonicalSessionChat|materializeRuntimeRoot|executeCanonicalColdBootstrap|issueCanonicalActivationExecutor|issueCanonicalRelayManifest",
     "activation_related_files": [
       "ikant.mjs",
-      "plugins/ikant-le-session-chat/server/server.mjs",
+      "project/plugins/ikant-le-session-chat/server/server.mjs",
       "scripts/session-chat-runtime-cli.mjs",
       "src/bootstrap-intent-adapter.mjs",
       "src/bootstrap-semantic.mjs",

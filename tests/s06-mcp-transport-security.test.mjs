@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';import {verifyS06Transport} from '../plugins/ikant-le-session-chat/server/transport-security.mjs';
+import {readFileSync} from 'node:fs';import {verifyS06Transport} from '../project/plugins/ikant-le-session-chat/server/transport-security.mjs';
 const secret='my_very_long_cryptographically_random_key_123456';const allowedOrigin='https://chatgpt.com';
 const good={authorization:'Bearer '+secret,origin:allowedOrigin,secret,allowedOrigin};
 test('S06 configured transport credential, fail closed, not native event identity',()=>{
@@ -8,7 +8,7 @@ test('S06 configured transport credential, fail closed, not native event identit
   assert.equal(verifyS06Transport({...good,...change}).ok,false);
 });
 test('S06 server actually invokes guard and avoids wildcard CORS on /mcp',()=>{
- const src=readFileSync(new URL('../plugins/ikant-le-session-chat/server/server.mjs',import.meta.url),'utf8');
+ const src=readFileSync(new URL('../project/plugins/ikant-le-session-chat/server/server.mjs',import.meta.url),'utf8');
  assert.match(src,/verifyS06Transport\(/);assert.doesNotMatch(src,/Access-Control-Allow-Origin':'\*'/);
  assert.match(src,/req\.headers\.authorization/);
 });

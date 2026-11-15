@@ -19,19 +19,19 @@ ORIENTATION = ("README.md", "BOOTSTRAP.json", "ADMISSION.json", "AGENTS.md", "TE
 SLIDES = tuple("slides/%02d_%s.md" % (i, v) for i,v in enumerate(
     ("ROUTE","BOOT","ADAPTER","SHELL","EVIDENCE","RETENTION","FALSIFICATION","RELEASE")))
 MANDATORY = (
-    "docs/IKANT_DOCUMENT_ATLAS.md",
+    "project/docs/IKANT_DOCUMENT_ATLAS.md",
     "host/c125-exclusive-shell.mjs", "host/c135-edu-v2-owner.mjs",
     "host/c139-edu-v2-turn.mjs", "host/c140-open-edu-turn.mjs",
     "host/c141-semantic-shadow.mjs", "host/c142-semantic-owner-guard.mjs",
     "host/s02-edu-versioned-consumer.mjs",
     "host/s03-owner-bound-presentation.mjs",
-    "plugins/ikant-le-session-chat/server/server.mjs",
-    "plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs",
+    "project/plugins/ikant-le-session-chat/server/server.mjs",
+    "project/plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs",
     "contracts/c140-e2e-semantic-assurance.json",
     "contracts/c141-runtime-qualification-v2.json",
     "contracts/c142-34issue-evidence.json",
     "contracts/mcp-external-mutation-assurance-v2.json",
-    "docs/MCP_EXTERNAL_ADVANCED_V2_PREPR.md",
+    "project/docs/MCP_EXTERNAL_ADVANCED_V2_PREPR.md",
     "render.mcp-prepr.yaml"
 )
 DELTA = (
@@ -140,7 +140,7 @@ def build(repo, baseline, destination):
         "head":HEAD,"tree":TREE,"authorized_by_human":True,
         "native_provider_attested":False,"runtime_admission_carried":False,
         "active":False,"historical_head":OLD_HEAD})
-    output["AUDIT_PR132_151.md"] = (repo/"docs/ONESHELL_V1_MATERIALIZATION.txt").read_bytes()
+    output["AUDIT_PR132_151.md"] = (repo/"project/docs/ONESHELL_V1_MATERIALIZATION.txt").read_bytes()
     output["PINNED_COMMIT_OBJECT.raw"] = commit
     output["VERIFICA_BUNDLE.py"] = pathlib.Path(__file__).with_name("oneshell-v1-verify.py").read_bytes()
     output["MATERIALIZATION_RULES.md"] = (

@@ -9,7 +9,7 @@ on:
       - 'host/c107-carrier-consumer.mjs'
       - 'scripts/c107-carrier-qualify.mjs'
       - 'tests/c107-carrier-consumer.test.mjs'
-      - 'release/v8/**'
+      - 'project/release/v8/**'
       - '.github/workflows/c107-carrier-consumption.yml'
   workflow_dispatch:
 permissions:
@@ -26,8 +26,8 @@ jobs:
           node-version: '22'
       - name: Check actual committed carrier is source-exact
         run: |
-          test "$(stat -c%s release/v8/ikant-c107-source-c734bf934e33.ikc.br)" -eq 62448
-          echo "d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d  release/v8/ikant-c107-source-c734bf934e33.ikc.br" | sha256sum -c -
+          test "$(stat -c%s project/release/v8/ikant-c107-source-c734bf934e33.ikc.br)" -eq 62448
+          echo "d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d  project/release/v8/ikant-c107-source-c734bf934e33.ikc.br" | sha256sum -c -
       - name: Eight consumer tests including real C107 Node and adversarial mutants
         run: node --test tests/c107-carrier-consumer.test.mjs
       - name: Fresh standalone original C70 C100 C87 readback from carrier

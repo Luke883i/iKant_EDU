@@ -8,7 +8,7 @@ on:
       - 'scripts/c107-pack.mjs'
       - 'scripts/cp11-million-semantic-mutations.mjs'
       - 'tests/cp11-guarded-prepr.test.mjs'
-      - 'docs/CP11_REBASED_SEMANTIC_DOD.md'
+      - 'project/docs/CP11_REBASED_SEMANTIC_DOD.md'
       - '.github/workflows/c143-cp11-prepr.yml'
   push:
     paths:
@@ -55,4 +55,4 @@ jobs:
         if: matrix.node == '22'
         run: |
           node scripts/project-host-negative-falsify.mjs "$RUNNER_TEMP/r3-negative.json"
-          cmp "$RUNNER_TEMP/r3-negative.json" artifacts/qualification/negative-semantic-1m.json
+          cmp "$RUNNER_TEMP/r3-negative.json" tests/artifacts/qualification/negative-semantic-1m.json

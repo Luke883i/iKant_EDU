@@ -9,8 +9,8 @@ on:
       - 'contracts/bootstrap-ontological-closure.json'
       - 'tests/c42-bootstrap-ontological-closure.test.mjs'
       - 'scripts/c42-bootstrap-ontological-closure-falsify.mjs'
-      - 'docs/LOCAL_HOST_META_PROMPT.md'
-      - 'docs/C42_BOOTSTRAP_ONTOLOGICAL_CLOSURE.md'
+      - 'project/docs/LOCAL_HOST_META_PROMPT.md'
+      - 'project/docs/C42_BOOTSTRAP_ONTOLOGICAL_CLOSURE.md'
       - 'package.json'
       - '.github/workflows/c42-bootstrap-ontological-closure.yml'
   push:

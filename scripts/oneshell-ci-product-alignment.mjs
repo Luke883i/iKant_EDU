@@ -27,7 +27,7 @@ export function inspectProductCi({registry,workflow,root=ROOT,slideVersion=null,
  const ids=new Set(),problems=new Set();
  let canonical=[];
  try{
-  const text=sourceCsv??fs.readFileSync(path.join(root,'docs/ONESHell_HOST_40_ISSUES.csv'),'utf8');
+  const text=sourceCsv??fs.readFileSync(path.join(root,'project/docs/ONESHell_HOST_40_ISSUES.csv'),'utf8');
   if(createHash('sha256').update(text).digest('hex')!==REGISTRY_SHA256)failures.push('CANONICAL_AUDIT_SOURCE_DRIFT');
   const rows=csvRows(text),expected=['id','priority','problem','session_signal','existing_attempt','fix','falsification'];
   if(rows.length!==41||JSON.stringify(rows[0])!==JSON.stringify(expected))failures.push('CANONICAL_CSV_SCHEMA_OR_SIZE');
@@ -46,7 +46,7 @@ export function inspectProductCi({registry,workflow,root=ROOT,slideVersion=null,
    failures.push('PRODUCT_REQUIREMENT_DIFFERENT_FROM_AUDIT:'+id);
   if(typeof x.expected_behavior!=='string'||x.expected_behavior.length<18||
     typeof x.negative_case!=='string'||x.negative_case.length<18||
-    x.reference!=='docs/ONESHell_HOST_40_ISSUES.csv') failures.push('UNTRACEABLE_REQUIREMENT:'+id);
+    x.reference!=='project/docs/ONESHell_HOST_40_ISSUES.csv') failures.push('UNTRACEABLE_REQUIREMENT:'+id);
   if(!TYPES.includes(x.ci_scope)||!/^tests\/[A-Za-z0-9_.-]+\.(?:mjs|py)$/.test(x.local_test)||
     !fs.existsSync(path.join(root,x.local_test))) failures.push('NO_LOCAL_WITNESS:'+id);
   if(x.product_closed!==false||x.product_witness!==null)failures.push('FAKE_PRODUCT_CLOSURE:'+id);

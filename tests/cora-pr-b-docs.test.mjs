@@ -47,19 +47,19 @@ test('semantic negative families fail closed without changing original repositor
   x=>x.c.result='PRODUCT_GO',
   x=>x.c.documents.pop(),
   x=>x.d['README.md']=x.d['README.md'].replace('<!-- cora-pr-b-docs:v1 -->',''),
-  x=>x.d['docs/ARCHITECTURE.md']+='<!-- cora-pr-b-docs:v1 -->',
-  x=>x.d['docs/IKANT_LOCAL_SETUP.md']=x.d['docs/IKANT_LOCAL_SETUP.md'].replace(
+  x=>x.d['project/docs/ARCHITECTURE.md']+='<!-- cora-pr-b-docs:v1 -->',
+  x=>x.d['project/docs/IKANT_LOCAL_SETUP.md']=x.d['project/docs/IKANT_LOCAL_SETUP.md'].replace(
    'git clone https://github.com/Luke883i/iKant_EDU.git','git clone https://github.com/Luke883i/iKant_LE.git'),
-  x=>x.d['docs/IKANT_LOCAL_SETUP.md']+=String.fromCharCode(10)+
+  x=>x.d['project/docs/IKANT_LOCAL_SETUP.md']+=String.fromCharCode(10)+
     'scrivi esattamente '+String.fromCharCode(96)+'avvia iKant'+String.fromCharCode(96),
-  x=>x.d['docs/IKANT_LOCAL_SETUP.md']+='\nhttps://github.com/Luke883i/iKant_LE/archive/old.zip',
-  x=>x.d['docs/PRODUCT_POSITIONING.md']=x.d['docs/PRODUCT_POSITIONING.md'].replace('95%','100%'),
-  x=>x.d['docs/PRODUCT_POSITIONING.md']=x.d['docs/PRODUCT_POSITIONING.md'].replace('NON ATTESTATO','DIMOSTRATO'),
-  x=>x.d['docs/IKANT_DEVELOPMENT_HISTORY.md']=x.d['docs/IKANT_DEVELOPMENT_HISTORY.md'].replace('#218','#999'),
-  x=>x.d['docs/GOVERNANCE.md']=x.d['docs/GOVERNANCE.md'].replaceAll('UNKNOWN','ASSENTE'),
-  x=>x.d['docs/ARCHITECTURE.md']=x.d['docs/ARCHITECTURE.md'].replaceAll('C87','C00'),
+  x=>x.d['project/docs/IKANT_LOCAL_SETUP.md']+='\nhttps://github.com/Luke883i/iKant_LE/archive/old.zip',
+  x=>x.d['project/docs/PRODUCT_POSITIONING.md']=x.d['project/docs/PRODUCT_POSITIONING.md'].replace('95%','100%'),
+  x=>x.d['project/docs/PRODUCT_POSITIONING.md']=x.d['project/docs/PRODUCT_POSITIONING.md'].replace('NON ATTESTATO','DIMOSTRATO'),
+  x=>x.d['project/docs/IKANT_DEVELOPMENT_HISTORY.md']=x.d['project/docs/IKANT_DEVELOPMENT_HISTORY.md'].replace('#218','#999'),
+  x=>x.d['project/docs/GOVERNANCE.md']=x.d['project/docs/GOVERNANCE.md'].replaceAll('UNKNOWN','ASSENTE'),
+  x=>x.d['project/docs/ARCHITECTURE.md']=x.d['project/docs/ARCHITECTURE.md'].replaceAll('C87','C00'),
   x=>x.d['README.md']=x.d['README.md'].replace('<!-- cora-pr-b-docs:v1 -->',
-   '<!-- cora-pr-b-docs:v1 -->\n[inesistente](docs/FILE_DOES_NOT_EXIST.md)'),
+   '<!-- cora-pr-b-docs:v1 -->\n[inesistente](project/docs/FILE_DOES_NOT_EXIST.md)'),
   x=>x.opts.atlasExact=false,
   x=>x.opts.sourceQualified=false
  ];
@@ -80,10 +80,10 @@ test('10k seeded semantic fault choices are reproducible, every family rejected'
   x=>x.c.documents[4].marker='NO_MARKER',
   x=>x.c.documents[0].path=x.c.documents[1].path,
   x=>x.c.exit_cut.source_candidate=[],
-  x=>x.d['docs/START_HERE.md']=x.d['docs/START_HERE.md'].replace('<!-- cora-pr-b-docs:v1 -->',''),
-  x=>x.d['docs/IKANT_RUNTIME_AND_EVIDENCE.md']=x.d['docs/IKANT_RUNTIME_AND_EVIDENCE.md'].replaceAll('SOURCE_HEAD','OLD_HEAD'),
-  x=>x.d['docs/IKANT_LOCAL_SETUP.md']=x.d['docs/IKANT_LOCAL_SETUP.md'].replace('cd iKant_EDU','cd iKant_LE'),
-  x=>x.d['docs/PRODUCT_POSITIONING.md']=x.d['docs/PRODUCT_POSITIONING.md'].replace('NON ATTESTATO','PASS'),
+  x=>x.d['project/docs/START_HERE.md']=x.d['project/docs/START_HERE.md'].replace('<!-- cora-pr-b-docs:v1 -->',''),
+  x=>x.d['project/docs/IKANT_RUNTIME_AND_EVIDENCE.md']=x.d['project/docs/IKANT_RUNTIME_AND_EVIDENCE.md'].replaceAll('SOURCE_HEAD','OLD_HEAD'),
+  x=>x.d['project/docs/IKANT_LOCAL_SETUP.md']=x.d['project/docs/IKANT_LOCAL_SETUP.md'].replace('cd iKant_EDU','cd iKant_LE'),
+  x=>x.d['project/docs/PRODUCT_POSITIONING.md']=x.d['project/docs/PRODUCT_POSITIONING.md'].replace('NON ATTESTATO','PASS'),
   x=>x.opts.sourceQualified=false
  ];
  const run=()=>{

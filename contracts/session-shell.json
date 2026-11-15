@@ -169,7 +169,7 @@
     "default_effect": "VOICE_STYLE_ONLY",
     "refs": [
       {
-        "path": "stile_comunicativo.md",
+        "path": "project/docs/stile_comunicativo.md",
         "purpose": "COMMUNICATION_STYLE",
         "effect": "VOICE_STYLE_ONLY",
         "required": true

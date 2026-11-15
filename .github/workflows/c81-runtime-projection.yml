@@ -5,9 +5,9 @@ on:
       - 'host/c81-runtime-projection.mjs'
       - 'tests/c81-runtime-projection-100k.test.mjs'
       - 'contracts/c81-runtime-projection.json'
-      - 'docs/C81_PROJECT_RUNTIME_PROJECTOR.txt'
-      - 'docs/C81_RUNTIME_PROJECTION_DOD.md'
-      - 'iKant_UI_shell.md'
+      - 'project/docs/C81_PROJECT_RUNTIME_PROJECTOR.txt'
+      - 'project/docs/C81_RUNTIME_PROJECTION_DOD.md'
+      - 'project/docs/iKant_UI_shell.md'
       - '.github/workflows/c81-runtime-projection.yml'
   push:
     branches: [main]

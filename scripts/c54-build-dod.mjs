@@ -5,7 +5,7 @@ const args=process.argv.slice(2);const arg=(n,d)=>{const i=args.indexOf(n);retur
 const SEL=arg('--selection','/tmp/c54-selection.json'),FAL=arg('--falsification','/tmp/c54-falsification.json'),OUT=arg('--output','/tmp/c54-dod.json');
 const read=p=>fs.readFileSync(p,'utf8'),json=p=>JSON.parse(read(p)),sha=x=>crypto.createHash('sha256').update(Buffer.from(JSON.stringify(x))).digest('hex');
 const contract=json('contracts/host-materialization-profile-v1.json'),sel=json(SEL),fal=json(FAL);
-const frame=read('src/host-consumption-frame.mjs'),deploy=read('src/session-chat-deployment.mjs'),server=read('plugins/ikant-le-session-chat/server/server.mjs'),app=read('plugins/ikant-le-session-chat/server/public/ikant-le-app.html'),wf=read('.github/workflows/c54-host-materialization.yml'),tests=read('tests/c54-host-materialization.test.mjs');
+const frame=read('src/host-consumption-frame.mjs'),deploy=read('src/session-chat-deployment.mjs'),server=read('project/plugins/ikant-le-session-chat/server/server.mjs'),app=read('project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html'),wf=read('.github/workflows/c54-host-materialization.yml'),tests=read('tests/c54-host-materialization.test.mjs');
 const checks={
  D01_RETICULUM_12:contract.mechanisms?.length===12&&contract.qualification?.mechanisms===12,
  D02_PROMISE_36_PLUS_7:frame.includes("atom_count:promiseAtoms.length")&&frame.includes("extension_count:extensions.length")&&contract.host_frame?.post_c29_extension_count===7,

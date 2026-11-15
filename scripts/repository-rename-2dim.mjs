@@ -121,7 +121,7 @@ export function preflightReadOnly(){
  const read=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
  const boot=JSON.parse(read('BOOTSTRAP.json')),admission=JSON.parse(read('ADMISSION.json')),
   orientation=JSON.parse(read('contracts/orientation-capsule.json')),
-  catalog=JSON.parse(read('release/catalog.json'));
+  catalog=JSON.parse(read('project/release/catalog.json'));
  const pins={bootstrap:boot.canonical_repository,admission:admission.repository,
   orientation:orientation.canonical_repository,catalog:catalog.source_of_truth?.repository};
  const old=CONTRACT.repo_name_from;const mismatch=Object.entries(pins).filter(([k,v])=>!String(v||'').includes(old));

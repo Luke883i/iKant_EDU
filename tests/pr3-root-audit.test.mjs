@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,mkdtempSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {HISTORIC,reopenR7SourceEpoch} from '../scripts/r7-v13-epoch-bridge.mjs';
 import {inspectPr3Cut} from '../scripts/pr3-root-audit.mjs';
 const read=x=>JSON.parse(readFileSync(new URL('../'+x,import.meta.url),'utf8'));
 test('PR3 inherits 64 canonical obligations and exactly seven allocated leaves',()=>{
@@ -12,11 +16,24 @@ test('PR3 inherits 64 canonical obligations and exactly seven allocated leaves',
  assert.equal(c.source_root_count,16);assert.equal(c.cut.root_count_after,15);
  assert.equal(c.external_manual_render_config,'UNKNOWN_REQUIRES_OPERATOR_REVIEW');
 });
-test('PR3 exact Git tracked root contraction, no source shadow alias',()=>{
- const r=inspectPr3Cut();
- assert.equal(r.ok,true,JSON.stringify(r.errors));
- assert.equal(r.before_root_count,16);assert.equal(r.after_root_count,15);assert.equal(r.root_delta,-1);
- assert.equal(r.product_go,false);assert.equal(r.live_old_root_consumers.length,0);
+test('PR3 historic 16→15 root cut replays at frozen V10 epoch; V13 cut is separately qualified',()=>{
+ // Execute the ORIGINAL auditor against exactly the original tree, rather than
+ // silently weakening old owner pins to fit a later 7-root candidate.
+ const repo=new URL('../',import.meta.url),dir=mkdtempSync(join(tmpdir(),'pr3-v13-historic-'));
+ try{
+  execFileSync('git',['worktree','add','--detach',dir,HISTORIC],{cwd:repo,stdio:'pipe'});
+  const r=JSON.parse(execFileSync('node',['scripts/pr3-root-audit.mjs'],{cwd:dir,encoding:'utf8'}));
+  assert.equal(r.ok,true,JSON.stringify(r.errors));
+  assert.equal(r.before_root_count,16);assert.equal(r.after_root_count,15);assert.equal(r.root_delta,-1);
+  assert.equal(r.product_go,false);assert.deepEqual(r.live_old_root_consumers,[]);
+  const moved=reopenR7SourceEpoch('contracts/pr3-repository-contraction.v1.json');
+  assert.equal(moved.ok,true);assert.equal(moved.byte_identical,false);
+  assert.equal(moved.status,'PROSPECTIVE_CHANGED_SOURCE_REVIEW_REQUIRED');
+  assert.equal(moved.approval,'NOT_ATTESTED');
+ }finally{
+  try{execFileSync('git',['worktree','remove','--force',dir],{cwd:repo,stdio:'pipe'});}catch{}
+  rmSync(dir,{recursive:true,force:true});
+ }
 });
 test('PR3 historical source decision is preserved and false archive preimage rejected',()=>{
  const current=read('contracts/pr3-repository-contraction.v1.json');

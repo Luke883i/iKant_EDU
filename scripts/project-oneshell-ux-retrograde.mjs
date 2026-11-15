@@ -12,8 +12,8 @@ export const UX_SOURCE_PATHS=Object.freeze([
  'contracts/project-oneshell-visual-v2.json','host/c72-public-mode-admission.mjs',
  'host/c135-edu-v2-owner.mjs','host/project-oneshell-continuous.mjs',
  'host/project-oneshell-chat-presentation.mjs','host/project-oneshell-visual.mjs',
- 'plugins/ikant-le-session-chat/server/server.mjs',
- 'plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
+ 'project/plugins/ikant-le-session-chat/server/server.mjs',
+ 'project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
 ]);
 const rows=[
  ['SOURCE','GIT',[],'Pinned HEAD/TREE and critical original paths, including prompt and plugin'],

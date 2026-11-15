@@ -5,7 +5,7 @@
     "fastboot_carrier_owner": "src/fastboot-convergence.mjs#FASTBOOT_CARRIERS",
     "byte_path_owner": "src/bootstrap-semantic.mjs#ACTIVATION_BYTE_PATHS",
     "caller_kernel": "contracts/session-chat-local-host-kernel.json",
-    "public_prompt": "docs/SESSION_CHAT_LOCAL_PROMPT.md",
+    "public_prompt": "project/docs/SESSION_CHAT_LOCAL_PROMPT.md",
     "history_lineage": "contracts/bootstrap-channel-lineage.json",
     "cartesian_space": "contracts/bootstrap-composition-space.json"
   },
@@ -84,7 +84,7 @@
       "reason": "compatibility/recovery evidence only; cannot select canonical path"
     },
     {
-      "id": "docs/LOCAL_HOST_META_PROMPT.md",
+      "id": "project/docs/LOCAL_HOST_META_PROMPT.md",
       "kind": "prompt",
       "status": "EXCLUDED_NONCANONICAL",
       "reason": "pre-C59 legacy projection"
@@ -102,7 +102,7 @@
       "reason": "C20/reference-app compatibility only"
     },
     {
-      "id": "plugins/ikant-le-session-chat",
+      "id": "project/plugins/ikant-le-session-chat",
       "kind": "host_plugin",
       "status": "EXCLUDED_NONCANONICAL",
       "reason": "optional host integration; not canonical activation dependency"

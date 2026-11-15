@@ -46,7 +46,7 @@
     "runtime_member_required": true,
     "local_readback_required": true,
     "default_effect": "VOICE_STYLE_ONLY",
-    "first_ref": "stile_comunicativo.md",
+    "first_ref": "project/docs/stile_comunicativo.md",
     "authority": 0
   },
   "ascii_shell": {

@@ -4,7 +4,7 @@ on:
     paths:
       - 'host/c103-host-adapter-conformance.mjs'
       - 'contracts/c103-host-adapter-minimum.json'
-      - 'docs/C103_HOST_ADAPTER_INTEROPERABILITY.md'
+      - 'project/docs/C103_HOST_ADAPTER_INTEROPERABILITY.md'
       - 'scripts/c103-falsify-100k.mjs'
       - 'tests/c103-host-adapter.test.mjs'
       - '.github/workflows/c103-host-adapter.yml'

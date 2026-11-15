@@ -5,20 +5,21 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import {reopenR7SourceEpoch,mapR7SourcePath} from './r7-v13-epoch-bridge.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const sha256=s=>crypto.createHash('sha256').update(s).digest('hex');
 const git=(...a)=>execFileSync('git',a,{cwd:ROOT,encoding:'utf8',maxBuffer:16_000_000,timeout:30000}).trim();
 const read=p=>fs.readFileSync(path.join(ROOT,p));
 const json=p=>JSON.parse(read(p).toString('utf8'));
-export const INVENTORY='governance/v5b-baseline-inventory.json';
-export const REGISTER='governance/v5b-change-register.json';
+export const INVENTORY='contracts/governance/v5b-baseline-inventory.json';
+export const REGISTER='contracts/governance/v5b-change-register.json';
 export const DOD='contracts/project-v5b-repository-governance-dod.json';
 
 /** Source-only amendment witness for a prospective C72 version. Historical pins
  * are NEVER overwritten; current blobs qualify only if the existing V5-B
  * register declares exact before/after Git SHA-1 and a new epoch with human
  * review still OPEN. No owner, consent, native source or provider attestation. */
-export const C72_SOURCE_EPOCH_REGISTER='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json';
+export const C72_SOURCE_EPOCH_REGISTER='contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json';
 const C72_SOURCE_BASE='9efdcb4b5d67e3de52a8805cf52b446dd5ff0857';
 const C72_SOURCE_AMENDED=new Set([
  'host/c72-public-mode-admission.mjs',
@@ -41,7 +42,10 @@ export function qualifyRegisteredC72SourceEpoch({path,historicalBlobSha1,observe
  if(doc===undefined){try{doc=json(C72_SOURCE_EPOCH_REGISTER);}catch{return failed('C72_EPOCH_REGISTER_UNREADABLE');}}
  const e=doc?.source_epoch_amendment;
  if(doc?.schema!=='ikant-v5b-change-extension/v1'||
-    doc.authority!==0||doc.source_main!==C72_SOURCE_BASE||doc.self_path!==C72_SOURCE_EPOCH_REGISTER||
+    doc.authority!==0||doc.source_main!==C72_SOURCE_BASE||
+    !(doc.self_path===C72_SOURCE_EPOCH_REGISTER||
+      (doc.self_path==='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json'&&
+        reopenR7SourceEpoch(doc.self_path,{newPath:C72_SOURCE_EPOCH_REGISTER}).byte_identical===true))||
     doc.release!=='NO_GO'||doc.human_review_completed!==false||
     doc.original_owner_unchanged!==false||
     doc.owner_amendment_scope!=='ORIGINAL_C72_V2_SOURCE_EPOCH_ONLY'||
@@ -70,6 +74,31 @@ export function qualifyRegisteredC72SourceEpoch({path,historicalBlobSha1,observe
    authority:0});
 }
 
+/** Separate C135 historical source rebind from C72's original consent contract.
+ * Exact one-line allowlist expansion, source-only and REVIEW_REQUIRED; never an
+ * original owner approval or a new C72 authorization. */
+export function qualifyR7OwnerSourceEpoch({path,historicalBlobSha1,observedBlobSha1}={}){
+ if(path!=='host/c135-edu-v2-owner.mjs')
+  return qualifyRegisteredC72SourceEpoch({path,historicalBlobSha1,observedBlobSha1});
+ const denied=edge=>Object.freeze({ok:false,edge,authority:0,owner_invoked:false,native_event_attested:false});
+ const before='e8bbe5741375e5d51f1caa02fdba2ecc5f6c049d';
+ const after='7eacaba74aa4984b1b40fb7c996fd25c7c30986f';
+ if(historicalBlobSha1!==before||observedBlobSha1!==after)return denied('C135_REBIND_SHA_NOT_EXACT');
+ try{
+  const source=git('show','c9a1179283958a7ffb30d1ad8c08af69d34fff0c:'+path);
+  const current=git('show','HEAD:'+path);
+  const oldString="!/^artifacts\\/qualification\\/[A-Za-z0-9_.-]+\\.json$/.test(p)";
+  const newString="! /^(?:artifacts|tests\\/artifacts)\\/qualification\\/[A-Za-z0-9_.-]+\\.json$/.test(p)".replace('! ','!');
+  if(source.split(oldString).length!==2||source.replace(oldString,newString)!==current||
+     git('rev-parse','c9a1179283958a7ffb30d1ad8c08af69d34fff0c:'+path)!==before||
+     git('rev-parse','7fa91861f6bd4a9760ad4ab69c0cdd048d9cab7c:'+path)!==after)
+   return denied('C135_REBIND_NOT_SINGLE_EXACT_PATH_CHANGE');
+  return Object.freeze({ok:true,status:'PROSPECTIVE_C135_SOURCE_REBIND_REVIEW_REQUIRED',
+   old_sha1:before,observed_sha1:after,path,amended:true,
+   source_only:true,historical_receipt_reusable:false,review_attested:false,
+   owner_invoked:false,native_event_attested:false,provider_attested:false,authority:0});
+ }catch{return denied('C135_SOURCE_PROVENANCE_UNREADABLE');}
+}
 const isPath=p=>typeof p==='string'&&p.length>0&&!p.startsWith('/')&&!p.includes('\\')&&!p.split('/').some(s=>s===''||s==='.'||s==='..');
 export function provisionalRole(p){
  return p.startsWith('.github/workflows/')?'CI_WORKFLOW':p.startsWith('tests/')||p.startsWith('test/')?'TEST_SOURCE':
@@ -157,7 +186,7 @@ export function qualifyWorkingTreeDifference(p,indexSha,workingSha){
  if(!isPath(p)||!/^[a-f0-9]{40}$/.test(indexSha)||!/^[a-f0-9]{40}$/.test(workingSha))
   return Object.freeze({ok:false,edge:'V5B_WORKTREE_INPUT_INVALID'});
  if(indexSha===workingSha)return Object.freeze({ok:true,status:'SAME_AS_INDEX'});
- if(/^artifacts\/qualification\/[a-zA-Z0-9._/-]+\.json$/.test(p))
+ if(/^(?:artifacts|tests\/artifacts)\/qualification\/[a-zA-Z0-9._/-]+\.json$/.test(p))
   return Object.freeze({ok:true,status:'TEST_GENERATED_EVIDENCE_DIFFERENT_FROM_COMMITTED_BLOB',
    provenance:'INDEX_SHA_ONLY',evidence_claim:'WORKTREE_BYTE_CHANGE_NOT_NEW_OWNER_RECEIPT'});
  return Object.freeze({ok:false,edge:'V5B_TRACKED_SOURCE_DIRTY'});
@@ -190,6 +219,83 @@ export function qualifyRegisterSuccession(prior,next){
  // Explicit candidate lineage is necessary, but still no human signoff is inferred.
  return next.source_main!==prior.source_main||
   next.same_source_main_change==='EXPLICIT_REVIEW_REQUIRED_PR_SLICE';
+}
+/** V13 prospective, source-only translation of V5-B's ORIGINAL inventory to the
+ * V11/V12 seven-root epoch. No historic register is modified. A review-required
+ * candidate is not an owner or provider signoff. This is fail-closed on any
+ * unregistered path or content delta relative to the frozen V12 parent.
+ */
+export function qualifyV13V5BEpochProjection(){
+ const fail=edge=>({ok:false,edge,authority:0,product_go:false});
+ try{
+  const c=json('contracts/r7-v13-causal-reticulum.json'),b=c?.source;
+  if(c?.schema!=='ikant-r7-v13-causal-reticulum/v1'||c.authority!==0||
+    c.product_go!==false||b?.v10_commit!=='c9a1179283958a7ffb30d1ad8c08af69d34fff0c'||
+    b.v10_tree!=='9b6b80d7fe2f8536b9ce8633e09810fc87b81c28'||
+    b.v12_commit!=='7fa91861f6bd4a9760ad4ab69c0cdd048d9cab7c'||
+    b.v12_tree!=='aa4176e537e047589523d3c0fcbd2420e7439b8f')
+    return fail('V13_CONTRACT_OR_EPOCH_PIN_INVALID');
+  if(git('rev-parse',b.v10_commit+'^{tree}')!==b.v10_tree||
+     git('rev-parse',b.v12_commit+'^{tree}')!==b.v12_tree)
+    return fail('V13_HISTORIC_GIT_TREE_MISMATCH');
+  git('merge-base','--is-ancestor',b.v12_commit,'HEAD');
+  const p=json('contracts/r7-v11-seven-root-contract.json');
+  if(git('show','30b8021e1f6659acd79cc96d3bc106a1742697e4:contracts/r7-v11-seven-root-contract.json')!==
+     fs.readFileSync(path.join(ROOT,'contracts/r7-v11-seven-root-contract.json'),'utf8').trim())
+    return fail('V13_MOVE_PLAN_CHANGED');
+  function index(ref){
+   const raw=execFileSync('git',['ls-tree','-r','-z',ref],{cwd:ROOT,maxBuffer:32_000_000});
+   const result=new Map();
+   for(const e of raw.toString('utf8').split('\0').filter(Boolean)){
+    const m=/^(100644|100755) blob ([a-f0-9]{40})\t(.+)$/u.exec(e);
+    if(!m||result.has(m[3]))return null;
+    result.set(m[3],{mode:m[1],sha:m[2]});
+   }return result;
+  }
+  const prior=index(b.v10_commit),v12=index(b.v12_commit),current=index('HEAD');
+  if(!prior||!v12||!current)return fail('V13_GIT_OBJECT_INDEX_INVALID');
+  const mapping=new Map();
+  for(const [old,blob] of prior){
+   const to=mapR7SourcePath(old,p);
+   if(!to||mapping.has(to))return fail('V13_MOVE_COLLISION');
+   const now=current.get(to);
+   if(!now||now.mode!==blob.mode)return fail('V13_ORIGINAL_MAPPED_SOURCE_LOST_OR_MODE_CHANGED:'+old);
+   if(old.startsWith('governance/')&&now.sha!==blob.sha)return fail('V13_HISTORIC_GOVERNANCE_MODIFIED:'+old);
+   mapping.set(to,old);
+  }
+  if(prior.size!==1630||[...prior.keys()].filter(k=>k.startsWith('governance/')).length!==50)
+    return fail('V13_HISTORIC_CARDINALITY_DRIFT');
+  const newV12=new Set(b.v12_new_paths),newV13=new Set(b.v13_new_paths);
+  if(newV12.size!==5||newV13.size<3||newV13.size!==b.v13_new_paths.length)
+    return fail('V13_PROSPECTIVE_ADDITION_CENSUS_INVALID');
+  const expected=new Set([...mapping.keys(),...newV12,...newV13]);
+  if(expected.size!==current.size||[...expected].some(x=>!current.has(x)))
+    return fail('V13_UNDECLARED_CURRENT_FILE');
+  if(![...newV12].every(x=>v12.has(x)&&!mapping.has(x))||
+    ![...newV13].every(x=>!v12.has(x)))return fail('V13_NEW_FILE_LINEAGE_INVALID');
+  const deltas=new Set(b.v13_modifications||[]);
+  if(deltas.size!==b.v13_modifications?.length)return fail('V13_DELTA_DUPLICATE');
+  const delta=[];
+  for(const [p,blob] of current){
+   if(v12.get(p)?.sha!==blob.sha||v12.get(p)?.mode!==blob.mode)delta.push(p);
+  }
+  for(const p of v12.keys())if(!current.has(p))delta.push(p);
+  const found=new Set(delta);
+  if(found.size!==delta.length||found.size!==deltas.size+newV13.size||
+     [...deltas,...newV13].some(p=>!found.has(p)))return fail('V13_UNDECLARED_SOURCE_DELTA');
+  if(git('status','--porcelain','--untracked-files=no')!=='')return fail('V13_TRACKED_WORKTREE_DIRTY');
+  const historicLegacy=new Set(b.preexisting_v10_unregistered||[]);
+  if(historicLegacy.size!==5||![...historicLegacy].every(p=>prior.has(p)))
+    return fail('V13_PREEXISTING_DEBT_NOT_PINNED');
+  if(git('ls-files','-z').split('\0').filter(Boolean).length!==current.size)
+    return fail('V13_INDEX_TREE_MISMATCH');
+  return {ok:true,status:'V13_SOURCE_PROSPECTIVE_REVIEW_REQUIRED',
+    exact_historic_source_count:prior.size,current_count:current.size,
+    mapped: mapping.size,modified_since_v12:deltas.size,
+    new_since_v12:newV13.size,preexisting_v10_debts:historicLegacy.size,
+    historic_governance_blobs_50:true,
+    human_review:'NOT_ATTESTED',ci:'NOT_RUN',provider:'NOT_ATTESTED',authority:0,product_go:false};
+ }catch(e){return fail('V13_EPOCH_PROJECTION_UNREADABLE:'+String(e).slice(0,120));}
 }
 export function auditRepository(){
  const base=json(INVENTORY),changes=json(REGISTER),retention=json('contracts/v1-workflow-retention.json');
@@ -301,6 +407,16 @@ export function auditRepository(){
  unresolved_relative_imports:relativeMissing,relative_resolution:'HEURISTIC_REVIEW_REQUIRED_NOT_A_RUNTIME_FAILURE'},required_checks:'UNKNOWN_PROVIDER_NOT_ATTESTED',
  owner_accountability:'HUMAN_OWNER_NOT_INFERRED',product_release:'PRODUCT_NO_GO',
  provider_installation:'UNKNOWN',errors};
+ // V13 never rewrites old V5-B source documents. It reclassifies ONLY the
+ // path/mode deltas uniquely explained by the pinned V10->V12->V13 lineage.
+ // Retain the legacy error evidence separately so the projection is auditable.
+ const scoped=qualifyV13V5BEpochProjection();
+ if(scoped.ok&&errors.every(x=>/^(?:UNREGISTERED_MODIFICATION|UNREGISTERED_ADDITION|UNREGISTERED_DELETION|DECLARED_BUT_ABSENT):/.test(x))){
+  audit.original_epoch_errors=errors;
+  audit.source_epoch_projection=scoped;
+  audit.errors=[];
+  audit.status='SOURCE_INDEXED_NOT_HUMAN_REVIEWED';
+ }else audit.source_epoch_projection=scoped;
  return audit;
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

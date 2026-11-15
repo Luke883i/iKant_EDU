@@ -166,6 +166,6 @@ out={
 "status":"PASS" if hard_stats=={"mismatch":0,"unsafe":0,"false_reject":0} and parent_stats["unsafe"]>0 and len(winners)==1 and winners[0]==ALL and all(v["mismatch"]>0 for v in deletions.values()) else "FAIL"
 }
 x=dict(out);x.pop("receipt_sha256",None);out["receipt_sha256"]=hashlib.sha256(json.dumps(x,sort_keys=True,separators=(",",":")).encode()).hexdigest()
-p=Path("artifacts/qualification/c53-physical-hardening-10m.json");p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(out,indent=2)+"\n")
+p=Path("tests/artifacts/qualification/c53-physical-hardening-10m.json");p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(out,indent=2)+"\n")
 print(json.dumps({"status":out["status"],"parent":parent_stats,"hardened":hard_stats,"semantic_worlds":out["semantic_worlds_observed"],"lattice":out["architecture_lattice"],"receipt":out["receipt_sha256"]}))
 if out["status"]!="PASS":raise SystemExit(1)

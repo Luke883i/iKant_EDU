@@ -6,7 +6,8 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {validateS3Profile} from './cora-s3-convergence.mjs';
-import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {qualifyR7OwnerSourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {reopenR7SourceEpoch} from './r7-v13-epoch-bridge.mjs';
 import {validateFContract} from './cora-pr-f-qualification.mjs';
 import {observeM1Source} from './cora-m1-shared-evidence.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -111,11 +112,14 @@ export function qualifyPr1OneShellPresentation({historicalBlobSha1,observedBytes
  const candidate=Buffer.from(old.replace(before,after),'utf8');
  if(!candidate.equals(observedBytes)||hash(candidate)!==observedSha1)
   return denied('PR1_M2_UNAUTHORIZED_SOURCE_DELTA');
- const regPath='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
+ const regPath='contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
  const row=registration?.paths?.filter(x=>x.path==='host/project-oneshell-edu.mjs')||[];
  if(registration?.schema!=='ikant-v5b-change-extension/v1'||
    registration?.source_main!=='09798d194c1fc6a8557465b8d8875fd1972de940'||
-   registration?.self_path!==regPath||registration?.release!=='NO_GO'||
+   !(registration?.self_path===regPath||
+      (registration?.self_path==='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json'&&
+       reopenR7SourceEpoch(registration.self_path,{newPath:regPath}).byte_identical===true))||
+   registration?.release!=='NO_GO'||
    registration?.human_review_completed!==false||registration?.original_owner_unchanged!==true||
    registration?.native_provider_attested!==false||registration?.product_go!==false||
    row.length!==1||row[0].operation!=='MODIFY'||row[0].human_review!=='REVIEW_REQUIRED'||
@@ -146,10 +150,10 @@ export function observeM2Source(){
   for(const [fpath,expect] of Object.entries(PINS)){
    const b=data('show',head+':'+fpath);
    const sha=git('rev-parse',head+':'+fpath);
-   let epoch=qualifyRegisteredC72SourceEpoch({
+   let epoch=qualifyR7OwnerSourceEpoch({
     path:fpath,historicalBlobSha1:expect,observedBlobSha1:sha});
    if(fpath==='host/project-oneshell-edu.mjs'&&sha!==expect){
-    const regPath='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
+    const regPath='contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
     epoch=qualifyPr1OneShellPresentation({historicalBlobSha1:expect,
      observedBytes:b,observedSha1:sha,registration:JSON.parse(data('show',head+':'+regPath).toString('utf8'))});
    }

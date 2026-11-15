@@ -121,21 +121,23 @@ test('semantic classification requires exact canonical source and leaves ranking
  assert.equal(missing.S3R3,false);
  assert.equal(missing.S3R4,false);
 });
-test('read Git blobs independently at current HEAD, then classify only SOURCE S3',()=>{
+test('current V13 Git readback does not reuse original S3 certification across bootstrap epoch drift',async()=>{
  const r=observeS3Source();
- assert.equal(r.ok,true,JSON.stringify(r));
- assert.equal(r.source_status,'S3_SOURCE_MODEL_QUALIFIED');
- assert.equal(r.observations.length,13);
- assert.equal(r.model.source_model_complete,true);
- assert.equal(r.model.complete_model,false);
- assert.equal(r.negative_admission_gate,true);
- assert.equal(r.first_edge,'S3E1_DYNAMIC_AND_EXTERNAL_CONSUMERS_NOT_ATTESTED');
- assert.equal(r.classifications.C2,'CANONICAL_ZIP_PATH_SOURCE_ONLY');
- assert.equal(r.classifications.C5,'SOURCE_DELEGATION_OWNER_RUNTIME_UNKNOWN');
- assert.equal(r.owner_receipt,'NOT_INVOKED');
+ // S3 was source-qualified at an older epoch; BOOTSTRAP.json has since moved
+ // runtime-root paths and changed its source SHA. S3 must not silently inherit
+ // the original pin, despite the independent seven-root source gate passing.
+ assert.equal(r.ok,false,JSON.stringify(r));
+ assert.equal(r.first_edge,'S3_CRITICAL_BLOB_DRIFT:BOOTSTRAP.json');
+ const {reopenR7SourceEpoch,HISTORIC}=await import('../scripts/r7-v13-epoch-bridge.mjs');
+ const {execFileSync}=await import('node:child_process');
+ const original=execFileSync('git',['rev-parse',HISTORIC+':BOOTSTRAP.json'],{encoding:'utf8'}).trim();
+ const prospect=reopenR7SourceEpoch('BOOTSTRAP.json');
+ assert.equal(prospect.ok,true);assert.equal(prospect.historical_blob,original);
+ assert.equal(prospect.byte_identical,false);
+ assert.equal(prospect.approval,'NOT_ATTESTED');
+ assert.equal(prospect.native_equivalence,'NOT_ATTESTED');
  assert.equal(r.provider,'NOT_ATTESTED');
- assert.equal(r.product_go,false);
- assert.equal(r.archive_allowed,false);
+ assert.equal(r.archive_allowed,false);assert.equal(r.authority,0);
 });
 test('50,000 deterministic falsifiers reject contract drift, fake owner/review and early cleanup',()=>{
  const faults=[

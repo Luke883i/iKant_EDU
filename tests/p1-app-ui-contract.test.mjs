@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
-const app=fs.readFileSync(new URL('../plugins/ikant-le-session-chat/server/public/ikant-le-app.html',import.meta.url),'utf8');
-const server=fs.readFileSync(new URL('../plugins/ikant-le-session-chat/server/server.mjs',import.meta.url),'utf8');
+const app=fs.readFileSync(new URL('../project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html',import.meta.url),'utf8');
+const server=fs.readFileSync(new URL('../project/plugins/ikant-le-session-chat/server/server.mjs',import.meta.url),'utf8');
 const prompt=fs.readFileSync(new URL('../project/oneshell-v7/PROMPT_TEMPLATE.txt',import.meta.url),'utf8');
 const builder=fs.readFileSync(new URL('../scripts/p2-build-oneshell-release.py',import.meta.url),'utf8');
 test('one visible app root has exactly six shell slots and no detached UI',()=>{

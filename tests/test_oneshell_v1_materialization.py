@@ -53,8 +53,8 @@ class SourceMaterialization(unittest.TestCase):
    z.writestr("MANIFEST.json",builder.canonical_json(manifest))
 
   for name in list(builder.ORIENTATION)+list(builder.MANDATORY)+[
-    "docs/IKANT_DOCUMENT_ATLAS.md",
-    "plugins/ikant-le-session-chat/server/server.mjs",
+    "project/docs/IKANT_DOCUMENT_ATLAS.md",
+    "project/plugins/ikant-le-session-chat/server/server.mjs",
   ]:
    p=self.repo/name
    p.parent.mkdir(exist_ok=True,parents=True)
@@ -104,7 +104,7 @@ class SourceMaterialization(unittest.TestCase):
    self.make("invalid.zip")
 
  def test_missing_original_stops(self):
-  git(self.repo,"rm","docs/IKANT_DOCUMENT_ATLAS.md")
+  git(self.repo,"rm","project/docs/IKANT_DOCUMENT_ATLAS.md")
   git(self.repo,"commit","-m","remove mandatory source")
   builder.HEAD=git(self.repo,"rev-parse","HEAD")
   builder.TREE=git(self.repo,"rev-parse","HEAD^{tree}")

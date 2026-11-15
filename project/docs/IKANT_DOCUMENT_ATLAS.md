@@ -1,0 +1,239 @@
+# Atlante completo dei documenti iKant
+
+> Indice generato dal checkout corrente, non contratto runtime. Ogni voce copre un Markdown, anche storico. [Spiegazione dei livelli e DoD](IKANT_DOCUMENT_ONTOLOGY_DOD.md). Nessun link implica che il documento sia stato validato semanticamente.
+
+**Per il pubblico:** [parti da qui](START_HERE.md). **Per gli ingegneri:** [sigle Cx](IKANT_CX_LEXICON.md), [architettura](ARCHITECTURE.md). **Per i ricercatori:** [RQ falsificabili](IKANT_RESEARCH_QUESTIONS.md).
+
+## L0 — Ingresso
+
+- [README.md](../../README.md): Orientamento. Stato di review: **da verificare**.
+
+## L1 — Guide
+
+- [project/docs/IKANT_DOCUMENT_ATLAS.md](IKANT_DOCUMENT_ATLAS.md): Lettura guidata. Stato di review: **da verificare**.
+- [project/docs/IKANT_LOCAL_SETUP.md](IKANT_LOCAL_SETUP.md): Lettura guidata. Stato di review: **da verificare**.
+- [project/docs/PRODUCT_POSITIONING.md](PRODUCT_POSITIONING.md): Lettura guidata. Stato di review: **da verificare**.
+- [project/docs/START_HERE.md](START_HERE.md): Lettura guidata. Stato di review: **da verificare**.
+
+## L2 — Modelli e regole
+
+- [AGENTS.md](../../AGENTS.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
+- [TERMS.md](../../TERMS.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
+- [project/docs/ARCHITECTURE.md](ARCHITECTURE.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/GOVERNANCE.md](GOVERNANCE.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_COGNITIVE_SUBSTRATE.md](IKANT_COGNITIVE_SUBSTRATE.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_CX_LEXICON.md](IKANT_CX_LEXICON.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_CX_POST_EDIT_REVIEW.md](IKANT_CX_POST_EDIT_REVIEW.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_DEVELOPMENT_HISTORY.md](IKANT_DEVELOPMENT_HISTORY.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_DOCUMENT_ONTOLOGY_DOD.md](IKANT_DOCUMENT_ONTOLOGY_DOD.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_EDITORIAL_CONTRACT_AUDIT.md](IKANT_EDITORIAL_CONTRACT_AUDIT.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_NEUROCOGNITIVE_BRIDGE.md](IKANT_NEUROCOGNITIVE_BRIDGE.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_RESEARCH_QUESTIONS.md](IKANT_RESEARCH_QUESTIONS.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_RUNTIME_AND_EVIDENCE.md](IKANT_RUNTIME_AND_EVIDENCE.md): Modelli e prove. Stato di review: **da verificare**.
+- [project/docs/IKANT_SEMANTIC_RETICULUM.md](IKANT_SEMANTIC_RETICULUM.md): Modelli e prove. Stato di review: **da verificare**.
+
+## L3 — Approfondimenti e prove
+
+- [project/docs/BOOTSTRAP.md](BOOTSTRAP.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/BOOTSTRAP_D123_CLOSURE.md](BOOTSTRAP_D123_CLOSURE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/BOOTSTRAP_DECOUPLING_D0.md](BOOTSTRAP_DECOUPLING_D0.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/C100_EXPERIMENTAL_COHOST_DOD.md](C100_EXPERIMENTAL_COHOST_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C100_MERGED_TRAJECTORY.md](C100_MERGED_TRAJECTORY.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C100_PROJECT_HOST_DELTA.md](C100_PROJECT_HOST_DELTA.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C100_QUALIFICATION_BOUNDARY.md](C100_QUALIFICATION_BOUNDARY.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C101_ENGINEERING_DOD.md](C101_ENGINEERING_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C101_LOCAL_COHOST_MACHINE.md](C101_LOCAL_COHOST_MACHINE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C101_PROJECT_HOST_PROJECTION.md](C101_PROJECT_HOST_PROJECTION.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C102_SOFT_HOST_RUNTIME.md](C102_SOFT_HOST_RUNTIME.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C103_HOST_ADAPTER_INTEROPERABILITY.md](C103_HOST_ADAPTER_INTEROPERABILITY.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C104_MATERIALIZATION_AND_ADAPTER.md](C104_MATERIALIZATION_AND_ADAPTER.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C105_NERVA_ADAPTER.md](C105_NERVA_ADAPTER.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C107_CARRIER_CONSUMER_DOD.md](C107_CARRIER_CONSUMER_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C107_EXPERIMENTAL_RELEASE_DOD.md](C107_EXPERIMENTAL_RELEASE_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C107_ONE_CARRIER_RELEASE_V8.md](C107_ONE_CARRIER_RELEASE_V8.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C130_PRODUCT_DOD.md](C130_PRODUCT_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C132_ENTERPRISE_CANDIDATE.md](C132_ENTERPRISE_CANDIDATE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C133_SHADOW_LANGUAGE_BRIDGE.md](C133_SHADOW_LANGUAGE_BRIDGE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C134_COGNITIVE_SOURCE_EPOCH.md](C134_COGNITIVE_SOURCE_EPOCH.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C135_EDU_COGNITIVE_OWNER.md](C135_EDU_COGNITIVE_OWNER.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C136_CANONICAL_RECOVERY.md](C136_CANONICAL_RECOVERY.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C136_P0_POST133.md](C136_P0_POST133.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C139_EDU_EPISTEMIC_ROUTE.md](C139_EDU_EPISTEMIC_ROUTE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C140_SEMANTIC_RUNTIME_PR.md](C140_SEMANTIC_RUNTIME_PR.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C1_DOD.md](C1_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C24_CI_TIMEOUT_FIX.md](C24_CI_TIMEOUT_FIX.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C28_FULL_IKANT_ABSORPTION.md](C28_FULL_IKANT_ABSORPTION.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C29_ONTOLOGICAL_PROMISE.md](C29_ONTOLOGICAL_PROMISE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C2_DOD.md](C2_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C30_ACTIVATION_SERVICE_SPECTRUM.md](C30_ACTIVATION_SERVICE_SPECTRUM.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C31_RUNTIME_LIMITED_SUPPLY_CHAIN.md](C31_RUNTIME_LIMITED_SUPPLY_CHAIN.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C33_POST_187_ONTOLOGICAL_CLOSURE.md](C33_POST_187_ONTOLOGICAL_CLOSURE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C36_SEMANTIC_MORPHOGENESIS_OPERATIONAL_SUBJECT.md](C36_SEMANTIC_MORPHOGENESIS_OPERATIONAL_SUBJECT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C3_DOD.md](C3_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C40_BOOTSTRAP_REENTRY_CLOSURE.md](C40_BOOTSTRAP_REENTRY_CLOSURE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C41_CARRIER_LOCAL_RETRY_UX_CONTINUITY.md](C41_CARRIER_LOCAL_RETRY_UX_CONTINUITY.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C42_BOOTSTRAP_ONTOLOGICAL_CLOSURE.md](C42_BOOTSTRAP_ONTOLOGICAL_CLOSURE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C43_BOOTSTRAP_RECOVERY_HARDENING.md](C43_BOOTSTRAP_RECOVERY_HARDENING.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C44_METHODOLOGICAL_BOOTSTRAP_ASCII_SHELL.md](C44_METHODOLOGICAL_BOOTSTRAP_ASCII_SHELL.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C45_CONTEXT_ROOT_ASCII_COHOST_CLOSURE.md](C45_CONTEXT_ROOT_ASCII_COHOST_CLOSURE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C4_DOD.md](C4_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C54_HOST_MATERIALIZATION.md](C54_HOST_MATERIALIZATION.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C56_LOCAL_HOST_SESSION_META_PROMPT.md](C56_LOCAL_HOST_SESSION_META_PROMPT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C57_HOST_BINDING_AWARE_META_PROMPT.md](C57_HOST_BINDING_AWARE_META_PROMPT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C59_PR1_68_LINEAGE_AUDIT.md](C59_PR1_68_LINEAGE_AUDIT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C59_SINGLE_COMPOSITION_CHANNEL.md](C59_SINGLE_COMPOSITION_CHANNEL.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C5_DOD.md](C5_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C63_CANONICAL_PARALLEL_HOST_BRIDGE.md](C63_CANONICAL_PARALLEL_HOST_BRIDGE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C67_PROJECT_CHATGPT_ADAPTER.md](C67_PROJECT_CHATGPT_ADAPTER.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C68_PROJECT_CHATGPT_ADAPTER.md](C68_PROJECT_CHATGPT_ADAPTER.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C69_CAPABILITY_FIRST_EXPERIMENTAL.md](C69_CAPABILITY_FIRST_EXPERIMENTAL.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C69_PROJECT_CHATGPT_ADAPTER.md](C69_PROJECT_CHATGPT_ADAPTER.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C6_DOD.md](C6_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C70_CAPABILITY_FRONTIER.md](C70_CAPABILITY_FRONTIER.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C71_CX_RUNTIME_CLOSURE_AUDIT.md](C71_CX_RUNTIME_CLOSURE_AUDIT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C71_PROJECT_CHATGPT_ADAPTER.md](C71_PROJECT_CHATGPT_ADAPTER.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C72_HOST_ASSISTED_LOCAL_FILE_CARRIER.md](C72_HOST_ASSISTED_LOCAL_FILE_CARRIER.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C72_HOST_TOOL_TO_NODE_RELAY.md](C72_HOST_TOOL_TO_NODE_RELAY.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C72_UNIFIED_ADMISSION_AND_VALUE.md](C72_UNIFIED_ADMISSION_AND_VALUE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C73_BRANDED_SHELL_CAPSULE.md](C73_BRANDED_SHELL_CAPSULE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C74_POSTMERGE_ONTOLOGY_DOD.md](C74_POSTMERGE_ONTOLOGY_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C76_FARO_METHOD.md](C76_FARO_METHOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C77_C78_H95_SEMANTIC_SLICES.md](C77_C78_H95_SEMANTIC_SLICES.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C78_PHYSICAL_HOST_BRIDGE.md](C78_PHYSICAL_HOST_BRIDGE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C79_NATIVE_CHAT_WITNESS_DOD.md](C79_NATIVE_CHAT_WITNESS_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C80_HOST_WITNESS_AND_H95.md](C80_HOST_WITNESS_AND_H95.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C81_GIT_SOURCE_REACHABILITY.md](C81_GIT_SOURCE_REACHABILITY.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C81_RUNTIME_PROJECTION_DOD.md](C81_RUNTIME_PROJECTION_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C82_EXPERIMENTAL_SEMANTIC_RELEASE.md](C82_EXPERIMENTAL_SEMANTIC_RELEASE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C82_PROJECT_ADAPTER_CANDIDATE.md](C82_PROJECT_ADAPTER_CANDIDATE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C83_PRODUCT_GATE_AND_MUTATION_AUDIT.md](C83_PRODUCT_GATE_AND_MUTATION_AUDIT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C84_HOST_COMPOSITION_CONVERGENCE.md](C84_HOST_COMPOSITION_CONVERGENCE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C91_CAPABILITY_THESIS.md](C91_CAPABILITY_THESIS.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C91_DOD.md](C91_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C91_FALSIFICATION_REPORT.md](C91_FALSIFICATION_REPORT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C91_MEASUREMENT_PROTOCOL.md](C91_MEASUREMENT_PROTOCOL.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C92_COMMIT_LATTICE.md](C92_COMMIT_LATTICE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C92_DEFINITION_OF_DONE.md](C92_DEFINITION_OF_DONE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C92_FORENSIC_RELEASE.md](C92_FORENSIC_RELEASE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C92_GITHUB_TRANSPLANT.md](C92_GITHUB_TRANSPLANT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C93_SOURCE_BOUND_DIAGNOSTIC_AND_DOD.md](C93_SOURCE_BOUND_DIAGNOSTIC_AND_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C94_FORENSIC_HARDENING_REPORT.md](C94_FORENSIC_HARDENING_REPORT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C94_GLOBAL_TRAJECTORY_AND_DOD.md](C94_GLOBAL_TRAJECTORY_AND_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C94_HOST_APPLICATION_DEPLOYMENT.md](C94_HOST_APPLICATION_DEPLOYMENT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C95_TRAJECTORY_LOSSLESS_AND_DOD.md](C95_TRAJECTORY_LOSSLESS_AND_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C96_AUDIT_REPORT.md](C96_AUDIT_REPORT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C96_GITHUB_TRANSPLANT_PROVENANCE.md](C96_GITHUB_TRANSPLANT_PROVENANCE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C96_REVERSE_DOD_AND_CRITICAL_PATH.md](C96_REVERSE_DOD_AND_CRITICAL_PATH.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C97_CHAT_PROJECT_UIUX_PREPR.md](C97_CHAT_PROJECT_UIUX_PREPR.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_FORENSIC_QUALIFICATION.md](C98_FORENSIC_QUALIFICATION.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_MATURATION_H95_AND_CLOSURE.md](C98_MATURATION_H95_AND_CLOSURE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_PHASE2_SOURCE_EXACT_TRANSPLANT.md](C98_PHASE2_SOURCE_EXACT_TRANSPLANT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_PR_REAL_TRANSPLANT_SCOPE.md](C98_PR_REAL_TRANSPLANT_SCOPE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_REVERSE_DOD_AND_GAP_MATRIX.md](C98_REVERSE_DOD_AND_GAP_MATRIX.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_V3_PROGRESS_AND_UNCLOSED_DOD.md](C98_V3_PROGRESS_AND_UNCLOSED_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_V4_HOST_PORTABLE_MVP.md](C98_V4_HOST_PORTABLE_MVP.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_V5_HOST_INSTALLATION_REALITY.md](C98_V5_HOST_INSTALLATION_REALITY.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_V6_PROJECT_3MD_MINIMAL_MVP.md](C98_V6_PROJECT_3MD_MINIMAL_MVP.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C98_V6_QUALIFICATION_AND_DELTA.md](C98_V6_QUALIFICATION_AND_DELTA.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C99_FORENSIC_ROUTE_CLOSURE.md](C99_FORENSIC_ROUTE_CLOSURE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C99_FORENSIC_V5_ADOPTION.md](C99_FORENSIC_V5_ADOPTION.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C99_LAST30_CIRCULARITY_AUDIT.md](C99_LAST30_CIRCULARITY_AUDIT.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C99_PROXY_HOST_INPUT_HARDENING.md](C99_PROXY_HOST_INPUT_HARDENING.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/C99_V6_USER_UPLOAD_EVIDENCE.md](C99_V6_USER_UPLOAD_EVIDENCE.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
+- [project/docs/CORA_PR_A_BACKLOG.md](CORA_PR_A_BACKLOG.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/CP11_REBASED_SEMANTIC_DOD.md](CP11_REBASED_SEMANTIC_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_BOOTSTRAP_PARETO_10K.md](EDU_BOOTSTRAP_PARETO_10K.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_C125_UI_DOD.md](EDU_C125_UI_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_C126_POST125_HARDENING.md](EDU_C126_POST125_HARDENING.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_C127_MIND_TRANSPORT_DOD.md](EDU_C127_MIND_TRANSPORT_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_C127_TEXT_LINEAGE.md](EDU_C127_TEXT_LINEAGE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_C128_SOURCE_CACHE_DOD.md](EDU_C128_SOURCE_CACHE_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_C129_MANUAL_FIRST_COGNITION_SLICE.md](EDU_C129_MANUAL_FIRST_COGNITION_SLICE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_HOST_WHAT_HOW_V2.md](EDU_HOST_WHAT_HOW_V2.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_MVP_HOSTBOUND_RELEASE_PATH.md](EDU_MVP_HOSTBOUND_RELEASE_PATH.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_ONEZIP_POSTACCEPT_FIELD_ROUTE.md](EDU_ONEZIP_POSTACCEPT_FIELD_ROUTE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_ORIGINAL_C135_COLD_REBIND_DOD.md](EDU_ORIGINAL_C135_COLD_REBIND_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_SINGLE_EXPERIMENTAL_PRODUCT_RUNTIME.md](EDU_SINGLE_EXPERIMENTAL_PRODUCT_RUNTIME.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_V10_POST122_MIND_TERMINAL.md](EDU_V10_POST122_MIND_TERMINAL.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_V7_PR119_CONVERGENCE.md](EDU_V7_PR119_CONVERGENCE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_V8_HOLISTIC_TRAJECTORY_AND_DOD.md](EDU_V8_HOLISTIC_TRAJECTORY_AND_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_V9_FIRST_ATTEMPT_LINEAR_ROUTE.md](EDU_V9_FIRST_ATTEMPT_LINEAR_ROUTE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/GENESIS_AUDIT.md](GENESIS_AUDIT.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/HOST_IKANT_EDU_BRAND_RUNTIME_PR.md](HOST_IKANT_EDU_BRAND_RUNTIME_PR.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/HOST_NEGATIVE_SEMANTIC_R3.md](HOST_NEGATIVE_SEMANTIC_R3.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/I10_TWO_PRODUCTS.md](I10_TWO_PRODUCTS.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/IKANT_ONESHELL_BRAND_P0_AND_REGISTRATION_READINESS.md](IKANT_ONESHELL_BRAND_P0_AND_REGISTRATION_READINESS.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/LOCAL_HOST_META_PROMPT.md](LOCAL_HOST_META_PROMPT.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/MCP_EXTERNAL_ADVANCED_V2_PREPR.md](MCP_EXTERNAL_ADVANCED_V2_PREPR.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/MCP_EXTERNAL_PREPR_20261020.md](MCP_EXTERNAL_PREPR_20261020.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/NEEDLE_SHADOW_RUNTIME_V1.md](NEEDLE_SHADOW_RUNTIME_V1.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/ONESHELL_E12_FOCUS_APP_POST182.md](ONESHELL_E12_FOCUS_APP_POST182.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/ONESHELL_E14_C72_RECEIPT_TRANSIT.md](ONESHELL_E14_C72_RECEIPT_TRANSIT.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/ONESHELL_EDU_HOST_BOUNDARY_PR.md](ONESHELL_EDU_HOST_BOUNDARY_PR.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/ONESHELL_POSTACCEPT_RAIL_AUDIT_E9.md](ONESHELL_POSTACCEPT_RAIL_AUDIT_E9.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/ONESHELL_THREAD_SESSION_V1.md](ONESHELL_THREAD_SESSION_V1.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/ONESHell_APP_FINISH_CONTRACT.md](ONESHell_APP_FINISH_CONTRACT.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/ONESHell_MINIMUM_CONVERGENCE.md](ONESHell_MINIMUM_CONVERGENCE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/ONESHell_PRODUCT_CI_RELEASE_GATE.md](ONESHell_PRODUCT_CI_RELEASE_GATE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/POST118_RISK_AND_SCOPE.md](POST118_RISK_AND_SCOPE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PR1_PRODUCT_TRUTH_DOD.md](PR1_PRODUCT_TRUTH_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PR2_RUNTIME_DOD_OF_DOD.md](PR2_RUNTIME_DOD_OF_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PR3_REPOSITORY_CONTRACTION_DOD.md](PR3_REPOSITORY_CONTRACTION_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PRODUCT_DASHBOARD.md](PRODUCT_DASHBOARD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_C72_BOOTSTRAP_WITNESS_AND_BRIDGE_P0.md](PROJECT_C72_BOOTSTRAP_WITNESS_AND_BRIDGE_P0.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_C72_HOST_PORT_P0.md](PROJECT_C72_HOST_PORT_P0.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_C72_POSTACCEPT_REENTRY_AND_BRAND.md](PROJECT_C72_POSTACCEPT_REENTRY_AND_BRAND.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_C72_PREACCEPT_REGRESSION.md](PROJECT_C72_PREACCEPT_REGRESSION.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_EDU_E16_UNIFIED_INGRESS.md](PROJECT_EDU_E16_UNIFIED_INGRESS.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_EDU_H1_FIELD_BOUNDARY.md](PROJECT_EDU_H1_FIELD_BOUNDARY.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_EDU_V1_EXPERIMENTAL_RELEASE.md](PROJECT_EDU_V1_EXPERIMENTAL_RELEASE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_HOST_K0_WHAT_HOW_R4.md](PROJECT_HOST_K0_WHAT_HOW_R4.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_HOST_K1_CONSTITUTIONAL_EVIDENCE.md](PROJECT_HOST_K1_CONSTITUTIONAL_EVIDENCE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_HOST_K1_INTEGRATED_DOD.md](PROJECT_HOST_K1_INTEGRATED_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_HOST_TOOL_GROUNDING_ABI.md](PROJECT_HOST_TOOL_GROUNDING_ABI.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_META_PROMPT_COBOL.md](PROJECT_META_PROMPT_COBOL.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_P0_BRAND_C72_HOST_ENFORCEMENT.md](PROJECT_P0_BRAND_C72_HOST_ENFORCEMENT.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_PE_BOOTSTRAP_RETROGRADE.md](PROJECT_PE_BOOTSTRAP_RETROGRADE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/PROJECT_SESSION_REPO_FIRST.md](PROJECT_SESSION_REPO_FIRST.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/QUALIFICATION.md](QUALIFICATION.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/R7_V11_SEVEN_ROOTS.md](R7_V11_SEVEN_ROOTS.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/RENAME_IKANT_EDU_2DIM_E2E.md](RENAME_IKANT_EDU_2DIM_E2E.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/REPOSITORY_HEALTH_V10.md](REPOSITORY_HEALTH_V10.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/RESEARCH_LEDGER.md](RESEARCH_LEDGER.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/S01_PUBLIC_EDU_CANONICAL_ADMISSION.md](S01_PUBLIC_EDU_CANONICAL_ADMISSION.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/S03_S09_POST137_RUNTIME_COMPLETION.md](S03_S09_POST137_RUNTIME_COMPLETION.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/S05_CIL_HUMAN_SHELL_POC.md](S05_CIL_HUMAN_SHELL_POC.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/SESSION_CHAT_LOCAL_PROMPT.md](SESSION_CHAT_LOCAL_PROMPT.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/V1_E2E_TRACEABILITY.md](V1_E2E_TRACEABILITY.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/V1_GOLD_MIGRATION.md](V1_GOLD_MIGRATION.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/V1_PRODUCT_DECISIONS.md](V1_PRODUCT_DECISIONS.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/iKant_UI_shell.md](iKant_UI_shell.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/rename-sequence/S01_SHADOW_CUTOVER_DOD.md](rename-sequence/S01_SHADOW_CUTOVER_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/stile_comunicativo.md](stile_comunicativo.md): Documentazione specialistica. Stato di review: **da verificare**.
+
+## L4 — Storico e integrazioni
+
+- [project/EDU_HOST_PROJECT_DELTA_V19.md](../EDU_HOST_PROJECT_DELTA_V19.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/baseline/INSTALL_EASY.md](../baseline/INSTALL_EASY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/baseline/PROJECT_FILES/iKant_ENGINE.md](../baseline/PROJECT_FILES/iKant_ENGINE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/baseline/PROJECT_FILES/iKant_GATE.md](../baseline/PROJECT_FILES/iKant_GATE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/baseline/PROJECT_FILES/iKant_UI_shell.md](../baseline/PROJECT_FILES/iKant_UI_shell.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/docs/archive/prepr/README_C94_PREPR.md](archive/prepr/README_C94_PREPR.md): Storico. Stato di review: **da verificare**.
+- [project/docs/archive/prepr/README_C96_PREPR.md](archive/prepr/README_C96_PREPR.md): Storico. Stato di review: **da verificare**.
+- [project/docs/archive/prepr/README_C98_PREPR.md](archive/prepr/README_C98_PREPR.md): Storico. Stato di review: **da verificare**.
+- [project/edu-oneshell/00_HOST_CONTRACT.md](../edu-oneshell/00_HOST_CONTRACT.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/edu-oneshell/DOD.md](../edu-oneshell/DOD.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/edu-oneshell/SLIDE.md](../edu-oneshell/SLIDE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/00_README.md](../oneshell-v7/00_README.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/01_PHASES.md](../oneshell-v7/01_PHASES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/02_PROOFS.md](../oneshell-v7/02_PROOFS.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/03_SLIDES.md](../oneshell-v7/03_SLIDES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/04_FILLER.md](../oneshell-v7/04_FILLER.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/05_ANNEX.md](../oneshell-v7/05_ANNEX.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/06_PLUGIN.md](../oneshell-v7/06_PLUGIN.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/07_ROADMAP.md](../oneshell-v7/07_ROADMAP.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/08_RELEASE_BOUNDARY.md](../oneshell-v7/08_RELEASE_BOUNDARY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/09_ADAPTER_RECIPES.md](../oneshell-v7/09_ADAPTER_RECIPES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/10_MVP_DO_D.md](../oneshell-v7/10_MVP_DO_D.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/plugins/ikant-le-session-chat/README.md](../plugins/ikant-le-session-chat/README.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+

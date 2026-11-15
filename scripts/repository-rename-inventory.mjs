@@ -13,13 +13,13 @@ const OLD='Luke883i/iKant_LE';
 const CORE=new Set([
  'BOOTSTRAP.json','ADMISSION.json','README.md','AGENTS.md','TERMS.md',
  'contracts/orientation-capsule.json','project/session-chat/PROMPT.txt',
- 'release/catalog.json','plugins/ikant-le-session-chat/plugin.json'
+ 'project/release/catalog.json','project/plugins/ikant-le-session-chat/plugin.json'
 ]);
 export function classify(pathname){
  if(CORE.has(pathname)||/^host\/.*c72/i.test(pathname)||/^src\/(first-contact|admission|runtime-root-verified)\.mjs$/.test(pathname))return 'ORIGINAL_OR_ENTRY_CRITICAL';
  if(pathname.startsWith('.github/workflows/'))return 'CI_WORKFLOW_REVIEW';
  if(pathname.startsWith('tests/'))return 'TEST_REGRESSION';
- if(pathname.startsWith('docs/archive/'))return 'HISTORICAL_PRESERVE';
+ if(pathname.startsWith('project/docs/archive/'))return 'HISTORICAL_PRESERVE';
  if(pathname.startsWith('docs/')||pathname.startsWith('governance/'))return 'DOCUMENTATION_REVIEW';
  if(/^(src|host|scripts|contracts|project|plugins|release|assets)\//.test(pathname))return 'ACTIVE_CODE_REVIEW';
  return 'UNCLASSIFIED_REVIEW';

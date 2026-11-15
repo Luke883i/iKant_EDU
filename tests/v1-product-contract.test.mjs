@@ -8,7 +8,7 @@ const root=path.dirname(fileURLToPath(new URL('../package.json',import.meta.url)
 const text=p=>fs.readFileSync(path.join(root,p),'utf8');
 const json=p=>JSON.parse(text(p));
 test('one V1 experimental version across packaging, governance, README',()=>{
- const pkg=json('package.json'),catalog=json('release/catalog.json'),v=json('contracts/v1-product-baseline.json');
+ const pkg=json('package.json'),catalog=json('project/release/catalog.json'),v=json('contracts/v1-product-baseline.json');
  assert.equal(pkg.version,'1.0.0-edu.1');assert.equal(pkg.version,catalog.product_version);assert.equal(pkg.version,v.product_version);
  assert.equal(v.source_of_truth,'COMMIT_ON_MAIN_AFTER_MERGE_AND_SEPARATE_RELEASE');
  assert.equal(v.canonical_native_active_attested,false);assert.equal(v.external_model_cognitive_uplift_attested,false);
@@ -18,7 +18,7 @@ test('one V1 experimental version across packaging, governance, README',()=>{
 });
 test('README invites a beginner first then gives exact technical provenance',()=>{
  const r=text('README.md');assert.match(r,/# iKant.*risposte guidate/u);
- for(const x of ['Cosa ottieni oggi','Cosa non e','docs/START_HERE.md','docs/PRODUCT_DASHBOARD.md','docs/V1_PRODUCT_DECISIONS.md','docs/V1_E2E_TRACEABILITY.md','TERMS.md','npm test','npm run check'])assert.ok(r.includes(x),x);
+ for(const x of ['Cosa ottieni oggi','Cosa non e','project/docs/START_HERE.md','project/docs/PRODUCT_DASHBOARD.md','project/docs/V1_PRODUCT_DECISIONS.md','project/docs/V1_E2E_TRACEABILITY.md','TERMS.md','npm test','npm run check'])assert.ok(r.includes(x),x);
  assert.ok(!r.includes('CANONICAL ACTIVE ottenuto'), 'unproven claim');
  // Full standalone root README explicitly approved by the human owner.
  // The former <4300 byte shortcut has been replaced by a bounded content DoD:
@@ -30,15 +30,15 @@ test('README invites a beginner first then gives exact technical provenance',()=
   '## Modalità e bootstrap', '## Tre domande di ricerca',
   '## Metodo end-to-end, sviluppo e lettori', 'Node.js **20+**',
   'C4', 'C5', 'C8/C11', 'neuroni', 'sinapsi', 'UNKNOWN',
-  'C87', 'C125', 'docs/IKANT_COGNITIVE_SUBSTRATE.md',
-  'docs/IKANT_DEVELOPMENT_HISTORY.md', 'docs/IKANT_SEMANTIC_RETICULUM.md'
+  'C87', 'C125', 'project/docs/IKANT_COGNITIVE_SUBSTRATE.md',
+  'project/docs/IKANT_DEVELOPMENT_HISTORY.md', 'project/docs/IKANT_SEMANTIC_RETICULUM.md'
  ])assert.ok(r.includes(required),'standalone DoD missing '+required);
  assert.match(r,/<details>[\s\S]*<summary>[\s\S]*<\/details>/);
  assert.ok(!r.includes('CANONICAL ACTIVE ottenuto'),'no unproven native activation');
 });
 test('documentation links and declared local witnesses exist, but proofs are graded',()=>{
- for(const f of ['docs/V1_PRODUCT_DECISIONS.md','docs/V1_E2E_TRACEABILITY.md','docs/START_HERE.md','release/catalog.json','contracts/v1-product-baseline.json'])assert.ok(fs.statSync(path.join(root,f)).isFile(),f);
- const map=text('docs/V1_E2E_TRACEABILITY.md');for(let i=1;i<=13;i++)assert.ok(map.includes('V1-'+String(i).padStart(2,'0')));
+ for(const f of ['project/docs/V1_PRODUCT_DECISIONS.md','project/docs/V1_E2E_TRACEABILITY.md','project/docs/START_HERE.md','project/release/catalog.json','contracts/v1-product-baseline.json'])assert.ok(fs.statSync(path.join(root,f)).isFile(),f);
+ const map=text('project/docs/V1_E2E_TRACEABILITY.md');for(let i=1;i<=13;i++)assert.ok(map.includes('V1-'+String(i).padStart(2,'0')));
  assert.match(map,/NON DIMOSTRATO/);assert.match(map,/NON INSTALLATO/);
 });
 test('runtime semantic kernel version may differ from distribution version but is explicit',()=>{

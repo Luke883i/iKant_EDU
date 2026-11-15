@@ -21,7 +21,7 @@ for(let i=0;i<70;i++){const e=census.entries[i];
 }
 const head=git('rev-parse','HEAD');
 const files=[...paths].sort().map(p=>{
- if(!/^(?:README\.md|(?:host|src|scripts|contracts|assets\/brand)\/[A-Za-z0-9_.\/-]+)$/.test(p)||p.includes('..'))
+ if(!/^(?:README\.md|(?:host|src|scripts|contracts|project\/assets\/brand)\/[A-Za-z0-9_.\/-]+)$/.test(p)||p.includes('..'))
   throw Error('C104_PATH_DRIFT');
  const b=fs.readFileSync(path.join(root,p));const sha=git('rev-parse','HEAD:'+p);
  const actual=crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex');

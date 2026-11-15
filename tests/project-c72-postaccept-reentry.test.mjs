@@ -45,7 +45,7 @@ test('10k deterministic cross product: unobserved owner and visual brand are fai
  const callableContexts=['EXECUTOR_UNKNOWN','OWNER_LOADED','MODULE_ABSENT_PROVED','BRIDGE_UNMEASURED','NODE_READY','EXECUTION_NOT_TESTED','MODULE_INCOMPATIBLE','CALLBACK_READY','VERSION_UNCHECKED','TOOL_NAME_MISSING'];
  const outcomeContexts=['BEFORE_ACCEPT','ORIGINAL_RECEIPT','OWNER_THROW','TOOL_TIMEOUT','AFTER_TERMS','OWNER_LINKED_INTRO','UNKNOWN_TRANSPORT','CRYPTO_FAILURE','FIRST_MESSAGE','CATALOG_FALLBACK'];
  const receiptContexts=['NO_RECEIPT','VALID_LINK_OFFER','WRONG_DIGEST','NOT_READ_BACK','VALID_ACCEPTANCE','WRONG_HEAD','VALID_INTRO','UNRETURNED','TAMPERED','VALID_SELECTION'];
- const trace=[],schema=new Set(),gold=createHash('sha256').update(readFileSync(new URL('../assets/brand/ikant-light.svg',import.meta.url))).digest('hex');
+ const trace=[],schema=new Set(),gold=createHash('sha256').update(readFileSync(new URL('../project/assets/brand/ikant-light.svg',import.meta.url))).digest('hex');
  for(let i=0;i<10000;i++){
   const a=i%10,b=Math.floor(i/10)%10,c=Math.floor(i/100)%10,d=Math.floor(i/1000)%10;
   const evidence={discovery:discoveries[a],callability:callabilities[b],outcome:outcomes[c],receipt:receipts[d]};

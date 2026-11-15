@@ -26,7 +26,7 @@ function verify(expected){
  const names=new Set();
  for(const f of m.files){
   if(typeof f.path!=='string'||f.path.includes('..')||
-    !/^(README\.md|(?:host|src|contracts|assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(f.path)||
+    !/^(README\.md|(?:host|src|contracts|project\/assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(f.path)||
     names.has(f.path)||!H64.test(f.sha256)||!Number.isInteger(f.bytes))
     throw Error('BUNDLE_FILE_MANIFEST_INVALID');
   names.add(f.path);
@@ -37,8 +37,8 @@ function verify(expected){
     throw Error('BUNDLE_FILE_DIGEST_MISMATCH:'+f.path);
  }
  for(const p of ['README.md','contracts/c71-cx-execution-census.json',
-  'contracts/c77-cx-build-proof.json','assets/brand/ikant-light.svg',
-  'assets/brand/ikant-dark.svg','src/c71-experimental-host-draft.mjs',
+  'contracts/c77-cx-build-proof.json','project/assets/brand/ikant-light.svg',
+  'project/assets/brand/ikant-dark.svg','src/c71-experimental-host-draft.mjs',
   'src/c70-experimental-compute-preview.mjs','host/c77-qualified-census.mjs'])
   if(!names.has(p))throw Error('REQUIRED_MODULE_MISSING:'+p);
  const proof=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/c77-cx-build-proof.json')));

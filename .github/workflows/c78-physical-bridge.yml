@@ -6,7 +6,7 @@ on:
       - 'scripts/c78-*'
       - 'tests/c78-*'
       - 'contracts/c78-*'
-      - 'docs/C78_*'
+      - 'project/docs/C78_*'
       - '.github/workflows/c78-physical-bridge.yml'
   push:
     branches: [main]

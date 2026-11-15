@@ -75,7 +75,7 @@
       "unsafe": 0,
       "false_reject": 277
     },
-    "c49_tiered_profile": "artifacts/qualification/c49-tiered-cohost-closure-1k.json"
+    "c49_tiered_profile": "tests/artifacts/qualification/c49-tiered-cohost-closure-1k.json"
   },
   "canonical_profile": "contracts/cohost-closure-profile.json",
   "canonical_profile_semantic_sha256": "07df3f7726e00586900e83726a8cbd5b45e243f476160783c7c770bb75c63fe9",

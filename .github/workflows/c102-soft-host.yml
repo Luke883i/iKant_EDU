@@ -5,7 +5,7 @@ on:
       - 'host/c102-soft-host-bridge.mjs'
       - 'scripts/c102-soft-host-cli.mjs'
       - 'tests/c102-real-source.test.mjs'
-      - 'docs/C102_SOFT_HOST_RUNTIME.md'
+      - 'project/docs/C102_SOFT_HOST_RUNTIME.md'
       - '.github/workflows/c102-soft-host.yml'
   workflow_dispatch:
 permissions:

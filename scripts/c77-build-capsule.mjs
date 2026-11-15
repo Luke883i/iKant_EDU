@@ -27,14 +27,14 @@ const dataPaths=[
  'contracts/c72-unified-mode-admission.json','contracts/cognitive-kernel.json',
  'contracts/host-shell.json','contracts/psyche-kernel.json',
  'contracts/self-world-kernel.json',
- 'assets/brand/ikant-light.svg','assets/brand/ikant-dark.svg'
+ 'project/assets/brand/ikant-light.svg','project/assets/brand/ikant-dark.svg'
 ];
 const allPaths=new Set([...codePaths,...dataPaths]);
 const relative=(source,rel)=>path.posix.normalize(path.posix.join(path.posix.dirname(source),rel));
 const importRe=/\b(?:from\s*|import\s*)['"](\.[^'"]+)['"]/g;
 function validateSources(){
  for(const p of allPaths){
-  if(!/^(?:README\.md|(?:host|src|contracts|assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(p)||p.includes('..'))
+  if(!/^(?:README\.md|(?:host|src|contracts|project\/assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(p)||p.includes('..'))
    throw Error('INVALID_BUNDLE_PATH:'+p);
   const b=read(p);
   const source=git('rev-parse','HEAD:'+p);

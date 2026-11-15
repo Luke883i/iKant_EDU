@@ -6,7 +6,7 @@
   "release_carrier_sha256": "d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d",
   "release_commit": "cf213a2276802d73e844b706e6cd8431bc76bed6",
   "reuse_pr118": [
-    "release/v8/ikant-c107-source-c734bf934e33.ikc.br",
+    "project/release/v8/ikant-c107-source-c734bf934e33.ikc.br",
     "host/c107-carrier-consumer.mjs",
     "scripts/c107-carrier-qualify.mjs",
     "tests/c107-carrier-consumer.test.mjs",

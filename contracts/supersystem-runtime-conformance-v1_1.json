@@ -101,9 +101,9 @@
     "selection_cases": 10000000,
     "independent_falsification_cases": 1000000,
     "architecture_lattice": 8192,
-    "selection_artifact": "artifacts/qualification/c51-supersystem-selection-10m.json",
-    "falsification_artifact": "artifacts/qualification/c51-supersystem-falsification-1m.json",
-    "dod_artifact": "artifacts/qualification/c51-supersystem-dod.json"
+    "selection_artifact": "tests/artifacts/qualification/c51-supersystem-selection-10m.json",
+    "falsification_artifact": "tests/artifacts/qualification/c51-supersystem-falsification-1m.json",
+    "dod_artifact": "tests/artifacts/qualification/c51-supersystem-dod.json"
   },
   "route_observation_owner": "HOST_SESSION_ROUTER",
   "forensic_v1_1_normalizations": {

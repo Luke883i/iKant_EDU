@@ -17,4 +17,4 @@
 - Read-only session snapshot and local sequence regression: `host/oneshell-thread-session.mjs`; original A stays byte-identical, B technical, six slots fixed.
 - Adapter opt-in flag: `IKANT_ONESHELL_THREAD_PANEL=1`; native thread panel must be proven installed, authorized, persistently visible and reconciled in ChatGPT.
 - Post-mode first-source UX guard: `host/p1-postmode-source-handoff.mjs`; zero pre-mode ZIP demands.
-- Refer to `docs/ONESHELL_THREAD_SESSION_V1.md` for software vs. real-client gates and post-merge prompt+ZIP rotation.
+- Refer to `project/docs/ONESHELL_THREAD_SESSION_V1.md` for software vs. real-client gates and post-merge prompt+ZIP rotation.

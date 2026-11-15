@@ -5,7 +5,7 @@ import {resolve} from 'node:path';
 import {verifyIkantBrandCheckout,validateIkantBrandBytes} from '../host/ikant-brand-integrity.mjs';
 const root=resolve(new URL('../',import.meta.url).pathname);
 const get=p=>readFileSync(resolve(root,p),'utf8');
-const sample=()=>({manifest:get('plugins/ikant-le-session-chat/plugin.json'),light:get('assets/brand/ikant-light.svg'),dark:get('assets/brand/ikant-dark.svg'),pluginLight:get('plugins/ikant-le-session-chat/assets/ikant-light.svg'),pluginDark:get('plugins/ikant-le-session-chat/assets/ikant-dark-square.svg'),html:get('plugins/ikant-le-session-chat/server/public/ikant-le-app.html'),contract:JSON.parse(get('contracts/host-ikant-brand-projection-v1.json'))});
+const sample=()=>({manifest:get('project/plugins/ikant-le-session-chat/plugin.json'),light:get('project/assets/brand/ikant-light.svg'),dark:get('project/assets/brand/ikant-dark.svg'),pluginLight:get('project/plugins/ikant-le-session-chat/assets/ikant-light.svg'),pluginDark:get('project/plugins/ikant-le-session-chat/assets/ikant-dark-square.svg'),html:get('project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html'),contract:JSON.parse(get('contracts/host-ikant-brand-projection-v1.json'))});
 const cases=[
 x=>{x.contract.source_head='f'.repeat(40);},
 x=>{x.contract.provider_native_icon_attested=true;},

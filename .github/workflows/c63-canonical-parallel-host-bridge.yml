@@ -6,7 +6,7 @@ on:
       - 'host/c69-capability-first-preview.mjs'
       - 'tests/c69-capability-first-preview.test.mjs'
       - 'tests/c63-canonical-parallel-bridge.test.mjs'
-      - 'docs/C63_CANONICAL_PARALLEL_HOST_BRIDGE.md'
+      - 'project/docs/C63_CANONICAL_PARALLEL_HOST_BRIDGE.md'
       - '.github/workflows/c63-canonical-parallel-host-bridge.yml'
   push:
     branches: [main]

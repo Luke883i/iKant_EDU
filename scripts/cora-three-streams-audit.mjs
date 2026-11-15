@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {validateFContract} from './cora-pr-f-qualification.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const EXPECTED=[["R01","SOURCE",[]],["R02","SOURCE",["R01"]],["R03","SOURCE",["R02"]],["R04","SOURCE",["R02"]],["R05","SOURCE",["R02"]],["R06","SOURCE",["R01"]],["R07","SOURCE",["R01"]],["R08","SOURCE",["R01"]],["R09","SOURCE",["R01"]],["I_SOURCE","INTERMEDIATE",["R01","R02","R03","R04","R05","R06","R07","R08","R09"]],["E01","EXTERNAL",["R03"]],["E02","EXTERNAL",["R06","R07","R08"]],["E03","EXTERNAL",["R05"]],["E04","EXTERNAL",["R08"]],["E05","EXTERNAL",["E04"]],["E06","EXTERNAL",["I_SOURCE"]],["E07","EXTERNAL",["R04"]],["E08","EXTERNAL",["E05"]],["I_S1","INTERMEDIATE",["R02","R03","R04","E01","E06","E07"]],["I_S2","INTERMEDIATE",["R03","R05","E01","E02","E03","E06"]],["I_S3","INTERMEDIATE",["R06","R07","R08","R09","E02","E04","E05","E06"]],["G_REPOSITORY","GLOBAL",["I_S1","I_S2","I_S3"]],["G_PRODUCT","GLOBAL",["G_REPOSITORY","E08"]]];
-const FIXED_PINS={"BOOTSTRAP.json":"36c7d5beedb54c453fd4d38e551aa123a92c92f1","contracts/project-host-tool-grounding-abi.json":"5d882060167f12d76cb2250fca87bd3e808d241a","host/project-c72-transport-frontier.mjs":"7b16982373779bdd7ff7b8c0535f515731fc5867","project/session-chat/PROMPT.txt":"277b1a5b7a8b9e5fe09702b6cf854b8682791db4","project/edu-oneshell/PROMPT_INNESCO.txt":"dd7a3cb190a7a731ef68701b4e11b68fb71708c2","project-baseline/PROJECT_PROMPT.txt":"9eb7725430f99f24129e2bb8daeb93da67187fc6","project/oneshell-v7/PROMPT_TEMPLATE.txt":"47d83b4fa2cc68699f9fc63ffa107410a970e24f","host/project-oneshell-continuous.mjs":"0355428b71ec4d6aa13ec4b81323ee1c9336b102"};
+const FIXED_PINS={"BOOTSTRAP.json":"36c7d5beedb54c453fd4d38e551aa123a92c92f1","contracts/project-host-tool-grounding-abi.json":"5d882060167f12d76cb2250fca87bd3e808d241a","host/project-c72-transport-frontier.mjs":"7b16982373779bdd7ff7b8c0535f515731fc5867","project/session-chat/PROMPT.txt":"277b1a5b7a8b9e5fe09702b6cf854b8682791db4","project/edu-oneshell/PROMPT_INNESCO.txt":"dd7a3cb190a7a731ef68701b4e11b68fb71708c2","project/baseline/PROJECT_PROMPT.txt":"9eb7725430f99f24129e2bb8daeb93da67187fc6","project/oneshell-v7/PROMPT_TEMPLATE.txt":"47d83b4fa2cc68699f9fc63ffa107410a970e24f","host/project-oneshell-continuous.mjs":"0355428b71ec4d6aa13ec4b81323ee1c9336b102"};
 export function validateStreamProfile(p){
  const bad=edge=>({ok:false,edge,authority:0,standardized:false,product_go:false,archive_allowed:false});
  if(!p||p.schema!=='ikant-host-cora-3stream-retrograde/v1'||p.authority!==0||
@@ -61,7 +61,7 @@ export function classifySemanticSources(s){
  const bootstrap=get('BOOTSTRAP.json'),abi=get('contracts/project-host-tool-grounding-abi.json');
  const frontier=get('host/project-c72-transport-frontier.mjs');
  const prompt=get('project/session-chat/PROMPT.txt'),alias=get('project/edu-oneshell/PROMPT_INNESCO.txt');
- const historical=get('project-baseline/PROJECT_PROMPT.txt');
+ const historical=get('project/baseline/PROJECT_PROMPT.txt');
  const oldTemplate=get('project/oneshell-v7/PROMPT_TEMPLATE.txt');
  const continuous=get('host/project-oneshell-continuous.mjs');
  const order=abi.includes('HOST_TOOL_ARG_RELAY')&&abi.includes('SAME_NODE_CALLBACKS')&&frontier.includes("'CALLBACKS','NODE_HTTPS','HOST_PACKET','HOST_FILE'");

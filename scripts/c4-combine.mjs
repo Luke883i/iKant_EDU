@@ -3,7 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { ROOT } from '../src/contract.mjs';
 const args=process.argv.slice(2);const arg=(k,d)=>{const i=args.indexOf(k);return i>=0?args[i+1]:d};
-const DIR=path.join(ROOT,arg('--dir','artifacts/qualification/.c4-work')),OUT=path.join(ROOT,arg('--output','artifacts/qualification/c4-runtime.json'));
+const DIR=path.join(ROOT,arg('--dir','tests/artifacts/qualification/.c4-work')),OUT=path.join(ROOT,arg('--output','tests/artifacts/qualification/c4-runtime.json'));
 const sha=v=>crypto.createHash('sha256').update(Buffer.isBuffer(v)?v:typeof v==='string'?v:JSON.stringify(v)).digest('hex');
 const shardFiles=fs.readdirSync(DIR).filter(x=>/^runtime-\d+\.json$/.test(x)).sort();
 if(shardFiles.length!==10)throw new Error(`expected 10 runtime shards, got ${shardFiles.length}`);
@@ -24,7 +24,7 @@ const objectives={
  O10_C3_REGRESSION_SAFETY:{blocking_violations:0,evidence_families:[]}
 };
 for(const o of Object.values(objectives))for(const f of o.evidence_families){const x=families[f];if(!x||x.kills!==x.cases)o.blocking_violations++;}
-const SOURCE_FILES=['TERMS.md','AGENTS.md','README.md','contracts/ikant-le.json','contracts/cognitive-kernel.json','contracts/psyche-kernel.json','contracts/host-shell.json','contracts/orientation-capsule.json','src/contract.mjs','src/state.mjs','src/admission.mjs','src/probe.mjs','src/psyche.mjs','src/cognition.mjs','src/cognition-core.mjs','src/cognition-surface.mjs','src/runtime.mjs','src/runtime-core.mjs','src/runtime-turn.mjs','src/runtime-command.mjs','src/backlog.mjs','src/docx.mjs','tests/runtime.test.mjs','scripts/check.mjs','scripts/c4-runtime-falsify.mjs','scripts/c4-session-falsify.mjs','scripts/c4-combine.mjs','scripts/c4-run.mjs','docs/C4_DOD.md','package.json','.github/workflows/ci.yml'];
+const SOURCE_FILES=['TERMS.md','AGENTS.md','README.md','contracts/ikant-le.json','contracts/cognitive-kernel.json','contracts/psyche-kernel.json','contracts/host-shell.json','contracts/orientation-capsule.json','src/contract.mjs','src/state.mjs','src/admission.mjs','src/probe.mjs','src/psyche.mjs','src/cognition.mjs','src/cognition-core.mjs','src/cognition-surface.mjs','src/runtime.mjs','src/runtime-core.mjs','src/runtime-turn.mjs','src/runtime-command.mjs','src/backlog.mjs','src/docx.mjs','tests/runtime.test.mjs','scripts/check.mjs','scripts/c4-runtime-falsify.mjs','scripts/c4-session-falsify.mjs','scripts/c4-combine.mjs','scripts/c4-run.mjs','project/docs/C4_DOD.md','package.json','.github/workflows/ci.yml'];
 const sourceFiles={};for(const rel of SOURCE_FILES)sourceFiles[rel]=sha(fs.readFileSync(path.join(ROOT,rel)));const sourceDigest=sha(sourceFiles);
 const objectiveViolations=Object.values(objectives).reduce((n,o)=>n+o.blocking_violations,0);
 const status=cases===10_000_000&&survivors===0&&familyViolations.length===0&&categories.ordinary===5_000_000&&categories.edge===3_000_000&&categories.stress===2_000_000&&session.status==='PASS'&&session.cases===1_000_000&&session.violations===0&&objectiveViolations===0?'PASS':'FAIL';

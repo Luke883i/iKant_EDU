@@ -11,23 +11,23 @@
     "ADMISSION.json",
     "AGENTS.md",
     "BOOTSTRAP.json",
-    "BOOTSTRAP.md",
-    "C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json",
-    "C13_SESSION_CHAT_FASTBOOT_CONTRACT.json",
+    "project/docs/BOOTSTRAP.md",
+    "contracts/C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json",
+    "contracts/C13_SESSION_CHAT_FASTBOOT_CONTRACT.json",
     "LICENSE",
     "README.md",
     "TERMS.md",
-    "iKant_UI_shell.md",
+    "project/docs/iKant_UI_shell.md",
     "ikant.mjs",
     "package.json",
     "render.mcp-prepr.yaml",
-    "render.mcp-standalone.candidate.yaml",
-    "stile_comunicativo.md"
+    "project/release/render.mcp-standalone.candidate.yaml",
+    "project/docs/stile_comunicativo.md"
   ],
   "cut": {
     "kind": "MOVE_EXACT_BLOB_NOT_SHIM",
     "source": "render.mcp-prepr.yaml",
-    "destination": "docs/archive/prepr/render.mcp-prepr.yaml",
+    "destination": "project/docs/archive/prepr/render.mcp-prepr.yaml",
     "git_blob_sha1": "67ad97ad545b688af2125c74ed57ef5a6bd2aebd",
     "bytes": 1107,
     "source_status": "HISTORIC_PREPR_BLUEPRINT_NOT_DEPLOYED",
@@ -45,7 +45,7 @@
       "action": "KEEP_HISTORICAL_SCRIPT_AND_HEAD_PIN"
     },
     {
-      "path": "docs/MCP_EXTERNAL_PREPR_20261020.md",
+      "path": "project/docs/MCP_EXTERNAL_PREPR_20261020.md",
       "classification": "HISTORICAL_DOC",
       "reason": "Dated 2026-10-20, proposed pre-PR not deployed",
       "action": "LINK_ARCHIVE_AND_KEEP_OLD_LABEL_HISTORICAL"
@@ -57,7 +57,7 @@
       "action": "PRESERVE_ORIGINAL_AND_RECORD_NEW_CUT"
     },
     {
-      "path": "governance/v5b-baseline-inventory.json",
+      "path": "contracts/governance/v5b-baseline-inventory.json",
       "classification": "IMMUTABLE_HISTORICAL_INVENTORY",
       "reason": "Original source indexed version, not live-path guarantee",
       "action": "KEEP_BYTES"

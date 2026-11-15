@@ -6,21 +6,21 @@ on:
       - 'contracts/p1-p7-*'
       - 'contracts/p3p7-*'
       - 'contracts/oneshell-40-product-ci.json'
-      - 'docs/ONESHell_HOST_40_ISSUES.csv'
+      - 'project/docs/ONESHell_HOST_40_ISSUES.csv'
       - 'scripts/oneshell-ci-product-alignment.mjs'
       - 'tests/oneshell-ci-product-alignment.test.mjs'
       - 'tests/oneshell-human-ux.test.mjs'
       - 'tests/oneshell-identity-prewrite.test.mjs'
       - 'host/p1-*'
-      - 'plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
-      - 'plugins/ikant-le-session-chat/server/server.mjs'
+      - 'project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
+      - 'project/plugins/ikant-le-session-chat/server/server.mjs'
       - 'host/c135-edu-v2-owner.mjs'
       - 'host/s02-edu-versioned-consumer.mjs'
       - 'scripts/host-*'
       - 'tests/host-handoff-*'
       - 'tests/oneshell-*'
-      - 'docs/ONESHell_*'
-      - 'docs/ONESHELL_THREAD_SESSION_V1.md'
+      - 'project/docs/ONESHell_*'
+      - 'project/docs/ONESHELL_THREAD_SESSION_V1.md'
       - 'host/oneshell-thread-session.mjs'
       - 'host/p3p7-*'
       - 'scripts/p1p7-*'
@@ -89,7 +89,7 @@ jobs:
       - name: P0/P1 one million owner policy oracles must execute without violations
         run: node scripts/p0p1-seeded-falsify.mjs > "$RUNNER_TEMP/p0p1-1m.json"
       - name: P0/P1 one million exact baseline receipt bytes
-        run: cmp "$RUNNER_TEMP/p0p1-1m.json" artifacts/qualification/p0p1-1m-seeded.json
+        run: cmp "$RUNNER_TEMP/p0p1-1m.json" tests/artifacts/qualification/p0p1-1m-seeded.json
       - name: Deterministic Project builds, source-bound and NON-INSTALLED
         shell: bash
         run: |

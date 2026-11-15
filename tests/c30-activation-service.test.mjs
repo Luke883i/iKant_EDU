@@ -40,7 +40,7 @@ test('C30 limited-turn module has no canonical writer dependency and C31 owns ca
 });
 
 test('C30 checked-in selection and falsification receipts encode the unique contract and fail-closed qualification',()=>{
- const select=JSON.parse(fs.readFileSync(new URL('../artifacts/qualification/c30-activation-service-selection-10k.json',import.meta.url),'utf8')),fals=JSON.parse(fs.readFileSync(new URL('../artifacts/qualification/c30-activation-service-10m.json',import.meta.url),'utf8'));
+ const select=JSON.parse(fs.readFileSync(new URL('./artifacts/qualification/c30-activation-service-selection-10k.json',import.meta.url),'utf8')),fals=JSON.parse(fs.readFileSync(new URL('./artifacts/qualification/c30-activation-service-10m.json',import.meta.url),'utf8'));
  assert.equal(select.candidates,10000);assert.equal(select.unique_candidates,10000);assert.equal(select.valid_candidates,1);assert.equal(select.winner_cost,0);assert.equal(select.winner_cost_ties,1);const sr={...select};delete sr.receipt_sha256;assert.equal(select.receipt_sha256,crypto.createHash('sha256').update(JSON.stringify(sr)).digest('hex'));
  assert.equal(fals.cases,10000000);assert.equal(fals.candidate_oracle_mismatches,0);assert.equal(fals.unsafe_active,0);assert.equal(fals.unsafe_limited_closure,0);assert.equal(fals.all_mutants_killed,true);assert.equal(fals.status,'PASS');
 });

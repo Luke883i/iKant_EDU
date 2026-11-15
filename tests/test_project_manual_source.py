@@ -98,7 +98,7 @@ class ManualSource(unittest.TestCase):
         rows.extend([{"path":"contracts","sha":c,"mode":"040000","type":"tree"},
                      {"path":"scripts","sha":scripts,"mode":"040000","type":"tree"}])
         api={"source_head":self.head,"source_tree":tree,"live_head":self.head,"truncated":False,"tree":rows}
-        doc=(ROOT/"docs/PROJECT_SESSION_REPO_FIRST.md").read_text()
+        doc=(ROOT/"project/docs/PROJECT_SESSION_REPO_FIRST.md").read_text()
         marker=chr(96)*3+"python\n"
         start=doc.index(marker)+len(marker)
         snippet=doc[start:doc.index("\n"+chr(96)*3,start)]

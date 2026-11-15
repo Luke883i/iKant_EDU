@@ -118,10 +118,8 @@ test('canonical roots and consumers remain unchanged; risky conditional moves ar
  assert.deepEqual(original.must_remain_root.map(rebind),plan.must_remain_root);
  assert.deepEqual(original.conditional_not_moved.map(x=>({...x,path:rebind(x.path)})),plan.conditional_not_moved);
  assert.deepEqual(original.decisions.map(x=>({...x,archive_path:rebind(x.archive_path)})),plan.decisions);
- for(const p of plan.must_remain_root){
-  const historicalPath=p.startsWith('project/docs/')?'docs/'+p.slice('project/docs/'.length):
-   p.startsWith('project/release/')?p.slice('project/release/'.length):
-   p.startsWith('contracts/C12_')||p.startsWith('contracts/C13_')?p.slice('contracts/'.length):p;
+ for(const [i,p] of plan.must_remain_root.entries()){
+  const historicalPath=original.must_remain_root[i];
   const witness=reopenR7SourceEpoch(historicalPath);
   assert.equal(witness.ok,true,historicalPath);
   assert.equal(witness.current_path,p,historicalPath);

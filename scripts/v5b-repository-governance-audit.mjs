@@ -297,6 +297,74 @@ export function qualifyV13V5BEpochProjection(){
     human_review:'NOT_ATTESTED',ci:'NOT_RUN',provider:'NOT_ATTESTED',authority:0,product_go:false};
  }catch(e){return fail('V13_EPOCH_PROJECTION_UNREADABLE:'+String(e).slice(0,120));}
 }
+/** PR249: read-only prospective successor of the V13 Git SOURCE epoch.
+ * Source-only qualification is explicit, content-addressed, and independently
+ * revisitable. Legacy V5-B registers and receipts are never rewritten.
+ * This does NOT confer owner review, CI, provider truth, or product GO.
+ */
+export function qualifyPr249SourceEpoch(){
+ const fail=edge=>({ok:false,edge,authority:0,product_go:false});
+ try{
+  const c=json('contracts/r7-pr249-founding-contract.json'),e=c?.pr249_epoch;
+  if(c.schema!=='ikant-r7-pr249-founding-contract/v1'||c.authority!==0||
+     c.product_go!==false||e?.schema!=='ikant-r7-pr249-source-successor/v1'||
+     e.review_required!==true||e.product_go!==false||
+     e.source_commit!=='86e20abb714fa4000352b61a0c0abf8795775318'||
+     e.source_tree!=='07f135d6d54ff69b78cc9e7215daa0bdafa9f84c')
+   return fail('PR249_SOURCE_CONTRACT_INVALID');
+  if(git('rev-parse',e.source_commit+'^{tree}')!==e.source_tree)return fail('PR249_SOURCE_TREE_DRIFT');
+  git('merge-base','--is-ancestor',e.source_commit,'HEAD');
+  function listing(rev){
+   const out=new Map();
+   for(const line of execFileSync('git',['ls-tree','-r','-z',rev],{cwd:ROOT,maxBuffer:64_000_000}).toString('utf8').split('\0').filter(Boolean)){
+    const m=/^(100644|100755) blob ([a-f0-9]{40})\t(.+)$/u.exec(line);
+    if(!m||out.has(m[3]))return null;
+    out.set(m[3],{mode:m[1],sha:m[2]});
+   }
+   return out;
+  }
+  const base=listing(e.source_commit),live=listing('HEAD');
+  if(!base||!live||base.size!==1639)return fail('PR249_SOURCE_INDEX_INVALID');
+  const added=[...live.keys()].filter(x=>!base.has(x)).sort();
+  const modified=[...base.keys()].filter(x=>!live.has(x)||
+    live.get(x).sha!==base.get(x).sha||live.get(x).mode!==base.get(x).mode).sort();
+  const fixedAdd=[
+   'contracts/r7-pr249-founding-contract.json',
+   'project/docs/R7_PR249_FOUNDING_GUIDE.md',
+   'scripts/r7-pr249-falsify.mjs',
+   'scripts/r7-pr249-physical-gate.py',
+   'tests/r7-pr249-founding-contract.test.mjs',
+   'tests/r7-pr249-physical-gate.test.mjs'].sort();
+  const fixedMod=['.github/workflows/c53-physical-closure-hardening.yml',
+   'scripts/cora-minimal-absorption.mjs',
+   'project/docs/IKANT_DOCUMENT_ATLAS.md',
+   'project/docs/START_HERE.md','scripts/v5b-repository-governance-audit.mjs'].sort();
+  if(JSON.stringify(added)!==JSON.stringify(fixedAdd)||
+     JSON.stringify(modified)!==JSON.stringify(fixedMod)||
+     JSON.stringify(e.additions)!==JSON.stringify(fixedAdd)||
+     JSON.stringify(e.modified_originals.map(x=>x.path).sort())!==JSON.stringify(fixedMod))
+   return fail('PR249_PROSPECTIVE_DELTA_NOT_EXACT');
+  for(const row of e.modified_originals){
+   const old=base.get(row.path),now=live.get(row.path);
+   if(!old||!now||old.mode!==now.mode||old.sha!==row.original_sha||
+     now.sha!==row.prospective_sha)return fail('PR249_MODIFICATION_PIN_DRIFT:'+row.path);
+  }
+  for(const name of added){
+   const row=live.get(name);
+   if(row?.mode!=='100644'||(name!==fixedAdd[0]&&
+      row.sha!==e.addition_pins?.[name]))
+    return fail('PR249_ADDITION_PIN_DRIFT:'+name);
+  }
+  for(const [name,old] of base)if(name.startsWith('contracts/governance/')&&
+     live.get(name)?.sha!==old.sha)return fail('PR249_GOVERNANCE_CHANGED:'+name);
+  if(git('status','--porcelain','--untracked-files=no')!=='')return fail('PR249_DIRTY_WORKTREE');
+  return {ok:true,status:'PR249_SOURCE_SUCCESSOR_REVIEW_REQUIRED',
+   source_count:base.size,new_paths:added.length,modified_originals:modified.length,
+   legacy_governance_unchanged:true,review:'NOT_ATTESTED',provider:'NOT_ATTESTED',
+   authority:0,product_go:false};
+ }catch(ex){return fail('PR249_SOURCE_UNREADABLE:'+String(ex).slice(0,140));}
+}
+
 export function auditRepository(){
  const base=json(INVENTORY),changes=json(REGISTER),retention=json('contracts/v1-workflow-retention.json');
  const contract=json(DOD),errors=[];
@@ -410,7 +478,8 @@ export function auditRepository(){
  // V13 never rewrites old V5-B source documents. It reclassifies ONLY the
  // path/mode deltas uniquely explained by the pinned V10->V12->V13 lineage.
  // Retain the legacy error evidence separately so the projection is auditable.
- const scoped=qualifyV13V5BEpochProjection();
+ const historicalProjection=qualifyV13V5BEpochProjection();
+ const scoped=historicalProjection.ok?historicalProjection:qualifyPr249SourceEpoch();
  if(scoped.ok&&errors.every(x=>/^(?:UNREGISTERED_MODIFICATION|UNREGISTERED_ADDITION|UNREGISTERED_DELETION|DECLARED_BUT_ABSENT):/.test(x))){
   audit.original_epoch_errors=errors;
   audit.source_epoch_projection=scoped;

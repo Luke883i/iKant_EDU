@@ -355,10 +355,43 @@ export function reopenV13WorkflowEpoch(c){
   const v12='7fa91861f6bd4a9760ad4ab69c0cdd048d9cab7c';
   const oldTree='0e9081a37ebc47c3cb3bc1417d26a3a9361f9e0b';
   const newTree='e3543d25e996d0a3c13b89c220e82d719c77f75f';
+  const currentWorkflowTree=git('rev-parse','HEAD:.github/workflows');
   if(git('rev-parse',v10+':.github/workflows')!==oldTree||
-     git('rev-parse',v12+':.github/workflows')!==newTree||
-     git('rev-parse','HEAD:.github/workflows')!==newTree)
+     git('rev-parse',v12+':.github/workflows')!==newTree)
     return deny('V13_WORKFLOW_SOURCE_TREES_NOT_PINNED');
+  // V13 is immutable. PR249 may modify exactly the C53 CI writer to prevent
+  // autonomous source mutations. Check original complete 116-blob tree and
+  // registered prospective exact SHA. No CI or owner approval inferred.
+  let prospectiveC53=false;
+  if(currentWorkflowTree!==newTree){
+   const f=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/r7-pr249-founding-contract.json'),'utf8'));
+   const pathC53='.github/workflows/c53-physical-closure-hardening.yml';
+   const p=f?.pr249_epoch?.modified_originals?.find(r=>r.path===pathC53);
+   if(f.schema!=='ikant-r7-pr249-founding-contract/v1'||f.authority!==0||
+      f.product_go!==false||f.pr249_epoch?.review_required!==true||
+      f.pr249_epoch?.source_commit!=='86e20abb714fa4000352b61a0c0abf8795775318'||
+      git('rev-parse','86e20abb714fa4000352b61a0c0abf8795775318:.github/workflows')!==newTree||
+      git('rev-parse','HEAD:'+pathC53)!==p?.prospective_sha||
+      git('rev-parse','86e20abb714fa4000352b61a0c0abf8795775318:'+pathC53)!==p?.original_sha)
+      return deny('PR249_WORKFLOW_EPOCH_REGISTER_INVALID');
+   const parse=ref=>execFileSync('git',['ls-tree','-z',ref+':.github/workflows'],
+     {cwd:ROOT,maxBuffer:2_000_000}).toString('utf8').split('\0').filter(Boolean)
+     .map(row=>{const m=/^(100644|100755) blob ([a-f0-9]{40})\t([^/\t]+)$/.exec(row);
+       if(!m)throw Error('PR249_WORKFLOW_ENTRY_INVALID');
+       return{mode:m[1],sha:m[2],name:m[3]};});
+   const historical=parse('86e20abb714fa4000352b61a0c0abf8795775318'),live=parse('HEAD');
+   if(historical.length!==116||live.length!==116)return deny('PR249_WORKFLOW_COUNT_DRIFT');
+   const old=new Map(historical.map(r=>[r.name,r]));let delta=0;
+   for(const row of live){const h=old.get(row.name);
+     if(!h||h.mode!==row.mode||
+       (row.name!==pathC53.split('/').at(-1)&&row.sha!==h.sha)||
+       (row.name===pathC53.split('/').at(-1)&&row.sha!==p.prospective_sha))
+       return deny('PR249_WORKFLOW_CONTENT_DRIFT:'+row.name);
+     if(row.sha!==h.sha)delta++;
+   }
+   if(old.size!==116||delta!==1)return deny('PR249_WORKFLOW_DELTA_NOT_EXACT');
+   prospectiveC53=true;
+  }
   const read=(rev)=>execFileSync('git',['ls-tree','-z',rev+':.github/workflows'],{cwd:ROOT}).toString('utf8').split('\0').filter(Boolean).map(x=>{
    const m=/^(100644|100755) blob ([a-f0-9]{40})\t([a-zA-Z0-9_.-]+\.ya?ml)$/u.exec(x);
    if(!m)throw Error('V13_WORKFLOW_OBJECT_INVALID');
@@ -387,7 +420,8 @@ export function reopenV13WorkflowEpoch(c){
   if(!earlierEvolution.ok)return deny('V13_WORKFLOW_PRIOR_EVOLUTION_INVALID:'+earlierEvolution.edge);
   return {ok:true,status:'SOURCE_EPOCH_WORKFLOW_PROJECTION_REVIEW_REQUIRED',
    original_w1_reopened:true,original_evolution_reopened:true,
-   before:oldTree,current:newTree,changed_workflow_sources:changed,
+   before:oldTree,current:currentWorkflowTree,changed_workflow_sources:changed,
+   prospective_pr249_ci_writer_hardening:prospectiveC53,
    authority:0,review_attested:false,provider_attested:false,product_go:false};
  }catch(e){return deny('V13_WORKFLOW_HISTORICAL_SOURCE_UNREADABLE:'+String(e).slice(0,100));}
 }

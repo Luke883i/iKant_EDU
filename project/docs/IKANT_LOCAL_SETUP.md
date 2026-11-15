@@ -49,4 +49,4 @@ C59 `SESSION_CHAT_LOCAL` e un'architettura storica distinta: il suo percorso ori
 
 ## Come orientarsi in caso di dubbi
 
-[Inizio accessibile](START_HERE.md) → [mappa delle prove](IKANT_RUNTIME_AND_EVIDENCE.md) → [ricerca confutabile](IKANT_RESEARCH_QUESTIONS.md) → [contratti macchina](../contracts/) → [catalogo release](../release/catalog.json). Una PR proposta e un archivio scaricato non costituiscono una nuova versione rilasciata.
+[Inizio accessibile](START_HERE.md) → [mappa delle prove](IKANT_RUNTIME_AND_EVIDENCE.md) → [ricerca confutabile](IKANT_RESEARCH_QUESTIONS.md) → [contratti macchina](../../contracts/) → [catalogo release](../release/catalog.json). Una PR proposta e un archivio scaricato non costituiscono una nuova versione rilasciata.

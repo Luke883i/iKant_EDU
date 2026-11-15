@@ -39,7 +39,7 @@ Se incontri `C72`, `C87` o `C59`, non sono nomi di un modello né livelli di int
 
 - **Mi interessa l'essere umano e la coscienza:** [le tre domande confutabili](IKANT_RESEARCH_QUESTIONS.md).
 - **Devo verificare un'affermazione tecnica:** [osservazioni, limiti e prove](IKANT_RUNTIME_AND_EVIDENCE.md) e [dashboard](PRODUCT_DASHBOARD.md).
-- **Devo contribuire al codice:** [architettura](ARCHITECTURE.md), [contratti](../contracts/) e [test](../tests/).
+- **Devo contribuire al codice:** [architettura](ARCHITECTURE.md), [contratti](../../contracts/) e [test](../../tests/).
 - **Studio le risposte epistemiche:** [C139, percorso EDU candidato e limiti](C139_EDU_EPISTEMIC_ROUTE.md) (non equivale a prodotto attivo).
 - **Verifico la PR EDU aperta:** [routing EDU aperto, falsificatori e DoD non ancora chiusi](C140_SEMANTIC_RUNTIME_PR.md) (nessuna attivazione nativa attestata).
 - **Studio il percorso semantico EDU:** [confini e limiti C140](C140_SEMANTIC_RUNTIME_PR.md), [shadow C141](../../host/c141-semantic-shadow.mjs) e [test originali](../../tests/c141-semantic-shadow.test.mjs). Le route candidate non provano delivery o efficacia.

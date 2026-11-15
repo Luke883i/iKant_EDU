@@ -19,7 +19,7 @@ test('only two owned objects, 3 MD, no installed MCP or native control claim',()
 });
 
 test('project instructions and exactly three guides preserve admission and no DNS/network retries',()=>{
- const names=['iKant_GATE.md','iKant_ENGINE.md','project/docs/iKant_UI_shell.md'];
+ const names=['iKant_GATE.md','iKant_ENGINE.md','iKant_UI_shell.md'];
  for(const f of names)assert.ok(existsSync(new URL('project/baseline/PROJECT_FILES/'+f,root)));
  for(const f of names){const s=load('project/baseline/PROJECT_FILES/'+f);
   assert.ok(s.includes('AUTHORITY=0'),f);

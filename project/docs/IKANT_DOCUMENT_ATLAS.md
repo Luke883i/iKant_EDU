@@ -31,11 +31,10 @@
 - [project/docs/IKANT_RESEARCH_QUESTIONS.md](IKANT_RESEARCH_QUESTIONS.md): Modelli e prove. Stato di review: **da verificare**.
 - [project/docs/IKANT_RUNTIME_AND_EVIDENCE.md](IKANT_RUNTIME_AND_EVIDENCE.md): Modelli e prove. Stato di review: **da verificare**.
 - [project/docs/IKANT_SEMANTIC_RETICULUM.md](IKANT_SEMANTIC_RETICULUM.md): Modelli e prove. Stato di review: **da verificare**.
-- [project/docs/iKant_UI_shell.md](iKant_UI_shell.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
-- [project/docs/stile_comunicativo.md](stile_comunicativo.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
 
 ## L3 — Approfondimenti e prove
 
+- [project/docs/BOOTSTRAP.md](BOOTSTRAP.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/BOOTSTRAP_D123_CLOSURE.md](BOOTSTRAP_D123_CLOSURE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/BOOTSTRAP_DECOUPLING_D0.md](BOOTSTRAP_DECOUPLING_D0.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/C100_EXPERIMENTAL_COHOST_DOD.md](C100_EXPERIMENTAL_COHOST_DOD.md): Contratti Cx e ricerca tecnica. Stato di review: **da verificare**.
@@ -197,7 +196,9 @@
 - [project/docs/PROJECT_PE_BOOTSTRAP_RETROGRADE.md](PROJECT_PE_BOOTSTRAP_RETROGRADE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/PROJECT_SESSION_REPO_FIRST.md](PROJECT_SESSION_REPO_FIRST.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/QUALIFICATION.md](QUALIFICATION.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/R7_V11_SEVEN_ROOTS.md](R7_V11_SEVEN_ROOTS.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/RENAME_IKANT_EDU_2DIM_E2E.md](RENAME_IKANT_EDU_2DIM_E2E.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/REPOSITORY_HEALTH_V10.md](REPOSITORY_HEALTH_V10.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/RESEARCH_LEDGER.md](RESEARCH_LEDGER.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/S01_PUBLIC_EDU_CANONICAL_ADMISSION.md](S01_PUBLIC_EDU_CANONICAL_ADMISSION.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/S03_S09_POST137_RUNTIME_COMPLETION.md](S03_S09_POST137_RUNTIME_COMPLETION.md): Documentazione specialistica. Stato di review: **da verificare**.
@@ -206,20 +207,20 @@
 - [project/docs/V1_E2E_TRACEABILITY.md](V1_E2E_TRACEABILITY.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/V1_GOLD_MIGRATION.md](V1_GOLD_MIGRATION.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/V1_PRODUCT_DECISIONS.md](V1_PRODUCT_DECISIONS.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/iKant_UI_shell.md](iKant_UI_shell.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/rename-sequence/S01_SHADOW_CUTOVER_DOD.md](rename-sequence/S01_SHADOW_CUTOVER_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/stile_comunicativo.md](stile_comunicativo.md): Documentazione specialistica. Stato di review: **da verificare**.
 
 ## L4 — Storico e integrazioni
 
-- [project/docs/BOOTSTRAP.md](BOOTSTRAP.md): Storico. Stato di review: **da verificare**.
-- [project/docs/archive/prepr/README_C94_PREPR.md](archive/prepr/README_C94_PREPR.md): Storico. Stato di review: **da verificare**.
-- [project/docs/archive/prepr/README_C96_PREPR.md](archive/prepr/README_C96_PREPR.md): Storico. Stato di review: **da verificare**.
-- [project/docs/archive/prepr/README_C98_PREPR.md](archive/prepr/README_C98_PREPR.md): Storico. Stato di review: **da verificare**.
-- [project/plugins/ikant-le-session-chat/README.md](../plugins/ikant-le-session-chat/README.md): Integrazione e plugin. Stato di review: **da verificare**.
+- [project/EDU_HOST_PROJECT_DELTA_V19.md](../EDU_HOST_PROJECT_DELTA_V19.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/baseline/INSTALL_EASY.md](../baseline/INSTALL_EASY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/baseline/PROJECT_FILES/iKant_ENGINE.md](../baseline/PROJECT_FILES/iKant_ENGINE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/baseline/PROJECT_FILES/iKant_GATE.md](../baseline/PROJECT_FILES/iKant_GATE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/baseline/PROJECT_FILES/iKant_UI_shell.md](../baseline/PROJECT_FILES/iKant_UI_shell.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/EDU_HOST_PROJECT_DELTA_V19.md](../EDU_HOST_PROJECT_DELTA_V19.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/docs/archive/prepr/README_C94_PREPR.md](archive/prepr/README_C94_PREPR.md): Storico. Stato di review: **da verificare**.
+- [project/docs/archive/prepr/README_C96_PREPR.md](archive/prepr/README_C96_PREPR.md): Storico. Stato di review: **da verificare**.
+- [project/docs/archive/prepr/README_C98_PREPR.md](archive/prepr/README_C98_PREPR.md): Storico. Stato di review: **da verificare**.
 - [project/edu-oneshell/00_HOST_CONTRACT.md](../edu-oneshell/00_HOST_CONTRACT.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/edu-oneshell/DOD.md](../edu-oneshell/DOD.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/edu-oneshell/SLIDE.md](../edu-oneshell/SLIDE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
@@ -234,4 +235,5 @@
 - [project/oneshell-v7/08_RELEASE_BOUNDARY.md](../oneshell-v7/08_RELEASE_BOUNDARY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/oneshell-v7/09_ADAPTER_RECIPES.md](../oneshell-v7/09_ADAPTER_RECIPES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 - [project/oneshell-v7/10_MVP_DO_D.md](../oneshell-v7/10_MVP_DO_D.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/plugins/ikant-le-session-chat/README.md](../plugins/ikant-le-session-chat/README.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 

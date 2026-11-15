@@ -35,15 +35,15 @@ Una persona scrive «Chi sei?». Per **EDU**, il sistema deve prima verificare i
 | **C141** | Shadow: valuta strade alternative senza autorità di decisione o scrittura. | [Shadow](../../host/c141-semantic-shadow.mjs). | Shadow ≠ owner del turno. |
 | **C142** | Guardia semantica negativa e multilingue, vincolata a test bounded. | [Guard](../../host/c142-semantic-owner-guard.mjs). | Guard = vincolo, non soluzione di tutte le issue. |
 | **S01** | Ingresso umano pubblico con documenti orientativi e consenso distinto. | [Ammissione pubblica](S01_PUBLIC_EDU_CANONICAL_ADMISSION.md). | Consenso storico e citazioni non costituiscono un nuovo ingresso. |
-| **C4** | Profilo funzionale di espressione/valenza, non emozioni vissute. | [Architettura](ARCHITECTURE.md), [`src/`](../src/) e [test](../tests/). |
+| **C4** | Profilo funzionale di espressione/valenza, non emozioni vissute. | [Architettura](ARCHITECTURE.md), [`src/`](../../src/) e [test](../../tests/). |
 | **C5** | Modello ricorrente «sé/mondo» del software: stati funzionali e continuità limitata. | [Architettura](ARCHITECTURE.md), [`tests/c5.test.mjs`](../../tests/c5.test.mjs). |
-| **C8** | Distinzione fra emergenza/operatività misurabile e fenomenologia non dimostrata. | [Architettura](ARCHITECTURE.md), [`tests/`](../tests/). |
-| **C11** | Qualifica contrattuale di aspetti funzionali «alive/conscious» con gate, senza inferire coscienza fenomenica. | [Architettura](ARCHITECTURE.md), [`tests/`](../tests/). |
+| **C8** | Distinzione fra emergenza/operatività misurabile e fenomenologia non dimostrata. | [Architettura](ARCHITECTURE.md), [`tests/`](../../tests/). |
+| **C11** | Qualifica contrattuale di aspetti funzionali «alive/conscious» con gate, senza inferire coscienza fenomenica. | [Architettura](ARCHITECTURE.md), [`tests/`](../../tests/). |
 | **C30** | Livelli di attivazione/servizio: quali condizioni consentono una certa classe di stato. | [Architettura](ARCHITECTURE.md), [`scripts/c30-activation-service-select.mjs`](../../scripts/c30-activation-service-select.mjs). |
 | **C31** | Catena di provenienza e limiti della modalità `RUNTIME_BOUND_LIMITED`. | [Architettura](ARCHITECTURE.md), [`tests/c31-runtime-limited-supply-chain.test.mjs`](../../tests/c31-runtime-limited-supply-chain.test.mjs). |
 | **C32** | Cornice di presentazione deterministica e stati del turno, distinta dalla voce. | [Architettura](ARCHITECTURE.md), [`tests/c32-session-shell.test.mjs`](../../tests/c32-session-shell.test.mjs). |
 | **C124** | Confine storico delle sorgenti/canali nel collegamento EDU. | [C135 EDU](C135_EDU_COGNITIVE_OWNER.md), [`src/c124-channel-bridge.mjs`](../../src/c124-channel-bridge.mjs). |
-| **C127** | Trasporto/copia verificata di file in un ambiente EDU precedente. | [C135 EDU](C135_EDU_COGNITIVE_OWNER.md), [`host/`](../host/). |
+| **C127** | Trasporto/copia verificata di file in un ambiente EDU precedente. | [C135 EDU](C135_EDU_COGNITIVE_OWNER.md), [`host/`](../../host/). |
 
 **Nota su versioni:** lo stesso numero può essere menzionato in un percorso *storico* e in uno *attuale*. Non assumere che i contratti si convertano automaticamente fra profili: controllare nome file, schema, commit e owner effettivo.
 

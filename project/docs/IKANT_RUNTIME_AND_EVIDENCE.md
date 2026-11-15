@@ -54,7 +54,7 @@ Ogni passaggio deve arrestarsi quando manca una precondizione. Il protocollo **n
 
 ## Dove verificare autonomamente
 
-Il punto di ingresso tecnico resta [ARCHITECTURE.md](ARCHITECTURE.md); i requisiti attuali sono in [`contracts/`](../contracts/) e negli owner originali di [`host/`](../host/). I controlli standard includono `git rev-parse HEAD`, `git rev-parse HEAD^{tree}`, `git status --porcelain`, `node --test` su test mirati, `npm run check` e `npm run runtime-root:verify`. Eseguire i comandi nella versione effettiva da verificare, non trasferire meccanicamente un esito da un commit precedente. [Ricerca falsificabile →](IKANT_RESEARCH_QUESTIONS.md).
+Il punto di ingresso tecnico resta [ARCHITECTURE.md](ARCHITECTURE.md); i requisiti attuali sono in [`contracts/`](../../contracts/) e negli owner originali di [`host/`](../../host/). I controlli standard includono `git rev-parse HEAD`, `git rev-parse HEAD^{tree}`, `git status --porcelain`, `node --test` su test mirati, `npm run check` e `npm run runtime-root:verify`. Eseguire i comandi nella versione effettiva da verificare, non trasferire meccanicamente un esito da un commit precedente. [Ricerca falsificabile →](IKANT_RESEARCH_QUESTIONS.md).
 
 ## LIB0 embedded relational nuance
 

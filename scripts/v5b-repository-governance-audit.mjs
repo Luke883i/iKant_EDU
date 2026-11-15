@@ -157,7 +157,7 @@ export function qualifyWorkingTreeDifference(p,indexSha,workingSha){
  if(!isPath(p)||!/^[a-f0-9]{40}$/.test(indexSha)||!/^[a-f0-9]{40}$/.test(workingSha))
   return Object.freeze({ok:false,edge:'V5B_WORKTREE_INPUT_INVALID'});
  if(indexSha===workingSha)return Object.freeze({ok:true,status:'SAME_AS_INDEX'});
- if(/^artifacts\/qualification\/[a-zA-Z0-9._/-]+\.json$/.test(p))
+ if(/^(?:artifacts|tests\/artifacts)\/qualification\/[a-zA-Z0-9._/-]+\.json$/.test(p))
   return Object.freeze({ok:true,status:'TEST_GENERATED_EVIDENCE_DIFFERENT_FROM_COMMITTED_BLOB',
    provenance:'INDEX_SHA_ONLY',evidence_claim:'WORKTREE_BYTE_CHANGE_NOT_NEW_OWNER_RECEIPT'});
  return Object.freeze({ok:false,edge:'V5B_TRACKED_SOURCE_DIRTY'});

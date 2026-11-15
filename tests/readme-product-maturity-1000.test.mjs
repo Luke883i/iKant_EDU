@@ -45,7 +45,7 @@ test('MCP: documented Render deployment and ChatGPT connection remain qualified'
 });
 test('LINKS: source atlas and curated paths exist, no self-asserted installation',()=>{
  assert.deepEqual(brokenLinks(home),[]);
- const docs=new Set([...home.matchAll(/\]\((docs\/[^)#]+)\)/g)].map(m=>m[1]));
+ const docs=new Set([...home.matchAll(/\]\((project\/docs\/[^)#]+)\)/g)].map(m=>m[1]));
  assert.ok(docs.size>=15,'at least 15 distinct entrypoints to full atlas');
  const a=audit();assert.ok(a.total>=169);
  assert.ok(home.includes('project/docs/IKANT_DOCUMENT_ATLAS.md'));

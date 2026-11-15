@@ -69,7 +69,7 @@ test('unclassified additions and broken retention are blocked',()=>{
 test('stage zero index records are the source of Git provenance',()=>{
  const a=parseStagedGitEntries('100644 '+'a'.repeat(40)+' 0\tartifacts/qualification/c32-selection.json\0');
  assert.equal(a.length,1);
- assert.equal(a[0].path,'tests/artifacts/qualification/c32-selection.json');
+ assert.equal(a[0].path,'artifacts/qualification/c32-selection.json');
  assert.throws(()=>parseStagedGitEntries('100644 '+'a'.repeat(40)+' 1\tREADME.md\0'),/INDEX_STAGE/);
  assert.throws(()=>parseStagedGitEntries('100644 '+'a'.repeat(40)+' 0\tREADME.md\0'+'100644 '+'a'.repeat(40)+' 0\tREADME.md\0'),/INDEX_DUPLICATE/);
 });

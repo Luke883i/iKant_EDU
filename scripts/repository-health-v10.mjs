@@ -112,7 +112,13 @@ function rollbackCheck(){
 }
 const commands=Object.freeze([
  ['npm',['run','runtime-root:verify']],['npm',['run','check:mcp']],['npm',['run','check']],
- ['node',['--test','tests/repository-health-v10.test.mjs']]
+ ['node',['--test','tests/repository-health-v10.test.mjs']],
+ ['node',['--test','--test-concurrency=1',
+  'tests/mcp-external-contract.test.mjs',
+  'tests/mcp-standalone-runtime-assurance.test.mjs',
+  'tests/project-session-capsule.test.mjs',
+  'tests/project-session-e2e.test.mjs',
+  'tests/project-edu-complete-chain.test.mjs']]
 ]);
 function scopedNative(run){
  if(!run)return {ok:false,status:'NOT_RUN',checks:[]};

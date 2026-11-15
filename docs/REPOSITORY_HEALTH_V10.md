@@ -24,7 +24,7 @@ optional original checks:
 This runs the six minimal source-maintenance gates (P/I/O/Q/L/R). P verifies
 tracked index/HEAD/worktree bytes; I records legacy lexical debt and rejects any
 new unresolved literal relative link; O pins original product owners; Q runs
-four local smoke commands on the same HEAD; L checks this entrypoint; R requires
+five local smoke commands on the same HEAD; L checks this entrypoint; R requires
 the source baseline tree to remain reachable for rollback. The script is read-only
 and does not create a new runtime, writer, owner or workflow.
 
@@ -41,7 +41,7 @@ enumerated by the pre-existing `scripts/project-review-callsites.mjs`; whether
 their targets can execute is UNKNOWN without runtime and external consumer tests.
 
 The broad `npm test` suite is a distinct and much more expensive check; it is not
-replaced by the four smoke commands. Native Project/ChatGPT behavior, independent
+replaced by the five smoke commands. Native Project/ChatGPT behavior, independent
 MCP deployment, provider responses, CI and external consumers remain UNKNOWN or
 NOT_ATTESTED. `PRODUCT_GO=false` no matter how many local source gates pass.
 

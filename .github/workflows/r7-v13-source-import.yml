@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
     timeout-minutes: 12
     steps:
       - name: Checkout complete Git history
@@ -34,3 +35,18 @@ jobs:
           name: r7-v13-source-pack-import-${{ github.sha }}
           path: ${{ runner.temp }}/r7-v13-import-receipt.json
           if-no-files-found: ignore
+      - name: Record bounded import blocker in PR 249
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if test -s "$RUNNER_TEMP/r7-v13-import-receipt.json"; then
+            {
+              echo "### R7/V13 import attempt \`${GITHUB_SHA:0:12}\`"
+              echo 'Import BLOCKED. Exact diagnostic (fail-closed):'
+              echo '\`\`\`json'
+              cat "$RUNNER_TEMP/r7-v13-import-receipt.json"
+              echo '\`\`\`'
+            } > "$RUNNER_TEMP/r7-v13-diagnostic-comment.md"
+            gh issue comment 249 --body-file "$RUNNER_TEMP/r7-v13-diagnostic-comment.md"
+          fi

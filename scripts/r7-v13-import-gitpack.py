@@ -135,5 +135,13 @@ if __name__ == "__main__":
     try:
         run(parser.parse_args())
     except Exception as e:
-        print("V13_IMPORT_BLOCKED:" + str(e), file=sys.stderr)
+        error = str(e)[:600]
+        receipt = {"schema": "r7-pr249-import-failure/v1", "status": "BLOCKED",
+                   "error": error, "global_dod": "HOLD", "product_go": False}
+        try:
+            args = parser.parse_args()
+            Path(args.receipt).write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+        except Exception:
+            pass
+        print("V13_IMPORT_BLOCKED:" + error, file=sys.stderr)
         sys.exit(20)

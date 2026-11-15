@@ -7,6 +7,7 @@ import {validateFContract,evaluateFReticulation,observePrFSource,verifyFrozenWor
  from '../scripts/cora-pr-f-qualification.mjs';
 import {FAMILIES,assessSemanticCut,runFMutations}
  from '../scripts/cora-pr-f-falsify-1m.mjs';
+import {reopenR7SourceEpoch,HISTORIC} from '../scripts/r7-v13-epoch-bridge.mjs';
 
 const contract=JSON.parse(fs.readFileSync(new URL('../contracts/cora-pr-f-integrated-qualification-v1.json',import.meta.url),'utf8'));
 const clone=x=>structuredClone(x);
@@ -33,14 +34,26 @@ test('real Git tree contains the eleven original historical blobs, without trans
  const capsule=JSON.parse(fs.readFileSync(new URL('./fixtures/epochs/c141-prepr-source.json',import.meta.url),'utf8'));
  assert.equal(capsule.origin.original_before_tree,contract.source.before_tree);
  for(const {path,blob} of contract.restored_source_blobs){
-  if(g('ls-files','--',path)){assert.equal(g('rev-parse','HEAD:'+path),blob,'current mismatch '+path);continue;}
-  const row=capsule.files.find(x=>x.path===path);
-  assert.ok(row,'missing registered historical preimage '+path);
+  const oldPath=path.startsWith('project/baseline/')?
+   'project-baseline/'+path.slice('project/baseline/'.length):
+   path==='project/docs/stile_comunicativo.md'?'stile_comunicativo.md':path;
+  const original=reopenR7SourceEpoch(oldPath);
+  if(original.ok){
+   assert.equal(original.historical_blob,blob,'historical Git pin mismatch '+oldPath);
+   assert.equal(original.review_attested,undefined);
+   assert.equal(original.product_go,false);
+   continue;
+  }
+  // Deleted F0 sources are preserved by original pre-PR capsule bytes only;
+  // their absence from current runtime is an explicit protection, not a defect.
+  const row=capsule.files.find(x=>x.path===oldPath);
+  assert.ok(row,'missing registered historical preimage '+oldPath);
   const bytes=Buffer.from(row.utf8,'utf8');
   const actual=crypto.createHash('sha1').update(Buffer.from('blob '+bytes.length+'\0')).update(bytes).digest('hex');
-  assert.equal(bytes.length,row.bytes,path);
-  assert.equal(actual,blob,'capsule byte digest mismatch '+path);
+  assert.equal(bytes.length,row.bytes,oldPath);
+  assert.equal(actual,blob,'capsule byte digest mismatch '+oldPath);
  }
+
  assert.equal(contract.nonpromotion.restored_historical_files_are_runtime,false);
  const historical=verifyFrozenWorkflowTree(contract);
  assert.equal(historical.ok,true,JSON.stringify(historical));

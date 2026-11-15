@@ -6,7 +6,7 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {validateS3Profile} from './cora-s3-convergence.mjs';
-import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {qualifyR7OwnerSourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {validateFContract} from './cora-pr-f-qualification.mjs';
 import {observeM1Source} from './cora-m1-shared-evidence.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -146,7 +146,7 @@ export function observeM2Source(){
   for(const [fpath,expect] of Object.entries(PINS)){
    const b=data('show',head+':'+fpath);
    const sha=git('rev-parse',head+':'+fpath);
-   let epoch=qualifyRegisteredC72SourceEpoch({
+   let epoch=qualifyR7OwnerSourceEpoch({
     path:fpath,historicalBlobSha1:expect,observedBlobSha1:sha});
    if(fpath==='host/project-oneshell-edu.mjs'&&sha!==expect){
     const regPath='contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';

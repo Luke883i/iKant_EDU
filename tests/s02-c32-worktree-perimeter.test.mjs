@@ -26,7 +26,7 @@ test('S02 CI C32 generated qualification receipt is non-runtime; executable Git 
  try{
   const clone=path.join(parent,'checkout');
   execFileSync('git',['-c',`safe.directory=${root}`,'clone','--quiet','--local','--no-hardlinks',root,clone],{encoding:'utf8',timeout:25000});
-  const receipt=path.join(clone,'artifacts/qualification/c32-session-shell-falsification-1m.json');
+  const receipt=path.join(clone,'tests/artifacts/qualification/c32-session-shell-falsification-1m.json');
   assert.ok(fs.existsSync(receipt));
   fs.appendFileSync(receipt,'\n');
   const modified=execFileSync('git',['status','--porcelain','--untracked-files=no'],{cwd:clone,encoding:'utf8'});

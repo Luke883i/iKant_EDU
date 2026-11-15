@@ -111,7 +111,7 @@ export function qualifyPr1OneShellPresentation({historicalBlobSha1,observedBytes
  const candidate=Buffer.from(old.replace(before,after),'utf8');
  if(!candidate.equals(observedBytes)||hash(candidate)!==observedSha1)
   return denied('PR1_M2_UNAUTHORIZED_SOURCE_DELTA');
- const regPath='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
+ const regPath='contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
  const row=registration?.paths?.filter(x=>x.path==='host/project-oneshell-edu.mjs')||[];
  if(registration?.schema!=='ikant-v5b-change-extension/v1'||
    registration?.source_main!=='09798d194c1fc6a8557465b8d8875fd1972de940'||
@@ -149,7 +149,7 @@ export function observeM2Source(){
    let epoch=qualifyRegisteredC72SourceEpoch({
     path:fpath,historicalBlobSha1:expect,observedBlobSha1:sha});
    if(fpath==='host/project-oneshell-edu.mjs'&&sha!==expect){
-    const regPath='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
+    const regPath='contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json';
     epoch=qualifyPr1OneShellPresentation({historicalBlobSha1:expect,
      observedBytes:b,observedSha1:sha,registration:JSON.parse(data('show',head+':'+regPath).toString('utf8'))});
    }

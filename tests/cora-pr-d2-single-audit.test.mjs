@@ -11,7 +11,7 @@ import {qualifyPrCCISource,observePrCCISource}
 
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const contract=JSON.parse(read('contracts/cora-pr-d2-single-audit-v1.json'));
-const register=JSON.parse(read('governance/changes/zzzzzzzzzzzzzzzz-cora-pr-d2-single-audit.json'));
+const register=JSON.parse(read('contracts/governance/changes/zzzzzzzzzzzzzzzz-cora-pr-d2-single-audit.json'));
 const policyA=JSON.parse(read('contracts/cora-pr-a-backlog-v1.json'));
 const policyC=JSON.parse(read('contracts/cora-pr-c-ci-v1.json'));
 const yaml=read('.github/workflows/docs-ontology-coverage.yml');

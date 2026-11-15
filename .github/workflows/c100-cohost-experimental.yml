@@ -7,7 +7,7 @@ on:
       - 'contracts/c99-canonical-runtime-paths.json'
       - 'tests/c100-*'
       - 'scripts/c100-*'
-      - 'docs/C100_*'
+      - 'project/docs/C100_*'
       - '.github/workflows/c100-cohost-experimental.yml'
   push:
     branches: [main]

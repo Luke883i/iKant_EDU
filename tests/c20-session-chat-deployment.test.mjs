@@ -70,7 +70,7 @@ test('C20 deployment tamper fails closed before session binding',{concurrency:fa
 });
 
 test('C20 reference MCP package keeps acceptance and turns app-only',()=>{
- const server=fs.readFileSync(path.join(root,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8'),manifest=JSON.parse(fs.readFileSync(path.join(root,'plugins/ikant-le-session-chat/plugin.json'),'utf8'));assert.equal(manifest.name,'ikant-le-session-chat');assert.match(server,/ikant_le_open/);assert.match(server,/ikant_le_accept/);assert.match(server,/ikant_le_turn/);assert.match(server,/visibility:\['model','app'\]/);assert.ok((server.match(/visibility:\['app'\]/g)||[]).length>=2);
+ const server=fs.readFileSync(path.join(root,'project/plugins/ikant-le-session-chat/server/server.mjs'),'utf8'),manifest=JSON.parse(fs.readFileSync(path.join(root,'project/plugins/ikant-le-session-chat/plugin.json'),'utf8'));assert.equal(manifest.name,'ikant-le-session-chat');assert.match(server,/ikant_le_open/);assert.match(server,/ikant_le_accept/);assert.match(server,/ikant_le_turn/);assert.match(server,/visibility:\['model','app'\]/);assert.ok((server.match(/visibility:\['app'\]/g)||[]).length>=2);
 });
 
 

@@ -10,7 +10,7 @@ const json=p=>JSON.parse(read(p));
 
 test('C59 historical ROM v2 fixture remains exact and does not become EDU authority',()=>{
  const rendered=execFileSync(process.execPath,['scripts/render-project-host-rom.mjs'],{cwd:ROOT,encoding:'utf8'});
- assert.equal(read('docs/PROJECT_META_PROMPT_COBOL.md'),rendered);
+ assert.equal(read('project/docs/PROJECT_META_PROMPT_COBOL.md'),rendered);
  const c=json('contracts/project-host-rom.json');
  assert.equal(c.schema,'ikant-le-project-host-rom/v2');
  assert.equal(c.role,'COLD_START_ROM_ONLY');
@@ -40,7 +40,7 @@ test('C59 historical ROM v2 fixture remains exact and does not become EDU author
 });
 
 test('C59 Project ROM cannot shadow repository composition semantics',()=>{
- const p=read('docs/PROJECT_META_PROMPT_COBOL.md');
+ const p=read('project/docs/PROJECT_META_PROMPT_COBOL.md');
  for(const banned of ['GITHUB_API_BASE64','VERIFIED_OPAQUE_RELAY','LOCAL_DIRECT','WARM_CACHE_EXACT','PINNED_GITHUB_ZIP','PINNED_PERMALINK','HOST_FILE_BRIDGE','FASTBOOT_CHANNEL_LEDGER','.mjs','.json#'])assert.equal(p.includes(banned),false,banned);
  assert.match(p,/READ SESSION-CHAT-COMPOSITION FROM FROZEN BOOTSTRAP-CONTRACT/);
  assert.match(p,/INVOKE ONLY THE OWNER NAMED BY THAT REPOSITORY CONTRACT/);
@@ -64,7 +64,7 @@ test('C59 frozen BOOTSTRAP names the runtime composition owner consumed after th
 
 test('C59 Project ROM v2 survives 100 adversarial semantic mutations with zero harmful survivors',()=>{
  const rendered=execFileSync(process.execPath,['scripts/c59-project-rom-adversarial-100.mjs'],{cwd:ROOT,encoding:'utf8'});
- const actual=JSON.parse(rendered),expected=json('artifacts/qualification/c59-project-rom-adversarial-100.json');
+ const actual=JSON.parse(rendered),expected=json('tests/artifacts/qualification/c59-project-rom-adversarial-100.json');
  assert.deepEqual(actual,expected);
  assert.equal(actual.cases,100);
  assert.equal(actual.families,20);

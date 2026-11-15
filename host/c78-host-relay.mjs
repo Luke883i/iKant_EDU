@@ -37,7 +37,7 @@ function validateManifest(manifest,sourceHead){
  for(const p of ['host/c77-first-turn.mjs','host/c77-qualified-census.mjs',
   'contracts/c77-cx-build-proof.json','contracts/c71-cx-execution-census.json',
   'src/c70-experimental-compute-preview.mjs','src/c71-experimental-host-draft.mjs',
-  'assets/brand/ikant-light.svg','assets/brand/ikant-dark.svg']){
+  'project/assets/brand/ikant-light.svg','project/assets/brand/ikant-dark.svg']){
   if(!allowed.has(p))throw Error('C78_REQUIRED_ENTRY_MISSING:'+p);
  }
  return allowed;

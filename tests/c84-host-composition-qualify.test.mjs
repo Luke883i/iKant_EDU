@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {renderSessionChatLocalPromptDocument} from '../src/session-chat-local-prompt.mjs';
 test('C84 generated prompt parity and C72 mode scope',()=>{
- assert.equal(fs.readFileSync(new URL('../docs/SESSION_CHAT_LOCAL_PROMPT.md',import.meta.url),'utf8'),renderSessionChatLocalPromptDocument());
+ assert.equal(fs.readFileSync(new URL('../project/docs/SESSION_CHAT_LOCAL_PROMPT.md',import.meta.url),'utf8'),renderSessionChatLocalPromptDocument());
  assert.match(renderSessionChatLocalPromptDocument(),/AZIONE 210 C72_MODE_GATE/);
 });
 test('C84 historical census, overlapping tags, transport-only canonicalization',()=>{

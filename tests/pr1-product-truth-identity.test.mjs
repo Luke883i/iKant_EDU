@@ -43,10 +43,10 @@ test('PR1: source never labels a published EDU turn factual verification',()=>{
 test('PR1: Project and MCP entrypoints are not fused',()=>{
  assert.match(read('README.md'),/Inizia dal prodotto corretto/);
  assert.match(read('README.md'),/PRODUCT_GO=false/);
- assert.match(read('docs/IKANT_LOCAL_SETUP.md'),/App MCP esterna, indipendente dal Project EDU/);
- assert.doesNotMatch(read('docs/IKANT_LOCAL_SETUP.md'),/## Percorso C — CANONICAL con integrazione MCP reale/);
- assert.match(read('plugins/ikant-le-session-chat/README.md'),/standalone OAuth/);
- assert.match(read('docs/ARCHITECTURE.md'),/public EDU-only selection/);
+ assert.match(read('project/docs/IKANT_LOCAL_SETUP.md'),/App MCP esterna, indipendente dal Project EDU/);
+ assert.doesNotMatch(read('project/docs/IKANT_LOCAL_SETUP.md'),/## Percorso C — CANONICAL con integrazione MCP reale/);
+ assert.match(read('project/plugins/ikant-le-session-chat/README.md'),/standalone OAuth/);
+ assert.match(read('project/docs/ARCHITECTURE.md'),/public EDU-only selection/);
 });
 test('PR1: known unsafe representation mutants are rejected',()=>{
  const src=read('host/project-oneshell-edu.mjs');
@@ -67,7 +67,7 @@ test('PR1: protected owner blobs unchanged',()=>{
 test('PR1: exact historical source reconstruction works without old Git objects',async()=>{
  const {qualifyPr1OneShellPresentation}=await import('../scripts/cora-m2-owner-provider-metrics.mjs');
  const bytes=readFileSync(new URL('../host/project-oneshell-edu.mjs',import.meta.url));
- const registry=JSON.parse(read('governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json'));
+ const registry=JSON.parse(read('contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json'));
  const pinned=registry.paths.find(x=>x.path==='host/project-oneshell-edu.mjs').historical_git_blob_sha1;
  const value=qualifyPr1OneShellPresentation({historicalBlobSha1:pinned,observedBytes:bytes,observedSha1:gitBlob(bytes),registration:registry});
  assert.equal(value.ok,true);assert.equal(value.provider_attested,false);assert.equal(value.review_attested,false);

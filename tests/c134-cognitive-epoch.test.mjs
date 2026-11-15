@@ -103,5 +103,5 @@ test('CORA layout: every source reader and CI path filter points only to passive
   assert.ok(!content.includes(obsolete),'stale old consumer path in '+file);
  }
  assert.equal(fs.existsSync(path.join(root,'runtime')),false);
- assert.equal(fs.existsSync(path.join(root,'runtime-root/shard-000.json')),true);
+ assert.equal(fs.existsSync(path.join(root,'src/runtime-root/shard-000.json')),true);
 });

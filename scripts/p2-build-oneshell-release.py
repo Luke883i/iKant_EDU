@@ -25,14 +25,14 @@ def build(out,expected_commit,expected_tree):
   members[name]=b
  for d in DOCS:add('slides/'+d,'project/oneshell-v7/'+d)
  for name in ORIENT:add('orientation/'+name,name)
- for name in PLUGIN:add('plugin_source/plugins/ikant-le-session-chat/'+name,'plugins/ikant-le-session-chat/'+name)
+ for name in PLUGIN:add('plugin_source/plugins/ikant-le-session-chat/'+name,'project/plugins/ikant-le-session-chat/'+name)
  add('adapter_source/host/p1-semantic-annex.mjs','host/p1-semantic-annex.mjs')
  add('adapter_source/host/p1-privacy-envelope.mjs','host/p1-privacy-envelope.mjs')
  add('adapter_source/host/p1-app-exclusive-shell.mjs','host/p1-app-exclusive-shell.mjs')
  add('adapter_source/host/oneshell-thread-session.mjs','host/oneshell-thread-session.mjs')
  add('adapter_source/host/p1-postmode-source-handoff.mjs','host/p1-postmode-source-handoff.mjs')
  add('adapter_source/host/p0-thread-panel-readiness.mjs','host/p0-thread-panel-readiness.mjs')
- add('docs/ONESHELL_THREAD_SESSION_V1.md','docs/ONESHELL_THREAD_SESSION_V1.md')
+ add('project/docs/ONESHELL_THREAD_SESSION_V1.md','project/docs/ONESHELL_THREAD_SESSION_V1.md')
  add('contracts/p1-p7-product-closure.json','contracts/p1-p7-product-closure.json')
  add('contracts/oneshell-40-product-ci.json','contracts/oneshell-40-product-ci.json')
  add('adapter_source/scripts/host-rehydrate-source-zip.py','scripts/host-rehydrate-source-zip.py')
@@ -96,7 +96,7 @@ def verify(zip_path,expected_commit,expected_tree):
    if p.startswith('orientation/'):source=p[len('orientation/'):]
    elif p.startswith('plugin_source/'):source=p[len('plugin_source/'):]
    elif p.startswith('slides/'):source='project/oneshell-v7/'+p[len('slides/'):]
-   elif p in ('docs/ONESHELL_THREAD_SESSION_V1.md','contracts/p1-p7-product-closure.json','contracts/oneshell-40-product-ci.json','adapter_source/host/p1-semantic-annex.mjs','adapter_source/host/p1-privacy-envelope.mjs','adapter_source/host/p1-app-exclusive-shell.mjs','adapter_source/host/oneshell-thread-session.mjs','adapter_source/host/p1-postmode-source-handoff.mjs','adapter_source/host/p0-thread-panel-readiness.mjs','adapter_source/scripts/host-rehydrate-source-zip.py'):
+   elif p in ('project/docs/ONESHELL_THREAD_SESSION_V1.md','contracts/p1-p7-product-closure.json','contracts/oneshell-40-product-ci.json','adapter_source/host/p1-semantic-annex.mjs','adapter_source/host/p1-privacy-envelope.mjs','adapter_source/host/p1-app-exclusive-shell.mjs','adapter_source/host/oneshell-thread-session.mjs','adapter_source/host/p1-postmode-source-handoff.mjs','adapter_source/host/p0-thread-panel-readiness.mjs','adapter_source/scripts/host-rehydrate-source-zip.py'):
     source=p.replace('adapter_source/','')
    if source and git('rev-parse','HEAD:'+source)!=v['git_blob_sha1']:
     raise ValueError('PINNED_GIT_BLOB_MISMATCH:'+p)

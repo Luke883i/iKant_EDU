@@ -45,7 +45,7 @@ const result={schema:'ikant-le-project-semantic-selection/v1',seed:'EXHAUSTIVE_1
  human_ux_tested:false,real_model_efficacy_tested:false,native_ui_tested:false,
  global_semantic_lossless_attested:false,authority:0};
 if(mutations.length!==10000||seen.size!==10000||failures||eligible[0].id!=='REPO_OWNER_PROJECTION')throw Error('PROJECT_10K_QUALIFICATION_FAILED');
-const out=process.argv[2]||'artifacts/qualification/project-session-selection-10k.json';
+const out=process.argv[2]||'tests/artifacts/qualification/project-session-selection-10k.json';
 fs.mkdirSync(new URL('../artifacts/qualification/',import.meta.url),{recursive:true});
 fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n');
 fs.writeFileSync(out.replace(/\.json$/,'.jsonl'),mutations.map(x=>JSON.stringify(x)).join('\n')+'\n');

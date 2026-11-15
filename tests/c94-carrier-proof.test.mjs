@@ -46,7 +46,7 @@ test('C94 can assemble real-object SHA-consistent C81 material from fake REST ob
  const sha=gitSha('commit',Buffer.from(payload));
  const maps=new Map();function flatten(node){maps.set(node.sha,{...node.json,sha:node.sha});for(const x of node.children)if(x.child)flatten(x.child);}flatten(tree);
  const api=async p=>p.includes('/git/commits/')?{sha,tree:{sha:root},verification:{payload}}:maps.get(p.split('/').at(-1));
- const m={files:[{path:'src/core.mjs',original_source_blob_sha1:'a'.repeat(40)},{path:'docs/note.md',original_source_blob_sha1:'b'.repeat(40)}]};
+ const m={files:[{path:'src/core.mjs',original_source_blob_sha1:'a'.repeat(40)},{path:'project/docs/note.md',original_source_blob_sha1:'b'.repeat(40)}]};
  const r=await assembleC94GitProof({sourceHead:sha,manifest:m,manifestBytes:Buffer.from('fixture'),gitApi:api});
  assert.equal(r.status,'C94_GIT_RAW_OBJECTS_RECONSTRUCTED_AND_VERIFIED');
  assert.equal(r.tree_objects,3);assert.equal(r.c81_verification_still_required,true);

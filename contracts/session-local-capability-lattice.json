@@ -356,9 +356,9 @@
   ],
   "qualification": {
     "contract_selection_cases": 1000,
-    "contract_selection_receipt": "artifacts/qualification/c28-contract-selection-1k.json",
+    "contract_selection_receipt": "tests/artifacts/qualification/c28-contract-selection-1k.json",
     "semantic_falsification_cases": 1000000,
-    "semantic_falsification_receipt": "artifacts/qualification/c28-semantic-closure-1m.json",
+    "semantic_falsification_receipt": "tests/artifacts/qualification/c28-semantic-closure-1m.json",
     "required_candidate_oracle_mismatches": 0,
     "required_unsafe_active": 0,
     "required_all_mutants_killed": true

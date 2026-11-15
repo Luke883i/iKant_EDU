@@ -23,7 +23,7 @@ function fixture() {
  fs.mkdirSync(path.join(dir,'docs'),{recursive:true});
  fs.writeFileSync(path.join(dir,'src/a.mjs'),"import {beta} from './b.mjs'; export const alpha=beta;\n");
  fs.writeFileSync(path.join(dir,'src/b.mjs'),"export const beta = 1;\n");
- fs.writeFileSync(path.join(dir,'docs/README.md'),"# Intro\n[go](../src/a.mjs)\n");
+ fs.writeFileSync(path.join(dir,'project/docs/README.md'),"# Intro\n[go](../src/a.mjs)\n");
  fs.writeFileSync(path.join(dir,'config.json'),'{"example":true}\n');
  fs.writeFileSync(path.join(dir,'events.jsonl'),'{"a":1}\n{"b":2}\n');
  git(dir,'add','.');
@@ -63,7 +63,7 @@ test('R7 independent oracle rejects false semantic closure and tampered source e
   const baseline=JSON.parse(fs.readFileSync(out,'utf8'));
   assert.equal(baseline.cards.length,5);
   assert.ok(baseline.edges.some(e=>e.consumer==='src/a.mjs'&&e.target==='src/b.mjs'));
-  assert.ok(baseline.edges.some(e=>e.consumer==='docs/README.md'&&e.target==='src/a.mjs'));
+  assert.ok(baseline.edges.some(e=>e.consumer==='project/docs/README.md'&&e.target==='src/a.mjs'));
   assert.equal(baseline.cards.find(c=>c.path==='events.jsonl').structure.status,'PARSED');
   const changes=[
    r=>{r.product_go=true},

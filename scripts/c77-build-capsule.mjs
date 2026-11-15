@@ -27,7 +27,7 @@ const dataPaths=[
  'contracts/c72-unified-mode-admission.json','contracts/cognitive-kernel.json',
  'contracts/host-shell.json','contracts/psyche-kernel.json',
  'contracts/self-world-kernel.json',
- 'assets/brand/ikant-light.svg','assets/brand/ikant-dark.svg'
+ 'project/assets/brand/ikant-light.svg','project/assets/brand/ikant-dark.svg'
 ];
 const allPaths=new Set([...codePaths,...dataPaths]);
 const relative=(source,rel)=>path.posix.normalize(path.posix.join(path.posix.dirname(source),rel));

@@ -20,7 +20,7 @@ on:
       - 'scripts/c23-ontology-collapse-falsify.c'
       - 'scripts/check.mjs'
       - 'package.json'
-      - 'docs/GOVERNANCE.md'
+      - 'project/docs/GOVERNANCE.md'
       - '.github/workflows/c23-ontology-collapse.yml'
 jobs:
   qualify:

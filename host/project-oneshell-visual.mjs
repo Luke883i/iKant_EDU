@@ -5,8 +5,8 @@ import {renderOneShell} from './project-oneshell-edu.mjs';
 const spec=JSON.parse(fs.readFileSync(new URL('../contracts/project-oneshell-visual-v2.json',import.meta.url),'utf8'));
 const KEYS=Object.freeze(['ESITO','A','B','PROVA','EDGE','NEXT']);
 const hash=s=>createHash('sha256').update(Buffer.from(s,'utf8')).digest('hex');
-const BRAND_SOURCE='assets/brand/ikant-light.svg';
-const BRAND_PLUGIN_SOURCE='plugins/ikant-le-session-chat/assets/ikant-light.svg';
+const BRAND_SOURCE='project/assets/brand/ikant-light.svg';
+const BRAND_PLUGIN_SOURCE='project/plugins/ikant-le-session-chat/assets/ikant-light.svg';
 const VERIFIED_BRAND_STATUS='VERIFIED_HOST_SOURCE';
 const UNAVAILABLE_BRAND_STATUS='TEXT_ONLY_SOURCE_NOT_VERIFIED';
 /** Read-only provenance. No network fetch, implicit native avatar or platform registration. */
@@ -16,8 +16,8 @@ function sourceBrand(){
       spec.brand?.placement!=='HEADER_LEFT_OF_TITLE'||spec.brand?.native_registered!==false||
       spec.brand?.asset_sha256!=='b6dc3f6e22149ef9f96348ce8e677af034cd2377f26450af18d51bc5c43ae633')
    return Object.freeze({ok:false,reason:'BRAND_CONTRACT_UNVERIFIED'});
-  const bytes=fs.readFileSync(new URL('../assets/brand/ikant-light.svg',import.meta.url));
-  const plugin=fs.readFileSync(new URL('../plugins/ikant-le-session-chat/assets/ikant-light.svg',import.meta.url));
+  const bytes=fs.readFileSync(new URL('../project/assets/brand/ikant-light.svg',import.meta.url));
+  const plugin=fs.readFileSync(new URL('../project/plugins/ikant-le-session-chat/assets/ikant-light.svg',import.meta.url));
   const svg=bytes.toString('utf8');
   if(bytes.length>65536||!bytes.equals(plugin)||hash(svg)!==spec.brand.asset_sha256||
      !/^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg" viewBox="0 0 1024 1024"/u.test(svg)||

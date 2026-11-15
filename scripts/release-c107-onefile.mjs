@@ -11,7 +11,7 @@ const SHA='c734bf934e33703a6a1f91f0f4d5df96eec96945';
 const TREE='7b1e8b87f43b5995b9c6d1079254918f22549e01';
 const EXPECT='d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d';
 const DEC='65f8a39574786afdfa20e521927004b1709f973b3a1c572daed32586e2cb77b1';
-const OUT='release/v8/ikant-c107-source-c734bf934e33.ikc.br';
+const OUT='project/release/v8/ikant-c107-source-c734bf934e33.ikc.br';
 const H=b=>crypto.createHash('sha256').update(b).digest('hex');
 const G=b=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex');
 const source=path.resolve(process.argv[2]||'');

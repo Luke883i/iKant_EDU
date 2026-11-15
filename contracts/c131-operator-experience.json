@@ -38,5 +38,5 @@
   "native_chatgpt_ui_control_attested": false,
   "policy_consistency_with_higher_priority_required": true,
   "implementation": "host/c131-operator-surface.mjs",
-  "release_source": "release/catalog.json"
+  "release_source": "project/release/catalog.json"
 }

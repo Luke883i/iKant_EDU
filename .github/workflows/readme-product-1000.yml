@@ -5,7 +5,7 @@ on:
       - README.md
       - scripts/readme-1000-variants.mjs
       - tests/readme-product-maturity-1000.test.mjs
-      - docs/README_PRODUCT_AUDIT_1000.txt
+      - project/docs/README_PRODUCT_AUDIT_1000.txt
       - .github/workflows/readme-product-1000.yml
   workflow_dispatch:
 jobs:

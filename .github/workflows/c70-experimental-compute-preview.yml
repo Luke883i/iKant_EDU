@@ -4,7 +4,7 @@ on:
     paths:
       - 'src/c70-experimental-compute-preview.mjs'
       - 'tests/c70-experimental-compute-preview.test.mjs'
-      - 'docs/C70_CAPABILITY_FRONTIER.md'
+      - 'project/docs/C70_CAPABILITY_FRONTIER.md'
       - '.github/workflows/c70-experimental-compute-preview.yml'
   push:
     branches: [main]

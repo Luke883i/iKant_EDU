@@ -10,13 +10,13 @@ function fixture(fn){
  const source='iKant EDU OneShell - PRIMO messaggio umano di nuova chat - C72/C135/C87/C125/S03';
  put('BOOTSTRAP.json',JSON.stringify({project_session:{prompt:SOURCE}}));
  put('contracts/project-prompt-generation.json',JSON.stringify({source_prompt:SOURCE}));
- put('release/catalog.json',JSON.stringify({public_entrypoints:{edu_prompt:SOURCE}}));
+ put('project/release/catalog.json',JSON.stringify({public_entrypoints:{edu_prompt:SOURCE}}));
  put('package.json',JSON.stringify({version:'1.0.0-edu.1'}));
  put('scripts/c131-build-project-bundle.py',"SOURCES={'PROMPT_INNESCO.txt':'project/edu-oneshell/PROMPT_INNESCO.txt'}");
  put(SOURCE,source);
  put(ALIAS,deriveLegacyAlias(Buffer.from(source), '1.0.0-edu.1'));
  put('README.md','**Come iniziare EDU:** al primo messaggio orientamento; poi I ACCEPT e infine EDU');
- put('docs/START_HERE.md','Al primo messaggio l’orientamento; poi I ACCEPT e EDU.');
+ put('project/docs/START_HERE.md','Al primo messaggio l’orientamento; poi I ACCEPT e EDU.');
  try{fn({dir,put,source});}finally{fs.rmSync(dir,{recursive:true,force:true});}
 }
 test('normative graph has single source and does not mint original authority',()=>{
@@ -33,7 +33,7 @@ test('fixture with all original references coherently retargeted passes',()=>fix
  const r=auditRepository(dir);assert.equal(r.ok,true,JSON.stringify(r));assert.equal(r.product_release,'PRODUCT_NO_GO');
 }));
 test('historical independent catalog pointer fails without writing files',()=>fixture(({dir,put})=>{
- put('release/catalog.json',JSON.stringify({public_entrypoints:{edu_prompt:ALIAS}}));
+ put('project/release/catalog.json',JSON.stringify({public_entrypoints:{edu_prompt:ALIAS}}));
  assert.equal(auditRepository(dir).edge,'V5A_SOURCES_DISAGREE');
 }));
 test('mutating one legacy alias byte cannot pass as derived',()=>fixture(({dir,put,source})=>{
@@ -41,7 +41,7 @@ test('mutating one legacy alias byte cannot pass as derived',()=>fixture(({dir,p
  assert.equal(auditRepository(dir).edge,'V5A_MISSING_READBACK');
 }));
 test('obsolete onboarding contradicting the first turn fails',()=>fixture(({dir,put})=>{
- put('docs/START_HERE.md','Sono necessari tre nuovi messaggi distinti: `avvia iKant`, poi `I ACCEPT` poi `EDU`');
+ put('project/docs/START_HERE.md','Sono necessari tre nuovi messaggi distinti: `avvia iKant`, poi `I ACCEPT` poi `EDU`');
  assert.equal(auditRepository(dir).edge,'V5A_MISSING_READBACK');
 }));
 test('no required owner can be waived by one-source coherence',()=>{

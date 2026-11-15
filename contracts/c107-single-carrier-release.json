@@ -2,7 +2,7 @@
   "schema": "ikant-le-experimental-c107-one-carrier-release/v1",
   "source_head": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
   "source_tree": "7b1e8b87f43b5995b9c6d1079254918f22549e01",
-  "carrier_path": "release/v8/ikant-c107-source-c734bf934e33.ikc.br",
+  "carrier_path": "project/release/v8/ikant-c107-source-c734bf934e33.ikc.br",
   "encoding": "BROTLI",
   "framing": "IKC10701",
   "transport_bytes": 62448,

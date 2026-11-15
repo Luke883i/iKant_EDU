@@ -57,7 +57,7 @@ function validate(s){
 }
 const attacks=[
 ['ROLE=HOST','ROLE=IKANT'],['AUTHORITY=0','AUTHORITY=1'],['STATUS=CANDIDATE','STATUS=ACTIVE'],
-['Luke883i/iKant_EDU/main','Luke883i/iKant_LE/main'],['project/session-chat/PROMPT.txt','project-baseline/PROJECT_PROMPT.txt'],
+['Luke883i/iKant_EDU/main','Luke883i/iKant_LE/main'],['project/session-chat/PROMPT.txt','project/baseline/PROJECT_PROMPT.txt'],
 ['C72 ammissione','Host ammissione'],['C135 cognizione','Host cognizione'],['UNKNOWN ≠ PASS','UNKNOWN = PASS'],
 ['STOP_SOURCE_LOCK_STALE','REPIN_SOURCE'],['ESITO | A | B | PROVA | EDGE | NEXT','ESITO | HOST | NEXT'],
 ["'I ACCEPT'","'i accept'"],["'EDU'","'EXPERIMENTAL'"],["'EXIT IKANT'","'EXIT'"],['NO TREE','TREE_ALLOWED'],

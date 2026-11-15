@@ -8,7 +8,7 @@ on:
       - 'contracts/c134-source-epoch.json'
       - 'contracts/c134-convergence-lattice.json'
       - 'tests/c134-convergence-lattice.test.mjs'
-      - 'docs/C134_COGNITIVE_SOURCE_EPOCH.md'
+      - 'project/docs/C134_COGNITIVE_SOURCE_EPOCH.md'
       - '.github/workflows/c134-versioned-cognitive-source.yml'
   push:
     branches: [main]

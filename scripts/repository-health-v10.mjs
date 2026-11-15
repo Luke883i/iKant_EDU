@@ -24,8 +24,8 @@ const LEGACY_LEDGER_SHA256='e78fc3a665ee926b69abcfb9d97301fa294e5ae3a6f75b876729
 const REQUIRED_OWNER_PATHS=Object.freeze([
  'host/c72-public-mode-admission.mjs','host/c135-edu-v2-owner.mjs',
  'host/c87-durable-ledger.mjs','host/c125-output-port.mjs',
- 'src/session-shell.mjs','plugins/ikant-le-session-chat/server/server.mjs',
- 'plugins/ikant-le-session-chat/plugin.json','project/session-chat/PROMPT.txt',
+ 'src/session-shell.mjs','project/plugins/ikant-le-session-chat/server/server.mjs',
+ 'project/plugins/ikant-le-session-chat/plugin.json','project/session-chat/PROMPT.txt',
  'BOOTSTRAP.json'
 ]);
 const h40=/^[a-f0-9]{40}$/u;
@@ -126,9 +126,9 @@ function ownerCheck(rows){
 }
 function legibility(){
  const read=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
- const a=read('README.md'),d=read('docs/REPOSITORY_HEALTH_V10.md'),pkg=JSON.parse(read('package.json'));
+ const a=read('README.md'),d=read('project/docs/REPOSITORY_HEALTH_V10.md'),pkg=JSON.parse(read('package.json'));
  const missing=[];
- if(!a.includes('docs/REPOSITORY_HEALTH_V10.md'))missing.push('README_LINK');
+ if(!a.includes('project/docs/REPOSITORY_HEALTH_V10.md'))missing.push('README_LINK');
  for(const key of ['PROJECT EDU','MCP STANDALONE','ROLLBACK','UNKNOWN','HEALTH COMMAND'])if(!d.includes(key))missing.push('GUIDE:'+key);
  if(pkg.scripts['maintain:verify']!=='node scripts/repository-health-v10.mjs --run-native')missing.push('NPM_ENTRYPOINT');
  return {ok:missing.length===0,missing};

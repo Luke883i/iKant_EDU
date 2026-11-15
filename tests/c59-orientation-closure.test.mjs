@@ -25,12 +25,12 @@ test('C59 orientation capsule presents one canonical SESSION_CHAT_LOCAL composit
 });
 
 test('C59 reference app is explicitly legacy deployed compatibility, never canonical local activation',()=>{
- const plugin=text('plugins/ikant-le-session-chat/server/server.mjs');
+ const plugin=text('project/plugins/ikant-le-session-chat/server/server.mjs');
  const census=json('contracts/session-chat-composition-census.json');
  assert.doesNotMatch(plugin,/Canonical model-visible iKant_LE open binding|App-only canonical ACTIVE turn|Canonical deployed iKant_LE session surface/);
  assert.match(plugin,/Legacy deployed compatibility open binding/);
  const app=census.channels.find(x=>x.id==='APP_BOUND_IKANT_LE_OPEN');
  assert.equal(app.status,'EXCLUDED_LEGACY_PROFILE');
- const deployed=census.channels.find(x=>x.id==='plugins/ikant-le-session-chat');
+ const deployed=census.channels.find(x=>x.id==='project/plugins/ikant-le-session-chat');
  assert.equal(deployed.status,'EXCLUDED_NONCANONICAL');
 });

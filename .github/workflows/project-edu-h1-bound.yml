@@ -6,7 +6,7 @@ on:
       - 'contracts/project-edu-h1-irreducible.json'
       - 'scripts/project-edu-h1-falsify.mjs'
       - 'tests/project-edu-h1-*.test.mjs'
-      - 'docs/PROJECT_EDU_H1_FIELD_BOUNDARY.md'
+      - 'project/docs/PROJECT_EDU_H1_FIELD_BOUNDARY.md'
       - '.github/workflows/project-edu-h1-bound.yml'
   workflow_dispatch:
 permissions:

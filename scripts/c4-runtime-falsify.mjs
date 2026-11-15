@@ -5,7 +5,7 @@ import { emptyPsyche,initialState } from '../src/state.mjs';
 import { appraiseInteraction,updatePsycheForInteraction,retroactPsyche,deriveArchetypalMix,archetypalVoiceDelta,validatePsycheState,psycheDistanceFromBaseline } from '../src/psyche.mjs';
 import { mineIntent,buildResourceRequests,centralRegulate,strategicFrame,deriveVoiceState } from '../src/cognition.mjs';
 const args=process.argv.slice(2);const arg=(k,d)=>{const i=args.indexOf(k);return i>=0?args[i+1]:d};
-const CASES=Number(arg('--cases','1000000')),SEED=Number(arg('--seed','3237999000'))>>>0,OUT=arg('--output','artifacts/qualification/c4-runtime-shard.json');
+const CASES=Number(arg('--cases','1000000')),SEED=Number(arg('--seed','3237999000'))>>>0,OUT=arg('--output','tests/artifacts/qualification/c4-runtime-shard.json');
 function rng(seed){let x=seed>>>0;return()=>{x^=(x<<13)>>>0;x^=x>>>17;x^=(x<<5)>>>0;return x>>>0}}
 const r=rng(SEED),eps=1e-6,eq=(a,b)=>Math.abs(a-b)<=eps;
 const step=(p,text,outcome='ANSWER')=>retroactPsyche(updatePsycheForInteraction(p,appraiseInteraction(text)),{outcome});

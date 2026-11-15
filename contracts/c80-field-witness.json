@@ -78,7 +78,7 @@
     "host/c80-field-witness.mjs",
     "scripts/c80-field-qualify-cli.mjs",
     "tests/c80-field-witness.test.mjs",
-    "docs/C80_HOST_WITNESS_AND_H95.md"
+    "project/docs/C80_HOST_WITNESS_AND_H95.md"
   ],
   "DoD": {
     "repo": [

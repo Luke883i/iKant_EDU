@@ -7,7 +7,7 @@ export const SESSION_SHELL_SCHEMA='ikant-le-session-shell/v2';
 export const RUNTIME_GUIDANCE_SCHEMA='ikant-le-runtime-guidance/v1';
 export const SESSION_SHELL_ORDER=Object.freeze(['VOICE_SURFACE','STATUS','SELF_SUMMARY','BACKLOG_TELEMETRY']);
 export const ASCII_SHELL_WIDTH=80;
-export const SESSION_STYLE_CONTEXT_PATH='stile_comunicativo.md';
+export const SESSION_STYLE_CONTEXT_PATH='project/docs/stile_comunicativo.md';
 export function readSessionStyleContext(){const bytes=fs.readFileSync(new URL('../'+SESSION_STYLE_CONTEXT_PATH,import.meta.url));return{path:SESSION_STYLE_CONTEXT_PATH,sha256:sha256(bytes),bytes:bytes.length,effect:'VOICE_STYLE_ONLY',authority:0};}
 const asciiBorder=(c='-')=>'+'+String(c).slice(0,1).repeat(ASCII_SHELL_WIDTH-2)+'+';
 const asciiLine=(text='')=>{const w=ASCII_SHELL_WIDTH-4,s=String(text);return'| '+s.slice(0,w).padEnd(w,' ')+' |';};

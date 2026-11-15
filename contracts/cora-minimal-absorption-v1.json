@@ -37,7 +37,7 @@
       "id": "R",
       "name": "REPOSITORY",
       "methods": ["git-provenance", "artifact-semantics", "archaeology", "workflow-intelligence"],
-      "reuse": ["scripts/v5b-repository-governance-audit.mjs", "governance/v5b-change-register.json"],
+      "reuse": ["scripts/v5b-repository-governance-audit.mjs", "contracts/governance/v5b-change-register.json"],
       "minimal_action": "Classify committed files and workflow roles with BASE/HEAD/TREE/blob; nominate one bounded redundancy only after literal, dynamic and external consumers are investigated.",
       "falsifier": "Unregistered change, unresolved consumer or inferred workflow equivalence blocks removal; a renamed file is not evidence of a safe deletion.",
       "done_requires": ["COMPLETE_GIT_SOURCE_CENSUS", "SOURCE_DEPENDENCIES_EXPLICIT", "REVIEWED_RETIREMENT_OR_RETAIN"],

@@ -2,10 +2,10 @@
   "schema": "ikant-le-host-brand-projection/v1",
   "authority": 0,
   "source_head": "92cc620299e9ee365386782921036e57d2f6bd0e",
-  "entrypoint": "plugins/ikant-le-session-chat/plugin.json",
+  "entrypoint": "project/plugins/ikant-le-session-chat/plugin.json",
   "logo_source": [
-    "assets/brand/ikant-light.svg",
-    "assets/brand/ikant-dark.svg"
+    "project/assets/brand/ikant-light.svg",
+    "project/assets/brand/ikant-dark.svg"
   ],
   "brand_surface": [
     "plugin_manifest_when_registered",

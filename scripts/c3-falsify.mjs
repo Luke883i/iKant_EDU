@@ -11,7 +11,7 @@ const args=process.argv.slice(2);
 function arg(k,d){const i=args.indexOf(k);return i>=0?args[i+1]:d;}
 const CASES=Number(arg('--cases','1000000'));
 const SEED=Number(arg('--seed','3405691582'))>>>0;
-const OUT=arg('--output','artifacts/qualification/c3-runtime.json');
+const OUT=arg('--output','tests/artifacts/qualification/c3-runtime.json');
 function rng(seed){let x=seed>>>0;return()=>{x^=(x<<13)>>>0;x^=x>>>17;x^=(x<<5)>>>0;return x>>>0;};}
 function sha(v){return crypto.createHash('sha256').update(typeof v==='string'?v:JSON.stringify(v)).digest('hex');}
 function ok(v,sig){return{ok:Boolean(v),sig};}
@@ -79,7 +79,7 @@ for(let i=0;i<CASES;i++){
   signatures.add(`${f[0]}|${res.sig}`);
 }
 const unexercised=Object.entries(stats).filter(([,v])=>v.cases===0||v.kills!==v.cases).map(([k])=>k);
-const SOURCE_FILES=['TERMS.md','BOOTSTRAP.md','AGENTS.md','README.md','contracts/ikant-le.json','contracts/cognitive-kernel.json','contracts/host-shell.json','contracts/orientation-capsule.json','src/contract.mjs','src/state.mjs','src/admission.mjs','src/probe.mjs','src/cognition.mjs','src/runtime.mjs','src/backlog.mjs','src/docx.mjs','package.json','tests/runtime.test.mjs','scripts/check.mjs','scripts/c3-falsify.mjs','docs/C3_DOD.md','.github/workflows/ci.yml'];
+const SOURCE_FILES=['TERMS.md','project/docs/BOOTSTRAP.md','AGENTS.md','README.md','contracts/ikant-le.json','contracts/cognitive-kernel.json','contracts/host-shell.json','contracts/orientation-capsule.json','src/contract.mjs','src/state.mjs','src/admission.mjs','src/probe.mjs','src/cognition.mjs','src/runtime.mjs','src/backlog.mjs','src/docx.mjs','package.json','tests/runtime.test.mjs','scripts/check.mjs','scripts/c3-falsify.mjs','project/docs/C3_DOD.md','.github/workflows/ci.yml'];
 const sourceFiles={};
 for(const rel of SOURCE_FILES)sourceFiles[rel]=sha(fs.readFileSync(path.join(ROOT,rel)));
 const sourceDigest=sha(sourceFiles);

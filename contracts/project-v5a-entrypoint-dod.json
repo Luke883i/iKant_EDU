@@ -73,7 +73,7 @@
     },
     {
       "id": "V5A-L03",
-      "object": "release/catalog.json",
+      "object": "project/release/catalog.json",
       "what": "public_entrypoints.edu_prompt punta esattamente al file normativo",
       "proof": "auditRepository"
     },
@@ -85,7 +85,7 @@
     },
     {
       "id": "V5A-L05",
-      "object": "docs/START_HERE.md",
+      "object": "project/docs/START_HERE.md",
       "what": "turni I ACCEPT e EDU distinti senza falsa attivazione CANONICAL",
       "proof": "test documentale + review"
     },
@@ -135,10 +135,10 @@
   "minimal_semantic_slice": {
     "canonical_prompt_unchanged": "project/session-chat/PROMPT.txt",
     "generated_compatibility_alias": "project/edu-oneshell/PROMPT_INNESCO.txt",
-    "catalog_pointer_corrected": "release/catalog.json#public_entrypoints.edu_prompt",
+    "catalog_pointer_corrected": "project/release/catalog.json#public_entrypoints.edu_prompt",
     "onboarding_consistent": [
       "README.md",
-      "docs/START_HERE.md"
+      "project/docs/START_HERE.md"
     ],
     "new_workflows": 0,
     "original_owner_modifications": 0,

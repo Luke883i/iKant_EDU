@@ -12,7 +12,7 @@ function fixture(){
   ['host/c72-public-mode-admission.mjs',null,'LITERAL_CONSUMER_OBSERVED',['tests/a.test.mjs'],[]],
   ['scripts/helper.mjs',null,'UNKNOWN_NOT_UNUSED',[],[]],
   ['scripts/dynamic.mjs',null,'UNKNOWN_NOT_UNUSED',[],[]],
-  ['docs/LEGACY_COBOL.md',null,'UNKNOWN_NOT_UNUSED',[],[]],
+  ['project/docs/LEGACY_COBOL.md',null,'UNKNOWN_NOT_UNUSED',[],[]],
   ['.github/workflows/ci.yml',{events:['push'],jobs:['qualify'],flags:[],required_check_status:'UNKNOWN_PROVIDER_NOT_DERIVED'},'UNKNOWN_NOT_UNUSED',[],[]],
   ['.github/workflows/write.yml',{events:['pull_request_target'],jobs:['publish'],flags:['WRITE_PERMISSION_REVIEW'],required_check_status:'UNKNOWN_PROVIDER_NOT_DERIVED'},'UNKNOWN_NOT_UNUSED',[],[]],
   ['tests/a.test.mjs',null,'UNKNOWN_NOT_UNUSED',[],[]]
@@ -44,7 +44,7 @@ test('PR-A is derived from original census; all file paths covered exactly once'
  assert.equal(r.rows.find(x=>x.path==='README.md').decision,'RETAIN_GUARDED');
  assert(r.rows.find(x=>x.path==='scripts/dynamic.mjs').signals.includes('DYNAMIC_CONSUMER'));
  assert(r.rows.find(x=>x.path==='.github/workflows/write.yml').signals.includes('WORKFLOW_HAZARD'));
- assert(r.rows.find(x=>x.path==='docs/LEGACY_COBOL.md').signals.includes('DOCUMENT_VIGENCY'));
+ assert(r.rows.find(x=>x.path==='project/docs/LEGACY_COBOL.md').signals.includes('DOCUMENT_VIGENCY'));
  assert.equal(r.rows.find(x=>x.path==='scripts/helper.mjs').consumer_closure,'UNKNOWN');
  assert.equal(r.reticulum.standardized,'BLOCKED_EXTERNAL');
  assert(r.rows.every(x=>x.delete_authorized===false&&x.workflow_retirement_authorized===false));

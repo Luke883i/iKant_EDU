@@ -7,12 +7,12 @@ on:
       - 'src/session-shell.mjs'
       - 'contracts/session-shell.json'
       - 'contracts/methodological-bootstrap.json'
-      - 'stile_comunicativo.md'
+      - 'project/docs/stile_comunicativo.md'
       - 'scripts/c44-methodological-bootstrap-select.mjs'
       - 'scripts/c44-methodological-bootstrap-falsify.mjs'
       - 'tests/c44-methodological-bootstrap.test.mjs'
-      - 'runtime-root/shard-003.json'
-      - 'runtime-root/shard-004.json'
+      - 'src/runtime-root/shard-003.json'
+      - 'src/runtime-root/shard-004.json'
       - 'package.json'
 jobs:
   c44:

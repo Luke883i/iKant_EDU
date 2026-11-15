@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 const args=process.argv.slice(2),get=(k,d)=>{const i=args.indexOf(k);return i>=0?args[i+1]:d};
-const CASES=Number(get('--cases','1000000')),OUT=get('--output','artifacts/qualification/c15-flex-transfer.json');if(CASES!==1_000_000)throw new Error('C15 requires exactly 1,000,000 semantic mutations');
+const CASES=Number(get('--cases','1000000')),OUT=get('--output','tests/artifacts/qualification/c15-flex-transfer.json');if(CASES!==1_000_000)throw new Error('C15 requires exactly 1,000,000 semantic mutations');
 const MAX_READS=40,MAX_ROUNDS=1;
 const MODES=['GITHUB_API_BASE64','GITHUB_GIT_BLOB_API','PINNED_PERMALINK','PINNED_GITHUB_ZIP','HOST_FILE_BRIDGE','WARM_CACHE_EXACT'];
 const NODES=['TARGET_INTENT_ROOT','SOURCE_ORIENTATION_ROOT','CONSENT_ROOT','SOURCE_BOUND_TRANSFER','VERIFIED_LOCAL_ROOT','LIVE_HOST_PROBE','RECEIPT_GATED_ACTIVE_COMMIT','E2E_DEADLINE'];

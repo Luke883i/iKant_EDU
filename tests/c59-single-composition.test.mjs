@@ -31,7 +31,7 @@ test('C59 bootstrap binds the single channel and no container GitHub dependency'
 });
 
 test('C59 host witness proves connector to container same Git blob identity without container GitHub network',()=>{
- const w=read('artifacts/qualification/c59-host-connector-container-witness.json'),x={...w};delete x.receipt_sha256;
+ const w=read('tests/artifacts/qualification/c59-host-connector-container-witness.json'),x={...w};delete x.receipt_sha256;
  const digest=crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
  assert.equal(w.receipt_sha256,digest);
  assert.equal(w.source_blob_sha1,w.local_git_blob_sha1);
@@ -41,8 +41,8 @@ test('C59 host witness proves connector to container same Git blob identity with
 });
 
 test('C59 semantic qualification receipts are strict',()=>{
- const s=read('artifacts/qualification/c59-composition-selection-1k.json');
- const f=read('artifacts/qualification/c59-composition-falsification-100k.json');
+ const s=read('tests/artifacts/qualification/c59-composition-selection-1k.json');
+ const f=read('tests/artifacts/qualification/c59-composition-falsification-100k.json');
  assert.equal(s.cases,1024);assert.equal(s.valid_candidates,1);assert.equal(s.winner_mask,1023);assert.equal(s.status,'PASS');
  assert.equal(f.cases,100000);assert.equal(f.candidate_oracle_mismatches,0);assert.equal(f.unsafe_active,0);assert.equal(f.all_deletion_mutants_killed,true);assert.equal(f.status,'PASS');
  assert.ok(f.family_counts.CONTAINER_DNS_DOWN>0);
@@ -62,7 +62,7 @@ test('C59 PR1-68 lineage is total and terminally classified',()=>{
 });
 
 test('C59 Cartesian quotient has one and only one canonical composition class',()=>{
- const a=read('artifacts/qualification/c59-cartesian-closure.json'),s=read('contracts/bootstrap-composition-space.json');
+ const a=read('tests/artifacts/qualification/c59-cartesian-closure.json'),s=read('contracts/bootstrap-composition-space.json');
  assert.equal(Object.keys(s.axes).length,10);
  assert.equal(a.raw_vectors,1166400);
  assert.equal(a.raw_canonical_alias_vectors,6);
@@ -75,7 +75,7 @@ test('C59 Cartesian quotient has one and only one canonical composition class',(
 });
 
 test('C59 history audit closes all 68 PRs and all registered atoms',()=>{
- const a=read('artifacts/qualification/c59-pr1-68-history-audit.json');
+ const a=read('tests/artifacts/qualification/c59-pr1-68-history-audit.json');
  assert.equal(a.counts.total_prs,68);assert.equal(a.counts.merged,61);assert.equal(a.counts.closed_unmerged,6);assert.equal(a.counts.open,1);
  assert.equal(a.counts.registry_atoms,52);assert.equal(a.counts.referenced_registry_atoms,52);
  assert.deepEqual(a.unclassified,[]);assert.equal(a.status,'PASS');
@@ -95,9 +95,9 @@ test('C59 canonical authority owner supersedes legacy fastboot handoff authority
 
 test('C59 runtime closure uses the 12-mechanism minimum lattice and one canonical ACTIVE issuer',()=>{
  const c=read('contracts/session-chat-composition-channel.json');
- const l=read('artifacts/qualification/c59-semantic-lattice-selection-4k.json');
- const f=read('artifacts/qualification/c59-runtime-closure-falsification-100k.json');
- const x=read('artifacts/qualification/c59-executable-surface-audit.json');
+ const l=read('tests/artifacts/qualification/c59-semantic-lattice-selection-4k.json');
+ const f=read('tests/artifacts/qualification/c59-runtime-closure-falsification-100k.json');
+ const x=read('tests/artifacts/qualification/c59-executable-surface-audit.json');
  assert.equal(c.mechanisms.length,12);
  assert.equal(c.qualification.selection_cases,4096);
  assert.equal(l.cases,4096);assert.equal(l.mechanism_count,12);assert.equal(l.valid_candidates,1);assert.equal(l.winner_mask,4095);assert.equal(l.oracle_candidate_mismatches,0);assert.equal(l.all_deletion_mutants_killed,true);assert.equal(l.status,'PASS');

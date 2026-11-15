@@ -6,7 +6,7 @@ on:
       - 'scripts/c80-*'
       - 'tests/c80-*'
       - 'contracts/c80-*'
-      - 'docs/C80_*'
+      - 'project/docs/C80_*'
       - '.github/workflows/c80-host-witness.yml'
   push:
     branches: [main]

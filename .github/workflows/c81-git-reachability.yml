@@ -6,7 +6,7 @@ on:
       - 'scripts/c81-*'
       - 'tests/c81-*'
       - 'contracts/c81-*'
-      - 'docs/C81_*'
+      - 'project/docs/C81_*'
       - '.github/workflows/c81-git-reachability.yml'
   push:
     branches: [main]

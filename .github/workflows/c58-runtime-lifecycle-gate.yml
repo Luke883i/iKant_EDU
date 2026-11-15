@@ -14,9 +14,9 @@ on:
       - 'scripts/c58-host-bootstrap-falsify.c'
       - 'scripts/c58-session-chat-local-prompt-falsify.mjs'
       - 'scripts/c58-composition-audit-10k.mjs'
-      - 'plugins/ikant-le-session-chat/server/server.mjs'
+      - 'project/plugins/ikant-le-session-chat/server/server.mjs'
       - 'contracts/session-chat-local-host-kernel.json'
-      - 'docs/SESSION_CHAT_LOCAL_PROMPT.md'
+      - 'project/docs/SESSION_CHAT_LOCAL_PROMPT.md'
       - 'src/session-chat-local-prompt.mjs'
       - '.github/workflows/c58-runtime-lifecycle-gate.yml'
 permissions:

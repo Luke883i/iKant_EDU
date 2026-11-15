@@ -21,7 +21,7 @@ test('V5-B archive preserves four original Git blobs exactly and removes root al
  assert.equal(plan.product_release,'PRODUCT_NO_GO');
  for(const row of plan.decisions){
   assert.match(row.old_path,/^(?:README_C(?:94|96|98)_PREPR\.md|C94_BASE_LOCK\.json)$/);
-  assert.equal(row.archive_path,'docs/archive/prepr/'+row.old_path);
+  assert.equal(row.archive_path,'project/docs/archive/prepr/'+row.old_path);
   assert.equal(fs.existsSync(path.join(ROOT,row.old_path)),false,row.old_path);
   const original=load(row.archive_path);
   assert.equal(original.length,row.bytes,row.archive_path);
@@ -41,13 +41,13 @@ test('generated document atlas remains exact and retains historical documents in
   assert.equal(entry?.role,'Storico',row.archive_path);
   assert.equal(a.rows.some(x=>x.path===row.old_path),false);
  }
- const source=load('docs/C96_GITHUB_TRANSPLANT_PROVENANCE.md').toString('utf8');
+ const source=load('project/docs/C96_GITHUB_TRANSPLANT_PROVENANCE.md').toString('utf8');
  assert.match(source,/\]\(archive\/prepr\/README_C96_PREPR\.md\)/);
- assert.equal(fs.existsSync(path.join(ROOT,'docs/archive/prepr/README_C96_PREPR.md')),true);
+ assert.equal(fs.existsSync(path.join(ROOT,'project/docs/archive/prepr/README_C96_PREPR.md')),true);
 });
 test('canonical roots and consumers remain unchanged; risky conditional moves are excluded',()=>{
  assert.deepEqual(plan.conditional_not_moved.map(x=>x.path),
-  ['iKant_UI_shell.md','render.mcp-prepr.yaml']);
+  ['project/docs/iKant_UI_shell.md','render.mcp-prepr.yaml']);
  const successor=JSON.parse(load('contracts/pr3-repository-contraction.v1.json'));
  assert.equal(successor.schema,'ikant-pr3-repository-contraction/v1');
  assert.equal(successor.original_main,'36646712e5f27fef337784e1a00b3849dfb38b48');
@@ -70,7 +70,7 @@ test('canonical roots and consumers remain unchanged; risky conditional moves ar
  for(const row of plan.decisions)
   assert.equal(source.paths.includes(row.old_path),false,row.old_path);
  assert.equal(source.paths.includes('ikant.mjs'),true);
- assert.equal(source.paths.includes('stile_comunicativo.md'),true);
+ assert.equal(source.paths.includes('project/docs/stile_comunicativo.md'),true);
 });
 test('archive is a reviewed plan, not a released deletion or native receipt',()=>{
  assert.equal(plan.evidence.git_blob_readback_required,true);

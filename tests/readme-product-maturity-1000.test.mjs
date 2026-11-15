@@ -30,13 +30,13 @@ test('PRODUCT: bounded cognitive model, real full stack, original authority sepa
  assert.doesNotMatch(home,/CANONICAL \(via MCP\)|MCP connesso implica ACTIVE|è una coscienza dimostrata/);
 });
 test('PUBLIC: START_HERE does not launder external MCP into C59 CANONICAL',()=>{
- const intro=fs.readFileSync(path.join(root,'docs/START_HERE.md'),'utf8');
+ const intro=fs.readFileSync(path.join(root,'project/docs/START_HERE.md'),'utf8');
  assert.match(intro,/CANONICAL/);assert.match(intro,/C59/);assert.match(intro,/MCP esterno/);
  assert.doesNotMatch(intro,/CANONICAL[^.]{0,100}servizio MCP/i);
 });
 test('MCP: documented Render deployment and ChatGPT connection remain qualified',()=>{
- for(const term of ['render.mcp-standalone.candidate.yaml','docs/MCP_STANDALONE_RENDER_RUNBOOK.txt',
-  'plugins/ikant-le-session-chat/mcp.standalone.template.json','IKANT_MCP_DEPLOYMENT_PROFILE',
+ for(const term of ['project/release/render.mcp-standalone.candidate.yaml','project/docs/MCP_STANDALONE_RENDER_RUNBOOK.txt',
+  'project/plugins/ikant-le-session-chat/mcp.standalone.template.json','IKANT_MCP_DEPLOYMENT_PROFILE',
   'IKANT_MCP_AUTH_MODE','IKANT_MCP_OAUTH_RESOURCE','IKANT_MCP_OAUTH_ISSUER',
   'IKANT_MCP_OAUTH_JWKS_URL','IKANT_LE_DEPLOYMENT_ROOT','PKCE S256',
   'JWKS','ikant:connect','ikant:write','/.well-known/oauth-protected-resource/mcp',
@@ -48,7 +48,7 @@ test('LINKS: source atlas and curated paths exist, no self-asserted installation
  const docs=new Set([...home.matchAll(/\]\((docs\/[^)#]+)\)/g)].map(m=>m[1]));
  assert.ok(docs.size>=15,'at least 15 distinct entrypoints to full atlas');
  const a=audit();assert.ok(a.total>=169);
- assert.ok(home.includes('docs/IKANT_DOCUMENT_ATLAS.md'));
+ assert.ok(home.includes('project/docs/IKANT_DOCUMENT_ATLAS.md'));
 });
 test('MUTATIONS: 1000 distinct text candidates and 1000 rejected negative counterexamples',()=>{
  const r=search(home);

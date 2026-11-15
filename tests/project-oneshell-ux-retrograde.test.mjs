@@ -64,7 +64,7 @@ test('10000 DISTINCT typed negative evidence cases; no CI, mock or hashes promot
  assert.equal(seen.size,10000);
 });
 test('optional app view state is PRESENTATION ONLY, six slot DOM preserved',()=>{
- const html=fs.readFileSync(path.join(root,'plugins/ikant-le-session-chat/server/public/ikant-le-app.html'),'utf8');
+ const html=fs.readFileSync(path.join(root,'project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html'),'utf8');
  for(const slot of ['ESITO','A','B','PROVA','EDGE','NEXT'])
   assert(html.includes('data-slot="'+slot+'"'),'slot '+slot);
  assert.equal((html.match(/<section data-slot="/g)||[]).length,6);
@@ -73,7 +73,7 @@ test('optional app view state is PRESENTATION ONLY, six slot DOM preserved',()=>
  assert(html.includes("scope:'UI_INSTANCE_ONLY'"));
  assert(html.includes("if(typeof window.openai?.setWidgetState!=='function')return"));
  assert(!html.includes("widgetState.active=true"));
- const server=fs.readFileSync(path.join(root,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
+ const server=fs.readFileSync(path.join(root,'project/plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
  assert(server.includes('legacy')||server.includes('Legacy'));
 });
 test('type confusion, unknown gates, claims do not create an authorization',()=>{
@@ -147,9 +147,9 @@ test('prospective EDU source offers only EDU, without treating static source as 
 test('no rewritten historical receipt and no MCP route renaming in blueprint-only diff',()=>{
  const original=fs.readFileSync(path.join(root,'host/c72-public-mode-admission.mjs'),'utf8');
  assert(original.includes("if(humanMessage!=='EDU')return denied('INVALID_MODE_SELECTION')"));
- const legacy=fs.readFileSync(path.join(root,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
+ const legacy=fs.readFileSync(path.join(root,'project/plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
  assert(legacy.includes("Legacy deployed compatibility")||legacy.includes("legacy deployed"));
- const blueprint=fs.readFileSync(path.join(root,'docs/PROJECT_EDU_ONESHELL_UX_E2E_RETROGRADE.txt'),'utf8');
+ const blueprint=fs.readFileSync(path.join(root,'project/docs/PROJECT_EDU_ONESHELL_UX_E2E_RETROGRADE.txt'),'utf8');
  for(const anchor of ['C1 — EDU entry','C2 — MCP is not EDU','P1 — EDU_ONLY_SOURCE','P2 — EDU_MIN_E2E',
  'P3 — EDU_ONESHELL_IN_CHAT','G2 VALUE','Two independent V5-G']) assert(blueprint.includes(anchor),anchor);
 });

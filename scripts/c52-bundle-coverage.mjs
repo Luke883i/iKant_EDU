@@ -7,8 +7,8 @@ const J=p=>JSON.parse(fs.readFileSync(path.join(ROOT,p),'utf8'));
 const T=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
 const H=x=>crypto.createHash('sha256').update(x).digest('hex');
 const contract=J('contracts/physical-runtime-closure-v1.json');
-const campaign=J('artifacts/qualification/c52-physical-closure-10m.json');
-const lattice=J('artifacts/qualification/c52-physical-closure-lattice.json');
+const campaign=J('tests/artifacts/qualification/c52-physical-closure-10m.json');
+const lattice=J('tests/artifacts/qualification/c52-physical-closure-lattice.json');
 const source={physical:T('src/physical-runtime-closure.mjs'),cohost:T('src/cohost-coldstart-qualification.mjs'),native:T('src/native-transcript-participant.mjs'),runtime:T('src/session-local-service.mjs'),c51:T('src/supersystem-runtime-conformance.mjs'),tests:T('tests/c52-physical-runtime-closure.test.mjs'),c51workflow:T('.github/workflows/c51-supersystem-runtime.yml')};
 const mechanisms=[...contract.entities.map(x=>x.id),...contract.laws.map(x=>x.id)],expected=['E0','E1','E2','E3','E4','E5','E6','L0','L1','L2','L3','L4'];
 const checks={
@@ -36,4 +36,4 @@ const checks={
 const missing=Object.entries(checks).filter(([,v])=>!v).map(([k])=>k);
 const body={schema:'ikant-le-c52-analysis-bundle-coverage/v1',analysis_bundle_sha256:contract.analysis_bundle_sha256,mechanisms:expected,checks,covered:Object.values(checks).filter(Boolean).length,total:Object.keys(checks).length,missing,status:missing.length?'FAIL':'PASS',authority:0};
 const out={...body,receipt_sha256:H(Buffer.from(JSON.stringify(body)))};
-const outPath=process.argv[2]||'artifacts/qualification/c52-bundle-coverage.json';fs.writeFileSync(path.join(ROOT,outPath),JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out));if(missing.length)process.exit(1);
+const outPath=process.argv[2]||'tests/artifacts/qualification/c52-bundle-coverage.json';fs.writeFileSync(path.join(ROOT,outPath),JSON.stringify(out,null,2)+'\n');console.log(JSON.stringify(out));if(missing.length)process.exit(1);

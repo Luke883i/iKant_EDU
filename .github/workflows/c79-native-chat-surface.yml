@@ -6,7 +6,7 @@ on:
       - 'scripts/c79-*'
       - 'tests/c79-*'
       - 'contracts/c79-*'
-      - 'docs/C79_*'
+      - 'project/docs/C79_*'
       - '.github/workflows/c79-native-chat-surface.yml'
   push:
     branches: [main]

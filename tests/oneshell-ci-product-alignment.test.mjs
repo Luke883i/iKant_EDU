@@ -24,7 +24,7 @@ test('CI must execute, not merely mention, every mapped test',()=>{
 test('Source registry cannot be rewritten while CI stays green',()=>{
  let x=clone();x.issues[1].negative_case='Mutazione semantica non autorizzata del requisito.';
  assert.ok(inspectProductCi({registry:x,workflow}).failures.some(z=>z.includes('PRODUCT_REQUIREMENT_DIFFERENT_FROM_AUDIT')));
- const changed=fs.readFileSync(path.join(ROOT,'docs/ONESHell_HOST_40_ISSUES.csv'),'utf8').replace('Shell non materializzata','Shell falsamente attestata');
+ const changed=fs.readFileSync(path.join(ROOT,'project/docs/ONESHell_HOST_40_ISSUES.csv'),'utf8').replace('Shell non materializzata','Shell falsamente attestata');
  assert.ok(inspectProductCi({registry:raw,workflow,sourceCsv:changed}).failures.includes('CANONICAL_AUDIT_SOURCE_DRIFT'));
 });
 test('Changed requirement, V6 drift or erased human witnesses fails',()=>{

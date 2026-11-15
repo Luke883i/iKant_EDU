@@ -9,7 +9,7 @@ import {AI_AGENT_FIRST_ENTRYPOINT_KEY,for_ai_agent_first_entrypoint,localHostMet
 const json=rel=>JSON.parse(fs.readFileSync(path.join(ROOT,rel),'utf8'));
 
 test('local-host meta-prompt v7 is a derived byte-exact document',()=>{
- const doc=fs.readFileSync(path.join(ROOT,'docs/LOCAL_HOST_META_PROMPT.md'),'utf8');
+ const doc=fs.readFileSync(path.join(ROOT,'project/docs/LOCAL_HOST_META_PROMPT.md'),'utf8');
  assert.equal(doc,renderLocalHostMetaPromptDocument());
  const r=localHostMetaPromptReceipt();
  assert.equal(r.schema,'ikant-le-local-host-adapter/v7');

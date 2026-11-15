@@ -93,8 +93,8 @@
   },
   "brand": {
     "scope": "HOST_OWNED_PRESENTATION_ONLY",
-    "source": "assets/brand/ikant-light.svg",
-    "plugin_source": "plugins/ikant-le-session-chat/assets/ikant-light.svg",
+    "source": "project/assets/brand/ikant-light.svg",
+    "plugin_source": "project/plugins/ikant-le-session-chat/assets/ikant-light.svg",
     "asset_sha256": "b6dc3f6e22149ef9f96348ce8e677af034cd2377f26450af18d51bc5c43ae633",
     "placement": "HEADER_LEFT_OF_TITLE",
     "width_px": 28,

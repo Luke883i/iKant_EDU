@@ -11,7 +11,7 @@
     "scripts/edu-host-falsify-1m.mjs",
     ".github/workflows/edu-cohost-outcomes.yml",
     "project/EDU_HOST_PROJECT_DELTA_V9.txt",
-    "docs/POST118_RISK_AND_SCOPE.md"
+    "project/docs/POST118_RISK_AND_SCOPE.md"
   ],
   "tasks": [
     {

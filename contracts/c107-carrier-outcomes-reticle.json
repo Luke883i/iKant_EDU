@@ -8,7 +8,7 @@
     {
       "id": "R01",
       "feature": "pinned_single_carrier",
-      "owner": "release/v8/ikant-c107-source-c734bf934e33.ikc.br",
+      "owner": "project/release/v8/ikant-c107-source-c734bf934e33.ikc.br",
       "oracle": "transport_bytes=62448 AND transport_sha256 pinned",
       "ci": "C107 real carrier consumption and host outcome gates",
       "tier": "REMOTE_SOURCE_BYTES"

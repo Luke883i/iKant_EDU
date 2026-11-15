@@ -32,7 +32,7 @@ const METHODS=Object.freeze({
  P:['documentation-assurance','runtime-observation','source-runtime-fusion','release-verification','process-catalog']
 });
 const DOMAIN_REFS=Object.freeze({
- R:['scripts/v5b-repository-governance-audit.mjs','governance/v5b-change-register.json'],
+ R:['scripts/v5b-repository-governance-audit.mjs','contracts/governance/v5b-change-register.json'],
  S:['contracts/project-review-readiness-v1.json','scripts/project-review-callsites.mjs'],
  P:['contracts/c72-product-value-promise.json','contracts/project-oneshell-do-d.json']
 });
@@ -188,7 +188,7 @@ export function reopenW1WorkflowEpoch({entries,observedTree,previousTree,registe
  const file='.github/workflows/s03-s09-mvp1-candidate.yml';
  const original='eea411a6fd465ee3b1f35d0c2fa8fd615c116750';
  const amended='ff86094e725bf876f09ac0587fe2ce6d3218c065';
- const regPath='governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json';
+ const regPath='contracts/governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json';
  if(!Array.isArray(entries)||!isHash(observedTree)||!isHash(previousTree)||
     !Array.isArray(register?.paths)||register.schema!=='ikant-v5b-change-extension/v1'||
     register.authority!==0||register.self_path!==regPath||register.source_main!==source||
@@ -366,7 +366,7 @@ export function observeReticularCensusWithAudit(){
   if(!m||m[3].charCodeAt(0)!==9)throw Error('CORA_WORKFLOW_NON_BLOB_ENTRY');
   return {mode:m[1],sha:m[2],name:m[4]};
  });
- const w1register=JSON.parse(fs.readFileSync(path.join(ROOT,'governance/changes/'+
+ const w1register=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/governance/changes/'+
   'z'.repeat(40)+'-r7-pilot-root-contraction.json'),'utf8'));
  const w1=reopenW1WorkflowEpoch({entries,observedTree:workflowTree,
   previousTree:'3eba2af5e3371645fb9573c357948f6466c259ae',

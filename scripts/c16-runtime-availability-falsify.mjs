@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 import {classifyRuntimeAvailability,classifyTurnRelease,validateRuntimeAvailabilityDecision} from '../src/runtime-availability.mjs';
 const args=process.argv.slice(2),get=(k,d)=>{const i=args.indexOf(k);return i>=0?args[i+1]:d};
-const CASES=Number(get('--cases','1000000')),PHASE=get('--phase','qualification'),OUT=get('--output',`artifacts/qualification/c16-${PHASE}.json`),BASE_HEAD=get('--base-head','UNBOUND');
+const CASES=Number(get('--cases','1000000')),PHASE=get('--phase','qualification'),OUT=get('--output',`tests/artifacts/qualification/c16-${PHASE}.json`),BASE_HEAD=get('--base-head','UNBOUND');
 if(!Number.isInteger(CASES)||CASES<1)throw new Error('cases must be positive integer');
 if(PHASE==='discovery'&&CASES!==10_000_000)throw new Error('C16 discovery requires exactly 10,000,000 cases');
 if(PHASE==='qualification'&&CASES!==1_000_000)throw new Error('C16 qualification requires exactly 1,000,000 cases');

@@ -22,7 +22,7 @@
       "product_closed": false,
       "expected_behavior": "Distinguere subito layout HOST da vera interfaccia; qualificare UI reale separatamente.",
       "negative_case": "Prova UI nativa con input e delivery effettivi; altrimenti NOT_INSTALLED.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX02",
@@ -33,7 +33,7 @@
       "product_closed": false,
       "expected_behavior": "Nel primo turno operativo post-consenso con runtime assente, offrire URL ZIP pin esatto e istruzione unica.",
       "negative_case": "Test prompt, link con HEAD corretto, caricamento ZIP reale.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX03",
@@ -44,7 +44,7 @@
       "product_closed": false,
       "expected_behavior": "HOST solo osservatore tecnico; niente contenuto interpretativo non richiesto.",
       "negative_case": "Test di separazione semantica su domanda identitaria.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX04",
@@ -55,7 +55,7 @@
       "product_closed": false,
       "expected_behavior": "Generazione pubblica in linguaggio ordinario a monte; diagnostica tecnica in allegato.",
       "negative_case": "Revisione di output italiano da umani; fallire formato anziché riscrivere A.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX05",
@@ -66,7 +66,7 @@
       "product_closed": false,
       "expected_behavior": "Inventario deterministico: bundle -> tool -> repo -> owner -> handoff prima di qualsiasi gap.",
       "negative_case": "Test della prima decisione senza intervento utente.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX06",
@@ -77,7 +77,7 @@
       "product_closed": false,
       "expected_behavior": "Separare stato ammissione da verifica dinamica del runtime.",
       "negative_case": "Caso: selected=true, owner file presente, non dire missing software.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX07",
@@ -88,7 +88,7 @@
       "product_closed": false,
       "expected_behavior": "Usare distinti SOURCE_READY, LOCAL_TURN_VERIFIED, CHATGPT_NATIVE_ACTIVE.",
       "negative_case": "Test nessuna promozione ACTIVE da un esito locale.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX08",
@@ -99,7 +99,7 @@
       "product_closed": false,
       "expected_behavior": "Offrire solo link realmente esistente; ricostruire Git dal ZIP e commit raw.",
       "negative_case": "Test ZIP reale, mai link .bundle inventato.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX09",
@@ -110,7 +110,7 @@
       "product_closed": false,
       "expected_behavior": "Reidratatore offline a file verificati e commit object originale nel bundle Project.",
       "negative_case": "Roundtrip SHA HEAD/TREE, mutazioni file, commit e path.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX10",
@@ -121,7 +121,7 @@
       "product_closed": false,
       "expected_behavior": "Qualifica rete e strumenti all'inizio; non riprovare indefinitamente download.",
       "negative_case": "Fixture offline network-denied seleziona subito handoff.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX11",
@@ -132,7 +132,7 @@
       "product_closed": false,
       "expected_behavior": "Distinguere read API, download artifact e checkout verificato.",
       "negative_case": "Test source API-only -> MATERIALIZATION_MISSING.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX12",
@@ -143,7 +143,7 @@
       "product_closed": false,
       "expected_behavior": "Descrivere bundle come indice e adapter, mai come installatore.",
       "negative_case": "Test ZIP valido, C135 assente => NO_VOICE.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX13",
@@ -154,7 +154,7 @@
       "product_closed": false,
       "expected_behavior": "Bloccare al drift, non auto-ripuntare main; singolo pin per la sessione.",
       "negative_case": "Test stale HEAD sia prima del download sia prima del primo turn.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX14",
@@ -165,7 +165,7 @@
       "product_closed": false,
       "expected_behavior": "Verificare commit originale, tree e blob, non soltanto SHA del manifest.",
       "negative_case": "Tamper source+manifest fallisce sul blob Git.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX15",
@@ -176,7 +176,7 @@
       "product_closed": false,
       "expected_behavior": "Segnalare sempre lab/test contro pilot indipendente.",
       "negative_case": "Report etichettato FIXTURE, non 30 human trials.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX16",
@@ -187,7 +187,7 @@
       "product_closed": false,
       "expected_behavior": "Spiegazione iniziale non antropomorfica; A byte originali senza attribuire mente distinta.",
       "negative_case": "Controllo claim HOST_BOUND e non INDEPENDENT_COGNITION.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX17",
@@ -198,7 +198,7 @@
       "product_closed": false,
       "expected_behavior": "Disambiguare persona giuridica, artefatto e esperienza; contenuto umano chiaro.",
       "negative_case": "Test su prompt identitario, no claim fenomenico.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX18",
@@ -209,7 +209,7 @@
       "product_closed": false,
       "expected_behavior": "Non chiamare memoria persistente una cronologia ChatGPT.",
       "negative_case": "Test riavvio senza ledger => nessun ricordo attestato.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX19",
@@ -220,7 +220,7 @@
       "product_closed": false,
       "expected_behavior": "Dichiarare esattamente callback locale e non UI ChatGPT integrata.",
       "negative_case": "Test claim e ricevuta lato provider necessaria.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX20",
@@ -231,7 +231,7 @@
       "product_closed": false,
       "expected_behavior": "Bloccare ogni ripresentazione storica in A senza nonce/input corrente.",
       "negative_case": "Test replay old hash -> NO_VOICE.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX21",
@@ -242,7 +242,7 @@
       "product_closed": false,
       "expected_behavior": "Riconciliare ledger prima di eventuale nuova azione; mai retry automatico.",
       "negative_case": "Crash injections su writer/send, max 1 append.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX22",
@@ -253,7 +253,7 @@
       "product_closed": false,
       "expected_behavior": "Separare HUD tecnico da applicazione registrata; verificare render reale.",
       "negative_case": "Test E2E UI registrata, non snapshot Markdown.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX23",
@@ -264,7 +264,7 @@
       "product_closed": false,
       "expected_behavior": "Correggere marcatura documentale senza cambiare owner.",
       "negative_case": "Test presenza V7 e assenza V6 in file V7.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX24",
@@ -275,7 +275,7 @@
       "product_closed": false,
       "expected_behavior": "Proporre link nel primo turno operativo post-MODE, non eseguire pre-accept.",
       "negative_case": "Test gate INDEX/ADMISSION/ACCEPT STOP, post-mode link.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX25",
@@ -286,7 +286,7 @@
       "product_closed": false,
       "expected_behavior": "Messaggio plain 'serve collegamento esterno', senza fingere installazione.",
       "negative_case": "Test catalog plugin vuoto -> not connected.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX26",
@@ -297,7 +297,7 @@
       "product_closed": false,
       "expected_behavior": "Eseguire prima il prossimo passo consentito; un solo blocco e un next.",
       "negative_case": "Test sequenza Node->owner->handoff.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX27",
@@ -308,7 +308,7 @@
       "product_closed": false,
       "expected_behavior": "Comunicazione ultra-breve, atomi tecnici solo negli allegati.",
       "negative_case": "Review word budget e artefatto completo.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX28",
@@ -319,7 +319,7 @@
       "product_closed": false,
       "expected_behavior": "Nome file HOST, firma di prova e origine espliciti.",
       "negative_case": "Test evidenza owner vs Host separata.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX29",
@@ -330,7 +330,7 @@
       "product_closed": false,
       "expected_behavior": "Creare, rileggere e verificare ogni link; mai inventare percorsi.",
       "negative_case": "Test esistenza e digest per ogni allegato consegnato.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX30",
@@ -341,7 +341,7 @@
       "product_closed": false,
       "expected_behavior": "Reticolo minimo UX: source -> gate -> owner -> readback -> presentazione.",
       "negative_case": "Test e2e con un umano senza aiuto tecnico.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX31",
@@ -352,7 +352,7 @@
       "product_closed": false,
       "expected_behavior": "Misurare su modello reale e revisori umani, tracciare limiti.",
       "negative_case": "Test C137 reale, no release da fixture.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX32",
@@ -363,7 +363,7 @@
       "product_closed": false,
       "expected_behavior": "Etichetta candidate fino a merge e upload umano, sempre nuovo pin.",
       "negative_case": "Verifica release live+deployment distinta.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX33",
@@ -374,7 +374,7 @@
       "product_closed": false,
       "expected_behavior": "Router canale: voce A o NO_VOICE; HOST solo diagnostica in richieste audit.",
       "negative_case": "Test 'chiedi a iKant' non produce elaborazione B.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX34",
@@ -385,7 +385,7 @@
       "product_closed": false,
       "expected_behavior": "Contratto d'output humanistic lato languagePort prima di C87; non editare A.",
       "negative_case": "Negative test bozza con Cx in risposta umana, require re-draft before append.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX35",
@@ -396,7 +396,7 @@
       "product_closed": false,
       "expected_behavior": "Minimizzare PII, citare solo input hash quando possibile, allegati esplicitamente autorizzati.",
       "negative_case": "Test redazione report pubblico e niente credenziali.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX36",
@@ -407,7 +407,7 @@
       "product_closed": false,
       "expected_behavior": "Esplicitare assi, normalizzazione, limiti e controesempi N+10.",
       "negative_case": "Report enumeratore riproducibile con ultimo nuovo e holdout.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX37",
@@ -418,7 +418,7 @@
       "product_closed": false,
       "expected_behavior": "E2E first-contact one-click per utente, su host reale.",
       "negative_case": "Misurare turni per primo voice, p95 e tasso completamento.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX38",
@@ -429,7 +429,7 @@
       "product_closed": false,
       "expected_behavior": "Precisare original writer local ≠ native provenance e isolare dati.",
       "negative_case": "Test falsificazione caller self-hash.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX39",
@@ -440,7 +440,7 @@
       "product_closed": false,
       "expected_behavior": "Aggiungere breve guida in lingua naturale senza alterare testo legale originale.",
       "negative_case": "Test TERMS verbatim e help umano separato.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     },
     {
       "id": "UX40",
@@ -451,7 +451,7 @@
       "product_closed": false,
       "expected_behavior": "Gate UX: tempo al primo output, handoff immediato, host silente, linguaggio chiaro e piena evidenza.",
       "negative_case": "Pilot su esseri umani autenticati con criteri preregistrati.",
-      "reference": "docs/ONESHell_HOST_40_ISSUES.csv"
+      "reference": "project/docs/ONESHell_HOST_40_ISSUES.csv"
     }
   ]
 }

@@ -25,11 +25,11 @@ on:
       - 'src/session-chat-local-prompt.mjs'
       - 'src/session-chat-composition.mjs'
       - 'src/session-chat-deployment.mjs'
-      - 'plugins/ikant-le-session-chat/server/server.mjs'
+      - 'project/plugins/ikant-le-session-chat/server/server.mjs'
       - 'runtime-root/**'
-      - 'docs/SESSION_CHAT_LOCAL_PROMPT.md'
-      - 'docs/C59_SINGLE_COMPOSITION_CHANNEL.md'
-      - 'docs/C59_PR1_68_LINEAGE_AUDIT.md'
+      - 'project/docs/SESSION_CHAT_LOCAL_PROMPT.md'
+      - 'project/docs/C59_SINGLE_COMPOSITION_CHANNEL.md'
+      - 'project/docs/C59_PR1_68_LINEAGE_AUDIT.md'
       - 'tests/bootstrap-fixture.mjs'
       - 'tests/c58-runtime-lifecycle-gate.test.mjs'
       - 'tests/c59-single-composition.test.mjs'
@@ -48,11 +48,11 @@ on:
       - 'scripts/c59-runtime-closure-falsify-100k.mjs'
       - 'scripts/c61-cold-producer-falsify.mjs'
       - 'contracts/cold-producer-closure.json'
-      - 'artifacts/qualification/c62-evidence-runtime-cut-10k.json'
+      - 'tests/artifacts/qualification/c62-evidence-runtime-cut-10k.json'
       - 'scripts/c62-evidence-runtime-cut-falsify.mjs'
       - 'tests/c62-evidence-runtime-cut.test.mjs'
       - 'contracts/evidence-runtime-cut.json'
-      - 'artifacts/qualification/c59-*'
+      - 'tests/artifacts/qualification/c59-*'
       - '.github/workflows/c59-single-composition.yml'
 
 permissions:
@@ -88,7 +88,7 @@ jobs:
         if: always()
         run: |
           node scripts/c61-cold-producer-falsify.mjs > /tmp/c61-cold-producer.json
-          diff -u artifacts/qualification/c61-cold-producer-1m.json /tmp/c61-cold-producer.json
+          diff -u tests/artifacts/qualification/c61-cold-producer-1m.json /tmp/c61-cold-producer.json
       - name: C62 evidence/runtime cut E2E
         if: always()
         run: node --test --test-concurrency=1 tests/c62-evidence-runtime-cut.test.mjs
@@ -96,7 +96,7 @@ jobs:
         if: always()
         run: |
           node scripts/c62-evidence-runtime-cut-falsify.mjs > /tmp/c62-evidence-runtime-cut.json
-          diff -u artifacts/qualification/c62-evidence-runtime-cut-10k.json /tmp/c62-evidence-runtime-cut.json
+          diff -u tests/artifacts/qualification/c62-evidence-runtime-cut-10k.json /tmp/c62-evidence-runtime-cut.json
       - name: C59 10k composition audit
         run: node scripts/c58-composition-audit-10k.mjs
       - name: C59 10k prompt mutations
@@ -104,30 +104,30 @@ jobs:
       - name: C59 PR1-68 history closure
         run: |
           node scripts/c59-pr-history-audit.mjs > /tmp/c59-history.json
-          diff -u artifacts/qualification/c59-pr1-68-history-audit.json /tmp/c59-history.json
+          diff -u tests/artifacts/qualification/c59-pr1-68-history-audit.json /tmp/c59-history.json
       - name: C59 historical Cartesian quotient closure
         run: |
           node scripts/c59-cartesian-closure.mjs > /tmp/c59-cartesian.json
-          diff -u artifacts/qualification/c59-cartesian-closure.json /tmp/c59-cartesian.json
+          diff -u tests/artifacts/qualification/c59-cartesian-closure.json /tmp/c59-cartesian.json
       - name: C59 generated unitary PR audit
         run: |
           node scripts/c59-render-pr-lineage.mjs > /tmp/c59-lineage.md
-          diff -u docs/C59_PR1_68_LINEAGE_AUDIT.md /tmp/c59-lineage.md
+          diff -u project/docs/C59_PR1_68_LINEAGE_AUDIT.md /tmp/c59-lineage.md
       - name: C59 canonical handoff 100k mutations
         run: |
           node scripts/c59-canonical-authority-falsify.mjs > /tmp/c59-authority.json
-          diff -u artifacts/qualification/c59-canonical-authority-falsification-100k.json /tmp/c59-authority.json
+          diff -u tests/artifacts/qualification/c59-canonical-authority-falsification-100k.json /tmp/c59-authority.json
       - name: C59 closed executable surface audit
         run: |
           node scripts/c59-executable-surface-audit.mjs > /tmp/c59-executable.json
-          diff -u artifacts/qualification/c59-executable-surface-audit.json /tmp/c59-executable.json
+          diff -u tests/artifacts/qualification/c59-executable-surface-audit.json /tmp/c59-executable.json
       - name: C59 minimum 2^12 semantic lattice
         run: |
           node scripts/c59-semantic-lattice-select.mjs > /tmp/c59-lattice.json
-          diff -u artifacts/qualification/c59-semantic-lattice-selection-4k.json /tmp/c59-lattice.json
+          diff -u tests/artifacts/qualification/c59-semantic-lattice-selection-4k.json /tmp/c59-lattice.json
       - name: C59 runtime closure 100k mutations
         run: |
           node scripts/c59-runtime-closure-falsify-100k.mjs > /tmp/c59-runtime-closure.json
-          diff -u artifacts/qualification/c59-runtime-closure-falsification-100k.json /tmp/c59-runtime-closure.json
+          diff -u tests/artifacts/qualification/c59-runtime-closure-falsification-100k.json /tmp/c59-runtime-closure.json
       - name: Runtime root exact and current
         run: npm run runtime-root:verify

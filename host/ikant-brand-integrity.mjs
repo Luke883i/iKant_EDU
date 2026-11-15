@@ -31,5 +31,5 @@ export function validateIkantBrandBytes({manifest,light,dark,pluginLight,pluginD
 }
 export function verifyIkantBrandCheckout(root){
  const get=p=>readFileSync(join(root,p),'utf8');
- return validateIkantBrandBytes({contract:JSON.parse(get('contracts/host-ikant-brand-projection-v1.json')),manifest:get('plugins/ikant-le-session-chat/plugin.json'),light:get('assets/brand/ikant-light.svg'),dark:get('assets/brand/ikant-dark.svg'),pluginLight:get('plugins/ikant-le-session-chat/assets/ikant-light.svg'),pluginDark:get('plugins/ikant-le-session-chat/assets/ikant-dark-square.svg'),html:get('plugins/ikant-le-session-chat/server/public/ikant-le-app.html')});
+ return validateIkantBrandBytes({contract:JSON.parse(get('contracts/host-ikant-brand-projection-v1.json')),manifest:get('project/plugins/ikant-le-session-chat/plugin.json'),light:get('project/assets/brand/ikant-light.svg'),dark:get('project/assets/brand/ikant-dark.svg'),pluginLight:get('project/plugins/ikant-le-session-chat/assets/ikant-light.svg'),pluginDark:get('project/plugins/ikant-le-session-chat/assets/ikant-dark-square.svg'),html:get('project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html')});
 }

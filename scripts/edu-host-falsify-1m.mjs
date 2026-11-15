@@ -11,7 +11,7 @@ let state=20261013;
 const rng=()=>{state^=state<<13;state^=state>>>17;state^=state<<5;return state>>>0};
 const dir=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const parent=fs.mkdtempSync(path.join(os.tmpdir(),'ikant-1m-neg-'));
-const raw=fs.readFileSync(path.join(dir,'release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
+const raw=fs.readFileSync(path.join(dir,'project/release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
 const host=await createLocalCohostAdapter({carrierBytes:raw,privateParent:parent});
 if(!host.ok)throw Error('P01 REAL CARRIER STAGE BLOCKED');
 const a=await import(pathToFileURL(path.join(host.install_root,'host/c72-unified-mode-admission.mjs')));

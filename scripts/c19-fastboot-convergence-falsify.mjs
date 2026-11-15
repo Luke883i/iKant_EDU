@@ -5,7 +5,7 @@ import {selectFastbootCarrier,validateFastbootConvergence,FASTBOOT_CAPABILITY_FI
 import {validateTransferRemoteHistory} from '../src/bootstrap-semantic.mjs';
 
 const args=process.argv.slice(2),arg=(k,d)=>{const i=args.indexOf(k);return i>=0?args[i+1]:d};
-const CASES=Number(arg('--cases','10000000')),SEED=Number(arg('--seed','3248435238'))>>>0,OUT=arg('--output','artifacts/qualification/c19-fastboot-convergence-10m.json');
+const CASES=Number(arg('--cases','10000000')),SEED=Number(arg('--seed','3248435238'))>>>0,OUT=arg('--output','tests/artifacts/qualification/c19-fastboot-convergence-10m.json');
 if(CASES!==10_000_000)throw new Error('C19 qualification requires exactly 10,000,000 cases');
 const D=runtimeRootDescriptor(),HEAD='a'.repeat(40),EVENT='accept-c19-00000001';
 const hash=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');

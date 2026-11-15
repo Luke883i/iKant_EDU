@@ -4,7 +4,7 @@ import { ROOT } from '../src/contract.mjs';
 import { emptyPsyche } from '../src/state.mjs';
 import { appraiseInteraction,updatePsycheForInteraction,retroactPsyche,deriveArchetypalMix,validatePsycheState,psycheDistanceFromBaseline } from '../src/psyche.mjs';
 const args=process.argv.slice(2);function arg(k,d){const i=args.indexOf(k);return i>=0?args[i+1]:d;}
-const CASES=Number(arg('--cases','1000000'));const SEED=Number(arg('--seed','3237998240'))>>>0;const OUT=arg('--output','artifacts/qualification/c4-session.json');const TURNS_PER_SESSION=10;if(CASES%TURNS_PER_SESSION!==0)throw new Error('session cases must be divisible by 10');
+const CASES=Number(arg('--cases','1000000'));const SEED=Number(arg('--seed','3237998240'))>>>0;const OUT=arg('--output','tests/artifacts/qualification/c4-session.json');const TURNS_PER_SESSION=10;if(CASES%TURNS_PER_SESSION!==0)throw new Error('session cases must be divisible by 10');
 function rng(seed){let x=seed>>>0;return()=>{x^=(x<<13)>>>0;x^=x>>>17;x^=(x<<5)>>>0;return x>>>0;};}
 const r=rng(SEED);function step(p,text,outcome='ANSWER'){return retroactPsyche(updatePsycheForInteraction(p,appraiseInteraction(text)),{outcome});}
 const scenarioSessions={neutral:0,hostility_repair:0,task_critique:0,system_frustration:0,praise:0,hostility_storm:0,alternating:0,failure:0,highrisk:0,mixed:0};let violations=0,turns=0;const finalSignatures=new Set(),dominants=new Set();const SESSIONS=CASES/TURNS_PER_SESSION;

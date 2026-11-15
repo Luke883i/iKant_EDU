@@ -5,7 +5,7 @@ on:
       - 'host/edu-c127-source-transport.mjs'
       - 'tests/edu-c128-canonical-cache.test.mjs'
       - 'scripts/c128-cache-falsify-1m.c'
-      - 'docs/EDU_C128_SOURCE_CACHE_DOD.md'
+      - 'project/docs/EDU_C128_SOURCE_CACHE_DOD.md'
       - '.github/workflows/edu-c128-original-cache.yml'
   workflow_dispatch:
 permissions:

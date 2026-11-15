@@ -454,14 +454,14 @@ test('C67 canonical prompt render parity and anti-shadow-planner project adapter
   const m=path.join(ROOT,'src/session-chat-local-prompt.mjs');
   assert.equal(fs.existsSync(m),true);
   return import(pathToFileURL(m).href).then(mod=>{
-    const doc=fs.readFileSync(path.join(ROOT,'docs/SESSION_CHAT_LOCAL_PROMPT.md'),'utf8');
+    const doc=fs.readFileSync(path.join(ROOT,'project/docs/SESSION_CHAT_LOCAL_PROMPT.md'),'utf8');
     assert.equal(doc,mod.renderSessionChatLocalPromptDocument());
     assert.equal(mod.SESSION_CHAT_LOCAL_PROMPT_VERSION,'7.0.0');
     assert.equal(mod.renderSessionChatLocalPrompt().includes('CONTROLLO 360 INGRESS_ORIGIN_C68'),true);
     assert.equal(mod.renderSessionChatLocalPrompt().includes('CONTROLLO 370 PREVIEW_C69'),true);
     assert.equal(mod.renderSessionChatLocalPrompt().includes('CONTROLLO 320 PROOF_LOOP'),true);
     assert.equal(mod.renderSessionChatLocalPrompt().includes('CONTROLLO 330 RETRY_LOCAL_C67'),true);
-    const project=fs.readFileSync(path.join(ROOT,'docs/C67_PROJECT_CHATGPT_ADAPTER.md'),'utf8');
+    const project=fs.readFileSync(path.join(ROOT,'project/docs/C67_PROJECT_CHATGPT_ADAPTER.md'),'utf8');
     for(const token of ['IKANT-PROJECT-ADAPTER-C67','INDEPENDENT_REPOSITORY_WORK','0400 MICRO-AUDIT','ACTUAL owner-issued typed retry authorization'.replace('ACTUAL ','ACTUAL '),'BLOCKED_INTEGRITY','END PROGRAM.']){
       if(token==='ACTUAL owner-issued typed retry authorization')continue;
       assert.ok(project.includes(token),token);

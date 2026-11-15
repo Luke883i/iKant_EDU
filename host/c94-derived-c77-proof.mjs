@@ -12,7 +12,7 @@ export function verifyC94C77Derivation(files,manifest){
   const spec=manifest?.files?.find(f=>f.path==='src/c71-experimental-host-draft.mjs');
   if(!derivative||!spec||spec.generated_derivative!==true||
      typeof spec.original_source_blob_sha1!=='string')return stop('C71_DERIVATIVE_MISSING');
-  const prefix="import {validateC77CensusAnchor} from '../host/c77-qualified-census.mjs';\n";
+  const prefix="import {validateC77CensusAnchor} from './c77-qualified-census.mjs';\n";
   const derived=derivative.toString('utf8');
   const replacement='!validateC77CensusAnchor(e,x)||';
   const needle="!fs.existsSync(new URL('../'+e.implementation_anchor,import.meta.url))||";

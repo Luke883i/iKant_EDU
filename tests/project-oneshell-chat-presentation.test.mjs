@@ -23,7 +23,7 @@ test('exact six slots, large A, verified logo source and no unverified native cl
  const f=frame(),r=makeOneShellChatPresentation({frame:f,humanInput:'I ACCEPT',richUiAvailable:true});
  assert.equal(r.ok,true,JSON.stringify(r));assert.deepEqual(r.render_plan.order,['ESITO','A','B','PROVA','EDGE','NEXT']);
  assert.equal(r.render_plan.focus,'A');assert.equal(r.render_plan.voice_weight,3);
- assert.equal(r.render_plan.brand.source,'assets/brand/ikant-light.svg');
+ assert.equal(r.render_plan.brand.source,'project/assets/brand/ikant-light.svg');
  assert.equal(r.render_plan.brand.verified,true);
  assert.equal(r.slots.A,'NO_VOICE');assert.equal(r.view.B,f.slots.B);
  assert.equal(r.view.PROVA,f.slots.PROVA);assert.equal(r.original_voice_sha256,null);

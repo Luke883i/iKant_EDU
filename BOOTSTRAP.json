@@ -266,7 +266,7 @@
       "default_effect": "VOICE_STYLE_ONLY",
       "refs": [
         {
-          "path": "stile_comunicativo.md",
+          "path": "project/docs/stile_comunicativo.md",
           "purpose": "COMMUNICATION_STYLE",
           "effect": "VOICE_STYLE_ONLY",
           "required": true
@@ -476,19 +476,19 @@
     "wall_clock_guarantee": false,
     "remote_paths": [
       "src/runtime-root-verified.mjs",
-      "runtime-root/shard-000.json",
-      "runtime-root/shard-001.json",
-      "runtime-root/shard-002.json",
-      "runtime-root/shard-003.json",
-      "runtime-root/shard-004.json",
-      "runtime-root/shard-005.json",
-      "runtime-root/shard-006.json"
+      "src/runtime-root/shard-000.json",
+      "src/runtime-root/shard-001.json",
+      "src/runtime-root/shard-002.json",
+      "src/runtime-root/shard-003.json",
+      "src/runtime-root/shard-004.json",
+      "src/runtime-root/shard-005.json",
+      "src/runtime-root/shard-006.json"
     ],
     "runtime_root": {
       "schema": "ikant-le-runtime-root/v1",
       "source_head_binding": "PREACCEPT_HANDOFF.source_head",
       "member_count": 51,
-      "source_bytes": 553506,
+      "source_bytes": 553558,
       "loader": {
         "path": "src/runtime-root-verified.mjs",
         "blob_sha1": "ecd8489d7e8266c117d19054e6336b6792f1f920"
@@ -496,49 +496,49 @@
       "shards": [
         {
           "index": 0,
-          "path": "runtime-root/shard-000.json",
+          "path": "src/runtime-root/shard-000.json",
           "member_count": 7,
           "source_bytes": 123544,
           "blob_sha1": "d3af31eadb712baae3d5456e37a16ad5123d2c1e"
         },
         {
           "index": 1,
-          "path": "runtime-root/shard-001.json",
+          "path": "src/runtime-root/shard-001.json",
           "member_count": 4,
           "source_bytes": 69516,
           "blob_sha1": "a3457692c27a124f53bbb30a402fb2201c8ff375"
         },
         {
           "index": 2,
-          "path": "runtime-root/shard-002.json",
+          "path": "src/runtime-root/shard-002.json",
           "member_count": 4,
           "source_bytes": 29689,
           "blob_sha1": "97dd74c62ffc470b385342267a567536860f18de"
         },
         {
           "index": 3,
-          "path": "runtime-root/shard-003.json",
+          "path": "src/runtime-root/shard-003.json",
           "member_count": 12,
-          "source_bytes": 95302,
-          "blob_sha1": "244cbf87bd21ee3e3f353d2edd6753f50d77cfab"
+          "source_bytes": 95328,
+          "blob_sha1": "5de0d06643456e0546da885b8fe66421871e7ce4"
         },
         {
           "index": 4,
-          "path": "runtime-root/shard-004.json",
+          "path": "src/runtime-root/shard-004.json",
           "member_count": 12,
-          "source_bytes": 116574,
-          "blob_sha1": "1a0811df0318c92be7df30a1e3b380a9a00d8b64"
+          "source_bytes": 116587,
+          "blob_sha1": "6176674b6c879e6bd1369da506506f3d8e4e2810"
         },
         {
           "index": 5,
-          "path": "runtime-root/shard-005.json",
+          "path": "src/runtime-root/shard-005.json",
           "member_count": 5,
-          "source_bytes": 69115,
-          "blob_sha1": "c9c9eaae75c06770dea984e14af6b03624a740ff"
+          "source_bytes": 69141,
+          "blob_sha1": "d3b4b347f946e71f43376e6a0508ed6bd00c52bb"
         },
         {
           "index": 6,
-          "path": "runtime-root/shard-006.json",
+          "path": "src/runtime-root/shard-006.json",
           "member_count": 7,
           "source_bytes": 68120,
           "blob_sha1": "5a92ab9f593e1ea99718f0946d228ce05e01ad0b"
@@ -709,8 +709,8 @@
         },
         {
           "path": "contracts/ikant-le.json",
-          "blob_sha1": "763daf82dea45c0260521dfcf037557f9bb5b083",
-          "bytes": 47826,
+          "blob_sha1": "dc68e49c741c9ba84f488795594ac5f98a6db960",
+          "bytes": 47852,
           "shard": 5
         },
         {
@@ -829,14 +829,14 @@
         },
         {
           "path": "src/session-shell.mjs",
-          "blob_sha1": "4716ae32f867b0e5738a076fc452df62cce8e620",
-          "bytes": 20169,
+          "blob_sha1": "69330a2929810479bf6571ee8995d265c40086fe",
+          "bytes": 20182,
           "shard": 3
         },
         {
           "path": "contracts/session-shell.json",
-          "blob_sha1": "19d8a4a90787d6a6d800c270bdb33f595a75b2fd",
-          "bytes": 6738,
+          "blob_sha1": "1993adb03d14b246066dc21aca8dff632ac8b799",
+          "bytes": 6751,
           "shard": 4
         },
         {
@@ -846,13 +846,13 @@
           "shard": 6
         },
         {
-          "path": "stile_comunicativo.md",
+          "path": "project/docs/stile_comunicativo.md",
           "blob_sha1": "1a7d215eb74965ac0b4a200de63be2b53e9f33fa",
           "bytes": 803,
           "shard": 3
         }
       ],
-      "runtime_root_sha256": "57798d6b88621b4b0a62d1794aafcd722562cef833344e0a72c23f9604c48f77"
+      "runtime_root_sha256": "dd08e7a06249c0048e535f3ae92c1b178d2d30a51deb0d46b1d34557c43183d9"
     },
     "max_post_accept_remote_reads": 8,
     "deadline_ms": 120000,
@@ -1119,13 +1119,13 @@
     "human_file_handoff_priority_law": "MACHINE_EXECUTE_THEN_MACHINE_PROBE_THEN_HUMAN_FILE_EXECUTE_THEN_HUMAN_FILE_PROBE",
     "composition_object_paths": [
       "src/runtime-root-verified.mjs",
-      "runtime-root/shard-000.json",
-      "runtime-root/shard-001.json",
-      "runtime-root/shard-002.json",
-      "runtime-root/shard-003.json",
-      "runtime-root/shard-004.json",
-      "runtime-root/shard-005.json",
-      "runtime-root/shard-006.json"
+      "src/runtime-root/shard-000.json",
+      "src/runtime-root/shard-001.json",
+      "src/runtime-root/shard-002.json",
+      "src/runtime-root/shard-003.json",
+      "src/runtime-root/shard-004.json",
+      "src/runtime-root/shard-005.json",
+      "src/runtime-root/shard-006.json"
     ],
     "canonical_session_chat_active_ingress": {
       "owner": "src/runtime-command.mjs#runCanonicalSessionChat",
@@ -1275,7 +1275,7 @@
     "complete_object_set_required": true,
     "local_write_reopen_samehash_required": true,
     "active_readback_required": true,
-    "host_witness": "artifacts/qualification/c59-host-connector-container-witness.json",
+    "host_witness": "tests/artifacts/qualification/c59-host-connector-container-witness.json",
     "owner_module": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",
     "authority_gate": "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
     "canonical_handoff_schema": "ikant-le-c59-canonical-composition-handoff/v1",
@@ -1343,7 +1343,7 @@
     "source_manifest": "contracts/project-session-source.json",
     "source_loader": "scripts/project-repo-loader.mjs",
     "runtime_entry": "host/project-oneshell-edu.mjs",
-    "instructions": "docs/PROJECT_SESSION_REPO_FIRST.md",
+    "instructions": "project/docs/PROJECT_SESSION_REPO_FIRST.md",
     "local_bundle_required": false,
     "archive_fallback": false,
     "terms_owner": "host/c72-public-mode-admission.mjs#acceptC72V2LinkedTerms",

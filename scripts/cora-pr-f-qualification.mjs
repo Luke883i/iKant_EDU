@@ -37,7 +37,7 @@ export function verifyFrozenWorkflowTree(contract){
  if(current===frozen)return {ok:true,historic_tree:frozen,current_tree:current,
   migration_count:0,source_only:true,provider_attested:false,review_attested:false};
  try{
-  const register=load('governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json');
+  const register=load('contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json');
   const m=register.workflow_migration;
   if(register.schema!=='ikant-v5b-change-extension/v1'||
    register.authority!==0||m?.authority!==0||
@@ -68,7 +68,7 @@ export function verifyFrozenWorkflowTree(contract){
   });
   if(rows.length!==116||new Set(rows.map(x=>x.name)).size!==116)
    return deny('F_WORKFLOW_TREE_CARDINALITY_INVALID');
-  const w1Register=load('governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json');
+  const w1Register=load('contracts/governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json');
   const w1=reopenW1WorkflowEpoch({entries:rows,observedTree:current,
    previousTree:m.current_tree,register:w1Register,
    historyBlob:'eea411a6fd465ee3b1f35d0c2fa8fd615c116750',
@@ -141,7 +141,7 @@ export function validateFContract(c){
  for(const x of c.restored_source_blobs){
   if(!x||!SHA.test(x.blob||'')||typeof x.path!=='string'||
    pathSet.has(x.path)||!(x.path.startsWith('project-baseline/')||
-     x.path.startsWith('proposals/c141/')||x.path==='stile_comunicativo.md'))
+     x.path.startsWith('proposals/c141/')||x.path==='project/docs/stile_comunicativo.md'))
    return fails('F_RESTORATION_PIN_INVALID');
   pathSet.add(x.path);
  }

@@ -69,17 +69,17 @@ test('unclassified additions and broken retention are blocked',()=>{
 test('stage zero index records are the source of Git provenance',()=>{
  const a=parseStagedGitEntries('100644 '+'a'.repeat(40)+' 0\tartifacts/qualification/c32-selection.json\0');
  assert.equal(a.length,1);
- assert.equal(a[0].path,'artifacts/qualification/c32-selection.json');
+ assert.equal(a[0].path,'tests/artifacts/qualification/c32-selection.json');
  assert.throws(()=>parseStagedGitEntries('100644 '+'a'.repeat(40)+' 1\tREADME.md\0'),/INDEX_STAGE/);
  assert.throws(()=>parseStagedGitEntries('100644 '+'a'.repeat(40)+' 0\tREADME.md\0'+'100644 '+'a'.repeat(40)+' 0\tREADME.md\0'),/INDEX_DUPLICATE/);
 });
 test('regenerated C32 evidence is recorded but not treated as a source commit',()=>{
  const old='a'.repeat(40),changed='b'.repeat(40);
- const q=qualifyWorkingTreeDifference('artifacts/qualification/c32-session-shell-selection-1k.json',old,changed);
+ const q=qualifyWorkingTreeDifference('tests/artifacts/qualification/c32-session-shell-selection-1k.json',old,changed);
  assert.equal(q.ok,true);assert.equal(q.status,'TEST_GENERATED_EVIDENCE_DIFFERENT_FROM_COMMITTED_BLOB');
  assert.equal(q.evidence_claim,'WORKTREE_BYTE_CHANGE_NOT_NEW_OWNER_RECEIPT');
- assert.equal(qualifyWorkingTreeDifference('artifacts/qualification/c32-session-shell-selection-1k.json',old,old).status,'SAME_AS_INDEX');
- for(const p of ['host/c87-durable-ledger.mjs','README.md','.github/workflows/c32-session-shell.yml','governance/v5b-baseline-inventory.json']){
+ assert.equal(qualifyWorkingTreeDifference('tests/artifacts/qualification/c32-session-shell-selection-1k.json',old,old).status,'SAME_AS_INDEX');
+ for(const p of ['host/c87-durable-ledger.mjs','README.md','.github/workflows/c32-session-shell.yml','contracts/governance/v5b-baseline-inventory.json']){
   const r=qualifyWorkingTreeDifference(p,old,changed);
   assert.equal(r.ok,false,p);assert.equal(r.edge,'V5B_TRACKED_SOURCE_DIRTY');
  }
@@ -111,8 +111,8 @@ test('V5B retirement demands exact absent runner, active replacement, preserved 
 });
 
 test('V5-B rejects overlapping delta registers unless explicit predecessor is pinned',()=>{
- const a={operation:'MODIFY',register:'governance/changes/earlier.json',source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED'};
- const b={operation:'MODIFY',register:'governance/changes/later.json',source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED',
+ const a={operation:'MODIFY',register:'contracts/governance/changes/earlier.json',source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED'};
+ const b={operation:'MODIFY',register:'contracts/governance/changes/later.json',source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED',
   supersedes_register:a.register,supersedes_source_main:a.source_main};
  assert.equal(qualifyRegisterSuccession(a,b),false,'same-main duplicate must be rejected');
  assert.equal(qualifyRegisterSuccession(a,{...b,same_source_main_change:'EXPLICIT_REVIEW_REQUIRED_PR_SLICE'}),true);
@@ -125,16 +125,16 @@ test('V5-B rejects overlapping delta registers unless explicit predecessor is pi
 });
 
 test('V5-B permits only pinned future-epoch ADD to MODIFY succession, never silent replay',()=>{
- const prior={operation:'ADD',register:'governance/changes/initial.json',
+ const prior={operation:'ADD',register:'contracts/governance/changes/initial.json',
   source_main:'a'.repeat(40),human_review:'REVIEW_REQUIRED'};
- const next={operation:'MODIFY',register:'governance/changes/next.json',
+ const next={operation:'MODIFY',register:'contracts/governance/changes/next.json',
   source_main:'b'.repeat(40),human_review:'REVIEW_REQUIRED',
   supersedes_register:prior.register,supersedes_source_main:prior.source_main};
  assert.equal(qualifyRegisterSuccession(prior,next),true);
  const reject=[
   {...next,source_main:prior.source_main},
   {...next,register:prior.register},
-  {...next,supersedes_register:'governance/changes/unbound.json'},
+  {...next,supersedes_register:'contracts/governance/changes/unbound.json'},
   {...next,supersedes_source_main:'f'.repeat(40)},
   {...next,human_review:'PROVISIONAL'},
   {...next,operation:'REMOVE'}];
@@ -159,7 +159,7 @@ test('prospective C72 source-epoch register is exact, cannot upgrade prior recei
  const path='host/c72-public-mode-admission.mjs';
  const old='eec28e35a1066802edc905c7d61c1ecbcef0082d';
  const current='f8f3713115137732fde380f02bfc0ec6874214f5';
- const base=JSON.parse(fs.readFileSync(new URL('../governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json',import.meta.url),'utf8'));
+ const base=JSON.parse(fs.readFileSync(new URL('../contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json',import.meta.url),'utf8'));
  const run=(registration,observed=current,prior=old)=>qualifyRegisteredC72SourceEpoch({
   path,historicalBlobSha1:prior,observedBlobSha1:observed,registration});
  const result=run(base);assert.equal(result.ok,true);assert.equal(result.amended,true);

@@ -278,7 +278,7 @@
         "depends_on": [],
         "files": [
           "contracts/cora-reticular-hygiene-v1.json",
-          "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json"
+          "contracts/governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json"
         ]
       },
       {

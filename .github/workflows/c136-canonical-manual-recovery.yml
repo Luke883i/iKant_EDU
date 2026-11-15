@@ -6,7 +6,7 @@ on:
       - 'tests/c136-canonical-recovery.test.mjs'
       - 'contracts/c136-*'
       - 'contracts/c134-convergence-lattice.json'
-      - 'docs/C136_*'
+      - 'project/docs/C136_*'
       - '.github/workflows/c136-canonical-manual-recovery.yml'
   push:
     branches: [main]

@@ -31,7 +31,7 @@ test('C13 bootstrap exposes exactly eight post-accept reads and a valid runtime 
   assert.equal(d.member_count,51);
   assert.equal(d.shards.length,7);
   assert.equal(d.runtime_root_sha256,b.post_accept_fastboot.runtime_root.runtime_root_sha256);
-  assert.ok(d.members.some(x=>x.path==='stile_comunicativo.md'));
+  assert.ok(d.members.some(x=>x.path==='project/docs/stile_comunicativo.md'));
   assert.ok(d.members.some(x=>x.path==='src/runtime-limited-turn.mjs'));assert.ok(d.members.some(x=>x.path==='src/semantic-morphogenesis.mjs'));assert.ok(d.members.some(x=>x.path==='src/session-shell.mjs'));assert.ok(d.members.some(x=>x.path==='contracts/session-shell.json'));assert.ok(d.members.some(x=>x.path==='src/runtime-limited-capability.mjs'));assert.ok(d.members.some(x=>x.path==='src/runtime-dispatch.mjs'));assert.ok(d.members.some(x=>x.path==='src/runtime-evidence.mjs'));assert.ok(d.members.some(x=>x.path==='contracts/bootstrap-transfer-flex.json'));assert.ok(d.members.some(x=>x.path==='contracts/fastboot-convergence.json'));assert.ok(d.members.some(x=>x.path==='contracts/session-chat-activation.json'));assert.equal(d.members.some(x=>x.path==='src/session-chat-deployment.mjs'),false);assert.ok(d.members.some(x=>x.path==='src/fastboot-convergence.mjs'));assert.ok(d.members.some(x=>x.path==='src/runtime-availability.mjs'));assert.ok(d.members.some(x=>x.path==='contracts/runtime-availability-dod.json'));assert.ok(d.members.some(x=>x.path==='src/deadline-integrity.mjs'));assert.ok(d.members.some(x=>x.path==='contracts/deadline-integrity.json'));assert.ok(d.members.some(x=>x.path==='contracts/activation-continuation.json'));
   assert.deepEqual(validateRuntimeRootDescriptor(d),{ok:true,errors:[]});
 });

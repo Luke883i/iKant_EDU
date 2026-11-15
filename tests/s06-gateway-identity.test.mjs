@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import os from 'node:os';import fs from 'node:fs';import path from 'node:path';
-import {signS06GatewayProof,verifyS06GatewayProof} from '../plugins/ikant-le-session-chat/server/gateway-identity.mjs';
+import {signS06GatewayProof,verifyS06GatewayProof} from '../project/plugins/ikant-le-session-chat/server/gateway-identity.mjs';
 const secret='proper-staged-secret-only-in-tests-AAAAAAAAAAAA';
 const payload=(i=0)=>({event:'event_'+String(i).padStart(12,'0'),method:'POST',path:'/mcp',user:'user_pseudonym_111',session:'session_abcdefghij',ts:1730000000000});
 test('S06 valid gateway proof single acceptance; replay remains denied after recheck',()=>{
@@ -34,7 +34,7 @@ test('S06 refuses unsafe or absent nonce directory',()=>{
 
 test('S06 real MCP server enforces proof and session metadata binding',async()=>{
  const {readFileSync}=await import('node:fs');
- const source=readFileSync(new URL('../plugins/ikant-le-session-chat/server/server.mjs',import.meta.url),'utf8');
+ const source=readFileSync(new URL('../project/plugins/ikant-le-session-chat/server/server.mjs',import.meta.url),'utf8');
  assert.match(source,/gatewayContext\.run\(gateway/);
  assert.match(source,/signed\.session!==id/);
  assert.match(source,/x-ikant-gateway-proof/);

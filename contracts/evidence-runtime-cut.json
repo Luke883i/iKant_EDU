@@ -17,13 +17,13 @@
     "preaccept_evidence_representation": "EXACT_FROZEN_UTF8_BYTES_IN_PREACCEPT_HANDOFF_V2",
     "postaccept_runtime_paths": [
       "src/runtime-root-verified.mjs",
-      "runtime-root/shard-000.json",
-      "runtime-root/shard-001.json",
-      "runtime-root/shard-002.json",
-      "runtime-root/shard-003.json",
-      "runtime-root/shard-004.json",
-      "runtime-root/shard-005.json",
-      "runtime-root/shard-006.json"
+      "src/runtime-root/shard-000.json",
+      "src/runtime-root/shard-001.json",
+      "src/runtime-root/shard-002.json",
+      "src/runtime-root/shard-003.json",
+      "src/runtime-root/shard-004.json",
+      "src/runtime-root/shard-005.json",
+      "src/runtime-root/shard-006.json"
     ],
     "pre_acquisition_object_authority": "FROZEN_BOOTSTRAP.post_accept_fastboot.remote_paths",
     "cold_kernel_owner": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",

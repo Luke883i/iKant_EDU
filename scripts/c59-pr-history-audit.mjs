@@ -36,10 +36,10 @@ for(const b of ACTIVATION_BYTE_PATHS)if(!reg.has(b))errors.push('live_byte_path_
 const liveChecks=[
  ['src/local-host-meta-prompt.mjs','for_ai_agent_first_entrypoint','FOR_AI_AGENT_FIRST_ENTRYPOINT'],
  ['src/local-host-meta-prompt.mjs','HUMAN_FILE_HANDOFF','HUMAN_FILE_HANDOFF'],
- ['plugins/ikant-le-session-chat/server/server.mjs','ikant_le_open','APP_BOUND_IKANT_LE_OPEN'],
+ ['project/plugins/ikant-le-session-chat/server/server.mjs','ikant_le_open','APP_BOUND_IKANT_LE_OPEN'],
  ['src/session-chat-deployment.mjs','SESSION_CHAT_DEPLOYED','SESSION_CHAT_DEPLOYED'],
  ['src/runtime-availability.mjs','RUNTIME_BOUND_LIMITED','RUNTIME_BOUND_LIMITED'],
- ['docs/LOCAL_HOST_META_PROMPT.md','iKant','LOCAL_HOST_META_PROMPT']
+ ['project/docs/LOCAL_HOST_META_PROMPT.md','iKant','LOCAL_HOST_META_PROMPT']
 ];
 for(const [file,needle,id] of liveChecks){
  const text=fs.readFileSync(path.join(ROOT,file),'utf8');

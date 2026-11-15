@@ -100,8 +100,8 @@ test('PR HEAD original owner chain: linked C72 -> later EDU -> full manual ZIP -
   assert.equal(loader.status,0,loader.stderr+loader.stdout);
   const readback=JSON.parse(fs.readFileSync(path.join(source,'.project-source-readback.json'),'utf8'));
   assert.equal(readback.source_head,head);assert.equal(readback.source_tree,tree);
-  for(const p of [...required,'assets/brand/ikant-light.svg',
-    'plugins/ikant-le-session-chat/assets/ikant-light.svg','host/c135-edu-v2-owner.mjs']){
+  for(const p of [...required,'project/assets/brand/ikant-light.svg',
+    'project/plugins/ikant-le-session-chat/assets/ikant-light.svg','host/c135-edu-v2-owner.mjs']){
    assert(fs.readFileSync(path.join(source,p)).equals(fs.readFileSync(path.join(root,p))));
   }
   const materialized=oneShellMaterialized({selection,sourceRoot:source,head,tree});
@@ -138,7 +138,7 @@ test('PR HEAD original owner chain: linked C72 -> later EDU -> full manual ZIP -
   assert.equal(SHA(evidence.original_c125_utf8),evidence.original_c125_sha256);
   const visual=emitVerifiedHostOneShell(current,{format:'HTML'});
   assert.equal(visual.ok,true,JSON.stringify(visual));
-  const logo=fs.readFileSync(path.join(source,'assets/brand/ikant-light.svg'),'utf8');
+  const logo=fs.readFileSync(path.join(source,'project/assets/brand/ikant-light.svg'),'utf8');
   assert.equal(visual.brand_sha256,SHA(Buffer.from(logo)));
   assert(visual.html.indexOf('class="ikant-brand-mark"')>=0);
   assert(visual.html.indexOf('class="ikant-brand-mark"')<visual.html.indexOf('<strong>iKant · OneShell</strong>'));

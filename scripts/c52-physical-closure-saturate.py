@@ -358,8 +358,8 @@ del worlds, z, a
 
 
 parser=argparse.ArgumentParser()
-parser.add_argument('--campaign',default='artifacts/qualification/c52-physical-closure-10m.json')
-parser.add_argument('--lattice',default='artifacts/qualification/c52-physical-closure-lattice.json')
+parser.add_argument('--campaign',default='tests/artifacts/qualification/c52-physical-closure-10m.json')
+parser.add_argument('--lattice',default='tests/artifacts/qualification/c52-physical-closure-lattice.json')
 args=parser.parse_args()
 dump(args.lattice,lattice)
 dump(args.campaign,campaign)

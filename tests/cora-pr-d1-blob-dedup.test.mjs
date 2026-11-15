@@ -9,7 +9,7 @@ import {qualifyWorkflowPatch,DIRECTIVE} from '../scripts/cora-pr-c-ci.mjs';
 import {verifyFrozenWorkflowTree} from '../scripts/cora-pr-f-qualification.mjs';
 
 const contract=JSON.parse(fs.readFileSync(new URL('../contracts/cora-pr-d1-blob-dedup-v1.json',import.meta.url),'utf8'));
-const register=JSON.parse(fs.readFileSync(new URL('../governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json',import.meta.url),'utf8'));
+const register=JSON.parse(fs.readFileSync(new URL('../contracts/governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json',import.meta.url),'utf8'));
 const prior=JSON.parse(fs.readFileSync(new URL('../contracts/cora-pr-c-ci-v1.json',import.meta.url),'utf8'));
 const yaml=fs.readFileSync(new URL('../.github/workflows/docs-ontology-coverage.yml',import.meta.url),'utf8');
 const v5b=fs.readFileSync(new URL('../scripts/v5b-repository-governance-audit.mjs',import.meta.url),'utf8');

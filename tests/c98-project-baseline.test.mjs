@@ -19,18 +19,18 @@ test('only two owned objects, 3 MD, no installed MCP or native control claim',()
 });
 
 test('project instructions and exactly three guides preserve admission and no DNS/network retries',()=>{
- const names=['iKant_GATE.md','iKant_ENGINE.md','iKant_UI_shell.md'];
- for(const f of names)assert.ok(existsSync(new URL('project-baseline/PROJECT_FILES/'+f,root)));
- for(const f of names){const s=load('project-baseline/PROJECT_FILES/'+f);
+ const names=['iKant_GATE.md','iKant_ENGINE.md','project/docs/iKant_UI_shell.md'];
+ for(const f of names)assert.ok(existsSync(new URL('project/baseline/PROJECT_FILES/'+f,root)));
+ for(const f of names){const s=load('project/baseline/PROJECT_FILES/'+f);
   assert.ok(s.includes('AUTHORITY=0'),f);
   assert.ok(!s.includes('https://tuo-server.example/mcp'),f);
  }
- const prompt=load('project-baseline/PROJECT_PROMPT.txt');
+ const prompt=load('project/baseline/PROJECT_PROMPT.txt');
  for(const s of ['I ACCEPT','CANONICAL','EXPERIMENTAL','TERMS.md','FIRST_UNCLOSED_EDGE','DIAGNOSTIC_ONLY',
   'git','curl','wget','No','MCP'])assert.ok(prompt.includes(s),s);
- const gate=load('project-baseline/PROJECT_FILES/iKant_GATE.md');
+ const gate=load('project/baseline/PROJECT_FILES/iKant_GATE.md');
  for(const p of policy.acceptance.preaccept_allowed_repo_paths)assert.ok(gate.includes(p),p);
- assert.ok(load('project-baseline/PROJECT_FILES/iKant_ENGINE.md').includes('NO THIRD RESOURCE'));
+ assert.ok(load('project/baseline/PROJECT_FILES/iKant_ENGINE.md').includes('NO THIRD RESOURCE'));
 });
 
 test('diagnostic only even when host capability flags falsely claim real owner',()=>{

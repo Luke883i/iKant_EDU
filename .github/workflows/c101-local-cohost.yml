@@ -7,7 +7,7 @@ on:
       - 'tests/c101-local-machine.test.mjs'
       - 'contracts/c101-local-cohost-machine.json'
       - 'contracts/c101-reuse-and-carrier.json'
-      - 'docs/C101_ENGINEERING_DOD.md'
+      - 'project/docs/C101_ENGINEERING_DOD.md'
       - 'tests/c101-hardening.test.mjs'
       - '.github/workflows/c101-local-cohost.yml'
   workflow_dispatch:

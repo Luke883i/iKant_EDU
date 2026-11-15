@@ -10,15 +10,15 @@ const sha256=s=>crypto.createHash('sha256').update(s).digest('hex');
 const git=(...a)=>execFileSync('git',a,{cwd:ROOT,encoding:'utf8',maxBuffer:16_000_000,timeout:30000}).trim();
 const read=p=>fs.readFileSync(path.join(ROOT,p));
 const json=p=>JSON.parse(read(p).toString('utf8'));
-export const INVENTORY='governance/v5b-baseline-inventory.json';
-export const REGISTER='governance/v5b-change-register.json';
+export const INVENTORY='contracts/governance/v5b-baseline-inventory.json';
+export const REGISTER='contracts/governance/v5b-change-register.json';
 export const DOD='contracts/project-v5b-repository-governance-dod.json';
 
 /** Source-only amendment witness for a prospective C72 version. Historical pins
  * are NEVER overwritten; current blobs qualify only if the existing V5-B
  * register declares exact before/after Git SHA-1 and a new epoch with human
  * review still OPEN. No owner, consent, native source or provider attestation. */
-export const C72_SOURCE_EPOCH_REGISTER='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json';
+export const C72_SOURCE_EPOCH_REGISTER='contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json';
 const C72_SOURCE_BASE='9efdcb4b5d67e3de52a8805cf52b446dd5ff0857';
 const C72_SOURCE_AMENDED=new Set([
  'host/c72-public-mode-admission.mjs',

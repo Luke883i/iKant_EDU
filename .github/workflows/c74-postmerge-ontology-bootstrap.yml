@@ -4,10 +4,10 @@ on:
     paths:
       - 'host/c74-*'
       - 'tests/c74-*'
-      - 'docs/C74_*'
+      - 'project/docs/C74_*'
       - 'host/c73-project-capsule.mjs'
       - 'tests/c73-project-capsule.test.mjs'
-      - 'assets/brand/**'
+      - 'project/assets/brand/**'
       - '.github/workflows/c74-postmerge-ontology-bootstrap.yml'
   push:
     branches: [main]

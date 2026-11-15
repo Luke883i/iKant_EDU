@@ -14,7 +14,7 @@ const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const contract=JSON.parse(fs.readFileSync(path.join(ROOT,
  'contracts/cora-pr-f-integrated-qualification-v1.json'),'utf8'));
 const register=JSON.parse(fs.readFileSync(path.join(ROOT,
- 'governance/changes/zzzzzzzzzzzzzzzzzz-cora-pr-g-evidence.json'),'utf8'));
+ 'contracts/governance/changes/zzzzzzzzzzzzzzzzzz-cora-pr-g-evidence.json'),'utf8'));
 const workflowTree='d81958913446a13f5fb296d20771c7e57e2df224';
 const one='a'.repeat(40),two='b'.repeat(40),pathsSha='c'.repeat(64);
 const clone=x=>structuredClone(x);
@@ -54,12 +54,12 @@ test('PR-G reuses original PR-F reticulum and V5-B single change register',()=>{
  assert.equal(register.human_review_completed,false);
  assert.equal(register.source_main,'838c8f7c26353b5256ab236bcc662a2cd6775ffa');
  assert.deepEqual(register.paths.map(x=>[x.path,x.operation]),[
-  ['governance/changes/zzzzzzzzzzzzzzzzzz-cora-pr-g-evidence.json','ADD'],
+  ['contracts/governance/changes/zzzzzzzzzzzzzzzzzz-cora-pr-g-evidence.json','ADD'],
   ['scripts/cora-pr-g-evidence-readback.mjs','ADD'],
   ['tests/cora-pr-g-evidence-readback.test.mjs','ADD'],
   ['README.md','MODIFY']]);
  assert.equal(register.paths.at(-1).supersedes_register,
-  'governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json');
+  'contracts/governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json');
  assert.equal(register.paths.at(-1).human_review,'REVIEW_REQUIRED');
 });
 test('pure positive source fixture passes without conferring external approval',()=>{

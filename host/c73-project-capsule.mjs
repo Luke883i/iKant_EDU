@@ -3,7 +3,7 @@ import {validateSessionShell} from '../src/session-shell.mjs';
 import {validateC72ModeSelection} from './c72-unified-mode-admission.mjs';
 
 const brand=Object.freeze({name:'iKant',alt:'iKant — rete funzionale stilizzata',
-  light:'assets/brand/ikant-light.svg',dark:'assets/brand/ikant-dark.svg',
+  light:'project/assets/brand/ikant-light.svg',dark:'project/assets/brand/ikant-dark.svg',
   appearance_is_not_runtime_evidence:true});
 const visual=['BRAND','MODE_AND_ATTESTED_STATUS','SURFACE_B_DOWNLOAD_REFERENCES',
   'SURFACE_A_NATIVE_CHAT','FIRST_OPEN_EDGE'];

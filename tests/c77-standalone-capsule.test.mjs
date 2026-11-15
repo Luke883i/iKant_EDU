@@ -42,8 +42,8 @@ test('C77 standalone: build qualifies 70 source anchors but does not ship them',
   assert.equal(fs.existsSync(path.join(t.dir,'src/runtime-command.mjs')),false);
   assert.equal(fs.existsSync(path.join(t.dir,'host/c63-canonical-parallel-bridge.mjs')),false);
   assert.equal(fs.existsSync(path.join(t.dir,'contracts/ikant-le.json')),false);
-  assert.equal(fs.existsSync(path.join(t.dir,'assets/brand/ikant-light.svg')),true);
-  assert.equal(fs.existsSync(path.join(t.dir,'assets/brand/ikant-dark.svg')),true);
+  assert.equal(fs.existsSync(path.join(t.dir,'project/assets/brand/ikant-light.svg')),true);
+  assert.equal(fs.existsSync(path.join(t.dir,'project/assets/brand/ikant-dark.svg')),true);
   const proof=JSON.parse(fs.readFileSync(path.join(t.dir,'contracts/c77-cx-build-proof.json')));
   assert.equal(proof.entries.length,70);
   assert.equal(proof.origin_attested,false);

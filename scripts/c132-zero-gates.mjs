@@ -9,11 +9,11 @@ function obj(p){return JSON.parse(read(p))}
 export function qualifyC132Zero({publicCopy,productContract,releaseCatalog,architecture}={}){
  const failures=[];
  const contract=productContract||obj('contracts/v1-product-baseline.json');
- const catalog=releaseCatalog||obj('release/catalog.json');
+ const catalog=releaseCatalog||obj('project/release/catalog.json');
  const prompt=publicCopy||read('README.md');
  const selected=architecture||selectC132Architecture();
  // P0a: beginner-facing copy with a concrete entry and visible limitations.
- for(const phrase of ['Cosa ottieni oggi','Cosa non e','docs/START_HERE.md','docs/PRODUCT_DASHBOARD.md'])
+ for(const phrase of ['Cosa ottieni oggi','Cosa non e','project/docs/START_HERE.md','project/docs/PRODUCT_DASHBOARD.md'])
   if(!prompt.includes(phrase))failures.push('P0_PUBLIC_ACCESSIBILITY:'+phrase);
  // P0b: complexity; no competing product entry or autonomous promotion.
  if(catalog.source_of_truth.branch!=='main'||catalog.source_of_truth.pr_is_release_source!==false||

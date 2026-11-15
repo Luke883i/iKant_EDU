@@ -8,7 +8,7 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 import {createGuidedCohostV7} from '../host/edu-c70-method-v7.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const sha=s=>crypto.createHash('sha256').update(s).digest('hex');
-const carrier=fs.readFileSync(path.join(root,'release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
+const carrier=fs.readFileSync(path.join(root,'project/release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
 const source='c734bf934e33703a6a1f91f0f4d5df96eec96945';
 const fixturePort=task=>({text:'Testo host di verifica non identitaria: una biblioteca permette ricerca e lettura.',ack_plan_sha256:task.guidance.plan_sha256,input_sha256:task.plan.input_sha256});
 async function setup(port=fixturePort){

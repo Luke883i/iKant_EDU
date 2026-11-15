@@ -6,8 +6,8 @@ const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const J=p=>JSON.parse(fs.readFileSync(path.join(ROOT,p),'utf8'));
 const H=b=>crypto.createHash('sha256').update(b).digest('hex');
 const contract=J('contracts/supersystem-runtime-conformance-v1_1.json');
-const selection=J('artifacts/qualification/c51-supersystem-selection-10m.json');
-const falsification=J('artifacts/qualification/c51-supersystem-falsification-1m.json');
+const selection=J('tests/artifacts/qualification/c51-supersystem-selection-10m.json');
+const falsification=J('tests/artifacts/qualification/c51-supersystem-falsification-1m.json');
 const source=fs.readFileSync(path.join(ROOT,'src/supersystem-runtime-conformance.mjs'),'utf8');
 const cohost=fs.readFileSync(path.join(ROOT,'src/cohost-coldstart-qualification.mjs'),'utf8');
 const native=fs.readFileSync(path.join(ROOT,'src/native-transcript-participant.mjs'),'utf8');
@@ -26,7 +26,7 @@ const files=[
 const entries=files.map(p=>{const b=fs.readFileSync(path.join(ROOT,p));return{path:p,bytes:b.length,sha256:H(b)}});
 const manifestBase={schema:'ikant-le-c51-candidate-blob-manifest/v1',source_baseline:contract.source_baseline,entries,content_addressed:true,manifest_excludes_self:true,authority:0};
 const manifest={...manifestBase,receipt_sha256:H(Buffer.from(JSON.stringify(manifestBase)))};
-fs.writeFileSync(path.join(ROOT,'artifacts/qualification/c51-candidate-blob-manifest.json'),JSON.stringify(manifest,null,2)+'\n');
+fs.writeFileSync(path.join(ROOT,'tests/artifacts/qualification/c51-candidate-blob-manifest.json'),JSON.stringify(manifest,null,2)+'\n');
 
 const roots=contract.common_semantic_roots||{};
 const checks={
@@ -55,6 +55,6 @@ const labels={
 const dod=Object.keys(labels).map(id=>({id,claim:labels[id],status:checks[id]?'PASS_REPOSITORY':'FAIL',evidence:id==='D15'?selection.receipt_sha256:id==='D16'?falsification.receipt_sha256:id==='D18'?manifest.receipt_sha256:'C51 exact candidate bytes'}));
 const base={schema:'ikant-le-c51-supersystem-runtime-dod/v1',source_baseline:contract.source_baseline,status:dod.every(x=>x.status==='PASS_REPOSITORY')?'PASS_REPOSITORY_CLOSURE':'FAIL',dod,selection_receipt_sha256:selection.receipt_sha256,falsification_receipt_sha256:falsification.receipt_sha256,candidate_manifest_receipt_sha256:manifest.receipt_sha256,claim_boundary:{repository_runtime_conformance_closed:dod.every(x=>x.status==='PASS_REPOSITORY'),physical_host_bootstrap_binding_proven:false,physical_native_participant_api_proven:false,physical_host_route_interposition_proven:false,semantic_mutation_is_physical_host_proof:false,exact_pr_head_ci_required:true,post_merge_main_ci_required:true},authority:0};
 const out={...base,receipt_sha256:H(Buffer.from(JSON.stringify(base)))};
-fs.writeFileSync(path.join(ROOT,'artifacts/qualification/c51-supersystem-dod.json'),JSON.stringify(out,null,2)+'\n');
+fs.writeFileSync(path.join(ROOT,'tests/artifacts/qualification/c51-supersystem-dod.json'),JSON.stringify(out,null,2)+'\n');
 console.log(JSON.stringify(out));
 if(out.status!=='PASS_REPOSITORY_CLOSURE')process.exit(1);

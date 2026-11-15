@@ -7,7 +7,7 @@ on:
       - 'src/session-local-service.mjs'
       - 'tests/c52-physical-runtime-closure.test.mjs'
       - 'scripts/c53-physical-hardening-falsify.py'
-      - 'artifacts/qualification/c53-*'
+      - 'tests/artifacts/qualification/c53-*'
       - 'BOOTSTRAP.json'
       - 'runtime-root/**'
       - '.github/workflows/c53-physical-closure-hardening.yml'
@@ -44,7 +44,7 @@ jobs:
       - name: Materialize deterministic qualification bytes
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         run: |
-          git add BOOTSTRAP.json runtime-root/shard-003.json artifacts/qualification/c53-physical-hardening-10m.json artifacts/qualification/c52-bundle-coverage.json artifacts/qualification/c52-candidate-blob-manifest.json artifacts/qualification/c52-runtime-physical-closure-dod.json
+          git add BOOTSTRAP.json src/runtime-root/shard-003.json tests/artifacts/qualification/c53-physical-hardening-10m.json tests/artifacts/qualification/c52-bundle-coverage.json tests/artifacts/qualification/c52-candidate-blob-manifest.json tests/artifacts/qualification/c52-runtime-physical-closure-dod.json
           if ! git diff --cached --quiet; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -57,7 +57,7 @@ jobs:
         run: |
           python - <<'PY'
           import json
-          x=json.load(open('artifacts/qualification/c53-physical-hardening-10m.json'))
+          x=json.load(open('tests/artifacts/qualification/c53-physical-hardening-10m.json'))
           assert x['status']=='PASS'
           assert x['claim_boundary']['semantic_falsification_is_live_host_proof'] is False
           assert x['claim_boundary']['live_e0_e3_e4_e5_e6_still_required'] is True

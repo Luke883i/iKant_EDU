@@ -2,12 +2,12 @@ name: MCP standalone candidate — source and SDK qualification
 on:
   pull_request:
     paths:
-      - 'plugins/ikant-le-session-chat/server/**'
-      - 'plugins/ikant-le-session-chat/mcp.standalone.template.json'
+      - 'project/plugins/ikant-le-session-chat/server/**'
+      - 'project/plugins/ikant-le-session-chat/mcp.standalone.template.json'
       - 'tests/mcp-standalone-*.test.mjs'
       - 'scripts/mcp-standalone-semantic-10k.mjs'
-      - 'render.mcp-standalone.candidate.yaml'
-      - 'docs/MCP_STANDALONE_RENDER_RUNBOOK.txt'
+      - 'project/release/render.mcp-standalone.candidate.yaml'
+      - 'project/docs/MCP_STANDALONE_RENDER_RUNBOOK.txt'
       - '.github/workflows/mcp-standalone-assurance.yml'
   workflow_dispatch:
 jobs:
@@ -21,16 +21,16 @@ jobs:
           node-version: '22'
       - name: Validate source and Node scripts
         run: |
-          node --check plugins/ikant-le-session-chat/server/server.mjs
-          node --check plugins/ikant-le-session-chat/server/mcp-standalone-policy.mjs
-          node --check plugins/ikant-le-session-chat/server/runtime-limits.mjs
+          node --check project/plugins/ikant-le-session-chat/server/server.mjs
+          node --check project/plugins/ikant-le-session-chat/server/mcp-standalone-policy.mjs
+          node --check project/plugins/ikant-le-session-chat/server/runtime-limits.mjs
           node --check scripts/mcp-standalone-semantic-10k.mjs
-          node -e "JSON.parse(require('node:fs').readFileSync('plugins/ikant-le-session-chat/mcp.standalone.template.json'))"
+          node -e "JSON.parse(require('node:fs').readFileSync('project/plugins/ikant-le-session-chat/mcp.standalone.template.json'))"
       - name: Standalone and original OAuth negative regressions
         run: |
           node --test tests/mcp-standalone-runtime-assurance.test.mjs tests/mcp-external-oauth-prepr.test.mjs tests/mcp-external-v2-refinement.test.mjs
       - name: Install exact declared direct MCP SDK dependencies (not a lockfile claim)
-        run: npm install --ignore-scripts --no-audit --no-fund --prefix plugins/ikant-le-session-chat/server
+        run: npm install --ignore-scripts --no-audit --no-fund --prefix project/plugins/ikant-le-session-chat/server
       - name: Real SDK HTTP transport with SYNTHETIC local OAuth server
         run: node --test tests/mcp-standalone-http-qualification.probe.mjs
       - name: Materialize ten thousand scenario questions

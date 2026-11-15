@@ -60,7 +60,7 @@ test('badge cannot be forged by caller and depends on original owner slots',()=>
 
 test('P0 source-verified iKant logo precedes OneShell title without native avatar claim',async()=>{
  const {renderOneShellVisualHtml}=await import('../host/project-oneshell-visual.mjs');
- const svg=readFileSync(new URL('../assets/brand/ikant-light.svg',import.meta.url),'utf8');
+ const svg=readFileSync(new URL('../project/assets/brand/ikant-light.svg',import.meta.url),'utf8');
  const digest=createHash('sha256').update(svg).digest('hex');
  const f=oneShellFrame({esito:'PRONTO',b:'Host',prova:'p',next:'AWAIT_HUMAN_INPUT'});
  const model=createOneShellVisualModel(f),html=renderOneShellVisualHtml(f);

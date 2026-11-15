@@ -1,0 +1,36 @@
+name: R7 V13 source Git object import (pinned evidence)
+on:
+  push:
+    branches:
+      - refactor/r7-v13-semantic-transplant-gated-20261115
+    paths:
+      - scripts/r7-v13-import-gitpack.py
+      - .github/workflows/r7-v13-source-import.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  import-source:
+    if: github.repository == 'Luke883i/iKant_EDU' && github.ref == 'refs/heads/refactor/r7-v13-semantic-transplant-gated-20261115'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    timeout-minutes: 12
+    steps:
+      - name: Checkout complete Git history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Rehydrate and verify exact original V13 Git object graph
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/r7-v13-import-gitpack.py --push --receipt "$RUNNER_TEMP/r7-v13-import-receipt.json"
+      - name: Preserve import receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r7-v13-source-pack-import-${{ github.sha }}
+          path: ${{ runner.temp }}/r7-v13-import-receipt.json
+          if-no-files-found: ignore

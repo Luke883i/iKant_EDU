@@ -118,8 +118,18 @@ def run(args):
     require(git("merge-base", "--is-ancestor", ROOT, SOURCE) == "", "ROOT_NOT_ANCESTOR")
     git("fsck", "--full", "--no-reflogs")
     if args.push:
-        git("push", "--porcelain", "origin", SOURCE + ":" + SOURCE_BRANCH)
-        status = "SOURCE_BRANCH_PUBLISHED"
+        # Evidence-only merge: first parent real GitHub main, second parent synthetic
+        # source history, and the tree EXACTLY matches main. No workflow-file
+        # changes in the carrier commit relative to its first parent.
+        git("config", "user.name", "R7 Evidence Carrier")
+        git("config", "user.email", "r7-evidence@users.noreply.github.com")
+        carrier = git("commit-tree", MAIN_TREE, "-p", MAIN, "-p", SOURCE, "-m",
+                      "evidence(r7-v13): link synthetic 35-commit source, no working-tree changes")
+        require(git("rev-parse", carrier + "^{tree}") == MAIN_TREE, "CARRIER_TREE_DRIFT")
+        parents = git("rev-list", "--parents", "-n", "1", carrier).split()
+        require(parents == [carrier, MAIN, SOURCE], "CARRIER_PARENT_ORDER_INVALID")
+        git("push", "--porcelain", "origin", carrier + ":" + SOURCE_BRANCH)
+        status = "SOURCE_CARRIER_BRANCH_PUBLISHED"
     else:
         status = "LOCAL_GIT_OBJECT_IMPORT_PASS"
     receipt = {"schema": "r7-pr249-source-pack-import/v1", "status": status,

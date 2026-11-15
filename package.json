@@ -10,6 +10,7 @@
     "./embedded/relational-nuance": "./src/embedded/relational-nuance.mjs"
   },
   "scripts": {
+    "maintain:verify": "node scripts/repository-health-v10.mjs --run-native",
     "test": "node --test --test-concurrency=1",
     "check": "node scripts/check.mjs && node scripts/check-c11.mjs",
     "falsify:c83": "node scripts/c83-falsify-1m.mjs",

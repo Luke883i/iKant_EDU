@@ -25,7 +25,8 @@
     "v13_modifications": [
       "scripts/cora-pr-f-qualification.mjs",
       "scripts/v5b-repository-governance-audit.mjs",
-      "tests/cora-pr-d1-blob-dedup.test.mjs"
+      "tests/cora-pr-d1-blob-dedup.test.mjs",
+      "scripts/cora-minimal-absorption.mjs"
     ],
     "preexisting_v10_unregistered": [
       "contracts/repository-health-v10.json",

@@ -23,3 +23,17 @@ test('V13 original SHA is reopened from historical Git, changed source stays rev
  assert.equal(reopenR7SourceEpoch('nonexistent.file').ok,false);
  assert.equal(reopenR7SourceEpoch('../../etc/shadow').ok,false);
 });
+
+test('V13 workflow epoch preserves original W1 and six-delta chain, never CI authority',async()=>{
+ const {reopenV13WorkflowEpoch}=await import('../scripts/cora-minimal-absorption.mjs');
+ const c=JSON.parse(fs.readFileSync(new URL('../contracts/cora-reticular-hygiene-v1.json',import.meta.url)));
+ const r=reopenV13WorkflowEpoch(c);
+ assert.equal(r.ok,true,JSON.stringify(r));
+ assert.equal(r.changed_workflow_sources,75);
+ assert.equal(r.original_w1_reopened,true);
+ assert.equal(r.original_evolution_reopened,true);
+ assert.equal(r.provider_attested,false);
+ assert.equal(r.review_attested,false);
+ const forged=structuredClone(c);forged.reuse.workflow_evolution.baseline_tree='f'.repeat(40);
+ assert.equal(reopenV13WorkflowEpoch(forged).ok,false);
+});

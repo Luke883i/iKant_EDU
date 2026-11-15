@@ -1,0 +1,57 @@
+{
+  "schema": "ikant-r7-pr249-founding-contract/v1",
+  "issued_for": "Luke883i/iKant_EDU PR #249",
+  "purpose": "Contraction of physical repository layout without loss of source, owner boundaries or tested behavior. This does not authorize product release.",
+  "authority": 0,
+  "product_go": false,
+  "baseline": {
+    "main_commit": "8cb80d2230919220ac4b7a1cfcd80950d8467848",
+    "main_tree": "4cff62ed12f79390a059784bcbf9770788a3a4d1",
+    "v13_source_commit": "86e20abb714fa4000352b61a0c0abf8795775318",
+    "v13_source_tree": "07f135d6d54ff69b78cc9e7215daa0bdafa9f84c",
+    "synthetic_source_root": "27194bb153ff0ab8500bb75277d4d5f7ebb60d45",
+    "historical_source_is_not_github_main_history": true
+  },
+  "target": {
+    "directory_roots": [".github", "contracts", "host", "project", "scripts", "src", "tests"],
+    "root_files": [".gitignore", "ADMISSION.json", "AGENTS.md", "BOOTSTRAP.json", "LICENSE", "README.md", "TERMS.md", "ikant.mjs", "package.json"],
+    "root_directories_before": 15,
+    "root_directories_after": 7,
+    "root_files_before": 15,
+    "root_files_after": 9,
+    "v10_source_files_mapped": 1630,
+    "v13_source_files": 1639,
+    "original_governance_sources_preserved": 50,
+    "manual_review_required_for_sensitive_owner_changes": 4
+  },
+  "abstract_dod": "A0 = P AND S AND L AND I AND O AND Q AND R. No metric or evidence type compensates for another.",
+  "reticulum": [
+    {"id":"P","depends_on":[],"acceptance":"Real main and synthetic V13 are both identifiable, all 35 original semantic commits present, historical governance preserved, recoverable source and rollback.","falsifiers":["FAKE_MAIN_ANCESTRY","MISSING_GIT_OBJECT","GOVERNANCE_DRIFT","ROOT_PARENT_MISLABEL"]},
+    {"id":"S","depends_on":["P"],"acceptance":"Exactly 7 named root directories and 9 named root files on actual GitHub PR HEAD; not just a local candidate.","falsifiers":["EIGHTH_ROOT","SHADOW_ROOT_FILE","ROOT_FILE_ABSENT"]},
+    {"id":"L","depends_on":["P","S"],"acceptance":"Every v10 file has a single mapped destination, byte drift explicit, modes preserved; no deletion hidden by a directory move.","falsifiers":["LOSS_OF_SOURCE","DUPLICATE_MAPPING","SYMLINK_DRIFT","MODE_DRIFT"]},
+    {"id":"I","depends_on":["L"],"acceptance":"No new broken static imports, links or workflow and manifest targets; dynamic/external consumers are UNKNOWN until independently qualified.","falsifiers":["BROKEN_ESM","BROKEN_LINK","STALE_WORKFLOW","UNKNOWN_AS_PASS"]},
+    {"id":"O","depends_on":["P","I"],"acceptance":"Original EDU and MCP owner boundaries preserved; four sensitive changes are independently reviewed, not self-certified.","falsifiers":["OWNER_PROMOTION","CROSS_PRODUCT_AUTHORITY","REVIEW_FORGERY"]},
+    {"id":"Q","depends_on":["P","I","O"],"acceptance":"Native complete suite and two product smokes PASS on exact PR HEAD; no hidden skips or stale status receipts.","falsifiers":["STALE_HEAD_CI","NATIVE_FAIL","HIDDEN_SKIP","PROVIDER_NOT_EXECUTED"]},
+    {"id":"R","depends_on":["Q"],"acceptance":"CORA ENGINE run and verify evidence exist for the same HEAD, with truthful BLOCKED vs PASS; independent validation required before global promotion.","falsifiers":["MISSING_CORA_REPORT","CODE_ZERO_FAKE_PASS","UNTRUSTED_REPLAY"]}
+  ],
+  "claim_status_rules": {
+    "SOURCE_ONLY_PASS": "Git and bounded static checks may be PASS without claiming native product equivalence.",
+    "DEBT_BLOCKED": "Unqualified consumers, failed original tests, an unreadable object or a missing CORA report must hold A0 open.",
+    "GLOBAL_PASS": "Requires all nodes P,S,L,I,O,Q,R independently attested on the identical PR HEAD, including native and reviewer gates.",
+    "PRODUCT_GO": "Remains false; repository health does not authorize model or provider release."
+  },
+  "mutation_design": {
+    "algorithm": "xorshift32 with fixed seed and 32 semantic negative classes",
+    "fixed_cases": 1000000,
+    "saturation_window": 10000,
+    "domain": "bounded synthetic evidence/graph mutations, not one million physical Git changes",
+    "physical_mutants_required_separately": true,
+    "success_metric": "all seeded negative claims rejected by independent expected-family oracle, with coverage and no unclassified survivors",
+    "stop_condition": "All DoD nodes supported AND bounded saturation; neither condition alone is sufficient"
+  },
+  "legacy": {
+    "existing_source_reticulum": "contracts/r7-v13-causal-reticulum.json",
+    "historical_evidence_not_rewritten": true,
+    "changes_to_existing_owner_files_prohibited_by_this_contract": true
+  }
+}

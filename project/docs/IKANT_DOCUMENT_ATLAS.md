@@ -196,6 +196,7 @@
 - [project/docs/PROJECT_PE_BOOTSTRAP_RETROGRADE.md](PROJECT_PE_BOOTSTRAP_RETROGRADE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/PROJECT_SESSION_REPO_FIRST.md](PROJECT_SESSION_REPO_FIRST.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/QUALIFICATION.md](QUALIFICATION.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/R7_PR249_FOUNDING_GUIDE.md](R7_PR249_FOUNDING_GUIDE.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/R7_V11_SEVEN_ROOTS.md](R7_V11_SEVEN_ROOTS.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/RENAME_IKANT_EDU_2DIM_E2E.md](RENAME_IKANT_EDU_2DIM_E2E.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/REPOSITORY_HEALTH_V10.md](REPOSITORY_HEALTH_V10.md): Documentazione specialistica. Stato di review: **da verificare**.

@@ -7,6 +7,8 @@ import {execFileSync} from 'node:child_process';
 import {gitBlobSha1} from '../scripts/v5b-repository-governance-audit.mjs';
 import {qualifyWorkflowPatch,DIRECTIVE} from '../scripts/cora-pr-c-ci.mjs';
 import {verifyFrozenWorkflowTree} from '../scripts/cora-pr-f-qualification.mjs';
+import {mapR7SourcePath,reopenR7SourceEpoch} from '../scripts/r7-v13-epoch-bridge.mjs';
+const r7Plan=JSON.parse(fs.readFileSync(new URL('../contracts/r7-v11-seven-root-contract.json',import.meta.url),'utf8'));
 
 const contract=JSON.parse(fs.readFileSync(new URL('../contracts/cora-pr-d1-blob-dedup-v1.json',import.meta.url),'utf8'));
 const register=JSON.parse(fs.readFileSync(new URL('../contracts/governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json',import.meta.url),'utf8'));
@@ -46,7 +48,9 @@ test('V5-B explicitly records all modified and new files without inventing appro
  assert.equal(register.paths.filter(x=>x.operation==='ADD').length,3);
  assert(register.paths.every(x=>x.human_review==='REVIEW_REQUIRED'&&x.destructive_effect===false));
  for(const r of register.paths.filter(x=>x.operation==='MODIFY')){
-  assert.equal(r.supersedes_register,contract.reuse.predecessor_register);
+  assert.equal(mapR7SourcePath(r.supersedes_register,r7Plan),contract.reuse.predecessor_register);
+  const predecessor=reopenR7SourceEpoch(r.supersedes_register);
+  assert.equal(predecessor.ok,true,JSON.stringify(predecessor));
   assert.equal(r.supersedes_source_main,'b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa');
  }
 });

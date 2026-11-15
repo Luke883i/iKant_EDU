@@ -141,6 +141,7 @@ export function validateFContract(c){
  for(const x of c.restored_source_blobs){
   if(!x||!SHA.test(x.blob||'')||typeof x.path!=='string'||
    pathSet.has(x.path)||!(x.path.startsWith('project-baseline/')||
+     x.path.startsWith('project/baseline/')||
      x.path.startsWith('proposals/c141/')||x.path==='project/docs/stile_comunicativo.md'))
    return fails('F_RESTORATION_PIN_INVALID');
   pathSet.add(x.path);

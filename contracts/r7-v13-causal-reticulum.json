@@ -35,7 +35,8 @@
       "tests/repository-health-v10.test.mjs",
       "scripts/cora-pr-a-backlog.mjs",
       "scripts/cora-s3-convergence.mjs",
-      "tests/v5b-root-archive.test.mjs"
+      "tests/v5b-root-archive.test.mjs",
+      "tests/cora-s3-convergence.test.mjs"
     ],
     "preexisting_v10_unregistered": [
       "contracts/repository-health-v10.json",

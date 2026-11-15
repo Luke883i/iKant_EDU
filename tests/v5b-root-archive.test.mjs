@@ -5,7 +5,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-import {HISTORIC,reopenR7SourceEpoch} from '../scripts/r7-v13-epoch-bridge.mjs';
+import {HISTORIC,reopenR7SourceEpoch,mapR7SourcePath} from '../scripts/r7-v13-epoch-bridge.mjs';
 import {audit,verify} from '../scripts/ikant-document-atlas.mjs';
 
 const ROOT=fileURLToPath(new URL('../',import.meta.url));
@@ -88,16 +88,20 @@ test('canonical roots and consumers remain unchanged; risky conditional moves ar
   if(row.path===successor.cut.source){
    assert.equal(fs.existsSync(path.join(ROOT,row.path)),false,row.path);
    const archive=load(successor.cut.destination);
-   assert.equal(archive.length,successor.cut.bytes);
-   assert.equal(sha(archive),successor.cut.git_blob_sha1);
-   // PR3 was previously performed in V10: original root alias is gone, and
-   // V13 only transports the exact historical archive blob into project/docs.
    const old='docs/archive/prepr/render.mcp-prepr.yaml';
+   const original=show(HISTORIC,old);
+   assert.equal(original.length,successor.cut.bytes);
+   assert.equal(sha(original),successor.cut.git_blob_sha1);
    const mapped=reopenR7SourceEpoch(old);
-   assert.equal(mapped.ok,true);assert.equal(mapped.byte_identical,true);
+   assert.equal(mapped.ok,true);assert.equal(mapped.byte_identical,false);
    assert.equal(mapped.historical_blob,successor.cut.git_blob_sha1);
    assert.equal(mapped.current_path,successor.cut.destination);
-   assert.equal(successor.cut.content_mutation_allowed,false);
+   const expected=original.toString('utf8')
+     .replace('cd plugins/ikant-le-session-chat/server','cd project/plugins/ikant-le-session-chat/server')
+     .replace('node plugins/ikant-le-session-chat/server/server.mjs','node project/plugins/ikant-le-session-chat/server/server.mjs');
+   assert.equal(archive.toString('utf8'),expected);
+   assert.equal(mapped.approval,'NOT_ATTESTED');
+   assert.equal(successor.cut.content_mutation_allowed,false); // Original PR3 never approved this later rebind.
    assert.equal(successor.external_manual_render_config,'UNKNOWN_REQUIRES_OPERATOR_REVIEW');
   }else{
    const mapped=reopenR7SourceEpoch('iKant_UI_shell.md');
@@ -109,7 +113,11 @@ test('canonical roots and consumers remain unchanged; risky conditional moves ar
  // V5-B roots are frozen at their original epoch. The seven-root candidate
  // preserves the mapped content with exact SHA/mode or declares review debt.
  const original=JSON.parse(show(HISTORIC,'contracts/v5b-root-archive-plan.json').toString('utf8'));
- assert.deepEqual(original.must_remain_root,plan.must_remain_root);
+ const migration=JSON.parse(load('contracts/r7-v11-seven-root-contract.json'));
+ const rebind=p=>mapR7SourcePath(p,migration);
+ assert.deepEqual(original.must_remain_root.map(rebind),plan.must_remain_root);
+ assert.deepEqual(original.conditional_not_moved.map(x=>({...x,path:rebind(x.path)})),plan.conditional_not_moved);
+ assert.deepEqual(original.decisions.map(x=>({...x,archive_path:rebind(x.archive_path)})),plan.decisions);
  for(const p of plan.must_remain_root){
   const historicalPath=p.startsWith('project/docs/')?'docs/'+p.slice('project/docs/'.length):
    p.startsWith('project/release/')?p.slice('project/release/'.length):

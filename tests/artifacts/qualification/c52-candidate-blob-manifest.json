@@ -4,8 +4,8 @@
   "entries": [
     {
       "path": "contracts/physical-runtime-closure-v1.json",
-      "bytes": 6755,
-      "sha256": "9949b7129a3fa447a891fde21c47929a5b4551d5cb8788f4261646b520e55fb6"
+      "bytes": 6731,
+      "sha256": "e444a415baa79775ff651fa37bef0f6f1786f5c93266faca3d848e59faa0622a"
     },
     {
       "path": "src/physical-runtime-closure.mjs",
@@ -34,18 +34,18 @@
     },
     {
       "path": "scripts/c52-physical-closure-saturate.py",
-      "bytes": 21674,
-      "sha256": "406d47657fef6724da0b388ee3baa4dc943eb19fcb0af7ac3bb9b1a9adab0dd0"
+      "bytes": 21662,
+      "sha256": "8ede5756d599bb3e930eaa32275af9d748e095a26254c1960db3c4000b74adf1"
     },
     {
       "path": "scripts/c52-bundle-coverage.mjs",
-      "bytes": 5479,
-      "sha256": "8ae408f24196196e1fd3516b90287e7a939dd09eaa53dca36b9531da6269ddbe"
+      "bytes": 5461,
+      "sha256": "4f279c7b0fc9c52cf33704c99fffd09ca6577e3e5933be10a127f7566ad51dd5"
     },
     {
       "path": "scripts/c52-build-dod.mjs",
-      "bytes": 6506,
-      "sha256": "8dacaba24bd288f7d8d935a20a5d6b6db9b7ec4634fc3a9f644de53ac66876d9"
+      "bytes": 6476,
+      "sha256": "0d3cacca508b19d834560d50fe04b94fbf77bfbea59651bafbc606ca542a531e"
     },
     {
       "path": "tests/c52-physical-runtime-closure.test.mjs",
@@ -54,17 +54,17 @@
     },
     {
       "path": ".github/workflows/c51-supersystem-runtime.yml",
-      "bytes": 1689,
-      "sha256": "a810ac9e3102d306d1872043e9d9a02f12979ac0d13886903af7a40b9372c457"
+      "bytes": 1665,
+      "sha256": "4a45904415a20c3f78a5cb1080922611fd892e02d80046931b41c9c305da10d5"
     },
     {
       "path": ".github/workflows/c52-physical-runtime-closure.yml",
-      "bytes": 3232,
-      "sha256": "7b7d53af9b5874edaa0a52a5b5ccaa8d8a1d3ed569ca7ed9d11d85b19210d11d"
+      "bytes": 3190,
+      "sha256": "87f6dff8e914d9aca75d7ca69949501736f334e9ada3d0008673dcf90f878d36"
     }
   ],
   "content_addressed": true,
   "manifest_excludes_self": true,
   "authority": 0,
-  "receipt_sha256": "f4c36a30a7f1a3bf0bc5d7e11ecef4ce9cb6e7b377f5b530edb9bd8d20781a4c"
+  "receipt_sha256": "7cd9ad2def27d8b41b9bd700bf230d2243fd04e895599b11cf52e4b664359ff8"
 }

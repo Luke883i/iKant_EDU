@@ -1,83 +1,69 @@
 #!/usr/bin/env python3
-"""R7/V13: transplant 35 local-source semantic commits onto actual GitHub main.
+"""R7/V13 safe transplant: exactly one Git merge with two explicit parent roles.
 
-Run from a clean, genuine GitHub checkout of the draft branch. No push here.
-Copy this script OUTSIDE the checkout before execution: it is removed from
-the final V13 tree. Never promote local test receipts to CI/owner evidence.
+First parent: this PR's genuine-main draft head.
+Second parent: V13's immutable local synthetic-source history (NOT GitHub main).
+The final tree is exactly V13. All 35 semantic commits survive as source history.
+No push is performed: inspect receipt and gate CI/owner review independently.
 """
-import argparse
-import json
+import argparse,json,re,subprocess,sys
 from pathlib import Path
-import subprocess
-import sys
-
 BASE="8cb80d2230919220ac4b7a1cfcd80950d8467848"
 BASE_TREE="4cff62ed12f79390a059784bcbf9770788a3a4d1"
-SOURCE_ROOT="27194bb153ff0ab8500bb75277d4d5f7ebb60d45"
-SOURCE_HEAD="86e20abb714fa4000352b61a0c0abf8795775318"
-TARGET_TREE="07f135d6d54ff69b78cc9e7215daa0bdafa9f84c"
-STAGING=["docs/R7_V13_PR_TRANSPLANT.md","scripts/r7-v13-pr-transplant.py"]
-
-def git(repo,*args):
-    p=subprocess.run(["git","-C",str(repo),*args],text=True,capture_output=True)
-    if p.returncode:
-        raise RuntimeError("git "+' '.join(args)+" failed: "+p.stderr[:1200])
-    return p.stdout.strip()
-
-def require(ok,msg):
-    if not ok: raise RuntimeError(msg)
-
-def run(args):
-    repo=args.repo.resolve();bundle=args.bundle.resolve()
-    require(bundle.is_file(),"BUNDLE_MISSING")
-    require(not git(repo,"status","--porcelain"),"WORKTREE_NOT_CLEAN")
-    require(git(repo,"rev-parse",BASE)==BASE,"BASE_COMMIT_MISSING")
-    head=git(repo,"rev-parse","HEAD")
-    require(git(repo,"merge-base",BASE,head)==BASE,"NOT_DESCENDANT_OF_PINNED_MAIN")
-    if args.draft:
-        changed=git(repo,"diff","--name-only",BASE,head).splitlines()
-        require(sorted(changed)==sorted(STAGING),"STAGING_DIFF_NOT_EXACT")
-        require(all((repo/p).is_file() for p in STAGING),"STAGING_FILES_NOT_PRESENT")
-        git(repo,"rm","--",*STAGING)
-        git(repo,"commit","-m","chore(r7-v13): retire staging files before exact semantic replay")
-    else:
-        require(head==BASE,"NON_DRAFT_MUST_START_ON_REAL_MAIN")
-    require(git(repo,"rev-parse","HEAD^{tree}")==BASE_TREE,"BASE_TREE_MISMATCH")
-    git(repo,"fetch","--no-tags",str(bundle),"+refs/heads/v13:refs/r7-v13/source")
-    require(git(repo,"rev-parse","refs/r7-v13/source")==SOURCE_HEAD,"SOURCE_HEAD_DRIFT")
-    require(git(repo,"rev-parse",SOURCE_ROOT+"^{tree}")==BASE_TREE,"SYNTHETIC_ROOT_TREE_DRIFT")
-    sources=git(repo,"rev-list","--reverse",SOURCE_ROOT+".."+SOURCE_HEAD).splitlines()
-    require(len(sources)==35,"SOURCE_HISTORY_LENGTH_DRIFT")
-    receipt={"schema":"r7-v13-real-main-transplant/v1","base":BASE,"steps":[],"product_go":False}
-    for index,source in enumerate(sources,1):
-        require(len(git(repo,"rev-list","--parents","-n","1",source).split())==2,
-                "MERGE_IN_SOURCE_HISTORY")
-        previous=git(repo,"rev-parse","HEAD")
-        git(repo,"cherry-pick","--no-commit",source)
-        git(repo,"commit","--no-gpg-sign","-C",source)
-        observed=git(repo,"rev-parse","HEAD^{tree}")
-        expected=git(repo,"rev-parse",source+"^{tree}")
-        require(observed==expected,"STEP_TREE_DRIFT:"+str(index))
-        receipt["steps"].append({"n":index,"source":source,
-                                 "imported":git(repo,"rev-parse","HEAD"),
-                                 "tree":observed,"parent":previous})
-    require(git(repo,"rev-parse","HEAD^{tree}")==TARGET_TREE,
-            "FINAL_TREE_NOT_V13")
-    require(not git(repo,"status","--porcelain"),"DIRTY_AFTER_REPLAY")
-    receipt.update({"status":"REPLAY_ONLY_CI_AND_OWNERS_OPEN",
-                    "head":git(repo,"rev-parse","HEAD"),"tree":TARGET_TREE})
-    out=args.receipt.resolve();out.parent.mkdir(parents=True,exist_ok=True)
-    out.write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n")
-    print(json.dumps({"status":receipt["status"],"head":receipt["head"],
-                      "tree":TARGET_TREE,"commits":35,"receipt":str(out)}))
-
+ROOT="27194bb153ff0ab8500bb75277d4d5f7ebb60d45"
+SOURCE="86e20abb714fa4000352b61a0c0abf8795775318"
+TREE="07f135d6d54ff69b78cc9e7215daa0bdafa9f84c"
+FILES=["docs/R7_V13_PR_TRANSPLANT.md","scripts/r7-v13-pr-transplant.py"]
+REF="refs/r7-v13/imported"
+def g(repo,*args):
+ p=subprocess.run(["git","-C",str(repo),*args],text=True,capture_output=True)
+ if p.returncode:raise RuntimeError("GIT_BLOCKED:"+repr(args)+":"+p.stderr[:400])
+ return p.stdout.strip()
+def need(c,edge):
+ if not c:raise RuntimeError(edge)
+def run(a):
+ repo=a.repo.resolve(); bundle=a.bundle.resolve()
+ need(bundle.is_file(),"BUNDLE_MISSING")
+ need(not g(repo,"status","--porcelain"),"DIRTY_CHECKOUT")
+ need(g(repo,"rev-parse",BASE)==BASE,"REAL_MAIN_NOT_AVAILABLE")
+ need(g(repo,"rev-parse",BASE+"^{tree}")==BASE_TREE,"REAL_MAIN_TREE_DRIFT")
+ draft=g(repo,"rev-parse","HEAD")
+ need(g(repo,"merge-base",BASE,draft)==BASE,"DRAFT_BASE_NOT_MAIN")
+ need(sorted(g(repo,"diff","--name-only",BASE,draft).splitlines())==sorted(FILES),"DRAFT_ONLY_TWO_FILES_REQUIRED")
+ need(all((repo/f).is_file() for f in FILES),"STAGING_FILE_MISSING")
+ need(subprocess.run(["git","-C",str(repo),"show-ref","--verify","--quiet",REF]).returncode!=0,"IMPORTED_REF_EXISTS")
+ g(repo,"fetch","--no-tags",str(bundle),"+refs/heads/v13:refs/r7-v13/source")
+ need(g(repo,"rev-parse","refs/r7-v13/source")==SOURCE,"SOURCE_HEAD_DRIFT")
+ need(g(repo,"rev-parse",ROOT+"^{tree}")==BASE_TREE,"SOURCE_ROOT_TREE_DRIFT")
+ need(g(repo,"rev-parse",SOURCE+"^{tree}")==TREE,"V13_FINAL_TREE_DRIFT")
+ commits=g(repo,"rev-list","--reverse",ROOT+".."+SOURCE).splitlines()
+ need(len(commits)==35 and all(len(g(repo,"rev-list","--parents","-n","1",x).split())==2 for x in commits),"SEMANTIC_HISTORY_INVALID")
+ msg=("merge(r7-v13): preserve 35 original semantic commits in evidence parent\n\n"
+      "First parent = real GitHub main draft.\n"
+      "Second parent = synthetic V13 source epochs, not former GitHub main.\n"
+      "Exact source tree preserved; owner review and CI not attested.\n")
+ c=subprocess.run(["git","-C",str(repo),"commit-tree",TREE,"-p",draft,"-p",SOURCE],
+   input=msg,text=True,capture_output=True)
+ need(c.returncode==0,"MERGE_CREATION_FAILED:"+c.stderr[:400])
+ merged=c.stdout.strip(); need(re.fullmatch("[a-f0-9]{40}",merged)!=None,"MERGE_HASH_INVALID")
+ need(g(repo,"rev-parse",merged+"^{tree}")==TREE,"MERGE_CHANGED_TREE")
+ need(g(repo,"rev-list","--parents","-n","1",merged).split()==[merged,draft,SOURCE],"PARENT_ORDER_MISMATCH")
+ g(repo,"merge-base","--is-ancestor",SOURCE,merged)
+ g(repo,"merge-base","--is-ancestor",draft,merged)
+ g(repo,"update-ref",REF,merged,"0"*40)
+ need(g(repo,"rev-parse","HEAD")==draft,"DRAFT_BRANCH_WAS_CHANGED")
+ receipt={"schema":"r7-v13-2parent-semantic-import/v1","status":"LOCAL_ONLY_NOT_PUSHED",
+   "base":BASE,"staging_head":draft,"source_head":SOURCE,"merge_commit":merged,
+   "tree":TREE,"semantic_commits":35,"synthetic_history_explicit":True,
+   "ci":"NOT_ATTESTED","independent_owner_review":"NOT_ATTESTED",
+   "cora_process":"DEBT_BLOCKED","global_dod":"HOLD","product_go":False}
+ out=a.receipt.resolve();out.parent.mkdir(parents=True,exist_ok=True)
+ out.write_text(json.dumps(receipt,sort_keys=True,indent=2)+"\n")
+ print(json.dumps(receipt,sort_keys=True))
 if __name__=="__main__":
-    ap=argparse.ArgumentParser()
-    ap.add_argument("--repo",type=Path,default=Path("."))
-    ap.add_argument("--bundle",type=Path,required=True)
-    ap.add_argument("--draft",action="store_true",help="remove exact staging files")
-    ap.add_argument("--receipt",type=Path,default=Path("/tmp/r7-v13-transplant.json"))
-    try: run(ap.parse_args())
-    except Exception as exc:
-        print("R7_V13_TRANSPLANT_BLOCKED:",exc,file=sys.stderr)
-        sys.exit(20)
+ p=argparse.ArgumentParser()
+ p.add_argument("--repo",type=Path,default=Path("."))
+ p.add_argument("--bundle",type=Path,required=True)
+ p.add_argument("--receipt",type=Path,default=Path("/tmp/r7-v13-pr-import.json"))
+ try:run(p.parse_args())
+ except Exception as e:print("R7_V13_IMPORT_BLOCKED:",e,file=sys.stderr);sys.exit(20)

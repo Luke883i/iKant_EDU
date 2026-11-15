@@ -114,12 +114,12 @@ export function validateSourceContract(c){
   JSON.stringify(ownerKeys)===JSON.stringify(REQUIRED_OWNER_PATHS)&&
   REQUIRED_OWNER_PATHS.every(p=>h40.test(c.protected_owner_blobs[p]));
 }
-function ownerCheck(rows,rollback){
+function ownerCheck(rows){
  const indexed=new Map(rows.map(x=>[x.path,x.sha]));
  const changed=[];
  for(const p of REQUIRED_OWNER_PATHS){
   let expected=null;
-  if(rollback.ancestor_commit)try{expected=git('rev-parse',rollback.ancestor_commit+':'+p).toString('utf8').trim();}catch{}
+  try{expected=git('rev-parse',TRUSTED_BASELINE_TREE+':'+p).toString('utf8').trim();}catch{}
   if(!h40.test(expected)||indexed.get(p)!==expected||SPEC.protected_owner_blobs[p]!==expected)changed.push(p);
  }
  return {ok:changed.length===0,protected_count:REQUIRED_OWNER_PATHS.length,changed};
@@ -177,7 +177,7 @@ export function proofOfMinimum(){
 }
 export function auditV10({runNative=false}={}){
  const rows=tracked(),gitBefore=inspectGitContent(rows),ids=rows.map(x=>x.path);
- const edges=scanLiteralRelative(ROOT,ids),unresolved=edges.filter(x=>!x.valid),fresh=newUnresolved(edges,SPEC.inherited_unresolved_lexical_edges),rollback=rollbackCheck(),manifest_valid=validateSourceContract(SPEC),owner=ownerCheck(rows,rollback),docs=legibility();
+ const edges=scanLiteralRelative(ROOT,ids),unresolved=edges.filter(x=>!x.valid),fresh=newUnresolved(edges,SPEC.inherited_unresolved_lexical_edges),rollback=rollbackCheck(),manifest_valid=validateSourceContract(SPEC),owner=ownerCheck(rows),docs=legibility();
  const native=scopedNative(runNative),gitAfter=inspectGitContent(tracked());
  const sameHeadAndTree=gitBefore.head===gitAfter.head&&gitBefore.tree===gitAfter.tree;
  const census=censusRepo(ROOT);

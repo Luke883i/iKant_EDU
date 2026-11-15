@@ -319,7 +319,7 @@ test('C66 integrity contradiction revokes a previously reached prefix',async()=>
       onOwnerMilestone:m=>{if(m.edge==='LOCAL_INGRESS'){
         const stage=fs.readdirSync(root).find(x=>x.startsWith('.c63-stage-'));
         assert.ok(stage,'C63 physical staging must exist');
-        fs.appendFileSync(path.join(root,stage,'cold','runtime-root','shard-000.json'),'X');
+        fs.appendFileSync(path.join(root,stage,'cold','src','runtime-root','shard-000.json'),'X');
       }}
     });
     assert.equal(out.outcome,'BLOCKED_INTEGRITY');

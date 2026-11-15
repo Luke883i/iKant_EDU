@@ -1,7 +1,7 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+  "self_path": "governance/changes/zzzzzz-rename-sourcebound.json",
   "source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31",
   "baseline_source_tree": "ecac2b37ffc3f9bd8a5fe54c722a32207488188e",
   "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
@@ -23,7 +23,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Migrate OLD-safe first-contact, original runtime-root member/shard integrity and repository-ID pinned prompt without changing administrative repository name or owner receipts",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/z-rename-s01-s03.json",
+      "supersedes_register": "governance/changes/z-rename-s01-s03.json",
       "supersedes_source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44"
     },
     {
@@ -55,14 +55,14 @@
       "deletion_authorized": false
     },
     {
-      "path": "src/runtime-root/shard-000.json",
+      "path": "runtime-root/shard-000.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Migrate OLD-safe first-contact, original runtime-root member/shard integrity and repository-ID pinned prompt without changing administrative repository name or owner receipts",
       "deletion_authorized": false
     },
     {
-      "path": "src/runtime-root/shard-004.json",
+      "path": "runtime-root/shard-004.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Migrate OLD-safe first-contact, original runtime-root member/shard integrity and repository-ID pinned prompt without changing administrative repository name or owner receipts",
@@ -74,7 +74,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Migrate OLD-safe first-contact, original runtime-root member/shard integrity and repository-ID pinned prompt without changing administrative repository name or owner receipts",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
       "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
     },
     {
@@ -97,11 +97,11 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Migrate OLD-safe first-contact, original runtime-root member/shard integrity and repository-ID pinned prompt without changing administrative repository name or owner receipts",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
       "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
     },
     {
-      "path": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "path": "governance/changes/zzzzzz-rename-sourcebound.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Migrate OLD-safe first-contact, original runtime-root member/shard integrity and repository-ID pinned prompt without changing administrative repository name or owner receipts",
@@ -129,7 +129,7 @@
       "deletion_authorized": false
     },
     {
-      "path": "tests/artifacts/qualification/c62-object-mincut-8192.json",
+      "path": "artifacts/qualification/c62-object-mincut-8192.json",
       "operation": "MODIFY",
       "reason": "Recompute exactly two data fields (original runtime root SHA256, transport byte count) in the C62 deterministic 8192 mincut proof after the byte-exact original shard/member regeneration; preserve all gate predicates and test expectations",
       "human_review": "REVIEW_REQUIRED",

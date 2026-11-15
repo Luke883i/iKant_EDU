@@ -2,20 +2,20 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "f5f42603294084d29cdb6d6e2106c0331d802536",
-  "self_path": "contracts/governance/changes/zz-v5f-bootstrap-decouple-d0.json",
+  "self_path": "governance/changes/zz-v5f-bootstrap-decouple-d0.json",
   "scope": "HOST_ENGINEERING_READ_ONLY_D0",
   "original_owner_unchanged": true,
   "active": false,
   "human_review_completed": false,
   "paths": [
     {
-      "path": "contracts/governance/changes/zz-v5f-bootstrap-decouple-d0.json",
+      "path": "governance/changes/zz-v5f-bootstrap-decouple-d0.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Self-register read-only D0 bootstrap decoupling engineering slice without changing product owner boundaries"
     },
     {
-      "path": "project/docs/BOOTSTRAP_DECOUPLING_D0.md",
+      "path": "docs/BOOTSTRAP_DECOUPLING_D0.md",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Add non-authoritative bootstrap BOM and user recovery engineering design without runtime imports"
@@ -33,11 +33,11 @@
       "reason": "Add isolated negative and mutational regression tests for original-source BOM auditing"
     },
     {
-      "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Regenerate exact documentation atlas index entry for D0 blueprint without modifying document ownership",
-      "supersedes_register": "contracts/governance/changes/z-rename-2dim.json",
+      "supersedes_register": "governance/changes/z-rename-2dim.json",
       "supersedes_source_main": "1de5b51a2578e31547e4ef98e7d35d55926d05a3"
     }
   ]

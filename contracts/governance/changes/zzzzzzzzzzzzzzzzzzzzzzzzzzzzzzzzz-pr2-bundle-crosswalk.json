@@ -2,7 +2,7 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "4f2e778a1c64c7df5868ac22e431c62c44f2188a",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-bundle-crosswalk.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-bundle-crosswalk.json",
   "scope": "PR2_HISTORICAL_I9_I10_GLOBAL_DOD_CROSSWALK_NOT_A_NEW_PROOF",
   "release": "NO_GO",
   "human_review_completed": false,
@@ -25,7 +25,7 @@
       "reason": "Crosswalk negative/denominator oracle; original previous bundle digest remains inspectable outside repository."
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-bundle-crosswalk.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-bundle-crosswalk.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Conservative source successor; no product readiness claim."

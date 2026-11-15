@@ -1,7 +1,7 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "contracts/governance/changes/v5c-edu.json",
+  "self_path": "governance/changes/v5c-edu.json",
   "source_main": "62e98e9ab0c085aa34d39849a7b667794b005342",
   "baseline_source_tree": "026375b282a7716314f413f5dc2e569b58981651",
   "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
@@ -44,14 +44,14 @@
       "deletion_authorized": false
     },
     {
-      "path": "project/docs/V5C_EDU_MINIMUM_PRODUCT_BOOTSTRAP.txt",
+      "path": "docs/V5C_EDU_MINIMUM_PRODUCT_BOOTSTRAP.txt",
       "operation": "ADD",
       "reason": "Versioned text runbook avoids unregenerated canonical Markdown atlas; original DoD is in contract and PR",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false
     },
     {
-      "path": "contracts/governance/changes/v5c-edu.json",
+      "path": "governance/changes/v5c-edu.json",
       "operation": "ADD",
       "reason": "Self-registered review-required V5-C additive source changes with V5B extension",
       "human_review": "REVIEW_REQUIRED",

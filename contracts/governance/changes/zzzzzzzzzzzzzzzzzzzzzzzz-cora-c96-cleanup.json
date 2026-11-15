@@ -2,7 +2,7 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "40d1fe252aab05b028cb82b80dd4818b977d5e2a",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzz-cora-c96-cleanup.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzz-cora-c96-cleanup.json",
   "scope": "C96_QUALIFICATION_DUPLICATE_AND_HISTORICAL_TAP_REMOVAL_CANDIDATE",
   "original_owner_unchanged": true,
   "human_review_completed": false,
@@ -11,7 +11,7 @@
   "note": "Real Git TREE path deletion; no claim of exhaustive dynamic/external consumer closure or independent V5-G review. Git original blobs remain recoverable and may be restored using the base commit.",
   "paths": [
     {
-      "path": "tests/artifacts/qualification/c96-model-10m-first-pass.json",
+      "path": "artifacts/qualification/c96-model-10m-first-pass.json",
       "operation": "REMOVE",
       "reason": "Redundant exact Git blob duplicate of retained final C96 10M model JSON; removal is one-file real cleanup, original bytes remain retrievable by Git history.",
       "human_review": "REVIEW_REQUIRED",
@@ -20,7 +20,7 @@
       "restore_from_commit": "40d1fe252aab05b028cb82b80dd4818b977d5e2a"
     },
     {
-      "path": "tests/artifacts/qualification/c96-node42.tap",
+      "path": "artifacts/qualification/c96-node42.tap",
       "operation": "REMOVE",
       "reason": "Historical local TAP test transcript (42 tests); current C96 qualification executes tests afresh and no literal repository consumer was found; historical Git blob preserved.",
       "human_review": "REVIEW_REQUIRED",
@@ -29,7 +29,7 @@
       "restore_from_commit": "40d1fe252aab05b028cb82b80dd4818b977d5e2a"
     },
     {
-      "path": "tests/artifacts/qualification/c96-node43.tap",
+      "path": "artifacts/qualification/c96-node43.tap",
       "operation": "REMOVE",
       "reason": "Historical local TAP test transcript (43 tests); current C96 qualification executes tests afresh and no literal repository consumer was found; historical Git blob preserved.",
       "human_review": "REVIEW_REQUIRED",
@@ -38,7 +38,7 @@
       "restore_from_commit": "40d1fe252aab05b028cb82b80dd4818b977d5e2a"
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzz-cora-c96-cleanup.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzz-cora-c96-cleanup.json",
       "operation": "ADD",
       "reason": "Register exactly three qualified C96 historical evidence removals, preserve original Git blob SHA for individual reversal, do not invent owner or review receipts.",
       "human_review": "REVIEW_REQUIRED"

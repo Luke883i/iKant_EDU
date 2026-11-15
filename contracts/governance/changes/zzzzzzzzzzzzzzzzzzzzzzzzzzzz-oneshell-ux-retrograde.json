@@ -2,14 +2,14 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "b17d0f30a7c25f26df6084693c5f52cd6b8938c2",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzz-oneshell-ux-retrograde.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzz-oneshell-ux-retrograde.json",
   "scope": "HOST_ENGINEERING_PROJECT_EDU_ONESHELL_UX_E2E_RETROGRADE_NONPROMOTING",
   "original_owner_unchanged": true,
   "human_review_completed": false,
   "release": "NO_GO",
   "paths": [
     {
-      "path": "project/docs/PROJECT_EDU_ONESHELL_UX_E2E_RETROGRADE.txt",
+      "path": "docs/PROJECT_EDU_ONESHELL_UX_E2E_RETROGRADE.txt",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-derived end-to-end UX plan and sequential engineering DoD: no new owner, prompt or product release."
@@ -27,13 +27,13 @@
       "reason": "Independent exact-Git source assertions and 10000 distinct typed negative model variations, with no runtime activation."
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html",
+      "path": "plugins/ikant-le-session-chat/server/public/ikant-le-app.html",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Existing legacy app view-only widget-state preference for disclosure of B PROVA and report; no owner, service or state promotion."
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzz-oneshell-ux-retrograde.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzz-oneshell-ux-retrograde.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "V5-B governed declaration for the new source files and existing optional widget adjustment, pending independent review."

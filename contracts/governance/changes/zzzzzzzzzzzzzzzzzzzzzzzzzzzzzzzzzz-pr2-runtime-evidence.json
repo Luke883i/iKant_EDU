@@ -2,7 +2,7 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "4f2e778a1c64c7df5868ac22e431c62c44f2188a",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-runtime-evidence.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-runtime-evidence.json",
   "scope": "PR2_ORIGINAL_OWNER_RUNTIME_EVIDENCE_WITH_SCOPED_NODE_AND_MCP_POLICY",
   "release": "NO_GO",
   "human_review_completed": false,
@@ -22,24 +22,24 @@
       "reason": "New non-authoritative PR2 runtime evidence reader or DoD oracle; original product owners untouched."
     },
     {
-      "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Regenerate original full-document atlas for PR2 guide, no historical deletion.",
-      "supersedes_register": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json",
       "supersedes_source_main": "09798d194c1fc6a8557465b8d8875fd1972de940",
       "historical_git_blob_sha1": "50d480c66aa956247605f374889432692a4170bc",
       "prospective_git_blob_sha1": "bc8738c41df37be8fef16a82b8cbc818a182f75e"
     },
     {
-      "path": "project/docs/PR2_RUNTIME_DOD_OF_DOD.md",
+      "path": "docs/PR2_RUNTIME_DOD_OF_DOD.md",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "prospective_git_blob_sha1": "37146a08c795667ca861fda4a9cbd5c553321a41",
       "reason": "New non-authoritative PR2 runtime evidence reader or DoD oracle; original product owners untouched."
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-runtime-evidence.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-runtime-evidence.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-only successor for runtime readback; no evidence claims promoted to product GO."

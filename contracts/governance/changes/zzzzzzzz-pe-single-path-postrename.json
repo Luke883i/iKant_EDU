@@ -1,7 +1,7 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "contracts/governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+  "self_path": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
   "source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
   "scope": "HOST_ENGINEERING_POSTRENAME_PE_SINGLE_PATH_GATE",
   "original_owners_unchanged": true,
@@ -32,7 +32,7 @@
       "deletion_authorized": false
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "path": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Host-only postrename PE first-edge inspection, no original consent/owner/receipt changes",
@@ -44,7 +44,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -60,7 +60,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
       "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
     },
     {
@@ -76,7 +76,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -85,7 +85,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -94,7 +94,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -103,7 +103,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
       "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
     },
     {
@@ -112,29 +112,29 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
       "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
     },
     {
-      "path": "src/runtime-root/shard-000.json",
+      "path": "runtime-root/shard-000.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
-      "path": "src/runtime-root/shard-004.json",
+      "path": "runtime-root/shard-004.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
-      "path": "src/runtime-root/shard-006.json",
+      "path": "runtime-root/shard-006.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
@@ -153,7 +153,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -162,7 +162,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/z-rename-s01-s03.json",
+      "supersedes_register": "governance/changes/z-rename-s01-s03.json",
       "supersedes_source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44"
     },
     {
@@ -171,7 +171,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/z-rename-2dim.json",
+      "supersedes_register": "governance/changes/z-rename-2dim.json",
       "supersedes_source_main": "1de5b51a2578e31547e4ef98e7d35d55926d05a3"
     },
     {
@@ -208,7 +208,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Postrename CANDIDATE binds one observed NEW repository ID/name; historical MAIN_PRE remains OLD, never claim provider/owner",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -217,7 +217,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Requalify strict candidate source gate positive/negative at administrative postrename repository name",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -226,7 +226,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Tie source-bound Project prompt to renamed main and original PE D1-D3 bridge without claiming an installed Host port",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -307,7 +307,7 @@
       "deletion_authorized": false
     },
     {
-      "path": "src/runtime-root/shard-005.json",
+      "path": "runtime-root/shard-005.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
@@ -655,7 +655,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zz-v5g-bootstrap-d123.json",
+      "supersedes_register": "governance/changes/zz-v5g-bootstrap-d123.json",
       "supersedes_source_main": "4145d932fb291872aafe19dcd72298d16c2785c6"
     },
     {
@@ -664,7 +664,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzzz-pe-retrograde-after213.json",
+      "supersedes_register": "governance/changes/zzzzzzz-pe-retrograde-after213.json",
       "supersedes_source_main": "36b12b72b8cc9e07bb8faff9410e0f92ba60191f"
     },
     {
@@ -717,7 +717,7 @@
       "deletion_authorized": false
     },
     {
-      "path": "project/docs/LOCAL_HOST_META_PROMPT.md",
+      "path": "docs/LOCAL_HOST_META_PROMPT.md",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
@@ -750,7 +750,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Rebind observed GitHub repository ID/name CANDIDATE assertion to postrename source; keep no-owner/no-provider/no-rename-go gates unchanged",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     }
   ]

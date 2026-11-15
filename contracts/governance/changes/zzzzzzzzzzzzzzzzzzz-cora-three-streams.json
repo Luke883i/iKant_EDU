@@ -2,7 +2,7 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "c4227761ed2f0bfff1cb628922a07245742b43e2",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
   "scope": "CORA_HOST_ENGINEERING_THREE_STREAMS_SOURCE_ONLY_RETROGRADE_DOD",
   "original_owner_unchanged": true,
   "human_review_completed": false,
@@ -27,7 +27,7 @@
       "human_review": "REVIEW_REQUIRED"
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
       "operation": "ADD",
       "reason": "V5-B original register extension with review-required for the whole scoped work",
       "human_review": "REVIEW_REQUIRED"

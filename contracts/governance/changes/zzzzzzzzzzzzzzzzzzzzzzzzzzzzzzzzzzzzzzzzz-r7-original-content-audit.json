@@ -2,7 +2,7 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "e7232477eea3b32681f5312b3d2ad0073982784a",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-original-content-audit.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-original-content-audit.json",
   "scope": "R7_CURRENT_EPOCH_ORIGINAL_CONTENT_READBACK_AND_ANTI_PROMOTION",
   "release": "NO_GO",
   "human_review_completed": false,
@@ -28,7 +28,7 @@
       "reason": "Actual full HEAD source audit, tampered source cards, false semantic promotion and adversarial source-epoch regression."
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-original-content-audit.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-original-content-audit.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-only R7 change register under original V5-B explicit source governance."

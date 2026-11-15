@@ -1,7 +1,7 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "contracts/governance/changes/v5e-cognition.json",
+  "self_path": "governance/changes/v5e-cognition.json",
   "source_main": "d1fe2d1ac9988e53907baf790b9332d017e0eed6",
   "baseline_source_tree": "49e0d9f72e3fc4c3c7a94221329f47d7800d1ca6",
   "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
@@ -37,21 +37,21 @@
       "deletion_authorized": false
     },
     {
-      "path": "project/docs/V5D_POSTMERGE_AUDIT_20261102.txt",
+      "path": "docs/V5D_POSTMERGE_AUDIT_20261102.txt",
       "operation": "ADD",
       "reason": "Versioned V5-E cognition and evaluation software qualification under independent review",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false
     },
     {
-      "path": "project/docs/V5E_ORIGINAL_COGNITION_ENGINEERING.txt",
+      "path": "docs/V5E_ORIGINAL_COGNITION_ENGINEERING.txt",
       "operation": "ADD",
       "reason": "Versioned V5-E cognition and evaluation software qualification under independent review",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false
     },
     {
-      "path": "contracts/governance/changes/v5e-cognition.json",
+      "path": "governance/changes/v5e-cognition.json",
       "operation": "ADD",
       "reason": "Versioned V5-E cognition and evaluation software qualification under independent review",
       "human_review": "REVIEW_REQUIRED",
@@ -84,7 +84,7 @@
       "reason": "Versioned V5-E cognition and evaluation software qualification under independent review",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/v5d-oneshell.json",
+      "supersedes_register": "governance/changes/v5d-oneshell.json",
       "supersedes_source_main": "b3920c1bbfb856cead312e17b027e350ae2ec123"
     }
   ]

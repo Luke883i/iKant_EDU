@@ -1,7 +1,7 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "contracts/governance/changes/zzzz-rename-phase-install.json",
+  "self_path": "governance/changes/zzzz-rename-phase-install.json",
   "source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad",
   "baseline_source_tree": "451fde1152cb59496023173c3479c444096d21c3",
   "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
@@ -39,7 +39,7 @@
       "deletion_authorized": false
     },
     {
-      "path": "contracts/governance/changes/zzzz-rename-phase-install.json",
+      "path": "governance/changes/zzzz-rename-phase-install.json",
       "operation": "ADD",
       "reason": "Install bounded rename source identity and reproducible 1-million semantic gate without administrative or owner authority",
       "human_review": "REVIEW_REQUIRED",
@@ -51,7 +51,7 @@
       "reason": "Guard original C72 verified source identity and requalify prospective rename audit without changing current OLD canonical authority",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/z-rename-s01-s03.json",
+      "supersedes_register": "governance/changes/z-rename-s01-s03.json",
       "supersedes_source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44"
     },
     {
@@ -74,7 +74,7 @@
       "reason": "Guard original C72 verified source identity and requalify prospective rename audit without changing current OLD canonical authority",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/z-rename-s01-s03.json",
+      "supersedes_register": "governance/changes/z-rename-s01-s03.json",
       "supersedes_source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44"
     },
     {
@@ -83,7 +83,7 @@
       "reason": "Guard original C72 verified source identity and requalify prospective rename audit without changing current OLD canonical authority",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/z-rename-shadow.json",
+      "supersedes_register": "governance/changes/z-rename-shadow.json",
       "supersedes_source_main": "94dd1c20f5093f0f27ed03d2725b3715c47c6596"
     },
     {
@@ -92,7 +92,7 @@
       "reason": "Guard original C72 verified source identity and requalify prospective rename audit without changing current OLD canonical authority",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/z-rename-shadow.json",
+      "supersedes_register": "governance/changes/z-rename-shadow.json",
       "supersedes_source_main": "94dd1c20f5093f0f27ed03d2725b3715c47c6596"
     },
     {
@@ -101,7 +101,7 @@
       "reason": "Guard original C72 verified source identity and requalify prospective rename audit without changing current OLD canonical authority",
       "human_review": "REVIEW_REQUIRED",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/z-rename-shadow.json",
+      "supersedes_register": "governance/changes/z-rename-shadow.json",
       "supersedes_source_main": "94dd1c20f5093f0f27ed03d2725b3715c47c6596"
     }
   ]

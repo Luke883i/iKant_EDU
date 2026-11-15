@@ -2,13 +2,13 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "b60e3ac2b9fa9cb4167b7413d594c502c0fa9459",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzz-cora-pr-a-backlog.json",
+  "self_path": "governance/changes/zzzzzzzzzzzz-cora-pr-a-backlog.json",
   "scope": "HOST_ENGINEERING_PR_A_READ_ONLY_NO_RETIREMENT",
   "original_owner_unchanged": true,
   "human_review_completed": false,
   "paths": [
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzz-cora-pr-a-backlog.json",
+      "path": "governance/changes/zzzzzzzzzzzz-cora-pr-a-backlog.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Register source-only PR-A candidate changes in existing V5-B lineage"
@@ -38,7 +38,7 @@
       "reason": "Exercise real Git-indexed census and adversarial source and consumer fixtures"
     },
     {
-      "path": "project/docs/CORA_PR_A_BACKLOG.md",
+      "path": "docs/CORA_PR_A_BACKLOG.md",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Document exact reproducible PR-A census, limits, risk queue and review route"
@@ -48,15 +48,15 @@
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Add one read-only PR-A maintenance route adjacent to existing CORA section",
-      "supersedes_register": "contracts/governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
+      "supersedes_register": "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
       "supersedes_source_main": "0b582b52265dd6af5936ea9034ccae0ddb877800"
     },
     {
-      "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Regenerate exact Markdown atlas index for the new PR-A guide; preserve document ontology coverage",
-      "supersedes_register": "contracts/governance/changes/zzzzzzz-pe-retrograde-after213.json",
+      "supersedes_register": "governance/changes/zzzzzzz-pe-retrograde-after213.json",
       "supersedes_source_main": "36b12b72b8cc9e07bb8faff9410e0f92ba60191f"
     }
   ]

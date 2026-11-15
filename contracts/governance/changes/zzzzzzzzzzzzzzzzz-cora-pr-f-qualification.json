@@ -2,13 +2,13 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "6c08e7241751c5507048b0748d14a5648be8c1cb",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json",
   "scope": "PR_F_INDEPENDENT_ENGINEERING_QUALIFICATION_AND_EXACT_DELETION_RECOVERY",
   "original_owner_unchanged": true,
   "human_review_completed": false,
   "paths": [
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json",
       "operation": "ADD",
       "reason": "Read-only source qualification extension in original V5-B",
       "human_review": "REVIEW_REQUIRED"
@@ -42,7 +42,7 @@
       "operation": "MODIFY",
       "reason": "Expose F0 recovery, exact qualification instructions and non-compensatory source/external boundary",
       "human_review": "REVIEW_REQUIRED",
-      "supersedes_register": "contracts/governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
       "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
     }
   ]

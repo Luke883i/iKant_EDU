@@ -1,7 +1,7 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "contracts/governance/changes/z-rename-shadow.json",
+  "self_path": "governance/changes/z-rename-shadow.json",
   "source_main": "94dd1c20f5093f0f27ed03d2725b3715c47c6596",
   "baseline_source_tree": "3848555b2c33cfa32f9a364f43037acc3bc6e1f3",
   "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
@@ -25,14 +25,14 @@
       "deletion_authorized": false
     },
     {
-      "path": "project/docs/rename-sequence/S01_SHADOW_CUTOVER_DOD.md",
+      "path": "docs/rename-sequence/S01_SHADOW_CUTOVER_DOD.md",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Add a bounded read-only rename shadow check for original root and C72 regression, never a native or administrative rename authorization",
       "deletion_authorized": false
     },
     {
-      "path": "contracts/governance/changes/z-rename-shadow.json",
+      "path": "governance/changes/z-rename-shadow.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Add a bounded read-only rename shadow check for original root and C72 regression, never a native or administrative rename authorization",
@@ -44,7 +44,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Add a bounded read-only rename shadow check for original root and C72 regression, never a native or administrative rename authorization",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/z-rename-s01-s03.json",
+      "supersedes_register": "governance/changes/z-rename-s01-s03.json",
       "supersedes_source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44"
     }
   ]

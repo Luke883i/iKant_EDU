@@ -2,7 +2,7 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "028dea2ba38c9731fc4b56b92278d7fa76f8d625",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzz-semantic-evidence-tail-cleanup.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzz-semantic-evidence-tail-cleanup.json",
   "scope": "SEMANTIC_GROUPED_HISTORICAL_QUALIFICATION_OUTPUT_RETIREMENT_ONLY",
   "original_owner_unchanged": true,
   "human_review_completed": false,
@@ -23,7 +23,7 @@
   "important_limits": "No workflow, producer, current prompt, original owner or runtime contract retired. Source search was lexical and does not prove absence of dynamic/external consumers. Git history restoration remains possible; no field rollback or independent review claimed.",
   "paths": [
     {
-      "path": "tests/artifacts/qualification/c10-fastboot-authoring.json",
+      "path": "artifacts/qualification/c10-fastboot-authoring.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group HISTORICAL_AUTHORING_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -32,7 +32,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c13-session-chat-fastboot-authoring.json",
+      "path": "artifacts/qualification/c13-session-chat-fastboot-authoring.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group HISTORICAL_AUTHORING_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -41,7 +41,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c14-chat-bootstrap-authoring.json",
+      "path": "artifacts/qualification/c14-chat-bootstrap-authoring.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group HISTORICAL_AUTHORING_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -50,7 +50,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c21-local-session-fastboot-authoring.json",
+      "path": "artifacts/qualification/c21-local-session-fastboot-authoring.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group HISTORICAL_AUTHORING_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -59,7 +59,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c24-canonical-boundary-authoring.json",
+      "path": "artifacts/qualification/c24-canonical-boundary-authoring.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group HISTORICAL_AUTHORING_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -68,7 +68,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c25-executor-data-plane-authoring.json",
+      "path": "artifacts/qualification/c25-executor-data-plane-authoring.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group HISTORICAL_AUTHORING_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -77,7 +77,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c91-local-falsification.json",
+      "path": "artifacts/qualification/c91-local-falsification.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group EARLY_LOCAL_FUZZ_AND_SELECTION_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -86,7 +86,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c91-topic-breadth-local.json",
+      "path": "artifacts/qualification/c91-topic-breadth-local.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group EARLY_LOCAL_FUZZ_AND_SELECTION_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -95,7 +95,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c92-attack-before-25000.json",
+      "path": "artifacts/qualification/c92-attack-before-25000.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group EARLY_LOCAL_FUZZ_AND_SELECTION_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -104,7 +104,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c92-fuzz-initial-23000.json",
+      "path": "artifacts/qualification/c92-fuzz-initial-23000.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group EARLY_LOCAL_FUZZ_AND_SELECTION_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -113,7 +113,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c92-node-tests.tap",
+      "path": "artifacts/qualification/c92-node-tests.tap",
       "operation": "REMOVE",
       "reason": "Historical generated output, group EARLY_LOCAL_FUZZ_AND_SELECTION_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -122,7 +122,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c92-refined-100000.json",
+      "path": "artifacts/qualification/c92-refined-100000.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group EARLY_LOCAL_FUZZ_AND_SELECTION_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -131,7 +131,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c96-initial-mutants.json",
+      "path": "artifacts/qualification/c96-initial-mutants.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group EARLY_LOCAL_FUZZ_AND_SELECTION_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -140,7 +140,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c96-manifest-tamper.json",
+      "path": "artifacts/qualification/c96-manifest-tamper.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group EARLY_LOCAL_FUZZ_AND_SELECTION_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -149,7 +149,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "tests/artifacts/qualification/c59-composition-selection-2k.json",
+      "path": "artifacts/qualification/c59-composition-selection-2k.json",
       "operation": "REMOVE",
       "reason": "Historical generated output, group EARLY_LOCAL_FUZZ_AND_SELECTION_OUTPUTS. No exact filename references were returned by current GitHub repository code search. Original Git blob retained at BASE; static search is not proof of external/dynamic consumer absence. Restore original bytes before claiming behavioral equivalence.",
       "human_review": "REVIEW_REQUIRED",
@@ -158,7 +158,7 @@
       "restore_from_commit": "028dea2ba38c9731fc4b56b92278d7fa76f8d625"
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzz-semantic-evidence-tail-cleanup.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzz-semantic-evidence-tail-cleanup.json",
       "operation": "ADD",
       "reason": "Original V5-B change-register extension recording precise grouped retirement, byte-exact historical Git identities and unclosed external review.",
       "human_review": "REVIEW_REQUIRED"

@@ -2,7 +2,7 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "e719ebfdb8dfa2f1a0382f56ab95fbbdc0f3e005",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzz-cora-s3-convergence.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzz-cora-s3-convergence.json",
   "scope": "HOST_ENGINEERING_S3_SEMANTIC_CONVERGENCE_SOURCE_GATES_ONLY",
   "original_owner_unchanged": true,
   "human_review_completed": false,
@@ -13,7 +13,7 @@
       "operation": "MODIFY",
       "reason": "Use original pinned commit for historical PR226 source and fail closed when shallow Git omits baseline objects",
       "human_review": "REVIEW_REQUIRED",
-      "supersedes_register": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
       "supersedes_source_main": "c4227761ed2f0bfff1cb628922a07245742b43e2"
     },
     {
@@ -21,7 +21,7 @@
       "operation": "MODIFY",
       "reason": "Source-locked historical baseline regression now fails closed instead of forging missing shallow Git ancestry",
       "human_review": "REVIEW_REQUIRED",
-      "supersedes_register": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
       "supersedes_source_main": "c4227761ed2f0bfff1cb628922a07245742b43e2"
     },
     {
@@ -49,7 +49,7 @@
       "human_review": "REVIEW_REQUIRED"
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzz-cora-s3-convergence.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzz-cora-s3-convergence.json",
       "operation": "ADD",
       "reason": "Original V5-B change-register extension for S3 with human review uncompleted",
       "human_review": "REVIEW_REQUIRED"

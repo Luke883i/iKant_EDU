@@ -94,7 +94,7 @@ def verify(zip_path,expected_commit,expected_tree):
    if meta(b)!=v:raise ValueError('TAMPERED_MEMBER:'+p)
    source=None
    if p.startswith('orientation/'):source=p[len('orientation/'):]
-   elif p.startswith('plugin_source/'):source=p[len('plugin_source/'):]
+   elif p.startswith('plugin_source/'):source='project/'+p[len('plugin_source/'):]
    elif p.startswith('slides/'):source='project/oneshell-v7/'+p[len('slides/'):]
    elif p in ('project/docs/ONESHELL_THREAD_SESSION_V1.md','contracts/p1-p7-product-closure.json','contracts/oneshell-40-product-ci.json','adapter_source/host/p1-semantic-annex.mjs','adapter_source/host/p1-privacy-envelope.mjs','adapter_source/host/p1-app-exclusive-shell.mjs','adapter_source/host/oneshell-thread-session.mjs','adapter_source/host/p1-postmode-source-handoff.mjs','adapter_source/host/p0-thread-panel-readiness.mjs','adapter_source/scripts/host-rehydrate-source-zip.py'):
     source=p.replace('adapter_source/','')

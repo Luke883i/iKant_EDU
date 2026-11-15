@@ -12,14 +12,14 @@
       "destructive_effect": false
     },
     {
-      "path": "contracts/governance/v5b-baseline-inventory.json",
+      "path": "governance/v5b-baseline-inventory.json",
       "operation": "ADD",
       "reason": "Complete Git tree record with honest provisional roles, SHA-1 bytes and no human signoffs",
       "human_review": "REVIEW_REQUIRED",
       "destructive_effect": false
     },
     {
-      "path": "contracts/governance/v5b-change-register.json",
+      "path": "governance/v5b-change-register.json",
       "operation": "ADD",
       "reason": "Explicit read-only provenance and review ledger for every changed path in V5-B",
       "human_review": "REVIEW_REQUIRED",

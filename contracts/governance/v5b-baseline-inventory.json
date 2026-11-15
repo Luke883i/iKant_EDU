@@ -1129,7 +1129,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c1-runtime.json",
+      "path": "artifacts/qualification/c1-runtime.json",
       "git_blob_sha1": "5c2db21facbddef1f06099e0f9189b38e2881083",
       "byte_length": 5339,
       "mode": "100644",
@@ -1138,7 +1138,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c10-fastboot-authoring.json",
+      "path": "artifacts/qualification/c10-fastboot-authoring.json",
       "git_blob_sha1": "6b58138d4e8f32f441de5804f5671db47f1ca7ae",
       "byte_length": 898,
       "mode": "100644",
@@ -1147,7 +1147,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c100-cohost-local-250k.json",
+      "path": "artifacts/qualification/c100-cohost-local-250k.json",
       "git_blob_sha1": "6634d4a8918fed267b696d39319767f0109e64c1",
       "byte_length": 1377,
       "mode": "100644",
@@ -1156,7 +1156,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c13-session-chat-fastboot-authoring.json",
+      "path": "artifacts/qualification/c13-session-chat-fastboot-authoring.json",
       "git_blob_sha1": "1ac586db1bec024eb6d2889e0a0b45f9b5adda5d",
       "byte_length": 761,
       "mode": "100644",
@@ -1165,7 +1165,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c14-chat-bootstrap-authoring.json",
+      "path": "artifacts/qualification/c14-chat-bootstrap-authoring.json",
       "git_blob_sha1": "ea296d19668fd92b0317d51379b95b5059a092c2",
       "byte_length": 1613,
       "mode": "100644",
@@ -1174,7 +1174,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c15-flex-transfer.json",
+      "path": "artifacts/qualification/c15-flex-transfer.json",
       "git_blob_sha1": "a34a8819755c24f6dd1449265759cd40c038a939",
       "byte_length": 1259,
       "mode": "100644",
@@ -1183,7 +1183,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c16-observed-host.json",
+      "path": "artifacts/qualification/c16-observed-host.json",
       "git_blob_sha1": "049a5cae97e88b36dffcabce785d55d57353f567",
       "byte_length": 1211,
       "mode": "100644",
@@ -1192,7 +1192,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c16-runtime-availability-discovery-10m.json",
+      "path": "artifacts/qualification/c16-runtime-availability-discovery-10m.json",
       "git_blob_sha1": "5172f07b42ef23edf278e55570dd741264f03b27",
       "byte_length": 5609,
       "mode": "100644",
@@ -1201,7 +1201,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c16-runtime-availability.json",
+      "path": "artifacts/qualification/c16-runtime-availability.json",
       "git_blob_sha1": "d0cc23b2ebdf785e8fa00366d42e17be5704443e",
       "byte_length": 5575,
       "mode": "100644",
@@ -1210,7 +1210,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c21-local-session-fastboot-authoring.json",
+      "path": "artifacts/qualification/c21-local-session-fastboot-authoring.json",
       "git_blob_sha1": "dd849db1e4fe8a551bd256bd5204c956cf82f2b1",
       "byte_length": 1468,
       "mode": "100644",
@@ -1219,7 +1219,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c24-canonical-boundary-authoring.json",
+      "path": "artifacts/qualification/c24-canonical-boundary-authoring.json",
       "git_blob_sha1": "26f4070b3072617f8ec1e3de84cb86b06cf09e58",
       "byte_length": 1743,
       "mode": "100644",
@@ -1228,7 +1228,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c25-executor-data-plane-1m.json",
+      "path": "artifacts/qualification/c25-executor-data-plane-1m.json",
       "git_blob_sha1": "f2857a08fce67b15c392f5b9f14f71fbc23d1b2c",
       "byte_length": 611,
       "mode": "100644",
@@ -1237,7 +1237,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c25-executor-data-plane-authoring.json",
+      "path": "artifacts/qualification/c25-executor-data-plane-authoring.json",
       "git_blob_sha1": "22c1b95bb2bd4da4712b1e5c23013620ddd0762d",
       "byte_length": 2166,
       "mode": "100644",
@@ -1246,7 +1246,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c27-session-capability-lattice-1m.json",
+      "path": "artifacts/qualification/c27-session-capability-lattice-1m.json",
       "git_blob_sha1": "3055e0fce64d74b5871415ea4466dd32913408c5",
       "byte_length": 902,
       "mode": "100644",
@@ -1255,7 +1255,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c28-contract-selection-1k.json",
+      "path": "artifacts/qualification/c28-contract-selection-1k.json",
       "git_blob_sha1": "c18cc863746092b728eed21ecbb32a961f29572a",
       "byte_length": 1718,
       "mode": "100644",
@@ -1264,7 +1264,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c28-semantic-closure-1m.json",
+      "path": "artifacts/qualification/c28-semantic-closure-1m.json",
       "git_blob_sha1": "365474ec3facf735b478f432e5b02b586e0b3f2f",
       "byte_length": 716,
       "mode": "100644",
@@ -1273,7 +1273,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c29-engineering-needs-1k.json",
+      "path": "artifacts/qualification/c29-engineering-needs-1k.json",
       "git_blob_sha1": "4c5719b3503b86c32593f073515af7cd1a6f50e8",
       "byte_length": 1736,
       "mode": "100644",
@@ -1282,7 +1282,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c29-ontological-promise-10m.json",
+      "path": "artifacts/qualification/c29-ontological-promise-10m.json",
       "git_blob_sha1": "e5fdde3d0ba6e149e5629ab0835da33fa5790223",
       "byte_length": 699,
       "mode": "100644",
@@ -1291,7 +1291,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c29-promise-definition-10k.json",
+      "path": "artifacts/qualification/c29-promise-definition-10k.json",
       "git_blob_sha1": "9e597e8cb66bb7e8b3443584c03a5f3ddd57f5d8",
       "byte_length": 1608,
       "mode": "100644",
@@ -1300,7 +1300,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c3-runtime.json",
+      "path": "artifacts/qualification/c3-runtime.json",
       "git_blob_sha1": "d4205a175da558962b1ee6d3aed936a1f1d08056",
       "byte_length": 5453,
       "mode": "100644",
@@ -1309,7 +1309,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c30-activation-service-10m.json",
+      "path": "artifacts/qualification/c30-activation-service-10m.json",
       "git_blob_sha1": "d7841a499a1c089806690f7248914670dac416fc",
       "byte_length": 568,
       "mode": "100644",
@@ -1318,7 +1318,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c30-activation-service-selection-10k.json",
+      "path": "artifacts/qualification/c30-activation-service-selection-10k.json",
       "git_blob_sha1": "f8b861a66c73b7b52ed2ac015b5594f4d20442ef",
       "byte_length": 2523,
       "mode": "100644",
@@ -1327,7 +1327,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c31-runtime-limited-supply-chain-1m.json",
+      "path": "artifacts/qualification/c31-runtime-limited-supply-chain-1m.json",
       "git_blob_sha1": "da977efefdb5c260145eb38e6286487147f3a443",
       "byte_length": 1328,
       "mode": "100644",
@@ -1336,7 +1336,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c32-session-shell-falsification-1m.json",
+      "path": "artifacts/qualification/c32-session-shell-falsification-1m.json",
       "git_blob_sha1": "9206394551011ec3d9daa27b00bdc5bf85bd5064",
       "byte_length": 630,
       "mode": "100644",
@@ -1345,7 +1345,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c32-session-shell-selection-1k.json",
+      "path": "artifacts/qualification/c32-session-shell-selection-1k.json",
       "git_blob_sha1": "8317fcca6f804696a1d35cd9bd0d948dcb3508b0",
       "byte_length": 1120,
       "mode": "100644",
@@ -1354,7 +1354,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c33-post-187-closure-1m.json",
+      "path": "artifacts/qualification/c33-post-187-closure-1m.json",
       "git_blob_sha1": "6be4ff51668e90adb6d91aab64ef7b93538f8d15",
       "byte_length": 1609,
       "mode": "100644",
@@ -1363,7 +1363,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c34-pre-runtime-handoff-1m.json",
+      "path": "artifacts/qualification/c34-pre-runtime-handoff-1m.json",
       "git_blob_sha1": "5cde0b88b4f458a981031cf59ff91e7f4937e042",
       "byte_length": 1160,
       "mode": "100644",
@@ -1372,7 +1372,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c36-sml-os-falsification-1m.json",
+      "path": "artifacts/qualification/c36-sml-os-falsification-1m.json",
       "git_blob_sha1": "01084b64eba1120e50e06d3af195e64b90c5c353",
       "byte_length": 1422,
       "mode": "100644",
@@ -1381,7 +1381,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c36-sml-os-selection-1k.json",
+      "path": "artifacts/qualification/c36-sml-os-selection-1k.json",
       "git_blob_sha1": "505de4dc00c78a6a26c07302a1ca61254841ac9e",
       "byte_length": 1420,
       "mode": "100644",
@@ -1390,7 +1390,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c37-causal-evidence-falsification-1m.json",
+      "path": "artifacts/qualification/c37-causal-evidence-falsification-1m.json",
       "git_blob_sha1": "169711581a0e6124bc35302204275ec5a217155a",
       "byte_length": 1311,
       "mode": "100644",
@@ -1399,7 +1399,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c37-causal-evidence-selection-1k.json",
+      "path": "artifacts/qualification/c37-causal-evidence-selection-1k.json",
       "git_blob_sha1": "6a1167b32f3932960a8669b19019d694630d6800",
       "byte_length": 1526,
       "mode": "100644",
@@ -1408,7 +1408,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c37-semantic-issue-dod.json",
+      "path": "artifacts/qualification/c37-semantic-issue-dod.json",
       "git_blob_sha1": "0695ca705b0cfd29fde062bf5ccc2302ec68ac31",
       "byte_length": 4076,
       "mode": "100644",
@@ -1417,7 +1417,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c38-semantic-lossless-contract.json",
+      "path": "artifacts/qualification/c38-semantic-lossless-contract.json",
       "git_blob_sha1": "412e1bd77f5ea471d3d4c4e6966f99230125a4e7",
       "byte_length": 4739,
       "mode": "100644",
@@ -1426,7 +1426,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c38-semantic-lossless-falsification-1m.json",
+      "path": "artifacts/qualification/c38-semantic-lossless-falsification-1m.json",
       "git_blob_sha1": "1c3953607467613afff1622b163f89c5dadbd835",
       "byte_length": 1165,
       "mode": "100644",
@@ -1435,7 +1435,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c40-bootstrap-reentry-falsification-1k.json",
+      "path": "artifacts/qualification/c40-bootstrap-reentry-falsification-1k.json",
       "git_blob_sha1": "11c88a9f8c67b227d24b6791c6c39e8869214bd9",
       "byte_length": 396,
       "mode": "100644",
@@ -1444,7 +1444,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c41-retry-epoch-ux-falsification-10k.json",
+      "path": "artifacts/qualification/c41-retry-epoch-ux-falsification-10k.json",
       "git_blob_sha1": "6fc88713fd01ef681febc6ff65ad190c8f6a1fcc",
       "byte_length": 569,
       "mode": "100644",
@@ -1453,7 +1453,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c44-methodological-bootstrap-falsification-1m.json",
+      "path": "artifacts/qualification/c44-methodological-bootstrap-falsification-1m.json",
       "git_blob_sha1": "bb510377691ce853a53f91a748fbb2e5c5fe5189",
       "byte_length": 1088,
       "mode": "100644",
@@ -1462,7 +1462,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c44-methodological-bootstrap-selection-10k.json",
+      "path": "artifacts/qualification/c44-methodological-bootstrap-selection-10k.json",
       "git_blob_sha1": "888c4bf7b0095acf69f4096702fab4d7688a0840",
       "byte_length": 946,
       "mode": "100644",
@@ -1471,7 +1471,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c45-cohost-root-cross-repo-prepr.json",
+      "path": "artifacts/qualification/c45-cohost-root-cross-repo-prepr.json",
       "git_blob_sha1": "763197ad925c096615a002912c9dec3f29c50a19",
       "byte_length": 1795,
       "mode": "100644",
@@ -1480,7 +1480,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c45-context-root-falsification-10m.json",
+      "path": "artifacts/qualification/c45-context-root-falsification-10m.json",
       "git_blob_sha1": "40a425f0d6053832b82b2137c3e771d7eb94bf05",
       "byte_length": 4056,
       "mode": "100644",
@@ -1489,7 +1489,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c45-context-root-selection-10k.json",
+      "path": "artifacts/qualification/c45-context-root-selection-10k.json",
       "git_blob_sha1": "9e9c72404e6303abc9e5628f28d19c1b6b6e6b4e",
       "byte_length": 2776,
       "mode": "100644",
@@ -1498,7 +1498,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c46-bind-nucleus-implementation-1k.json",
+      "path": "artifacts/qualification/c46-bind-nucleus-implementation-1k.json",
       "git_blob_sha1": "bf10314d841b63f26a797113971622289870df2a",
       "byte_length": 1098,
       "mode": "100644",
@@ -1507,7 +1507,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c46-cohost-coldstart-root-1k.json",
+      "path": "artifacts/qualification/c46-cohost-coldstart-root-1k.json",
       "git_blob_sha1": "859e6475ed827a599a5abaeed88eff24b5152793",
       "byte_length": 1603,
       "mode": "100644",
@@ -1516,7 +1516,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c47-cohost-runtime-closure-1k.json",
+      "path": "artifacts/qualification/c47-cohost-runtime-closure-1k.json",
       "git_blob_sha1": "d363a5ac6114b7a5bccccf54bbb95d7dd6a948a0",
       "byte_length": 998,
       "mode": "100644",
@@ -1525,7 +1525,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c48-main-cohost-gate-1k.json",
+      "path": "artifacts/qualification/c48-main-cohost-gate-1k.json",
       "git_blob_sha1": "3403a821e4f2035e7a717fb195d53084a9e9fd3a",
       "byte_length": 1085,
       "mode": "100644",
@@ -1534,7 +1534,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c49-tiered-cohost-closure-1k.json",
+      "path": "artifacts/qualification/c49-tiered-cohost-closure-1k.json",
       "git_blob_sha1": "6fa0989aaa5ddf966889f651257a50a5ff2a9d88",
       "byte_length": 1477,
       "mode": "100644",
@@ -1543,7 +1543,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c5-runtime.json",
+      "path": "artifacts/qualification/c5-runtime.json",
       "git_blob_sha1": "b7c89af4707c6aaa17e98feab8b969a4b5c3102c",
       "byte_length": 6205,
       "mode": "100644",
@@ -1552,7 +1552,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c50-native-transcript-participant-10k.json",
+      "path": "artifacts/qualification/c50-native-transcript-participant-10k.json",
       "git_blob_sha1": "84cc711e8b6741017d76e80dde47d033e8659f6f",
       "byte_length": 1907,
       "mode": "100644",
@@ -1561,7 +1561,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c51-candidate-blob-manifest.json",
+      "path": "artifacts/qualification/c51-candidate-blob-manifest.json",
       "git_blob_sha1": "75ace6bb84ee5ba6ef5c42f5444a1be761adf480",
       "byte_length": 1889,
       "mode": "100644",
@@ -1570,7 +1570,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c51-supersystem-dod.json",
+      "path": "artifacts/qualification/c51-supersystem-dod.json",
       "git_blob_sha1": "73325b2abda89575844b658dfa6df36ffda780ee",
       "byte_length": 4576,
       "mode": "100644",
@@ -1579,7 +1579,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c51-supersystem-falsification-1m.json",
+      "path": "artifacts/qualification/c51-supersystem-falsification-1m.json",
       "git_blob_sha1": "c142e8ac3f23dbcf830435817e7cad8d6360de47",
       "byte_length": 2635,
       "mode": "100644",
@@ -1588,7 +1588,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c51-supersystem-selection-10m.json",
+      "path": "artifacts/qualification/c51-supersystem-selection-10m.json",
       "git_blob_sha1": "33a6c2f3d07eb6540d8bb59a047ab902bd92ee13",
       "byte_length": 5231,
       "mode": "100644",
@@ -1597,7 +1597,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c52-bundle-coverage.json",
+      "path": "artifacts/qualification/c52-bundle-coverage.json",
       "git_blob_sha1": "f8542ed8452c15759a0e4a7fd0835b5ca80e4ee2",
       "byte_length": 997,
       "mode": "100644",
@@ -1606,7 +1606,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c52-candidate-blob-manifest.json",
+      "path": "artifacts/qualification/c52-candidate-blob-manifest.json",
       "git_blob_sha1": "5d92ddd96309aed8ac2494d7cb67caf353b671de",
       "byte_length": 2386,
       "mode": "100644",
@@ -1615,7 +1615,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c52-physical-closure-10m.json",
+      "path": "artifacts/qualification/c52-physical-closure-10m.json",
       "git_blob_sha1": "3a5719db62b8b1bcd896c4a7e76e742a3a796541",
       "byte_length": 8949,
       "mode": "100644",
@@ -1624,7 +1624,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c52-physical-closure-lattice.json",
+      "path": "artifacts/qualification/c52-physical-closure-lattice.json",
       "git_blob_sha1": "51a9696c3fa7b42a8ed297019fe259e46c8e97a1",
       "byte_length": 2580,
       "mode": "100644",
@@ -1633,7 +1633,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c52-runtime-physical-closure-dod.json",
+      "path": "artifacts/qualification/c52-runtime-physical-closure-dod.json",
       "git_blob_sha1": "e85e99fc8a321773ff856ccc10e340c4136787f4",
       "byte_length": 7695,
       "mode": "100644",
@@ -1642,7 +1642,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c53-physical-hardening-10m.json",
+      "path": "artifacts/qualification/c53-physical-hardening-10m.json",
       "git_blob_sha1": "596c65523255cd84c4e3c1e462366a74d3aa38c6",
       "byte_length": 5532,
       "mode": "100644",
@@ -1651,7 +1651,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-canonical-authority-falsification-100k.json",
+      "path": "artifacts/qualification/c59-canonical-authority-falsification-100k.json",
       "git_blob_sha1": "9b1c272da12c8758a01e1e498b5e0a36fd86690b",
       "byte_length": 756,
       "mode": "100644",
@@ -1660,7 +1660,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-cartesian-closure.json",
+      "path": "artifacts/qualification/c59-cartesian-closure.json",
       "git_blob_sha1": "388cc47a5f236a96440137918f3c57628b7d4367",
       "byte_length": 7769,
       "mode": "100644",
@@ -1669,7 +1669,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-composition-falsification-100k.json",
+      "path": "artifacts/qualification/c59-composition-falsification-100k.json",
       "git_blob_sha1": "fbaedeff9c4732a6c101eed800a6dabb7f107054",
       "byte_length": 1090,
       "mode": "100644",
@@ -1678,7 +1678,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-composition-selection-1k.json",
+      "path": "artifacts/qualification/c59-composition-selection-1k.json",
       "git_blob_sha1": "1ccd79c88a3737e2dc1087b023934a182005e8f4",
       "byte_length": 240,
       "mode": "100644",
@@ -1687,7 +1687,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-composition-selection-2k.json",
+      "path": "artifacts/qualification/c59-composition-selection-2k.json",
       "git_blob_sha1": "fe6bea771b7974bbf3897fd8dbabe89e9741ee7a",
       "byte_length": 240,
       "mode": "100644",
@@ -1696,7 +1696,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-executable-surface-audit.json",
+      "path": "artifacts/qualification/c59-executable-surface-audit.json",
       "git_blob_sha1": "58cc6619a5b995c2bb33fa68cb89bcad285a660a",
       "byte_length": 1455,
       "mode": "100644",
@@ -1705,7 +1705,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-host-connector-container-witness.json",
+      "path": "artifacts/qualification/c59-host-connector-container-witness.json",
       "git_blob_sha1": "f7b91c947e0fc87f97f1733541911b33836a9f3a",
       "byte_length": 1010,
       "mode": "100644",
@@ -1714,7 +1714,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-pr1-68-history-audit.json",
+      "path": "artifacts/qualification/c59-pr1-68-history-audit.json",
       "git_blob_sha1": "a17e7452d0d4f547ca9bf2f3efe11a964e397cce",
       "byte_length": 514,
       "mode": "100644",
@@ -1723,7 +1723,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-project-rom-adversarial-100.json",
+      "path": "artifacts/qualification/c59-project-rom-adversarial-100.json",
       "git_blob_sha1": "b33a65778b63157f8f28e0d970a1bf3cefa4b238",
       "byte_length": 1080,
       "mode": "100644",
@@ -1732,7 +1732,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-runtime-closure-falsification-100k.json",
+      "path": "artifacts/qualification/c59-runtime-closure-falsification-100k.json",
       "git_blob_sha1": "88abe323b18aa0490c32d5b6c7d01f1215fbbee8",
       "byte_length": 1388,
       "mode": "100644",
@@ -1741,7 +1741,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c59-semantic-lattice-selection-4k.json",
+      "path": "artifacts/qualification/c59-semantic-lattice-selection-4k.json",
       "git_blob_sha1": "e6233d9adb5a7127e10a0c69198cf484a53c4198",
       "byte_length": 3038,
       "mode": "100644",
@@ -1750,7 +1750,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c6-enduser.json",
+      "path": "artifacts/qualification/c6-enduser.json",
       "git_blob_sha1": "7b22ef7557d585cef5a305731e60e44b5856ef4d",
       "byte_length": 710,
       "mode": "100644",
@@ -1759,7 +1759,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c61-cold-producer-1m.json",
+      "path": "artifacts/qualification/c61-cold-producer-1m.json",
       "git_blob_sha1": "3ec55330eb53091ca72bc89bf207b82488acd00a",
       "byte_length": 397,
       "mode": "100644",
@@ -1768,7 +1768,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c62-contract-selection-1k.json",
+      "path": "artifacts/qualification/c62-contract-selection-1k.json",
       "git_blob_sha1": "e27068ecd91af2e825f35509fce03501075c694f",
       "byte_length": 677,
       "mode": "100644",
@@ -1777,7 +1777,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c62-evidence-runtime-cut-10k.json",
+      "path": "artifacts/qualification/c62-evidence-runtime-cut-10k.json",
       "git_blob_sha1": "5a37de5b246c55cf1a97f829f8b2b5bb89786e4e",
       "byte_length": 954,
       "mode": "100644",
@@ -1786,7 +1786,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c62-object-mincut-8192.json",
+      "path": "artifacts/qualification/c62-object-mincut-8192.json",
       "git_blob_sha1": "593bb238aae077c55190c7f1ae07120fc101b8b6",
       "byte_length": 902,
       "mode": "100644",
@@ -1795,7 +1795,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c7-doc-api.json",
+      "path": "artifacts/qualification/c7-doc-api.json",
       "git_blob_sha1": "dcb82508e5202eb0f0049918d1aa6445d5e2e3e6",
       "byte_length": 5031,
       "mode": "100644",
@@ -1804,7 +1804,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c8-emergence.json",
+      "path": "artifacts/qualification/c8-emergence.json",
       "git_blob_sha1": "5220864cc7f62e36dcf3450f7717d1003211b655",
       "byte_length": 1911,
       "mode": "100644",
@@ -1813,7 +1813,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c84-pr-history.json",
+      "path": "artifacts/qualification/c84-pr-history.json",
       "git_blob_sha1": "761453e7960a6f8e2157762093e41e4f781cc109",
       "byte_length": 25776,
       "mode": "100644",
@@ -1822,7 +1822,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c91-local-falsification.json",
+      "path": "artifacts/qualification/c91-local-falsification.json",
       "git_blob_sha1": "7c77c9f40fe32cb5a437a03a124f396c5d169dfa",
       "byte_length": 740,
       "mode": "100644",
@@ -1831,7 +1831,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c91-topic-breadth-local.json",
+      "path": "artifacts/qualification/c91-topic-breadth-local.json",
       "git_blob_sha1": "b958c25413d23e6d755f2665066d61a680f432a5",
       "byte_length": 967,
       "mode": "100644",
@@ -1840,7 +1840,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c92-attack-before-25000.json",
+      "path": "artifacts/qualification/c92-attack-before-25000.json",
       "git_blob_sha1": "5822690c873000105cf133c363a943dd5c71ee33",
       "byte_length": 459,
       "mode": "100644",
@@ -1849,7 +1849,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c92-fuzz-initial-23000.json",
+      "path": "artifacts/qualification/c92-fuzz-initial-23000.json",
       "git_blob_sha1": "913c84063074e83e4bff4068368474b521581c7a",
       "byte_length": 436,
       "mode": "100644",
@@ -1858,7 +1858,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c92-host-capabilities.json",
+      "path": "artifacts/qualification/c92-host-capabilities.json",
       "git_blob_sha1": "34acf53b967e8d57fd3877104e8e320d4b2cb8a0",
       "byte_length": 409,
       "mode": "100644",
@@ -1867,7 +1867,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c92-node-tests.tap",
+      "path": "artifacts/qualification/c92-node-tests.tap",
       "git_blob_sha1": "651b102166f7f95d52b17ee22f288c161a40d698",
       "byte_length": 2016,
       "mode": "100644",
@@ -1876,7 +1876,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c92-physical-fail-closed.json",
+      "path": "artifacts/qualification/c92-physical-fail-closed.json",
       "git_blob_sha1": "ed7e27ab4ab7069b3b6df4a5903fec5cfbc5064c",
       "byte_length": 246,
       "mode": "100644",
@@ -1885,7 +1885,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c92-refined-100000.json",
+      "path": "artifacts/qualification/c92-refined-100000.json",
       "git_blob_sha1": "adb3df1157492e1940d8c25ec8dce203f7899064",
       "byte_length": 451,
       "mode": "100644",
@@ -1894,7 +1894,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c93-host-local-qualified.json",
+      "path": "artifacts/qualification/c93-host-local-qualified.json",
       "git_blob_sha1": "4705de083acc063daf7de4c254f92737cc4d0d80",
       "byte_length": 779,
       "mode": "100644",
@@ -1903,7 +1903,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c94-physical-local-receipt.json",
+      "path": "artifacts/qualification/c94-physical-local-receipt.json",
       "git_blob_sha1": "2657f00ccca4988644fabe33dd91c9ce81bc2367",
       "byte_length": 1613,
       "mode": "100644",
@@ -1912,7 +1912,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c95-connector-falsification.json",
+      "path": "artifacts/qualification/c95-connector-falsification.json",
       "git_blob_sha1": "56b892e673f9053f94a6ae87652ed2cae6580358",
       "byte_length": 285,
       "mode": "100644",
@@ -1921,7 +1921,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c95-local-node-receipt.json",
+      "path": "artifacts/qualification/c95-local-node-receipt.json",
       "git_blob_sha1": "8cc4a7be292e24c457291486a4bc71b2309a8c71",
       "byte_length": 1648,
       "mode": "100644",
@@ -1930,7 +1930,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c96-initial-mutants.json",
+      "path": "artifacts/qualification/c96-initial-mutants.json",
       "git_blob_sha1": "c7a7ec8948bf4b5e5fca969acbb2b9816683c052",
       "byte_length": 510,
       "mode": "100644",
@@ -1939,7 +1939,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c96-manifest-tamper.json",
+      "path": "artifacts/qualification/c96-manifest-tamper.json",
       "git_blob_sha1": "db736de333457a5b2cad93aa648c54269e002499",
       "byte_length": 566,
       "mode": "100644",
@@ -1948,7 +1948,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c96-model-10m-final.json",
+      "path": "artifacts/qualification/c96-model-10m-final.json",
       "git_blob_sha1": "b6edced5692244e808e436004a807b9d0c9bbfb0",
       "byte_length": 1144,
       "mode": "100644",
@@ -1957,7 +1957,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c96-model-10m-first-pass.json",
+      "path": "artifacts/qualification/c96-model-10m-first-pass.json",
       "git_blob_sha1": "b6edced5692244e808e436004a807b9d0c9bbfb0",
       "byte_length": 1144,
       "mode": "100644",
@@ -1966,7 +1966,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c96-node42.tap",
+      "path": "artifacts/qualification/c96-node42.tap",
       "git_blob_sha1": "485ba70c1d1054cafd365fc5211b37c2bfb065c7",
       "byte_length": 9350,
       "mode": "100644",
@@ -1975,7 +1975,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c96-node43.tap",
+      "path": "artifacts/qualification/c96-node43.tap",
       "git_blob_sha1": "aa886e22b1161304f2175ce293b13e66c6bcd109",
       "byte_length": 9539,
       "mode": "100644",
@@ -1984,7 +1984,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c98-current-gap-readback.json",
+      "path": "artifacts/qualification/c98-current-gap-readback.json",
       "git_blob_sha1": "e0b83ccfa01937f72c41d58a9cf2c0c495bb20b5",
       "byte_length": 3276,
       "mode": "100644",
@@ -1993,7 +1993,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/c98-falsify10k.json",
+      "path": "artifacts/qualification/c98-falsify10k.json",
       "git_blob_sha1": "c22450e960dde0d08b7fe25854c2ea2821d37829",
       "byte_length": 1066,
       "mode": "100644",
@@ -2002,7 +2002,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/e15-irred-1m.json",
+      "path": "artifacts/qualification/e15-irred-1m.json",
       "git_blob_sha1": "84b308c71a0e79b1fceeb2fb1ea21856c46ca6bf",
       "byte_length": 389,
       "mode": "100644",
@@ -2011,7 +2011,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/lib0-embedded-nuance.json",
+      "path": "artifacts/qualification/lib0-embedded-nuance.json",
       "git_blob_sha1": "c64fe38ae1a30a4bf1763ddb7f00db9b9d448d63",
       "byte_length": 1800,
       "mode": "100644",
@@ -2020,7 +2020,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/local-host-meta-prompt-100.json",
+      "path": "artifacts/qualification/local-host-meta-prompt-100.json",
       "git_blob_sha1": "aab5acc3956ca1458fef97c6e2c97364c5e58a01",
       "byte_length": 1360,
       "mode": "100644",
@@ -2029,7 +2029,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/negative-semantic-1m.json",
+      "path": "artifacts/qualification/negative-semantic-1m.json",
       "git_blob_sha1": "72dae0bab81e1760d89264cd934affea5a377faf",
       "byte_length": 1611,
       "mode": "100644",
@@ -2038,7 +2038,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/p0p1-1m-seeded.json",
+      "path": "artifacts/qualification/p0p1-1m-seeded.json",
       "git_blob_sha1": "8af770aab24e4006a970aded451d26bcb5f7f444",
       "byte_length": 912,
       "mode": "100644",
@@ -2047,7 +2047,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/project-session-selection-10k.json",
+      "path": "artifacts/qualification/project-session-selection-10k.json",
       "git_blob_sha1": "f3fc10fe266a92539596d616f98dae496717be7d",
       "byte_length": 1976,
       "mode": "100644",
@@ -2056,7 +2056,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "tests/artifacts/qualification/seed-v1.json",
+      "path": "artifacts/qualification/seed-v1.json",
       "git_blob_sha1": "82c9f900557bd9b7c1ea434f433f5cbfb20fa2af",
       "byte_length": 2485,
       "mode": "100644",
@@ -2065,7 +2065,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/assets/brand/ikant-dark.svg",
+      "path": "assets/brand/ikant-dark.svg",
       "git_blob_sha1": "b05eb79cd84ae336d359ae5da38683dabfe08fa6",
       "byte_length": 1266,
       "mode": "100644",
@@ -2074,7 +2074,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/assets/brand/ikant-light.svg",
+      "path": "assets/brand/ikant-light.svg",
       "git_blob_sha1": "bdc1d783b001b6c0e7a7cd80895db41ba7d2d0d3",
       "byte_length": 1763,
       "mode": "100644",
@@ -2092,7 +2092,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/BOOTSTRAP.md",
+      "path": "BOOTSTRAP.md",
       "git_blob_sha1": "dc3be8df6d211326179ebca733f2acc03c66d80d",
       "byte_length": 513,
       "mode": "100644",
@@ -2101,7 +2101,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "contracts/C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json",
+      "path": "C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json",
       "git_blob_sha1": "96a47428e36920bd9f1f87fcd29ef16cc9848698",
       "byte_length": 3168,
       "mode": "100644",
@@ -2110,7 +2110,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "contracts/C13_SESSION_CHAT_FASTBOOT_CONTRACT.json",
+      "path": "C13_SESSION_CHAT_FASTBOOT_CONTRACT.json",
       "git_blob_sha1": "daef57515daa071837cbefb111bbddfc7ad41970",
       "byte_length": 2670,
       "mode": "100644",
@@ -3658,7 +3658,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ARCHITECTURE.md",
+      "path": "docs/ARCHITECTURE.md",
       "git_blob_sha1": "cd71a756c4adc5693eabfa05888c259e58ebe377",
       "byte_length": 1996,
       "mode": "100644",
@@ -3667,7 +3667,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C1_DOD.md",
+      "path": "docs/C1_DOD.md",
       "git_blob_sha1": "ab7ff1636df58ce375ca609178f07608201853a7",
       "byte_length": 405,
       "mode": "100644",
@@ -3676,7 +3676,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C100_EXPERIMENTAL_COHOST_DOD.md",
+      "path": "docs/C100_EXPERIMENTAL_COHOST_DOD.md",
       "git_blob_sha1": "4efdea478f3776ef158ef8551aa4d8afcf87ecf7",
       "byte_length": 7140,
       "mode": "100644",
@@ -3685,7 +3685,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C100_MERGED_TRAJECTORY.md",
+      "path": "docs/C100_MERGED_TRAJECTORY.md",
       "git_blob_sha1": "1f9dbe0379758162643789782438801b99fe3a4e",
       "byte_length": 16142,
       "mode": "100644",
@@ -3694,7 +3694,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C100_PROJECT_HOST_DELTA.md",
+      "path": "docs/C100_PROJECT_HOST_DELTA.md",
       "git_blob_sha1": "812f3a5cf73d6358c9996bb58652d673807865ef",
       "byte_length": 1568,
       "mode": "100644",
@@ -3703,7 +3703,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C100_QUALIFICATION_BOUNDARY.md",
+      "path": "docs/C100_QUALIFICATION_BOUNDARY.md",
       "git_blob_sha1": "e76a109c726d43c3f5b6fd51902dc23227d28750",
       "byte_length": 329,
       "mode": "100644",
@@ -3712,7 +3712,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C101_ENGINEERING_DOD.md",
+      "path": "docs/C101_ENGINEERING_DOD.md",
       "git_blob_sha1": "ade9eeb0b98d8182d20bdc50be0023a94bcce4ab",
       "byte_length": 3705,
       "mode": "100644",
@@ -3721,7 +3721,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C101_LOCAL_COHOST_MACHINE.md",
+      "path": "docs/C101_LOCAL_COHOST_MACHINE.md",
       "git_blob_sha1": "bf1405701626102863a3fd0b9b28a4c617f6477b",
       "byte_length": 5122,
       "mode": "100644",
@@ -3730,7 +3730,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C101_PROJECT_HOST_PROJECTION.md",
+      "path": "docs/C101_PROJECT_HOST_PROJECTION.md",
       "git_blob_sha1": "4b354df13a817bcae9a31bde9e37b6ec9d936335",
       "byte_length": 2111,
       "mode": "100644",
@@ -3739,7 +3739,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C102_SOFT_HOST_RUNTIME.md",
+      "path": "docs/C102_SOFT_HOST_RUNTIME.md",
       "git_blob_sha1": "50e59fa997bb2899f24e36a7974965f2e497a89a",
       "byte_length": 3418,
       "mode": "100644",
@@ -3748,7 +3748,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C103_HOST_ADAPTER_INTEROPERABILITY.md",
+      "path": "docs/C103_HOST_ADAPTER_INTEROPERABILITY.md",
       "git_blob_sha1": "6fc8d7a5711b01941a13747aa97c1937812e6c85",
       "byte_length": 2780,
       "mode": "100644",
@@ -3757,7 +3757,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C104_MATERIALIZATION_AND_ADAPTER.md",
+      "path": "docs/C104_MATERIALIZATION_AND_ADAPTER.md",
       "git_blob_sha1": "9195910d93ced16ea4d670d88b6ec0a1e26fbd39",
       "byte_length": 4460,
       "mode": "100644",
@@ -3766,7 +3766,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C105_NERVA_ADAPTER.md",
+      "path": "docs/C105_NERVA_ADAPTER.md",
       "git_blob_sha1": "60c0f3ea340d38e8455664333dc2c32c1417c55b",
       "byte_length": 4203,
       "mode": "100644",
@@ -3775,7 +3775,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C107_CARRIER_CONSUMER_DOD.md",
+      "path": "docs/C107_CARRIER_CONSUMER_DOD.md",
       "git_blob_sha1": "5677b9ebaba846c7f83bd39990af4543db1f4474",
       "byte_length": 4982,
       "mode": "100644",
@@ -3784,7 +3784,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C107_EXPERIMENTAL_RELEASE_DOD.md",
+      "path": "docs/C107_EXPERIMENTAL_RELEASE_DOD.md",
       "git_blob_sha1": "408cf3c346c50e41cb6c2f78ced65b5af53db8b1",
       "byte_length": 3569,
       "mode": "100644",
@@ -3793,7 +3793,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C107_ONE_CARRIER_RELEASE_V8.md",
+      "path": "docs/C107_ONE_CARRIER_RELEASE_V8.md",
       "git_blob_sha1": "282de91c8b08e2e7eff1b21d70f6b082af64d645",
       "byte_length": 3126,
       "mode": "100644",
@@ -3802,7 +3802,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C130_PRODUCT_DOD.md",
+      "path": "docs/C130_PRODUCT_DOD.md",
       "git_blob_sha1": "66b16422799563f3fc8248a679f16e1d28e783f8",
       "byte_length": 7532,
       "mode": "100644",
@@ -3811,7 +3811,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C132_ENTERPRISE_CANDIDATE.md",
+      "path": "docs/C132_ENTERPRISE_CANDIDATE.md",
       "git_blob_sha1": "1568ea3bd5eb513fc335710fdb8da25424c7c65f",
       "byte_length": 7424,
       "mode": "100644",
@@ -3820,7 +3820,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C133_SHADOW_LANGUAGE_BRIDGE.md",
+      "path": "docs/C133_SHADOW_LANGUAGE_BRIDGE.md",
       "git_blob_sha1": "9267de2e06543c8a3cc8a118eee9ad1011acc274",
       "byte_length": 1699,
       "mode": "100644",
@@ -3829,7 +3829,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C134_COGNITIVE_SOURCE_EPOCH.md",
+      "path": "docs/C134_COGNITIVE_SOURCE_EPOCH.md",
       "git_blob_sha1": "381a9de600720e617a5a26b227be9ac45459e5c5",
       "byte_length": 3740,
       "mode": "100644",
@@ -3838,7 +3838,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C135_EDU_COGNITIVE_OWNER.md",
+      "path": "docs/C135_EDU_COGNITIVE_OWNER.md",
       "git_blob_sha1": "2bdef120171a6f80e201cf27f61d45ac1c915bf1",
       "byte_length": 4365,
       "mode": "100644",
@@ -3847,7 +3847,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C136_CANONICAL_RECOVERY.md",
+      "path": "docs/C136_CANONICAL_RECOVERY.md",
       "git_blob_sha1": "41542aa87fbeb80213155d1410a91a5d96165ed8",
       "byte_length": 2949,
       "mode": "100644",
@@ -3856,7 +3856,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C136_P0_POST133.md",
+      "path": "docs/C136_P0_POST133.md",
       "git_blob_sha1": "33ea069b9e0a19b6977e23da2696511fa8bce909",
       "byte_length": 1495,
       "mode": "100644",
@@ -3865,7 +3865,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C139_EDU_EPISTEMIC_ROUTE.md",
+      "path": "docs/C139_EDU_EPISTEMIC_ROUTE.md",
       "git_blob_sha1": "d7978f9291721b245da3f069cd59fe8582e5d5c4",
       "byte_length": 3705,
       "mode": "100644",
@@ -3874,7 +3874,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C140_SEMANTIC_RUNTIME_PR.md",
+      "path": "docs/C140_SEMANTIC_RUNTIME_PR.md",
       "git_blob_sha1": "c2b05daf6783b59a10f088814cc38189c37441db",
       "byte_length": 6228,
       "mode": "100644",
@@ -3883,7 +3883,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C2_DOD.md",
+      "path": "docs/C2_DOD.md",
       "git_blob_sha1": "6e2876925953a489491a0161bf0e8229fd865ab4",
       "byte_length": 401,
       "mode": "100644",
@@ -3892,7 +3892,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C24_CI_TIMEOUT_FIX.md",
+      "path": "docs/C24_CI_TIMEOUT_FIX.md",
       "git_blob_sha1": "ad9d20181b31901694d60ed8ca375d1e96c59ef1",
       "byte_length": 2907,
       "mode": "100644",
@@ -3901,7 +3901,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C28_FULL_IKANT_ABSORPTION.md",
+      "path": "docs/C28_FULL_IKANT_ABSORPTION.md",
       "git_blob_sha1": "3e3ad5beda4e554f91d0ac5dde0b6c3a4296b2dc",
       "byte_length": 4951,
       "mode": "100644",
@@ -3910,7 +3910,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C29_ONTOLOGICAL_PROMISE.md",
+      "path": "docs/C29_ONTOLOGICAL_PROMISE.md",
       "git_blob_sha1": "2f2ca48a9f2b4cde23cce48094a5631000901373",
       "byte_length": 4387,
       "mode": "100644",
@@ -3919,7 +3919,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C3_DOD.md",
+      "path": "docs/C3_DOD.md",
       "git_blob_sha1": "d4ca51af33f9a1822b5ea76853470ba7470082bf",
       "byte_length": 373,
       "mode": "100644",
@@ -3928,7 +3928,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C30_ACTIVATION_SERVICE_SPECTRUM.md",
+      "path": "docs/C30_ACTIVATION_SERVICE_SPECTRUM.md",
       "git_blob_sha1": "775b04469de03a5082aea0e36a75c30794822013",
       "byte_length": 11451,
       "mode": "100644",
@@ -3937,7 +3937,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C31_RUNTIME_LIMITED_SUPPLY_CHAIN.md",
+      "path": "docs/C31_RUNTIME_LIMITED_SUPPLY_CHAIN.md",
       "git_blob_sha1": "e755b5f79d661222ff288a6f6ac7e98208788b3e",
       "byte_length": 4626,
       "mode": "100644",
@@ -3946,7 +3946,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C33_POST_187_ONTOLOGICAL_CLOSURE.md",
+      "path": "docs/C33_POST_187_ONTOLOGICAL_CLOSURE.md",
       "git_blob_sha1": "72e479e1a51499e265a6d35958cc7bfa1d8116d6",
       "byte_length": 10286,
       "mode": "100644",
@@ -3955,7 +3955,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C36_SEMANTIC_MORPHOGENESIS_OPERATIONAL_SUBJECT.md",
+      "path": "docs/C36_SEMANTIC_MORPHOGENESIS_OPERATIONAL_SUBJECT.md",
       "git_blob_sha1": "a59af9988735c7757bf2f3fbaa70da3c1383a9f8",
       "byte_length": 5240,
       "mode": "100644",
@@ -3964,7 +3964,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C4_DOD.md",
+      "path": "docs/C4_DOD.md",
       "git_blob_sha1": "e3c8574db91372585ae465e5bfef9307d4fc2d95",
       "byte_length": 383,
       "mode": "100644",
@@ -3973,7 +3973,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C40_BOOTSTRAP_REENTRY_CLOSURE.md",
+      "path": "docs/C40_BOOTSTRAP_REENTRY_CLOSURE.md",
       "git_blob_sha1": "f25cc6659ef7b8289be72f95e719a63c05b62e58",
       "byte_length": 1906,
       "mode": "100644",
@@ -3982,7 +3982,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C41_CARRIER_LOCAL_RETRY_UX_CONTINUITY.md",
+      "path": "docs/C41_CARRIER_LOCAL_RETRY_UX_CONTINUITY.md",
       "git_blob_sha1": "c96b1c0701f6d24e1668cb38b990c7310e391c6d",
       "byte_length": 1741,
       "mode": "100644",
@@ -3991,7 +3991,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C42_BOOTSTRAP_ONTOLOGICAL_CLOSURE.md",
+      "path": "docs/C42_BOOTSTRAP_ONTOLOGICAL_CLOSURE.md",
       "git_blob_sha1": "7e40335bb5a51e8aa852c3e5a0cd2d35381d58ea",
       "byte_length": 3709,
       "mode": "100644",
@@ -4000,7 +4000,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C43_BOOTSTRAP_RECOVERY_HARDENING.md",
+      "path": "docs/C43_BOOTSTRAP_RECOVERY_HARDENING.md",
       "git_blob_sha1": "1bca73baf5afc142b0cfb86f76b96b4f362f46be",
       "byte_length": 3067,
       "mode": "100644",
@@ -4009,7 +4009,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C44_METHODOLOGICAL_BOOTSTRAP_ASCII_SHELL.md",
+      "path": "docs/C44_METHODOLOGICAL_BOOTSTRAP_ASCII_SHELL.md",
       "git_blob_sha1": "c865809392622f341fd30de3f3a3cfb7aad41c3c",
       "byte_length": 1137,
       "mode": "100644",
@@ -4018,7 +4018,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C45_CONTEXT_ROOT_ASCII_COHOST_CLOSURE.md",
+      "path": "docs/C45_CONTEXT_ROOT_ASCII_COHOST_CLOSURE.md",
       "git_blob_sha1": "774c97b34834e649d24fac8470692031d163f4c1",
       "byte_length": 2616,
       "mode": "100644",
@@ -4027,7 +4027,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C5_DOD.md",
+      "path": "docs/C5_DOD.md",
       "git_blob_sha1": "1fea513b3c67d6b8775764342eeb91456884002d",
       "byte_length": 404,
       "mode": "100644",
@@ -4036,7 +4036,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C54_HOST_MATERIALIZATION.md",
+      "path": "docs/C54_HOST_MATERIALIZATION.md",
       "git_blob_sha1": "93ea25c492bbc63ef1513f14d881fcf66feec6ad",
       "byte_length": 3139,
       "mode": "100644",
@@ -4045,7 +4045,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C56_LOCAL_HOST_SESSION_META_PROMPT.md",
+      "path": "docs/C56_LOCAL_HOST_SESSION_META_PROMPT.md",
       "git_blob_sha1": "6ef724d00c7a854f5166d8a943c4e6ba11727eda",
       "byte_length": 3367,
       "mode": "100644",
@@ -4054,7 +4054,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C57_HOST_BINDING_AWARE_META_PROMPT.md",
+      "path": "docs/C57_HOST_BINDING_AWARE_META_PROMPT.md",
       "git_blob_sha1": "63fbec635901e91a3a4bc2e3389dea6804a1d388",
       "byte_length": 1928,
       "mode": "100644",
@@ -4063,7 +4063,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C59_PR1_68_LINEAGE_AUDIT.md",
+      "path": "docs/C59_PR1_68_LINEAGE_AUDIT.md",
       "git_blob_sha1": "32b3383a5346b1cd2cec464fdb2c974871c3fd33",
       "byte_length": 11572,
       "mode": "100644",
@@ -4072,7 +4072,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C59_SINGLE_COMPOSITION_CHANNEL.md",
+      "path": "docs/C59_SINGLE_COMPOSITION_CHANNEL.md",
       "git_blob_sha1": "25985ca12d5c2e10d1e70838ef253a3874a6c4aa",
       "byte_length": 5906,
       "mode": "100644",
@@ -4081,7 +4081,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C6_DOD.md",
+      "path": "docs/C6_DOD.md",
       "git_blob_sha1": "a81997a0955053bd7cdad96cdf05489e0624f6b9",
       "byte_length": 363,
       "mode": "100644",
@@ -4090,7 +4090,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C63_CANONICAL_PARALLEL_HOST_BRIDGE.md",
+      "path": "docs/C63_CANONICAL_PARALLEL_HOST_BRIDGE.md",
       "git_blob_sha1": "39039ade774bf4ec81e2881b926ebe32e4544e6a",
       "byte_length": 21253,
       "mode": "100644",
@@ -4099,7 +4099,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C67_PROJECT_CHATGPT_ADAPTER.md",
+      "path": "docs/C67_PROJECT_CHATGPT_ADAPTER.md",
       "git_blob_sha1": "0e5bc2dec8f56eb6791ca0b154a661e0fa708178",
       "byte_length": 4542,
       "mode": "100644",
@@ -4108,7 +4108,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C68_PROJECT_CHATGPT_ADAPTER.md",
+      "path": "docs/C68_PROJECT_CHATGPT_ADAPTER.md",
       "git_blob_sha1": "cc6134dba88e7b260e140196914c09119b2bc47c",
       "byte_length": 5228,
       "mode": "100644",
@@ -4117,7 +4117,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C69_CAPABILITY_FIRST_EXPERIMENTAL.md",
+      "path": "docs/C69_CAPABILITY_FIRST_EXPERIMENTAL.md",
       "git_blob_sha1": "a9621f5544f6b99533c9a2921651898f2c8c0034",
       "byte_length": 6292,
       "mode": "100644",
@@ -4126,7 +4126,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C69_PROJECT_CHATGPT_ADAPTER.md",
+      "path": "docs/C69_PROJECT_CHATGPT_ADAPTER.md",
       "git_blob_sha1": "f0cb5dc5553000b746e7706fd0a95fd0932bce33",
       "byte_length": 6454,
       "mode": "100644",
@@ -4135,7 +4135,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C70_CAPABILITY_FRONTIER.md",
+      "path": "docs/C70_CAPABILITY_FRONTIER.md",
       "git_blob_sha1": "e066328f3fd619a035cfe61211ee199cbb487c0d",
       "byte_length": 5133,
       "mode": "100644",
@@ -4144,7 +4144,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C71_CX_RUNTIME_CLOSURE_AUDIT.md",
+      "path": "docs/C71_CX_RUNTIME_CLOSURE_AUDIT.md",
       "git_blob_sha1": "9e51206576ba1c65830352eeb928c3326cc57096",
       "byte_length": 4650,
       "mode": "100644",
@@ -4153,7 +4153,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C71_PROJECT_CHATGPT_ADAPTER.md",
+      "path": "docs/C71_PROJECT_CHATGPT_ADAPTER.md",
       "git_blob_sha1": "c95432385b12604a75b9c61c32ea20820754ea60",
       "byte_length": 6733,
       "mode": "100644",
@@ -4162,7 +4162,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C71_PROJECT_CHATGPT_ADAPTER.txt",
+      "path": "docs/C71_PROJECT_CHATGPT_ADAPTER.txt",
       "git_blob_sha1": "e4acd8cb2cc869e046e4bf7cc38708f8394641fb",
       "byte_length": 6531,
       "mode": "100644",
@@ -4171,7 +4171,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C72_HOST_ASSISTED_LOCAL_FILE_CARRIER.md",
+      "path": "docs/C72_HOST_ASSISTED_LOCAL_FILE_CARRIER.md",
       "git_blob_sha1": "efc36b01c5c11de947cad053bade9ca96524d0e0",
       "byte_length": 3293,
       "mode": "100644",
@@ -4180,7 +4180,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C72_HOST_TOOL_TO_NODE_RELAY.md",
+      "path": "docs/C72_HOST_TOOL_TO_NODE_RELAY.md",
       "git_blob_sha1": "bfd29feee1f066b5d26c44ff78dcfde309111a55",
       "byte_length": 3711,
       "mode": "100644",
@@ -4189,7 +4189,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C72_PROJECT_CHATGPT_ADAPTER.txt",
+      "path": "docs/C72_PROJECT_CHATGPT_ADAPTER.txt",
       "git_blob_sha1": "9fb6e3cffbb247a05759fc6f37685ada2e301ea9",
       "byte_length": 4317,
       "mode": "100644",
@@ -4198,7 +4198,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C72_UNIFIED_ADMISSION_AND_VALUE.md",
+      "path": "docs/C72_UNIFIED_ADMISSION_AND_VALUE.md",
       "git_blob_sha1": "a398aae809849d04f8495ab919b161ce2d6b3a37",
       "byte_length": 5142,
       "mode": "100644",
@@ -4207,7 +4207,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C73_BRANDED_SHELL_CAPSULE.md",
+      "path": "docs/C73_BRANDED_SHELL_CAPSULE.md",
       "git_blob_sha1": "bb1f85bb833da734095c4b357df1e68d7970aae4",
       "byte_length": 2452,
       "mode": "100644",
@@ -4216,7 +4216,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C73_PROJECT_CHATGPT_ADAPTER.txt",
+      "path": "docs/C73_PROJECT_CHATGPT_ADAPTER.txt",
       "git_blob_sha1": "35c892c353977defe05954d0efdb732f9c344eea",
       "byte_length": 5571,
       "mode": "100644",
@@ -4225,7 +4225,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C74_POSTMERGE_ONTOLOGY_DOD.md",
+      "path": "docs/C74_POSTMERGE_ONTOLOGY_DOD.md",
       "git_blob_sha1": "4c16f695c321d8ff2b2ef2571739dbe11bc343f8",
       "byte_length": 3590,
       "mode": "100644",
@@ -4234,7 +4234,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C76_FARO_METHOD.md",
+      "path": "docs/C76_FARO_METHOD.md",
       "git_blob_sha1": "00c9e13d5e0685504ebc601866ba55b860eb8570",
       "byte_length": 4167,
       "mode": "100644",
@@ -4243,7 +4243,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C77_C78_H95_SEMANTIC_SLICES.md",
+      "path": "docs/C77_C78_H95_SEMANTIC_SLICES.md",
       "git_blob_sha1": "9481f8d96b8ec01d4ec07e030fc6899aca68a59e",
       "byte_length": 5623,
       "mode": "100644",
@@ -4252,7 +4252,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C78_PHYSICAL_HOST_BRIDGE.md",
+      "path": "docs/C78_PHYSICAL_HOST_BRIDGE.md",
       "git_blob_sha1": "5032685a1572a660dabdc40392ef596ede32882a",
       "byte_length": 7439,
       "mode": "100644",
@@ -4261,7 +4261,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C78_PROJECT_HOST_ADAPTER.txt",
+      "path": "docs/C78_PROJECT_HOST_ADAPTER.txt",
       "git_blob_sha1": "5459d8ea0df3d71ae8fcb10822db36aa07884c65",
       "byte_length": 4794,
       "mode": "100644",
@@ -4270,7 +4270,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C79_NATIVE_CHAT_WITNESS_DOD.md",
+      "path": "docs/C79_NATIVE_CHAT_WITNESS_DOD.md",
       "git_blob_sha1": "a1646865ac2f2503717a26088652ee472d6f27b5",
       "byte_length": 4750,
       "mode": "100644",
@@ -4279,7 +4279,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C79_PROJECT_HOST_ADAPTER.txt",
+      "path": "docs/C79_PROJECT_HOST_ADAPTER.txt",
       "git_blob_sha1": "7c21edcf8aaf8e6e6dd55651184b3088a433d460",
       "byte_length": 4017,
       "mode": "100644",
@@ -4288,7 +4288,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C80_HOST_WITNESS_AND_H95.md",
+      "path": "docs/C80_HOST_WITNESS_AND_H95.md",
       "git_blob_sha1": "b79d55d29c9eeee430f509c079c68d333d3f8c50",
       "byte_length": 4814,
       "mode": "100644",
@@ -4297,7 +4297,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C81_GIT_SOURCE_REACHABILITY.md",
+      "path": "docs/C81_GIT_SOURCE_REACHABILITY.md",
       "git_blob_sha1": "22d38fdef324c693265c3b73935191332ad76989",
       "byte_length": 3613,
       "mode": "100644",
@@ -4306,7 +4306,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C81_PROJECT_RUNTIME_PROJECTOR.txt",
+      "path": "docs/C81_PROJECT_RUNTIME_PROJECTOR.txt",
       "git_blob_sha1": "984c99c763616621ccb7e0d0b19abde60e7464d8",
       "byte_length": 4896,
       "mode": "100644",
@@ -4315,7 +4315,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C81_RUNTIME_PROJECTION_DOD.md",
+      "path": "docs/C81_RUNTIME_PROJECTION_DOD.md",
       "git_blob_sha1": "2d4bc6ca8f535349df9cc5b731a105ab198573d2",
       "byte_length": 3635,
       "mode": "100644",
@@ -4324,7 +4324,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C82_EXPERIMENTAL_SEMANTIC_RELEASE.md",
+      "path": "docs/C82_EXPERIMENTAL_SEMANTIC_RELEASE.md",
       "git_blob_sha1": "05b9b03387ca797f54f854976226a29d5b40d03c",
       "byte_length": 5034,
       "mode": "100644",
@@ -4333,7 +4333,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C82_PROJECT_ADAPTER_CANDIDATE.md",
+      "path": "docs/C82_PROJECT_ADAPTER_CANDIDATE.md",
       "git_blob_sha1": "0b8ce880e64023c645ca01f5db8b46ab8f22880d",
       "byte_length": 2849,
       "mode": "100644",
@@ -4342,7 +4342,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C82_RELEASE_CHECKLIST.tsv",
+      "path": "docs/C82_RELEASE_CHECKLIST.tsv",
       "git_blob_sha1": "7243792441e4d10fec99ec61385222fb95bf32e2",
       "byte_length": 3663,
       "mode": "100644",
@@ -4351,7 +4351,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C83_PRODUCT_GATE_AND_MUTATION_AUDIT.md",
+      "path": "docs/C83_PRODUCT_GATE_AND_MUTATION_AUDIT.md",
       "git_blob_sha1": "0d36d2fde195d74a850bb040c2dea42111644073",
       "byte_length": 4200,
       "mode": "100644",
@@ -4360,7 +4360,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C84_HOST_COMPOSITION_CONVERGENCE.md",
+      "path": "docs/C84_HOST_COMPOSITION_CONVERGENCE.md",
       "git_blob_sha1": "7b3faf4061ebba3549dd5ef62158e932d68ba1df",
       "byte_length": 7692,
       "mode": "100644",
@@ -4369,7 +4369,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C91_CAPABILITY_THESIS.md",
+      "path": "docs/C91_CAPABILITY_THESIS.md",
       "git_blob_sha1": "c5aa92f88790a874039309babd20c299b8273121",
       "byte_length": 3530,
       "mode": "100644",
@@ -4378,7 +4378,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C91_DOD.md",
+      "path": "docs/C91_DOD.md",
       "git_blob_sha1": "e73853f3aafcf398f5f9f526802064365a3406a0",
       "byte_length": 2343,
       "mode": "100644",
@@ -4387,7 +4387,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C91_FALSIFICATION_REPORT.md",
+      "path": "docs/C91_FALSIFICATION_REPORT.md",
       "git_blob_sha1": "1f10cf6117d15d77e31e185175f75f90ccea1e76",
       "byte_length": 2935,
       "mode": "100644",
@@ -4396,7 +4396,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C91_MEASUREMENT_PROTOCOL.md",
+      "path": "docs/C91_MEASUREMENT_PROTOCOL.md",
       "git_blob_sha1": "fc88bf9bd9da0803c477928d612e4aab9ea0e64e",
       "byte_length": 1783,
       "mode": "100644",
@@ -4405,7 +4405,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C92_COMMIT_LATTICE.md",
+      "path": "docs/C92_COMMIT_LATTICE.md",
       "git_blob_sha1": "9dcc891262ec603446bb274538cc77c3a0c133ad",
       "byte_length": 849,
       "mode": "100644",
@@ -4414,7 +4414,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C92_DEFINITION_OF_DONE.md",
+      "path": "docs/C92_DEFINITION_OF_DONE.md",
       "git_blob_sha1": "d2f9234c8edeaeb2105d7ab43e2eaff6a49cc139",
       "byte_length": 2631,
       "mode": "100644",
@@ -4423,7 +4423,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C92_FORENSIC_RELEASE.md",
+      "path": "docs/C92_FORENSIC_RELEASE.md",
       "git_blob_sha1": "a1356fe36e4c0908ec04ec4a72d87bd6aee17a7a",
       "byte_length": 3078,
       "mode": "100644",
@@ -4432,7 +4432,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C92_GITHUB_TRANSPLANT.md",
+      "path": "docs/C92_GITHUB_TRANSPLANT.md",
       "git_blob_sha1": "25b053904e93fbd416abacf6e5c543e558baa31d",
       "byte_length": 1840,
       "mode": "100644",
@@ -4441,7 +4441,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C93_SOURCE_BOUND_DIAGNOSTIC_AND_DOD.md",
+      "path": "docs/C93_SOURCE_BOUND_DIAGNOSTIC_AND_DOD.md",
       "git_blob_sha1": "efb893d0fd968815102f194cd8d9e8eaab9880d2",
       "byte_length": 3015,
       "mode": "100644",
@@ -4450,7 +4450,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C94_FORENSIC_HARDENING_REPORT.md",
+      "path": "docs/C94_FORENSIC_HARDENING_REPORT.md",
       "git_blob_sha1": "fe2981de5cf95979a5a1da915f0c89352ee70911",
       "byte_length": 7475,
       "mode": "100644",
@@ -4459,7 +4459,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C94_GLOBAL_TRAJECTORY_AND_DOD.md",
+      "path": "docs/C94_GLOBAL_TRAJECTORY_AND_DOD.md",
       "git_blob_sha1": "3d1d80d35cf224b7feec36080959ddd1247bcd58",
       "byte_length": 5503,
       "mode": "100644",
@@ -4468,7 +4468,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C94_HOST_APPLICATION_DEPLOYMENT.md",
+      "path": "docs/C94_HOST_APPLICATION_DEPLOYMENT.md",
       "git_blob_sha1": "f8a43080529ca280eaa23c7e2c5242181dd08a45",
       "byte_length": 3448,
       "mode": "100644",
@@ -4477,7 +4477,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C95_TRAJECTORY_LOSSLESS_AND_DOD.md",
+      "path": "docs/C95_TRAJECTORY_LOSSLESS_AND_DOD.md",
       "git_blob_sha1": "85a91a8b3f741f882fc6ba9d176946f079ea7c0a",
       "byte_length": 3429,
       "mode": "100644",
@@ -4486,7 +4486,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C96_AUDIT_REPORT.md",
+      "path": "docs/C96_AUDIT_REPORT.md",
       "git_blob_sha1": "42238e4537199415480f40e9ccc539a32bf5df2c",
       "byte_length": 8493,
       "mode": "100644",
@@ -4495,7 +4495,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C96_GITHUB_TRANSPLANT_PROVENANCE.md",
+      "path": "docs/C96_GITHUB_TRANSPLANT_PROVENANCE.md",
       "git_blob_sha1": "140c504df9ee9d1ddfbfec1d376ef74c9a7f72bf",
       "byte_length": 3238,
       "mode": "100644",
@@ -4504,7 +4504,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C96_REVERSE_DOD_AND_CRITICAL_PATH.md",
+      "path": "docs/C96_REVERSE_DOD_AND_CRITICAL_PATH.md",
       "git_blob_sha1": "ae1c72073e6b1bceb6f95075183d7f5e5f5add34",
       "byte_length": 5982,
       "mode": "100644",
@@ -4513,7 +4513,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C97_CHAT_PROJECT_UIUX_PREPR.md",
+      "path": "docs/C97_CHAT_PROJECT_UIUX_PREPR.md",
       "git_blob_sha1": "6756b5da98c547e24846f374bcd5e9b59fddca7c",
       "byte_length": 13054,
       "mode": "100644",
@@ -4522,7 +4522,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C97_PROJECT_PROMPT_PROJECTION.txt",
+      "path": "docs/C97_PROJECT_PROMPT_PROJECTION.txt",
       "git_blob_sha1": "c9a626e9fe89e1115bcd71e4815d8ebe44a3d578",
       "byte_length": 3471,
       "mode": "100644",
@@ -4531,7 +4531,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_FORENSIC_QUALIFICATION.md",
+      "path": "docs/C98_FORENSIC_QUALIFICATION.md",
       "git_blob_sha1": "70f4480bf3bd4064723672985fda4b72072b9fd3",
       "byte_length": 3479,
       "mode": "100644",
@@ -4540,7 +4540,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_MATURATION_H95_AND_CLOSURE.md",
+      "path": "docs/C98_MATURATION_H95_AND_CLOSURE.md",
       "git_blob_sha1": "9c31edfda76a3d7a5b67677ea4a15708c05db705",
       "byte_length": 6503,
       "mode": "100644",
@@ -4549,7 +4549,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_PHASE2_SOURCE_EXACT_TRANSPLANT.md",
+      "path": "docs/C98_PHASE2_SOURCE_EXACT_TRANSPLANT.md",
       "git_blob_sha1": "6b4eb9b2795c0a57f8c10e59f738b42a5c42e08b",
       "byte_length": 3222,
       "mode": "100644",
@@ -4558,7 +4558,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_PR_REAL_TRANSPLANT_SCOPE.md",
+      "path": "docs/C98_PR_REAL_TRANSPLANT_SCOPE.md",
       "git_blob_sha1": "ca03e8e84a91c7bd9593ff5ef5340508c184014a",
       "byte_length": 1463,
       "mode": "100644",
@@ -4567,7 +4567,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_REVERSE_DOD_AND_GAP_MATRIX.md",
+      "path": "docs/C98_REVERSE_DOD_AND_GAP_MATRIX.md",
       "git_blob_sha1": "a9a64ad46e2fa7ec202564c4eca85fa5f0614324",
       "byte_length": 3951,
       "mode": "100644",
@@ -4576,7 +4576,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_V3_PROGRESS_AND_UNCLOSED_DOD.md",
+      "path": "docs/C98_V3_PROGRESS_AND_UNCLOSED_DOD.md",
       "git_blob_sha1": "a562c11ffd8baa8d2d36d4694c9b04215eceb0ea",
       "byte_length": 4025,
       "mode": "100644",
@@ -4585,7 +4585,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_V4_HOST_PORTABLE_MVP.md",
+      "path": "docs/C98_V4_HOST_PORTABLE_MVP.md",
       "git_blob_sha1": "98e5c1037f9cfa0be1a90ce6050b06f52708656a",
       "byte_length": 4726,
       "mode": "100644",
@@ -4594,7 +4594,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_V5_HOST_INSTALLATION_REALITY.md",
+      "path": "docs/C98_V5_HOST_INSTALLATION_REALITY.md",
       "git_blob_sha1": "d1c3d0ee54b8b1731eba27910bef4d4260ffee10",
       "byte_length": 4519,
       "mode": "100644",
@@ -4603,7 +4603,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_V6_PROJECT_3MD_MINIMAL_MVP.md",
+      "path": "docs/C98_V6_PROJECT_3MD_MINIMAL_MVP.md",
       "git_blob_sha1": "8d9797e9cf22083eb4396487ba96d3de3fc55d35",
       "byte_length": 4563,
       "mode": "100644",
@@ -4612,7 +4612,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C98_V6_QUALIFICATION_AND_DELTA.md",
+      "path": "docs/C98_V6_QUALIFICATION_AND_DELTA.md",
       "git_blob_sha1": "94e32880f7f99c9d4b210662d847f6e3a08f6510",
       "byte_length": 3361,
       "mode": "100644",
@@ -4621,7 +4621,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C99_FORENSIC_ROUTE_CLOSURE.md",
+      "path": "docs/C99_FORENSIC_ROUTE_CLOSURE.md",
       "git_blob_sha1": "f227c781576e2e49afbc0bb59b38e2d0e7bf7e30",
       "byte_length": 3694,
       "mode": "100644",
@@ -4630,7 +4630,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C99_FORENSIC_V5_ADOPTION.md",
+      "path": "docs/C99_FORENSIC_V5_ADOPTION.md",
       "git_blob_sha1": "f757308fbac61ba62c5b5a835ee03a9f0c4481bd",
       "byte_length": 8403,
       "mode": "100644",
@@ -4639,7 +4639,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C99_LAST30_CIRCULARITY_AUDIT.md",
+      "path": "docs/C99_LAST30_CIRCULARITY_AUDIT.md",
       "git_blob_sha1": "2fb431ecd1699ce643eb1b10bbdd6b6894b0fe82",
       "byte_length": 4847,
       "mode": "100644",
@@ -4648,7 +4648,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C99_PRODUCT_DOD.json",
+      "path": "docs/C99_PRODUCT_DOD.json",
       "git_blob_sha1": "83c7b5b2d061d7fe7a9c676ef02f13bb915f4b82",
       "byte_length": 1148,
       "mode": "100644",
@@ -4657,7 +4657,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C99_PROXY_HOST_INPUT_HARDENING.md",
+      "path": "docs/C99_PROXY_HOST_INPUT_HARDENING.md",
       "git_blob_sha1": "60a2c1d137da9080c0d8aa22fc4c73842f696a57",
       "byte_length": 2513,
       "mode": "100644",
@@ -4666,7 +4666,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/C99_V6_USER_UPLOAD_EVIDENCE.md",
+      "path": "docs/C99_V6_USER_UPLOAD_EVIDENCE.md",
       "git_blob_sha1": "4a9a1fdffbae201983034a2f3f421b2b90b03ef1",
       "byte_length": 3204,
       "mode": "100644",
@@ -4675,7 +4675,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/CP11_REBASED_SEMANTIC_DOD.md",
+      "path": "docs/CP11_REBASED_SEMANTIC_DOD.md",
       "git_blob_sha1": "994c0f81fa20b8180017a703049cdfe3ae9009b3",
       "byte_length": 4570,
       "mode": "100644",
@@ -4684,7 +4684,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_BOOTSTRAP_PARETO_10K.md",
+      "path": "docs/EDU_BOOTSTRAP_PARETO_10K.md",
       "git_blob_sha1": "3ebb38ebbadd83c09d4d9fec927d7f56f9f70efa",
       "byte_length": 8665,
       "mode": "100644",
@@ -4693,7 +4693,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_C125_UI_DOD.md",
+      "path": "docs/EDU_C125_UI_DOD.md",
       "git_blob_sha1": "d44a5bb7f14db361c45e61573d192ff577c40a12",
       "byte_length": 5175,
       "mode": "100644",
@@ -4702,7 +4702,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_C126_POST125_HARDENING.md",
+      "path": "docs/EDU_C126_POST125_HARDENING.md",
       "git_blob_sha1": "6e1c556d9f5ba44b364f750d3c3323c169300181",
       "byte_length": 3228,
       "mode": "100644",
@@ -4711,7 +4711,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_C127_MIND_TRANSPORT_DOD.md",
+      "path": "docs/EDU_C127_MIND_TRANSPORT_DOD.md",
       "git_blob_sha1": "2852c79cb13ce551422b6538a2d20ae0a7c4b9c1",
       "byte_length": 3612,
       "mode": "100644",
@@ -4720,7 +4720,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_C127_TEXT_LINEAGE.md",
+      "path": "docs/EDU_C127_TEXT_LINEAGE.md",
       "git_blob_sha1": "0e73ac2fa4a65f073a4f9f8710fa6513878b2103",
       "byte_length": 2360,
       "mode": "100644",
@@ -4729,7 +4729,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_C128_SOURCE_CACHE_DOD.md",
+      "path": "docs/EDU_C128_SOURCE_CACHE_DOD.md",
       "git_blob_sha1": "f5b2187b532be517ca6c5b7225fb128140a6e620",
       "byte_length": 5562,
       "mode": "100644",
@@ -4738,7 +4738,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_C129_MANUAL_FIRST_COGNITION_SLICE.md",
+      "path": "docs/EDU_C129_MANUAL_FIRST_COGNITION_SLICE.md",
       "git_blob_sha1": "1ef84dbd815587b9e4b3c27f0d65e1849a614e5c",
       "byte_length": 3445,
       "mode": "100644",
@@ -4747,7 +4747,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_HOST_WHAT_HOW_V2.md",
+      "path": "docs/EDU_HOST_WHAT_HOW_V2.md",
       "git_blob_sha1": "f70f226d1e7d4b9d9d68af53fe2423d098fd8455",
       "byte_length": 5301,
       "mode": "100644",
@@ -4756,7 +4756,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_MVP_HOSTBOUND_RELEASE_PATH.md",
+      "path": "docs/EDU_MVP_HOSTBOUND_RELEASE_PATH.md",
       "git_blob_sha1": "f0073325f6f49622ac9cf446b6e9cab6a83ecc33",
       "byte_length": 6457,
       "mode": "100644",
@@ -4765,7 +4765,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_ONEZIP_POSTACCEPT_FIELD_ROUTE.md",
+      "path": "docs/EDU_ONEZIP_POSTACCEPT_FIELD_ROUTE.md",
       "git_blob_sha1": "e15fcce46ac09e480b32976bdbe40b959ba4b18d",
       "byte_length": 4793,
       "mode": "100644",
@@ -4774,7 +4774,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_ORIGINAL_C135_COLD_REBIND_DOD.md",
+      "path": "docs/EDU_ORIGINAL_C135_COLD_REBIND_DOD.md",
       "git_blob_sha1": "d537d45a8b81832d39671a1b8781861ba3c5ab49",
       "byte_length": 3561,
       "mode": "100644",
@@ -4783,7 +4783,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_SINGLE_EXPERIMENTAL_PRODUCT_RUNTIME.md",
+      "path": "docs/EDU_SINGLE_EXPERIMENTAL_PRODUCT_RUNTIME.md",
       "git_blob_sha1": "06e638a8de9cf31c63ffd15c9be642ff0c899863",
       "byte_length": 2877,
       "mode": "100644",
@@ -4792,7 +4792,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_V10_POST122_MIND_TERMINAL.md",
+      "path": "docs/EDU_V10_POST122_MIND_TERMINAL.md",
       "git_blob_sha1": "860e9e5615c0e41dfa2818e00f3b652773d8fd76",
       "byte_length": 5372,
       "mode": "100644",
@@ -4801,7 +4801,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_V7_PR119_CONVERGENCE.md",
+      "path": "docs/EDU_V7_PR119_CONVERGENCE.md",
       "git_blob_sha1": "c8d275ba9f04d37197dd2e087e672fac0efb4ee5",
       "byte_length": 5030,
       "mode": "100644",
@@ -4810,7 +4810,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_V8_HOLISTIC_TRAJECTORY_AND_DOD.md",
+      "path": "docs/EDU_V8_HOLISTIC_TRAJECTORY_AND_DOD.md",
       "git_blob_sha1": "877bf405f0b5efc3992bf76405fdef0881043c21",
       "byte_length": 10975,
       "mode": "100644",
@@ -4819,7 +4819,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/EDU_V9_FIRST_ATTEMPT_LINEAR_ROUTE.md",
+      "path": "docs/EDU_V9_FIRST_ATTEMPT_LINEAR_ROUTE.md",
       "git_blob_sha1": "b85161ceea725c3384efa2c00aacbd72eb5a9f69",
       "byte_length": 4515,
       "mode": "100644",
@@ -4828,7 +4828,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/GENESIS_AUDIT.md",
+      "path": "docs/GENESIS_AUDIT.md",
       "git_blob_sha1": "18406ccba75ad56f7459f50328f6e62b6f8e488c",
       "byte_length": 425,
       "mode": "100644",
@@ -4837,7 +4837,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/GOVERNANCE.md",
+      "path": "docs/GOVERNANCE.md",
       "git_blob_sha1": "7f96b9af8802eb7a902dd579fb550387f0b65cba",
       "byte_length": 2485,
       "mode": "100644",
@@ -4846,7 +4846,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/HOST_IKANT_EDU_BRAND_RUNTIME_PR.md",
+      "path": "docs/HOST_IKANT_EDU_BRAND_RUNTIME_PR.md",
       "git_blob_sha1": "d36f86336a20cefa2b0464541fe16789e4dc3896",
       "byte_length": 2318,
       "mode": "100644",
@@ -4855,7 +4855,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/HOST_NEGATIVE_SEMANTIC_R3.md",
+      "path": "docs/HOST_NEGATIVE_SEMANTIC_R3.md",
       "git_blob_sha1": "fa0fe35f2e88fedd2bb13d35e962f6d3b74b9a85",
       "byte_length": 3633,
       "mode": "100644",
@@ -4864,7 +4864,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_COGNITIVE_SUBSTRATE.md",
+      "path": "docs/IKANT_COGNITIVE_SUBSTRATE.md",
       "git_blob_sha1": "7b09b81ee067d7f25b47a67a7dc695246a31bbcf",
       "byte_length": 6452,
       "mode": "100644",
@@ -4873,7 +4873,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_CX_LEXICON.md",
+      "path": "docs/IKANT_CX_LEXICON.md",
       "git_blob_sha1": "5612375d42aad7c4f8d19cb095280d3c149d47ec",
       "byte_length": 11597,
       "mode": "100644",
@@ -4882,7 +4882,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_CX_POST_EDIT_REVIEW.md",
+      "path": "docs/IKANT_CX_POST_EDIT_REVIEW.md",
       "git_blob_sha1": "06efe5c156057be87868537d31d86cc2c3e8ac4b",
       "byte_length": 3135,
       "mode": "100644",
@@ -4891,7 +4891,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_DEVELOPMENT_HISTORY.md",
+      "path": "docs/IKANT_DEVELOPMENT_HISTORY.md",
       "git_blob_sha1": "e3ccef0d08863be6a50c36ebbb944ab3f365ae66",
       "byte_length": 6587,
       "mode": "100644",
@@ -4900,7 +4900,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
       "git_blob_sha1": "db425d1c35e9d2fa4e685ec37c446b56cc851971",
       "byte_length": 29181,
       "mode": "100644",
@@ -4909,7 +4909,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_DOCUMENT_ONTOLOGY_DOD.md",
+      "path": "docs/IKANT_DOCUMENT_ONTOLOGY_DOD.md",
       "git_blob_sha1": "740cfa13b5b030b68879b854b421421887cb0c5f",
       "byte_length": 6919,
       "mode": "100644",
@@ -4918,7 +4918,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_EDITORIAL_CONTRACT_AUDIT.md",
+      "path": "docs/IKANT_EDITORIAL_CONTRACT_AUDIT.md",
       "git_blob_sha1": "c3e4804b7ee98017aeb4140f83c3a53bb1db351f",
       "byte_length": 1988,
       "mode": "100644",
@@ -4927,7 +4927,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_LOCAL_SETUP.md",
+      "path": "docs/IKANT_LOCAL_SETUP.md",
       "git_blob_sha1": "b4a6e37af34bf18c4b9e898ac756840b72afcef6",
       "byte_length": 4808,
       "mode": "100644",
@@ -4936,7 +4936,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_NEUROCOGNITIVE_BRIDGE.md",
+      "path": "docs/IKANT_NEUROCOGNITIVE_BRIDGE.md",
       "git_blob_sha1": "26ab37aef6ec02bd6cf3689bda70ee34a5dcc2ad",
       "byte_length": 10304,
       "mode": "100644",
@@ -4945,7 +4945,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_ONESHELL_BRAND_P0_AND_REGISTRATION_READINESS.md",
+      "path": "docs/IKANT_ONESHELL_BRAND_P0_AND_REGISTRATION_READINESS.md",
       "git_blob_sha1": "4f6104483b8bec9ea41a46461205ba5be31cb837",
       "byte_length": 3800,
       "mode": "100644",
@@ -4954,7 +4954,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_RESEARCH_QUESTIONS.md",
+      "path": "docs/IKANT_RESEARCH_QUESTIONS.md",
       "git_blob_sha1": "d8cc9e34fd1ee6948b7fb555e7d3c71284a5499f",
       "byte_length": 5618,
       "mode": "100644",
@@ -4963,7 +4963,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_RUNTIME_AND_EVIDENCE.md",
+      "path": "docs/IKANT_RUNTIME_AND_EVIDENCE.md",
       "git_blob_sha1": "e96ddb584b06e977e741d6417879318e63c0d379",
       "byte_length": 7206,
       "mode": "100644",
@@ -4972,7 +4972,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/IKANT_SEMANTIC_RETICULUM.md",
+      "path": "docs/IKANT_SEMANTIC_RETICULUM.md",
       "git_blob_sha1": "8789dd2bd794b9eb197fe9a606ff1bcf62ce2ff9",
       "byte_length": 7050,
       "mode": "100644",
@@ -4981,7 +4981,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/LOCAL_HOST_META_PROMPT.md",
+      "path": "docs/LOCAL_HOST_META_PROMPT.md",
       "git_blob_sha1": "85db72fdf8b8e0a621c4097c547a546215c08368",
       "byte_length": 4819,
       "mode": "100644",
@@ -4990,7 +4990,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/MCP_EXTERNAL_ADVANCED_V2_PREPR.md",
+      "path": "docs/MCP_EXTERNAL_ADVANCED_V2_PREPR.md",
       "git_blob_sha1": "19af7aa8d2e5101bfb137eb6a05d424cc55f5183",
       "byte_length": 11136,
       "mode": "100644",
@@ -4999,7 +4999,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/MCP_EXTERNAL_PREPR_20261020.md",
+      "path": "docs/MCP_EXTERNAL_PREPR_20261020.md",
       "git_blob_sha1": "2807d8ddd2b0a8bd22381f875c331661ca92fa99",
       "byte_length": 7159,
       "mode": "100644",
@@ -5008,7 +5008,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/MCP_STANDALONE_RENDER_RUNBOOK.txt",
+      "path": "docs/MCP_STANDALONE_RENDER_RUNBOOK.txt",
       "git_blob_sha1": "74c7407bf2e8d0d05ca3568a91765f418b8bf851",
       "byte_length": 7277,
       "mode": "100644",
@@ -5017,7 +5017,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/NEEDLE_SHADOW_RUNTIME_V1.md",
+      "path": "docs/NEEDLE_SHADOW_RUNTIME_V1.md",
       "git_blob_sha1": "975082a4dcc8f91397df2f029b8184be19ccb072",
       "byte_length": 3065,
       "mode": "100644",
@@ -5026,7 +5026,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHell_APP_FINISH_CONTRACT.md",
+      "path": "docs/ONESHell_APP_FINISH_CONTRACT.md",
       "git_blob_sha1": "2d249e0634fd4e893159b14fd58816afea7124c9",
       "byte_length": 2041,
       "mode": "100644",
@@ -5035,7 +5035,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHELL_E12_FOCUS_APP_POST182.md",
+      "path": "docs/ONESHELL_E12_FOCUS_APP_POST182.md",
       "git_blob_sha1": "705729a0bc6a3b8b75d8ed9c921c7fcb94498e28",
       "byte_length": 8598,
       "mode": "100644",
@@ -5044,7 +5044,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHELL_E14_C72_RECEIPT_TRANSIT.md",
+      "path": "docs/ONESHELL_E14_C72_RECEIPT_TRANSIT.md",
       "git_blob_sha1": "160e0b7bf7000145e2eccf28d1faa5b4db2ff727",
       "byte_length": 4165,
       "mode": "100644",
@@ -5053,7 +5053,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHELL_EDU_HOST_BOUNDARY_PR.md",
+      "path": "docs/ONESHELL_EDU_HOST_BOUNDARY_PR.md",
       "git_blob_sha1": "43348b7c43da78874a0fb4d748357498c06177c3",
       "byte_length": 10051,
       "mode": "100644",
@@ -5062,7 +5062,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHell_HOST_40_ISSUES.csv",
+      "path": "docs/ONESHell_HOST_40_ISSUES.csv",
       "git_blob_sha1": "3356ffb2b81fb1022c5bd7395dc39990e776a06e",
       "byte_length": 11819,
       "mode": "100644",
@@ -5071,7 +5071,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHell_MINIMUM_CONVERGENCE.md",
+      "path": "docs/ONESHell_MINIMUM_CONVERGENCE.md",
       "git_blob_sha1": "a8b16deccdc1a061969765e403ec60f410f3edc7",
       "byte_length": 2502,
       "mode": "100644",
@@ -5080,7 +5080,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHELL_POSTACCEPT_RAIL_AUDIT_E9.md",
+      "path": "docs/ONESHELL_POSTACCEPT_RAIL_AUDIT_E9.md",
       "git_blob_sha1": "9ee3cd94240e8b528c19a9106ca202514af28430",
       "byte_length": 8324,
       "mode": "100644",
@@ -5089,7 +5089,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHell_PRODUCT_CI_RELEASE_GATE.md",
+      "path": "docs/ONESHell_PRODUCT_CI_RELEASE_GATE.md",
       "git_blob_sha1": "cb702b93bc7e15dd755e08f844eef1e54c916d98",
       "byte_length": 1047,
       "mode": "100644",
@@ -5098,7 +5098,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHELL_THREAD_SESSION_V1.md",
+      "path": "docs/ONESHELL_THREAD_SESSION_V1.md",
       "git_blob_sha1": "3023feaec53436c2d835fa0b87d40110311f79a3",
       "byte_length": 5525,
       "mode": "100644",
@@ -5107,7 +5107,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/ONESHELL_V1_MATERIALIZATION.txt",
+      "path": "docs/ONESHELL_V1_MATERIALIZATION.txt",
       "git_blob_sha1": "cff872be97a01d3bd9b6490941a50dbe1c00b473",
       "byte_length": 4951,
       "mode": "100644",
@@ -5116,7 +5116,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/POST118_RISK_AND_SCOPE.md",
+      "path": "docs/POST118_RISK_AND_SCOPE.md",
       "git_blob_sha1": "fe7d292ff4bf4b187fa311621ea099d0f55dd81a",
       "byte_length": 2843,
       "mode": "100644",
@@ -5125,7 +5125,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PRODUCT_DASHBOARD.md",
+      "path": "docs/PRODUCT_DASHBOARD.md",
       "git_blob_sha1": "2af23c4595e5235380184688e8d8952bf4e54e94",
       "byte_length": 2944,
       "mode": "100644",
@@ -5134,7 +5134,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PRODUCT_POSITIONING.md",
+      "path": "docs/PRODUCT_POSITIONING.md",
       "git_blob_sha1": "8ce46cc40b17f100e9c30cc76bdbb2218fcc33e2",
       "byte_length": 1707,
       "mode": "100644",
@@ -5143,7 +5143,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_C72_BOOTSTRAP_WITNESS_AND_BRIDGE_P0.md",
+      "path": "docs/PROJECT_C72_BOOTSTRAP_WITNESS_AND_BRIDGE_P0.md",
       "git_blob_sha1": "bc9b0bace264a6a1f39b5dff2184b6417c254052",
       "byte_length": 35686,
       "mode": "100644",
@@ -5152,7 +5152,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_C72_COLDSTART_PARTIAL_HANDOFF.txt",
+      "path": "docs/PROJECT_C72_COLDSTART_PARTIAL_HANDOFF.txt",
       "git_blob_sha1": "862154ed5adda971f154d3d68cc123800d2d633a",
       "byte_length": 5288,
       "mode": "100644",
@@ -5161,7 +5161,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_C72_HOST_PORT_P0.md",
+      "path": "docs/PROJECT_C72_HOST_PORT_P0.md",
       "git_blob_sha1": "791cd3d46d79e6af7e95445c2e4aae1e24267451",
       "byte_length": 26922,
       "mode": "100644",
@@ -5170,7 +5170,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_C72_POSTACCEPT_REENTRY_AND_BRAND.md",
+      "path": "docs/PROJECT_C72_POSTACCEPT_REENTRY_AND_BRAND.md",
       "git_blob_sha1": "97b6bee73decf1c82c96785516ef5ee2f8a440cb",
       "byte_length": 4364,
       "mode": "100644",
@@ -5179,7 +5179,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_C72_PREACCEPT_REGRESSION.md",
+      "path": "docs/PROJECT_C72_PREACCEPT_REGRESSION.md",
       "git_blob_sha1": "a0a4f8adacd19a74d827a9ebd7af1b18b6522e7f",
       "byte_length": 4829,
       "mode": "100644",
@@ -5188,7 +5188,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_EDU_E16_UNIFIED_INGRESS.md",
+      "path": "docs/PROJECT_EDU_E16_UNIFIED_INGRESS.md",
       "git_blob_sha1": "c5ef4661165ea7de57cef8821476359e4bd132ae",
       "byte_length": 4160,
       "mode": "100644",
@@ -5197,7 +5197,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_EDU_H1_FIELD_BOUNDARY.md",
+      "path": "docs/PROJECT_EDU_H1_FIELD_BOUNDARY.md",
       "git_blob_sha1": "db51f9a98cd1714f57011d628b4017f844133bcd",
       "byte_length": 4306,
       "mode": "100644",
@@ -5206,7 +5206,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_EDU_V1_EXPERIMENTAL_RELEASE.md",
+      "path": "docs/PROJECT_EDU_V1_EXPERIMENTAL_RELEASE.md",
       "git_blob_sha1": "c1664c8715335d128b5d1d7d9d764b5df84ed7c0",
       "byte_length": 6056,
       "mode": "100644",
@@ -5215,7 +5215,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_HOST_K0_WHAT_HOW_R4.md",
+      "path": "docs/PROJECT_HOST_K0_WHAT_HOW_R4.md",
       "git_blob_sha1": "fc12a3529c8a6995953125594e718972dbd7360c",
       "byte_length": 3669,
       "mode": "100644",
@@ -5224,7 +5224,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_HOST_K1_CONSTITUTIONAL_EVIDENCE.md",
+      "path": "docs/PROJECT_HOST_K1_CONSTITUTIONAL_EVIDENCE.md",
       "git_blob_sha1": "a7b2fbd36137636bea53d9646f407c9742d84b2a",
       "byte_length": 2119,
       "mode": "100644",
@@ -5233,7 +5233,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_HOST_K1_INTEGRATED_DOD.md",
+      "path": "docs/PROJECT_HOST_K1_INTEGRATED_DOD.md",
       "git_blob_sha1": "1f1a661dae07ce5851ce0ae7515a1e91cfc46bd8",
       "byte_length": 5321,
       "mode": "100644",
@@ -5242,7 +5242,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_HOST_TOOL_GROUNDING_ABI.md",
+      "path": "docs/PROJECT_HOST_TOOL_GROUNDING_ABI.md",
       "git_blob_sha1": "61161868975822143f3f43b89d292ed4fe2afcf7",
       "byte_length": 5091,
       "mode": "100644",
@@ -5251,7 +5251,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_META_PROMPT_COBOL.md",
+      "path": "docs/PROJECT_META_PROMPT_COBOL.md",
       "git_blob_sha1": "c676c8655eab4a4e1a47ebcd332b9382338b4c5b",
       "byte_length": 3559,
       "mode": "100644",
@@ -5260,7 +5260,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_P0_BRAND_C72_HOST_ENFORCEMENT.md",
+      "path": "docs/PROJECT_P0_BRAND_C72_HOST_ENFORCEMENT.md",
       "git_blob_sha1": "63f0752126b4a6aa2cd2d30fb15c31346f67ca03",
       "byte_length": 3927,
       "mode": "100644",
@@ -5269,7 +5269,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/PROJECT_SESSION_REPO_FIRST.md",
+      "path": "docs/PROJECT_SESSION_REPO_FIRST.md",
       "git_blob_sha1": "e8a9f60267401eebfffe66d72429fdd8eaf16d86",
       "byte_length": 18530,
       "mode": "100644",
@@ -5278,7 +5278,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/QUALIFICATION.md",
+      "path": "docs/QUALIFICATION.md",
       "git_blob_sha1": "e550bc42f803fe62dd6a4d328d9364d9b488b4eb",
       "byte_length": 639,
       "mode": "100644",
@@ -5287,7 +5287,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/README_PRODUCT_AUDIT_1000.txt",
+      "path": "docs/README_PRODUCT_AUDIT_1000.txt",
       "git_blob_sha1": "a26cf18e9433911caf101028969fbb6137a9e9ef",
       "byte_length": 6202,
       "mode": "100644",
@@ -5296,7 +5296,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/RESEARCH_LEDGER.md",
+      "path": "docs/RESEARCH_LEDGER.md",
       "git_blob_sha1": "da3ab0c682c4f2fb2032c5d47b9ed23a746d94e0",
       "byte_length": 365,
       "mode": "100644",
@@ -5305,7 +5305,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/S01_PUBLIC_EDU_CANONICAL_ADMISSION.md",
+      "path": "docs/S01_PUBLIC_EDU_CANONICAL_ADMISSION.md",
       "git_blob_sha1": "9bf15ed98954e99204bbafa05ed841b8fdf786da",
       "byte_length": 1832,
       "mode": "100644",
@@ -5314,7 +5314,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/S03_S09_POST137_RUNTIME_COMPLETION.md",
+      "path": "docs/S03_S09_POST137_RUNTIME_COMPLETION.md",
       "git_blob_sha1": "09f5aef8f2e3d06a8f25c56cb19b69b8a90eb620",
       "byte_length": 2651,
       "mode": "100644",
@@ -5323,7 +5323,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/S05_CIL_HUMAN_SHELL_POC.md",
+      "path": "docs/S05_CIL_HUMAN_SHELL_POC.md",
       "git_blob_sha1": "ee2158a767d42e73daed910e89a23e5062bf33ce",
       "byte_length": 4931,
       "mode": "100644",
@@ -5332,7 +5332,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/SESSION_CHAT_LOCAL_PROMPT.md",
+      "path": "docs/SESSION_CHAT_LOCAL_PROMPT.md",
       "git_blob_sha1": "8b4039b201db30279694fe081bd1820a313c65c5",
       "byte_length": 8204,
       "mode": "100644",
@@ -5341,7 +5341,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/START_HERE.md",
+      "path": "docs/START_HERE.md",
       "git_blob_sha1": "a0c81f2dbd2748efb695693a17608235424528bb",
       "byte_length": 4060,
       "mode": "100644",
@@ -5350,7 +5350,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/V1_E2E_TRACEABILITY.md",
+      "path": "docs/V1_E2E_TRACEABILITY.md",
       "git_blob_sha1": "32165988a617964b7259fce41a6139bc70af47cd",
       "byte_length": 3549,
       "mode": "100644",
@@ -5359,7 +5359,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/V1_GOLD_MIGRATION.md",
+      "path": "docs/V1_GOLD_MIGRATION.md",
       "git_blob_sha1": "2ac43e311eeb10717406758b3e2e3e327e30e4da",
       "byte_length": 3671,
       "mode": "100644",
@@ -5368,7 +5368,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/V1_PRODUCT_DECISIONS.md",
+      "path": "docs/V1_PRODUCT_DECISIONS.md",
       "git_blob_sha1": "2bbfc03c17bd92edb95162cb16a1f211b6e6b55a",
       "byte_length": 4551,
       "mode": "100644",
@@ -6808,7 +6808,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/iKant_UI_shell.md",
+      "path": "iKant_UI_shell.md",
       "git_blob_sha1": "d3a365e165a970e3652e0a08f2a8e0098b83f97b",
       "byte_length": 3255,
       "mode": "100644",
@@ -6880,7 +6880,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/assets/ikant-dark-square.svg",
+      "path": "plugins/ikant-le-session-chat/assets/ikant-dark-square.svg",
       "git_blob_sha1": "c7839cf48b4c2ed379eddf3706eeb29a093582f9",
       "byte_length": 1266,
       "mode": "100644",
@@ -6889,7 +6889,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/assets/ikant-light.svg",
+      "path": "plugins/ikant-le-session-chat/assets/ikant-light.svg",
       "git_blob_sha1": "bdc1d783b001b6c0e7a7cd80895db41ba7d2d0d3",
       "byte_length": 1763,
       "mode": "100644",
@@ -6898,7 +6898,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/mcp.standalone.template.json",
+      "path": "plugins/ikant-le-session-chat/mcp.standalone.template.json",
       "git_blob_sha1": "d6cee21eed1b37782affbc6ca13d528ddcbe731d",
       "byte_length": 443,
       "mode": "100644",
@@ -6907,7 +6907,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/mcp.template.json",
+      "path": "plugins/ikant-le-session-chat/mcp.template.json",
       "git_blob_sha1": "48008d7fff15d1b4c3dada976946cd18f87f0883",
       "byte_length": 191,
       "mode": "100644",
@@ -6916,7 +6916,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/plugin.json",
+      "path": "plugins/ikant-le-session-chat/plugin.json",
       "git_blob_sha1": "0e0defbc26616c3ddb01863700827ff92ce63c1b",
       "byte_length": 1159,
       "mode": "100644",
@@ -6925,7 +6925,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/README.md",
+      "path": "plugins/ikant-le-session-chat/README.md",
       "git_blob_sha1": "8cbd5f8028156a87b7ae4939777f90503c6650a2",
       "byte_length": 2642,
       "mode": "100644",
@@ -6934,7 +6934,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/server/gateway-identity.mjs",
+      "path": "plugins/ikant-le-session-chat/server/gateway-identity.mjs",
       "git_blob_sha1": "234520400fa261c9d40e56cf3ad525ed3fc274ec",
       "byte_length": 3359,
       "mode": "100644",
@@ -6943,7 +6943,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/server/mcp-standalone-policy.mjs",
+      "path": "plugins/ikant-le-session-chat/server/mcp-standalone-policy.mjs",
       "git_blob_sha1": "02d1fedd7e5180e9eaedd2c77b850f39263f1915",
       "byte_length": 2378,
       "mode": "100644",
@@ -6952,7 +6952,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs",
+      "path": "plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs",
       "git_blob_sha1": "abd762e40097f2135fc3b95795c61e50b3458009",
       "byte_length": 7498,
       "mode": "100644",
@@ -6961,7 +6961,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/server/package.json",
+      "path": "plugins/ikant-le-session-chat/server/package.json",
       "git_blob_sha1": "84c546cfe190c28a2bef77de1d5135841bcfdfce",
       "byte_length": 369,
       "mode": "100644",
@@ -6970,7 +6970,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html",
+      "path": "plugins/ikant-le-session-chat/server/public/ikant-le-app.html",
       "git_blob_sha1": "c3784529ca4aec8680712f46fe550bb979e303cd",
       "byte_length": 16031,
       "mode": "100644",
@@ -6979,7 +6979,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/server/runtime-limits.mjs",
+      "path": "plugins/ikant-le-session-chat/server/runtime-limits.mjs",
       "git_blob_sha1": "c1d333fabff2089cc60202dac8ff98eb52aa52e7",
       "byte_length": 2555,
       "mode": "100644",
@@ -6988,7 +6988,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/server/server.mjs",
+      "path": "plugins/ikant-le-session-chat/server/server.mjs",
       "git_blob_sha1": "11b213451c39b4a317eef7201fdc22b11c9ef371",
       "byte_length": 14779,
       "mode": "100644",
@@ -6997,7 +6997,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/plugins/ikant-le-session-chat/server/transport-security.mjs",
+      "path": "plugins/ikant-le-session-chat/server/transport-security.mjs",
       "git_blob_sha1": "c7ff8ff211bc9c1143e86baac66add18aa54fa26",
       "byte_length": 1234,
       "mode": "100644",
@@ -7006,7 +7006,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/baseline/INSTALL_EASY.md",
+      "path": "project-baseline/INSTALL_EASY.md",
       "git_blob_sha1": "1bc7e5c7436946bfacfb35a669f957fbc82ec3e6",
       "byte_length": 1526,
       "mode": "100644",
@@ -7015,7 +7015,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/baseline/PROJECT_FILES/iKant_ENGINE.md",
+      "path": "project-baseline/PROJECT_FILES/iKant_ENGINE.md",
       "git_blob_sha1": "2dd572b1911f114b0271bd7d4b5f5a984f927163",
       "byte_length": 2436,
       "mode": "100644",
@@ -7024,7 +7024,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/baseline/PROJECT_FILES/iKant_GATE.md",
+      "path": "project-baseline/PROJECT_FILES/iKant_GATE.md",
       "git_blob_sha1": "0be68ba987120d8817b21ce6b3fee6035ff848c3",
       "byte_length": 1742,
       "mode": "100644",
@@ -7033,7 +7033,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/baseline/PROJECT_FILES/iKant_UI_shell.md",
+      "path": "project-baseline/PROJECT_FILES/iKant_UI_shell.md",
       "git_blob_sha1": "9fffd530acc7f3f3f76d15c202bb8147f07aa182",
       "byte_length": 1730,
       "mode": "100644",
@@ -7042,7 +7042,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/baseline/PROJECT_PROMPT.txt",
+      "path": "project-baseline/PROJECT_PROMPT.txt",
       "git_blob_sha1": "9eb7725430f99f24129e2bb8daeb93da67187fc6",
       "byte_length": 2603,
       "mode": "100644",
@@ -7357,7 +7357,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/release/catalog.json",
+      "path": "release/catalog.json",
       "git_blob_sha1": "4f3570c07d9e36d7509eda9256642978b1c51604",
       "byte_length": 2192,
       "mode": "100644",
@@ -7366,7 +7366,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/release/v8/ikant-c107-source-c734bf934e33.ikc.br",
+      "path": "release/v8/ikant-c107-source-c734bf934e33.ikc.br",
       "git_blob_sha1": "f3ee30fd54414d596f0c9259e19f9e19af396fa0",
       "byte_length": 62448,
       "mode": "100644",
@@ -7384,7 +7384,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/release/render.mcp-standalone.candidate.yaml",
+      "path": "render.mcp-standalone.candidate.yaml",
       "git_blob_sha1": "df4e156885dc30afd7ad0facf4e36eb527a19d08",
       "byte_length": 1270,
       "mode": "100644",
@@ -7393,7 +7393,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "src/runtime-root/shard-000.json",
+      "path": "runtime-root/shard-000.json",
       "git_blob_sha1": "c5a7ce5cb9e9038812f45abfee9b17d86bd9a8ae",
       "byte_length": 121727,
       "mode": "100644",
@@ -7402,7 +7402,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "src/runtime-root/shard-001.json",
+      "path": "runtime-root/shard-001.json",
       "git_blob_sha1": "a3457692c27a124f53bbb30a402fb2201c8ff375",
       "byte_length": 69516,
       "mode": "100644",
@@ -7411,7 +7411,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "src/runtime-root/shard-002.json",
+      "path": "runtime-root/shard-002.json",
       "git_blob_sha1": "97dd74c62ffc470b385342267a567536860f18de",
       "byte_length": 29689,
       "mode": "100644",
@@ -7420,7 +7420,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "src/runtime-root/shard-003.json",
+      "path": "runtime-root/shard-003.json",
       "git_blob_sha1": "244cbf87bd21ee3e3f353d2edd6753f50d77cfab",
       "byte_length": 95302,
       "mode": "100644",
@@ -7429,7 +7429,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "src/runtime-root/shard-004.json",
+      "path": "runtime-root/shard-004.json",
       "git_blob_sha1": "ac41965da2ac33d26b3563234fd5ead107a71840",
       "byte_length": 115040,
       "mode": "100644",
@@ -7438,7 +7438,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "src/runtime-root/shard-005.json",
+      "path": "runtime-root/shard-005.json",
       "git_blob_sha1": "9d83890bf1fa9b7d5cc61f30f7ebe6a59633760b",
       "byte_length": 69114,
       "mode": "100644",
@@ -7447,7 +7447,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "src/runtime-root/shard-006.json",
+      "path": "runtime-root/shard-006.json",
       "git_blob_sha1": "f6923e6921baed2663fb2b3bc472310d0b319b9d",
       "byte_length": 68119,
       "mode": "100644",
@@ -10444,7 +10444,7 @@
       "consumer_resolution": "NOT_ATTESTED"
     },
     {
-      "path": "project/docs/stile_comunicativo.md",
+      "path": "stile_comunicativo.md",
       "git_blob_sha1": "1a7d215eb74965ac0b4a200de63be2b53e9f33fa",
       "byte_length": 803,
       "mode": "100644",

@@ -2,14 +2,14 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "0b582b52265dd6af5936ea9034ccae0ddb877800",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
+  "self_path": "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
   "scope": "HOST_ENGINEERING_READ_ONLY_CORA_RETICULAR_ADAPTER",
   "original_owner_unchanged": true,
   "active": false,
   "human_review_completed": false,
   "paths": [
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
+      "path": "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Register the exact three-commit, five-path source-only reticular standardization candidate"
@@ -25,7 +25,7 @@
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Bind the existing CORA absorption adapter to original V5-B physical Git-indexed census, not another inventory",
-      "supersedes_register": "contracts/governance/changes/zzzzzzzzzz-cora-minimal-absorption.json",
+      "supersedes_register": "governance/changes/zzzzzzzzzz-cora-minimal-absorption.json",
       "supersedes_source_main": "405ef2c6c49ef61448455674404cd9dce75515dd"
     },
     {

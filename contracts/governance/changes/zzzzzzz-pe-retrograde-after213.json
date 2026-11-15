@@ -1,7 +1,7 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "contracts/governance/changes/zzzzzzz-pe-retrograde-after213.json",
+  "self_path": "governance/changes/zzzzzzz-pe-retrograde-after213.json",
   "source_main": "36b12b72b8cc9e07bb8faff9410e0f92ba60191f",
   "scope": "HOST_ENGINEERING_PE_MINCUT_AFTER_213",
   "original_owners_unchanged": true,
@@ -46,7 +46,7 @@
       "deletion_authorized": false
     },
     {
-      "path": "project/docs/PROJECT_PE_BOOTSTRAP_RETROGRADE.md",
+      "path": "docs/PROJECT_PE_BOOTSTRAP_RETROGRADE.md",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
@@ -58,23 +58,23 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Extend retained original C72 Node20/22 workflow with fail-closed PE physical original stager test and 10M finite semantic oracle; retain all original steps and workflow count",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zz-v5g-bootstrap-d123.json",
+      "supersedes_register": "governance/changes/zz-v5g-bootstrap-d123.json",
       "supersedes_source_main": "4145d932fb291872aafe19dcd72298d16c2785c6"
     },
     {
-      "path": "contracts/governance/changes/zzzzzzz-pe-retrograde-after213.json",
+      "path": "governance/changes/zzzzzzz-pe-retrograde-after213.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Additive PE reverse-derived original-bound bootstrap engineering candidate; source tests do not mint owner, provider or user evidence",
       "deletion_authorized": false
     },
     {
-      "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Regenerate exact deterministic L3 document atlas entry for new PE bootstrap DoD; original document owner unchanged",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzz-rename-shadow-atlas.json",
+      "supersedes_register": "governance/changes/zzz-rename-shadow-atlas.json",
       "supersedes_source_main": "94dd1c20f5093f0f27ed03d2725b3715c47c6596"
     }
   ]

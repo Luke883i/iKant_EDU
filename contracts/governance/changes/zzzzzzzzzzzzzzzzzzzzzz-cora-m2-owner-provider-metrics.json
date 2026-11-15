@@ -2,7 +2,7 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "e8a49c2b1a6ffcff15380518d166b8b55ee890a4",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzz-cora-m2-owner-provider-metrics.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzz-cora-m2-owner-provider-metrics.json",
   "scope": "HOST_ENGINEERING_M2_OWNER_PROVIDER_METRICS_NONPROMOTING_SOURCE_ONLY",
   "original_owner_unchanged": true,
   "human_review_completed": false,
@@ -27,7 +27,7 @@
       "human_review": "REVIEW_REQUIRED"
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzz-cora-m2-owner-provider-metrics.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzz-cora-m2-owner-provider-metrics.json",
       "operation": "ADD",
       "reason": "V5-B original change-register extension for M2; human review uncompleted",
       "human_review": "REVIEW_REQUIRED"

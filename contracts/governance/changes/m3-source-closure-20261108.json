@@ -1,12 +1,12 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "contracts/governance/changes/m3-source-closure-20261108.json",
+  "self_path": "governance/changes/m3-source-closure-20261108.json",
   "source_main": "b29e52b8bc1c8d4a9acdfdf9438632842504c8ac",
   "scope": "HOST_ENGINEERING_M4_SOURCE_READBACK_WITH_PINNED_WORKFLOW_RESTORED",
   "paths": [
     {
-      "path": "contracts/governance/changes/m3-source-closure-20261108.json",
+      "path": "governance/changes/m3-source-closure-20261108.json",
       "operation": "ADD",
       "reason": "Review-required source-only declaration: relocate M3 diagnostic from prohibited workflow delta to an existing lexical callsite CLI on original checkout",
       "human_review": "REVIEW_REQUIRED",

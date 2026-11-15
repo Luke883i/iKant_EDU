@@ -2,7 +2,7 @@
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
   "source_main": "c889fa80326c2da09391da6d4edbc17e1bb9d052",
-  "self_path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
   "scope": "CORA_M1_SHARED_SOURCE_CI_CONSUMER_EVIDENCE_NONPROMOTING",
   "original_owner_unchanged": true,
   "human_review_completed": false,
@@ -21,7 +21,7 @@
       "human_review": "REVIEW_REQUIRED"
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
       "operation": "ADD",
       "reason": "Append-only original V5-B change-register source declaration with all reviews outstanding",
       "human_review": "REVIEW_REQUIRED"

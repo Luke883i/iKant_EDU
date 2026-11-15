@@ -1,7 +1,7 @@
 {
   "schema": "ikant-v5b-change-extension/v1",
   "authority": 0,
-  "self_path": "contracts/governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+  "self_path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
   "source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
   "review_status": "ENGINEERING_CANDIDATE_REQUIRES_V5G_REVIEWS",
   "paths": [
@@ -97,14 +97,14 @@
       "deletion_authorized": false
     },
     {
-      "path": "tests/artifacts/qualification/c52-candidate-blob-manifest.json",
+      "path": "artifacts/qualification/c52-candidate-blob-manifest.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
       "deletion_authorized": false
     },
     {
-      "path": "tests/artifacts/qualification/c52-runtime-physical-closure-dod.json",
+      "path": "artifacts/qualification/c52-runtime-physical-closure-dod.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "PR215 source-bound CI and test correction, candidate only; original owners and provider remain independent.",
@@ -326,7 +326,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Requalify C72 prompt semantic witness against the actual canonical EDU prompt; preserve exact physical staging, nonce and fail-closed tests.",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
       "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
       "same_source_main_change": "EXPLICIT_REVIEW_REQUIRED_PR_SLICE"
     },
@@ -338,12 +338,12 @@
       "deletion_authorized": false
     },
     {
-      "path": "tests/artifacts/qualification/c62-object-mincut-8192.json",
+      "path": "artifacts/qualification/c62-object-mincut-8192.json",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Recalculate bounded C62 mincut artifact using current pinned BOOTSTRAP runtime root SHA and exact source bytes, preserving tests.",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -352,7 +352,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Preserve fail-closed V5B retention validation while recognizing previously registered uppercase digit-bearing C98 status names; reject unsafe punctuated or unqualified status tokens.",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/v5d-oneshell.json",
+      "supersedes_register": "governance/changes/v5d-oneshell.json",
       "supersedes_source_main": "b3920c1bbfb856cead312e17b027e350ae2ec123"
     },
     {
@@ -445,7 +445,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Regenerate distribution-only C131 legacy alias byte-exact from the current single canonical Project prompt plus the unmodified version trailer; prevent V5-A source divergence without modifying canonical prompt, owners or installed provider.",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
       "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
     },
     {
@@ -454,7 +454,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Restore negative source rejection to the retired iKant_LE path, not the live iKant_EDU path; central checker still fails on legacy source promotion.",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
       "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
       "same_source_main_change": "EXPLICIT_REVIEW_REQUIRED_PR_SLICE"
     },
@@ -522,14 +522,14 @@
       "deletion_authorized": false
     },
     {
-      "path": "contracts/governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
+      "path": "governance/changes/zzzzzzzzz-pr215-ci-rationalization.json",
       "operation": "ADD",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Source-bound CI retirement register with explicit non-approval and original baseline preservation.",
       "deletion_authorized": false
     },
     {
-      "path": "project/docs/PROJECT_SESSION_REPO_FIRST.md",
+      "path": "docs/PROJECT_SESSION_REPO_FIRST.md",
       "operation": "MODIFY",
       "human_review": "REVIEW_REQUIRED",
       "reason": "Fix original Python tool extraction snippet to match the current EDU Git ZIP prefix while preserving independent HEAD/TREE and blob checks.",
@@ -541,7 +541,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Add negative original ZIP fixture rejecting retired LE naming, while retaining exact EDU success and hostile archive controls.",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "supersedes_register": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
       "supersedes_source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
       "same_source_main_change": "EXPLICIT_REVIEW_REQUIRED_PR_SLICE"
     },
@@ -551,7 +551,7 @@
       "human_review": "REVIEW_REQUIRED",
       "reason": "Replace obsolete OLD identity expectation with current EDU identity; assert prospective shadow is fail-closed after real rename without owner invocation.",
       "deletion_authorized": false,
-      "supersedes_register": "contracts/governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
       "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
     },
     {

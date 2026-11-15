@@ -16,6 +16,7 @@ jobs:
     permissions:
       contents: write
       issues: write
+      statuses: write
     timeout-minutes: 12
     steps:
       - name: Checkout complete Git history
@@ -50,3 +51,22 @@ jobs:
             } > "$RUNNER_TEMP/r7-v13-diagnostic-comment.md"
             gh issue comment 249 --body-file "$RUNNER_TEMP/r7-v13-diagnostic-comment.md"
           fi
+
+      - name: Publish bounded import error as commit status
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 - <<'PY'
+          import json,os,urllib.request
+          from pathlib import Path
+          p=Path(os.environ["RUNNER_TEMP"])/"r7-v13-import-receipt.json"
+          try:
+              d=json.loads(p.read_text());reason=str(d.get("error","UNKNOWN_FAILURE"))
+          except Exception:
+              reason="RECEIPT_NOT_AVAILABLE"
+          url="https://api.github.com/repos/Luke883i/iKant_EDU/statuses/"+os.environ["GITHUB_SHA"]
+          payload=json.dumps({"state":"failure","context":"r7-v13-import-diagnostic","description":reason[:138]}).encode()
+          req=urllib.request.Request(url,data=payload,method="POST",headers={"Authorization":"Bearer "+os.environ["GITHUB_TOKEN"],"Accept":"application/vnd.github+json","User-Agent":"r7-v13-diagnostic"})
+          with urllib.request.urlopen(req,timeout=20) as response: print("DIAG_STATUS",response.status)
+          PY

@@ -1,0 +1,106 @@
+{
+  "schema": "ikant-r7-v13-causal-reticulum/v1",
+  "authority": 0,
+  "product_go": false,
+  "source": {
+    "v10_commit": "c9a1179283958a7ffb30d1ad8c08af69d34fff0c",
+    "v10_tree": "9b6b80d7fe2f8536b9ce8633e09810fc87b81c28",
+    "v11_move_plan": "contracts/r7-v11-seven-root-contract.json",
+    "v12_epoch_validator": "scripts/r7-v12-epoch-audit.py",
+    "v12_commit": "7fa91861f6bd4a9760ad4ab69c0cdd048d9cab7c",
+    "v12_tree": "aa4176e537e047589523d3c0fcbd2420e7439b8f",
+    "v12_new_paths": [
+      "contracts/r7-v11-seven-root-contract.json",
+      "project/docs/R7_V11_SEVEN_ROOTS.md",
+      "scripts/r7-v11-seven-root-gate.py",
+      "scripts/r7-v12-epoch-audit.py",
+      "tests/r7-v12-epoch-audit.test.mjs"
+    ],
+    "v13_new_paths": [
+      "contracts/r7-v13-causal-reticulum.json",
+      "scripts/r7-v13-causal-audit.py",
+      "scripts/r7-v13-epoch-bridge.mjs",
+      "tests/r7-v13-epoch-bridge.test.mjs"
+    ],
+    "v13_modifications": [
+      "scripts/cora-pr-f-qualification.mjs",
+      "scripts/v5b-repository-governance-audit.mjs",
+      "tests/cora-pr-d1-blob-dedup.test.mjs"
+    ],
+    "preexisting_v10_unregistered": [
+      "contracts/repository-health-v10.json",
+      "docs/REPOSITORY_HEALTH_V10.md",
+      "package.json",
+      "scripts/repository-health-v10.mjs",
+      "tests/repository-health-v10.test.mjs"
+    ]
+  },
+  "abstract_statement": "Repository a 7 radici, con contrazione topologica dimostrata, mapping reversibile, storia verificabile, consumer e owner preservati, runtime e CI senza regressioni attribuibili al taglio, nessuna falsa autorita.",
+  "nodes": [
+    {
+      "id": "P",
+      "depends_on": [],
+      "dod": "Tree e byte sorgente da V10, Git e storia, governance storica intatta"
+    },
+    {
+      "id": "S",
+      "depends_on": [
+        "P"
+      ],
+      "dod": "15→7 directory, 15→9 file radice; causa = mappa univoca di rilocazione"
+    },
+    {
+      "id": "L",
+      "depends_on": [
+        "P",
+        "S"
+      ],
+      "dod": "Riversibilita 1630 originali e modes, nessuna perdita/duplicazione del mapping"
+    },
+    {
+      "id": "I",
+      "depends_on": [
+        "P",
+        "L"
+      ],
+      "dod": "Import, URL, manifest, workflow e consumer dinamici qualificati"
+    },
+    {
+      "id": "O",
+      "depends_on": [
+        "P",
+        "I"
+      ],
+      "dod": "Preservazione autorita Project EDU/MCP e review origin owners con evidenza indipendente"
+    },
+    {
+      "id": "Q",
+      "depends_on": [
+        "I",
+        "O"
+      ],
+      "dod": "Suite completa stessa HEAD, CI GitHub, CORA process-run e replay PASS"
+    },
+    {
+      "id": "A",
+      "depends_on": [
+        "P",
+        "S",
+        "L",
+        "I",
+        "O",
+        "Q"
+      ],
+      "dod": "Repository mantenibile e contrazione causale senza perdita di comportamenti"
+    }
+  ],
+  "abstract_gate": [
+    "P",
+    "S",
+    "L",
+    "I",
+    "O",
+    "Q"
+  ],
+  "non_promotion": "SCOPED_SOURCE_CONTRACTION_IS_NOT_FUNCTIONAL_DUPLICATION_REDUCTION_NOR_PRODUCT_GO"
+}

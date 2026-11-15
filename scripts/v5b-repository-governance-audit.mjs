@@ -336,6 +336,7 @@ export function qualifyPr249SourceEpoch(){
    'tests/r7-pr249-founding-contract.test.mjs',
    'tests/r7-pr249-physical-gate.test.mjs'].sort();
   const fixedMod=['.github/workflows/c53-physical-closure-hardening.yml',
+   '.github/workflows/project-session-repo-first.yml',
    'scripts/cora-minimal-absorption.mjs',
    'project/docs/IKANT_DOCUMENT_ATLAS.md',
    'project/docs/START_HERE.md','scripts/v5b-repository-governance-audit.mjs'].sort();

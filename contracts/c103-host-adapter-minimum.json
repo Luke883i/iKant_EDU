@@ -1,0 +1,45 @@
+{
+  "schema": "ikant-le-c103-host-adapter-minimum/v1",
+  "authority": 0,
+  "purpose": "Portable host interoperability boundary, never a new iKant owner or native host hook.",
+  "owners": {
+    "admission": "C72",
+    "routing": "C99",
+    "cognition": "C101",
+    "local_execution": "C102",
+    "ledger": "C87",
+    "shape_guard": "C98"
+  },
+  "adapter": "host chooses any authorized executable transport; only observed effects qualify",
+  "requires": [
+    "frozen source head",
+    "real EXPERIMENTAL C72 selection",
+    "distinct revocable co-host consent",
+    "exact bounded current input",
+    "actual source runtime invocation",
+    "local C87 append and independent reopen",
+    "byte-exact voice and digests",
+    "typed failure and replay rejection"
+  ],
+  "evidence": {
+    "E0": "host model draft only",
+    "E2": "C100 real binder only",
+    "E3": "C101+C87 local invocation independently observed",
+    "E4": "native host ingress and delivery witnessed independently"
+  },
+  "nonclaims": {
+    "canonical_active": false,
+    "native_chat_event": false,
+    "native_delivery": false,
+    "native_persistence": false,
+    "host_hook_created": false,
+    "new_owner": false,
+    "new_writer": false
+  },
+  "checks": {
+    "verifier": "host/c103-host-adapter-conformance.mjs",
+    "source_integration": "tests/c103-host-adapter.test.mjs",
+    "synthetic_mutations": "scripts/c103-falsify-100k.mjs",
+    "synthetic_cases": 100000
+  }
+}

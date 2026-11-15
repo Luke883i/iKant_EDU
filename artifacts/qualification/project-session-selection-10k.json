@@ -1,0 +1,73 @@
+{
+  "schema": "ikant-le-project-semantic-selection/v1",
+  "seed": "EXHAUSTIVE_10x10x10x10",
+  "cases": 10000,
+  "unique_cases": 10000,
+  "semantic_dimensions": [
+    "runtime_lifecycle",
+    "observed_host_version",
+    "epoch_ledger_binding",
+    "backlog_cardinality"
+  ],
+  "mutation_trace_sha256": "a7c3bd3df9b8aa35634cc7798ab71fe68d2c1364fb4a3a6ea1f1303c600cad1f",
+  "failures": 0,
+  "candidates": [
+    {
+      "id": "PROMPT_ONLY",
+      "bundle": false,
+      "owner_execution": false,
+      "recoverable": false,
+      "new_writer": false,
+      "external_service": false,
+      "eligible": false,
+      "additional_deployment_cost": 0
+    },
+    {
+      "id": "BUNDLE_PROMPT",
+      "bundle": true,
+      "owner_execution": true,
+      "recoverable": true,
+      "new_writer": false,
+      "external_service": false,
+      "eligible": false,
+      "additional_deployment_cost": 0
+    },
+    {
+      "id": "REPO_OWNER_PROJECTION",
+      "bundle": false,
+      "owner_execution": true,
+      "recoverable": true,
+      "new_writer": false,
+      "external_service": false,
+      "eligible": true,
+      "additional_deployment_cost": 0
+    },
+    {
+      "id": "MCP_UI_SERVICE",
+      "bundle": false,
+      "owner_execution": true,
+      "recoverable": true,
+      "new_writer": false,
+      "external_service": true,
+      "eligible": true,
+      "additional_deployment_cost": 1
+    },
+    {
+      "id": "SECOND_SESSION_LEDGER",
+      "bundle": false,
+      "owner_execution": true,
+      "recoverable": true,
+      "new_writer": true,
+      "external_service": false,
+      "eligible": false,
+      "additional_deployment_cost": 0
+    }
+  ],
+  "selected": "REPO_OWNER_PROJECTION",
+  "optimality_scope": "MINIMUM_ADDITIONAL_DEPLOYMENT_AMONG_FIVE_DECLARED_ARCHITECTURES_UNDER_AVAILABLE_GITHUB_API_AND_NODE",
+  "human_ux_tested": false,
+  "real_model_efficacy_tested": false,
+  "native_ui_tested": false,
+  "global_semantic_lossless_attested": false,
+  "authority": 0
+}

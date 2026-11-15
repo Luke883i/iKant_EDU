@@ -1,0 +1,38 @@
+# Standalone iKant MCP external candidate. This is NOT deployed or product-approved.
+# A real external OAuth authorization server is required.
+services:
+  - type: web
+    name: ikant-mcp-standalone-candidate
+    runtime: node
+    plan: starter
+    region: frankfurt
+    autoDeploy: false
+    buildCommand: cd plugins/ikant-le-session-chat/server && npm install --ignore-scripts --no-audit --no-fund
+    startCommand: node plugins/ikant-le-session-chat/server/server.mjs
+    healthCheckPath: /healthz
+    maxShutdownDelaySeconds: 60
+    disk:
+      name: ikant-mcp-sessions
+      mountPath: /var/data/ikant-le
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: IKANT_MCP_DEPLOYMENT_PROFILE
+        value: standalone
+      - key: IKANT_MCP_AUTH_MODE
+        value: oauth
+      - key: IKANT_MCP_PERSISTENCE_ROOT
+        value: /var/data/ikant-le
+      - key: IKANT_LE_DEPLOYMENT_ROOT
+        value: /var/data/ikant-le/deployment
+      - key: IKANT_MCP_ALLOWED_ORIGIN
+        value: https://chatgpt.com
+      - key: IKANT_ONESHELL_THREAD_PANEL
+        value: '0'
+      - key: IKANT_MCP_OAUTH_RESOURCE
+        sync: false
+      - key: IKANT_MCP_OAUTH_ISSUER
+        sync: false
+      - key: IKANT_MCP_OAUTH_JWKS_URL
+        sync: false

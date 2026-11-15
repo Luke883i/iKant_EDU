@@ -1,0 +1,44 @@
+name: legacy-c20-compatibility
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/session-chat-deployment.mjs'
+      - 'plugins/ikant-le-session-chat/**'
+      - 'scripts/session-chat-runtime-cli.mjs'
+      - 'scripts/c20-dual-profile-falsify.c'
+      - 'tests/c20-session-chat-deployment.test.mjs'
+      - '.github/workflows/c20-dual-profile-session-chat.yml'
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run check
+      - run: npm run check:mcp
+      - run: npm run falsify:c15
+      - run: npm run falsify:c17
+      - run: npm run falsify:c18
+      - run: npm run falsify:c19
+      - run: npm run falsify:c20
+      - name: Install pinned MCP reference dependencies
+        run: npm --prefix plugins/ikant-le-session-chat/server install --ignore-scripts --no-audit --no-fund
+      - name: Auto-ensure reference runtime and smoke MCP server
+        run: |
+          export IKANT_LE_DEPLOYMENT_ROOT="$RUNNER_TEMP/ikant-le-deployment"
+          PORT=8788 IKANT_LE_DEPLOYMENT_ROOT="$IKANT_LE_DEPLOYMENT_ROOT" npm --prefix plugins/ikant-le-session-chat/server start > "$RUNNER_TEMP/mcp.log" 2>&1 &
+          pid=$!
+          for i in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:8788/ > "$RUNNER_TEMP/mcp-health.json"; then break; fi
+            sleep 1
+          done
+          curl -fsS http://127.0.0.1:8788/
+          test -f "$IKANT_LE_DEPLOYMENT_ROOT/deployment.json"
+          printf '{}' | IKANT_LE_DEPLOYMENT_ROOT="$IKANT_LE_DEPLOYMENT_ROOT" node scripts/session-chat-runtime-cli.mjs ensure > "$RUNNER_TEMP/ensure.json"
+          node -e "const x=require(process.env.IKANT_LE_DEPLOYMENT_ROOT+'/deployment.json');if(!x.reference_root_reopen_verified||x.authority!==0)process.exit(1)"
+          kill "$pid"

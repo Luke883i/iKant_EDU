@@ -1,0 +1,181 @@
+{
+  "schema": "ikant-le-c97-chat-project-uiux/v1",
+  "authority": 0,
+  "source_head_baseline": "61ad7cb99dad9b83546f0f20d4a6f135a053e219",
+  "slice": "C97.DETERMINISTIC_SEMANTIC_UI_PROJECTION_PREPR",
+  "scope": {
+    "project_prompt": "REQUEST_ONLY_NOT_RENDERER",
+    "host_model": "REPLACEABLE_ZERO_AUTHORITY",
+    "visual_interface": "PER_REPLY_IF_SUPPORTED",
+    "sticky_overlay": false,
+    "native_widget_installed": false,
+    "owner": "host/c97-uiux-projection.mjs",
+    "new_writer": false,
+    "new_lifecycle": false,
+    "canonical_issuer": false,
+    "runtime_root_change": false
+  },
+  "immutable_roles": [
+    "HEADER",
+    "SURFACE_A",
+    "STATUS",
+    "EVIDENCE",
+    "ARTIFACTS",
+    "DETAILS"
+  ],
+  "icon_tokens": {
+    "IDENTITY": "shield-check",
+    "MODE": "layers",
+    "STATUS": "activity",
+    "BLOCKER": "alert-triangle",
+    "EVIDENCE": "file-check-2",
+    "ARTIFACT": "file-text",
+    "LIMITS": "info",
+    "TELEMETRY": "chart-no-axes-combined"
+  },
+  "semantic_tokens": {
+    "brand": "iKant",
+    "layout": "SINGLE_COLUMN_COMPACT",
+    "visual_order": [
+      "HEADER",
+      "SURFACE_A",
+      "STATUS",
+      "EVIDENCE",
+      "ARTIFACTS",
+      "DETAILS"
+    ],
+    "visual_theme": "HOST_NATIVE_NEUTRAL",
+    "responsive": "SINGLE_COLUMN",
+    "text_fallback": "ASCII",
+    "maximum_verified_links": 3,
+    "actions_default": [],
+    "surface_a": "EXACT_UTF8_NO_REWRITE",
+    "style_version": "C97_V1",
+    "color_is_authority": false
+  },
+  "ui_stages": [
+    "FIRST_CONTACT",
+    "TERMS_PENDING",
+    "AWAIT_ACCEPTANCE",
+    "ACCEPTED_AWAIT_MODE",
+    "MODE_EXPERIMENTAL",
+    "MODE_CANONICAL",
+    "SOURCE_FETCH",
+    "COMPUTE_READY",
+    "BLOCKED_CAPABILITY",
+    "BLOCKED_INTEGRITY",
+    "OUTPUT_EXPERIMENTAL",
+    "OUTPUT_CANONICAL",
+    "LONG_INPUT",
+    "ARTIFACT_MISSING",
+    "REENTRY",
+    "EXITED",
+    "HOST_UI_UNAVAILABLE",
+    "ACCESSIBILITY",
+    "SOURCE_EPOCH_DRIFT",
+    "UNKNOWN_HOST_CAPABILITY"
+  ],
+  "modes": [
+    "UNSELECTED",
+    "EXPERIMENTAL",
+    "CANONICAL"
+  ],
+  "source_kinds": [
+    "ORIENTATION",
+    "DIAGNOSTIC",
+    "C81_RUNTIME",
+    "C32_SESSION_SHELL"
+  ],
+  "owners": {
+    "experimental": "host/c81-runtime-projection.mjs#projectC81RuntimeTurn",
+    "canonical": "src/session-shell.mjs#validateSessionShell",
+    "native_event": "EXTERNAL_HOST",
+    "source_origin": "EXTERNAL_HOST",
+    "persistence": "SINGLE_WRITER_AND_FUTURE_READBACK",
+    "artifacts": "HOST_NATIVE_DELIVERY_RECEIPT"
+  },
+  "compression": {
+    "L0": "SOURCE_OWNER_PROOF_BYTES",
+    "L1": "DETERMINISTIC_UI_IR_SHA256",
+    "L2": "COMPACT_ASCII_OR_CHAT_PROJECTION",
+    "L3": "OPTIONAL_ADAPTIVE_NATIVE_RENDER",
+    "nonreducing_fields": [
+      "mode",
+      "status",
+      "source_head",
+      "first_unclosed_edge",
+      "surface_a_utf8",
+      "surface_a_sha256",
+      "authority",
+      "native_delivery_attested",
+      "persistent_attested"
+    ],
+    "L1_determinism": "IDENTICAL_INPUT_BYTES_IMPLIES_IDENTICAL_FRAME_BYTES",
+    "L3_pixel_determinism_guaranteed": false
+  },
+  "host_features": [
+    {
+      "id": "PROJECT_PROMPT",
+      "observed": "OFFICIAL_DOCUMENTED",
+      "runtime_guarantee": false
+    },
+    {
+      "id": "INTELLIGENT_UI",
+      "observed": "OFFICIAL_DOCUMENTED_ELIGIBILITY_DEPENDENT",
+      "runtime_guarantee": false
+    },
+    {
+      "id": "CODEBLOCK_PREVIEW",
+      "observed": "OFFICIAL_DOCUMENTED_CLIENT_DEPENDENT",
+      "runtime_guarantee": false
+    },
+    {
+      "id": "ASCII_TEXT",
+      "observed": "SUPPORTED_FALLBACK",
+      "runtime_guarantee": false
+    },
+    {
+      "id": "APPS_SDK_UI",
+      "observed": "OFFICIAL_DOCUMENTED_SEPARATE_INSTALLED_APP",
+      "runtime_guarantee": false
+    },
+    {
+      "id": "NATIVE_WIDGET_STATE",
+      "observed": "HOST_APP_CAPABILITY_IF_INSTALLED",
+      "runtime_guarantee": false
+    },
+    {
+      "id": "NATIVE_EVENT_READBACK",
+      "observed": "NOT_WITNESSED_FOR_THIS_REPO",
+      "runtime_guarantee": false
+    }
+  ],
+  "truth_constraints": {
+    "presentation_is_execution": false,
+    "local_echo_is_native_event": false,
+    "source_hash_is_github_origin": false,
+    "project_memory_is_ledger": false,
+    "project_prompt_is_fixed_overlay": false,
+    "ui_status_may_promote_active": false,
+    "host_color_or_icon_is_proof": false,
+    "model_may_rewrite_owner_voice": false,
+    "ui_may_synthesize_links": false,
+    "ui_may_generate_callbacks": false,
+    "unknown_is_pass": false,
+    "phenomenology": "UNKNOWN"
+  },
+  "qualify": {
+    "finite_phase_count": 20,
+    "all_stages_required": true,
+    "zero_fake_control": true,
+    "zero_false_active": true,
+    "same_input_digest_stable_across_sessions": true,
+    "no_new_writer": true,
+    "canonical_shell_existing_validator_required": true,
+    "c81_existing_projector_required": true,
+    "repo_ci_required": true,
+    "physical_host_e2e_separate": true,
+    "project_pp_only_is_not_native_test": true,
+    "h95_separate": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "ikant-le-edu-v8-holistic-dod/v1",
+  "authority": 0,
+  "base_main_sha": "20471203dc944fc113f9cee8d3ca18a1d6039539",
+  "base_tree_sha": "2efdddcc65894e71af5cf7af0eaf7b1adf0e2514",
+  "source_original_sha": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
+  "source_carrier_sha256": "d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d",
+  "owners": {"source":"original C107 at pinned source epoch","carrier":"PR118 c107-carrier-consumer","experimental_host":"PR119 edu-cohost-outcome","semantic_method":"PR120 edu-c70-method-v7 + C117","single_writer":"original C87","host_bundle":"00_HOST_CONTRACT.md only"},
+  "mutations": [{"target":"runtime-release-policy","cases":1000000,"seed":"0x2026c120","oracle":"independent 18-bit vector and forbidden claims","not_llm":true},{"target":"external-host-project","cases":1000000,"seed":"0x2026c121","oracle":"independent INDEX evidence bitvector and stop","not_llm":true}],
+  "new_runtime_invariants": ["ONE_GUIDED_IN_FLIGHT_PER_ADAPTER","DENY_CONCURRENT_BEFORE_HOST_LANGUAGE","DISPOSE_ABORTS_BEFORE_C87","RELEASE_LOCK_AFTER_DENIAL","C87_SINGLE_WRITER_UNMODIFIED","NO_ACTIVE_NO_PROVIDER_NO_NATIVE_CLAIMS"],
+  "declared_open_edges": ["NATIVE_CHATGPT_PER_TURN_INTERPOSITION","REAL_HOST_MODEL_RANDOMIZED_SEMANTIC_CAUSALITY","PROVIDER_AUTHENTICATED_ORIGIN","CROSS_CHAT_C87_PERSISTENCE","HUMAN_INSTALLS_PROJECT_PROMPT_AND_ZIP"],
+  "audit_pr_numbers": [111,112,113,114,115,116,117,118,119,120],
+  "test_owner": "tests/edu-v8-concurrency.test.mjs; tests/edu-v8-release-policy.test.mjs; scripts/edu-v8-runtime-falsify-1m.mjs",
+  "no_second_original_writer": true,
+  "no_new_source_carrier": true,
+  "original_terms_unchanged": true,
+  "lattice_nodes": 24,
+  "lattice_source": "docs/EDU_V8_HOLISTIC_TRAJECTORY_AND_DOD.md",
+  "readiness": "LOCAL_HARDENING_TESTED_NOT_NATIVE_DEPLOYED"
+}

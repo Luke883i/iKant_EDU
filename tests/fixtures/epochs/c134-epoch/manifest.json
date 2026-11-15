@@ -1,0 +1,41 @@
+{
+  "schema": "ikant-c134-versioned-cognitive-overlay/v1",
+  "authority": 0,
+  "parent_main_commit": "016fe816099cf66e7a5931e27c586e3fad7fa9eb",
+  "source_kind": "EXPERIMENTAL_COMPOSITE_NOT_GIT_COMMIT",
+  "overlays": [
+    {
+      "path": "src/c83-semantic-router.mjs",
+      "original_git_blob_sha1": "945b8dd7d6b49b73c6364d202526ace9d96e1c5c",
+      "next_git_blob_sha1": "4ee62fea620baeb4c039544bdbf114c69b060999",
+      "next_sha256": "9f9b7e4e0e92aa4015867e89c5f7bc42c9242e03792395bbe8253614c45f5429",
+      "bytes": 3771
+    },
+    {
+      "path": "host/c114-ontology-language-policy.mjs",
+      "original_git_blob_sha1": "7bd24e4eb35eb27774b8954a55987b1fb4c3999f",
+      "next_git_blob_sha1": "ca9e94d42fb45802c7995bb53959dba8b8e3b31e",
+      "next_sha256": "1644551efc361834aa3ce1d337cb05437c316c1723fdbbaa56fc0407b8fabb08",
+      "bytes": 4912
+    },
+    {
+      "path": "host/c107-experimental-turn.mjs",
+      "original_git_blob_sha1": "1cc601d461800b4dc796bc34078fac6a5074ace7",
+      "next_git_blob_sha1": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "next_sha256": "8572a650e024386f22b0b8d4a30c520b5ba472388fa037dbbbf53e52f5fefc76",
+      "bytes": 11918
+    },
+    {
+      "path": "host/edu-c70-method-v7.mjs",
+      "original_git_blob_sha1": "f7a2d933726d2b66aed6b65e344d55217af8e5bd",
+      "next_git_blob_sha1": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "next_sha256": "a8f3fc240310b89074e673321b3895bf18d452491eb8ac51c48cd85e5be27048",
+      "bytes": 13362
+    }
+  ],
+  "historic_c107_c124_pins_preserved": true,
+  "native_hook_attested": false,
+  "general_llm_uplift_attested": false,
+  "canonical_active": false,
+  "composite_epoch_id": "aa62bdaf38b7b04e0466679a75a19734092d373e"
+}

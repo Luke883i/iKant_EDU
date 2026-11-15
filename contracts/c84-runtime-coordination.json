@@ -1,0 +1,83 @@
+{
+  "schema": "ikant-le-c84-runtime-coordination-proposal/v2",
+  "authority": 0,
+  "baseline_main": "499225373756e5f93fea0bc73f5d94643e6b177e",
+  "governance_contract": "contracts/c84-host-composition-convergence.json",
+  "admission": {
+    "terms_gate": "LATER_EXACT_I_ACCEPT",
+    "next": "C72_INTRO_THEN_SEPARATE_CANONICAL_OR_EXPERIMENTAL",
+    "no_second_experimental_accept": true
+  },
+  "canonical": {
+    "scope": "C59_C64_C66_C68_ONLY",
+    "unchanged_owner": true,
+    "original_native_ingress_required": true,
+    "active_and_docx_only_on_owner_receipts": true,
+    "legacy_transport_status_is_not_active": true
+  },
+  "experimental": {
+    "scope": "POST_C72_VERIFIED_EXPERIMENTAL_SELECTION_ONLY",
+    "carriers_owner": "host/c82-experimental-carriers.mjs",
+    "turn_orchestrator": "host/c84-experimental-transport.mjs",
+    "writer": "host/c78-host-relay.mjs",
+    "voice_pipeline": [
+      "C77",
+      "C70",
+      "C71",
+      "C73",
+      "C78",
+      "C79",
+      "C81"
+    ],
+    "maximum_carrier_callbacks": 6,
+    "parallelism": {
+      "maximum_awaited_callback_slots": 8,
+      "default": 4,
+      "providers_must_be_actually_callable": true
+    },
+    "unique_writer_count": 1,
+    "first_qualified_samehash_candidate_per_path": true,
+    "all_paths_verified_before_staging": true,
+    "legacy_carriers_allowed": [
+      "WARM_CACHE_EXACT",
+      "GITHUB_API_BASE64",
+      "GITHUB_GIT_BLOB_API",
+      "PINNED_GITHUB_ZIP",
+      "PINNED_PERMALINK",
+      "LOCAL_DIRECT",
+      "VERIFIED_OPAQUE_RELAY"
+    ],
+    "human_file_bridge": "LAST_RESORT_ONLY",
+    "model_is_not_carrier_selector": true,
+    "samehash": {
+      "manifest_sha256": true,
+      "file_bytes_and_sha256": true,
+      "original_git_blob_sha1": true,
+      "write_and_reopen": true
+    },
+    "samehash_not_git_ref_authentication": true,
+    "c81_source_merkle_for_runtime_projection": true,
+    "no_native_event_or_persistence_claim": true,
+    "no_canonical_active_claim": true,
+    "input_limit_utf8_bytes": 600,
+    "timeout_not_evidence_of_provider_cancellation": true
+  },
+  "business": {
+    "reproducible_repo_pr_snapshot": {
+      "closed": 92,
+      "merged": 85,
+      "closed_unmerged": 7
+    },
+    "target_automatic_machine_bootstrap_fraction": 0.95,
+    "target_manual_file_handoff_fraction_max": 0.05,
+    "target_first_runtime_voice_p95_seconds_max": 120,
+    "host_trials_observed_by_this_proposal": 0,
+    "h95_field_attested": false
+  },
+  "release_boundaries": {
+    "local_fixture_tests_are_native_host_evidence": false,
+    "orphan_git_tree_is_a_pull_request": false,
+    "github_connector_bytes_to_node_must_be_executed": true,
+    "mode_selection_alone_is_not_activation": true
+  }
+}

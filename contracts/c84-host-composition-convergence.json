@@ -1,0 +1,194 @@
+{
+  "schema": "ikant-le-c84-host-composition-convergence/v1",
+  "authority": 0,
+  "change_status": "PROPOSED_REPOSITORY_POLICY_NOT_RUNTIME_ACTIVATION",
+  "frozen_source_head_for_audit": "499225373756e5f93fea0bc73f5d94643e6b177e",
+  "mode_router": {
+    "owner": "host/c72-unified-mode-admission.mjs",
+    "human_gate": "I ACCEPT",
+    "separate_mode_choice": [
+      "CANONICAL",
+      "EXPERIMENTAL"
+    ],
+    "auto_activate_after_accept": false
+  },
+  "canonical_mode": {
+    "owner": "contracts/session-chat-composition-channel.json",
+    "native_original_event_required": true,
+    "source_verified_c59_owner_required": true,
+    "active_requires_runtime_readback": true,
+    "docs_same_turn_required": true,
+    "legacy_carriers_reclassified_for_c59_active": false
+  },
+  "experimental_mode": {
+    "owner": "host/c82-experimental-carriers.mjs",
+    "scope": "TRANSPORT_CANONICAL_ELIGIBLE_EXPERIMENTAL_ONLY",
+    "source_head_frozen": true,
+    "admission": "C72_VALIDATED_EXPERIMENTAL_SELECTION",
+    "source_manifest": "C77_EXACT_CONTENT_ADDRESSED",
+    "max_carrier_callbacks": 6,
+    "max_parallel_workers": 8,
+    "one_staging_writer": "C78HostRelay",
+    "one_cognitive_execution_per_human_input": true,
+    "downstream_route": [
+      "C77",
+      "C78",
+      "C79",
+      "C81"
+    ],
+    "required_voice_sources": [
+      "C70_REPOSITORY_FALLBACK",
+      "C70_REPOSITORY_GUARD"
+    ],
+    "allowed_native_claim": false,
+    "allowed_active_claim": false,
+    "allowed_persistence_claim": false
+  },
+  "legacy_transport_registry": [
+    {
+      "id": "GITHUB_API_BASE64",
+      "scope": "CANONICAL_ELIGIBLE_EXPERIMENTAL_TRANSPORT",
+      "kind": "machine",
+      "prove": "EXACT_BYTES"
+    },
+    {
+      "id": "GITHUB_GIT_BLOB_API",
+      "scope": "CANONICAL_ELIGIBLE_EXPERIMENTAL_TRANSPORT",
+      "kind": "machine",
+      "prove": "EXACT_BYTES"
+    },
+    {
+      "id": "PINNED_PERMALINK",
+      "scope": "CANONICAL_ELIGIBLE_EXPERIMENTAL_TRANSPORT",
+      "kind": "machine",
+      "prove": "EXACT_BYTES"
+    },
+    {
+      "id": "PINNED_GITHUB_ZIP",
+      "scope": "CANONICAL_ELIGIBLE_EXPERIMENTAL_TRANSPORT",
+      "kind": "machine",
+      "prove": "EXACT_BYTES"
+    },
+    {
+      "id": "WARM_CACHE_EXACT",
+      "scope": "CANONICAL_ELIGIBLE_EXPERIMENTAL_TRANSPORT",
+      "kind": "cache",
+      "prove": "EXACT_BYTES"
+    },
+    {
+      "id": "LOCAL_DIRECT",
+      "scope": "CANONICAL_ELIGIBLE_EXPERIMENTAL_TRANSPORT",
+      "kind": "local",
+      "prove": "EXACT_BYTES"
+    },
+    {
+      "id": "VERIFIED_OPAQUE_RELAY",
+      "scope": "CANONICAL_ELIGIBLE_EXPERIMENTAL_BYTE_PATH",
+      "kind": "relay",
+      "prove": "EXACT_BYTES"
+    },
+    {
+      "id": "HOST_FILE_BRIDGE",
+      "scope": "ELIGIBLE_LAST_RESORT_AFTER_MACHINE_EXHAUSTION",
+      "kind": "human",
+      "prove": "EXACT_BYTES"
+    }
+  ],
+  "baseline_integrity": {
+    "same_sha_required": true,
+    "source_per_file_sha256": true,
+    "original_git_blob_sha1_for_original_sources": true,
+    "manifest_sha256": true,
+    "local_write_reopen": true,
+    "commit_tree_reachability_for_c81_projection": true,
+    "same_sha_is_github_ref_authentication": false,
+    "carrier_name_is_capability_proof": false,
+    "source_origin_attested_by_samesha": false
+  },
+  "parallelism": {
+    "provider_callbacks_from_actually_callable_host_only": true,
+    "same_shas_first_qualified_wins": true,
+    "all_files_required": true,
+    "carrier_failure_local_only": true,
+    "model_selects_carrier": false,
+    "one_C78_writer": true,
+    "no_parallel_lifecycle_or_state_writers": true,
+    "probe_container_github_dns_not_required": true
+  },
+  "document_precedence": [
+    {
+      "id": "HOST_SAFETY",
+      "scope": "GLOBAL",
+      "precedence": 1
+    },
+    {
+      "id": "C72_TERMS_ADMISSION",
+      "scope": "NEW_CHAT",
+      "precedence": 2
+    },
+    {
+      "id": "C59_CANONICAL_OWNER",
+      "scope": "CANONICAL_ONLY",
+      "precedence": 3
+    },
+    {
+      "id": "C82_C77_C78_C79_C81",
+      "scope": "EXPERIMENTAL_ONLY",
+      "precedence": 3
+    },
+    {
+      "id": "HISTORICAL_PROJECTED_PROMPTS",
+      "scope": "ARCHIVE_COMPATIBILITY",
+      "precedence": 4
+    }
+  ],
+  "historical_surfaces": {
+    "live_admission": [
+      "TERMS.md",
+      "AGENTS.md",
+      "ADMISSION.json",
+      "BOOTSTRAP.json",
+      "host/c72-unified-mode-admission.mjs"
+    ],
+    "canonical_only": [
+      "contracts/session-chat-local-host-kernel.json",
+      "docs/SESSION_CHAT_LOCAL_PROMPT.md",
+      "contracts/session-chat-composition-channel.json"
+    ],
+    "experimental_only": [
+      "host/c77-first-turn.mjs",
+      "host/c78-host-relay.mjs",
+      "host/c79-native-chat-surface.mjs",
+      "host/c81-runtime-projection.mjs",
+      "host/c82-experimental-carriers.mjs"
+    ],
+    "descriptive": [
+      "README.md",
+      "docs/ARCHITECTURE.md",
+      "docs/GOVERNANCE.md"
+    ],
+    "historical_non_nominative": [
+      "docs/C59_PR1_68_LINEAGE_AUDIT.md",
+      "docs/C69_CAPABILITY_FIRST_EXPERIMENTAL.md",
+      "docs/C82_EXPERIMENTAL_SEMANTIC_RELEASE.md"
+    ]
+  },
+  "metrics_definition": {
+    "pr_merged_numerator": "nonempty merged_at from GitHub pull metadata",
+    "pr_merged_denominator": "all state=closed PR in paginated census",
+    "pr_title_tags": "independent overlapping regex on title; do not add to get total",
+    "carrier_coverage": "readback_verified_manifest_entries / all_manifest_entries",
+    "transport_success": "completed manifest and C78 write/reopen verified / attempted sessions",
+    "latency_p95": "monotonic host timing only (not estimated by PR counts)",
+    "native_success": "independent host-delivery receipt / actual host sessions",
+    "observed_native_sessions": 0
+  },
+  "observed_gaps": [
+    "C72_EXECUTED_SELECTION_NOT_WITNESSED_IN_CHAT",
+    "GITHUB_CONNECTOR_TO_NODE_BYTE_TRANSPORT_NOT_WITNESSED_IN_CHAT",
+    "C81_GIT_SOURCE_READBACK_NOT_EXECUTED_CURRENT_INPUT",
+    "NATIVE_CHAT_EVENT_DELIVERY_NOT_WITNESSED",
+    "REAL_P95_AND_H95_FIELD_METRICS_NOT_MEASURED"
+  ],
+  "no_runtime_success_claim": true
+}

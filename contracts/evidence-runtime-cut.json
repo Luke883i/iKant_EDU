@@ -1,0 +1,126 @@
+{
+  "schema": "ikant-le-c62-evidence-runtime-cut/v1",
+  "slice": "C62.EVIDENCE_RUNTIME_CUT",
+  "authority": 0,
+  "source_head_base": "95ad46089e4c9ebdeee18da1f3a43f9e16a13a3e",
+  "objective": "RAW5_FROZEN_EVIDENCE__RUNTIME8_LOCAL_BYTES",
+  "ontology": {
+    "promise_contract": "contracts/ikant-le.json#ontological_promise",
+    "source_binding": "EXACT_SOURCE_HEAD",
+    "preaccept_evidence_paths": [
+      "README.md",
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "AGENTS.md",
+      "TERMS.md"
+    ],
+    "preaccept_evidence_representation": "EXACT_FROZEN_UTF8_BYTES_IN_PREACCEPT_HANDOFF_V2",
+    "postaccept_runtime_paths": [
+      "src/runtime-root-verified.mjs",
+      "runtime-root/shard-000.json",
+      "runtime-root/shard-001.json",
+      "runtime-root/shard-002.json",
+      "runtime-root/shard-003.json",
+      "runtime-root/shard-004.json",
+      "runtime-root/shard-005.json",
+      "runtime-root/shard-006.json"
+    ],
+    "pre_acquisition_object_authority": "FROZEN_BOOTSTRAP.post_accept_fastboot.remote_paths",
+    "cold_kernel_owner": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",
+    "relay_manifest_role": "VERIFICATION_PROJECTION_OF_FROZEN_BOOTSTRAP",
+    "orientation_runtime_projection": ".ikant/orientation-projection.json",
+    "canonical_active_authority": "C59_CANONICAL"
+  },
+  "dod": {
+    "global": [
+      "ONTOLOGICAL_PROMISE_36_OF_36",
+      "ONE_COLD_OWNER",
+      "NO_NEW_CARRIER",
+      "NO_NEW_LIFECYCLE",
+      "NO_PREACQUISITION_MANIFEST_DEPENDENCY",
+      "C59_ACTIVE_READBACK_DOMINATES"
+    ],
+    "intermediate": [
+      "RAW5_BYTES_BOUND_TO_PATH_BLOB_BYTES_SOURCE_HEAD",
+      "BOOTSTRAP_RAW_BYTES_AUTHOR_RUNTIME8_OBJECT_SET",
+      "RUNTIME8_ONLY_RELAY_OBJECT_SET",
+      "OWNER_ISSUED_EXECUTOR_FROM_RUNTIME8_SAMEHASH",
+      "KERNEL_DERIVED_ORIENTATION_PROJECTION",
+      "MATERIALIZATION_BINDS_PROJECTION_EXECUTOR_RUNTIME_ROOT"
+    ],
+    "local": [
+      "ORIENTATION_LOCAL_FILES_REQUIRED_0",
+      "RUNTIME8_LOCAL_WRITE_REOPEN_SAMEHASH_8_OF_8",
+      "MATERIALIZED_RUNTIME_MEMBERS_REOPEN_51_OF_51",
+      "TERMS_READS_FROM_VERIFIED_PROJECTION",
+      "CONSTITUTIONAL_FINGERPRINT_READS_FROM_VERIFIED_PROJECTION",
+      "SCRATCH_WORKSPACE_SEED_ONLY_BOOTSTRAP_AND_LOADER",
+      "TAMPER_FAIL_CLOSED"
+    ]
+  },
+  "metrics": {
+    "architecture_candidates": 1000,
+    "architecture_survivors": 2,
+    "unique_pareto_minimum_required": true,
+    "preaccept_source_read_count": 5,
+    "runtime_transport_object_count": 8,
+    "runtime_member_count": 51,
+    "orientation_runtime_file_count": 0,
+    "cold_seed_object_count": 2,
+    "new_carrier_count": 0,
+    "new_lifecycle_count": 0,
+    "semantic_mutations": 10000,
+    "unsafe_accept_required": 0,
+    "oracle_mismatch_required": 0,
+    "valid_false_reject_required": 0,
+    "deletion_mutants_killed_required": "ALL",
+    "scratch_e2e_required": true,
+    "runtime_root_verify_required": true,
+    "repository_check_required": true,
+    "ci_required": "ALL_GREEN"
+  },
+  "anti_entropy": {
+    "selection_seed": 620071,
+    "mutation_seed": 62007162,
+    "frozen_source_head_required": true,
+    "deterministic_projection": true,
+    "projection_fields": [
+      "source_head",
+      "orientation_objects",
+      "orientation_object_set_sha256",
+      "terms_text",
+      "terms_digest",
+      "constitutional_fingerprint",
+      "receipt_sha256"
+    ],
+    "host_derived_final_fingerprint_forbidden": true,
+    "projection_receipt_bound_to_materialization": true
+  },
+  "anti_cyclicity": {
+    "bootstrap_remote_paths_available_before_loader_execution": true,
+    "loader_manifest_not_required_to_fetch_loader": true,
+    "relay_manifest_may_only_attest_existing_runtime8_set": true,
+    "caller_may_not_construct_activation_executor": true,
+    "runtime_may_not_require_orientation_source_files": true
+  },
+  "checklist": [
+    "CONTRACT_SELECTION_1K_PASS",
+    "PREACCEPT_V2_CARRIES_EXACT_RAW5",
+    "COLD_VALIDATOR_ACCEPTS_RAW5_WITHOUT_LOCAL_5",
+    "BOOTSTRAP_SEED_MATCHES_FROZEN_BOOTSTRAP",
+    "RELAY_MANIFEST_BINDS_RUNTIME8_ONLY",
+    "RELAY_OBSERVATIONS_8_OF_8",
+    "EXECUTOR_RUNTIME_OBJECTS_8_OF_8",
+    "ORIENTATION_PROJECTION_WRITTEN_AND_REOPENED",
+    "MATERIALIZER_WRITES_ZERO_ORIENTATION_SOURCE_FILES",
+    "RUNTIME_READ_TERMS_FROM_PROJECTION",
+    "RUNTIME_FINGERPRINT_FROM_PROJECTION",
+    "C59_HANDOFF_VALID",
+    "C59_CANONICAL_ACTIVE_READBACK_VALID",
+    "C62_10K_MUTATIONS_PASS",
+    "SCRATCH_E2E_PASS",
+    "RUNTIME_ROOT_VERIFY_PASS",
+    "REPOSITORY_CHECK_PASS",
+    "FULL_CI_GREEN"
+  ]
+}

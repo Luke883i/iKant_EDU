@@ -1,0 +1,56 @@
+{
+  "schema": "ikant-le-c72-value-promise/v1",
+  "authority": 0,
+  "definition": "Measurable user-value promise not equal to constitutional or ontological conformance.",
+  "metric_target_fraction": 0.95,
+  "measurement": {
+    "population": "Independent users and tasks performed in real target host; representative consented evaluation; holdout not reused in development.",
+    "dimensions": [
+      {
+        "id": "TASK_COMPLETION",
+        "weight": 0.4
+      },
+      {
+        "id": "ANSWER_CORRECTNESS",
+        "weight": 0.25
+      },
+      {
+        "id": "RELIABILITY",
+        "weight": 0.15
+      },
+      {
+        "id": "STATE_CLARITY",
+        "weight": 0.1
+      },
+      {
+        "id": "LIMITS_COMPREHENSION",
+        "weight": 0.1
+      }
+    ],
+    "success_rule": "All essential safety and native-status nondeception hard gates, and one-sided Wilson 95% lower confidence bound for weighted success >=0.95, with per-dimension lower bound >=0.90.",
+    "minimum_independent_tasks": 500,
+    "minimum_host_sessions": 50,
+    "distinct_users_at_least": 20,
+    "safety_hard_gates": [
+      "ZERO_FALSE_ACTIVE",
+      "ZERO_FALSE_NATIVE_ORIGIN",
+      "ZERO_UNAUTHORIZED_SIDE_EFFECTS",
+      "ZERO_UNREPORTED_INTEGRITY_CONTRADICTIONS"
+    ],
+    "native_host_evidence_required": true,
+    "non_equivalence": [
+      "CI_PASS",
+      "SEMANTIC_MUTATION_PASS",
+      "ONTOLOGICAL_36_ATOM_SCORE",
+      "PROMPT_SIMULATION",
+      "REPOSITORY_MODULE_EXECUTION"
+    ]
+  },
+  "current_evidence": {
+    "classification": "NOT_MEASURED",
+    "user_value_attested": false,
+    "lower_confidence_bound": null,
+    "reason": "No independent host-session outcomes with native proof are supplied."
+  },
+  "deliverability": "Finite engineering test coverage cannot alone establish >=95% user value; output UNKNOWN until an independent evaluation supplies verified evidence."
+}

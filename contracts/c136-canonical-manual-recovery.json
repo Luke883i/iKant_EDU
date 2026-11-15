@@ -1,0 +1,41 @@
+{
+  "schema": "ikant-le-c136-canonical-manual-fallback/v1",
+  "authority": 0,
+  "status": "CANDIDATE_PRECANONICAL_SOURCE_RECOVERY",
+  "source_main_at_branch": "35c144524e79f581980bb44ee04dc9fff0c4c10a",
+  "p0_post133_merge_checks": "32/32_SUCCESS_SAME_SHA",
+  "canon_owner_reused": [
+    "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
+    "src/runtime-root-verified.mjs#runtimeRootDescriptor",
+    "src/runtime-root-verified.mjs#validateRuntimeRootDescriptor"
+  ],
+  "original_c59_and_runtime_root_byte_pins_changed": false,
+  "new_activation_writer": false,
+  "new_public_canonical_owner": false,
+  "machine_attempt_budget": 3,
+  "distinct_channel_names": [
+    "WARM_CACHE_EXACT",
+    "GITHUB_API_BASE64",
+    "GITHUB_GIT_BLOB_API"
+  ],
+  "machine_failure_origin": "HOST_WITNESSED_ONLY",
+  "machine_failure_native_proof_attested": false,
+  "uncertain_outcome": "STOP_NO_HANDOFF",
+  "manual_materialization": "EIGHT_EXACT_GIT_BLOBS_FROM_ORIGINAL_DESCRIPTOR_DOUBLE_READ_ATOMIC_STAGE",
+  "post_stage_state": "MANUAL_BYTES_VERIFIED_PRECANONICAL",
+  "original_c59_native_handoff_still_required": true,
+  "manual_is_not_canonical_active": true,
+  "cognitive_model_quality_gain_attested": false,
+  "dod": {
+    "local_test_cases": 5,
+    "seeded_receipt_mutations": 10000,
+    "required_legacy_c59_regressions": true,
+    "requires_exact_head_ci": true,
+    "requires_independent_native_ingress_for_active": true
+  },
+  "next": [
+    "C136_NATIVE_OWNER_HANDOFF_MIGRATION_REQUIRES_NEW_SOURCE_EPOCH",
+    "C137_LLM_EFFICACY",
+    "C138_RELEASE_TIERS"
+  ]
+}

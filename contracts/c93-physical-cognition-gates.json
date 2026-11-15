@@ -1,0 +1,34 @@
+{
+  "schema": "ikant-le-c93-physical-cognition-gates/v1",
+  "base_head": "53e9519ea8a9b392f1a4cb288db01937cde58c76",
+  "authority": 0,
+  "source_epoch": "C84_SOURCE_HEAD_MATCHES_CONTENT_BOUND_PACKAGE_CURRENT_TURN",
+  "causal_order": [
+    "C72_VALID_MODE",
+    "C93_BYTE_BOUND_SOURCE_EPOCH",
+    "C90_REAL_OWNER_C85_C81",
+    "C91_LANGUAGE_PORT",
+    "C92_TLS_GENERATOR",
+    "C92_TLS_REVIEWER",
+    "C92_CHILD_VALIDATOR",
+    "C92_OWNER_SURFACE_READBACK",
+    "C93_EXACT_HOST_PROJECTION"
+  ],
+  "fallback": "STOP",
+  "nonclaims": [
+    "GITHUB_REF_ORIGIN_BY_SHA",
+    "C81_C86_GENERATED_VOICE_ADMISSION",
+    "NATIVE_CHAT_DELIVERY",
+    "CANONICAL_ACTIVE",
+    "PERSISTENCE",
+    "PHENOMENAL_CONSCIOUSNESS",
+    "C72_H95"
+  ],
+  "required_observation": {
+    "independent_model_calls_min": 2,
+    "real_positive_end_to_end_provider_turns_min": 50,
+    "independent_host_sessions_min": 50,
+    "independent_tasks_min": 500
+  },
+  "status": "ENGINEERING_BRIDGE_NOT_FULL_COGNITION_CLOSED"
+}

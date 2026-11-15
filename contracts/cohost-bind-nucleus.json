@@ -1,0 +1,24 @@
+{
+  "schema": "ikant-le-fast-cohost-bind-nucleus/v1",
+  "slice": "C46.FAST_COHOST_BIND_NUCLEUS",
+  "owner": "src/runtime-root-verified.mjs",
+  "composes": ["C44.METHODOLOGICAL_BOOTSTRAP","C45.COHOST_CONTEXT_ROOT","contracts/cohost-coldstart-root-common.json"],
+  "intent": "Close B0 before full runtime materialization, preserve the C45 session context identity during hydration, and never promote bind-only capability to a full runtime turn.",
+  "bind_before_full_hydration": true,
+  "target_full_runtime_digest_bound_at_bind": true,
+  "same_session_upgrade_required": true,
+  "same_admission_upgrade_required": true,
+  "new_lifecycle": false,
+  "new_turn_engine": false,
+  "new_state_owner": false,
+  "new_truth_owner": false,
+  "runtime_owner_unchanged": "src/session-local-service.mjs",
+  "coldstart_qualifier": "src/cohost-coldstart-qualification.mjs",
+  "full_runtime_context_owner": "src/cohost-context-root.mjs",
+  "claim_boundary": {
+    "bind_nucleus_is_full_runtime": false,
+    "semantic_mutation_is_physical_host_proof": false,
+    "native_participation_lease_proven": false,
+    "native_exact_delivery_proven": false
+  }
+}

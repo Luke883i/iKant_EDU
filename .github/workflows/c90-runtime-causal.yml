@@ -1,0 +1,31 @@
+name: C90 causal voice and observed backlog
+on:
+  pull_request:
+    paths:
+      - 'host/c90-*.mjs'
+      - 'host/c87-durable-ledger.mjs'
+      - 'scripts/c90-*.mjs'
+      - 'tests/c90-*.test.mjs'
+      - 'contracts/c90-*.json'
+      - '.github/workflows/c90-runtime-causal.yml'
+permissions:
+  contents: read
+jobs:
+  real-source-positive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Real C77 to C84 and C90 exact voice, telemetry, JSON and gzip
+        run: node --test --test-concurrency=1 tests/c90-real-runtime-audit.test.mjs
+      - name: One million source and ingress semantic denials
+        run: C90_CASES=1000000 node scripts/c90-hardening-falsify.mjs
+      - name: Preserve 36 C29 constitutional atoms
+        run: node scripts/c29-ontological-promise-check.mjs

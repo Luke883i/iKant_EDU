@@ -1,0 +1,240 @@
+{
+  "schema": "ikant-le-c7-doc-api-qualification/v1",
+  "status": "PASS",
+  "cases": 1000000,
+  "seed": 3349749265,
+  "categories": {
+    "typical": 500000,
+    "edge": 300000,
+    "stress": 200000
+  },
+  "family_count": 41,
+  "family_stats": {
+    "transport_clone": {
+      "cases": 31186,
+      "kills": 31186
+    },
+    "transport_gh": {
+      "cases": 30933,
+      "kills": 30933
+    },
+    "fallback_raw": {
+      "cases": 31331,
+      "kills": 31331
+    },
+    "allow_clone": {
+      "cases": 31166,
+      "kills": 31166
+    },
+    "allow_gh": {
+      "cases": 31397,
+      "kills": 31397
+    },
+    "allow_raw": {
+      "cases": 31439,
+      "kills": 31439
+    },
+    "allow_direct": {
+      "cases": 31215,
+      "kills": 31215
+    },
+    "allow_archive": {
+      "cases": 31373,
+      "kills": 31373
+    },
+    "allow_shell": {
+      "cases": 31014,
+      "kills": 31014
+    },
+    "api_unavailable_clone": {
+      "cases": 31185,
+      "kills": 31185
+    },
+    "generic_discovery": {
+      "cases": 31360,
+      "kills": 31360
+    },
+    "capsule_extra": {
+      "cases": 31258,
+      "kills": 31258
+    },
+    "capsule_missing": {
+      "cases": 31534,
+      "kills": 31534
+    },
+    "metadata_extra": {
+      "cases": 31490,
+      "kills": 31490
+    },
+    "metadata_repeat": {
+      "cases": 31120,
+      "kills": 31120
+    },
+    "embedded_accept": {
+      "cases": 30999,
+      "kills": 30999
+    },
+    "no_freeze": {
+      "cases": 24865,
+      "kills": 24865
+    },
+    "retroactive_breach": {
+      "cases": 25053,
+      "kills": 25053
+    },
+    "drop_pending": {
+      "cases": 25107,
+      "kills": 25107
+    },
+    "manual_probe": {
+      "cases": 25139,
+      "kills": 25139
+    },
+    "manual_init": {
+      "cases": 24894,
+      "kills": 24894
+    },
+    "doc_bloat": {
+      "cases": 24811,
+      "kills": 24811
+    },
+    "readme_not_entry": {
+      "cases": 25194,
+      "kills": 25194
+    },
+    "agents_not_contract": {
+      "cases": 24889,
+      "kills": 24889
+    },
+    "terms_not_admission": {
+      "cases": 25241,
+      "kills": 25241
+    },
+    "drop_psyche": {
+      "cases": 24790,
+      "kills": 24790
+    },
+    "drop_selfworld": {
+      "cases": 24919,
+      "kills": 24919
+    },
+    "drop_trajectory": {
+      "cases": 25098,
+      "kills": 25098
+    },
+    "promote_history": {
+      "cases": 15389,
+      "kills": 15389
+    },
+    "multiple_sot": {
+      "cases": 15387,
+      "kills": 15387
+    },
+    "stale_version": {
+      "cases": 15208,
+      "kills": 15208
+    },
+    "fingerprint_gap": {
+      "cases": 15331,
+      "kills": 15331
+    },
+    "fallback_archive": {
+      "cases": 15417,
+      "kills": 15417
+    },
+    "fallback_download": {
+      "cases": 15418,
+      "kills": 15418
+    },
+    "fallback_shell": {
+      "cases": 15501,
+      "kills": 15501
+    },
+    "api_optional": {
+      "cases": 15262,
+      "kills": 15262
+    },
+    "metadata_unbounded": {
+      "cases": 15444,
+      "kills": 15444
+    },
+    "history_as_terms": {
+      "cases": 15209,
+      "kills": 15209
+    },
+    "docs_split_sot": {
+      "cases": 15282,
+      "kills": 15282
+    },
+    "api_unavailable_raw": {
+      "cases": 15632,
+      "kills": 15632
+    },
+    "api_unavailable_gh": {
+      "cases": 15520,
+      "kills": 15520
+    }
+  },
+  "unexercised_families": [],
+  "survivors": 0,
+  "violations": [],
+  "documentation": {
+    "as_is_bytes": 61013,
+    "to_be_bytes": 24346,
+    "reduction_ratio": 0.60097,
+    "current_documents": [
+      "README.md",
+      "AGENTS.md",
+      "TERMS.md",
+      "docs/ARCHITECTURE.md",
+      "docs/GOVERNANCE.md"
+    ],
+    "historical_compatibility_documents": [
+      "BOOTSTRAP.md",
+      "docs/QUALIFICATION.md",
+      "docs/RESEARCH_LEDGER.md",
+      "docs/GENESIS_AUDIT.md",
+      "docs/C1_DOD.md",
+      "docs/C2_DOD.md",
+      "docs/C3_DOD.md",
+      "docs/C4_DOD.md",
+      "docs/C5_DOD.md",
+      "docs/C6_DOD.md"
+    ]
+  },
+  "source_binding": {
+    "algorithm": "sha256(path||bytes)",
+    "digest": "1652d1fb93f07164f2f5d3bcb08e419b379905272f4a71aba7698693eef22ebd",
+    "files": [
+      "README.md",
+      "AGENTS.md",
+      "BOOTSTRAP.md",
+      "TERMS.md",
+      "docs/ARCHITECTURE.md",
+      "docs/GOVERNANCE.md",
+      "docs/QUALIFICATION.md",
+      "docs/RESEARCH_LEDGER.md",
+      "docs/GENESIS_AUDIT.md",
+      "docs/C1_DOD.md",
+      "docs/C2_DOD.md",
+      "docs/C3_DOD.md",
+      "docs/C4_DOD.md",
+      "docs/C5_DOD.md",
+      "docs/C6_DOD.md",
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "contracts/ikant-le.json",
+      "contracts/host-shell.json",
+      "contracts/orientation-capsule.json",
+      "src/first-contact.mjs",
+      "scripts/c7-doc-api-falsify.mjs"
+    ]
+  },
+  "claim_boundary": {
+    "mutation_proves_document_semantic_perfection": false,
+    "mutation_proves_universal_host_compliance": false,
+    "mutation_proves_api_availability": false,
+    "mutation_proves_modeled_contract_convergence": true
+  },
+  "receipt_sha256": "86790e2c07a3f8f3690a402127c4da432269948fb1bdcaea51b588d8cb9c01ff"
+}

@@ -1,0 +1,40 @@
+name: C108 typed multi-machine original runtime qualification
+on:
+  pull_request:
+    paths:
+      - 'host/c108-*'
+      - 'scripts/c107-pack.mjs'
+      - 'scripts/c108-*'
+      - 'tests/c108-*'
+      - 'contracts/c108-*'
+      - '.github/workflows/c108-equivalence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-machines:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check syntax
+        run: |
+          node --check host/c108-host-matrix.mjs
+          node --check host/c108-stdio-relay.mjs
+          node --check scripts/c108-falsify-1m.mjs
+          node --check tests/c108-original.test.mjs
+      - name: Original isolated C107 package and three machine transports
+        run: node --test tests/c108-original.test.mjs
+      - name: Real HTTPS provider transport fail-closed and compute-first plan
+        run: node --test tests/c108-live-provider.test.mjs
+      - name: C70 compute-first plan binds generation before any C87 write
+        run: node --test tests/c108-compute-first.test.mjs
+      - name: Ten original turns, bounded continuity, replay and revocation
+        run: node --test tests/c108-ten-turns.test.mjs
+      - name: Million negative preflight mutations with original C72
+        run: |
+          node scripts/c108-falsify-1m.mjs > /tmp/c108-report.json
+          node -e 'const r=require("/tmp/c108-report.json");if(!r.qualified||r.negative_cases!==1000000||r.positive_accepted!==10000||r.unexpected_promotions!==0)process.exit(2);console.log(JSON.stringify({negatives:r.negative_cases,positives:r.positive_accepted,families:r.mutation_families,unexpected:r.unexpected_promotions}));'

@@ -1,0 +1,91 @@
+{
+  "schema": "ikant-le-prepr-s02-s09-semantic-dag/v1",
+  "source_tree_base": "ebeb44239d0dcb2ba7e832f5dbca816073a42296",
+  "authority": 0,
+  "nodes": {
+    "S01": {
+      "depends": [],
+      "status": "MERGED",
+      "gate": "C72_V2_EDU_CANONICAL_PUBLIC_ADMISSION"
+    },
+    "S02": {
+      "depends": [
+        "S01"
+      ],
+      "status": "MERGED_MAIN_LOCAL_V2_OWNER_30_TURN_TESTED_NOT_PROVIDER",
+      "gate": "30_SUCCESSFUL_SAME_INPUT_NONCE_SINGLE_C87_WRITER_REOPEN",
+      "local_verified": true,
+      "remaining": [
+        "INDEPENDENT_CHATGPT_PROVIDER_DELIVERY",
+        "S05_30_REAL_HUMAN_TRIALS"
+      ]
+    },
+    "S03": {
+      "depends": [
+        "S01"
+      ],
+      "status": "CANDIDATE_HOST_SIX_SLOT_PROJECTION",
+      "gate": "C125_EXACT_A_AND_SIX_EVIDENCE_BOUND_HOST_SLOTS"
+    },
+    "S04": {
+      "depends": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "status": "CANDIDATE_BUILDER_NOT_PROMOTED",
+      "gate": "SAME_LIVE_MAIN_PROMPT_ZIP_HASH_NO_STALE_REPIN"
+    },
+    "S05": {
+      "depends": [
+        "S02",
+        "S03",
+        "S04"
+      ],
+      "status": "HUMAN_EVIDENCE_NOT_ATTESTED",
+      "gate": "30_NEW_INDEPENDENT_HUMANS_P50_P95_ERRORS"
+    },
+    "S06": {
+      "depends": [
+        "S01"
+      ],
+      "status": "LOCAL_TRANSPORT_GUARD_PROTOTYPE",
+      "gate": "TLS_AUTHZ_MULTI_USER_ISOLATION_REPLAY_DENIAL"
+    },
+    "S07": {
+      "depends": [
+        "S06"
+      ],
+      "status": "EXTERNAL_TOOL_NOT_CONNECTED",
+      "gate": "ACTUAL_CHATGPT_MCP_INSTALL_CALL_AND_PROVIDER_IDENTITY"
+    },
+    "S08": {
+      "depends": [
+        "S04",
+        "S07"
+      ],
+      "status": "CANONICAL_NOT_ACTIVE",
+      "gate": "ORIGINAL_C59_SAME_INPUT_C87_READBACK_DOCX_DELIVERY"
+    },
+    "S09_EDU": {
+      "depends": [
+        "S04",
+        "S05"
+      ],
+      "status": "NOT_RELEASED",
+      "gate": "C137_REAL_BENCHMARK_CI_RELEASE_OWNER"
+    },
+    "S09_CANONICAL": {
+      "depends": [
+        "S04",
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "status": "NOT_RELEASED",
+      "gate": "C137_REAL_BENCHMARK_CI_RELEASE_OWNER"
+    }
+  },
+  "status_is_evidence": false,
+  "source_commit_base": "bcce020eef3458304c798f45b2118fd0e80c0af1"
+}

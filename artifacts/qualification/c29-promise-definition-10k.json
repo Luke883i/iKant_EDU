@@ -1,0 +1,22 @@
+{
+  "schema": "ikant-le-c29-ontological-promise-definition-10k/v2",
+  "seed": "0xC29DEF10",
+  "candidates": 10000,
+  "unique_candidates": 10000,
+  "valid_candidates": 1122,
+  "invalid_candidates": 8878,
+  "winner_index": 0,
+  "winner_cost": 0,
+  "winner_cost_ties": 1,
+  "threshold_bps": 9901,
+  "atom_count": 36,
+  "domain_count": 9,
+  "minimum_atom_weight_bps": 150,
+  "weights": {"A1":350,"A2":300,"A3":250,"A4":200,"B1":250,"B2":300,"B3":350,"B4":300,"C1":250,"C2":300,"C3":350,"C4":200,"D1":350,"D2":350,"D3":300,"D4":400,"E1":250,"E2":300,"E3":300,"E4":250,"F1":350,"F2":200,"F3":300,"F4":300,"G1":200,"G2":250,"G3":250,"G4":150,"H1":250,"H2":250,"H3":350,"H4":350,"I1":150,"I2":250,"I3":300,"I4":200},
+  "domain_weights": {"AUTHORITY_IDENTITY":1100,"ADMISSION_SOURCE":1200,"ACTIVATION_INGRESS":1100,"RUNTIME_ACTIVE":1400,"TURN_SURFACES":1100,"EPISTEMIC_AGENCY":1150,"COGNITIVE_SELF":850,"ONTOLOGICAL_CLAIMS":1200,"GOVERNANCE_QUALIFICATION":900},
+  "invalid_reason_counts": {"ATOM_BELOW_CAUSAL_MINIMUM":576,"ATOM_COVERAGE_NOT_EXACTLY_ONCE":8210,"DOMAIN_COLLAPSE":37,"PROMISE_BELOW_PLUS99":3944},
+  "selection_rule": "all mined atomic intentions exactly once; each atom weight >=100 so any missing atom defeats >99; threshold >99; minimum deviation from mined risk/support weights",
+  "irreducibility_rule": "no separate hard-gate layer: weighted threshold already makes every retained atom causally necessary",
+  "claim_boundary": "definition mutation is engineering selection evidence, not runtime/world proof",
+  "receipt_sha256": "33c6b6d6df7a565c717f72767a3e9042caaa278ce3fae61cd2b6ced01ab91231"
+}

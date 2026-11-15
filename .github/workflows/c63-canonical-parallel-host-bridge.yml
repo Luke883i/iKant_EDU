@@ -1,0 +1,40 @@
+name: C63 host-side canonical parallel bridge
+on:
+  pull_request:
+    paths:
+      - 'host/c63-canonical-parallel-bridge.mjs'
+      - 'host/c69-capability-first-preview.mjs'
+      - 'tests/c69-capability-first-preview.test.mjs'
+      - 'tests/c63-canonical-parallel-bridge.test.mjs'
+      - 'docs/C63_CANONICAL_PARALLEL_HOST_BRIDGE.md'
+      - '.github/workflows/c63-canonical-parallel-host-bridge.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'host/c63-canonical-parallel-bridge.mjs'
+      - 'tests/c63-canonical-parallel-bridge.test.mjs'
+      - '.github/workflows/c63-canonical-parallel-host-bridge.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  canonical-host-bridge:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Validate new host adapter syntax
+        run: node --check host/c63-canonical-parallel-bridge.mjs
+      - name: Check immutable canonical runtime root
+        run: npm run runtime-root:verify
+      - name: C63 parallel cold path, negative source evidence, turn and EXIT
+        run: node --test --test-concurrency=1 tests/c63-canonical-parallel-bridge.test.mjs tests/c69-capability-first-preview.test.mjs
+      - name: C61/C62 cold-owner regressions
+        run: node --test --test-concurrency=1 tests/c61-cold-producer.test.mjs tests/c62-evidence-runtime-cut.test.mjs

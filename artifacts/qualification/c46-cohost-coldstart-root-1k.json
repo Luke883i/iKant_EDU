@@ -1,0 +1,31 @@
+{
+  "schema": "ikant-cross-repo-coldstart-cohost-root-1k/v1",
+  "semantic_sha256": "fa4ccab342d14b7e2a1f4d6505374045d282d51e488557f5fd8f9c23c88158da",
+  "seed": "0x5A17C0DE",
+  "cases": 1000,
+  "families": 40,
+  "positive_witnesses": 500,
+  "candidate_results": {
+    "FOUR_NODE": {"mismatch":0,"unsafe":0,"false_reject":0},
+    "OLD_3_NODE": {"mismatch":125,"unsafe":125,"false_reject":0},
+    "FULL_HYDRATION_REQUIRED": {"mismatch":288,"unsafe":0,"false_reject":288},
+    "COMPRESSION_IS_ROOT": {"mismatch":325,"unsafe":0,"false_reject":325},
+    "MATERIALIZABLE_FILE_REQUIRED": {"mismatch":418,"unsafe":0,"false_reject":418},
+    "CONTROL_OWNERSHIP_REQUIRED": {"mismatch":267,"unsafe":0,"false_reject":267},
+    "NATIVE_REGISTRATION_REQUIRED": {"mismatch":475,"unsafe":0,"false_reject":475},
+    "RAW_BOOLEAN_ALLOWED": {"mismatch":350,"unsafe":350,"false_reject":0}
+  },
+  "deletion_mutant_witness_counts": {
+    "B0_VERIFIED_BIND_NUCLEUS": 125,
+    "R0_DURABLE_CANONICAL_RUNTIME_CONTEXT": 50,
+    "R1_PERSISTENT_PARTICIPATION_LEASE": 100,
+    "R2_EXACT_ATTRIBUTED_DELIVERY_RECEIPT": 125
+  },
+  "status": "PASS",
+  "conclusion": "The previous three-node root remains sufficient only after runtime materialization. Cold-start cohost materialization requires B0 plus R0-R2. Compression, full hydration, carrier choice, control ownership and a specific participant implementation are not root predicates.",
+  "claim_boundary": {
+    "semantic_mutation_is_physical_host_proof": false,
+    "current_host_participation_lease_proven": false,
+    "current_host_exact_attributed_delivery_proven": false
+  }
+}

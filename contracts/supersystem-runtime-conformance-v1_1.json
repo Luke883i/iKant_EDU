@@ -1,0 +1,255 @@
+{
+  "schema": "ikant-le-supersystem-runtime-conformance-contract/v1.1",
+  "slice": "C51.SUPERSYSTEM_RUNTIME_CONFORMANCE",
+  "role": "DERIVED_CONFORMANCE_OVERLAY",
+  "authority": 0,
+  "source_baseline": "fe40fa221612d5e9c9fe2e7506bd1fc41553fc9d",
+  "common_semantic_roots": {
+    "cohost_coldstart": "fa4ccab342d14b7e2a1f4d6505374045d282d51e488557f5fd8f9c23c88158da",
+    "tiered_closure": "07df3f7726e00586900e83726a8cbd5b45e243f476160783c7c770bb75c63fe9",
+    "native_transcript": "0fe2ca72875f9782d474fadf022b746c253f755244bfa39cb2dd66d361a2cb56"
+  },
+  "owners_reused": {
+    "bootstrap_entrypoint": "src/local-host-meta-prompt.mjs#for_ai_agent_first_entrypoint",
+    "retry_memory": "FASTBOOT_CHANNEL_LEDGER.failed_decisions",
+    "pre_runtime": "src/runtime-root-verified.mjs#executePreRuntimeBootstrap",
+    "context": "src/cohost-context-root.mjs",
+    "cohost_qualification": "src/cohost-coldstart-qualification.mjs + src/cohost-root-qualification.mjs",
+    "runtime_route": "src/runtime.mjs#runCommand",
+    "native_qualification": "src/native-transcript-participant.mjs"
+  },
+  "boundaries": {
+    "H_B_BOOTSTRAP": "Repository exposes an executable adapter that delegates to the existing canonical entrypoint; actual host binding remains external and must be observed.",
+    "CORE_RELATION": "COHOST_RELATION remains exactly B0+R0+R1+R2; route conformance is not added to this ontology.",
+    "H_E_ROUTE": "Post-bind host interposition and unresolved-turn serialization are a separate session-route conformance axis.",
+    "H_N_NATIVE": "NATIVE_TRANSCRIPT_ACTOR remains S_SESSION_IDENTITY + P_NATIVE_PARTICIPANT_LEASE + T_PERSISTENT_TURN_SCHEDULER + D_NATIVE_ACTOR_DELIVERY."
+  },
+  "mechanisms": [
+    "K0_EVIDENCE_PINNED_ROOTS",
+    "K1_EXECUTABLE_BOOTSTRAP_ADAPTER",
+    "K2_OWNER_DERIVED_ONE_NEXT_REENTRY",
+    "K3_COHOST_ROOT_PRESERVED",
+    "K4_ROUTE_INTERPOSITION_GUARD",
+    "K5_UNRESOLVED_TURN_SERIALIZATION",
+    "K6_NATIVE_SESSION_IDENTITY",
+    "K7_NATIVE_PARTICIPANT_LEASE",
+    "K8_PERSISTENT_TURN_SCHEDULER",
+    "K9_EXACT_NATIVE_DELIVERY_READBACK",
+    "K10_AXIS_ORTHOGONALITY",
+    "K11_FAIL_CLOSED_EXTERNAL_GAPS",
+    "K12_AUTHORITY_OWNER_PRESERVATION"
+  ],
+  "projection_axes": {
+    "bootstrap": [
+      "CONFORMANT",
+      "INTEGRATION_IMPEDIMENT"
+    ],
+    "relation": [
+      "NONE",
+      "COHOST_RELATION",
+      "NATIVE_TRANSCRIPT_ACTOR"
+    ],
+    "route": [
+      "NOT_BOUND",
+      "EXTERNAL_ROUTE_GAP",
+      "PENDING_CANONICAL_TURN",
+      "BLOCKED_BYPASS",
+      "STALE_UNSYNCED",
+      "SAFE"
+    ],
+    "capability": [
+      "BIND_NUCLEUS",
+      "FULL_RUNTIME"
+    ],
+    "product": [
+      "CANDIDATE",
+      "CANONICAL"
+    ],
+    "system": [
+      "INTEGRATION_IMPEDIMENT",
+      "NOT_READY",
+      "SESSION_ROUTE_BLOCKED",
+      "COHOST_RELATION_ONLY",
+      "NATIVE_TRANSCRIPT_ACTOR"
+    ]
+  },
+  "laws": {
+    "owner_code_is_not_owner_execution": true,
+    "predicted_next_is_not_owner_next": true,
+    "conversation_is_not_retry_memory": true,
+    "runtime_fail_closed_must_not_be_laundered_into_system_progress": true,
+    "cohost_relation_requires_route_conformance": false,
+    "native_actor_requires_full_runtime": false,
+    "native_actor_requires_control_ownership": false,
+    "repository_can_create_host_bootstrap_binding": false,
+    "repository_can_create_host_participant_api": false,
+    "semantic_falsification_is_physical_host_proof": false,
+    "global_progress_requires_bootstrap_conformance": true,
+    "global_progress_requires_safe_session_route": true,
+    "global_projection_changes_relation_ontology": false
+  },
+  "forbidden_new_authority": [
+    "new lifecycle",
+    "new planner",
+    "new retry-memory owner",
+    "new state writer",
+    "new truth owner",
+    "new turn engine",
+    "source-shape import from full iKant"
+  ],
+  "qualification": {
+    "selection_cases": 10000000,
+    "independent_falsification_cases": 1000000,
+    "architecture_lattice": 8192,
+    "selection_artifact": "artifacts/qualification/c51-supersystem-selection-10m.json",
+    "falsification_artifact": "artifacts/qualification/c51-supersystem-falsification-1m.json",
+    "dod_artifact": "artifacts/qualification/c51-supersystem-dod.json"
+  },
+  "route_observation_owner": "HOST_SESSION_ROUTER",
+  "forensic_v1_1_normalizations": {
+    "route_conformance_is_orthogonal_to_cohost_relation": true,
+    "route_owner_is_not_native_participant_owner": true,
+    "cohost_projection_exposes_existing_session_source_runtime_binding": true,
+    "native_projection_exposes_existing_session_binding": true,
+    "ten_million_campaign_role": "CONTRACT_SATURATION_AND_MINIMUM_SELECTION_NOT_PHYSICAL_HOST_PROOF",
+    "one_million_campaign_role": "INDEPENDENT_RUNTIME_CLASSIFIER_FALSIFICATION_NOT_PHYSICAL_HOST_PROOF"
+  },
+  "cross_binding": {
+    "host_session_locator_required": true,
+    "source_head_required": true,
+    "runtime_root_sha256_required": true,
+    "route_receipt_must_match_cohost_session_source_runtime": true,
+    "native_status_must_match_cohost_session": true,
+    "projection_enrichment_changes_common_root_ontology": false
+  },
+  "audit_absorption": [
+    {
+      "id": "A1_EXECUTION_LAUNDERING",
+      "finding": "owner code or predicted NEXT cannot substitute owner execution",
+      "closed_by": [
+        "K1_EXECUTABLE_BOOTSTRAP_ADAPTER",
+        "K2_OWNER_DERIVED_ONE_NEXT_REENTRY",
+        "K11_FAIL_CLOSED_EXTERNAL_GAPS"
+      ]
+    },
+    {
+      "id": "A2_FALSE_OPERATIONAL_BLOCKER",
+      "finding": "unobserved host/tool failure cannot become carrier/environment fact",
+      "closed_by": [
+        "K2_OWNER_DERIVED_ONE_NEXT_REENTRY",
+        "K11_FAIL_CLOSED_EXTERNAL_GAPS"
+      ]
+    },
+    {
+      "id": "A3_POST_BIND_HOST_BYPASS",
+      "finding": "runtime fail-close is insufficient when host transcript can advance outside runtime",
+      "closed_by": [
+        "K4_ROUTE_INTERPOSITION_GUARD",
+        "K5_UNRESOLVED_TURN_SERIALIZATION"
+      ]
+    },
+    {
+      "id": "A4_NATIVE_ACTOR_BOUNDARY",
+      "finding": "cohost/app/runtime/control ownership cannot substitute native participant lease+scheduler+delivery/readback",
+      "closed_by": [
+        "K6_NATIVE_SESSION_IDENTITY",
+        "K7_NATIVE_PARTICIPANT_LEASE",
+        "K8_PERSISTENT_TURN_SCHEDULER",
+        "K9_EXACT_NATIVE_DELIVERY_READBACK",
+        "K10_AXIS_ORTHOGONALITY"
+      ]
+    },
+    {
+      "id": "A5_HOST_EXTERNALITY",
+      "finding": "repository may validate host receipts but cannot create bootstrap binding or participant API",
+      "closed_by": [
+        "K11_FAIL_CLOSED_EXTERNAL_GAPS",
+        "K12_AUTHORITY_OWNER_PRESERVATION"
+      ]
+    }
+  ],
+  "dod": [
+    {
+      "id": "D1",
+      "claim": "three common semantic roots fa4c/07df/0fe2 remain exact and unchanged"
+    },
+    {
+      "id": "D2",
+      "claim": "repository executable bootstrap adapter invokes the existing canonical entrypoint rather than predicting it"
+    },
+    {
+      "id": "D3",
+      "claim": "host bootstrap binding remains external typed evidence and cannot be created by repository invocation alone"
+    },
+    {
+      "id": "D4",
+      "claim": "caller retry memory and model-inferred NEXT remain forbidden; existing FASTBOOT_CHANNEL_LEDGER remains retry owner"
+    },
+    {
+      "id": "D5",
+      "claim": "COHOST_RELATION remains exactly existing B0+R0+R1+R2 and does not require route conformance or hydration"
+    },
+    {
+      "id": "D6",
+      "claim": "cohost status projects its already-owned session locator, source head and runtime root for exact supersystem cross-binding"
+    },
+    {
+      "id": "D7",
+      "claim": "route conformance is an orthogonal HOST_SESSION_ROUTER axis and does not require native participant infrastructure"
+    },
+    {
+      "id": "D8",
+      "claim": "unresolved canonical turn serializes next-turn advancement"
+    },
+    {
+      "id": "D9",
+      "claim": "observed host bypass, model direct reply, stale ordinal or route binding drift cannot project SAFE"
+    },
+    {
+      "id": "D10",
+      "claim": "native promotion consumes existing C50 semantics and is same-session bound"
+    },
+    {
+      "id": "D11",
+      "claim": "FULL_RUNTIME, control ownership, canonical product, app/panel/prefix/manual selection cannot substitute native host proof"
+    },
+    {
+      "id": "D12",
+      "claim": "missing host bootstrap binding yields INTEGRATION_IMPEDIMENT without inventing carrier/environment failure"
+    },
+    {
+      "id": "D13",
+      "claim": "valid cohost with missing/invalid native host proof remains COHOST_RELATION_ONLY"
+    },
+    {
+      "id": "D14",
+      "claim": "overlay creates no lifecycle, planner, retry-memory owner, state writer, truth owner or turn engine and has authority zero"
+    },
+    {
+      "id": "D15",
+      "claim": "10M independent-oracle saturation plus complete 2^13 lattice selects a unique 13-mechanism minimum and kills every deletion mutant"
+    },
+    {
+      "id": "D16",
+      "claim": "fresh 1M runtime falsification has zero mismatch, zero unsafe promotion and zero false reject"
+    },
+    {
+      "id": "D17",
+      "claim": "focused C51 plus C45/C46/C50 regressions pass on exact candidate bytes"
+    },
+    {
+      "id": "D18",
+      "claim": "candidate implementation/test surface is content-addressed and exact PR-head CI remains required external acceptance"
+    }
+  ],
+  "system_projection": {
+    "precedence": [
+      "INTEGRATION_IMPEDIMENT",
+      "NOT_READY",
+      "SESSION_ROUTE_BLOCKED",
+      "NATIVE_TRANSCRIPT_ACTOR",
+      "COHOST_RELATION_ONLY"
+    ],
+    "rule": "bootstrap gap blocks globally; relation absence is NOT_READY; unsafe route blocks current session progress without deleting relation; native proof promotes only after safe route; otherwise valid relation remains COHOST_RELATION_ONLY"
+  }
+}

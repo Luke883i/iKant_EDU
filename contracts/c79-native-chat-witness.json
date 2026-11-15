@@ -1,0 +1,77 @@
+{
+  "schema": "ikant-le-c79-native-chat-delivery-gate/v1",
+  "authority": 0,
+  "purpose": "BRIDGE_ACTUAL_C78_SUBPROCESS_OUTPUT_TO_EXACT_SURFACE_A_HOST_CONSUMPTION_WITHOUT_SHADOW_OWNER",
+  "selected_mode": "EXPERIMENTAL",
+  "source": "C78_NODE_RESPONSE_READY_HOST_DELIVERY_PENDING",
+  "receiver": "host/c79-native-chat-surface.mjs",
+  "cli": "scripts/c79-chat-frame-cli.mjs",
+  "prerequisites": [
+    "C72_MODE_SELECTION_VALIDATED",
+    "C77_BUNDLE_HASH_AND_GIT_BUILD_PROVENANCE_QUALIFIED",
+    "C78_LOCAL_NODE_ACTUALLY_EXECUTED",
+    "SAME_HUMAN_INPUT_SHA256",
+    "UNSEALED_C71_C73_VOICE_MATCH",
+    "NO_SOURCE_OR_DELIVERY_STATUS_ESCALATION"
+  ],
+  "host_rendering": {
+    "required_medium": "ORDINARY_CHAT_ASSISTANT_MESSAGE",
+    "source_field": "surface_a_chat.text",
+    "exact_utf8_bytes": true,
+    "external_host_action": "PRESENT_EXACT_SURFACE_A_TEXT_IN_ORDINARY_CHAT",
+    "owner_voice_rewriting_forbidden": true,
+    "typography_or_logo_outside_voice": true,
+    "fallback_without_native_display": "STOP_OR_HOST_OWNED_EXPLANATION_NOT_EXECUTED",
+    "canonical_ascii_shell_unaffected": true,
+    "surface_b_link": "NONE_UNLESS_ACTUALLY_CREATED_AND_REOPENED"
+  },
+  "no_new_host_primitives": true,
+  "maximum_user_utf8_bytes": 600,
+  "maximum_voice_characters": 12000,
+  "first_unclosed_edge": "HOST_GITHUB_ORIGIN_AUTHENTICATION",
+  "next_unverified_edge": "HOST_NATIVE_CHAT_SURFACE_A_DELIVERY",
+  "statuses": [
+    "C79_STOP",
+    "C79_CHAT_PACKET_READY_NOT_DELIVERED"
+  ],
+  "safety": {
+    "can_claim_active": false,
+    "can_claim_native_delivery": false,
+    "can_claim_original_host_message_identity": false,
+    "can_claim_origin_from_caller_digest": false,
+    "can_claim_cross_turn_persistence": false,
+    "can_make_new_docx_download_url": false,
+    "output_has_no_host_action_capability": true,
+    "owner_authority": 0
+  },
+  "proof_matrix": {
+    "source_blob_consistency": "C77_C78_NODE_RUNNER",
+    "node_executed_cognition": "C78_PROCESS_WITNESS",
+    "current_input_binding": "C79_SHA_CHECK_ONLY",
+    "presentation_packet_exact_bytes": "C79_SHA_CHECK_ONLY",
+    "normal_chat_native_rendering": "HOST_NATIVE_EVENT_REQUIRED_NOT_PROVEN_BY_CI",
+    "original_human_message_identity": "HOST_NATIVE_EVENT_REQUIRED",
+    "true_second_turn_routing": "TWO_NATIVE_MESSAGES_REQUIRED",
+    "actual_source_origin": "GITHUB_CONNECTOR_HOST_WITNESS_REQUIRED",
+    "user_value_95pct": "INDEPENDENT_REAL_PROJECT_SESSIONS_REQUIRED"
+  },
+  "DoD": {
+    "repository": [
+      "Real C78 Node subprocess generates a C79 packet for same input on Node20 and Node22",
+      "Two different actual C78 subprocess messages produce distinct non-persistent packets",
+      "1000 C78-readback semantic mutations fail closed",
+      "1000 presentation-packet authority and byte-tamper mutations fail closed",
+      "Surface A echo equality check reports NO NATIVE UI WITNESS",
+      "C79 stdout CLI prints one typed JSON packet only",
+      "Existing C77/C78/C72 runtime-root regressions unchanged",
+      "All triggered CI green"
+    ],
+    "native_host": [
+      "Actual ChatGPT host has emitted the specific Source A text inside a native assistant message",
+      "Input came from the actual current user host event",
+      "Real GitHub connector provenance verified outside caller values",
+      "Real two-native-turn dispatch witnessed"
+    ],
+    "native_DoD_independently_attested": false
+  }
+}

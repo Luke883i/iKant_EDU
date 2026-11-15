@@ -1,0 +1,185 @@
+{
+  "schema": "ikant-le-host-materialization-profile/v1",
+  "slice": "C54.HOST_MATERIALIZATION_OF_ONTOLOGICAL_PROMISE",
+  "authority": 0,
+  "parent": "C53.PHYSICAL_CLOSURE_HARDENING",
+  "objective": "Materialize every existing iKant_LE ontological promise at the earliest honest host-consumable boundary without creating host facts, a second lifecycle, a second state writer, a second planner or a second truth owner.",
+  "target_state": "HOST_MATERIALIZATION_READY",
+  "source_of_truth": {
+    "ontological_promise": "contracts/ikant-le.json#ontological_promise",
+    "session_shell": "contracts/session-shell.json + src/session-shell.mjs",
+    "surface_b": "contracts/surface-b-delivery.json + src/surface-b.mjs",
+    "physical_closure": "contracts/physical-runtime-closure-v1.json + C53 hardening"
+  },
+  "mechanisms": [
+    {
+      "id": "M0_FRAME_OWNER_DERIVATION",
+      "meaning": "One authority-zero host consumption frame is derived from existing runtime/session owners; prose and UI do not reconstruct state."
+    },
+    {
+      "id": "M1_ALL_PHASE_SHELL",
+      "meaning": "Baseline, bootstrap, limited and ACTIVE results all expose an owner-rendered ASCII shell for host consumption."
+    },
+    {
+      "id": "M2_EXACT_SHELL_BYTES",
+      "meaning": "Host consumes exact shell bytes with SHA-256/length verification; model/UI reframing is forbidden."
+    },
+    {
+      "id": "M3_SHELL_CONTINUITY_BINDING",
+      "meaning": "Frames bind source/runtime/session plus stable shell/style context; per-turn frames may change while continuity identity remains stable."
+    },
+    {
+      "id": "M4_LIFECYCLE_FAIL_CLOSED",
+      "meaning": "Display state and claim class are projections only; host materialization cannot promote ACTIVE/native/product/control states."
+    },
+    {
+      "id": "M5_RUNTIME_ROUTE_BINDING",
+      "meaning": "Runtime-turn frames expose runtime-owned turn/dispatch evidence when present and never replace the C53 physical route predicate."
+    },
+    {
+      "id": "M6_ARTIFACT_BYTE_HANDOFF",
+      "meaning": "Required Surface-B artifacts are byte-transported to the host app only after local digest/readback verification."
+    },
+    {
+      "id": "M7_ARTIFACT_BEFORE_SHELL",
+      "meaning": "When Surface-B presentation is required, verified artifact bytes are materialized before the ASCII shell containing Surface A."
+    },
+    {
+      "id": "M8_PROMISE_PROFILE_PROJECTION",
+      "meaning": "All 36 C29 ontological promise atoms are source-bound and projected into an explicit application class instead of disappearing into prose."
+    },
+    {
+      "id": "M9_EXTERNAL_GAP_VECTOR",
+      "meaning": "Host-only admission/native/presentation/persistence facts remain explicit unmet or externally witnessed obligations and cannot be inferred from repository PASS."
+    },
+    {
+      "id": "M10_HOST_APP_CONSUMES_FRAME",
+      "meaning": "The reference host UX consumes the frame and verified artifact payloads directly; it does not infer from stdout, filenames or status strings."
+    },
+    {
+      "id": "M11_ZERO_NEW_AUTHORITY",
+      "meaning": "Frame, app payload and UX remain authority-zero, non-persisted projections and create no lifecycle/state/planner/turn owner."
+    }
+  ],
+  "promise_application_classes": {
+    "RUNTIME_OR_BOUNDARY_ENFORCED": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "C1",
+      "C2",
+      "C3",
+      "C4",
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "E1",
+      "E2",
+      "E4",
+      "F1",
+      "F2",
+      "F3",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "I1",
+      "I2",
+      "I4"
+    ],
+    "HOST_ADMISSION_MATERIALIZATION": [
+      "B1",
+      "B2",
+      "B3",
+      "B4"
+    ],
+    "HOST_PRESENTATION_REQUIRED": [
+      "E3"
+    ],
+    "EXTERNAL_EVIDENCE_BOUNDARY": [
+      "F4",
+      "I3"
+    ]
+  },
+  "post_c29_extensions": [
+    "DETERMINISTIC_ASCII_SESSION_SHELL",
+    "SESSION_CONTEXT_CONTINUITY",
+    "NATIVE_PARTICIPANT_STANDING",
+    "NATIVE_SCHEDULER_TURN_GRANT",
+    "NATIVE_EXACT_DELIVERY_READBACK",
+    "SUBSEQUENT_TURN_PERSISTENCE",
+    "EXIT_STOPS_FUTURE_ROUTING"
+  ],
+  "host_frame": {
+    "schema": "ikant-le-host-consumption-frame/v1",
+    "required_fields": [
+      "state",
+      "claim_class",
+      "shell",
+      "shell_profile_sha256",
+      "artifacts",
+      "presentation",
+      "runtime_evidence",
+      "promise_application",
+      "external_gaps",
+      "claim_boundary",
+      "receipt_sha256"
+    ],
+    "baseline_shell_owner": "src/session-shell.mjs#renderBootstrapAsciiShell",
+    "runtime_shell_owner": "src/session-shell.mjs#renderSessionShell",
+    "shell_model_reframe_allowed": false,
+    "frame_persisted": false,
+    "frame_authority": 0,
+    "session_continuity_key_excludes_phase_specific_shell_profile": true,
+    "shell_profile_key_may_upgrade_from_bootstrap_to_session_shell": true,
+    "post_c29_extensions_projected": true,
+    "post_c29_extension_count": 7
+  },
+  "host_app": {
+    "artifact_transport": "VERIFIED_BASE64_BYTES",
+    "max_artifact_bytes": 4194304,
+    "digest_verify_in_browser": true,
+    "required_presentation_precedes_shell": true,
+    "missing_required_bytes_blocks_shell": true,
+    "app_ui_is_native_transcript": false,
+    "ui_render_is_host_receipt": false,
+    "frame_receipt_binding_required": true,
+    "optional_artifacts_may_be_presented_after_required_bytes": true,
+    "required_artifact_missing_blocks_frame": true,
+    "frame_validation_required": true
+  },
+  "external_gaps": [
+    "HOST_ADMISSION_TRACE",
+    "HOST_ROUTE_INTERPOSITION",
+    "HOST_ARTIFACT_PRESENTATION_RECEIPT",
+    "HOST_NATIVE_PARTICIPANT_LEASE",
+    "HOST_NATIVE_TURN_GRANT",
+    "HOST_NATIVE_DELIVERY_READBACK",
+    "LIVE_SUBSEQUENT_TURN_PERSISTENCE"
+  ],
+  "claim_boundary": {
+    "host_materialization_ready_is_live_host_proof": false,
+    "app_render_is_native_transcript_proof": false,
+    "artifact_byte_handoff_is_host_ui_presentation_receipt": false,
+    "shell_exactness_is_session_persistence_proof": false,
+    "semantic_mutation_is_physical_host_proof": false,
+    "repository_can_materialize_host_consumable_projection": true,
+    "repository_can_create_host_native_primitives": false
+  },
+  "qualification": {
+    "selection_cases": 100000,
+    "falsification_cases": 1000000,
+    "mechanisms": 12,
+    "architecture_lattice": 4096,
+    "unique_minimum_required": true,
+    "all_deletion_mutants_killed_required": true,
+    "exact_candidate_ci_required": true,
+    "falsification_independent_candidate_required": true
+  }
+}

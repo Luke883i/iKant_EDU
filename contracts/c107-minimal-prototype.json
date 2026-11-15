@@ -1,0 +1,42 @@
+{
+  "schema": "ikant-le-c107-minimal-experimental-prototype/v1",
+  "authority": 0,
+  "mode": "EXPERIMENTAL",
+  "head_policy": "EXACT_PR_EPOCH_NOT_REPIN_EXISTING_CHAT",
+  "route": "C72 > C69 > C70 > C100 > C87",
+  "nonowners": [
+    "C77",
+    "C84",
+    "C101",
+    "C102",
+    "C103"
+  ],
+  "version": "C107",
+  "minimum_proof": [
+    "original_source_exact_tree",
+    "real_node_22_invocation",
+    "two_distinct_c70_turns",
+    "second_turn_context_window_length_2",
+    "C100_exact_visible_voice_sha256",
+    "C87_ledger_independently_reopened",
+    "nonce_replay_rejected",
+    "corrupt_ledger_rejected"
+  ],
+  "not_attested": [
+    "native_chatgpt_hook",
+    "external_model_provider",
+    "cognitive_memory_after_restart_without_host_context",
+    "authenticated_GitHub_remote_origin",
+    "ACTIVE"
+  ],
+  "distribution": "one-content-addressed-package-exact-source-multiple-members",
+  "tooling": "existing-original-kernels-no-duplicate-writer",
+  "negative_tests": {
+    "semantic_mutations": 1000000,
+    "positive_controls": 10000,
+    "semantic_families": 25
+  },
+  "source_minimum_is_scope_relative": true,
+  "dod": "LOCAL_PROTOTYPE_TWO_ORIGINAL_C70_TURNS_NOT_NATIVE",
+  "first_unclosed_edge": "CHATGPT_NATIVE_PER_TURN_HOST_ADAPTER_AND_MODEL_PROVIDER"
+}

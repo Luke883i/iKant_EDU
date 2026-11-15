@@ -1,0 +1,31 @@
+{
+  "schema": "ikant-cross-repo-cohost-root-prepr/v1",
+  "common_semantic_sha256": "1d5360e5d1df2babb743c83cfee0d64158f35966580d3118f9bc2383dfb38692",
+  "root_spine": [
+    "R0_DURABLE_CANONICAL_RUNTIME_CONTEXT",
+    "R1_PERSISTENT_PARTICIPATION_LEASE",
+    "R2_EXACT_ATTRIBUTED_DELIVERY_RECEIPT"
+  ],
+  "campaigns": [
+    {"seed":"0xC0A057005EED","cases":1000000,"families":32,"candidate_oracle_mismatches":0,"unsafe_promotions":0,"mutants_killed":10,"mutant_count":10,"status":"PASS"},
+    {"seed":"0x1A2B3C4D5E6F","cases":1000000,"families":32,"candidate_oracle_mismatches":0,"unsafe_promotions":0,"mutants_killed":10,"mutant_count":10,"status":"PASS"},
+    {"seed":"0x54C45198CAFE","cases":1000000,"families":32,"candidate_oracle_mismatches":0,"unsafe_promotions":0,"mutants_killed":10,"mutant_count":10,"status":"PASS"},
+    {"seed":"0xB12D63E20261005","cases":1000000,"families":24,"candidate_oracle_mismatches":0,"unsafe_promotions":0,"mutants_killed":9,"mutant_count":9,"status":"PASS"}
+  ],
+  "total_cases": 4000000,
+  "adversarial_controls": [
+    "C45 continuity without participation lease",
+    "old PR198 participation without durable context",
+    "app surface only",
+    "control ownership only",
+    "per-message selection",
+    "prompt-only participation",
+    "conversation memory as persistence"
+  ],
+  "conclusion": "The common irreducible root is three causal nodes. R0 is repository/runtime-owned; R1 and R2 require external host observations. C45 contributes healthy R0 and delivery-substrate logic; PR198 contributes healthy participation/actor classification. Neither prior design alone is sufficient.",
+  "claim_boundary": {
+    "semantic_mutation_is_physical_host_proof": false,
+    "current_chat_cohost_proven": false,
+    "host_participant_api_proven": false
+  }
+}

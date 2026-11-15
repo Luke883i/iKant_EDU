@@ -1,0 +1,50 @@
+{
+  "schema": "ikant-native-transcript-participant-common/v1",
+  "semantic_sha256": "0fe2ca72875f9782d474fadf022b746c253f755244bfa39cb2dd66d361a2cb56",
+  "goal": "NATIVE_TRANSCRIPT_ACTOR",
+  "axes": {
+    "relation": ["NONE", "COHOST_RELATION", "NATIVE_TRANSCRIPT_ACTOR"],
+    "capability": ["BIND_NUCLEUS", "FULL_RUNTIME"],
+    "product": ["CANDIDATE", "CANONICAL"]
+  },
+  "native_root": [
+    "S_SESSION_IDENTITY",
+    "P_NATIVE_PARTICIPANT_LEASE",
+    "T_PERSISTENT_TURN_SCHEDULER",
+    "D_NATIVE_ACTOR_DELIVERY"
+  ],
+  "host_receipts": {
+    "session_scoped": "ikant-native-participant-lease/v1",
+    "turn_scoped": "ikant-native-delivery-receipt/v1"
+  },
+  "laws": {
+    "native_actor_does_not_require_full_runtime": true,
+    "native_actor_does_not_require_control_ownership": true,
+    "participant_id_required": true,
+    "persistent_scheduler_required": true,
+    "manual_reselection_is_not_persistent_scheduling": true,
+    "native_non_user_role_required": true,
+    "host_delivery_readback_required": true,
+    "exact_visible_bytes_required": true
+  },
+  "negative_controls": [
+    "APP_PANEL",
+    "INLINE_WIDGET",
+    "UI_MESSAGE_USER_ROLE",
+    "PER_MESSAGE_APP_SELECTION",
+    "COMPOSER_MENTION",
+    "MODEL_APP_CONTEXT",
+    "CONTROL_OWNERSHIP",
+    "FULL_RUNTIME",
+    "ASSISTANT_PREFIX_IKANT"
+  ],
+  "fallback_projection": {
+    "conversation_panel_or_app_surface": "COHOST_RELATION_ONLY",
+    "native_transcript_claim_allowed": false
+  },
+  "claim_boundary": {
+    "repository_can_create_host_participant_api": false,
+    "semantic_mutation_is_physical_host_proof": false,
+    "host_capability_must_be_observed": true
+  }
+}

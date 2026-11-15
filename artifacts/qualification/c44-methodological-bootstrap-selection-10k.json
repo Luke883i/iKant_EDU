@@ -1,0 +1,29 @@
+{
+  "schema": "ikant-le-c44-methodological-bootstrap-selection/v1",
+  "seed": "0xC44A11CE",
+  "hypotheses": 10000,
+  "mechanisms": 14,
+  "valid_hypotheses": 1,
+  "unique_minimum": true,
+  "winner_mask": 16383,
+  "winner_cost": 14,
+  "deletion_mutants_killed": 14,
+  "deletion": {
+    "SINGLE_ENTRYPOINT": true,
+    "OWNER_REGISTRY_REUSE": true,
+    "NO_PARALLEL_RETRY_MEMORY": true,
+    "REENTER_ON_IMPEDIMENT": true,
+    "OWNER_SELECTED_RETRY_ONLY": true,
+    "TOOL_ERROR_NOT_CARRIER_FACT": true,
+    "TYPED_RECEIPT_REENTRY": true,
+    "DECLARED_CONTEXT_REFS_ONLY": true,
+    "CONTEXT_RUNTIME_MEMBER_REQUIRED": true,
+    "CONTEXT_READBACK_REQUIRED": true,
+    "CONTEXT_STYLE_AUTHORITY_ZERO": true,
+    "POST_TERMS_ASCII_OWNER_SHELL": true,
+    "RUNTIME_VALIDATED_ASCII_SHELL": true,
+    "STOP_BOOTSTRAP_ON_RUNTIME_OWNERSHIP": true
+  },
+  "status": "PASS",
+  "receipt_sha256": "8fb8dac2dbf0261bf57119ee9501a6cbce5cf56f2ea86f9ce503dc4acf61236b"
+}

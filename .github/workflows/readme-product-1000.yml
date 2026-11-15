@@ -1,0 +1,32 @@
+name: README product cognitive MCP — 1000 editorial variants
+on:
+  pull_request:
+    paths:
+      - README.md
+      - scripts/readme-1000-variants.mjs
+      - tests/readme-product-maturity-1000.test.mjs
+      - docs/README_PRODUCT_AUDIT_1000.txt
+      - .github/workflows/readme-product-1000.yml
+  workflow_dispatch:
+jobs:
+  readme-semantic-source-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source and readable links
+        run: |
+          node --check scripts/readme-1000-variants.mjs
+          node --test tests/readme-product-maturity-1000.test.mjs tests/readme-editorial-contract.test.mjs tests/ikant-semantic-reticulum.test.mjs tests/ikant-neurocognitive-lineage-docs.test.mjs tests/ikant-document-atlas.test.mjs
+      - name: Materialize actual 1000 full README alternatives and SHA-256 index
+        run: node scripts/readme-1000-variants.mjs --materialize readme-1000-variants.jsonl > readme-1000-verification.json
+      - name: Explicit model-bound evidence, not reader study
+        uses: actions/upload-artifact@v4
+        with:
+          name: readme-1000-editorial-drafts-not-human-efficacy
+          path: |
+            readme-1000-variants.jsonl
+            readme-1000-verification.json

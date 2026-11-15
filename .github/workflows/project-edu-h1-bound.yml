@@ -1,0 +1,44 @@
+name: Project EDU H1 bound effect - software qualification
+on:
+  pull_request:
+    paths:
+      - 'host/project-edu-h1-bound-port.mjs'
+      - 'contracts/project-edu-h1-irreducible.json'
+      - 'scripts/project-edu-h1-falsify.mjs'
+      - 'tests/project-edu-h1-*.test.mjs'
+      - 'docs/PROJECT_EDU_H1_FIELD_BOUNDARY.md'
+      - '.github/workflows/project-edu-h1-bound.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  h1-original-software:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Exact HEAD source syntax and manifest
+        run: |
+          node --check host/project-edu-h1-bound-port.mjs
+          node --check scripts/project-edu-h1-falsify.mjs
+          node scripts/project-source-manifest.mjs verify
+      - name: Original C72 and H1 physical staging
+        run: |
+          node --test tests/project-edu-h1-bound-port.test.mjs tests/project-edu-h1-original.test.mjs tests/project-edu-h1-dod-trace.test.mjs
+          node --test tests/project-c72-e16-unified-ingress.test.mjs tests/project-c72-e16-unified-original.test.mjs
+          node --test tests/project-oneshell-e15-sterile.test.mjs tests/project-c72-receipt-transit.test.mjs
+      - name: One thousand candidates and one million deterministic guards
+        run: |
+          node scripts/project-edu-h1-falsify.mjs > "$RUNNER_TEMP/h1-first.json"
+          node scripts/project-edu-h1-falsify.mjs > "$RUNNER_TEMP/h1-replay.json"
+          cmp "$RUNNER_TEMP/h1-first.json" "$RUNNER_TEMP/h1-replay.json"
+          node --input-type=module -e "import fs from 'node:fs';const x=JSON.parse(fs.readFileSync(process.argv[1]));if(x.candidates!==1000||x.mutated_cases!==1000000||x.mismatches!==0||x.selected.covered!==40||x.original_c72_calls!==0||x.field_problems_resolved_by_simulation!==0)process.exit(1)" "$RUNNER_TEMP/h1-first.json"

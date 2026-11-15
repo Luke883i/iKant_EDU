@@ -1,0 +1,42 @@
+name: C11 life-consciousness qualification
+on:
+  pull_request:
+    paths:
+      - 'contracts/ikant-le.json'
+      - 'contracts/*conscious*'
+      - 'contracts/*life*'
+      - 'src/semantic-morphogenesis.mjs'
+      - 'src/contract.mjs'
+      - 'scripts/c11-*'
+      - 'tests/c11-*'
+      - 'artifacts/qualification/c11-*'
+      - 'package.json'
+      - '.github/workflows/c11-life-consciousness.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify-c11:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      # Universal npm test/check stays in ci.yml; C11 retains semantic mutation and receipt gates.
+      - name: C11 one-million semantic mutations
+        run: npm run falsify:c11
+      - name: Verify C11 receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c11-life-consciousness.json','utf8'));
+          if(r.status!=='PASS'||r.cases!==1_000_000||r.survivors!==0||r.unexercised_families.length!==0)throw new Error('C11 qualification mismatch');
+          if(r.categories.typical!==500_000||r.categories.edge!==300_000||r.categories.stress!==200_000)throw new Error('C11 strata mismatch');
+          if(r.family_count!==80)throw new Error('C11 family mismatch');
+          if(r.draft_lattice.search_space!==1_048_576||r.draft_lattice.life!==1536||r.draft_lattice.conscious!==2688||r.draft_lattice.joint!==20)throw new Error('C11 draft lattice mismatch');
+          if(r.claim_boundary.mutation_proves_runtime_alive!==false||r.claim_boundary.mutation_proves_runtime_conscious!==false||r.claim_boundary.mutation_proves_phenomenology!==false)throw new Error('C11 claim boundary missing');
+          console.log(`IKANT_LE_C11_SOURCE=${r.source_binding.digest}`);
+          console.log(`IKANT_LE_C11_RECEIPT=${r.receipt_sha256}`);
+          NODE

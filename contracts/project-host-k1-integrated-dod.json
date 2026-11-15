@@ -1,0 +1,31 @@
+{
+  "schema":"ikant-k1-integrated-dod/v1",
+  "authority":0,
+  "engineering_base_main":"c1b5fe90ef34881d6f4d9784cd571cff9eb05f1a",
+  "slice":"K1_WITH_K0_POSTMERGE_RECONCILIATION",
+  "owners_unchanged":["host/c72-public-mode-admission.mjs","host/project-c72-e16-unified-ingress.mjs","host/c135-edu-v2-owner.mjs","host/c87-durable-ledger.mjs","host/c125-output-port.mjs"],
+  "primary_entrypoint":"host/project-host-k1-preowner.mjs#runK1PreOwner",
+  "k0_entrypoint_actually_called":"host/project-host-effect-decision.mjs#decideK0Effect",
+  "single_supported_positive_carrier":"SAME_NODE_CALLBACKS",
+  "other_carriers":"UNBOUND_STOP_NOT_IMPLIED_ABSENT",
+  "proof_barriers":[
+    {"id":"R0","require":"HEAD to COMMIT to full TREE to path/blob identities","evidence":"original H1 and Git object assertions","scope":"R"},
+    {"id":"S0","require":"actual 10 original Git objects under pinned HEAD","evidence":"H1 callback read plus hashes/tree","scope":"S"},
+    {"id":"S1","require":"nine private staged files plus installed cold seed","evidence":"H1 independent checks + child Node readback","scope":"S"},
+    {"id":"S2","require":"transitive installed owner-adjacent source closure checks","evidence":"HEAD TREE path to local installed sha1 comparison","scope":"S"},
+    {"id":"S3","require":"owner attempts zero and deterministic negatives","evidence":"unit and mutation tests","scope":"S"},
+    {"id":"D0","require":"external provider tool installed AND independently callable from this ChatGPT conversation","evidence":"provider-issued tool ID, installation ID, target and challenge readback bound to real tool responses","scope":"D"},
+    {"id":"D1","require":"authenticated GitHub connector responses delivered to exact target by callable bridge","evidence":"source transport bound to observed tool, independent provider provenance, not caller JSON","scope":"D"},
+    {"id":"T0","require":"new distinct human I ACCEPT plus original owner receipt and full introduction","evidence":"original C72 and E16 receipt readback","scope":"T","outside_k1":true}
+  ],
+  "status_model":{
+    "LOCAL_SOURCE_PREPARED":"ONLY_LOCAL_NODE_AND_GIT_INTEGRITY",
+    "DEPLOYMENT_PASS":"REQUIRES_PROVIDER_INDEPENDENT_EXTERNAL_VERIFIER_NOT_AVAILABLE_IN_SOURCE",
+    "PRODUCT_GO":"REQUIRES_D_T_P_G_ALL_INDEPENDENT",
+    "UNKNOWN":"NEVER_PROMOTED_TO_PASS"
+  },
+  "no_claims":["NO_CONSENT_SYNTHESIS","NO_OWNER_INVOCATION","NO_SOURCE_ORIGIN_FROM_SHA_ALONE","NO_PROVIDER_FROM_NODE_CI","NO_AUTOMATIC_SOURCE_LOCK_REPIN","NO_PROMPT_INSTALLATION_FROM_PR","NO_REPLAY_AFTER_UNKNOWN"],
+  "open_k0_edges":["historical first-turn provenance requires external host observation","K0.08 installed prompt readback only after merge and explicit Host request","reviewed Git HEAD replaces R4 packaged code copy","capability epoch and target proof are K1.D, not K0 flags"],
+  "k1_completion_rule":"FULL_DOD_ONLY_WHEN_R_S_D_ATTESTED_SEPARATELY; UNTIL_THEN_SOFTWARE_PASS_DEPLOYMENT_UNKNOWN",
+  "origin":"R1->R2->R3->R4->R5 consolidated; no new authority"
+}

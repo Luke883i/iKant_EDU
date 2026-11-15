@@ -1,0 +1,25 @@
+name: c26-local-host-meta-prompt
+on:
+  pull_request:
+    paths:
+      - 'src/local-host-meta-prompt.mjs'
+      - 'docs/LOCAL_HOST_META_PROMPT.md'
+      - 'scripts/local-host-meta-prompt-falsify.mjs'
+      - 'tests/local-host-meta-prompt.test.mjs'
+      - 'artifacts/qualification/local-host-meta-prompt-100.json'
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'docs/GOVERNANCE.md'
+      - 'package.json'
+      - 'scripts/check.mjs'
+      - '.github/workflows/c26-local-host-meta-prompt.yml'
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: node --test tests/local-host-meta-prompt.test.mjs
+      - run: npm run falsify:host-meta

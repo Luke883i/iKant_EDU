@@ -1,0 +1,35 @@
+name: edu-c124-original-source-language-binding
+on:
+  pull_request:
+    paths:
+      - 'src/c124-channel-bridge.mjs'
+      - 'src/c70-experimental-compute-preview.mjs'
+      - 'host/c107-experimental-turn.mjs'
+      - 'host/c124-source-overlay.mjs'
+      - 'host/c107-carrier-consumer.mjs'
+      - 'host/edu-cohost-outcome.mjs'
+      - 'host/edu-c70-method-v7.mjs'
+      - 'host/edu-v8-release-policy.mjs'
+      - 'host/edu-c125-shell-session.mjs'
+      - 'tests/edu-c124-guided-source.test.mjs'
+      - 'scripts/c124-route-falsify-5m.c'
+      - '.github/workflows/edu-c124-guided-language.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-guided-c124:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Original C70, source-exact overlay, PR119, C87 and legacy regression
+        run: node --test tests/edu-c124-guided-source.test.mjs
+      - name: 5M finite C124 fault scenarios (no LLM)
+        run: |
+          cc -O3 -std=c11 -Wall -Wextra -Werror scripts/c124-route-falsify-5m.c -o /tmp/c124-5m
+          /tmp/c124-5m 5000000 0xC124202610132356 > /tmp/c124-5m.json
+          node --input-type=module -e "import fs from 'node:fs';let j=JSON.parse(fs.readFileSync('/tmp/c124-5m.json'));if(j.cases!==5000000||j.oracle_mismatches!==0||j.semantics_verified!==false)process.exit(1);console.log(JSON.stringify(j))"

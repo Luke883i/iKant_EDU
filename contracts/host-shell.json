@@ -1,0 +1,470 @@
+{
+  "schema": "ikant-le-host-shell/v10",
+  "human_bootstrap_gates": 1,
+  "human_acceptance": "I ACCEPT",
+  "first_contact": {
+    "canonical_repository": "Luke883i/iKant_EDU",
+    "manifest": "BOOTSTRAP.json",
+    "admission_manifest": "ADMISSION.json",
+    "convergence_before_generic_discovery": true,
+    "preserve_pending_intent_verbatim": true,
+    "embedded_acceptance_invalid": true,
+    "source_head_binding_required": true
+  },
+  "repository_transport": {
+    "required": "GITHUB_API",
+    "allowed": [
+      "GITHUB_CONNECTOR",
+      "GITHUB_REST_API"
+    ],
+    "fallback": null,
+    "unavailable_tools_must_not_be_attempted": true,
+    "api_unavailable_terminal": "HOST_INCOMPATIBLE"
+  },
+  "orientation_capsule": "contracts/orientation-capsule.json",
+  "fastboot": {
+    "mode": "ACTIVATE_FIRST",
+    "post_accept_remote_rounds_max": 1,
+    "parallel_runtime_fetch": true,
+    "exact_source_head": true,
+    "reuse_preaccept_bytes": true,
+    "preaccept_handoff": "ikant-le-preaccept-handoff/v2",
+    "generic_discovery_before_active": false,
+    "tests_before_active": false,
+    "qualification_before_active": false,
+    "authority": 0,
+    "runtime_root_schema": "ikant-le-runtime-root/v1",
+    "loader": "src/runtime-root-verified.mjs",
+    "max_shards": 7,
+    "max_post_accept_remote_reads": 8,
+    "deadline_ms": 120000,
+    "transport_modes": [
+      "WARM_CACHE_EXACT",
+      "GITHUB_API_SHARDS",
+      "GITHUB_API_BASE64",
+      "GITHUB_GIT_BLOB_API",
+      "PINNED_PERMALINK",
+      "PINNED_GITHUB_ZIP",
+      "HOST_FILE_BRIDGE"
+    ],
+    "atomic_publish_required": true,
+    "reopen_required": true,
+    "semantic_runtime_contract": "contracts/chat-bootstrap-semantic.json",
+    "source_bound_transfer_receipt": "ikant-le-source-bound-transfer/v1",
+    "bootstrap_evidence_receipt": "ikant-le-chat-bootstrap-evidence/v2",
+    "materialization_binds_transfer_receipt": true,
+    "active_requires_bootstrap_evidence": true,
+    "deadline_scope": "I_ACCEPT_TO_ACTIVE_COMMIT",
+    "flex_max_post_accept_remote_reads": 40,
+    "flex_max_post_accept_remote_rounds": 1,
+    "source_bound_transfer_receipts": [
+      "ikant-le-source-bound-transfer/v1",
+      "ikant-le-source-bound-transfer/v2"
+    ],
+    "post_accept_transport_authority": 0,
+    "carrier_attempts_max": 6,
+    "remote_history_commits_max": 1,
+    "fastboot_convergence_contract": "contracts/fastboot-convergence.json",
+    "local_session_fastboot_contract": "contracts/local-session-fastboot.json",
+    "channel_ledger_schema": "ikant-le-fastboot-channel-ledger/v1",
+    "fastboot_step_schema": "ikant-le-fastboot-step/v1",
+    "failure_memory_key": [
+      "decision_key",
+      "carrier_evidence_sha256"
+    ],
+    "unchanged_failed_decision_retry_forbidden": true,
+    "channel_evidence_class": "HOST_ATTESTED_AUTHORITY_ZERO",
+    "channel_receipt_is_physical_proof": false,
+    "production_probe_injection_forbidden": true,
+    "materializer_verifies_transport_loader_and_shards": true,
+    "runtime_reopens_published_loader_and_members_required": true,
+    "terminology_boundary": {
+      "host_attested_evidence_is_physical_proof": false,
+      "mechanical_terms_reserved_for_local_runtime_observation": true,
+      "legacy_c20_ontology_is_canonical": false
+    },
+    "canonical_activation_model": "LOCAL_EXECUTOR_V1",
+    "reverify_preaccept_object_identities": true,
+    "activation_executor_receipt": "ikant-le-activation-executor/v1",
+    "materialization_receipt": "ikant-le-runtime-root-materialization/v2",
+    "activation_slo_ms": 120000,
+    "activation_slo_is_integrity_gate": false,
+    "legacy_v1_transport_fields_compatibility_only": true,
+    "byte_paths": [
+      "LOCAL_DIRECT",
+      "VERIFIED_OPAQUE_RELAY"
+    ],
+    "unverified_model_mediation_forbidden": true,
+    "verified_opaque_relay_allowed": true,
+    "model_rewrite_forbidden": true,
+    "semantic_equivalence_forbidden": true,
+    "source_arrival_samehash_required": true,
+    "first_unclosed_edge_required": true,
+    "session_closure_projection": "ikant-le-session-closure-projection/v1",
+    "diagnostic_stage_persisted": false,
+    "failure_memory_scope": "CARRIER_LOCAL_CHANNEL_EVIDENCE",
+    "unrelated_channel_evidence_requalifies_failed_carrier": false,
+    "orientation_source_files_materialized": false,
+    "orientation_runtime_projection": ".ikant/orientation-projection.json",
+    "pre_acquisition_object_authority": "FROZEN_BOOTSTRAP_REMOTE_PATHS",
+    "runtime_transport_object_count": 8
+  },
+  "automatic_after_acceptance": [
+    "LOCAL_EXECUTOR_CAPABILITY_PROBE",
+    "CONTENT_ADDRESSED_OBJECT_ACQUISITION",
+    "REVERIFY_PREACCEPT_OBJECT_IDENTITIES",
+    "MATERIALIZE_RUNTIME_ROOT",
+    "RUNTIME_ROOT_REOPEN",
+    "AUTO_PROBE_WITH_EXECUTED_PROVENANCE",
+    "AUTO_INITIALIZE",
+    "PERSIST_AND_READBACK_ACTIVE",
+    "RESUME_OR_FOLD_PENDING_INTENT"
+  ],
+  "success_terminal": "ACTIVE",
+  "failure_terminals": [
+    "DEGRADED",
+    "BLOCKED_INTEGRITY",
+    "SESSION_NONCONFORMING",
+    "FAILURE"
+  ],
+  "manual_recovery_commands": [
+    "PROBE IKANT",
+    "INITIALIZE IKANT"
+  ],
+  "host_relation": {
+    "host_constraints_precede_local_contract": true,
+    "local_contract_may_override_host": false,
+    "incompatible_gate_must_not_be_simulated": true
+  },
+  "network_assumptions": {
+    "git_clone": false,
+    "gh": false,
+    "raw_web": false,
+    "direct_download": false,
+    "archive_download": false,
+    "shell_http_download": false,
+    "required": "GITHUB_API",
+    "fallback": null,
+    "scope": "PRE_ACCEPT_ORIENTATION"
+  },
+  "cold_warm": {
+    "fingerprint_bound": true,
+    "warm_reuses_static_contract_validation": true,
+    "warm_still_requires_live_fs_readback": true,
+    "terms_or_contract_drift_forces_cold": true,
+    "first_contact_manifest_drift_forces_cold": true,
+    "agent_entrypoint_drift_forces_cold": true
+  },
+  "universal_node_gate": {
+    "all_user_inputs_enter_node_runtime": true,
+    "surface_a_requires_current_dispatch_receipt": true,
+    "direct_model_fast_path": false
+  },
+  "surface_b_delivery": {
+    "contract": "contracts/surface-b-delivery.json",
+    "substantive_active_turn_artifacts": 1,
+    "structured_result_field": "artifacts",
+    "host_json_cli": "--host-json",
+    "same_turn_presentation_required": true,
+    "host_must_present_before_surface_a_release": true,
+    "filename_only_is_delivery": false,
+    "if_host_cannot_present": "HOST_INCOMPATIBLE_FOR_CONFORMING_RELEASE",
+    "authority": 0
+  },
+  "self_public": {
+    "identity": "iKant",
+    "ordinary_engine_disclosure": false,
+    "technical_plumbing_disclosure": false,
+    "user_intention_first": true
+  },
+  "self_technical": {
+    "engine_disclosure_on_explicit_request": true,
+    "runtime_and_receipts_backlog_owned": true,
+    "authority": 0
+  },
+  "functional_psyche": {
+    "contract": "contracts/psyche-kernel.json",
+    "persistent_projection": "state.psyche",
+    "appraisal_is_event_not_user_trait": true,
+    "archetypal_mix_is_derived_not_persisted": true,
+    "action_retroaction_each_substantive_turn": true,
+    "authority": 0
+  },
+  "recurrent_self_world": {
+    "contract": "contracts/self-world-kernel.json",
+    "persistent_projection": "state.self_world",
+    "workspace_min_recurrence_cycles": 2,
+    "workspace_required_consumers": [
+      "META_SELF",
+      "CAUSAL_MODEL"
+    ],
+    "multimodal_requires_real_receipts": true,
+    "autobiography_hash_linked": true,
+    "body_level_fail_closed": true,
+    "policy_is_not_permission_or_execution": true,
+    "causal_telemetry_docx_owned": true,
+    "authority": 0
+  },
+  "voice_attractor": {
+    "gravitas": 0.72,
+    "epistemic_rigor": 0.86,
+    "institutional_restraint": 0.78,
+    "strategic_patience": 0.72,
+    "decisiveness": 0.62,
+    "diplomatic_indirection": 0.48,
+    "reflective_irony": 0.32,
+    "moral_universalism": 0.75,
+    "pastoral_warmth": 0.46,
+    "dialectical_pressure": 0.58,
+    "self_reflection": 0.78
+  },
+  "voice_rule": "central state, interaction, functional psyche, runtime outcome and observed experience may modulate rhetoric but never evidence, authority, permission or execution",
+  "forbidden_voice_effects": [
+    "historical_person_impersonation",
+    "covert_persuasion",
+    "charisma_as_evidence",
+    "authority_from_style",
+    "platform_override_claim",
+    "retaliation",
+    "punitive_withdrawal"
+  ],
+  "bootstrap_receipt": {
+    "hash_linked": true,
+    "terms_digest": true,
+    "constitutional_fingerprint": true,
+    "host_profile": true,
+    "probe_observations": true,
+    "terminal": true,
+    "readback_required": true,
+    "source_head_bound": true,
+    "runtime_root_bound": true,
+    "transfer_receipt_bound": true,
+    "materialization_receipt_bound": true,
+    "deadline_elapsed_bound": true,
+    "activation_modality_bound": true,
+    "executed_provenance_bound": true
+  },
+  "preaccept_handoff": {
+    "runtime_observed_presentation": false,
+    "host_attested_presentation": true,
+    "orientation_object_identity_reverified_after_acceptance": true,
+    "pre_runtime_digest_required": false,
+    "pre_runtime_clock_required": false,
+    "may_promote_acceptance": false,
+    "authority": 0,
+    "orientation_inline_payloads_for_canonical": true,
+    "orientation_local_file_reverification_required": false
+  },
+  "host_profiles": {
+    "SESSION_CHAT": {
+      "language_engine": "HOST_SUPPLIED",
+      "managed_local_model_required": false,
+      "web_shell_required": false,
+      "browser_runtime_required": false,
+      "node20_plus_required": true,
+      "writable_persistence_required": true,
+      "sha256_required": true,
+      "clock_required": true,
+      "artifact_sink_required": true,
+      "authority": 0
+    }
+  },
+  "post_accept_delivery": {
+    "schema": "ikant-le-post-accept-delivery/v1",
+    "authority": 0,
+    "source_head_bound": true,
+    "content_addressed": true,
+    "allowed": [
+      "GITHUB_API_BASE64",
+      "GITHUB_GIT_BLOB_API",
+      "PINNED_PERMALINK",
+      "PINNED_GITHUB_ZIP",
+      "HOST_FILE_BRIDGE",
+      "WARM_CACHE_EXACT"
+    ],
+    "materializer": "src/runtime-root-verified.mjs",
+    "max_remote_reads": 40,
+    "max_remote_rounds": 1,
+    "contract": "contracts/bootstrap-transfer-flex.json",
+    "max_remote_history_commits": 1,
+    "max_carrier_attempts": 6,
+    "failed_or_partial_attempt_is_authoritative": false
+  },
+  "runtime_availability": {
+    "contract": "contracts/runtime-availability-dod.json",
+    "runtime_module": "src/runtime-availability.mjs",
+    "session_states": [
+      "DISCOVERED",
+      "ORIENTING",
+      "AWAITING_ACCEPTANCE",
+      "ACTIVATING",
+      "DEGRADED",
+      "BLOCKED_INTEGRITY",
+      "ACTIVE",
+      "SESSION_NONCONFORMING",
+      "EXITED"
+    ],
+    "degraded_is_active": false,
+    "degraded_public_identity": "HOST_DIAGNOSTIC_NOT_IKANT_ACTIVE",
+    "business_card_required": true,
+    "integrity_may_degrade": false,
+    "turn_states": [
+      "IDLE",
+      "PROCESSING",
+      "RELEASE_BLOCKED",
+      "RELEASED"
+    ],
+    "authority": 0
+  },
+  "post_accept_recovery": {
+    "schema": "ikant-le-same-epoch-activation-continuation/v1",
+    "operation": "RESUME_ACTIVATION",
+    "human_acceptance_required": false,
+    "preserve": [
+      "acceptance_event_id",
+      "epoch",
+      "source_head",
+      "terms_digest",
+      "acceptance_origin_receipt",
+      "remote_history_sha256"
+    ],
+    "may_create": [
+      "byte_bridge_observation",
+      "materialization_receipt",
+      "probe_receipt",
+      "active_commit"
+    ],
+    "forbid": [
+      "new_acceptance",
+      "new_epoch",
+      "new_deadline_origin",
+      "source_rebase",
+      "second_remote_round",
+      "unverified_model_mediation"
+    ],
+    "continuation_receipt": "ikant-le-activation-continuation/v1",
+    "final_deadline_scope": "ORIGINAL_I_ACCEPT_TO_ACTIVE_COMMIT",
+    "authority": 0,
+    "canonical_v2_retry": "IDEMPOTENT_BY_OBJECT_IDENTITY",
+    "v2_preserve": [
+      "acceptance_event_id",
+      "epoch",
+      "source_head",
+      "orientation_object_set"
+    ],
+    "v2_forbid": [
+      "new_acceptance",
+      "new_epoch",
+      "source_rebase",
+      "unverified_model_mediation"
+    ]
+  },
+  "post_accept_convergence": {
+    "schema": "ikant-le-host-observed-fastboot-convergence/v1",
+    "contract": "contracts/fastboot-convergence.json",
+    "authority": 0,
+    "capability_states": [
+      "PROVEN",
+      "UNKNOWN",
+      "UNAVAILABLE"
+    ],
+    "unknown_requires_probe": true,
+    "declared_capability_is_not_physical_proof": true,
+    "runtime_execution_plane_binding_required": true,
+    "carrier_attempts_quarantined_until_complete": true,
+    "materially_distinct_retry_required": true,
+    "remote_history_commits_max": 1,
+    "second_human_acceptance_required": false,
+    "preserve": [
+      "acceptance_event_id",
+      "source_head",
+      "deadline_origin"
+    ],
+    "downstream_owner": "C15+C18",
+    "activation_modality": "SESSION_CHAT_LOCAL",
+    "channel_ledger_schema": "ikant-le-fastboot-channel-ledger/v1",
+    "one_next": true,
+    "failure_memory_key": [
+      "decision_key",
+      "carrier_evidence_sha256"
+    ],
+    "failure_memory_owner": "CHANNEL_LEDGER",
+    "fastboot_step_recompute_required": true,
+    "channel_evidence_digest_excludes_failure_memory": true,
+    "unavailable_persists_until_changed_channel_evidence": true,
+    "failure_memory_scope": "CARRIER_LOCAL_CHANNEL_EVIDENCE",
+    "unrelated_channel_evidence_requalifies_failed_carrier": false
+  },
+  "session_chat_activation": {
+    "contract": "contracts/session-chat-activation.json",
+    "activation_modality": "SESSION_CHAT_LOCAL",
+    "runtime_execution_plane": "SESSION_LOCAL_NODE",
+    "repository_transfer_per_chat": true,
+    "host_acceptance_ingress_required": true,
+    "host_byte_ingress_required": false,
+    "executed_code_provenance_required": true,
+    "hosted_runtime_required": false,
+    "plugin_or_mcp_registration_required": false,
+    "unavailable_must_fail_closed": true,
+    "authority": 0,
+    "channel_evidence_class": "HOST_ATTESTED_AUTHORITY_ZERO",
+    "channel_receipt_is_physical_proof": false,
+    "production_probe_owner": "LOCAL_RUNTIME",
+    "production_probe_injection_forbidden": true,
+    "materializer_verifies_transport_loader_and_shards": true,
+    "runtime_root_readback_required": true,
+    "host_attested_channel_ledger_required": true,
+    "activation_executor_required": true,
+    "activation_slo_is_integrity_gate": false,
+    "unverified_model_mediation_forbidden": true,
+    "verified_opaque_relay_allowed": true,
+    "model_rewrite_forbidden": true,
+    "semantic_equivalence_forbidden": true,
+    "first_unclosed_edge_required": true,
+    "session_closure_projection": "ikant-le-session-closure-projection/v1",
+    "diagnostic_stage_persisted": false,
+    "external_gap_laundering_forbidden": true,
+    "canonical_local_ingress": "src/session-local-service.mjs",
+    "compatibility_plugin_ingress_is_canonical": false
+  },
+  "session_shell": {
+    "contract": "contracts/session-shell.json",
+    "schema": "ikant-le-session-shell/v2",
+    "slice": "C32",
+    "status_owner": "ACTIVATION_SERVICE_PROJECTION",
+    "c31_limited_supply_chain_preserved": true,
+    "visual_order": [
+      "VOICE_SURFACE",
+      "STATUS",
+      "SELF_SUMMARY",
+      "BACKLOG_TELEMETRY"
+    ],
+    "atomic_frame_required": true,
+    "self_summary_persisted": false,
+    "self_summary_prose_reingested": false,
+    "active_voice_owner": "IKANT",
+    "runtime_limited_voice_owner": "IKANT_RUNTIME_LIMITED",
+    "lower_tier_voice_owner": "HOST_ADAPTER",
+    "fault_forces_non_active": true,
+    "new_lifecycle": false,
+    "new_writer": false,
+    "authority": 0,
+    "intermediate_tier_requires_explicit_projection": true,
+    "strongest_valid_prefix_survives_fault": true,
+    "transition_guidance_source": "VALIDATED_FASTBOOT_TRANSITION",
+    "complete_transition_next_action": "EXECUTE_PRE_RUNTIME_BOOTSTRAP",
+    "complete_transition_next_edge": "LOCAL_MATERIALIZATION",
+    "caller_attempted_classes_forbidden": true
+  },
+  "pre_runtime_kernel": {
+    "contract": "contracts/pre-runtime-kernel.json",
+    "owner": "src/runtime-root-verified.mjs#executePreRuntimeBootstrap",
+    "direct_known_path": "src/runtime-root-verified.mjs",
+    "reuses_runtime_root_loader": true,
+    "stdlib_only_before_handoff": true,
+    "runtime_owner": "src/session-local-service.mjs",
+    "retires_at_runtime_handoff": true,
+    "runtime_member": false,
+    "authority": 0
+  }
+}

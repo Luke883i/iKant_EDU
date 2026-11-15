@@ -1,0 +1,41 @@
+name: C81 runtime projector and 100k UI Cartesian mutations
+on:
+  pull_request:
+    paths:
+      - 'host/c81-runtime-projection.mjs'
+      - 'tests/c81-runtime-projection-100k.test.mjs'
+      - 'contracts/c81-runtime-projection.json'
+      - 'docs/C81_PROJECT_RUNTIME_PROJECTOR.txt'
+      - 'docs/C81_RUNTIME_PROJECTION_DOD.md'
+      - 'iKant_UI_shell.md'
+      - '.github/workflows/c81-runtime-projection.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c81-projection:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Actually execute C77 C78 C79 then 100000 C81 projection mutations
+        env:
+          C81_UI_REPORT: c81-ui-cartesian-${{ matrix.node }}.json
+        run: node --test --test-concurrency=1 tests/c81-runtime-projection-100k.test.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: c81-ui-cartesian-node-${{ matrix.node }}
+          path: c81-ui-cartesian-${{ matrix.node }}.json
+          if-no-files-found: warn
+      - run: npm run runtime-root:verify
+      - run: npm run check

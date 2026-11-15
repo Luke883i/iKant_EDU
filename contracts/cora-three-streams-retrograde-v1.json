@@ -1,0 +1,398 @@
+{
+  "schema": "ikant-host-cora-3stream-retrograde/v1",
+  "authority": 0,
+  "owner": false,
+  "active": false,
+  "release": "NO_GO",
+  "epistemic": "HOST_ENGINEERING_SOURCE_PROFILE_NOT_ORIGINAL_OWNER_OR_REVIEW",
+  "source": {
+    "repository": "Luke883i/iKant_EDU",
+    "source_head": "c4227761ed2f0bfff1cb628922a07245742b43e2",
+    "source_tree": "54f40b4cc1f75f7f991aa939022c15df76cf2740",
+    "cora_repository": "Luke883i/cora",
+    "cora_original_pin": "3fdf761167e62cc427b7339fc6c59343c1b0be8f",
+    "cora_observed_head": "991e8e338bb6cdf2cd9a7817a1cc2ee23c3a4007"
+  },
+  "reuse": {
+    "reticulum": "contracts/cora-reticular-hygiene-v1.json",
+    "integrated": "contracts/cora-pr-f-integrated-qualification-v1.json",
+    "independent_readback": "scripts/cora-pr-g-evidence-readback.mjs",
+    "inventory": "scripts/v5b-repository-governance-audit.mjs",
+    "callsite": "scripts/project-review-callsites.mjs",
+    "prompt": "project/session-chat/PROMPT.txt"
+  },
+  "abstract_dod": {
+    "formula": "FOR_EVERY_CHANGED_OR_ARCHIVED_EFFECT: SOURCE_IDENTITY_AND_COMPLETE_RELEVANT_CONSUMERS_AND_SAME_EVENT_SINGLE_OWNER_AND_PHYSICAL_NONREGRESSION_AND_REVERSIBLE_RESTORE_AND_INDEPENDENT_GOVERNANCE; PRODUCT_REQUIRES_ORIGINAL_RUNTIME_PROVIDER_AND_INDEPENDENT_USER_VALUE",
+    "logic": "NON_COMPENSATORY_DAG_AND",
+    "objective": "MINIMIZE_COMPLEXITY_UNDER_PROVEN_BEHAVIOR_PRESERVATION_NOT_MINIMIZE_FILE_COUNT",
+    "unknown_is_not_pass": true,
+    "source_model_is_not_field_proof": true,
+    "host_profile_may_authorize": false,
+    "proof_levels": [
+      "GIT",
+      "LOCAL",
+      "OWNER",
+      "PROVIDER",
+      "INDEPENDENT_HUMAN",
+      "USER_HOLDOUT"
+    ]
+  },
+  "protocol": {
+    "streams": [
+      "I_S1",
+      "I_S2",
+      "I_S3"
+    ],
+    "first_priority": "I_S3_READ_ONLY_CHARACTERIZATION_BEFORE_S2_EFFECT",
+    "independent": [
+      "R02_R03_CENSUS_IN_PARALLEL",
+      "R06_R07_R08_CHARACTERIZE_IN_PARALLEL"
+    ],
+    "archive_default": "RETAIN_UNTIL_CONSUMER_AND_ROLLBACK_CLOSED",
+    "allow_archive": false,
+    "allow_owner_change": false,
+    "allow_prompt_install": false,
+    "allow_workflow_retirement": false,
+    "require_second_engineer": true,
+    "require_human_decision": true
+  },
+  "observed_source_pins": {
+    "BOOTSTRAP.json": "36c7d5beedb54c453fd4d38e551aa123a92c92f1",
+    "contracts/project-host-tool-grounding-abi.json": "5d882060167f12d76cb2250fca87bd3e808d241a",
+    "host/project-c72-transport-frontier.mjs": "7b16982373779bdd7ff7b8c0535f515731fc5867",
+    "project/session-chat/PROMPT.txt": "277b1a5b7a8b9e5fe09702b6cf854b8682791db4",
+    "project/edu-oneshell/PROMPT_INNESCO.txt": "dd7a3cb190a7a731ef68701b4e11b68fb71708c2",
+    "project-baseline/PROJECT_PROMPT.txt": "9eb7725430f99f24129e2bb8daeb93da67187fc6",
+    "project/oneshell-v7/PROMPT_TEMPLATE.txt": "47d83b4fa2cc68699f9fc63ffa107410a970e24f",
+    "host/project-oneshell-continuous.mjs": "0355428b71ec4d6aa13ec4b81323ee1c9336b102"
+  },
+  "nodes": [
+    {
+      "id": "R01",
+      "scope": "SOURCE",
+      "needs": [],
+      "meaning": "Pinned Git HEAD/TREE/blob evidence on same epoch",
+      "original_f": "F01"
+    },
+    {
+      "id": "R02",
+      "scope": "SOURCE",
+      "needs": [
+        "R01"
+      ],
+      "meaning": "V5-B one-to-one tracked file and workflow census",
+      "original_f": "F02"
+    },
+    {
+      "id": "R03",
+      "scope": "SOURCE",
+      "needs": [
+        "R02"
+      ],
+      "meaning": "Unknown static/dynamic/external consumer is never classified unused",
+      "original_f": "F08"
+    },
+    {
+      "id": "R04",
+      "scope": "SOURCE",
+      "needs": [
+        "R02"
+      ],
+      "meaning": "Workflow triggers, effects and required-check unknowns preserved",
+      "original_f": "F05"
+    },
+    {
+      "id": "R05",
+      "scope": "SOURCE",
+      "needs": [
+        "R02"
+      ],
+      "meaning": "Historical candidates typed without archive permission",
+      "original_f": "F09"
+    },
+    {
+      "id": "R06",
+      "scope": "SOURCE",
+      "needs": [
+        "R01"
+      ],
+      "meaning": "Canonical prompt and derived alias byte boundary observed",
+      "original_f": "F04"
+    },
+    {
+      "id": "R07",
+      "scope": "SOURCE",
+      "needs": [
+        "R01"
+      ],
+      "meaning": "Transport priority divergences isolated as candidates",
+      "original_f": "F04"
+    },
+    {
+      "id": "R08",
+      "scope": "SOURCE",
+      "needs": [
+        "R01"
+      ],
+      "meaning": "C72 C135 C87 C125 owner and continuous delegations mapped",
+      "original_f": "F04"
+    },
+    {
+      "id": "R09",
+      "scope": "SOURCE",
+      "needs": [
+        "R01"
+      ],
+      "meaning": "CORA pin and upstream version skew explicit",
+      "original_f": "F01"
+    },
+    {
+      "id": "I_SOURCE",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "meaning": "Source candidate map, never deployment or approval",
+      "original_f": "I_SOURCE"
+    },
+    {
+      "id": "E01",
+      "scope": "EXTERNAL",
+      "needs": [
+        "R03"
+      ],
+      "meaning": "Independent dynamic and external consumer review",
+      "original_f": "F08"
+    },
+    {
+      "id": "E02",
+      "scope": "EXTERNAL",
+      "needs": [
+        "R06",
+        "R07",
+        "R08"
+      ],
+      "meaning": "Real behavior/equivalence oracle, with negative runtime",
+      "original_f": "F08"
+    },
+    {
+      "id": "E03",
+      "scope": "EXTERNAL",
+      "needs": [
+        "R05"
+      ],
+      "meaning": "Archive move and verified physical rollback",
+      "original_f": "F09"
+    },
+    {
+      "id": "E04",
+      "scope": "EXTERNAL",
+      "needs": [
+        "R08"
+      ],
+      "meaning": "Original C72/C135/C87/C125 receipt and readback",
+      "original_f": "X_PRODUCT"
+    },
+    {
+      "id": "E05",
+      "scope": "EXTERNAL",
+      "needs": [
+        "E04"
+      ],
+      "meaning": "Actual provider delivery identity and acknowledgement",
+      "original_f": "X_PRODUCT"
+    },
+    {
+      "id": "E06",
+      "scope": "EXTERNAL",
+      "needs": [
+        "I_SOURCE"
+      ],
+      "meaning": "Two independent engineers and attributed human decision",
+      "original_f": "F11"
+    },
+    {
+      "id": "E07",
+      "scope": "EXTERNAL",
+      "needs": [
+        "R04"
+      ],
+      "meaning": "Actual GitHub admin branch protections and required checks",
+      "original_f": "F10"
+    },
+    {
+      "id": "E08",
+      "scope": "EXTERNAL",
+      "needs": [
+        "E05"
+      ],
+      "meaning": "Independent user-value holdout on actual product",
+      "original_f": "X_PRODUCT"
+    },
+    {
+      "id": "I_S1",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "R02",
+        "R03",
+        "R04",
+        "E01",
+        "E06",
+        "E07"
+      ],
+      "meaning": "Rationalized repository with independently revalidated CI",
+      "original_f": "G_REPOSITORY_STANDARDIZED"
+    },
+    {
+      "id": "I_S2",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "R03",
+        "R05",
+        "E01",
+        "E02",
+        "E03",
+        "E06"
+      ],
+      "meaning": "Byte-preserved archive with real consumer/behavior/rollback closure",
+      "original_f": "G_REPOSITORY_STANDARDIZED"
+    },
+    {
+      "id": "I_S3",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "R06",
+        "R07",
+        "R08",
+        "R09",
+        "E02",
+        "E04",
+        "E05",
+        "E06"
+      ],
+      "meaning": "Single proven bootstrap-runtime-prompt route per human event",
+      "original_f": "G_REPOSITORY_STANDARDIZED"
+    },
+    {
+      "id": "G_REPOSITORY",
+      "scope": "GLOBAL",
+      "needs": [
+        "I_S1",
+        "I_S2",
+        "I_S3"
+      ],
+      "meaning": "Repository and software standardization, governed and reproduced",
+      "original_f": "G_REPOSITORY_STANDARDIZED"
+    },
+    {
+      "id": "G_PRODUCT",
+      "scope": "GLOBAL",
+      "needs": [
+        "G_REPOSITORY",
+        "E08"
+      ],
+      "meaning": "Product validated with independently attributable benefit",
+      "original_f": "G_PRODUCT_QUALIFIED"
+    }
+  ],
+  "terminal": "SOURCE_PROFILE_TESTABLE_EXTERNAL_GATES_OPEN",
+  "global_closure_attested": false,
+  "field_closure_attested": false,
+  "product_go": false,
+  "workplan": [
+    {
+      "seq": 0,
+      "id": "BASELINE",
+      "stream": "S1_S2_S3",
+      "action": "PIN_LIVE_GIT_AND_REUSE_ORIGINAL_V5B_F_G",
+      "exit": "SAME_HEAD_TREE_BLOBS; original owner unchanged; baseline external unknown recorded",
+      "change_allowed": false
+    },
+    {
+      "seq": 1,
+      "id": "S3_SOURCE_CHARACTERIZATION",
+      "stream": "S3",
+      "action": "RECONCILE_C1_C8_TO_REAL_OWNER_CALLSITE_AND_PHASE_EVENT_MATRIX",
+      "exit": "8 candidate dispositions with falsifier per candidate; canonical prompt distinguished from aliases",
+      "change_allowed": false
+    },
+    {
+      "seq": 2,
+      "id": "S1_CENSUS_PARALLEL",
+      "stream": "S1",
+      "action": "ORIGINAL_V5B_EXACT_INVENTORY_PLUS_DYNAMIC_CALLSITE_QUEUE_AND_CI_EFFECT_MAP",
+      "exit": "Every tracked item classified, critical unknowns retained, no orphan or static-workflow drift",
+      "change_allowed": false
+    },
+    {
+      "seq": 3,
+      "id": "S3_BEHAVIORAL_QUALIFICATION",
+      "stream": "S3",
+      "action": "REAL_EVENT_C72_C135_C87_C125_OWNER_AND_CARRIER_NEGATIVE_TESTS",
+      "exit": "One effect per original owner, independent ledger and provider readback; otherwise NO_GO",
+      "change_allowed": false
+    },
+    {
+      "seq": 4,
+      "id": "S1_SINGLE_REVERSIBLE_SLICE",
+      "stream": "S1",
+      "action": "PROVE_ONE_CONSOLIDATION_WITH_BASE_HEAD_CONSUMERS_TESTS_CI_AND_RESTORE",
+      "exit": "Same functionality, fewer proven redundant paths, exact rollback, independent review",
+      "change_allowed": true
+    },
+    {
+      "seq": 5,
+      "id": "S2_ARCHIVE_ONLY_AFTER_S1_AND_S3",
+      "stream": "S2",
+      "action": "RETAIN_OR_MOVE_HISTORICAL_CANDIDATE_BYTE_EXACT_WITH_EXTERNAL_CONSUMER_REVIEW",
+      "exit": "S2 E01 E02 E03 E06 original; no required consumer broken; Git object readback",
+      "change_allowed": true
+    },
+    {
+      "seq": 6,
+      "id": "V5_G_HUMAN_DECISION",
+      "stream": "S1_S2_S3",
+      "action": "TWO_INDEPENDENT_ENGINEERS_AND_ATTRIBUTABLE_HUMAN_DECISION",
+      "exit": "Actual external proof and signed-off source revision, never host self-approval",
+      "change_allowed": false
+    },
+    {
+      "seq": 7,
+      "id": "POSTMERGE",
+      "stream": "S1_S2_S3",
+      "action": "RERUN_SOURCE_AND_ACTUAL_RUNTIME_WITNESSES_AT_NEW_MAIN",
+      "exit": "Fresh commit/tree/original receipt source revalidation and measured benefit",
+      "change_allowed": false
+    }
+  ],
+  "falsification": {
+    "source_model_seed": 20261105,
+    "source_model_cases": 100000,
+    "source_model_families": 25,
+    "run_surface": "PURE_PROFILE_CHECKER_IN_HOST_V8",
+    "node_unit_cases": 20000,
+    "node_unit_families": 25,
+    "not_equivalent_to_independent_runtime_mutants": true,
+    "critical_negative_classes": [
+      "SOURCE_HEAD_DRIFT",
+      "OWNER_AUTHORITY_FORGERY",
+      "PREMATURE_ARCHIVE",
+      "PROMPT_ALIAS_AS_CANONICAL",
+      "LEGACY_REPO_ZIP",
+      "CARRIER_PRIORITY_AMBIGUITY",
+      "DYNAMIC_CONSUMER_UNKNOWN",
+      "EXTERNAL_RECEIPT_LAUNDERING",
+      "MISSING_ROLLBACK",
+      "INDEPENDENT_REVIEW_FORGERY"
+    ],
+    "close_only": "SOURCE_PROFILE_SPECIFICATION_NOT_GLOBAL_ENGINEERING"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "ikant-le-c13-session-chat-fastboot/v1",
+  "slice": "C13.SESSION_CHAT_CONTENT_ADDRESSED_FASTBOOT",
+  "exact_base": "4adeb5e097dfe6be4316e994dec5cc420df02bf0",
+  "full_ikant_logic_source_head": "d1b8f86684bf61cbe0048eb6a64ee6c412854a07",
+  "authority": 0,
+  "intent": "Reduce conforming session-chat initialization latency without weakening admission, real probe, single-writer, readback, or host precedence.",
+  "adaptation_rule": "Copy causal logic, not implementation technology: revision binding, bounded capability-driven transfer, mechanical source-to-local materialization, atomic publish, local reopen, explicit host-profile closure and fail-closed deadlines are adapted to the zero-dependency Node/GitHub-API iKant_LE host.",
+  "inherited_irreducible_nodes": ["FIRST_CONTACT","SOURCE_ROOT","CONSENT_ROOT","HOST_PROBE","ACTIVE_COMMIT"],
+  "delta_lattice": [
+    {"id":"CONTENT_ADDRESSED_RUNTIME_ROOT","boundary":"transport grouping cannot change semantic runtime membership"},
+    {"id":"BOUNDED_TRANSFER_PLAN","boundary":"available transport is capability, not authority"},
+    {"id":"ATOMIC_REOPEN","boundary":"remote readability is not local materialization"},
+    {"id":"SESSION_CHAT_CLOSURE","boundary":"chat removes irrelevant dependencies but not real host probe obligations"},
+    {"id":"INIT_INTENT_FOLD","boundary":"only bootstrap control already satisfied by ACTIVE may be erased"},
+    {"id":"DEADLINE_120S_FAIL_CLOSED","boundary":"deadline constrains waiting and never fabricates success"}
+  ],
+  "runtime_root": {"max_shards":7,"max_post_accept_remote_reads":8,"member_identity":"GIT_BLOB_SHA1","root_identity":"SHA256_CANONICAL_DESCRIPTOR","source_head_binding":"PREACCEPT_HANDOFF.source_head","warm_cache_requires_exact_root_and_source_head":true},
+  "session_chat_profile": {"language_engine":"HOST_SUPPLIED","managed_local_model_required":false,"web_shell_required":false,"browser_runtime_required":false,"host_probe_always_real":true},
+  "deadline": {"post_accept_ms":120000,"on_exceed":"FAIL_CLOSED_NON_ACTIVE","wall_clock_success_guarantee":false},
+  "qualification": {"semantic_mutations_per_scope":1000000,"scope_count":6,"total_semantic_mutations":6000000,"no_novelty_tail":100000,"zero_baseline_mismatches_required":true,"single_node_deletion_false_greens_required":true,"physical_io_probes_required":true},
+  "claim_boundary": {"corpus_and_contract_relative_irreducibility":true,"global_formal_minimality":false,"semantic_mutation_is_wall_clock_proof":false,"semantic_mutation_is_physical_connector_proof":false,"two_minute_success_is_not_universal_network_guarantee":true,"two_minute_wait_ceiling_is_contractible":true}
+}

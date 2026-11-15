@@ -1,0 +1,248 @@
+{
+  "schema": "ikant-v5c-retrograde-edu-minimum-dod/v1",
+  "authority": 0,
+  "baseline_main": "62e98e9ab0c085aa34d39849a7b667794b005342",
+  "global": {
+    "id": "V5C-G",
+    "what": "A fresh eligible human can independently reproduce the original EDU entry, admission and source closure, then one owner-bound cognition→single ledger writer→independent readback→same-turn exclusive delivery, with measurable recovery and explicitly bounded claims.",
+    "requires": [
+      "V5C-I1",
+      "V5C-I2",
+      "V5C-I3",
+      "V5C-I4",
+      "V5C-I5",
+      "V5C-I6"
+    ],
+    "accept": "Original human events and C72/C135/C87/C125/S03 owner effects re-opened in an independently verified single epoch; runtime-provider receipt and handoff verified when explicitly required; independent external engineer acceptance.",
+    "ci_only_can_close_global": false,
+    "status": "NOT_ATTESTED"
+  },
+  "intermediate": [
+    {
+      "id": "V5C-I1",
+      "what": "Minimum EDU BOM and original authority unchanged",
+      "locals": [
+        "L01",
+        "L02",
+        "L03"
+      ]
+    },
+    {
+      "id": "V5C-I2",
+      "what": "C72 orientation, post-accept and selection with attempt fences",
+      "locals": [
+        "L04",
+        "L05",
+        "L06"
+      ]
+    },
+    {
+      "id": "V5C-I3",
+      "what": "8/8 cold source, transit and complete post-EDU Git source closure",
+      "locals": [
+        "L07",
+        "L08",
+        "L09",
+        "L10"
+      ]
+    },
+    {
+      "id": "V5C-I4",
+      "what": "C135 session, one C87 writer, ledger reopen and C125/S03 same-turn outcome",
+      "locals": [
+        "L11",
+        "L12",
+        "L13",
+        "L14"
+      ]
+    },
+    {
+      "id": "V5C-I5",
+      "what": "Bootstrap measured, bounded and restart-safe",
+      "locals": [
+        "L15",
+        "L16",
+        "L17"
+      ]
+    },
+    {
+      "id": "V5C-I6",
+      "what": "Evidence-level and release non-promotions",
+      "locals": [
+        "L18",
+        "L19",
+        "L20"
+      ]
+    }
+  ],
+  "local": [
+    {
+      "id": "L01",
+      "object": "Original owner map",
+      "what": "C72→C135→C87→C125/S03 imports match original owners; no extra writer",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L02",
+      "object": "Single product mode",
+      "what": "EDU explicitly selected after a distinct ACCEPT; CANONICAL legacy/non-active",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L03",
+      "object": "Minimum BOM",
+      "what": "node>=20, original cold seed, original transit, loader, original owners, manifest, private readback; no network bridge inferred",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L04",
+      "object": "Orientation gate",
+      "what": "first human turn only HEAD and five Git blobs, Terms link displayed; no preaccept extra reads",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L05",
+      "object": "Acceptance gate",
+      "what": "new human turn exact I ACCEPT, ownerOutcome=NOT_INVOKED, same HEAD, no replay on UNKNOWN",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L06",
+      "object": "Mode gate",
+      "what": "later distinct human EDU, C72/v2 selection and receipt reopened",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L07",
+      "object": "C72 ingress",
+      "what": "8/8 original blob hashes verified, one physical carrier, private dir 0700, files 0600",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L08",
+      "object": "Transit",
+      "what": "original host/project-c72-receipt-transit.mjs attested blob and 9/9 staging including transit",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L09",
+      "object": "Original cold seed",
+      "what": "10/10 original identities and attempt fence verified before one owner call",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L10",
+      "object": "Post EDU source",
+      "what": "complete manifest set, full Git TREE/path/blob, local private source readback",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L11",
+      "object": "C135 execution",
+      "what": "original owner active only after verified mode and source, native event separate",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L12",
+      "object": "C87 integrity",
+      "what": "original single writer and independent persisted ledger reopen same event",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L13",
+      "object": "C125 semantics",
+      "what": "at most one attempted original send; ambiguous delivery means reconcile read-only",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L14",
+      "object": "S03 projection",
+      "what": "original owner-bound same-turn byte exact C125 voice or NO_VOICE, no invented native UI",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L15",
+      "object": "Bootstrap timing",
+      "what": "measured monotonic wall-clock per actual original test process on named hardware/CI",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L16",
+      "object": "Recovery",
+      "what": "reopen original receipt/checkpoint without new attempt or alternate dir to bypass fence",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L17",
+      "object": "Failure boundaries",
+      "what": "partial transfer and absent carrier are UNKNOWN/STOP only for dependent effect; no model retry policy",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L18",
+      "object": "Evidence classes",
+      "what": "Git≠local≠original-owner≠provider; CI artifacts are fixture evidence only",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L19",
+      "object": "No synthetic receipts",
+      "what": "hash, prompts, JSON, reports, provider UI claims never authenticate human C72 consent",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    },
+    {
+      "id": "L20",
+      "object": "Release gate",
+      "what": "no native ACTIVE, installation, persistence, product PASS or efficacy until original evidence and independent review",
+      "required_proof": "SOURCE_ORIGINAL_TEST_PLUS_OWNER_READBACK_AS_APPLICABLE",
+      "source_only_ci_status": "NOT_NATIVE_OWNER_PROOF"
+    }
+  ],
+  "critical_files": [
+    "host/project-c72-coldstart-seed.mjs",
+    "host/project-c72-receipt-transit.mjs",
+    "host/c72-public-mode-admission.mjs",
+    "host/c135-edu-v2-owner.mjs",
+    "host/c87-durable-ledger.mjs",
+    "host/c125-output-port.mjs",
+    "host/s03-owner-bound-presentation.mjs",
+    "scripts/project-repo-loader.mjs",
+    "contracts/project-session-source.json"
+  ],
+  "regression_tests": [
+    "tests/project-c72-coldstart-zero-checkout.test.mjs",
+    "tests/project-c72-coldstart-to-edu.test.mjs",
+    "tests/project-c72-receipt-transit.test.mjs",
+    "tests/project-c72-verified-staging.test.mjs",
+    "tests/project-repo-loader.test.mjs",
+    "tests/project-session-e2e.test.mjs",
+    "tests/s03-owner-bound-presentation.test.mjs"
+  ],
+  "explicit_nonclaims": [
+    "OWNER_C72_NATIVE_HUMAN_ATTESTED",
+    "SAME_TURN_CHATGPT_PROVIDER_DELIVERY",
+    "CHATGPT_INSTALLED_PROMPT_EQUIVALENT",
+    "C135_MODEL_UPLIFT_PROVED",
+    "C87_PROVIDER_PERSISTENCE",
+    "PRODUCT_ACTIVE_OR_RELEASED"
+  ]
+}

@@ -1,0 +1,33 @@
+name: Documentation ontology coverage (HOST evidence only)
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'docs/**'
+      - 'scripts/ikant-document-atlas.mjs'
+      - 'tests/ikant-document-atlas.test.mjs'
+      - '.github/workflows/docs-ontology-coverage.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'docs/**'
+      - 'scripts/ikant-document-atlas.mjs'
+      - 'tests/ikant-document-atlas.test.mjs'
+permissions:
+  contents: read
+concurrency:
+  group: docs-ontology-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Document atlas completeness and falsification
+        run: |
+          node scripts/ikant-document-atlas.mjs
+          node --test tests/ikant-document-atlas.test.mjs

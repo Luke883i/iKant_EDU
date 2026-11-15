@@ -1,0 +1,37 @@
+name: C28 semantic closure
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c28:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Contract selection 1k
+        run: npm run select:c28
+      - name: Verify unique selected minimum
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c28-contract-selection-1k.json','utf8'));
+          if(r.schema!=='ikant-le-c28-contract-selection/v1'||r.candidates!==1000||r.winner_cost!==0||r.winner_cost_ties!==1) throw new Error('C28 selection mismatch');
+          if(r.winner.boundary_nodes!==6||r.winner.ingress_owner!=='MERGED_LOCAL_INGRESS'||r.winner.retry_owner!=='DURABLE_LEDGER') throw new Error('C28 winner mismatch');
+          NODE
+      - name: Semantic closure 1m
+        run: npm run falsify:c28
+      - name: Verify semantic closure receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c28-semantic-closure-1m.json','utf8'));
+          if(r.status!=='PASS'||r.cases!==1000000||r.candidate_oracle_mismatches!==0||r.unsafe_active!==0||r.all_mutants_killed!==true) throw new Error('C28 falsification mismatch');
+          if(!(r.repository_closed>0&&r.repository_closed_with_external_gap>0)) throw new Error('C28 closure witness missing');
+          NODE
+      - name: C28 focused tests
+        run: node --test --test-concurrency=1 tests/c24-canonical-boundary.test.mjs tests/c27-session-capability-lattice.test.mjs tests/c28-semantic-closure.test.mjs tests/local-host-meta-prompt.test.mjs

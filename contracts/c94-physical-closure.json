@@ -1,0 +1,33 @@
+{
+  "schema": "ikant-le-c94-physical-closure/v1",
+  "authority": 0,
+  "mode": "EXPERIMENTAL",
+  "source_pin": "HOST_OBSERVED_GITHUB_MAIN_HEAD_ONCE_PER_SESSION",
+  "goal": "AUTOMATIC_GITHUB_API_C77_ARTIFACT_TO_NODE -> C84_GIT_PROOF -> C90_C91_C92_REAL_PROVIDER -> C94_REVIEW_BINDING -> C94_NATIVE_HOST_DELIVERY_WITNESS",
+  "ordered_edges": [
+    "HOST_BOUND_MAIN_REF",
+    "GITHUB_API_ARTIFACT_BYTES_TRANSIT",
+    "C77_MANIFEST_ALL_BYTES_REOPENED",
+    "C81_RAW_GIT_COMMIT_AND_TREE_PROOF",
+    "C84_PACKAGE_SHA256_READBACK",
+    "C72_VALID_SELECTION",
+    "C90_REAL_OWNER_CURRENT_INPUT",
+    "C91_DELEGATED_REAL_LANGUAGE_PROVIDER",
+    "C92_GENERATOR_AND_SEPARATE_REVIEWER_HTTPS",
+    "INDEPENDENT_SEMANTIC_ENTAILMENT_EVIDENCE",
+    "C94_OWNER_APPROVED_GENERATED_SURFACE",
+    "HOST_NATIVE_DELIVERY_CALLBACK_AND_READBACK"
+  ],
+  "static_diagnostic_error_counts_as_satisfaction": false,
+  "source_hash_is_github_ref_authentication": false,
+  "different_model_reviewer_proves_factual_truth": false,
+  "host_witness_is_model_supplied_receipt": false,
+  "host_owned_experimental_surface_is_canonical": false,
+  "canonical_native_docx_and_active_claim": false,
+  "real_provider_credentials_never_in_repo": true,
+  "native_delivery_requires_actual_host_registered_bridge": true,
+  "no_host_hook_stop": "HOST_NATIVE_DELIVERY_HOOK_UNAVAILABLE",
+  "no_provider_stop": "REAL_PROVIDER_CONFIGURATION_MISSING",
+  "field_h95_requires_real_independent_users": true,
+  "phenomenal_consciousness_attested": false
+}

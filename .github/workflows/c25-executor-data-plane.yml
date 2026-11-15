@@ -1,0 +1,39 @@
+name: c25-executor-data-plane
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'ADMISSION.json'
+      - 'README.md'
+      - 'contracts/session-chat-activation.json'
+      - 'contracts/local-session-fastboot.json'
+      - 'contracts/ikant-le.json'
+      - 'contracts/host-shell.json'
+      - 'contracts/chat-bootstrap-semantic.json'
+      - 'contracts/deadline-integrity.json'
+      - 'contracts/runtime-availability-dod.json'
+      - 'src/admission.mjs'
+      - 'src/state.mjs'
+      - 'src/runtime-root-verified.mjs'
+      - 'src/bootstrap-semantic.mjs'
+      - 'src/deadline-integrity.mjs'
+      - 'src/runtime-availability.mjs'
+      - 'src/runtime-core.mjs'
+      - 'src/runtime-command.mjs'
+      - 'src/runtime.mjs'
+      - 'runtime-root/**'
+      - 'tests/bootstrap-fixture.mjs'
+      - 'tests/c25-executor-data-plane.test.mjs'
+      - 'scripts/c25-executor-data-plane-falsify.c'
+      - 'scripts/check.mjs'
+      - 'package.json'
+      - '.github/workflows/c25-executor-data-plane.yml'
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm run qualify:canonical

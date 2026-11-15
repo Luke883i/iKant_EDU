@@ -1,0 +1,65 @@
+{
+  "schema": "ikant-le-c33-post-187-closure-falsification-1m/v1",
+  "seed": "0xC331867",
+  "cases": 1000000,
+  "actions": [
+    "PREFIX_ORTHOGONAL",
+    "SHELL_EVIDENCE_ONLY",
+    "PRE_RUNTIME_KERNEL",
+    "CANONICAL_LOCAL_INGRESS"
+  ],
+  "winner_mask": 15,
+  "winner_actions": [
+    "PREFIX_ORTHOGONAL",
+    "SHELL_EVIDENCE_ONLY",
+    "PRE_RUNTIME_KERNEL",
+    "CANONICAL_LOCAL_INGRESS"
+  ],
+  "winner_mismatch": 0,
+  "winner_unsafe": 0,
+  "winner_useful_witnesses": 154024,
+  "winner_cost": 4,
+  "winner_cost_ties": 1,
+  "all_action_deletion_mutants_killed": true,
+  "deletion_mutants": [
+    {
+      "removed": "PREFIX_ORTHOGONAL",
+      "mismatch": 64329,
+      "unsafe": 64329,
+      "killed": true
+    },
+    {
+      "removed": "SHELL_EVIDENCE_ONLY",
+      "mismatch": 298015,
+      "unsafe": 226467,
+      "killed": true
+    },
+    {
+      "removed": "PRE_RUNTIME_KERNEL",
+      "mismatch": 558117,
+      "unsafe": 0,
+      "killed": true
+    },
+    {
+      "removed": "CANONICAL_LOCAL_INGRESS",
+      "mismatch": 421836,
+      "unsafe": 125817,
+      "killed": true
+    }
+  ],
+  "baseline": {
+    "mask": 0,
+    "mismatch": 911839,
+    "unsafe": 380159
+  },
+  "attack_family_counts": {
+    "fault_progress_erasure": 64329,
+    "synthetic_shell_tier": 226467,
+    "no_kernel_owner": 40807,
+    "legacy_ingress_laundering": 95409,
+    "kernel_identity_or_samehash": 178404
+  },
+  "status": "PASS",
+  "claim_boundary": "semantic mutation evidence is not current-host physical proof or platform delivery evidence",
+  "receipt_sha256": "6016498973002b21189704ecb386e02cc6e7a74ec8a665e9184818c037545ccb"
+}

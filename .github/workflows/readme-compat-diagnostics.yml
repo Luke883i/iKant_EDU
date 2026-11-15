@@ -1,0 +1,77 @@
+name: README focused compatibility diagnostics
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'scripts/readme-1000-variants.mjs'
+      - 'tests/readme-product-maturity-1000.test.mjs'
+      - '.github/workflows/readme-compat-diagnostics.yml'
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Original contract inspect
+        id: check
+        shell: bash
+        run: |
+          set +e
+          npm run check > /tmp/check.log 2>&1
+          status=$?
+          if [ "$status" -eq 0 ]; then answer=PASS
+          else
+            answer=$(node -e 'const s=require("fs").readFileSync("/tmp/check.log","utf8");let m=s.match(/"errors"\s*:\s*\[(.*?)\]/s);if(m)console.log(m[1].slice(0,180));else console.log(s.slice(-160))' | tr -cd 'A-Za-z0-9_ ,:.=-' | head -c 160)
+            answer="FAIL_$answer"
+          fi
+          echo "answer=$answer" >> "$GITHUB_OUTPUT"
+      - name: "Original contract: ${{ steps.check.outputs.answer }}"
+        run: 'test "${{ steps.check.outputs.answer }}" = "PASS"'
+      - name: V1 product test inspect
+        id: product
+        shell: bash
+        if: always()
+        run: |
+          set +e
+          node --test tests/v1-product-contract.test.mjs > /tmp/product.log 2>&1
+          status=$?
+          if [ "$status" -eq 0 ]; then answer=PASS
+          else answer="FAIL_$(grep '^ *not ok' /tmp/product.log | head -5 | tr -cd 'A-Za-z0-9_ ,:.-' | head -c 170)"; fi
+          echo "answer=$answer" >> "$GITHUB_OUTPUT"
+      - name: "V1 product: ${{ steps.product.outputs.answer }}"
+        if: always()
+        run: 'test "${{ steps.product.outputs.answer }}" = "PASS"'
+      - name: Semantic and neuro tests inspect
+        id: neuro
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          node --test tests/readme-product-maturity-1000.test.mjs tests/ikant-neurocognitive-lineage-docs.test.mjs tests/ikant-semantic-reticulum.test.mjs > /tmp/neuro.log 2>&1
+          status=$?
+          if [ "$status" -eq 0 ]; then answer=PASS
+          else answer="FAIL_$(grep '^ *not ok' /tmp/neuro.log | head -5 | tr -cd 'A-Za-z0-9_ ,:.-' | head -c 170)"; fi
+          echo "answer=$answer" >> "$GITHUB_OUTPUT"
+      - name: "Semantics: ${{ steps.neuro.outputs.answer }}"
+        if: always()
+        run: 'test "${{ steps.neuro.outputs.answer }}" = "PASS"'
+
+      - name: Full standalone npm test inspect
+        id: full
+        shell: bash
+        if: always()
+        run: |
+          set +e
+          npm test > /tmp/standalone.log 2>&1
+          status=$?
+          if [ "$status" -eq 0 ]; then answer=PASS
+          else
+            answer="FAIL_$(grep '^ *not ok' /tmp/standalone.log | head -3 | tr -cd 'A-Za-z0-9_ ,:.-' | head -c 175)"
+            if [ "$answer" = "FAIL_" ]; then answer="FAIL_$(tail -n 5 /tmp/standalone.log | tr -cd 'A-Za-z0-9_ ,:.-' | head -c 160)"; fi
+          fi
+          echo "answer=$answer" >> "$GITHUB_OUTPUT"
+      - name: "Full suite result: ${{ steps.full.outputs.answer }}"
+        if: always()
+        run: 'test "${{ steps.full.outputs.answer }}" = "PASS"'

@@ -1,0 +1,33 @@
+name: C74 postmerge ontology and bootstrap witness
+on:
+  pull_request:
+    paths:
+      - 'host/c74-*'
+      - 'tests/c74-*'
+      - 'docs/C74_*'
+      - 'host/c73-project-capsule.mjs'
+      - 'tests/c73-project-capsule.test.mjs'
+      - 'assets/brand/**'
+      - '.github/workflows/c74-postmerge-ontology-bootstrap.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  postmerge-e2e:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test --test-concurrency=1 tests/c74-postmerge-bootstrap.test.mjs tests/c74-ontology-ledger.test.mjs tests/c73-project-capsule.test.mjs
+      - run: node --test --test-concurrency=1 tests/c72-unified-mode-admission.test.mjs tests/c70-experimental-compute-preview.test.mjs tests/c71-experimental-host-draft.test.mjs tests/c32-session-shell.test.mjs
+      - run: node scripts/c72-falsify-1m.mjs
+      - run: npm run runtime-root:verify
+      - run: npm run check

@@ -1,0 +1,56 @@
+{
+  "schema": "ikant-le-c81-git-source-reachability/v1",
+  "slice": "C81",
+  "title": "Git-object reachability for pinned C77 capsule sources",
+  "authority": 0,
+  "mode": "EXPERIMENTAL",
+  "main_baseline_sha": "ca120d69d4078aa275e191864cd1a286d174dae6",
+  "source_freeze": "Caller must obtain source HEAD through actually callable GitHub API, not through an untrusted model-provided payload",
+  "prereq": [
+    "FULL_PINNED_TERMS_SHOWN_BEFORE_CONSENT",
+    "LATER_EXACT_I_ACCEPT",
+    "LATER_EXACT_EXPERIMENTAL_MODE",
+    "C77_BUILDER_CHECKOUT_WITH_REAL_GIT_OBJECT_DATABASE"
+  ],
+  "source_proof": {
+    "format": "ikant-le-c81-source-git-objects/v1",
+    "raw_commit": "Git raw commit bytes including tree SHA and original SHA-1 identity",
+    "raw_tree": "Full Git tree object bytes for every path parent, validated against Git SHA-1",
+    "original_blob": "All C77 original_source_blob_sha1 entries must be reachable at exact path from raw commit tree",
+    "derived_c71": "Source C71 blob anchored; derivation itself NOT independently attested by reachability",
+    "generated_cx_proof": "Qualified build artifact with no Git source blob; never promoted to original Git source",
+    "pins": [
+      "expectedSourceHead",
+      "expectedManifestSha256"
+    ]
+  },
+  "positive_status": "C81_GIT_REACHABILITY_VERIFIED",
+  "first_open_edge_after_positive": "HOST_PINNED_GITHUB_REF_ORIGIN",
+  "no_source_host_provenance_from_self_hash": true,
+  "no_native_chat_event_attested": true,
+  "no_canonical_active": true,
+  "no_persistence": true,
+  "no_host_delivery_attested": true,
+  "repo_DoD": [
+    "Real git cat-file commit/tree bytes from PR checkout, not synthetic Git object text",
+    "All original C77 source blob IDs are reachable by full path from exact git commit HEAD",
+    "C77 derived artifacts remain explicitly unqualified for original blob reachability",
+    "1000 deterministic mutated real Git objects/manifest/provenance cases rejected",
+    "Node20 Node22 plus C77/C78/C79/C80 regressions and root check green",
+    "Machine-readable proof generated and verified by a separate CLI, with bounded file sizes",
+    "No private keys, host-source or canonical authority invented"
+  ],
+  "host_DoD": [
+    "Source HEAD independently obtained from callable GitHub ref API before host source proof",
+    "Commit and tree object bytes physically transferred after EXPERIMENTAL selection",
+    "Actual host tool readbacks match proof bytes and source SHA",
+    "Actual C78 Node result on current human input",
+    "Actual native ChatGPT rendering and separate two native user turn witnesses"
+  ],
+  "limitations": [
+    "Git SHA-1 object identity and reachability are byte-consistency checks, not GitHub API origin",
+    "Original source reachability does not prove C77 builder executed or transformed C71 faithfully",
+    "Git object proof data may be fabricated alongside a fabricated SOURCE_HEAD; host must independently pin it",
+    "Repository CI does not prove native ChatGPT ingress, delivery, persistence or 95 percent success"
+  ]
+}

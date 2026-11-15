@@ -1,0 +1,37 @@
+{
+  "schema":"ikant-le-c83-product-qualification/v1",
+  "authority":0,
+  "source_baseline":"befabffcf4a787016672065ce26ff9002fd33e43",
+  "mode":"EXPERIMENTAL_ONLY",
+  "claim":"PROVENANCE_BOUNDED_EVALUATION_NOT_H95_RELEASE",
+  "tests":{
+    "locally_preseeded_mutations":1000000,
+    "mutation_label_source":"LOCAL_AUTHOR_NOT_HOLDOUT",
+    "independent_holdout":{
+      "accuracy_wilson_one_sided_95_lower_min":0.95,
+      "dataset_sha256": "REQUIRED_FROM_EXTERNAL_CURATOR",
+      "sealed_before_candidate_optimization":true,
+      "attestation":"REQUIRES_INDEPENDENT_NATIVE_OR_EXTERNAL_SIGNATURE_AND_TRUST_ANCHOR"
+    },
+    "human_rubric":{
+      "wilson_one_sided_95_lower_min":0.90,
+      "evaluators":"INDEPENDENT_CONSENTING_HUMANS",
+      "blinded_task_ids":true,
+      "rubric_precommitted":true,
+      "attestation":"NOT_INFERRED_FROM_SELF_REPORTED_COUNTS"
+    },
+    "h95":{
+      "independent_tasks_min":500,
+      "native_host_sessions_min":50,
+      "distinct_users_min":20,
+      "wilson_weighted_lower_min":0.95,
+      "each_dimension_wilson_lower_min":0.90,
+      "incident_count_max":0,
+      "host_origin":"INDEPENDENT_REQUIRED"
+    }
+  },
+  "native_host":{"automatic_carrier":"NOT_YET_ATTESTED","same_turn_delivery":"NOT_YET_ATTESTED","future_turn_writer_readback":"NOT_YET_ATTESTED","source_git_origin":"NOT_YET_ATTESTED"},
+  "large_input":{"utf8_bytes_max":65536,"chunk_bytes_max":600,"guarantee":"LOSSLESS_TRANSFER_READBACK_ONLY_NOT_C70_C78_SEMANTIC_EXECUTION"},
+  "claims_not_permitted":["SYNTHETIC_DATA_AS_INDEPENDENT_HOLDOUT","CALLER_ASSERTED_HUMAN_SCORE_AS_VERIFIED","CALLER_ASSERTED_NATIVE_DELIVERY_AS_RECEIPT","PROOF_OF_GENERAL_UNDERSTANDING_FROM_KEYWORDS","CANONICAL_ACTIVE_FROM_EXPERIMENTAL","PERSISTENCE_FROM_SINGLE_TURN"],
+  "release_dod_status":"NOT_MET_ABSENT_EXTERNAL_WITNESSES"
+}

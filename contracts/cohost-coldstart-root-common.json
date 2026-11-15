@@ -1,0 +1,60 @@
+{
+  "schema": "ikant-cross-repo-coldstart-cohost-root-common/v2",
+  "semantic_sha256": "fa4ccab342d14b7e2a1f4d6505374045d282d51e488557f5fd8f9c23c88158da",
+  "promise": "COHOST_SAME_SESSION",
+  "root_spine": [
+    {
+      "id": "B0_VERIFIED_BIND_NUCLEUS",
+      "law": "A pin/admission-bound minimal executable representation is materialized with samehash, local reopen and executed provenance, persists a bind receipt, and is cryptographically bound to the target full runtime identity without claiming full hydration."
+    },
+    {
+      "id": "R0_DURABLE_CANONICAL_RUNTIME_CONTEXT",
+      "law": "The same host session resolves to the same durable iKant context across host/model process replacement; bind identity is immutable and full hydration must reuse the same session/admission and target runtime identity."
+    },
+    {
+      "id": "R1_PERSISTENT_PARTICIPATION_LEASE",
+      "law": "A host-observed session-bound lease grants current and future iKant turn opportunity as a distinct actor without per-message manual reselection and with a no-silent-bypass guard."
+    },
+    {
+      "id": "R2_EXACT_ATTRIBUTED_DELIVERY_RECEIPT",
+      "law": "A host-observed receipt binds the same session and turn to actor iKant and to the exact bind/runtime visible bytes."
+    }
+  ],
+  "capability_projection": {
+    "cohost_relation_requires": [
+      "B0_VERIFIED_BIND_NUCLEUS",
+      "R0_DURABLE_CANONICAL_RUNTIME_CONTEXT",
+      "R1_PERSISTENT_PARTICIPATION_LEASE",
+      "R2_EXACT_ATTRIBUTED_DELIVERY_RECEIPT"
+    ],
+    "full_runtime_hydration_required_for_cohost_relation": false,
+    "full_runtime_hydration_required_for_full_runtime_turns": true,
+    "bind_nucleus_is_full_runtime": false,
+    "bind_nucleus_is_second_lifecycle": false,
+    "bind_nucleus_is_second_turn_engine": false
+  },
+  "transport_law": {
+    "carrier_algorithm_is_not_ontological_root": true,
+    "samehash_and_reopen_required": true,
+    "text_relay_chunk_size_increase_is_not_required": true,
+    "hydration_compression_may_change_without_changing_cohost_identity": true
+  },
+  "upgrade_law": {
+    "same_admission_required": true,
+    "same_session_context_required": true,
+    "same_pinned_source_required": true,
+    "target_full_runtime_digest_bound_at_bind": true,
+    "hydration_receipt_must_reference_bind_receipt": true
+  },
+  "negative_controls": [
+    "OLD_THREE_NODE_WITHOUT_BIND_NUCLEUS",
+    "FULL_HYDRATION_AS_COHOST_RELATION_REQUIREMENT",
+    "COMPRESSION_ALGORITHM_AS_ROOT",
+    "MATERIALIZABLE_FILE_AS_ROOT",
+    "CONTROL_OWNERSHIP_AS_ROOT",
+    "NATIVE_PARTICIPANT_IMPLEMENTATION_AS_ROOT",
+    "RAW_BOOLEAN_HOST_CLAIMS"
+  ],
+  "authority_effect": "CLASSIFICATION_AND_BOOTSTRAP_SCOPE_ONLY",
+  "semantic_mutation_is_physical_host_proof": false
+}

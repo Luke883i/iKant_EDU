@@ -1,0 +1,30 @@
+{
+  "schema": "ikant-edu-rename-sequential-step/v2",
+  "id": "S06",
+  "candidate_path": "docs/rename-sequence/S06_FINAL.json",
+  "baseline": {
+    "repo_id": 1371330383,
+    "head": "f5f42603294084d29cdb6d6e2106c0331d802536",
+    "tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943"
+  },
+  "state": "PLAN_ONLY_NO_EFFECT",
+  "supersedes_blob": "83665e9172054ff9c68df40970ef27c2e7f874c0",
+  "old": "83665e9172054ff9c68df40970ef27c2e7f874c0",
+  "goal": "Dimostrare in due gate separati identita' Git e ripresa effettiva dei consumer.",
+  "pre": "S05 riconciliato con ID invariato; caller a rischio ancora in stato sicuro.",
+  "do": "Riaprire repository per ID e nuovo full_name, HEAD/TREE/critical blobs e Terms, confrontando il freeze prima del click. Applicare a cura degli owner le PR dei caller Actions verso il nuovo nome SOLO ORA, eseguire smoke reali, verificare buffering e recupero senza perdite dei job esterni, e solo dopo riprendere i trigger. Riqualificare Pages/packages, OAuth, webhook, API builder, plugin, MCP, GitHub connector e Project prompt. Un commit nuovo crea nuova epoch, mai ripin silenzioso.",
+  "proof": [
+    "GITHUB: ID=1371330383, nome nuovo, HEAD/TREE/blobs invariati al click (o drift classificato STOP).",
+    "EXTERNAL: caller aggiornati, smoke verdi, obbligazioni/eventi recuperati, trigger riabilitati.",
+    "PROVIDER: integrazioni, prompt e asset riletti dopo rename."
+  ],
+  "falsify": [
+    "Caller usa ancora old in uses:, smoke fallisce o trigger riprende prima della verifica.",
+    "Eventi perduti durante freeze senza recovery dimostrato.",
+    "Provider UNKNOWN oppure id/head/tree non coincidono."
+  ],
+  "pass": "Stesso repository e tutti i consumer critici postrename funzionanti; trigger ripresi solo dopo le prove.",
+  "stop": "POSTRENAME_CONSUMER_UNSAFE_OR_SOURCE_DRIFT",
+  "next": "S07",
+  "nonclaim": "Se si richiede nessuna interruzione percepibile, una finestra di manutenzione non soddisfa quel requisito da sola."
+}

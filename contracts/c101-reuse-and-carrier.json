@@ -1,0 +1,54 @@
+{
+  "schema": "ikant-le-c101-reuse-and-carrier/v1",
+  "authority": 0,
+  "feature": "EXPERIMENTAL_LOCAL_MACHINE_WITH_OPTIONAL_BOUNDED_RUBRIC_AND_EXPLICIT_NDJSON_CARRIER",
+  "invariants": {
+    "new_owner": false,
+    "new_writer": false,
+    "new_consensus": false,
+    "new_runtime_identity": false,
+    "canonical_c59_changed": false,
+    "strict_c84_changed": false,
+    "c100_host_only_draft_remains_separate": true,
+    "c97_does_not_attest_native_delivery": true,
+    "existing_c89_relevance_reused_not_reimplemented": true,
+    "existing_c98_safe_json_tree_reused_not_reimplemented": true
+  },
+  "composition": ["C72_EXP_SELECTION", "C69_README_LOCAL_SOURCE_SELF_CHECK", "C70_COGNITION_PSYCH_SELF_WORLD", "C71_GUARDED_VOICE", "C100_DRAFT_BINDING", "C89_OPTIONAL_EXTERNAL_RUBRIC", "C98_JSON_DESCRIPTOR_GUARD", "C101_EXACT_READBACK"],
+  "carrier": {
+    "entry": "scripts/c101-local-machine-cli.mjs --ndjson",
+    "class": "HOST_SUPPLIED_STDIN_TO_LOCAL_NODE_STDOUT",
+    "transport_is_physical_only_when_node_spawned_and_bytes_sent": true,
+    "input_framing": "EXACT_UTF8_NDJSON_ONE_LINE_PER_TURN",
+    "output_framing": "ONE_TYPED_RECEIPT_PLUS_LOCAL_READBACK_PER_INPUT_LINE",
+    "host_native_message_hook_attested": false,
+    "automatic_chatgpt_interposition": false,
+    "github_to_node_source_carrier_attested": false,
+    "source_graph_must_be_preinstalled": true,
+    "one_shot_cli_preserved": true,
+    "no_cross_turn_state": true
+  },
+  "rubric": {
+    "owner": "host/c89-relevance-gate.mjs#evaluateC89BoundedRelevance",
+    "caller_supplied_case_required": true,
+    "caller_supplied_pinned_case_digest_required": true,
+    "no_generated_rubric_self_certification": true,
+    "no_independent_reviewer": true,
+    "no_h95_claim": true,
+    "voice_rewriting": false,
+    "failure_policy": "FAIL_C101_STOP_BEFORE_RELEASE"
+  },
+  "scope": {
+    "real_source_graph_ci_execution": true,
+    "node_stdin_bridge_can_be_physically_tested": true,
+    "chatgpt_native_per_turn_bridge_demonstrated": false,
+    "cross_turn_persistence_demonstrated": false,
+    "no_c84_owner_receipts": true
+  },
+  "gold_reuse": {
+    "wired": ["C72", "C69", "C70", "C71", "C100", "C89", "C98_JSON_DATA_TREE_GUARD"],
+    "indirect": ["C4_PSYCHE", "C5_SELF_WORLD", "C83_CLASSIFIER", "C82_ANSWER", "NODE_DISPATCH"],
+    "declined": ["C86_C84_ONLY", "C87_DURABLE_WRITER", "C91_C90_ONLY", "C92_SECOND_REAL_CALLBACK", "C95_C84_ARTIFACT_CARRIER", "C98_C84_OWNER_ENTRY"],
+    "inventory": "scripts/c101-reuse-census.mjs"
+  }
+}

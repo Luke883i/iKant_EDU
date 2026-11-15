@@ -1,0 +1,26 @@
+{
+  "schema": "ikant-le-c95-physical-closure-matrix/v1",
+  "mode": "EXPERIMENTAL",
+  "authority": 0,
+  "base": "main@11eecb86f08ebb90aa228d55c1e7f50da890f79d",
+  "lossless_parent": "C94_PREPR_FIVE_ATOMIC_COMMITS_UNCHANGED_BEFORE_C95",
+  "closure": [
+    {"edge":"C77_MANIFEST_ZIP_BYTE_REOPEN","proof":"C94 original real historical C77 ZIP Node fixture","status":"LOCAL_TEST_ONLY"},
+    {"edge":"C77_DERIVED_C71_CX70","proof":"C94 original derived and anchor proof","status":"LOCAL_TEST_ONLY"},
+    {"edge":"C84_AUTO_COMPOSE","proof":"C94 synthetic API with historical ZIP","status":"LOCAL_TEST_ONLY"},
+    {"edge":"C85_VERIFIED_SOURCE_PACKAGE","proof":"C95 actual C85 on automatic C84 data","status":"LOCAL_TEST_ONLY"},
+    {"edge":"C81_REACHABLE_MERKLE","proof":"C95 actual C81 on automatic C84 data","status":"LOCAL_TEST_ONLY"},
+    {"edge":"C90_SOURCE_GATE","proof":"C95 actual C90 source verifier after C81","status":"LOCAL_TEST_ONLY"},
+    {"edge":"C77_GITHUB_ACTIONS_BINARY_LIVE","proof":null,"status":"HOST_REQUIRED"},
+    {"edge":"HOST_CONNECTOR_TO_NODE_PHYSICAL_BYTE_BRIDGE","proof":null,"status":"HOST_REQUIRED"},
+    {"edge":"C72_HOST_ORIGINAL_HUMAN_INGRESS","proof":null,"status":"HOST_REQUIRED"},
+    {"edge":"C78_C79_C90_REAL_SAME_INPUT","proof":null,"status":"HOST_REQUIRED"},
+    {"edge":"C91_C92_EXTERNAL_MODEL_GENERATOR_AND_REVIEWER","proof":null,"status":"PROVIDER_REQUIRED"},
+    {"edge":"INDEPENDENT_SEMANTIC_ENTAILMENT","proof":null,"status":"EXTERNAL_WITNESS_REQUIRED"},
+    {"edge":"C81_C86_GENERATED_LANGUAGE_OWNER_ADMISSION","proof":null,"status":"RUNTIME_NOT_YET_IMPLEMENTED"},
+    {"edge":"NATIVE_CHATGPT_SURFACE_A_EVENT_AND_READBACK","proof":null,"status":"HOST_HOOK_REQUIRED"},
+    {"edge":"C59_CANONICAL_OWNER_NATIVE_DOCX","proof":null,"status":"CANONICAL_SEPARATE"},
+    {"edge":"C72_H95_INDEPENDENT_FIELD_SAMPLE","proof":null,"status":"FIELD_NOT_MEASURED"}
+  ],
+  "forbidden_claims":["C94_CODE_IS_INSTALLED_CHATGPT_PLUGIN","MODEL_INFERRED_RECEIPT","SHA_IS_HOST_EVENT","SIGNED_CALLBACK_IS_NATIVE_DELIVERY","TWO_MODELS_PROVE_FACTUAL_TRUTH","LOCAL_PASS_IS_H95","C81_MERKLE_IS_GITHUB_REF_AUTHENTICATION"]
+}

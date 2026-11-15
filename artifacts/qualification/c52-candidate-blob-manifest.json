@@ -1,0 +1,70 @@
+{
+  "schema": "ikant-le-c52-candidate-blob-manifest/v1",
+  "source_baseline": "fbac6cb1b0591a7f41c2dc7b96125ca9c63827cc",
+  "entries": [
+    {
+      "path": "contracts/physical-runtime-closure-v1.json",
+      "bytes": 6731,
+      "sha256": "e444a415baa79775ff651fa37bef0f6f1786f5c93266faca3d848e59faa0622a"
+    },
+    {
+      "path": "src/physical-runtime-closure.mjs",
+      "bytes": 24191,
+      "sha256": "92e0513804c220f701c3e3b4abb64df3b7e8eff86900b2869dd4ebbf135aba5b"
+    },
+    {
+      "path": "src/supersystem-runtime-conformance.mjs",
+      "bytes": 9342,
+      "sha256": "c484c6663adcf9af7524fa784f7c0bf66e8314e028e252f12ecbd356388c4e48"
+    },
+    {
+      "path": "src/cohost-coldstart-qualification.mjs",
+      "bytes": 2001,
+      "sha256": "08dca9a4d1bd36347a99a13c0dc3a1b32c63ff5ffab2f3a21d7be87e8bc22300"
+    },
+    {
+      "path": "src/native-transcript-participant.mjs",
+      "bytes": 4000,
+      "sha256": "7d94ab3dd5a1796bfcac7067dbd63e73bfe3c94db7a7f87957b2d532ffbce8d2"
+    },
+    {
+      "path": "src/session-local-service.mjs",
+      "bytes": 22794,
+      "sha256": "368897bfd79f7de250ebcad7c87a43651f0804f34c0489fd11c5639ec7b25695"
+    },
+    {
+      "path": "scripts/c52-physical-closure-saturate.py",
+      "bytes": 21662,
+      "sha256": "8ede5756d599bb3e930eaa32275af9d748e095a26254c1960db3c4000b74adf1"
+    },
+    {
+      "path": "scripts/c52-bundle-coverage.mjs",
+      "bytes": 5461,
+      "sha256": "4f279c7b0fc9c52cf33704c99fffd09ca6577e3e5933be10a127f7566ad51dd5"
+    },
+    {
+      "path": "scripts/c52-build-dod.mjs",
+      "bytes": 6476,
+      "sha256": "0d3cacca508b19d834560d50fe04b94fbf77bfbea59651bafbc606ca542a531e"
+    },
+    {
+      "path": "tests/c52-physical-runtime-closure.test.mjs",
+      "bytes": 21135,
+      "sha256": "5c66af2fe2cea1ddd846ce0af906a2dfbfde9d2f1de4bd02069ddf929fbfe69d"
+    },
+    {
+      "path": ".github/workflows/c51-supersystem-runtime.yml",
+      "bytes": 1665,
+      "sha256": "4a45904415a20c3f78a5cb1080922611fd892e02d80046931b41c9c305da10d5"
+    },
+    {
+      "path": ".github/workflows/c52-physical-runtime-closure.yml",
+      "bytes": 3190,
+      "sha256": "87f6dff8e914d9aca75d7ca69949501736f334e9ada3d0008673dcf90f878d36"
+    }
+  ],
+  "content_addressed": true,
+  "manifest_excludes_self": true,
+  "authority": 0,
+  "receipt_sha256": "7cd9ad2def27d8b41b9bd700bf230d2243fd04e895599b11cf52e4b664359ff8"
+}

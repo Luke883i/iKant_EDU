@@ -1,0 +1,107 @@
+{
+  "schema": "ikant-le-deadline-integrity/v2",
+  "slice": "C25.SLO_NOT_INTEGRITY",
+  "authority": 0,
+  "intent": "Preserve C17 monotonic-deadline validation for legacy v1 evidence while making canonical C25 activation latency an observability SLO, not an integrity predicate.",
+  "invariants": [
+    "one current-session admission consumes exactly one I ACCEPT",
+    "retry cannot create a new deadline origin or epoch",
+    "deadline origin evidence is bound to source head and current Terms",
+    "deadline origin unavailable is not deadline exceeded",
+    "deadline elapsed unavailable is not deadline exceeded",
+    "deadline terminal states are sticky within the admission",
+    "manual PROBE and INITIALIZE cannot cross a sticky deadline terminal",
+    "ACTIVE requires DEADLINE_PASS and matching acceptance_event_id bindings",
+    "current main drift cannot replace the admission source head"
+  ],
+  "deadline_results": [
+    "DEADLINE_PASS",
+    "DEADLINE_ORIGIN_UNAVAILABLE",
+    "DEADLINE_ORIGIN_INVALID",
+    "DEADLINE_ELAPSED_UNAVAILABLE",
+    "DEADLINE_EXCEEDED"
+  ],
+  "terminal_session_state": "ADMISSION_EPOCH_UNRECOVERABLE",
+  "fresh_chat_required_for_terminal_deadline": true,
+  "acceptance_origin_receipt": {
+    "schema": "ikant-le-acceptance-origin/v1",
+    "requires": [
+      "event_id",
+      "source_head",
+      "terms_digest",
+      "deadline_origin=I_ACCEPT",
+      "clock=MONOTONIC",
+      "observed_at_accept=true",
+      "elapsed_to_runtime_entry_ms",
+      "receipt_sha256"
+    ]
+  },
+  "qualification": {
+    "cases": 1000000,
+    "independent_oracle_required": true,
+    "multi_mutation_cases_min": 500000,
+    "unsafe_active_required": 0,
+    "retry_accepted_required": 0,
+    "terminal_recovered_required": 0,
+    "deadline_unavailable_collapsed_to_exceeded_required": 0
+  },
+  "dod": {
+    "local": [
+      "C17_DOD_L_ACCEPT_SINGLE_SHOT",
+      "C17_DOD_L_ORIGIN_BINDING",
+      "C17_DOD_L_DEADLINE_TAXONOMY",
+      "C17_DOD_L_TERMINAL_STICKY",
+      "C17_DOD_L_MANUAL_RECOVERY_GUARD",
+      "C17_DOD_L_SOURCE_HEAD_WRITE_ONCE",
+      "C17_DOD_L_1M_NONTRIVIAL"
+    ],
+    "intermediate": [
+      "C17_DOD_I_ADMISSION_INTEGRITY",
+      "C17_DOD_I_TEMPORAL_INTEGRITY",
+      "C17_DOD_I_RECOVERY_INTEGRITY",
+      "C17_DOD_I_QUALIFICATION"
+    ],
+    "global": "C17_DOD_GLOBAL_ACCEPTANCE_DEADLINE_INTEGRITY"
+  },
+  "claim_boundary": {
+    "semantic_mutation_is_not_physical_host_proof": true,
+    "current_clock_capability_is_not_historical_origin_evidence": true,
+    "receipt_integrity_is_not_private_model_introspection": true,
+    "fresh_chat_requirement_does_not_claim_deadline_exceeded": true,
+    "slo_breach_is_deadline_integrity_failure": false,
+    "v1_deadline_receipt_defines_v2_active": false
+  },
+  "canonical_activation_v2": {
+    "time_integrity_gate_required": false,
+    "acceptance_clock_required": false,
+    "slo_ms": 120000,
+    "slo_exceeded_terminal": false,
+    "slo_exceeded_blocks_active": false,
+    "retry_is_same_epoch": true
+  },
+  "legacy_v1": {
+    "canonical": false,
+    "deadline_results": [
+      "DEADLINE_PASS",
+      "DEADLINE_ORIGIN_UNAVAILABLE",
+      "DEADLINE_ORIGIN_INVALID",
+      "DEADLINE_ELAPSED_UNAVAILABLE",
+      "DEADLINE_EXCEEDED"
+    ],
+    "terminal_session_state": "ADMISSION_EPOCH_UNRECOVERABLE",
+    "fresh_chat_required_for_terminal_deadline": true,
+    "acceptance_origin_receipt": {
+      "schema": "ikant-le-acceptance-origin/v1",
+      "requires": [
+        "event_id",
+        "source_head",
+        "terms_digest",
+        "deadline_origin=I_ACCEPT",
+        "clock=MONOTONIC",
+        "observed_at_accept=true",
+        "elapsed_to_runtime_entry_ms",
+        "receipt_sha256"
+      ]
+    }
+  }
+}

@@ -1,0 +1,47 @@
+name: C56 local host session meta-prompt
+on:
+  pull_request:
+    paths:
+      - 'src/local-host-meta-prompt.mjs'
+      - 'docs/LOCAL_HOST_META_PROMPT.md'
+      - 'docs/C56_LOCAL_HOST_SESSION_META_PROMPT.md'
+      - 'contracts/local-host-session-meta-prompt.json'
+      - 'tests/local-host-meta-prompt.test.mjs'
+      - 'tests/c44-methodological-bootstrap.test.mjs'
+      - 'tests/c55-local-host-post-meta.test.mjs'
+      - 'tests/c56-local-host-session-meta.test.mjs'
+      - 'scripts/c56-local-host-session-meta-select.mjs'
+      - 'scripts/c56-local-host-session-meta-falsify.mjs'
+      - '.github/workflows/c56-local-host-session-meta.yml'
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Syntax
+        run: |
+          node --check src/local-host-meta-prompt.mjs
+          node --check scripts/c56-local-host-session-meta-select.mjs
+          node --check scripts/c56-local-host-session-meta-falsify.mjs
+      - name: Focused prompt and inherited methodological tests
+        timeout-minutes: 15
+        run: node --test --test-concurrency=1 tests/local-host-meta-prompt.test.mjs tests/c44-methodological-bootstrap.test.mjs tests/c55-local-host-post-meta.test.mjs tests/c56-local-host-session-meta.test.mjs
+      - name: Ten-thousand semantic discovery and complete 2^20 lattice
+        timeout-minutes: 15
+        run: node scripts/c56-local-host-session-meta-select.mjs > /tmp/c56-selection.json
+      - name: Independent one-hundred-thousand prompt falsification
+        timeout-minutes: 15
+        run: node scripts/c56-local-host-session-meta-falsify.mjs --cases 100000 > /tmp/c56-falsification.json
+      - name: Assert C56 semantic evidence
+        run: |
+          node -e "const a=require('/tmp/c56-selection.json'),b=require('/tmp/c56-falsification.json');if(a.status!=='PASS'||a.cases!==10000||a.architecture_lattice?.total!==1048576||a.architecture_lattice?.unique_minimum!==true||a.architecture_lattice?.minimum_cost!==20||a.all_deletion_mutants_killed!==true||!(a.long_form_draft?.mismatch>0)||!(a.long_form_draft?.unsafe>0)||a.abstraction_levels?.length<9||b.status!=='PASS'||b.cases!==100000||b.abstraction_levels?.length<9||b.candidate_oracle_mismatches!==0||b.unsafe_promotions!==0||b.false_rejects!==0||b.independence?.candidate_is_not_oracle_alias!==true)process.exit(1)"
+      - name: Runtime root remains unchanged
+        run: npm run runtime-root:verify

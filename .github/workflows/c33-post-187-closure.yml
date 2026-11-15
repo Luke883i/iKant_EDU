@@ -1,0 +1,27 @@
+name: C33 post-187 ontological closure
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c33:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Falsify post-186/187 closure 1m
+        run: npm run falsify:c33
+      - name: C33 end-to-end runtime tests
+        run: node --test --test-concurrency=1 tests/c33-post-187-closure.test.mjs
+      - name: C32 shell regression
+        run: node --test --test-concurrency=1 tests/c32-session-shell.test.mjs
+      - name: C31 supply regression
+        run: node --test --test-concurrency=1 tests/c31-runtime-limited-supply-chain.test.mjs
+      - name: C31 limited-turn regression
+        run: node --test --test-concurrency=1 tests/c31-runtime-limited-turn.test.mjs
+      - name: Verify deterministic runtime root
+        run: npm run runtime-root:verify

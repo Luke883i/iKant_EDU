@@ -1,0 +1,30 @@
+name: C35 control-plane ownership lattice
+on:
+  pull_request:
+    paths:
+      - 'contracts/control-plane-ownership.json'
+      - 'src/control-plane-ownership.mjs'
+      - 'tests/c35-control-plane-ownership.test.mjs'
+      - 'scripts/c35-control-plane-ownership-falsify.c'
+      - 'scripts/c35-control-plane-self-recheck.mjs'
+      - '.github/workflows/c35-control-plane-ownership.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c35:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - name: Runtime semantic unit witnesses
+        run: node --test --test-concurrency=1 tests/c35-control-plane-ownership.test.mjs
+      - name: Repository self anti-risk recheck
+        run: node scripts/c35-control-plane-self-recheck.mjs
+      - name: 10M saturation + 2^20 minimum + 1M alternative falsification
+        run: |
+          cc -O3 -std=c11 -Wall -Wextra scripts/c35-control-plane-ownership-falsify.c -o /tmp/c35-control-plane-ownership
+          /tmp/c35-control-plane-ownership | tee /tmp/c35-control-plane-ownership.json
+          node -e "const x=require('/tmp/c35-control-plane-ownership.json'); if(x.status!=='PASS'||x.semantic_cases!==10000000||x.candidate_oracle_mismatches!==0||x.unsafe_ikant_owned!==0||x.architecture_lattice!==1048576||x.minimum_mask!==1023||x.minimum_cost!==10||x.minimum_ties!==1||x.alternative_contracts!==1000000||x.alternatives_killed!==1000000||x.alternative_survivors!==0||x.deletion_mutants_killed!==10||x.explicit_activation_mutated!==true||x.warm_activation_budget_mutated!==true||x.semantic_mutation_is_physical_host_proof!==false)process.exit(1)"

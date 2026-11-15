@@ -1,0 +1,28 @@
+name: C99 post-selection convergence (non-dispatching)
+on:
+  pull_request:
+    paths:
+      - 'host/c99-postselection-planner.mjs'
+      - 'contracts/c99-postselection-convergence.json'
+      - 'tests/c99-postselection-planner.test.mjs'
+      - 'tests/c103-synthetic-pass-nonattestation.test.mjs'
+      - 'scripts/c99-postselection-falsify-100k.mjs'
+      - '.github/workflows/c99-postselection-convergence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Original C72 and C99 source-bound planner tests; C103 synthetic counterexample
+        run: node --test tests/c99-postselection-planner.test.mjs tests/c99-route-policy.test.mjs tests/c103-synthetic-pass-nonattestation.test.mjs
+      - name: One hundred thousand negative route variants
+        run: |
+          node scripts/c99-postselection-falsify-100k.mjs > c99-postselection-result.json
+          node -e 'const r=require("./c99-postselection-result.json");if(!r.qualified||r.negative_mutations!==100000||r.unexpected_promotions!==0)process.exit(2);console.log(JSON.stringify(r))'

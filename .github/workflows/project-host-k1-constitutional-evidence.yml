@@ -1,0 +1,58 @@
+name: K1 constitutional postaccept evidence and R2 DoD
+on:
+  pull_request:
+    paths:
+      - 'host/project-host-k1-constitutional-audit.mjs'
+      - 'scripts/project-host-k1-evidence-falsify-1m.mjs'
+      - 'scripts/project-host-k1-reticulum-verify.mjs'
+      - 'tests/project-host-k1-constitutional-audit.test.mjs'
+      - 'contracts/project-host-k1-evidence-reticulum.json'
+      - '.github/workflows/project-host-k1-constitutional-evidence.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-k1-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Syntax and 18-node contract
+        run: |
+          node --check host/project-host-k1-constitutional-audit.mjs
+          node --check scripts/project-host-k1-evidence-falsify-1m.mjs
+          node --check scripts/project-host-k1-reticulum-verify.mjs
+          node --check tests/project-host-k1-constitutional-audit.test.mjs
+          node -e "const c=require('./contracts/project-host-k1-evidence-reticulum.json');if(c.nodes.length!==18||c.edge_tests.length!==3||c.authority!==0)process.exit(1)"
+      - name: Verify 18-node R2 DoD DAG, release stays fail-closed
+        run: node scripts/project-host-k1-reticulum-verify.mjs > "$RUNNER_TEMP/reticulum.json"
+      - name: Original C72, original voice WeakSet, Git objects and private file tests
+        run: node --test tests/project-host-k1-constitutional-audit.test.mjs tests/project-host-k1-real-source.test.mjs tests/project-host-effect-decision.test.mjs > "$RUNNER_TEMP/real-owner-tests.tap"
+      - name: One million unique pre-seeded cases twice
+        run: |
+          node scripts/project-host-k1-evidence-falsify-1m.mjs > "$RUNNER_TEMP/first.json"
+          node scripts/project-host-k1-evidence-falsify-1m.mjs > "$RUNNER_TEMP/repeat.json"
+          cmp "$RUNNER_TEMP/first.json" "$RUNNER_TEMP/repeat.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.cases!==1000000||r.distinct_masks!==1000000||r.divergences!==0||r.wrongPromotion!==0||r.original_c72_calls!==0||r.release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/first.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: k1-r2-constitutional-node-${{ matrix.node }}
+          path: |
+            ${{ runner.temp }}/first.json
+            ${{ runner.temp }}/real-owner-tests.tap
+            ${{ runner.temp }}/reticulum.json
+          if-no-files-found: warn
+          retention-days: 30

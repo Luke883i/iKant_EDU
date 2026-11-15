@@ -1,0 +1,31 @@
+{
+  "schema": "ikant-le-c95-local-proofs/v1",
+  "node_tests_passed": 30,
+  "node_tests_failed": 0,
+  "connector_mutation_cases": 100000,
+  "connector_mutation_survivors": 0,
+  "src_sha256": {
+    "host/c94-auto-artifact-carrier.mjs": "f23492fa3b85041c53fb58a3d1fd643b9ab7a53cfaec65739ecdac7158775bf1",
+    "host/c94-cold-host-turn.mjs": "5571661be4df46c1d5c27a834ca8687d7f0073350b79b9382dfece5063a90436",
+    "host/c94-cx-anchor-proof.mjs": "4fdecdd1cb957d49470a9d8ae76e121343e9d0f04dc7e6af2cc73fadc147578a",
+    "host/c94-derived-c77-proof.mjs": "47df0b0197fe18ad396c0c5a236fa610b6f09c639f8b4735290607eeb258ffa9",
+    "host/c94-git-api-proof.mjs": "ec9c27dfc5e4db9bb5ff78f56aeb6cb5d37bc3f81cc4a40b6929bc75968d4099",
+    "host/c94-native-delivery-boundary.mjs": "77efdd064c0502e6c1a2e92a8dad276cbd7735be55a17501403df64fad49ba44",
+    "host/c94-zip-c77.mjs": "f62949993991cfa969b79aaa64ed402b9fa961ea9293d3cdbc907e1956d13cfd"
+  },
+  "positive_provider_invocations": 0,
+  "github_actions_remote_binary_fetches": 0,
+  "native_platform_deliveries": 0,
+  "lossless_c94_original_commit": "28f42ceaeee7148ed136001db61aa7e4c7249753",
+  "local_original_fixture_sha256": "127c1df6c36d5b9d185a4e0d4cae497f77a1bb8779f9aa060a2da14b377df3d3",
+  "endpoint_allowlist_negative_cases": 6,
+  "source_transport_allowlist_hardened": true,
+  "physical_connector_branch_executed_in_node_test": true,
+  "host_bridge_native_origin_independently_attested": false,
+  "falsification_regression_found": {
+    "before": "C94_LEGACY_MISSING_TOKEN_STOP_CHANGED",
+    "after": "C94_LEGACY_STOP_PRESERVED"
+  },
+  "c95_native_delivery_attested": false,
+  "semantic_model_calls": 0
+}

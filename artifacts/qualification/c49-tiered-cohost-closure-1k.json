@@ -1,0 +1,32 @@
+{
+  "schema": "ikant-cross-repo-postmerge-tiered-closure-1k/v1",
+  "seed": "0xC1050A11",
+  "cases": 1000,
+  "families": 40,
+  "positive_witnesses": 606,
+  "candidate_results": {
+    "TIERED_OPTIMAL": {"mismatch":0,"unsafe":0,"false_reject":0},
+    "FLAT_ALL_FOR_RELATION": {"mismatch":231,"unsafe":0,"false_reject":231},
+    "RELATION_ONLY_FOR_ALL": {"mismatch":169,"unsafe":169,"false_reject":0},
+    "NO_HYDRATION_PROOF": {"mismatch":87,"unsafe":87,"false_reject":0},
+    "NO_PROMOTION_PROOF": {"mismatch":43,"unsafe":43,"false_reject":0},
+    "NO_OWNER_GOVERNANCE": {"mismatch":39,"unsafe":39,"false_reject":0},
+    "CONTROL_OWNERSHIP_REQUIRED": {"mismatch":304,"unsafe":0,"false_reject":304},
+    "LZMA_REQUIRED": {"mismatch":320,"unsafe":0,"false_reject":320},
+    "NATIVE_IMPL_REQUIRED": {"mismatch":581,"unsafe":0,"false_reject":581}
+  },
+  "targeted_deletion_mutants": {
+    "B0_VERIFIED_BIND_NUCLEUS": true,
+    "R0_DURABLE_CANONICAL_RUNTIME_CONTEXT": true,
+    "R1_PERSISTENT_PARTICIPATION_LEASE": true,
+    "R2_EXACT_ATTRIBUTED_DELIVERY_RECEIPT": true,
+    "H0_HYDRATION_UPGRADE": true,
+    "P0_CANONICAL_PROMOTION": true,
+    "O0_OWNER_GOVERNANCE": true
+  },
+  "conclusion": "Use tiered closure: RELATION=B0+R0+R1+R2; FULL_RUNTIME=RELATION+H0; CANONICAL_PRODUCT=FULL_RUNTIME+P0+O0. Do not flatten product/promotion obligations into the conversational relation.",
+  "status": "PASS",
+  "claim_boundary": {
+    "semantic_mutation_is_physical_host_proof": false
+  }
+}

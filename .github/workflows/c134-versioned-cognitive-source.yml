@@ -1,0 +1,39 @@
+name: c134-versioned-cognitive-source
+on:
+  pull_request:
+    paths:
+      - 'tests/fixtures/epochs/c134-epoch/**'
+      - 'scripts/c134-source-epoch.mjs'
+      - 'tests/c134-cognitive-epoch.test.mjs'
+      - 'contracts/c134-source-epoch.json'
+      - 'contracts/c134-convergence-lattice.json'
+      - 'tests/c134-convergence-lattice.test.mjs'
+      - 'docs/C134_COGNITIVE_SOURCE_EPOCH.md'
+      - '.github/workflows/c134-versioned-cognitive-source.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tests/fixtures/epochs/c134-epoch/**'
+      - 'scripts/c134-source-epoch.mjs'
+      - 'tests/c134-cognitive-epoch.test.mjs'
+      - 'contracts/c134-source-epoch.json'
+      - 'contracts/c134-convergence-lattice.json'
+      - 'tests/c134-convergence-lattice.test.mjs'
+      - '.github/workflows/c134-versioned-cognitive-source.yml'
+jobs:
+  isolated-source-cognition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Four exact overlay blobs and bounded composite identity
+        run: node scripts/c134-source-epoch.mjs
+      - name: Original C107/C87 isolated owner and negative regression
+        run: node --test tests/c134-cognitive-epoch.test.mjs tests/c134-convergence-lattice.test.mjs tests/c132-enterprise-candidate.test.mjs
+      - name: Historic source stays immutable
+        run: npm run runtime-root:verify
+      - name: Repository consistency
+        run: npm run check

@@ -1,0 +1,66 @@
+{
+  "schema": "ikant-le-c98-offline-capsule-strategy/v1",
+  "authority": 0,
+  "base_source_head": "bc5fbcb938c7ba959de0eaef96f92e754d953d4b",
+  "rule": "PROVE_CALLBACK_THEN_TRANSPORT_BYTES_OFFLINE_TO_EXISTING_C82",
+  "chatgpt_session_node": {
+    "github_dns_attested": false,
+    "direct_node_github_https": "FORBIDDEN",
+    "git_clone_or_fetch_from_node": "FORBIDDEN",
+    "curl_or_wget_from_node": "FORBIDDEN",
+    "automatic_retries_of_same_unsupported_network": "FORBIDDEN",
+    "host_supplied_source_bytes": "CALLBACK_REQUIRED_EXPLICITLY",
+    "host_trust_origin_must_be_independently_proven": true
+  },
+  "production_options": [
+    {
+      "id": "HEAD_EXACT_CI_ACTIONS_ARTIFACT",
+      "recommended": true,
+      "target": "SINGLE_C77_OUTER_ZIP_AFTER_COMMIT",
+      "source_epoch_source": "INDEPENDENT_GITHUB_REF_WITNESS",
+      "manifest": "C77_MANIFEST_EMBEDDED_IN_ZIP_AND_SHA_MATCHED",
+      "fetch": "AUTHORIZED_HOST_BINARY_READER_NOT_NODE_HTTPS",
+      "transport": "ONE_SOURCE_BOUND_ARCHIVE_CALLBACK_TO_C98_TO_C82",
+      "limitation": "CALLBACK_NOT_INSTALLED_IN_THIS_CHAT"
+    },
+    {
+      "id": "REOPENED_HEAD_EXACT_CACHE",
+      "recommended": true,
+      "target": "CACHE_KEY_HEAD_AND_MANIFEST_SHA256",
+      "source_epoch_source": "ACTUAL_HOST_GITHUB_REF_WITNESS",
+      "fetch": "ZERO_NETWORK_ONLY_IF_FILES_ALREADY_PRESENT_VERIFIED_REOPENED",
+      "limitation": "PERSISTENT_CACHE_NOT_ATTESTED_ACROSS_CHATGPT_SESSIONS"
+    },
+    {
+      "id": "PER_FILE_OPAQUE_RELAY",
+      "recommended": true,
+      "target": "33_ORIGINALS_PLUS_C77_DERIVATIVES_AS_MANIFEST_ENTRIES",
+      "fetch": "HOST_CALLBACK_PER_FILE_USING_REAL_GITHUB_API_OR_INSTALLED_BRIDGE",
+      "transport": "C98_C82_EXISTING_GETFILE_INTERFACE",
+      "limitation": "MANY_CALLBACKS_AND_HEAD_DERIVATIVE_BUILD"
+    },
+    {
+      "id": "REPO_TRACKED_SELF_HEAD_ZIP",
+      "recommended": false,
+      "target": "ZIP_STORED_INSIDE_EXACT_SAME_COMMIT_IT_DECLARES",
+      "issue": "THE_COMMIT_ID_DEPENDS_ON_THE_ZIP_BYTES_WHICH_CLAIM_THAT_COMMIT_ID; UNSATISFIABLE_BY_A_SIMPLE_ONE_PASS_BUILD",
+      "qualification": "NO_PROOF_OF_A_CRYPTORGRAPHIC_FIXED_POINT; DO_NOT_DESIGN_FOR_ONE",
+      "acceptable_alternative": "PINNED_HEAD_INDEPENDENT_CI_ARTIFACT_AFTER_COMMIT_OR_HEAD_NEUTRAL_CONTENT_ADDRESSED_DEPENDENCY_BLOB"
+    },
+    {
+      "id": "NPM_DEPENDENCY_PACKAGE",
+      "recommended": false,
+      "issue": "C77_C82_C84_ARE_NODE_ESM_WITHOUT_A_RUNTIME_NPM_DEPENDENCY; PACKAGING_DOES_NOT_INSTALL_HOST_CAPABILITY",
+      "exception": "AUTHORIZED_INSTALLED_APP_SEPARATELY_DEPLOYED_AND_WITNESSED"
+    },
+    {
+      "id": "HUMAN_MANUAL_ZIP",
+      "recommended": false,
+      "scope": "EXPLICIT_LAST_RESORT_ON_USER_SELECTION",
+      "never_auto_promote_to_verified_github_origin": true
+    }
+  ],
+  "test_evidence_scope": "HISTORICAL_C77_ACTIONS_ZIP_REAL_BYTES_NOT_CURRENT_HEAD",
+  "native_platform_origin_attested": false,
+  "field_success_95_attested": false
+}

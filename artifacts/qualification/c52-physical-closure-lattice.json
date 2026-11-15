@@ -1,0 +1,91 @@
+{
+  "schema": "ikant-le-v1-experimental-physical-closure-lattice/v2",
+  "source_baseline": "fbac6cb1b0591a7f41c2dc7b96125ca9c63827cc",
+  "mechanisms": [
+    "E0_HOST_BOOTSTRAP_BINDING_RECEIPT",
+    "E1_RUNTIME_EXECUTION_RECEIPT",
+    "E2_COHOST_RELATION_ATTESTATION",
+    "E3_HOST_ROUTE_INTERPOSITION_RECEIPT",
+    "E4_NATIVE_PARTICIPANT_LEASE",
+    "E5_NATIVE_TURN_GRANT_RECEIPT",
+    "E6_NATIVE_DELIVERY_READBACK_RECEIPT",
+    "L0_OWNER_PROVENANCE_AND_SEAL",
+    "L1_EXACT_CROSS_BINDING_AND_FRESHNESS",
+    "L2_FAIL_CLOSED_PROJECTION",
+    "L3_SURROGATE_REJECTION",
+    "L4_AXIS_ORTHOGONALITY"
+  ],
+  "architecture_count": 4096,
+  "semantic_worlds_observed": 3097,
+  "valid_architectures": 1,
+  "minimum_cost": 12,
+  "minimum_count": 1,
+  "winner_masks": [
+    4095
+  ],
+  "unique_minimum": true,
+  "deletion_mutants": {
+    "E0_HOST_BOOTSTRAP_BINDING_RECEIPT": {
+      "mismatch": 1250000,
+      "unsafe": 1250000,
+      "false_reject": 0
+    },
+    "E1_RUNTIME_EXECUTION_RECEIPT": {
+      "mismatch": 937500,
+      "unsafe": 937500,
+      "false_reject": 0
+    },
+    "E2_COHOST_RELATION_ATTESTATION": {
+      "mismatch": 937500,
+      "unsafe": 937500,
+      "false_reject": 0
+    },
+    "E3_HOST_ROUTE_INTERPOSITION_RECEIPT": {
+      "mismatch": 1406250,
+      "unsafe": 1406250,
+      "false_reject": 0
+    },
+    "E4_NATIVE_PARTICIPANT_LEASE": {
+      "mismatch": 937500,
+      "unsafe": 937500,
+      "false_reject": 0
+    },
+    "E5_NATIVE_TURN_GRANT_RECEIPT": {
+      "mismatch": 625000,
+      "unsafe": 625000,
+      "false_reject": 0
+    },
+    "E6_NATIVE_DELIVERY_READBACK_RECEIPT": {
+      "mismatch": 937500,
+      "unsafe": 937500,
+      "false_reject": 0
+    },
+    "L0_OWNER_PROVENANCE_AND_SEAL": {
+      "mismatch": 1250000,
+      "unsafe": 1250000,
+      "false_reject": 0
+    },
+    "L1_EXACT_CROSS_BINDING_AND_FRESHNESS": {
+      "mismatch": 1250000,
+      "unsafe": 1250000,
+      "false_reject": 0
+    },
+    "L2_FAIL_CLOSED_PROJECTION": {
+      "mismatch": 4531250,
+      "unsafe": 4531250,
+      "false_reject": 0
+    },
+    "L3_SURROGATE_REJECTION": {
+      "mismatch": 933478,
+      "unsafe": 933478,
+      "false_reject": 0
+    },
+    "L4_AXIS_ORTHOGONALITY": {
+      "mismatch": 1093750,
+      "unsafe": 0,
+      "false_reject": 1093750
+    }
+  },
+  "interpretation": "Unique minimum is relative to the frozen physical-closure oracle and the 10M multi-abstraction semantic worlds; it is not a proof that the external host implements the required primitives.",
+  "receipt_sha256": "7c99e4641c14e8162f853ac53e2757f312b13b8bf5efdd0c8af655f12ccf547d"
+}

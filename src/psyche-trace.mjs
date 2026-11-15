@@ -1,0 +1,5 @@
+import { readPsycheKernel } from './contract.mjs';
+const K=readPsycheKernel();
+const keys=['valence','arousal','affiliation','boundary_pressure'];
+const round=x=>Number(Number(x).toFixed(6));
+export function explainPsycheTransition(before,appraisal,preAction,outcome,after){const b=K.state.baseline,h=K.state.homeostasis;const decayed={},interaction_impulse={},retroaction_impulse={},net_delta={};for(const k of keys){const lambda=h.fast_dimensions.includes(k)?h.lambda_fast:h.lambda_slow;decayed[k]=round(b[k]+lambda*(Number(before?.[k]??b[k])-b[k]));interaction_impulse[k]=round(Number(preAction?.[k]??decayed[k])-decayed[k]);retroaction_impulse[k]=round(Number(after?.[k]??preAction?.[k]??0)-Number(preAction?.[k]??0));net_delta[k]=round(Number(after?.[k]??0)-Number(before?.[k]??0));}return{schema:'ikant-le-psyche-transition-trace/v1',appraisal_class:appraisal?.class||'UNAVAILABLE',target:appraisal?.target||'UNKNOWN',homeostatic_decay:decayed,interaction_impulse,pre_action:structuredClone(preAction||{}),runtime_outcome:String(outcome||'UNAVAILABLE'),retroaction_impulse,after:structuredClone(after||{}),net_delta,authority:0};}

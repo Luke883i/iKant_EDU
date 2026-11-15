@@ -1,0 +1,32 @@
+name: C104 resumable materialization real-source qualification
+on:
+  pull_request:
+    paths:
+      - 'host/c104-resumable-materialization.mjs'
+      - 'scripts/c104-*'
+      - 'tests/c104-materialization.test.mjs'
+      - 'contracts/c104-materialization-dod.json'
+      - 'docs/C104_MATERIALIZATION_AND_ADAPTER.md'
+      - '.github/workflows/c104-resumable.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate original manifest derivation
+        run: node scripts/c104-source-spec.mjs > /tmp/c104-spec.json
+      - name: Execute source graph real Node handoff
+        run: node --test tests/c104-materialization.test.mjs
+      - name: 100k synthetic negatives (not host-native sessions)
+        run: |
+          node scripts/c104-falsify-100k.mjs > /tmp/c104-falsify.json
+          node -e 'const r=require("/tmp/c104-falsify.json");if(!r.qualified||r.negative_cases!==100000||r.unexpected_promotions!==0)process.exit(2);console.log(JSON.stringify(r))'

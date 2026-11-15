@@ -1,0 +1,35 @@
+name: C71 bounded experimental host-owned draft
+on:
+  pull_request:
+    paths:
+      - 'src/c71-experimental-host-draft.mjs'
+      - 'tests/c71-experimental-host-draft.test.mjs'
+      - 'contracts/c71-cx-execution-census.json'
+      - 'docs/C71_*'
+      - '.github/workflows/c71-experimental-host-draft.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/c71-experimental-host-draft.mjs'
+      - 'tests/c71-experimental-host-draft.test.mjs'
+      - 'contracts/c71-cx-execution-census.json'
+      - '.github/workflows/c71-experimental-host-draft.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-cx-route:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm run runtime-root:verify
+      - run: node --test --test-concurrency=1 tests/c69-capability-first-preview.test.mjs tests/c70-experimental-compute-preview.test.mjs tests/c71-experimental-host-draft.test.mjs
+      - run: node --test --test-concurrency=1 tests/c31-runtime-limited-turn.test.mjs tests/c58-runtime-lifecycle-gate.test.mjs
+      - run: npm run check

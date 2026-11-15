@@ -1,0 +1,27 @@
+name: C50 native transcript actor
+on:
+  pull_request:
+    paths:
+      - 'contracts/native-transcript-participant.json'
+      - 'artifacts/qualification/c50-native-transcript-participant-10k.json'
+      - 'src/native-transcript-participant.mjs'
+      - 'tests/c50-native-transcript-participant.test.mjs'
+      - '.github/workflows/c50-native-transcript.yml'
+permissions:
+  contents: read
+jobs:
+  c50:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Native transcript focused runtime witnesses
+        run: node --test tests/c50-native-transcript-participant.test.mjs
+      - name: Evidence contract
+        run: |
+          node -e "const fs=require('fs');const e=JSON.parse(fs.readFileSync('artifacts/qualification/c50-native-transcript-participant-10k.json'));if(e.status!=='PASS'||e.cases!==10000||e.candidate_results.NATIVE_4_PRIMITIVE.mismatch!==0)process.exit(1)"
+      - name: Repository check
+        run: node scripts/check.mjs

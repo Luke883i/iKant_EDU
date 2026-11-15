@@ -1,0 +1,79 @@
+{
+  "schema": "ikant-le-c81-runtime-projection-gate/v1",
+  "authority": 0,
+  "connects": [
+    "C72",
+    "C77",
+    "C78",
+    "C79",
+    "C81_GIT_REACHABILITY"
+  ],
+  "product_rule": "MODEL_PROJECTS_EXACT_RUNTIME_BYTES_OR_EMITS_NON_IKANT_DIAGNOSTIC",
+  "scope": "POST_CONSENT_EXPERIMENTAL_PER_SUBSTANTIVE_NATIVE_USER_TURN",
+  "source_checks": [
+    "C81_GIT_REACHABILITY_VERIFIED",
+    "SOURCE_HEAD_AND_MANIFEST_BOUND",
+    "NO_HOST_ORIGIN_PROMOTION"
+  ],
+  "runtime_checks": [
+    "C79_CHAT_PACKET_READY_NOT_DELIVERED",
+    "SAME_INPUT_SHA256",
+    "EXACT_OUTPUT_SHA256",
+    "CHILD_NODE_EXECUTION_SHAPE",
+    "C70_VOICE_SOURCE_NOT_HOST_MODEL_CANDIDATE"
+  ],
+  "model_cannot": [
+    "COMPUTE_IKANT_VOICE",
+    "REWRITE_SEALED_OWNER_TEXT",
+    "INVENT_NODE_RECEIPT",
+    "GENERATE_FALLBACK_IKANT_REPLY",
+    "PROMOTE_NATIVE_DELIVERY",
+    "INSTALL_STICKY_OVERLAY"
+  ],
+  "display": {
+    "preferred": "TOP_OF_EACH_REPLY_HEADER_PLUS_EXACT_SURFACE_A",
+    "native_sticky_overlay": "REQUIRES_REAL_HOST_APP_OR_UI_HOOK",
+    "metadata_outside_voice": true,
+    "byte_exact_voice": true,
+    "interactive_surface": "SURFACE_A_ONLY",
+    "unsupported": "DIAGNOSTIC_ONLY"
+  },
+  "input_limit_utf8_bytes": 600,
+  "source_origin_independently_attested_by_this_gate": false,
+  "status_success": "C81_RUNTIME_SURFACE_A_READY_NOT_NATIVE_DELIVERED",
+  "status_blocked": "C81_RUNTIME_NOT_EXECUTED_OR_UNVERIFIED",
+  "first_unclosed_edge_after_success": "HOST_PINNED_GITHUB_REF_ORIGIN",
+  "design_domain": {
+    "axes": [
+      "git_source_readback",
+      "runtime_surface_packet",
+      "current_input",
+      "ui_surface",
+      "fallback_behavior"
+    ],
+    "cardinality_each": 10,
+    "total_cartesian_combinations": 100000,
+    "enumeration": "(31337*i+54321) mod 100000",
+    "score": "PASS_ALL_STRICT_INVARIANTS_BEFORE_MINIMAL_UI",
+    "expected_eligible": 1,
+    "scope": "FIXED_FINITE_CONTRACT_SPACE_NOT_ALL_POSSIBLE_PROJECT_PROMPTS"
+  },
+  "test_receipts": {
+    "requires_actual_c77_c78_c79_node_dispatch": true,
+    "projection_calls_target": 100000,
+    "host_native_chat_sessions_measured": 0,
+    "reported_M_only_if_observed": true
+  },
+  "native_host_unknown": [
+    "ACTUAL_INGRESS_EVENT_ID",
+    "ACTUAL_PRESENTATION_IN_UI",
+    "REAL_CROSS_TURN_STATE_WRITER",
+    "PERMANENT_OVERLAY_CAPABILITY"
+  ],
+  "dont_conflate": [
+    "100K_NODE_VALIDATOR_CALLS",
+    "100K_CHATGPT_NATIVE_SESSIONS",
+    "CI_GREEN",
+    "H95_FIELD_SUCCESS"
+  ]
+}

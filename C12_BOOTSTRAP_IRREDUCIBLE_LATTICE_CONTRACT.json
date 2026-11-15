@@ -1,0 +1,45 @@
+{
+  "schema": "ikant-le-c12-bootstrap-irreducible-lattice/v1",
+  "slice": "C12.BOOTSTRAP_IRREDUCIBLE_LATTICE_QUALIFICATION",
+  "exact_base": "871867da9dcd62d35507297f4d5208bc722e2861",
+  "status": "QUALIFICATION_ONLY_NO_RUNTIME_DELTA",
+  "authority": 0,
+  "intent": "Falsify C10 fastboot abstractions and compress them to the smallest causally separated bootstrap lattice before changing runtime acquisition semantics.",
+  "nodes": [
+    {"id":"FIRST_CONTACT","owns":["canonical target recognition","verbatim pending intent binding"],"boundary":"pure recognition must precede repository acquisition"},
+    {"id":"SOURCE_ROOT","owns":["authorized source channel","immutable source head","bootstrap manifest binding"],"boundary":"repository bytes are not trusted without one immutable source root"},
+    {"id":"CONSENT_ROOT","owns":["Terms bytes/digest binding","Terms presentation","acquisition freeze","later exact standalone I ACCEPT","authority-zero fresh-state preaccept context validation"],"boundary":"runtime acquisition remains forbidden before exact human acceptance"},
+    {"id":"RUNTIME_ROOT","owns":["complete runtime source set","content-addressed source-set root","safe materialization paths","cache reuse only on exact root match"],"boundary":"runtime transport shape and shard count are implementation parameters, not semantic authority"},
+    {"id":"HOST_PROBE","owns":["live Node.js 20+","live filesystem CRUD/readback","live SHA-256","live clock"],"boundary":"source integrity is not local-host capability evidence"},
+    {"id":"ACTIVE_COMMIT","owns":["single writer","ledger fsync/readback","ACTIVE transition","exactly-once pending-intent resume"],"boundary":"capability observation is not state authority"}
+  ],
+  "folded_semantics": {
+    "PREACCEPT_HANDOFF": "fold into CONSENT_ROOT as validated authority-zero context rather than retain an independent lifecycle stage",
+    "RESUME_PENDING_INTENT": "fold into ACTIVE_COMMIT as an exactly-once terminal effect",
+    "PLAN_OR_TIER_NAME": "remove from bootstrap logic; feature/capability detection only",
+    "FIXED_RUNTIME_SHARD_COUNT": "remove from semantic topology; choose bounded content-addressed shards per host transport constraints"
+  },
+  "future_runtime_hypothesis": {
+    "preaccept_critical_paths": ["BOOTSTRAP.json","TERMS.md"],
+    "bootstrap_manifest_must_bind_terms_digest": true,
+    "postaccept_runtime_materialization": "CONTENT_ADDRESSED_RUNTIME_ROOT",
+    "warm_cache": "REUSE_ONLY_AFTER_CURRENT_SOURCE_ROOT_AND_RUNTIME_ROOT_MATCH",
+    "real_probe_always_required": true,
+    "current_C10_runtime_is_unchanged_by_this_slice": true
+  },
+  "qualification": {
+    "cases": 100000,
+    "families": 50,
+    "single_node_deletion_oracle_required": true,
+    "blocking_survivors_required": 0,
+    "every_retained_node_must_be_causally_necessary": true,
+    "source_binding_required": true
+  },
+  "claim_boundary": {
+    "corpus_irreducible_not_formally_globally_minimal": true,
+    "mutation_is_not_wall_clock_measurement": true,
+    "mutation_is_not_physical_host_evidence": true,
+    "no_runtime_bootstrap_change_in_this_slice": true,
+    "no_chatgpt_plan_guarantee": true
+  }
+}

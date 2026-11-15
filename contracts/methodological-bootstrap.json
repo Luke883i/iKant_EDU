@@ -1,0 +1,118 @@
+{
+  "schema": "ikant-le-c44-methodological-bootstrap-ascii-shell/v1",
+  "slice": "C44.METHODOLOGICAL_BOOTSTRAP_ASCII_SHELL",
+  "authority": 0,
+  "base": {
+    "source_head": "10a0f2f631747fe47f4caccddc2b4a726c613884",
+    "depends_on": "C43.BOOTSTRAP_RECOVERY_HARDENING"
+  },
+  "objective": "Make the local-host prompt methodological and retry-capable by reusing existing bootstrap registries, admit declared source-bound session context references into the local runtime without new authority, and require owner-rendered ASCII shell output after Terms acceptance.",
+  "irreducible_mechanisms": [
+    "SINGLE_ENTRYPOINT",
+    "OWNER_REGISTRY_REUSE",
+    "NO_PARALLEL_RETRY_MEMORY",
+    "REENTER_ON_IMPEDIMENT",
+    "OWNER_SELECTED_RETRY_ONLY",
+    "TOOL_ERROR_NOT_CARRIER_FACT",
+    "TYPED_RECEIPT_REENTRY",
+    "DECLARED_CONTEXT_REFS_ONLY",
+    "CONTEXT_RUNTIME_MEMBER_REQUIRED",
+    "CONTEXT_READBACK_REQUIRED",
+    "CONTEXT_STYLE_AUTHORITY_ZERO",
+    "POST_TERMS_ASCII_OWNER_SHELL",
+    "RUNTIME_VALIDATED_ASCII_SHELL",
+    "STOP_BOOTSTRAP_ON_RUNTIME_OWNERSHIP"
+  ],
+  "registry_reuse": {
+    "new_registry": false,
+    "owner_refs": [
+      "bootstrap_type_registry_cache.failure_taxonomy",
+      "bootstrap_type_registry_cache.progressive_adaptation",
+      "FASTBOOT_CHANNEL_LEDGER.failed_decisions",
+      "preaccept_forbidden",
+      "ux_shell"
+    ],
+    "conversation_is_retry_memory": false
+  },
+  "retry": {
+    "operation": "REENTER_ENTRYPOINT_REQUEST_NEXT",
+    "autonomous_retry": false,
+    "tool_error_is_carrier_fact": false,
+    "unchanged_evidence_retry": false,
+    "owner_selected_retry_only": true
+  },
+  "context_refs": {
+    "declared_only": true,
+    "runtime_member_required": true,
+    "local_readback_required": true,
+    "default_effect": "VOICE_STYLE_ONLY",
+    "first_ref": "stile_comunicativo.md",
+    "authority": 0
+  },
+  "ascii_shell": {
+    "post_terms_required": true,
+    "owner": "SESSION_SHELL",
+    "pre_runtime_owner_renderer": "renderBootstrapAsciiShell",
+    "runtime_owner_renderer": "renderSessionShell",
+    "width": 80,
+    "model_may_reframe": false
+  },
+  "dod": {
+    "threshold_bps": 9900,
+    "atom_weight_bps": 500,
+    "total_atoms": 20,
+    "total_bps": 10000,
+    "global": [
+      "G1_SINGLE_ENTRYPOINT_AUTHORITY_ZERO",
+      "G2_EXISTING_BOOTSTRAP_REGISTRIES_REUSED",
+      "G3_OWNER_ONLY_RETRY",
+      "G4_TOOL_ERROR_EVIDENCE_BOUNDARY",
+      "G5_POST_TERMS_ASCII_OWNER_SHELL",
+      "G6_RUNTIME_OWNERSHIP_STOPS_BOOTSTRAP",
+      "G7_CONTEXT_SOURCE_MATERIALIZE_READBACK",
+      "G8_CONTEXT_ZERO_AUTHORITY"
+    ],
+    "intermediate": [
+      "I1_PROMPT_METHOD_ONLY",
+      "I2_REGISTRIES_BEFORE_ATTEMPT_RETRY",
+      "I3_NO_CONVERSATION_STATE_RECONSTRUCTION",
+      "I4_LEDGER_RETRY_MEMORY_UNCHANGED",
+      "I5_DECLARED_CONTEXT_ONLY",
+      "I6_STYLE_CONTEXT_RUNTIME_MEMBER",
+      "I7_PRE_RUNTIME_ASCII_OWNER_RENDER",
+      "I8_RUNTIME_SHELL_VALIDATED_BEFORE_RENDER"
+    ],
+    "local": [
+      "L1_PROMPT_EXPLICIT_RETRY_REQUEST",
+      "L2_ENTRYPOINT_VALIDATES_METHOD_POLICY",
+      "L3_ASCII_FRAME_DETERMINISTIC",
+      "L4_STYLE_CONTEXT_READBACK_PROJECTED"
+    ]
+  },
+  "selection": {
+    "hypotheses": 10000,
+    "seed": "0xC44A11CE",
+    "mechanisms": 14,
+    "valid_hypotheses": 1,
+    "unique_minimum": true,
+    "winner_mask": 16383,
+    "winner_cost": 14,
+    "deletion_mutants_killed": 14,
+    "receipt_sha256": "8fb8dac2dbf0261bf57119ee9501a6cbce5cf56f2ea86f9ce503dc4acf61236b"
+  },
+  "falsification": {
+    "cases": 1000000,
+    "families": 20,
+    "min_family_cases": 50000,
+    "candidate_oracle_mismatches": 0,
+    "unsafe_promotions": 0,
+    "all_mutants_killed": true,
+    "receipt_sha256": "a395b0feb3b2c22cab88079f4509f546d9b128eaecf8970ef5b5f125d1c38539"
+  },
+  "claim_boundary": {
+    "semantic_mutation_is_physical_host_proof": false,
+    "ascii_shell_is_runtime_status": false,
+    "style_context_is_authority": false,
+    "prompt_is_retry_memory": false
+  }
+}

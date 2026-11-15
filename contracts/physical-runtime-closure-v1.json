@@ -1,0 +1,132 @@
+{
+  "schema": "ikant-le-physical-runtime-closure-contract/v1",
+  "slice": "C52.PHYSICAL_RUNTIME_CLOSURE_PROOF_SURFACE",
+  "source_baseline": "fbac6cb1b0591a7f41c2dc7b96125ca9c63827cc",
+  "analysis_bundle_sha256": "3ff0c254600504fe06fba110095b73d1f9967a61534bc83e89c24b3cf7d7a646",
+  "target_label": "iKant_LE v1.0 experimental \u2014 physical E2E closure profile (analysis target; not npm/package version)",
+  "role": "PHYSICAL_PROOF_PROFILE_AND_FAIL_CLOSED_VALIDATOR",
+  "authority": 0,
+  "entities": [
+    {
+      "id": "E0",
+      "name": "HostBootstrapBindingReceipt",
+      "owner": "HOST_INTEGRATION",
+      "scope": "session/bootstrap",
+      "meaning": "Host-observed proof that the host callable invoked the existing canonical bootstrap owner and the owner returned OWNER_NEXT; source is pinned and receipt fresh. Reading or predicting code is not execution."
+    },
+    {
+      "id": "E1",
+      "name": "RuntimeExecutionReceipt",
+      "owner": "MATERIALIZED_RUNTIME",
+      "scope": "runtime instance",
+      "meaning": "Runtime-owned proof that exact pinned runtime-root bytes were materialized, reopened, and actually executed as one concrete runtime instance. RUNTIME_BOUND_LIMITED is sufficient; legacy ACTIVE is not required."
+    },
+    {
+      "id": "E2",
+      "name": "CohostRelationAttestation",
+      "owner": "EXISTING_B0_R0_R1_R2_QUALIFIER",
+      "scope": "session relation",
+      "meaning": "Sealed owner-produced attestation recomputed from B0/R0/R1/R2 proof references. Caller-authored cohostStatus is not proof."
+    },
+    {
+      "id": "E3",
+      "name": "HostRouteInterpositionReceipt",
+      "owner": "HOST_SESSION_ROUTER",
+      "scope": "session + turn",
+      "meaning": "Host-observed proof that this turn was offered to the canonical runtime route under active interposition, with no bypass, no unresolved prior turn, and synchronized route/transcript ordinal."
+    },
+    {
+      "id": "E4",
+      "name": "NativeParticipantLease",
+      "owner": "HOST_NATIVE_CHAT",
+      "scope": "session",
+      "meaning": "Persistent native non-user participant identity with current/future standing, persistent scheduler relationship, fresh lease, and no per-message manual reselection."
+    },
+    {
+      "id": "E5",
+      "name": "NativeTurnGrantReceipt",
+      "owner": "HOST_SCHEDULER",
+      "scope": "turn",
+      "meaning": "Turn-specific host-scheduler proof that the E4 participant was actually granted this turn. A free-standing turn_lease_id string is insufficient."
+    },
+    {
+      "id": "E6",
+      "name": "NativeDeliveryReadbackReceipt",
+      "owner": "HOST_NATIVE_CHAT",
+      "scope": "turn",
+      "meaning": "Host-observed native transcript publication under the E4 participant, bound to E5 grant, with exact runtime-output bytes and host readback."
+    }
+  ],
+  "laws": [
+    {
+      "id": "L0",
+      "name": "OwnerProvenanceAndSeal",
+      "meaning": "Every proof-bearing entity is emitted/observed by its declared owner, externally observed where required, sealed/content-addressed, and never accepted as raw caller-authored status."
+    },
+    {
+      "id": "L1",
+      "name": "ExactCrossBindingAndFreshness",
+      "meaning": "All entities bind the same host session, source head, runtime root/instance, participant and turn where applicable; stale, replayed, cross-session or cross-turn evidence fails."
+    },
+    {
+      "id": "L2",
+      "name": "FailClosedProjection",
+      "meaning": "Earliest missing/invalid physical edge declassifies deterministically: bootstrap -> INTEGRATION_IMPEDIMENT; runtime/cohost -> NOT_READY; route -> SESSION_ROUTE_BLOCKED; native proof -> COHOST_RELATION_ONLY. No invented environment blocker and no later evidence washes out an earlier gap."
+    },
+    {
+      "id": "L3",
+      "name": "SurrogateRejection",
+      "meaning": "App/panel/widget, assistant prefix, forged status, manual selection, FULL_RUNTIME, control ownership, CANONICAL_PRODUCT or legacy ACTIVE cannot substitute physical host receipts."
+    },
+    {
+      "id": "L4",
+      "name": "AxisOrthogonality",
+      "meaning": "Relation, runtime capability, product canonicality, control ownership and native participation remain separate axes; stronger unrelated states are neither necessary nor sufficient for native E2E."
+    }
+  ],
+  "closure_formula": "E0 & E1 & E2 & E3 & E4 & E5 & E6 & L0 & L1 & L2 & L3 & L4",
+  "state_projection": {
+    "invalid_or_missing_E0": "INTEGRATION_IMPEDIMENT",
+    "invalid_or_missing_E1_or_E2": "NOT_READY",
+    "invalid_or_missing_E3": "SESSION_ROUTE_BLOCKED",
+    "invalid_or_missing_E4_or_E5_or_E6": "COHOST_RELATION_ONLY",
+    "all_entities_and_laws_valid": "NATIVE_TRANSCRIPT_ACTOR_E2E"
+  },
+  "owners_reused": {
+    "bootstrap_owner": "src/local-host-meta-prompt.mjs#for_ai_agent_first_entrypoint",
+    "runtime_owner": "src/session-local-service.mjs",
+    "cohost_qualifier": "src/cohost-coldstart-qualification.mjs",
+    "route_runtime_guard": "src/session-local-service.mjs#runPhysicalClosureLimitedTurn",
+    "native_validator": "src/native-transcript-participant.mjs#validateNativeParticipantLease + src/physical-runtime-closure.mjs#E5/E6 validators",
+    "top_level_projection": "src/physical-runtime-closure.mjs"
+  },
+  "new_owners": false,
+  "runtime_root_policy": {
+    "physical_route_guard_must_be_runtime_root_member": true,
+    "bootstrap_adapter_must_remain_pre_runtime": true,
+    "top_level_projection_is_runtime_truth_owner": false,
+    "canonical_runtime_turn_engine_reused": true
+  },
+  "proof_input_policy": {
+    "raw_cohost_status_is_proof": false,
+    "raw_native_status_is_proof": false,
+    "cohost_attestation_recomputed_from_b0_r0_r1_r2": true,
+    "native_e2e_recomputed_from_e4_e5_e6": true,
+    "runtime_execution_receipt_runtime_owned": true,
+    "host_receipts_external_observation_required": true
+  },
+  "mutation_ref": "artifacts/qualification/c52-physical-closure-10m.json",
+  "lattice_ref": "artifacts/qualification/c52-physical-closure-lattice.json",
+  "claim_boundary": {
+    "repository_or_ci_can_create_host_bootstrap_binding": false,
+    "repository_or_ci_can_create_host_route_interposition": false,
+    "repository_or_ci_can_create_native_participant_or_scheduler": false,
+    "semantic_mutation_is_physical_host_proof": false,
+    "synthetic_test_receipts_are_physical_host_proof": false,
+    "live_e0_e3_e4_e5_e6_required_for_physical_claim": true,
+    "pr_closes_runtime_proof_surface_not_external_host_capability": true
+  },
+  "dod_profile_ref": "artifacts/qualification/c52-runtime-physical-closure-dod.json",
+  "bundle_coverage_ref": "artifacts/qualification/c52-bundle-coverage.json",
+  "receipt_sha256": "9cebdfbb812316ce2a279adf63f975ed87c77e27a4227895c47c1cdba0f4d5e7"
+}

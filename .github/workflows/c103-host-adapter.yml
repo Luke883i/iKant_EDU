@@ -1,0 +1,34 @@
+name: C103 host-neutral adapter conformance
+on:
+  pull_request:
+    paths:
+      - 'host/c103-host-adapter-conformance.mjs'
+      - 'contracts/c103-host-adapter-minimum.json'
+      - 'docs/C103_HOST_ADAPTER_INTEROPERABILITY.md'
+      - 'scripts/c103-falsify-100k.mjs'
+      - 'tests/c103-host-adapter.test.mjs'
+      - '.github/workflows/c103-host-adapter.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax and contract controls
+        run: |
+          node --check host/c103-host-adapter-conformance.mjs
+          node --check scripts/c103-falsify-100k.mjs
+          node --check tests/c103-host-adapter.test.mjs
+          node -e 'const c=require("./contracts/c103-host-adapter-minimum.json");if(c.authority!==0||c.nonclaims.new_owner!==false||c.nonclaims.new_writer!==false)process.exit(2)'
+      - name: Original C101 C102 C87 physical integration
+        run: node --test tests/c103-host-adapter.test.mjs
+      - name: 100000 synthetic negative mutations
+        run: |
+          node scripts/c103-falsify-100k.mjs > c103-results.json
+          node -e 'const r=require("./c103-results.json");if(!r.qualified||r.negative_mutations!==100000||r.positive_synthetic_controls!==2500||r.unexpected_survivors!==0)process.exit(2);console.log(JSON.stringify(r))'

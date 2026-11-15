@@ -1,0 +1,48 @@
+{
+  "schema": "ikant-le-project-oneshell-do-d/v1",
+  "authority": 0,
+  "role": "READ_ONLY_HOST_PROJECTION",
+  "required_slots": [
+    "ESITO",
+    "A",
+    "B",
+    "PROVA",
+    "EDGE",
+    "NEXT"
+  ],
+  "phases": [
+    "ORIENTATION",
+    "TERMS_LINK",
+    "ACCEPTED",
+    "EDU_SELECTED",
+    "SOURCE_HANDOFF",
+    "MATERIALIZED",
+    "EDU_READY",
+    "FIRST_TURN_VERIFIED"
+  ],
+  "admission_owner": "host/c72-public-mode-admission.mjs",
+  "handoff_owner": "host/p1-postmode-source-handoff.mjs",
+  "runtime_owner": "host/c135-edu-v2-owner.mjs",
+  "writer": "host/c87-durable-ledger.mjs",
+  "delivery": "host/c125-output-port.mjs",
+  "canonical_unchanged": true,
+  "preproject_bundle_required": false,
+  "post_mode_manual_source_allowed": true,
+  "one_voice_only_with_original_s03": true,
+  "native_ui_unattested": true,
+  "scope": "SOFTWARE_CANDIDATE_NOT_PROVIDER_INSTALLED",
+  "semantic_slides": "contracts/project-oneshell-semantic-slides.json",
+  "prompt_generation": "contracts/project-prompt-generation.json",
+  "source_manifest_has_all_phase_code": true,
+  "prompt_is_canonical_only_after_main_verification": true,
+  "dod": {
+    "software": "GATED_ON_CI_PR_SHA",
+    "client_host": "UNATTESTED",
+    "native_ui": "UNATTESTED",
+    "human_ux": "NOT_TESTED",
+    "product_release": "PRODUCT_NO_GO"
+  },
+  "compact_continuity_contract": "contracts/project-oneshell-compact-continuity.json",
+  "explicit_exit_requires_original_c135_readback": true,
+  "compact_semantic_retention": "BYTE_EXACT_ORIGINAL_SIX_SLOTS"
+}

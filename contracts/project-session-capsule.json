@@ -1,0 +1,40 @@
+{
+  "schema": "ikant-le-project-session-capsule-contract/v1",
+  "authority": 0,
+  "owner": "host/project-session-capsule.mjs",
+  "reuses": [
+    "src/state.mjs",
+    "src/session-shell.mjs",
+    "src/backlog.mjs"
+  ],
+  "entry": "scripts/project-session.mjs",
+  "source_ingress": "scripts/project-repo-loader.mjs",
+  "source_manifest": "contracts/project-session-source.json",
+  "local_bundle_required": false,
+  "archive_fallback": false,
+  "prerequisites": [
+    "CALLABLE_GITHUB_API",
+    "EXACT_SOURCE_HEAD_AND_TREE",
+    "NODE_20_PLUS",
+    "WRITABLE_SESSION_FILESYSTEM"
+  ],
+  "missing_prerequisite": "STOP_CURRENT_EDGE_WITH_NO_VOICE",
+  "new_lifecycle": false,
+  "new_ledger": false,
+  "projection_can_activate": false,
+  "view": "SIX_SLOT_HIERARCHICAL_MARKDOWN_WITH_REOPENED_EVIDENCE_LINK",
+  "voice": "NO_VOICE_CONTROL_PROJECTION",
+  "state_owner": "ORIGINAL_HASH_LINKED_RUNTIME_LEDGER",
+  "host_unobserved_fields": "UNKNOWN",
+  "backlog_owner": "ORIGINAL_SESSION_SHELL_BACKLOG_TELEMETRY",
+  "coverage": "ALL_PUBLIC_OWNER_OUTPUT_FIELDS_IN_REOPENED_CONTENT_ADDRESSED_EVIDENCE",
+  "cross_session_persistence_claim": false,
+  "global_semantic_lossless_claim": false,
+  "product_release": "PRODUCT_NO_GO",
+  "oneshell_owner": "host/project-oneshell-edu.mjs",
+  "oneshell_all_phases": true,
+  "manual_edu_source_post_mode_only": true,
+  "automatic_archive_fallback": false,
+  "manual_source_transport": "scripts/project-manual-source.py",
+  "dashboard_is_not_edu_start": true
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "ikant-le-c6-enduser-qualification/v1",
+  "status": "PASS",
+  "cases": 1000000,
+  "seed": 208540118,
+  "categories": {
+    "typical": 500000,
+    "edge": 300000,
+    "stress": 200000
+  },
+  "families_exercised": 288,
+  "violations": [],
+  "source_binding": {
+    "algorithm": "sha256(first-contact || harness)",
+    "digest": "cc16427377692f8055569352fb3275c126d0e4a32b0c7e01cff3fe47c2759740"
+  },
+  "claim_boundary": {
+    "mutation_proves_conforming_host_behavior": false,
+    "mutation_proves_universal_agent_compliance": false,
+    "mutation_proves_classifier_convergence_for_modeled_inputs": true
+  },
+  "receipt_sha256": "739bd3a693b241fbfb22d2aadb2d5a5670bd7626b42ebb360e952c7f7a4ff6e6"
+}

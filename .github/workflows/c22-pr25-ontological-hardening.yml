@@ -1,0 +1,39 @@
+name: c22-pr25-ontological-hardening
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'contracts/local-session-fastboot.json'
+      - 'contracts/session-chat-activation.json'
+      - 'contracts/host-shell.json'
+      - 'contracts/chat-bootstrap-semantic.json'
+      - 'src/fastboot-convergence.mjs'
+      - 'src/bootstrap-semantic.mjs'
+      - 'src/runtime-core.mjs'
+      - 'src/runtime-command.mjs'
+      - 'src/session-chat-deployment.mjs'
+      - 'runtime-root/**'
+      - 'tests/bootstrap-fixture.mjs'
+      - 'tests/c21-local-session-fastboot.test.mjs'
+      - 'scripts/c22-pr25-ontological-hardening-falsify.c'
+      - 'scripts/check.mjs'
+      - 'package.json'
+permissions:
+  contents: read
+
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    # Keep queue/setup delay from exhausting the execution budget before a
+    # GitHub-hosted runner is assigned. Bound the substantive commands below.
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: C22 ontological hardening falsifier
+        timeout-minutes: 20
+        run: npm run falsify:c22

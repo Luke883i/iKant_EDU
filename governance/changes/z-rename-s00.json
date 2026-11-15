@@ -1,0 +1,107 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/z-rename-s00.json",
+  "source_main": "f5f42603294084d29cdb6d6e2106c0331d802536",
+  "baseline_source_tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943",
+  "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
+  "human_signoffs": 0,
+  "automatic_approval": false,
+  "rename_executed": false,
+  "owner_effects_executed": false,
+  "paths": [
+    {
+      "path": "docs/rename-sequence/S00_SOURCE_CENSUS.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/rename-sequence/S01_PREPARE_ORIGINALS.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/rename-sequence/S02_ORIGINAL_REGRESSIONS.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/rename-sequence/S03_FINAL.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/rename-sequence/S04_FINAL.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/rename-sequence/S05_FINAL.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/rename-sequence/S06_FINAL.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/rename-sequence/S07_FRESH_EDU_PROOF_CLOSE.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/rename-sequence/MANIFEST.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/repository-rename-inventory.mjs",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/repository-rename-inventory.test.mjs",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "governance/changes/z-rename-s00.json",
+      "operation": "ADD",
+      "reason": "S00 source-bound rename audit and gated non-operative migration evidence",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-session-repo-first.yml",
+      "operation": "MODIFY",
+      "reason": "Run full tracked-tree S00 census in CI and upload read-only report without rename authority",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/z-rename-2dim.json",
+      "supersedes_source_main": "1de5b51a2578e31547e4ef98e7d35d55926d05a3"
+    }
+  ]
+}

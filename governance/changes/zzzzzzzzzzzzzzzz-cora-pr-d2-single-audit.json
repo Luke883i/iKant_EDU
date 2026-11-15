@@ -1,0 +1,85 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "e8999ac9dc83f5482cd065e7d358ecee21a9cb45",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzz-cora-pr-d2-single-audit.json",
+  "scope": "PR_D2_SINGLE_V5B_AUDIT_REUSE_NO_ORIGINAL_OWNER_CHANGE",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzz-cora-pr-d2-single-audit.json",
+      "operation": "ADD",
+      "reason": "Register PR-D2 single-original-audit source consolidation in existing V5-B chain",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "contracts/cora-pr-d2-single-audit-v1.json",
+      "operation": "ADD",
+      "reason": "Bound non-authoritative PR-D2 reticular DoD to original CORA and V5-B observers",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/cora-pr-d2-single-audit.test.mjs",
+      "operation": "ADD",
+      "reason": "Falsify duplicated source audits, readback drift and foreign source injection",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/cora-minimal-absorption.mjs",
+      "operation": "MODIFY",
+      "reason": "Reuse original V5-B snapshot through CORA while keeping the existing qualifier and exported behavior",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    },
+    {
+      "path": "tests/cora-reticular-hygiene.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Reuse original V5-B snapshot through CORA while keeping the existing qualifier and exported behavior",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    },
+    {
+      "path": "scripts/cora-pr-a-backlog.mjs",
+      "operation": "MODIFY",
+      "reason": "Reuse original V5-B snapshot through CORA while keeping the existing qualifier and exported behavior",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzz-cora-pr-a-backlog.json",
+      "supersedes_source_main": "b60e3ac2b9fa9cb4167b7413d594c502c0fa9459"
+    },
+    {
+      "path": "tests/cora-pr-a-backlog.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Reuse original V5-B snapshot through CORA while keeping the existing qualifier and exported behavior",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzz-cora-pr-a-backlog.json",
+      "supersedes_source_main": "b60e3ac2b9fa9cb4167b7413d594c502c0fa9459"
+    },
+    {
+      "path": "scripts/cora-pr-c-ci.mjs",
+      "operation": "MODIFY",
+      "reason": "Reuse original V5-B snapshot through CORA while keeping the existing qualifier and exported behavior",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json",
+      "supersedes_source_main": "9b4d29ecc840f55b1d67dae98f5727d31b89b435"
+    },
+    {
+      "path": "tests/cora-pr-c-ci.test.mjs",
+      "operation": "MODIFY",
+      "reason": "Reuse original V5-B snapshot through CORA while keeping the existing qualifier and exported behavior",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json",
+      "supersedes_source_main": "9b4d29ecc840f55b1d67dae98f5727d31b89b435"
+    },
+    {
+      "path": "tests/cora-pr-d1-blob-dedup.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Update D1 import invariant to verify shared SHA1 and D2 single V5-B audit without reinstating duplicate scans",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json",
+      "supersedes_source_main": "9b4d29ecc840f55b1d67dae98f5727d31b89b435"
+    }
+  ]
+}

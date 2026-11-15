@@ -1,0 +1,30 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "c889fa80326c2da09391da6d4edbc17e1bb9d052",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
+  "scope": "CORA_M1_SHARED_SOURCE_CI_CONSUMER_EVIDENCE_NONPROMOTING",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "paths": [
+    {
+      "path": "scripts/cora-m1-shared-evidence.mjs",
+      "operation": "ADD",
+      "reason": "Read-only M1 original PR-F/G source-reconciliation gate over the single V5-B inventory and exact Git index/TREE",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/cora-m1-shared-evidence.test.mjs",
+      "operation": "ADD",
+      "reason": "Node negative tests and 100k deterministic finite policy vectors without owner or provider promotion",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzz-cora-m1-shared-evidence.json",
+      "operation": "ADD",
+      "reason": "Append-only original V5-B change-register source declaration with all reviews outstanding",
+      "human_review": "REVIEW_REQUIRED"
+    }
+  ]
+}

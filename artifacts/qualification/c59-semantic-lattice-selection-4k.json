@@ -1,0 +1,110 @@
+{
+  "schema": "ikant-le-c59-minimum-semantic-lattice-selection/v1",
+  "cases": 4096,
+  "mechanism_count": 12,
+  "valid_candidates": 1,
+  "winner_mask": 4095,
+  "minimum_cost": 12,
+  "oracle_candidate_mismatches": 0,
+  "deletion_mutants": [
+    {
+      "mechanism": "K0_PINNED_SOURCE",
+      "mask": 4094,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "SOURCE_DRIFT"
+    },
+    {
+      "mechanism": "K1_PREACCEPT_FREEZE",
+      "mask": 4093,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "ACCEPTANCE_ORIENTATION_LAUNDERING"
+    },
+    {
+      "mechanism": "K2_SINGLE_CALLER_ENTRY",
+      "mask": 4091,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "PARALLEL_CALLER_ENTRY"
+    },
+    {
+      "mechanism": "K3_SHARED_RUNTIME_PREDICATE",
+      "mask": 4087,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "PRE_RUNTIME_ONLY_GATE"
+    },
+    {
+      "mechanism": "K4_CANONICAL_HANDOFF_BINDING",
+      "mask": 4079,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "HANDOFF_LAUNDERING"
+    },
+    {
+      "mechanism": "K5_GITHUB_API_BASE64_SOURCE",
+      "mask": 4063,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "SOURCE_PLANE_AMBIGUITY"
+    },
+    {
+      "mechanism": "K6_VERIFIED_OPAQUE_RELAY",
+      "mask": 4031,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "MODEL_BYTE_REWRITE_OR_LOCAL_DIRECT"
+    },
+    {
+      "mechanism": "K7_LOCAL_WRITE_REOPEN",
+      "mask": 3967,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "MATERIALIZATION_IDENTITY_GAP"
+    },
+    {
+      "mechanism": "K8_CANONICAL_RUNTIME_ENTRY",
+      "mask": 3839,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "CANONICAL_DEAD_PATH"
+    },
+    {
+      "mechanism": "K9_LEGACY_AUTHORITY_QUARANTINE",
+      "mask": 3583,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "LEGACY_ACTIVE_LAUNDERING"
+    },
+    {
+      "mechanism": "K10_CANONICAL_ACTIVE_READBACK",
+      "mask": 3071,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "FALSE_CANONICAL_ACTIVE"
+    },
+    {
+      "mechanism": "K11_CLOSED_EXECUTABLE_REGISTRY",
+      "mask": 2047,
+      "candidate_active": false,
+      "oracle_active": false,
+      "killed": true,
+      "failure_if_deleted": "UNCENSUSED_EXECUTABLE_SURFACE"
+    }
+  ],
+  "all_deletion_mutants_killed": true,
+  "status": "PASS",
+  "receipt_sha256": "918aecfa1c9993a81ff8e450d097d77dcf59c09bec4aac1675f13918c0633fc2"
+}

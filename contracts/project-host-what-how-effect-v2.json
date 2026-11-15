@@ -1,0 +1,32 @@
+{
+  "schema":"ikant-host-what-how-effect/v2",
+  "authority":0,
+  "engineering_base":"47d053893e250bac572191a081d7c0d50c472f45",
+  "project_profile":"PROJECT_EDU_E15",
+  "role":"PURE_HOST_PRE_EFFECT_PLANNER_NOT_NEW_OWNER",
+  "executor":"host/project-host-effect-decision.mjs#decideK0Effect",
+  "legacy_no_removal":true,
+  "phases":["ORIENTATION","POST_ACCEPT","AWAIT_MODE","POST_EDU","EDU_TURN","EXIT_PENDING","ENGINEERING"],
+  "preconsent":{"ordered":["README.md","BOOTSTRAP.json","ADMISSION.json","AGENTS.md","TERMS.md"],"tree":false,"extras":false,"owner_effect":false},
+  "owner_routes":{
+    "callback_or_node_https":"host/project-edu-h1-bound-port.mjs#runH1OriginalAdmission",
+    "e16_packet_or_file":"host/project-c72-e16-unified-ingress.mjs#runC72ProjectE16Ingress",
+    "issuer":"host/c72-public-mode-admission.mjs",
+    "no_new_issuer":true
+  },
+  "carrier_order":["SAME_NODE_CALLBACKS","NODE_GITHUB_HTTPS","HOST_PACKET","HOST_FILE"],
+  "how_choice":"CALLABLE_FUNCTION_PAIR_ONLY__PHYSICAL_PROBE_MANDATORY_IN_K1",
+  "physical_result_must_be_separate_from_k0_plan":true,
+  "mode":"DEFER_TO_ORIGINAL_C72_MODE_SELECTION",
+  "release_domains":["R","S","D","T","P","G"],
+  "no_autopromotion":true,
+  "no_automatic_repin":true,
+  "no_owner_replay_on_unknown":true,
+  "no_source_origin_from_sha":true,
+  "no_provider_installation_from_prompt":true,
+  "on_unbound":"K0_CAPABILITY_PORT_UNBOUND",
+  "on_stale":"STOP_SOURCE_LOCK_STALE",
+  "on_unknown_owner":"C72_OWNER_OUTCOME_UNKNOWN_NO_REPLAY",
+  "K0_08_postmerge_prompt_installation":"DEFERRED_EXPLICIT_HOST_REQUEST_AND_PROVIDER_READBACK",
+  "nonclaims":["NO_REAL_CHAT_CONSENT_ATTESTED","NO_PROVIDER_TOOL_INSTALLED","NO_C72_INVOKED","NO_RUNTIME_ACTIVE","NO_GOVERNANCE_APPROVAL"]
+}

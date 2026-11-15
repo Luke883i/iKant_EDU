@@ -1,0 +1,76 @@
+{
+  "schema": "ikant-le-local-host-scope-binding/v2",
+  "slice": "C57.LOCAL_HOST_SCOPE_BINDING",
+  "authority": 0,
+  "source_main": "2d8032071b1320437df2c5e79d181800ba9b07b7",
+  "objective": "Make local-host composition deterministic at the iKant applicability boundary without turning the repository into a global chat planner or coupling the universal prompt to one reference-app tool name.",
+  "audit_findings": [
+    "C56 can be read as making repository-internal for_ai_agent_first_entrypoint a host-callability requirement even though repository symbol existence is not host capability evidence.",
+    "A bootstrap impediment was observed to leak into unrelated host audit/artifact work because the prompt lacked an explicit task-scope fence.",
+    "Late or cross-epoch observations need an explicit causal-continuation fence at the host adapter boundary even though retry locality already belongs to existing bootstrap owners.",
+    "NO_SUBSTITUTE must block iKant impersonation, not unrelated host work.",
+    "The reference SESSION_CHAT app currently exposes ikant_le_open to the model and keeps acceptance/turns app-only; this is an implementation witness, not the universal binding identity."
+  ],
+  "irreducible_mechanisms": [
+    "S0_IKANT_TASK_SCOPE_FENCE",
+    "S1_CALLABLE_HOST_BINDING_ATTESTATION",
+    "S2_CAUSAL_CONTINUATION_FENCE",
+    "S3_SCOPED_NO_SUBSTITUTE"
+  ],
+  "scope": {
+    "ikant_owned_requires": "OWNER_RECOGNIZED_ACTIVATION_ADMISSION_RUNTIME_EXIT_OR_VALIDATED_RUNTIME_ROUTE",
+    "host_tasks_remain_host_owned": true,
+    "mixed_task_failure_is_global_chat_state": false,
+    "ikant_stop_propagates_to_host_tasks": false,
+    "repository_is_global_chat_planner": false
+  },
+  "binding": {
+    "accepted_fact": "CURRENT_HOST_CALLABLE_BINDING_OBSERVED_OR_VALIDLY_ATTESTED",
+    "repository_symbol_is_callability_proof": false,
+    "tool_name_is_callability_proof": false,
+    "app_presence_is_callability_proof": false,
+    "reference_app_tool_name_is_universal_identity": false,
+    "repository_entrypoint_direct_host_call_assumed": false
+  },
+  "causality": {
+    "directive_single_use": true,
+    "continuation_binding": ["SESSION", "SOURCE", "EDGE", "CAUSAL_EPOCH"],
+    "stale_callback_reopens_edge": false,
+    "cross_epoch_observation_is_changed_evidence": false,
+    "retry_memory_owner_unchanged": true
+  },
+  "no_substitute": {
+    "scope": "IKANT_OUTPUT_ONLY",
+    "missing_ikant_route_allows_ikant_impersonation": false,
+    "independent_host_task_remains_allowed": true,
+    "host_output_may_be_labeled_ikant": false
+  },
+  "reference_app_witness": {
+    "model_visible_open_tool": "ikant_le_open",
+    "acceptance_and_turns_app_only": true,
+    "normative_for_all_hosts": false
+  },
+  "inherited_owners_reused": {
+    "next_retry": "C40_C41_FASTBOOT_OWNERS",
+    "runtime_route": "EXISTING_RUNTIME_HOST_ROUTE",
+    "presentation": "C54_HOST_CONSUMPTION_FRAME_AND_SESSION_SHELL",
+    "evidence": "EXISTING_TYPED_RECEIPTS_AND_VALIDATORS"
+  },
+  "forbidden_new_owners": ["GLOBAL_TASK_PLANNER", "GLOBAL_CHAT_STATE", "SECOND_RETRY_LEDGER", "SECOND_RUNTIME_ROUTE", "SECOND_PRESENTATION_OWNER"],
+  "claim_boundary": {
+    "prompt_is_authority": false,
+    "contract_is_host_callability_proof": false,
+    "reference_app_registration_is_current_session_proof": false,
+    "semantic_falsification_is_physical_host_proof": false
+  },
+  "qualification": {
+    "scenario_cases": 100000,
+    "mechanisms": 4,
+    "architecture_lattice": 16,
+    "unique_minimum_required": true,
+    "all_deletion_mutants_killed_required": true,
+    "prompt_polarity_mutants_killed_required": true,
+    "inherited_c55_c56_falsification_required": true,
+    "runtime_root_unchanged_required": true
+  }
+}

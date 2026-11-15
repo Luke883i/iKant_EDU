@@ -1,0 +1,11 @@
+{
+  "schema": "ikant-le-c59-selection/v1",
+  "cases": 1024,
+  "mechanism_count": 10,
+  "valid_candidates": 1,
+  "minimum_cost": 10,
+  "winner_mask": 1023,
+  "winner_cost_ties": 1,
+  "all_deletion_mutants_killed": true,
+  "status": "PASS"
+}

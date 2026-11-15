@@ -1,0 +1,30 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "25501ccba48b7d9cbc66842ddd3dff8b05267884",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzz-algorithmic-prompt-candidate.json",
+  "scope": "HOST_ENGINEERING_NONCANONICAL_ALGORITHMIC_PROMPT_AND_STATIC_FALSIFICATION",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "paths": [
+    {
+      "path": "project/session-chat/PROMPT_INNESCO_ALGORITHMIC_CANDIDATE.txt",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Introduce a complete under-8k numbered source-only Host script candidate without replacing the canonical Project prompt or becoming a runtime owner. External provider and owner tests remain required."
+    },
+    {
+      "path": "tests/project-prompt-algorithmic-candidate.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Qualify structural numbered identifiers, cross-function anchors and 10000 deterministic negative source variants. This static test does not execute the language model or original owners."
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzz-algorithmic-prompt-candidate.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Declare the governed source additions to the existing V5-B registry. This declaration is not independent engineering review or a merge authorization."
+    }
+  ]
+}

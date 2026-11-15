@@ -1,0 +1,129 @@
+{
+  "schema": "ikant-le-c51-supersystem-runtime-dod/v1",
+  "source_baseline": "fe40fa221612d5e9c9fe2e7506bd1fc41553fc9d",
+  "status": "PASS_REPOSITORY_CLOSURE",
+  "dod": [
+    {
+      "id": "D1",
+      "claim": "common semantic roots preserved exactly",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D2",
+      "claim": "executable adapter delegates to canonical bootstrap owner",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D3",
+      "claim": "physical host bootstrap binding remains external typed evidence",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D4",
+      "claim": "ONE-NEXT and retry memory remain owner-owned",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D5",
+      "claim": "COHOST_RELATION remains exactly B0+R0+R1+R2",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D6",
+      "claim": "cohost projection binds session/source/runtime identity",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D7",
+      "claim": "route conformance is orthogonal and HOST_SESSION_ROUTER-owned",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D8",
+      "claim": "unresolved canonical turns serialize next-turn advancement",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D9",
+      "claim": "host/model bypass and stale route fail closed",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D10",
+      "claim": "native promotion reuses C50 and is same-session bound",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D11",
+      "claim": "native actor remains orthogonal to hydration/control/product and host-created capability is forbidden",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D12",
+      "claim": "missing bootstrap binding declassifies to integration impediment without invented blocker",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D13",
+      "claim": "missing native proof declassifies to COHOST_RELATION_ONLY",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D14",
+      "claim": "overlay creates no authority/lifecycle/planner/retry/state/truth/turn owner",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D15",
+      "claim": "10M saturation plus complete 2^13 lattice selects unique minimum and kills deletion mutants",
+      "status": "PASS_REPOSITORY",
+      "evidence": "dc1995526ccefb48b8eb17959cc35686bc3af77f3a723d03aa02aa19f21ad8ab"
+    },
+    {
+      "id": "D16",
+      "claim": "fresh 1M runtime falsification has zero mismatch/unsafe/false-reject",
+      "status": "PASS_REPOSITORY",
+      "evidence": "bda1979a1b7b1f80715ef2e5221a0fd8dbf55f5e9df25c038e1362262561a370"
+    },
+    {
+      "id": "D17",
+      "claim": "focused C51 plus inherited regression tests are wired into exact-head CI",
+      "status": "PASS_REPOSITORY",
+      "evidence": "C51 exact candidate bytes"
+    },
+    {
+      "id": "D18",
+      "claim": "candidate implementation/test surface is content-addressed",
+      "status": "PASS_REPOSITORY",
+      "evidence": "ff0f3ada22ced3997d7bffb26c90ad29eb5fd05699be322eb56ab9c7f64f1db5"
+    }
+  ],
+  "selection_receipt_sha256": "dc1995526ccefb48b8eb17959cc35686bc3af77f3a723d03aa02aa19f21ad8ab",
+  "falsification_receipt_sha256": "bda1979a1b7b1f80715ef2e5221a0fd8dbf55f5e9df25c038e1362262561a370",
+  "candidate_manifest_receipt_sha256": "ff0f3ada22ced3997d7bffb26c90ad29eb5fd05699be322eb56ab9c7f64f1db5",
+  "claim_boundary": {
+    "repository_runtime_conformance_closed": true,
+    "physical_host_bootstrap_binding_proven": false,
+    "physical_native_participant_api_proven": false,
+    "physical_host_route_interposition_proven": false,
+    "semantic_mutation_is_physical_host_proof": false,
+    "exact_pr_head_ci_required": true,
+    "post_merge_main_ci_required": true
+  },
+  "authority": 0,
+  "receipt_sha256": "ac89db9e866bbf8df5cd3ac875d57fe02e916f92aaf9a8f6358c641349125420"
+}

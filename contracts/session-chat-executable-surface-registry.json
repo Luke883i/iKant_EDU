@@ -1,0 +1,167 @@
+{
+  "schema": "ikant-le-c59-executable-surface-registry/v1",
+  "authority": 0,
+  "purpose": "Closed-world registry of every repository-side surface observed to create, resume, transport, project, or expose activation for SESSION_CHAT_LOCAL or compatibility profiles.",
+  "canonical_claim": "C59_CANONICAL_ACTIVE",
+  "invariant": "No surface outside this registry may produce or project C59_CANONICAL_ACTIVE.",
+  "surfaces": [
+    {
+      "id": "PROJECT_HOST_ROM",
+      "kind": "host_adapter",
+      "ref": "docs/PROJECT_META_PROMPT_COBOL.md",
+      "classification": "HISTORICAL_COLDSTART_ADAPTER_NONRUNTIME",
+      "may_issue_canonical_active": false,
+      "superseded_by": "project/session-chat/PROMPT.txt"
+    },
+    {
+      "id": "AI_AGENT_FIRST_ENTRYPOINT",
+      "kind": "caller_entry",
+      "ref": "src/local-host-meta-prompt.mjs#for_ai_agent_first_entrypoint",
+      "classification": "CANONICAL_PRE_RUNTIME_ENTRY",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "C59_COMPOSITION_OWNER",
+      "kind": "authority_owner",
+      "ref": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",
+      "classification": "CANONICAL_COLD_PRODUCER",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "C59_SHARED_PREDICATE",
+      "kind": "runtime_predicate",
+      "ref": "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
+      "classification": "CANONICAL_RUNTIME_ROOT_PREDICATE",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "C136_MANUAL_RECOVERY",
+      "kind": "pre_runtime_byte_recovery",
+      "ref": "src/c136-canonical-recovery.mjs#materializeC136ManualCarrier",
+      "classification": "CANONICAL_PRE_RUNTIME_BYTE_ADAPTER",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "RUNTIME_CANONICAL_ENTRY",
+      "kind": "runtime_entry",
+      "ref": "src/runtime-command.mjs#runCanonicalSessionChat",
+      "classification": "CANONICAL_ACTIVE_ENTRY",
+      "may_issue_canonical_active": true
+    },
+    {
+      "id": "RUNTIME_RAW_COMMAND",
+      "kind": "runtime_entry",
+      "ref": "src/runtime-command.mjs#runCommand",
+      "classification": "LEGACY_COMPATIBILITY_INTERNAL",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "RUNTIME_RESUME",
+      "kind": "runtime_entry",
+      "ref": "src/runtime-command.mjs#resumeActivation",
+      "classification": "LEGACY_COMPATIBILITY_INTERNAL",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "CLI_RAW",
+      "kind": "host_entry",
+      "ref": "ikant.mjs",
+      "classification": "LEGACY_COMPATIBILITY_HOST",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "DEPLOYED_ACCEPT",
+      "kind": "deployed_entry",
+      "ref": "src/session-chat-deployment.mjs#acceptDeployedSession",
+      "classification": "EXCLUDED_PROFILE_COMPATIBILITY",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "DEPLOYED_PLUGIN",
+      "kind": "external_binding",
+      "ref": "plugins/ikant-le-session-chat/server/server.mjs",
+      "classification": "EXCLUDED_PROFILE_COMPATIBILITY",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "FASTBOOT_REENTRY",
+      "kind": "planner_compatibility",
+      "ref": "src/fastboot-convergence.mjs#advanceFastbootObservation",
+      "classification": "LEGACY_COMPATIBILITY_NO_CANONICAL_AUTHORITY",
+      "may_issue_canonical_active": false
+    },
+    {
+      "id": "PRE_RUNTIME_MATERIALIZER",
+      "kind": "materializer",
+      "ref": "src/runtime-root-verified.mjs#executeCanonicalSessionChatBootstrap",
+      "classification": "CANONICAL_INTERNAL_EDGE",
+      "may_issue_canonical_active": false
+    }
+  ],
+  "required_canonical_chain": [
+    "AI_AGENT_FIRST_ENTRYPOINT",
+    "C59_COMPOSITION_OWNER",
+    "C59_SHARED_PREDICATE",
+    "PRE_RUNTIME_MATERIALIZER",
+    "RUNTIME_CANONICAL_ENTRY"
+  ],
+  "invariants": {
+    "one_canonical_active_entry": true,
+    "raw_runtime_command_is_not_canonical_entry": true,
+    "resume_is_not_canonical_entry": true,
+    "deployed_profile_is_not_session_chat_local_canonical": true,
+    "legacy_fastboot_handoff_cannot_authorize_canonical_active": true,
+    "unregistered_activation_surface_allowed": false,
+    "canonical_active_authority_literal_owner": "src/runtime-command.mjs",
+    "canonical_surface_rejects_legacy_active": true,
+    "legacy_cli_requires_explicit_opt_in": true,
+    "deployed_active_must_self_identify_legacy": true
+  },
+  "discovery": {
+    "production_roots": [
+      "src/**/*.mjs",
+      "ikant.mjs",
+      "scripts/session-chat-runtime-cli.mjs",
+      "plugins/ikant-le-session-chat/server/server.mjs"
+    ],
+    "token_rule": "I ACCEPT|ACTIVE literal|RUNTIME_BOUND_LIMITED|HANDOFF_PRE_RUNTIME|LOCAL_DIRECT|VERIFIED_OPAQUE_RELAY|WARM_CACHE_EXACT|runCommand|resumeActivation|executePreRuntimeBootstrap|executeCanonicalSessionChatBootstrap|acceptDeployedSession|acceptLocalLimitedSession|issueCanonicalSessionChatComposition|runCanonicalSessionChat|materializeRuntimeRoot|executeCanonicalColdBootstrap|issueCanonicalActivationExecutor|issueCanonicalRelayManifest",
+    "activation_related_files": [
+      "ikant.mjs",
+      "plugins/ikant-le-session-chat/server/server.mjs",
+      "scripts/session-chat-runtime-cli.mjs",
+      "src/bootstrap-intent-adapter.mjs",
+      "src/bootstrap-semantic.mjs",
+      "src/c136-canonical-recovery.mjs",
+      "src/cohost-context-root.mjs",
+      "src/contract.mjs",
+      "src/control-plane-ownership.mjs",
+      "src/fastboot-convergence.mjs",
+      "src/first-contact.mjs",
+      "src/host-consumption-frame.mjs",
+      "src/local-host-meta-prompt.mjs",
+      "src/runtime-availability.mjs",
+      "src/runtime-command.mjs",
+      "src/runtime-core.mjs",
+      "src/runtime-limited-capability.mjs",
+      "src/runtime-limited-turn.mjs",
+      "src/runtime-root-verified.mjs",
+      "src/semantic-morphogenesis.mjs",
+      "src/session-chat-composition.mjs",
+      "src/session-chat-deployment.mjs",
+      "src/session-chat-local-prompt.mjs",
+      "src/session-local-service.mjs",
+      "src/session-shell.mjs"
+    ],
+    "structural_dependencies": [
+      "src/runtime.mjs",
+      "src/state.mjs"
+    ],
+    "exact_set_required": true,
+    "excluded_experimental_non_activation_files": [
+      "src/c70-experimental-compute-preview.mjs",
+      "src/c71-experimental-host-draft.mjs",
+      "src/c70-edu-v2-compute-preview.mjs"
+    ],
+    "exclusion_rule": "These two host-owned C69-based preview modules are observed, bounded, and barred from canonical owner/ACTIVE issuance; C70's I ACCEPT occurs only in its denial list. If source no longer meets fail-closed checks the surface audit fails. C70 EDU/v2 preview is versioned and also denied: must retain active:false, canonical_runtime:false and owner_receipt_issued:false; it may not export any C59 issuer."
+  }
+}

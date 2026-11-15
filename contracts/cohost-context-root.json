@@ -1,0 +1,289 @@
+{
+  "schema": "ikant-le-c45-context-root-ascii-cohost-closure/v1",
+  "slice": "C45.CONTEXT_ROOT_ASCII_COHOST_CLOSURE",
+  "authority": 0,
+  "base": {
+    "source_head": "c94b7d498fdc65e7c9fdbfdf7c5aaeb0cdd259d1",
+    "depends_on": "C44.METHODOLOGICAL_BOOTSTRAP_ASCII_SHELL"
+  },
+  "derived_human_intent": {
+    "statement": "In a ChatGPT-like session, after the single Terms gate, iKant should remain a real persistent co-hosted runtime across turns and host/model process replacement, while the host model stays replaceable authority-zero linguistic compute and every visible post-Terms output is the exact runtime-owned ASCII shell.",
+    "atoms": [
+      {
+        "id": "U1",
+        "weight_bps": 1200,
+        "intent": "the same host session resumes the same iKant context after process/model restart"
+      },
+      {
+        "id": "U2",
+        "weight_bps": 1200,
+        "intent": "persistent state lives in a durable runtime context root, never in chat/model memory"
+      },
+      {
+        "id": "U3",
+        "weight_bps": 700,
+        "intent": "provider session metadata is an opaque locator only, never iKant identity or truth"
+      },
+      {
+        "id": "U4",
+        "weight_bps": 900,
+        "intent": "source_head and runtime_root_sha256 remain immutable within the bound context"
+      },
+      {
+        "id": "U5",
+        "weight_bps": 900,
+        "intent": "SESSION_CHAT_LOCAL remains the sole activation modality; co-hosting is optional placement, not a new lifecycle"
+      },
+      {
+        "id": "U6",
+        "weight_bps": 1000,
+        "intent": "every routed turn reopens and enters the canonical Node runtime; no legacy C20 or direct-model fast path becomes canonical"
+      },
+      {
+        "id": "U7",
+        "weight_bps": 1000,
+        "intent": "the runtime-owned ASCII shell is byte-exact and the model cannot reframe it"
+      },
+      {
+        "id": "U8",
+        "weight_bps": 900,
+        "intent": "native chat delivery is claimed only from a real host roundtrip receipt bound to the exact shell bytes"
+      },
+      {
+        "id": "U9",
+        "weight_bps": 700,
+        "intent": "Surface B artifacts/backlog remain owned and read back by the canonical runtime rooted in the same context"
+      },
+      {
+        "id": "U10",
+        "weight_bps": 500,
+        "intent": "canonical EXITED readback stops routing without a parallel host lifecycle tombstone"
+      },
+      {
+        "id": "U11",
+        "weight_bps": 600,
+        "intent": "model/provider replacement cannot change iKant state, identity or authority"
+      },
+      {
+        "id": "U12",
+        "weight_bps": 400,
+        "intent": "repository/CI/mutation cannot self-certify physical ChatGPT registration or native delivery"
+      }
+    ],
+    "score_max_bps": 10000,
+    "respect_threshold_bps": 9901,
+    "all_atoms_required_in_pr_semantics": true,
+    "external_physical_atoms_require_runtime_host_receipts": [
+      "U8",
+      "U12"
+    ]
+  },
+  "ontological_promise_mapping": {
+    "repository_atoms": [
+      "A1",
+      "A3",
+      "A4",
+      "B4",
+      "C1",
+      "C2",
+      "C4",
+      "D1",
+      "D3",
+      "D4",
+      "E1",
+      "E2",
+      "E3",
+      "F4",
+      "I1",
+      "I2",
+      "I3",
+      "I4"
+    ],
+    "must_preserve_score_bps_at_least": 9901,
+    "no_existing_atom_reweighted": true,
+    "cohost_is_new_activation_modality": false,
+    "compatibility_c20_promoted": false
+  },
+  "irreducible_mechanisms": [
+    "OPAQUE_SESSION_LOCATOR",
+    "DURABLE_CONTEXT_ROOT",
+    "IMMUTABLE_CONTEXT_BINDING",
+    "CANONICAL_RUNTIME_ROUTE",
+    "REOPEN_BEFORE_EACH_TURN",
+    "ASCII_SHELL_SEAL",
+    "NATIVE_DELIVERY_EXTERNAL_RECEIPT",
+    "OPTIONAL_COHOST_PLACEMENT"
+  ],
+  "dominated_or_forbidden_alternatives": [
+    {
+      "id": "DEDICATED_ARTIFACT_DELIVERY",
+      "disposition": "DOMINATED",
+      "reason": "E2/E3 plus canonical session shell already own artifact write/readback and presentation gating"
+    },
+    {
+      "id": "EXIT_TOMBSTONE",
+      "disposition": "DOMINATED",
+      "reason": "canonical ledger EXITED readback is sufficient to stop routing"
+    },
+    {
+      "id": "ACCOUNT_GLOBAL_SINGLETON",
+      "disposition": "FORBIDDEN",
+      "reason": "cross-session identity/state collision"
+    },
+    {
+      "id": "CONVERSATION_MEMORY_FALLBACK",
+      "disposition": "FORBIDDEN",
+      "reason": "creates model/chat persistence and retry authority"
+    },
+    {
+      "id": "CANONICAL_HOSTED_ACTIVATION_MODE",
+      "disposition": "FORBIDDEN",
+      "reason": "violates C1 sole SESSION_CHAT_LOCAL activation modality"
+    },
+    {
+      "id": "PROMOTE_C20_COMPATIBILITY",
+      "disposition": "FORBIDDEN",
+      "reason": "violates C20 quarantine and creates legacy ontology leakage"
+    }
+  ],
+  "runtime_contract": {
+    "context_owner": "src/cohost-context-root.mjs",
+    "runtime_truth_owner": "PERSISTED_RUNTIME_READBACK",
+    "state_owner": "RUNTIME_LEDGER",
+    "retry_memory_owner": "FASTBOOT_CHANNEL_LEDGER.failed_decisions",
+    "runtime_route": "src/runtime.mjs#runCommand",
+    "activation_modality": "SESSION_CHAT_LOCAL",
+    "placement": "OPTIONAL_COHOST",
+    "hosted_runtime_required": false,
+    "plugin_or_mcp_registration_required": false,
+    "provider_session_raw_persisted": false,
+    "provider_session_is_product_identity": false,
+    "reopen_before_every_turn": true,
+    "exit_readback_stops_routing": true,
+    "compatibility_c20_canonical": false,
+    "context_root_prepare_owner": "src/cohost-context-root.mjs#prepareCohostRuntimeSink",
+    "materializer_parent_precondition_closed": true
+  },
+  "delivery_contract": {
+    "shell_owner": "src/session-shell.mjs",
+    "runtime_stdout_must_equal_renderSessionShell": true,
+    "model_reframe_allowed": false,
+    "native_chat_delivery_required_for_delivery_claim": true,
+    "native_delivery_truth_owner": "HOST_NATIVE_CHAT_RECEIPT",
+    "repository_may_issue_native_delivery_receipt": false,
+    "app_meta_or_widget_visibility_is_native_delivery": false,
+    "physical_registration_is_external_gap_until_observed": true
+  },
+  "dod": {
+    "criterion_before_pr": {
+      "selection_10k_unique_minimum": true,
+      "winner_cardinality": 8,
+      "semantic_falsification_cases": 10000000,
+      "semantic_families": 40,
+      "candidate_oracle_mismatches_required": 0,
+      "unsafe_acceptances_required": 0,
+      "deletion_mutants_killed_required": 8,
+      "forbidden_insertion_mutants_killed_required": 4,
+      "exact_runtime_tests_required": true,
+      "runtime_root_verify_required": true,
+      "canonical_check_required": true,
+      "c29_ontological_promise_required": true
+    },
+    "global": [
+      "G1_NO_NEW_LIFECYCLE_STATE_ACTIVE_OR_RETRY_OWNER",
+      "G2_DURABLE_SESSION_TO_CONTEXT_ROOT_CONTINUITY",
+      "G3_IMMUTABLE_SOURCE_RUNTIME_SESSION_BINDING",
+      "G4_CANONICAL_RUNTIME_ONLY_NO_C20_PROMOTION",
+      "G5_REOPEN_REVALIDATE_BEFORE_EVERY_ROUTED_TURN",
+      "G6_EXACT_RUNTIME_ASCII_SHELL_EGRESS",
+      "G7_NATIVE_DELIVERY_REQUIRES_EXTERNAL_HOST_RECEIPT",
+      "G8_EXITED_READBACK_STOPS_ROUTING",
+      "G9_EXISTING_C29_PROMISE_REMAINS_OVER_99_PERCENT"
+    ],
+    "intermediate": [
+      "I1_RAW_PROVIDER_SESSION_ID_NEVER_PERSISTED",
+      "I2_DISTINCT_HOST_SESSIONS_RESOLVE_DISTINCT_ROOTS",
+      "I3_PROCESS_RESTART_DOES_NOT_CHANGE_CONTEXT_IDENTITY",
+      "I4_MANIFEST_SOURCE_OR_RUNTIME_DRIFT_FAILS_CLOSED",
+      "I5_LEDGER_CHAIN_OR_WRITER_CONFLICT_FAILS_CLOSED",
+      "I6_PROVIDER_MODEL_REPLACEMENT_IS_SEMANTICALLY_IRRELEVANT",
+      "I7_ARTIFACTS_REMAIN_CANONICAL_RUNTIME_OWNED",
+      "I8_APP_META_WIDGET_ONLY_OUTPUT_CANNOT_SATISFY_NATIVE_DELIVERY"
+    ],
+    "local": [
+      "L1_SESSION_LOCATOR_IS_FULL_SHA256_AND_AUTHORITY_ZERO",
+      "L2_CONTEXT_MANIFEST_ATOMIC_WRITE_FSYNC_REOPEN",
+      "L3_RUNTIME_DESCRIPTOR_AND_MATERIALIZATION_REOPEN_MATCH_MANIFEST",
+      "L4_LEDGER_HASH_CHAIN_REOPEN_BEFORE_ROUTE",
+      "L5_RUNTIME_ROUTE_IMPORTS_BOUND_ROOT_SRC_RUNTIME_MJS",
+      "L6_STDOUT_EQUALS_RENDER_SESSION_SHELL_BYTE_FOR_BYTE",
+      "L7_NATIVE_RECEIPT_BINDS_SESSION_SHELL_ASCII_AND_ENVELOPE_DIGESTS",
+      "L8_EXITED_LEDGER_RETURNS_RELEASED_WITHOUT_HOST_STATE_MUTATION"
+    ],
+    "external_experience_completion": [
+      "X1_REACHABLE_COHOST_ENDPOINT_OR_EQUIVALENT_HOST_EXECUTOR",
+      "X2_REAL_PROVIDER_SESSION_METADATA_RECEIVED",
+      "X3_REAL_NATIVE_CHAT_DELIVERY_RECEIPT_FOR_EXACT_ASCII_BYTES"
+    ]
+  },
+  "selection": {
+    "candidates": 10000,
+    "seed": "0xC45C0A57",
+    "winner_cost": 8,
+    "winner_mask": 255,
+    "unique_minimum": true,
+    "receipt_sha256": "6ac76be3d7672b91c8d82dbd41c2c0457fa65d588df1ddef22271cc88ffa1c82"
+  },
+  "falsification": {
+    "cases": 10000000,
+    "families": 40,
+    "cases_per_family": 250000,
+    "multi_abstraction_layers": [
+      "HOST",
+      "PERSISTENCE",
+      "IDENTITY",
+      "RUNTIME",
+      "PLACEMENT",
+      "SHELL",
+      "DELIVERY"
+    ],
+    "candidate_oracle_mismatches": 0,
+    "unsafe_acceptances": 0,
+    "deletion_mutants_killed": 8,
+    "forbidden_insertion_mutants_killed": 4,
+    "status": "PASS",
+    "receipt_sha256": "752530a54b4e8c2e0dcb2e6bc49e7203d7e6ff126de66914f72b760e117feb3f"
+  },
+  "claim_boundary": {
+    "semantic_mutation_is_physical_host_proof": false,
+    "repository_ci_is_chatgpt_registration_proof": false,
+    "context_manifest_is_runtime_status": false,
+    "provider_session_id_is_product_identity": false,
+    "delivery_envelope_is_native_delivery": false,
+    "native_delivery_receipt_validator_can_self_issue_world_evidence": false,
+    "optional_cohost_placement_changes_activation_modality": false
+  },
+  "cross_repo_root": {
+    "common_contract": "contracts/cohost-root-common.json",
+    "common_semantic_sha256": "1d5360e5d1df2babb743c83cfee0d64158f35966580d3118f9bc2383dfb38692",
+    "root_spine": [
+      "R0_DURABLE_CANONICAL_RUNTIME_CONTEXT",
+      "R1_PERSISTENT_PARTICIPATION_LEASE",
+      "R2_EXACT_ATTRIBUTED_DELIVERY_RECEIPT"
+    ],
+    "c45_scope": "R0_DURABLE_CANONICAL_RUNTIME_CONTEXT_PLUS_DELIVERY_SUBSTRATE",
+    "unique_full_cohost_root_claimed": false,
+    "external_host_receipts_required": [
+      "PERSISTENT_PARTICIPATION_LEASE",
+      "EXACT_ATTRIBUTED_DELIVERY_RECEIPT"
+    ],
+    "qualifier": "src/cohost-root-qualification.mjs",
+    "no_new_lifecycle": true,
+    "no_new_state_writer": true,
+    "no_new_truth_owner": true
+  },
+  "selection_scope": {
+    "statement": "C45 selection proves a minimum for the repository continuity/delivery sub-reticulum under its declared required/forbidden mechanism model; it is not a proof that eight mechanisms are the unique full cohost root.",
+    "full_root_uniqueness_claimed": false
+  }
+}

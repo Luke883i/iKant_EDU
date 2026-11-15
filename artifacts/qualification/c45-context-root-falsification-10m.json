@@ -1,0 +1,158 @@
+{
+  "schema": "ikant-le-c45-context-root-falsification/v1",
+  "slice": "C45.CONTEXT_ROOT_ASCII_COHOST_CLOSURE",
+  "seed": "0xC45C0A57",
+  "cases": 10000000,
+  "families": 40,
+  "cases_per_family": 250000,
+  "multi_abstraction_layers": [
+    "HOST",
+    "PERSISTENCE",
+    "IDENTITY",
+    "RUNTIME",
+    "PLACEMENT",
+    "SHELL",
+    "DELIVERY"
+  ],
+  "layer_counts": {
+    "HOST": 1250000,
+    "PERSISTENCE": 1250000,
+    "IDENTITY": 1250000,
+    "RUNTIME": 2500000,
+    "PLACEMENT": 1250000,
+    "SHELL": 1250000,
+    "DELIVERY": 1250000
+  },
+  "family_counts": {
+    "SESSION_METADATA_MISSING": 250000,
+    "RAW_SESSION_ID_PERSISTED": 250000,
+    "SESSION_LOCATOR_COLLISION": 250000,
+    "SESSION_SWITCH_ROOT_REUSE": 250000,
+    "PROVIDER_PROCESS_RESTART": 250000,
+    "EPHEMERAL_TMP_ROOT": 250000,
+    "DURABLE_ROOT_REOPEN": 250000,
+    "ROOT_DISAPPEARS_AFTER_RESTART": 250000,
+    "MULTI_PROCESS_SAME_ROOT": 250000,
+    "ROOT_PATH_ESCAPE": 250000,
+    "MANIFEST_DIGEST_FORGERY": 250000,
+    "SOURCE_HEAD_DRIFT": 250000,
+    "RUNTIME_ROOT_DRIFT": 250000,
+    "LOCATOR_BINDING_DRIFT": 250000,
+    "RUNTIME_RELATIVE_PATH_DRIFT": 250000,
+    "LEGACY_C20_ROUTE": 250000,
+    "DIRECT_MODEL_FAST_PATH": 250000,
+    "CANONICAL_RUNTIME_ROUTE": 250000,
+    "LEDGER_CHAIN_CORRUPTION": 250000,
+    "LEDGER_WRITER_CONFLICT": 250000,
+    "EXITED_SESSION_REENTRY": 250000,
+    "ACTIVE_SESSION_REOPEN": 250000,
+    "NONACTIVE_SESSION_REOPEN": 250000,
+    "MODEL_PROVIDER_REPLACED": 250000,
+    "PROCESS_PID_CHANGED": 250000,
+    "HOSTED_MODE_PROMOTED": 250000,
+    "PLUGIN_BECOMES_REQUIRED": 250000,
+    "OPTIONAL_PLUGIN_ABSENT": 250000,
+    "SESSION_CHAT_LOCAL_PRESERVED": 250000,
+    "ACCOUNT_SINGLETON_ALIAS": 250000,
+    "VALID_RUNTIME_ASCII": 250000,
+    "MODEL_REFRAMES_ASCII": 250000,
+    "SHELL_RECEIPT_MISMATCH": 250000,
+    "PRE_TERMS_NATIVE_PROSE": 250000,
+    "POST_TERMS_NONASCII_FRAME": 250000,
+    "NATIVE_ACK_VALID": 250000,
+    "APP_META_ONLY": 250000,
+    "FORGED_NATIVE_ACK": 250000,
+    "WRONG_SESSION_ACK": 250000,
+    "WRONG_SHELL_DIGEST_ACK": 250000
+  },
+  "candidate_oracle_mismatches": 0,
+  "unsafe_acceptances": 0,
+  "deletion_mutants_killed": 8,
+  "deletion_mutants_total": 8,
+  "deletion_witnesses": [
+    {
+      "family": "SESSION_METADATA_MISSING",
+      "index": 0,
+      "oracle": 10,
+      "mutant": 100
+    },
+    {
+      "family": "EPHEMERAL_TMP_ROOT",
+      "index": 0,
+      "oracle": 20,
+      "mutant": 100
+    },
+    {
+      "family": "SESSION_SWITCH_ROOT_REUSE",
+      "index": 0,
+      "oracle": 30,
+      "mutant": 100
+    },
+    {
+      "family": "LEGACY_C20_ROUTE",
+      "index": 0,
+      "oracle": 50,
+      "mutant": 100
+    },
+    {
+      "family": "MULTI_PROCESS_SAME_ROOT",
+      "index": 3,
+      "oracle": 60,
+      "mutant": 100
+    },
+    {
+      "family": "MODEL_REFRAMES_ASCII",
+      "index": 0,
+      "oracle": 80,
+      "mutant": 100
+    },
+    {
+      "family": "APP_META_ONLY",
+      "index": 0,
+      "oracle": 90,
+      "mutant": 100
+    },
+    {
+      "family": "HOSTED_MODE_PROMOTED",
+      "index": 0,
+      "oracle": 40,
+      "mutant": 100
+    }
+  ],
+  "forbidden_insertion_mutants_killed": 4,
+  "forbidden_insertion_mutants_total": 4,
+  "forbidden_witnesses": [
+    {
+      "family": "ACCOUNT_SINGLETON_ALIAS",
+      "index": 0,
+      "oracle": 40,
+      "mutant": 100
+    },
+    {
+      "family": "EPHEMERAL_TMP_ROOT",
+      "index": 0,
+      "oracle": 20,
+      "mutant": 100
+    },
+    {
+      "family": "HOSTED_MODE_PROMOTED",
+      "index": 0,
+      "oracle": 40,
+      "mutant": 100
+    },
+    {
+      "family": "LEGACY_C20_ROUTE",
+      "index": 0,
+      "oracle": 50,
+      "mutant": 100
+    }
+  ],
+  "status": "PASS",
+  "claim_boundary": {
+    "semantic_mutation_is_physical_chat_host_proof": false,
+    "semantic_mutation_proves_modeled_contract_convergence": true,
+    "external_native_delivery_still_requires_real_host_receipt": true,
+    "cohost_registration_is_external_observation": true
+  },
+  "receipt_sha256": "752530a54b4e8c2e0dcb2e6bc49e7203d7e6ff126de66914f72b760e117feb3f"
+}

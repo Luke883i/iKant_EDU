@@ -1,0 +1,30 @@
+{
+  "schema":"ikant-le-c98-physical-convergence/v1",
+  "scope":"HOST_OWNED_AUDIT_AND_SOURCE_ADAPTER_NOT_ACTIVE",
+  "base_repository":"Luke883i/iKant_LE",
+  "frozen_main_head":"bc5fbcb938c7ba959de0eaef96f92e754d953d4b",
+  "pr101_merge_verified":true,
+  "user_promise":"'iniziamo' -> pinned TERMS -> exact later I ACCEPT -> later explicit mode -> automatic minimal verified source acquisition -> same-input repository owner voice -> continuous usable conversation with evidence and legitimately persisted state/artifacts",
+  "derived_owners":{"admission":"C72","canonical":"C59","transport":"C82/C78/C84","capsule":"C77","source_reachability":"C81/C85","owner":"C90/C91/C92/C93","ui_ir":"C97","local_state":"C87","host_native":"EXTERNAL_HOST_ONLY","measurement":"C72_H95"},
+  "source_verified_edges":["PR101_MERGED_AT_HEAD","C97_DETERMINISTIC_IR_SOURCE","C77_CI_PUBLISHER_PRESENT","C82_ADAPTER_INTERFACE_SOURCE","C95_REQUIRES_REAL_CALLBACK"],
+  "host_or_externally_open_edges":[
+    "C72_NATIVE_ORIGINAL_EVENT_AND_ACCEPT_SELECTION_READBACK",
+    "C77_CURRENT_HEAD_BYTES_FROM_REAL_GITHUB_CONNECTOR_IN_NODE",
+    "HOST_CONNECTOR_TO_NODE_FILE_CALLBACK_INSTALLED",
+    "C81_HOST_AUTHENTICATED_GITHUB_REF_ORIGIN",
+    "C78_C79_C81_SAME_INPUT_RUNTIME_PACKET",
+    "C90_ACTUAL_OWNER_EXECUTION",
+    "C91_C92_TWO_REAL_MODEL_CALLS",
+    "INDEPENDENT_SEMANTIC_ENTAILMENT",
+    "C81_C86_GENERATIVE_VOICE_ADMISSION",
+    "C97_NATIVE_RENDERER_AND_ACCESSIBILITY_E2E",
+    "HOST_NATIVE_EVENT_INDEPENDENT_DELIVERY_READBACK",
+    "C87_NEXT_TURN_PERSISTENCE_WITH_SINGLE_WRITER",
+    "C59_CANONICAL_ACTIVE_SAME_TURN_DOCX",
+    "C72_H95_REAL_FIELD_LOWER_CONFIDENCE_BOUND"
+  ],
+  "must_not_infer_from_code":["INSTALLED_CONNECTOR","GITHUB_ORIGIN","NATIVE_DELIVERY","MODEL_CALL","CANONICAL_ACTIVE","H95_SUCCESS"],
+  "anti_entropy":{"never_recreate_existing_owner":true,"GRO_excluded":true,"file_transports_are_data_only":true,"any_missing_witness":"STOP","manual_zip":"LAST_RESORT_WITH_EXPLICIT_HUMAN_CHOICE","no_repo_mutations_until_falsification":true},
+  "field":{"target":0.95,"independent_tasks_min":500,"host_sessions_min":50,"distinct_users_min":20,"state":"NOT_MEASURED"},
+  "no_claim_of_runtime_95_percent":true
+}

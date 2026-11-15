@@ -1,0 +1,42 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "cad1f573c1ddf4a947572a4caaf631cd099c822a",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-mcp-boundary.json",
+  "scope": "HOST_ENGINEERING_EDU_ONLY_UI_AND_MCP_INDEPENDENT_BLUEPRINT_SOURCE_ONLY",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "paths": [
+    {
+      "path": "docs/PROJECT_EDU_ONESHELL_UX_E2E_RETROGRADE.txt",
+      "operation": "MODIFY",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzz-oneshell-ux-retrograde.json",
+      "supersedes_source_main": "b17d0f30a7c25f26df6084693c5f52cd6b8938c2",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace the superseded dependent EDU->MCP roadmap with one EDU-only source-mode track, independent MCP track, exact owner cut, retrospective original commitments, 13 hard DoDs, metric denominators, and deployment/governance checklist."
+    },
+    {
+      "path": "scripts/project-oneshell-ux-retrograde.mjs",
+      "operation": "MODIFY",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzz-oneshell-ux-retrograde.json",
+      "supersedes_source_main": "b17d0f30a7c25f26df6084693c5f52cd6b8938c2",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Keep existing 16-node non-authoritative CORA projection, sever erroneous cross-surface edges, add actual HEAD source-visible CANONICAL exposure census and topological isolation falsifier; no owner, prompt or receipt changed."
+    },
+    {
+      "path": "tests/project-oneshell-ux-retrograde.test.mjs",
+      "operation": "MODIFY",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzz-oneshell-ux-retrograde.json",
+      "supersedes_source_main": "b17d0f30a7c25f26df6084693c5f52cd6b8938c2",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Enforce static current-exposure OPEN EDGE, EDU/MCP dependency separation and corrupted-graph negatives while retaining original 10k source-only mutants, explicit original-owner nonpromotion and six-slot legacy widget compatibility."
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-mcp-boundary.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Declare the nonpromoting amendment to the existing UX0 projection and source-only falsifiers under the original V5-B succession rules; no separate constitution, runtime, owner or model."
+    }
+  ]
+}

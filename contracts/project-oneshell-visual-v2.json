@@ -1,0 +1,118 @@
+{
+  "schema": "ikant-le-oneshell-visual/v2",
+  "authority": 0,
+  "purpose": "HOST_PRESENTATION_ONLY_NOT_NATIVE_CHATGPT_UI",
+  "layout": {
+    "container": "SINGLE_UNBROKEN_BORDER_ALL_SIX_SLOTS",
+    "border_width_px": 1,
+    "border_color": "neutral-subtle",
+    "border_radius_px": 16,
+    "padding_px": 12,
+    "inter_slot_gap_px": 10,
+    "separator_count": 2,
+    "header": "iKant · OneShell",
+    "responsive": "LABEL_ABOVE_VALUE_ON_NARROW_CLIENT",
+    "no_independent_cards": true,
+    "truncation_allowed": false
+  },
+  "machine_order": [
+    "ESITO",
+    "A",
+    "B",
+    "PROVA",
+    "EDGE",
+    "NEXT"
+  ],
+  "human_display": {
+    "ESITO": {
+      "primary": "ESITO"
+    },
+    "A": {
+      "primary": "iKant",
+      "secondary": "Superficie A",
+      "primary_weight": 700,
+      "primary_prominent": true
+    },
+    "B": {
+      "primary": "Host",
+      "secondary": "Superficie B",
+      "primary_weight": 700,
+      "primary_prominent": true
+    },
+    "PROVA": {
+      "primary": "PROVA"
+    },
+    "EDGE": {
+      "primary": "EDGE"
+    },
+    "NEXT": {
+      "primary": "NEXT"
+    }
+  },
+  "fidelity": {
+    "source": "VALIDATED_ONESHELL_FRAME",
+    "reference": "host/project-oneshell-compact.mjs",
+    "original_value_bytes_unchanged": true,
+    "visual_model_not_new_receipt_owner": true,
+    "rich_host_must_bind_action_to_real_human_message": true,
+    "text_fallback": "host/project-oneshell-visual.mjs#renderOneShellVisualText",
+    "native_component_availability": "NOT_ATTESTED",
+    "persistent_chatgpt_ui": "NOT_ATTESTED",
+    "semantic_retention_without_readback": "NOT_ATTESTED",
+    "rich_html_fallback": "host/project-oneshell-visual.mjs#renderOneShellVisualHtml",
+    "rich_html_script": "NONE",
+    "rich_html_exit_gesture": "NOT_PRESENT_EXIT_IS_TEXT_COMMAND_ONLY"
+  },
+  "status_badge": {
+    "role": "READ_ONLY_DETERMINISTIC_PHASE",
+    "placement": "HEADER_TOP_RIGHT",
+    "interactive": false,
+    "neutral_color": true,
+    "source": "VALIDATED_OWNER_FRAME_ONLY",
+    "never_exit_control": true,
+    "labels": [
+      "BLOCCATO",
+      "VOCE_VERIFICATA",
+      "PRONTO",
+      "ORIENTAMENTO",
+      "CONSENSO",
+      "ATTESA_SORGENTI",
+      "ATTESA",
+      "FASE_SCONOSCIUTA"
+    ],
+    "derive_order": [
+      "STOP_OR_BLOCK",
+      "OWNER_VOICE",
+      "READY",
+      "TERMS",
+      "ACCEPT",
+      "SOURCE",
+      "PENDING",
+      "UNKNOWN"
+    ]
+  },
+  "brand": {
+    "scope": "HOST_OWNED_PRESENTATION_ONLY",
+    "source": "assets/brand/ikant-light.svg",
+    "plugin_source": "plugins/ikant-le-session-chat/assets/ikant-light.svg",
+    "asset_sha256": "b6dc3f6e22149ef9f96348ce8e677af034cd2377f26450af18d51bc5c43ae633",
+    "placement": "HEADER_LEFT_OF_TITLE",
+    "width_px": 28,
+    "height_px": 28,
+    "host_svg": "INLINE_PINNED_EXACT_BYTES_NO_NETWORK",
+    "tint": "CSS_CURRENTCOLOR_FOR_LIGHT_DARK_HOST_THEME",
+    "fallback": "TEXT_TITLE_ONLY_WHEN_ASSET_UNVERIFIED",
+    "header_logo_not_voice_provenance": true,
+    "native_registered": false,
+    "native_assistant_avatar_attested": false,
+    "third_party_publication_attested": false,
+    "branding_not_identity_authentication": true,
+    "single_frame_unchanged": true,
+    "slot_values_byte_exact": true,
+    "host_emission_gate": "host/project-oneshell-emission.mjs#emitVerifiedHostOneShell",
+    "rich_html_missing_glyph": "STOP_HOST_OFFICIAL_BRAND_UNVERIFIED",
+    "rich_html_requires_exactly_one_verified_glyph": true,
+    "text_fallback_has_svg": false,
+    "provider_enforced_rendering_attested": false
+  }
+}

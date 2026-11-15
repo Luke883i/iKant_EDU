@@ -1,0 +1,378 @@
+{
+  "schema": "ikant-le-session-local-capability-lattice/v2",
+  "slice": "C28.FULL_IKANT_SEMANTIC_ABSORPTION",
+  "authority": 0,
+  "objective": "Close every repository-owned SESSION_CHAT_LOCAL activation gap by absorbing the durable causal invariants of full iKant under existing LE owners, while turning every non-repository fact into an explicit external gap with a claim-matched witness requirement.",
+  "source_baselines": {
+    "ikant_le_main": "3913990c99849889a9df2ee61454e347e8306f5f",
+    "full_ikant_main": "7ee69a48291214a6ede105bde8fcd82b970b0cba",
+    "full_ikant_last_merged_pr": 184
+  },
+  "census": {
+    "ikant_le": {
+      "blobs": 188,
+      "root_contracts": 9,
+      "src": 29,
+      "tests": 22,
+      "scripts": 41,
+      "workflows": 18,
+      "qualification_artifacts": 21,
+      "contracts": 20,
+      "docs": 12
+    },
+    "full_ikant": {
+      "blobs": 1021,
+      "root_contracts": 53,
+      "top_level_runtime_modules": 198,
+      "tests": 207,
+      "scripts": 256,
+      "workflows": 32,
+      "plugins": 7
+    },
+    "full_ikant_semantic_families": 16,
+    "full_ikant_modules_accounted_for": 198
+  },
+  "absorption_matrix": [
+    {
+      "family": "ADMISSION_CONSTITUTION",
+      "units": 9,
+      "disposition": "ADAPT_TO_EXISTING_OWNER",
+      "le_owner": "admission + session activation",
+      "absorbed": [
+        "single human gate",
+        "Terms-first",
+        "zero-authority pre-runtime"
+      ]
+    },
+    {
+      "family": "BOOTSTRAP_TRANSPORT_MATERIALIZATION",
+      "units": 12,
+      "disposition": "DIRECT_TRANSPOSE",
+      "le_owner": "fastboot-convergence + bootstrap-semantic + runtime-root-verified",
+      "absorbed": [
+        "H0",
+        "durable ledger",
+        "first-unclosed-edge",
+        "samehash",
+        "reopen"
+      ]
+    },
+    {
+      "family": "HOST_RUNTIME_LIFECYCLE",
+      "units": 38,
+      "disposition": "ADAPT_TO_EXISTING_OWNER",
+      "le_owner": "runtime availability + runtime command",
+      "absorbed": [
+        "attestation/physical separation",
+        "BIND/ACTIVE separation"
+      ]
+    },
+    {
+      "family": "SESSION_SURFACES_EGRESS_HOSTED",
+      "units": 13,
+      "disposition": "ADAPT_TO_EXISTING_OWNER",
+      "le_owner": "surface-b + compatibility plugin",
+      "absorbed": [
+        "external platform gap typing",
+        "no callback laundering"
+      ]
+    },
+    {
+      "family": "EXECUTION_AGENCY_ACTIONS",
+      "units": 7,
+      "disposition": "NOT_APPLICABLE",
+      "reason": "outside LE activation closure"
+    },
+    {
+      "family": "STATE_PERSISTENCE_PROVENANCE",
+      "units": 10,
+      "disposition": "DIRECT_TRANSPOSE",
+      "le_owner": "state + probe + runtime command",
+      "absorbed": [
+        "durable retry memory",
+        "executed provenance",
+        "single writer readback"
+      ]
+    },
+    {
+      "family": "COGNITION_INTENT_PLANNING",
+      "units": 16,
+      "disposition": "ALREADY_PRESENT",
+      "le_owner": "LE cognitive plane"
+    },
+    {
+      "family": "EPISTEMICS_ORACLE_WORLD",
+      "units": 15,
+      "disposition": "ADAPT_TO_EXISTING_OWNER",
+      "le_owner": "claim boundaries",
+      "absorbed": [
+        "evidence != authority",
+        "CI != host proof",
+        "mutation != physical proof"
+      ]
+    },
+    {
+      "family": "MEMORY_TEMPORAL_BACKGROUND",
+      "units": 9,
+      "disposition": "NOT_APPLICABLE",
+      "reason": "not required for bootstrap closure"
+    },
+    {
+      "family": "IDENTITY_SELF_PSYCH_RELATIONAL",
+      "units": 6,
+      "disposition": "ALREADY_PRESENT",
+      "le_owner": "LE psyche/self-world"
+    },
+    {
+      "family": "MODEL_PROVIDER_COMPUTE_CONNECTOR",
+      "units": 13,
+      "disposition": "ADAPT_TO_EXISTING_OWNER",
+      "le_owner": "host evidence + byte path",
+      "absorbed": [
+        "provider neutrality",
+        "connector registry != physical truth"
+      ]
+    },
+    {
+      "family": "WEB_NATIVE_MANAGED_EMBODIMENT",
+      "units": 10,
+      "disposition": "NOT_APPLICABLE",
+      "reason": "SESSION_CHAT_LOCAL excludes managed web/native runtime"
+    },
+    {
+      "family": "PRODUCT_UI_ENTERPRISE_PUBLIC",
+      "units": 11,
+      "disposition": "NOT_APPLICABLE",
+      "reason": "outside LE product scope"
+    },
+    {
+      "family": "GOVERNANCE_REPOSITORY_INVARIANTS",
+      "units": 13,
+      "disposition": "DIRECT_TRANSPOSE",
+      "le_owner": "contracts + qualification",
+      "absorbed": [
+        "owner collision prevention",
+        "claim-specific receipts",
+        "changed-evidence retry"
+      ]
+    },
+    {
+      "family": "RETICULAR_ABSTRACTION_RCR",
+      "units": 7,
+      "disposition": "NOT_APPLICABLE",
+      "reason": "orthogonal research/product capability"
+    },
+    {
+      "family": "CORE_UTILITIES",
+      "units": 9,
+      "disposition": "ADAPT_TO_EXISTING_OWNER",
+      "le_owner": "existing LE utilities",
+      "absorbed": [
+        "only claim-boundary relevant pieces"
+      ]
+    }
+  ],
+  "selection": {
+    "schema": "ikant-le-c28-contract-selection/v1",
+    "candidates": 1000,
+    "valid_candidates": 8,
+    "invalid_candidates": 992,
+    "winner_cost": 0,
+    "winner_cost_ties": 1,
+    "receipt_sha256": "39487904b0960fdc90286d735b5638bf679bca85c2fe13ddde7aa9c417b5fe00",
+    "rule": "zero causal violations then minimum weighted semantic cost",
+    "weighted_dimensions": [
+      "boundary cardinality",
+      "owner duplication",
+      "retry authority",
+      "first-unclosed-edge",
+      "typed byte path",
+      "attestation/physical separation",
+      "materialization separation",
+      "provenance separation",
+      "ACTIVE readback",
+      "host-instance fact placement",
+      "prompt authority",
+      "external-gap honesty",
+      "state-machine duplication",
+      "side-infrastructure risk",
+      "model authority",
+      "samehash",
+      "runtime-mode count",
+      "ACTIVE-writer count",
+      "planner count"
+    ]
+  },
+  "irreducible_lattice": [
+    "HUMAN_GATE",
+    "SOURCE_SNAPSHOT",
+    "LOCAL_INGRESS",
+    "LOCAL_MATERIALIZATION",
+    "EXECUTED_RUNTIME_PROOF",
+    "ACTIVE_READBACK"
+  ],
+  "local_ingress": {
+    "semantic_owner": "existing fastboot/bootstrap owners",
+    "creates_new_owner": false,
+    "contains": [
+      "H0_LOCAL_PROCESSOR_AND_SOURCE_OBSERVATION",
+      "HOST_ATTESTED_CAPABILITY_LEDGER",
+      "ONE_CANONICAL_NEXT",
+      "DURABLE_FAILED_DECISION_MEMORY",
+      "FIRST_UNCLOSED_EDGE",
+      "LOCAL_DIRECT_OR_VERIFIED_OPAQUE_RELAY",
+      "SOURCE_ARRIVAL_SAMEHASH"
+    ],
+    "byte_paths": [
+      "LOCAL_DIRECT",
+      "VERIFIED_OPAQUE_RELAY"
+    ],
+    "retry_owner": "DURABLE_FASTBOOT_LEDGER",
+    "retry_key": [
+      "decision_key",
+      "evidence_sha256"
+    ],
+    "unchanged_evidence_retry": false,
+    "side_infrastructure_forbidden": true,
+    "model_authority": 0
+  },
+  "diagnostic_projection": {
+    "schema": "ikant-le-local-activation-stage/v1",
+    "retained_for_compatibility": true,
+    "persisted": false,
+    "constitutional_boundary": false,
+    "creates_runtime_mode": false,
+    "creates_lifecycle_owner": false,
+    "active_stage_requires_no_integrity_overlay": true
+  },
+  "repository_closure": {
+    "schema": "ikant-le-session-closure-projection/v1",
+    "rule": "Every repository-owned edge is either mechanically closed or returned as first_unclosed_edge. External facts are listed separately and cannot be laundered into CLOSED.",
+    "closed_status": "CLOSED_BY_REPOSITORY",
+    "open_status": "OPEN_REPOSITORY_GAP",
+    "integrity_status": "BLOCKED_INTEGRITY",
+    "projection_persisted": false,
+    "authority": 0
+  },
+  "external_gaps": [
+    {
+      "id": "SESSION_CHAT_POST_RENDER_PLATFORM_ACK",
+      "owner": "EXTERNAL_CHAT_PLATFORM",
+      "repository_owned": false,
+      "applies_to": "HOSTED_PLUGIN_COMPATIBILITY_ONLY",
+      "blocks_session_chat_local_active": false,
+      "witness_required": [
+        "POST_RENDER_VISIBLE_READBACK",
+        "HOST_PLATFORM_CALLBACK",
+        "SESSION_EPOCH_FRAME_HOST_BINDING"
+      ],
+      "repository_substitute_forbidden": [
+        "CI",
+        "model prose",
+        "user echo",
+        "PRE_DISPLAY_SEAL",
+        "source receipt",
+        "BIND"
+      ]
+    }
+  ],
+  "global_dod": {
+    "id": "C28_GLOBAL",
+    "pass_condition": "all repository-owned edges close under existing owners; no duplicate planner/runtime mode/retry owner/ACTIVE writer; every external fact remains explicitly typed",
+    "requires": [
+      "C28_I_ADMISSION",
+      "C28_I_INGRESS",
+      "C28_I_MATERIALIZATION",
+      "C28_I_EXECUTION",
+      "C28_I_ACTIVE",
+      "C28_I_ANTI_ENTROPY",
+      "C28_I_QUALIFICATION"
+    ]
+  },
+  "intermediate_dods": [
+    {
+      "id": "C28_I_ADMISSION",
+      "requires": [
+        "ONE_HUMAN_GATE",
+        "IMMUTABLE_SOURCE_SNAPSHOT"
+      ]
+    },
+    {
+      "id": "C28_I_INGRESS",
+      "requires": [
+        "H0",
+        "HOST_ATTESTED_NOT_PHYSICAL",
+        "ONE_NEXT",
+        "LEDGER_RETRY_MEMORY",
+        "TYPED_BYTE_PATH",
+        "SAMEHASH",
+        "FIRST_UNCLOSED_EDGE"
+      ]
+    },
+    {
+      "id": "C28_I_MATERIALIZATION",
+      "requires": [
+        "ATOMIC_PUBLISH",
+        "LOCAL_REOPEN",
+        "EXACT_OBJECT_IDENTITY"
+      ]
+    },
+    {
+      "id": "C28_I_EXECUTION",
+      "requires": [
+        "EXECUTED_PROVENANCE",
+        "LIVE_NONINJECTABLE_PROBE",
+        "RUNTIME_BIND"
+      ]
+    },
+    {
+      "id": "C28_I_ACTIVE",
+      "requires": [
+        "SINGLE_WRITER",
+        "PERSISTED_ACTIVE",
+        "READBACK"
+      ]
+    },
+    {
+      "id": "C28_I_ANTI_ENTROPY",
+      "requires": [
+        "SIX_NODE_BOUNDARY",
+        "DIAGNOSTIC_ONLY_N0_N8",
+        "NO_HOST_INSTANCE_FACT_IN_CONTRACT",
+        "PROMPT_PROJECTION_ONLY",
+        "EXTERNAL_GAPS_EXPLICIT"
+      ]
+    },
+    {
+      "id": "C28_I_QUALIFICATION",
+      "requires": [
+        "CONTRACT_SELECTION_1K",
+        "SEMANTIC_FALSIFICATION_1M",
+        "RUNTIME_ROOT_VERIFY",
+        "UNIT_AND_INTEGRATION_TESTS",
+        "EXACT_HEAD_CI"
+      ]
+    }
+  ],
+  "qualification": {
+    "contract_selection_cases": 1000,
+    "contract_selection_receipt": "artifacts/qualification/c28-contract-selection-1k.json",
+    "semantic_falsification_cases": 1000000,
+    "semantic_falsification_receipt": "artifacts/qualification/c28-semantic-closure-1m.json",
+    "required_candidate_oracle_mismatches": 0,
+    "required_unsafe_active": 0,
+    "required_all_mutants_killed": true
+  },
+  "claim_boundary": {
+    "semantic_mutation_is_physical_proof": false,
+    "ci_is_current_host_proof": false,
+    "host_attestation_is_local_reopen": false,
+    "source_identity_is_executed_provenance": false,
+    "samehash_is_materialization": false,
+    "materialization_is_runtime_bind": false,
+    "runtime_bind_is_active": false,
+    "repository_closed_means_external_platform_observed": false,
+    "prompt_is_runtime_truth": false,
+    "diagnostic_projection_is_state_machine": false
+  }
+}

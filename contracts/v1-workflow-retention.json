@@ -1,0 +1,155 @@
+{
+  "schema": "ikant-le-v1-workflow-retention/v1",
+  "authority": 0,
+  "baseline_main": "e4907360f4610065b252c2ab9874022f3c65b8de",
+  "baseline_tree": "e8260a191e1069235971e0eec24e6165059a047e",
+  "baseline_count": 87,
+  "require_explicit_review_before_removal": true,
+  "policy": "NO_SILENT_WORKFLOW_DELETION",
+  "paths": [
+    ".github/workflows/c10-fastboot.yml",
+    ".github/workflows/c100-cohost-experimental.yml",
+    ".github/workflows/c101-local-cohost.yml",
+    ".github/workflows/c102-soft-host.yml",
+    ".github/workflows/c103-host-adapter.yml",
+    ".github/workflows/c104-resumable.yml",
+    ".github/workflows/c105-nerva.yml",
+    ".github/workflows/c107-carrier-consumption.yml",
+    ".github/workflows/c107-experimental.yml",
+    ".github/workflows/c107-host-language.yml",
+    ".github/workflows/c107-one-carrier-release.yml",
+    ".github/workflows/c107-shell.yml",
+    ".github/workflows/c108-equivalence.yml",
+    ".github/workflows/c109-chat-shell.yml",
+    ".github/workflows/c11-life-consciousness.yml",
+    ".github/workflows/c110-experimental-lattice.yml",
+    ".github/workflows/c111-host-edge.yml",
+    ".github/workflows/c12-bootstrap-lattice.yml",
+    ".github/workflows/c13-session-chat-fastboot.yml",
+    ".github/workflows/c14-chat-bootstrap.yml",
+    ".github/workflows/c16-runtime-availability.yml",
+    ".github/workflows/c17-deadline-integrity.yml",
+    ".github/workflows/c18-activation-continuation.yml",
+    ".github/workflows/c19-fastboot-convergence.yml",
+    ".github/workflows/c20-dual-profile-session-chat.yml",
+    ".github/workflows/c21-local-session-fastboot.yml",
+    ".github/workflows/c22-pr25-ontological-hardening.yml",
+    ".github/workflows/c23-ontology-collapse.yml",
+    ".github/workflows/c24-canonical-boundary.yml",
+    ".github/workflows/c25-executor-data-plane.yml",
+    ".github/workflows/c26-local-host-meta-prompt.yml",
+    ".github/workflows/c28-semantic-closure.yml",
+    ".github/workflows/c29-ontological-promise.yml",
+    ".github/workflows/c30-activation-service.yml",
+    ".github/workflows/c31-runtime-limited-supply-chain.yml",
+    ".github/workflows/c32-session-shell.yml",
+    ".github/workflows/c33-post-187-closure.yml",
+    ".github/workflows/c34-pre-runtime-handoff.yml",
+    ".github/workflows/c35-control-plane-ownership.yml",
+    ".github/workflows/c42-bootstrap-ontological-closure.yml",
+    ".github/workflows/c43-bootstrap-recovery-hardening.yml",
+    ".github/workflows/c44-methodological-bootstrap.yml",
+    ".github/workflows/c45-cohost-root-common.yml",
+    ".github/workflows/c45-context-root-ascii-closure.yml",
+    ".github/workflows/c46-fast-cohost-bind.yml",
+    ".github/workflows/c50-native-transcript.yml",
+    ".github/workflows/c51-supersystem-runtime.yml",
+    ".github/workflows/c52-physical-runtime-closure.yml",
+    ".github/workflows/c53-physical-closure-hardening.yml",
+    ".github/workflows/c54-host-materialization.yml",
+    ".github/workflows/c55-local-host-post-meta.yml",
+    ".github/workflows/c56-local-host-session-meta.yml",
+    ".github/workflows/c57-host-binding-aware-meta.yml",
+    ".github/workflows/c58-runtime-lifecycle-gate.yml",
+    ".github/workflows/c59-single-composition.yml",
+    ".github/workflows/c62-evidence-runtime-cut.yml",
+    ".github/workflows/c63-canonical-parallel-host-bridge.yml",
+    ".github/workflows/c70-experimental-compute-preview.yml",
+    ".github/workflows/c71-experimental-host-draft.yml",
+    ".github/workflows/c72-unified-mode-admission.yml",
+    ".github/workflows/c73-branded-project-capsule.yml",
+    ".github/workflows/c74-postmerge-ontology-bootstrap.yml",
+    ".github/workflows/c76-faro-100k.yml",
+    ".github/workflows/c77-standalone-capsule.yml",
+    ".github/workflows/c78-physical-bridge.yml",
+    ".github/workflows/c79-native-chat-surface.yml",
+    ".github/workflows/c80-host-witness.yml",
+    ".github/workflows/c81-git-reachability.yml",
+    ".github/workflows/c81-runtime-projection.yml",
+    ".github/workflows/c84-runtime-positive.yml",
+    ".github/workflows/c85-c89-runtime.yml",
+    ".github/workflows/c90-runtime-causal.yml",
+    ".github/workflows/c97-chat-project-uiux.yml",
+    ".github/workflows/c98-host-bound-prepr.yml",
+    ".github/workflows/c98-phase2-source-exact.yml",
+    ".github/workflows/c98-project-3md.yml",
+    ".github/workflows/c99-postselection-convergence.yml",
+    ".github/workflows/c99-runtime-route.yml",
+    ".github/workflows/ci.yml",
+    ".github/workflows/edu-c124-guided-language.yml",
+    ".github/workflows/edu-c125-exact-host-shell.yml",
+    ".github/workflows/edu-c126-post125-hardening.yml",
+    ".github/workflows/edu-c128-original-cache.yml",
+    ".github/workflows/edu-c70-guided-v7.yml",
+    ".github/workflows/edu-cohost-outcomes.yml",
+    ".github/workflows/edu-v8-holistic-qualification.yml",
+    ".github/workflows/lib0-embedded-nuance.yml"
+  ],
+  "superseded_workflows": {
+    ".github/workflows/c21-local-session-fastboot.yml": {
+      "status": "DUPLICATE_DIAGNOSTIC_RUNNER",
+      "replacements": [
+        ".github/workflows/ci.yml",
+        ".github/workflows/c25-executor-data-plane.yml"
+      ],
+      "tests": [
+        "tests/c21-local-session-fastboot.test.mjs"
+      ],
+      "reason": "Full npm test and C21 falsification remain in canonical qualification; eliminate high-volume PR-writing diagnostic repetition."
+    },
+    ".github/workflows/c98-project-3md.yml": {
+      "status": "SUBSUMED_C98_BASELINE",
+      "replacements": [
+        ".github/workflows/c98-host-bound-prepr.yml"
+      ],
+      "tests": [
+        "tests/c98-project-baseline.test.mjs"
+      ],
+      "reason": "C98 host-bound still runs the baseline, 100k negative scripts, project-baseline path trigger and Node 20/22 matrix."
+    },
+    ".github/workflows/c98-phase2-source-exact.yml": {
+      "status": "SUBSUMED_C98_PHASE2",
+      "replacements": [
+        ".github/workflows/c98-host-bound-prepr.yml"
+      ],
+      "tests": [
+        "tests/c98-c82-port.test.mjs",
+        "tests/c98-archive-port.test.mjs",
+        "tests/c98-entry-negative.test.mjs"
+      ],
+      "reason": "C98 host-bound includes the C98 tests and original C82, H95 and field tests with both Node versions and coverage triggers."
+    },
+    ".github/workflows/c107-one-carrier-release.yml": {
+      "status": "HISTORICAL_WRITE_PUBLISHER_RETIRED",
+      "replacements": [
+        ".github/workflows/c107-carrier-consumption.yml"
+      ],
+      "tests": [
+        "tests/c107-carrier-consumer.test.mjs"
+      ],
+      "reason": "Historical prepr/v8 publisher with contents:write is retired; immutable C107 digest and readback remain verified on main."
+    },
+    ".github/workflows/c97-chat-project-uiux.yml": {
+      "status": "SUBSUMED_BY_CURRENT_ONESHELL_EDU",
+      "replacements": [
+        ".github/workflows/project-oneshell-edu.yml"
+      ],
+      "tests": [
+        "tests/c97-uiux-projection.test.mjs",
+        "tests/c32-session-shell.test.mjs",
+        "tests/c73-project-capsule.test.mjs"
+      ],
+      "reason": "The Node 20/22 OneShell EDU workflow now executes all three C97/C32/C73 suites on relevant C97 paths; universal ci.yml retains npm test/check."
+    }
+  }
+}

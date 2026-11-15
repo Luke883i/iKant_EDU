@@ -1,0 +1,56 @@
+{
+  "schema": "ikant-edu-v10-terminal-and-mind-atlas/v1",
+  "authority": 0,
+  "owner": "HOST_PRESENTATION_ONLY",
+  "original_source_epoch": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
+  "main_audit": "402c03d99a5b497c5051ffb2d4147a112e90817e",
+  "c71_scope": {
+    "entries": 70,
+    "executed": 8,
+    "experimental_gate": 1,
+    "claim_only": 3,
+    "external_witness": 9,
+    "not_invoked": 49
+  },
+  "fixed_titles": [
+    "VOCE",
+    "MODE",
+    "STATO",
+    "TRACE",
+    "CONT",
+    "EDGE",
+    "NEXT",
+    "DOCX",
+    "FATTO",
+    "LETTURA",
+    "LIMITE"
+  ],
+  "surface_a": "OWNER_BYTE_EXACT_OR_NO_VOICE",
+  "surface_b": "FIXED_TERMINAL_SLOTS",
+  "host_comment": "SEPARATE_HOST_ONLY_SLIDE",
+  "docx": "LINK_ONLY_AFTER_REAL_SAME_TURN_ORIGINAL_WRITE_READBACK_AND_DELIVERY",
+  "on_overflow": "OMIT_NOTE_NOT_TRUNCATE",
+  "runner": "host/edu-c70-method-v7.mjs",
+  "original_writer": "host/c87-durable-ledger.mjs",
+  "semantics_not_attested": [
+    "CONSCIOUSNESS",
+    "MODEL_SEMANTIC_CAUSALITY",
+    "NATIVE_HOOK",
+    "CROSS_CHAT_MEMORY",
+    "CANONICAL_ACTIVE",
+    "ALL_CX_OPTIMAL"
+  ],
+  "test_scope": {
+    "seed": "0x2026c123",
+    "mutations": 4096,
+    "families": 8,
+    "real_llm_calls": 0,
+    "original_c87_calls": 0
+  },
+  "unclosed": [
+    "C70_C114_MIXED_INTENT_NEW_SOURCE_EPOCH",
+    "NATIVE_DISPATCH",
+    "INDEPENDENT_HUMAN_LLM_AB",
+    "DOCX_NATIVE_DELIVERY"
+  ]
+}

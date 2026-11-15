@@ -1,0 +1,27 @@
+name: OneShell v1 deterministic package qualification
+on:
+  pull_request:
+    paths:
+      - 'scripts/oneshell-v1-*'
+      - 'tests/test_oneshell_v1_materialization.py'
+      - 'docs/ONESHELL_V1_MATERIALIZATION.txt'
+      - '.github/workflows/oneshell-v1-qualification.yml'
+  workflow_dispatch:
+jobs:
+  model-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile materializer, verifier and falsifier
+        run: python -m py_compile scripts/oneshell-v1-build.py scripts/oneshell-v1-verify.py scripts/oneshell-v1-falsify.py
+      - name: Synthetic Git checkout tests
+        run: python -m unittest discover -s tests -p 'test_oneshell_v1_materialization.py' -v
+      - name: One million preseeded typed-state vectors (not live semantics)
+        run: python scripts/oneshell-v1-falsify.py > mutation-evidence.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oneshell-v1-model-evidence-not-product-proof
+          path: mutation-evidence.json

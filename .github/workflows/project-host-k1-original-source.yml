@@ -1,0 +1,59 @@
+name: K1 integrated WHAT-HOW physical original-source evidence
+on:
+  pull_request:
+    paths:
+      - 'host/project-host-k1-preowner.mjs'
+      - 'tests/project-host-k1-real-source.test.mjs'
+      - 'scripts/project-host-k1-install-cli.mjs'
+      - 'tests/project-host-k1-install.test.mjs'
+      - '.github/workflows/project-host-k1-original-source.yml'
+      - 'docs/PROJECT_HOST_K1_INTEGRATED_DOD.md'
+  push:
+    branches: [main]
+    paths:
+      - 'host/project-host-k1-preowner.mjs'
+      - 'tests/project-host-k1-real-source.test.mjs'
+      - '.github/workflows/project-host-k1-original-source.yml'
+      - 'docs/PROJECT_HOST_K1_INTEGRATED_DOD.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  k1-original-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Syntax and main-line source integrity
+        run: |
+          node --check host/project-host-k1-preowner.mjs
+          node --check scripts/project-host-k1-install-cli.mjs
+          node --check tests/project-host-k1-real-source.test.mjs
+          node scripts/project-source-manifest.mjs verify
+      - name: Actual original pinned Git blobs + independent Node subprocess (NO C72)
+        env:
+          K1_PINNED_CHECKOUT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          export K1_EVIDENCE_JSON="$RUNNER_TEMP/k1-evidence.json"
+          node --test tests/project-host-k1-real-source.test.mjs tests/project-host-effect-decision.test.mjs tests/project-host-k1-install.test.mjs
+          node --input-type=module -e "import fs from 'node:fs';const q=JSON.parse(fs.readFileSync(process.env.K1_EVIDENCE_JSON));if(q.original_sources!==10||q.staged_files!==9||q.original_owner_invoked!==false||q.provider_installation_attested!==false||q.independent_subprocess_readback!==true)process.exit(1)"
+      - name: Original owner software regression, never user field proof
+        run: node --test tests/project-edu-h1-bound-port.test.mjs tests/project-edu-h1-original.test.mjs tests/project-c72-e16-unified-ingress.test.mjs tests/project-c72-e16-unified-original.test.mjs
+      - name: Store checkout-only source proof (NOT provider evidence)
+        uses: actions/upload-artifact@v4
+        with:
+          name: k1-original-checkout-node-${{ matrix.node }}
+          path: ${{ runner.temp }}/k1-evidence.json
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,31 @@
+name: C51 supersystem runtime conformance
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Focused C51 and inherited cohost/native regressions
+        run: node --test --test-concurrency=1 tests/c45-cohost-root-common.test.mjs tests/c46-coldstart-cohost-bind.test.mjs tests/c50-native-transcript-participant.test.mjs tests/c51-supersystem-runtime-conformance.test.mjs
+      - name: Ten-million semantic saturation and 2^13 architecture lattice
+        run: node scripts/c51-supersystem-select-10m.mjs --cases 10000000
+      - name: Fresh one-million runtime falsification
+        run: node scripts/c51-supersystem-falsify-1m.mjs --cases 1000000
+      - name: Rebuild granular DoD and content-addressed candidate manifest
+        run: node scripts/c51-build-dod.mjs
+      - name: Qualification artifacts are exact committed bytes
+        run: |
+          git diff --exit-code -- artifacts/qualification/c51-supersystem-selection-10m.json artifacts/qualification/c51-supersystem-falsification-1m.json artifacts/qualification/c51-supersystem-dod.json artifacts/qualification/c51-candidate-blob-manifest.json
+      - name: Syntax
+        run: node --check src/supersystem-runtime-conformance.mjs && node --check scripts/c51-supersystem-select-10m.mjs && node --check scripts/c51-supersystem-falsify-1m.mjs && node --check scripts/c51-build-dod.mjs

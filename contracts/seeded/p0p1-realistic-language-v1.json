@@ -1,0 +1,11 @@
+{
+ "schema":"ikant-le-p0p1-realistic-seeds/v1",
+ "seed":88314520261019,
+ "scope":"Synthetic natural-language compositions; NOT independent human judgements or model turns",
+ "personas":["studentessa che avvia un Project","ricercatore che verifica le fonti","docente alla prima chat","amministratrice del sistema","giurista attenta al consenso","linguista senza Node","bibliotecario che cerca prove","volontaria della societa civile","sviluppatore su nuovo laptop","designer di interfacce","persona che usa uno screen reader","ricercatrice privacy","analista di eventi Git","operatore MCP","utente su browser mobile","moderatore di sicurezza","giornalista curioso","ingegnere del runtime","studentessa in aula","responsabile del rilascio"],
+ "intents":["chiede come iniziare davvero","chiede i cinque file originali","accetta i Termini nel suo nuovo turno","seleziona EDU nel messaggio successivo","chiede dove sia lo ZIP completo","mostra soltanto il bundle di orientamento","richiede il pannello iKant nella chat","esamina una definizione ontologica composta","chiede previsioni globali con limiti epistemici","tenta una promozione ACTIVE non autorizzata"],
+ "source_evidence":["sorgente assente","solo ZIP Project","codice completo verificato","provenienza sconosciuta","metadati parziali","sorgente assente nel client mobile","solo indice Markdown","checkout completo verificato","nessuna verifica fatta","solo termini allegati"],
+ "contexts":["primo accesso senza assistenza","dopo aver letto i Termini","dopo accettazione esatta","dopo scelta EDU verificata","senza consenso","dopo un riavvio del browser","in una nuova sessione","con evento provider mancante","con codice Git verificato","dopo un output HOST non nativo"],
+ "risks":["nessun rischio rilevato","identita nativa non verificata","pretese di coscienza positiva","memoria persistente non provata","output sintetico preso per reale"],
+ "requests":["spiega in parole comuni","dammi un solo passo successivo","conserva i sei slot","non creare una seconda voce","dimostra il readback","non ripetere i Termini","non inventare la UI","usa il contratto originale","non dedurre il consenso","fermati su invio incerto"]
+}

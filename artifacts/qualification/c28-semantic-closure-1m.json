@@ -1,0 +1,15 @@
+{
+  "schema": "ikant-le-c28-semantic-closure-falsification/v1",
+  "seed": "0xC28F411C",
+  "cases": 1000000,
+  "candidate_oracle_mismatches": 0,
+  "unsafe_active": 0,
+  "blocked": 286681,
+  "repository_closed": 236303,
+  "repository_closed_with_external_gap": 87309,
+  "all_mutants_killed": true,
+  "kills": [43016,33530,82260,31676,17514,23878,27127,73063,29537,22853,26010,28105,22231,22124,14443,22153,14770,62899,14568,14564,14818,14589,14553,14520],
+  "first_unclosed_counts": [43016,33530,212908,73063,86394,28105,236303],
+  "status": "PASS",
+  "claim_boundary": "semantic closure falsification is engineering evidence; it does not prove current host transport, materialization, platform callback, or ACTIVE"
+}

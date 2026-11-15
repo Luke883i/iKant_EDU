@@ -1,0 +1,293 @@
+{
+  "schema": "ikant-le-c59-cartesian-closure/v1",
+  "axes": 10,
+  "axis_cardinality": {
+    "ingress_adapter": 6,
+    "source_plane": 5,
+    "carrier": 8,
+    "byte_path": 3,
+    "sink": 3,
+    "executor": 3,
+    "planner": 3,
+    "retry_state": 3,
+    "product_profile": 5,
+    "activation_proof": 4
+  },
+  "raw_vectors": 1166400,
+  "raw_canonical_alias_vectors": 6,
+  "expected_raw_alias_vectors": 6,
+  "normalized_canonical_classes": 1,
+  "rejected_vectors": 1166394,
+  "excluded_value_accepted": 0,
+  "exclusion_mutants": 30,
+  "all_exclusion_mutants_killed": true,
+  "exclusion_mutant_sample": [
+    {
+      "axis": "ingress_adapter",
+      "value": "APP_BOUND_IKANT_LE_OPEN",
+      "unsafe_if_widened": 2,
+      "killed": true
+    },
+    {
+      "axis": "ingress_adapter",
+      "value": "MANUAL_PROBE_INITIALIZE",
+      "unsafe_if_widened": 2,
+      "killed": true
+    },
+    {
+      "axis": "ingress_adapter",
+      "value": "SESSION_CHAT_DEPLOYED",
+      "unsafe_if_widened": 2,
+      "killed": true
+    },
+    {
+      "axis": "source_plane",
+      "value": "AUTHORIZED_RAW_WEB",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "source_plane",
+      "value": "GIT_CLONE_OR_GH_CLI",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "source_plane",
+      "value": "CONTAINER_GITHUB_NETWORK",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "source_plane",
+      "value": "HOST_OR_LOCAL_SOURCE",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "carrier",
+      "value": "GITHUB_GIT_BLOB_API",
+      "unsafe_if_widened": 3,
+      "killed": true
+    },
+    {
+      "axis": "carrier",
+      "value": "PINNED_GITHUB_ZIP",
+      "unsafe_if_widened": 3,
+      "killed": true
+    },
+    {
+      "axis": "carrier",
+      "value": "PINNED_PERMALINK",
+      "unsafe_if_widened": 3,
+      "killed": true
+    },
+    {
+      "axis": "carrier",
+      "value": "HOST_FILE_BRIDGE",
+      "unsafe_if_widened": 3,
+      "killed": true
+    },
+    {
+      "axis": "carrier",
+      "value": "HUMAN_FILE_HANDOFF",
+      "unsafe_if_widened": 3,
+      "killed": true
+    },
+    {
+      "axis": "carrier",
+      "value": "WARM_CACHE_EXACT",
+      "unsafe_if_widened": 3,
+      "killed": true
+    },
+    {
+      "axis": "byte_path",
+      "value": "LOCAL_DIRECT",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "byte_path",
+      "value": "UNVERIFIED_OR_MODEL_REWRITE",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "sink",
+      "value": "DEPLOYED_OR_PLUGIN_STORE",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "sink",
+      "value": "CHAT_OR_NO_LOCAL_SINK",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "executor",
+      "value": "DEPLOYED_SESSION_NODE",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "executor",
+      "value": "MODEL_OR_NO_EXECUTOR",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "planner",
+      "value": "FASTBOOT_CHANNEL_LEDGER",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "planner",
+      "value": "MODEL_OR_OWNER_LOOP_SELECTOR",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "retry_state",
+      "value": "CARRIER_LOCAL_RETRY_EPOCH",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "retry_state",
+      "value": "CHAT_OR_UNBOUNDED_RETRY",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "product_profile",
+      "value": "SESSION_CHAT_DEPLOYED",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "product_profile",
+      "value": "RUNTIME_BOUND_LIMITED",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "product_profile",
+      "value": "COHOST_TIER_PROFILE",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "product_profile",
+      "value": "NATIVE_TRANSCRIPT_ACTOR",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "activation_proof",
+      "value": "HOST_ATTESTED_ONLY",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "activation_proof",
+      "value": "PHYSICAL_PROOF_WITHOUT_ACTIVE_READBACK",
+      "unsafe_if_widened": 6,
+      "killed": true
+    },
+    {
+      "axis": "activation_proof",
+      "value": "MATERIALIZE_OR_NO_PROOF",
+      "unsafe_if_widened": 6,
+      "killed": true
+    }
+  ],
+  "canonical_alias_vectors": [
+    {
+      "ingress_adapter": "SESSION_CHAT_LOCAL_HOST_KERNEL",
+      "source_plane": "GITHUB_API_ONLY",
+      "carrier": "GITHUB_API_BASE64",
+      "byte_path": "VERIFIED_OPAQUE_RELAY",
+      "sink": "SESSION_LOCAL_FILESYSTEM",
+      "executor": "SESSION_LOCAL_NODE",
+      "planner": "NO_CALLER_PLANNER",
+      "retry_state": "OWNER_TYPED_ONLY",
+      "product_profile": "SESSION_CHAT_LOCAL",
+      "activation_proof": "ACTIVE_READBACK_CHAIN"
+    },
+    {
+      "ingress_adapter": "SESSION_CHAT_LOCAL_HOST_KERNEL",
+      "source_plane": "GITHUB_API_ONLY",
+      "carrier": "COLD_API",
+      "byte_path": "VERIFIED_OPAQUE_RELAY",
+      "sink": "SESSION_LOCAL_FILESYSTEM",
+      "executor": "SESSION_LOCAL_NODE",
+      "planner": "NO_CALLER_PLANNER",
+      "retry_state": "OWNER_TYPED_ONLY",
+      "product_profile": "SESSION_CHAT_LOCAL",
+      "activation_proof": "ACTIVE_READBACK_CHAIN"
+    },
+    {
+      "ingress_adapter": "FOR_AI_AGENT_FIRST_ENTRYPOINT",
+      "source_plane": "GITHUB_API_ONLY",
+      "carrier": "GITHUB_API_BASE64",
+      "byte_path": "VERIFIED_OPAQUE_RELAY",
+      "sink": "SESSION_LOCAL_FILESYSTEM",
+      "executor": "SESSION_LOCAL_NODE",
+      "planner": "NO_CALLER_PLANNER",
+      "retry_state": "OWNER_TYPED_ONLY",
+      "product_profile": "SESSION_CHAT_LOCAL",
+      "activation_proof": "ACTIVE_READBACK_CHAIN"
+    },
+    {
+      "ingress_adapter": "FOR_AI_AGENT_FIRST_ENTRYPOINT",
+      "source_plane": "GITHUB_API_ONLY",
+      "carrier": "COLD_API",
+      "byte_path": "VERIFIED_OPAQUE_RELAY",
+      "sink": "SESSION_LOCAL_FILESYSTEM",
+      "executor": "SESSION_LOCAL_NODE",
+      "planner": "NO_CALLER_PLANNER",
+      "retry_state": "OWNER_TYPED_ONLY",
+      "product_profile": "SESSION_CHAT_LOCAL",
+      "activation_proof": "ACTIVE_READBACK_CHAIN"
+    },
+    {
+      "ingress_adapter": "ADAPTER_BOUND_ENTRYPOINT",
+      "source_plane": "GITHUB_API_ONLY",
+      "carrier": "GITHUB_API_BASE64",
+      "byte_path": "VERIFIED_OPAQUE_RELAY",
+      "sink": "SESSION_LOCAL_FILESYSTEM",
+      "executor": "SESSION_LOCAL_NODE",
+      "planner": "NO_CALLER_PLANNER",
+      "retry_state": "OWNER_TYPED_ONLY",
+      "product_profile": "SESSION_CHAT_LOCAL",
+      "activation_proof": "ACTIVE_READBACK_CHAIN"
+    },
+    {
+      "ingress_adapter": "ADAPTER_BOUND_ENTRYPOINT",
+      "source_plane": "GITHUB_API_ONLY",
+      "carrier": "COLD_API",
+      "byte_path": "VERIFIED_OPAQUE_RELAY",
+      "sink": "SESSION_LOCAL_FILESYSTEM",
+      "executor": "SESSION_LOCAL_NODE",
+      "planner": "NO_CALLER_PLANNER",
+      "retry_state": "OWNER_TYPED_ONLY",
+      "product_profile": "SESSION_CHAT_LOCAL",
+      "activation_proof": "ACTIVE_READBACK_CHAIN"
+    }
+  ],
+  "canonical_normalized_vector": {
+    "ingress_adapter": "HOST_KERNEL_EQUIV",
+    "source_plane": "GITHUB_API",
+    "carrier": "GITHUB_API_BASE64",
+    "byte_path": "VERIFIED_OPAQUE_RELAY",
+    "sink": "SESSION_LOCAL_FILESYSTEM",
+    "executor": "SESSION_LOCAL_NODE",
+    "planner": "NO_CALLER_PLANNER",
+    "retry_state": "OWNER_TYPED_ONLY",
+    "product_profile": "SESSION_CHAT_LOCAL",
+    "activation_proof": "ACTIVE_READBACK_CHAIN"
+  },
+  "status": "PASS"
+}

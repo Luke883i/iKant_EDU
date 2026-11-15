@@ -1,0 +1,53 @@
+{
+  "schema": "ikant-le-edu-onezip-field-route/v1",
+  "authority": 0,
+  "status": "ENGINEERING_CANDIDATE_NOT_FIELD_QUALIFIED",
+  "first_contact": "HEAD_PLUS_FIVE_PINNED_BLOB_SHAS_TERMS_ONLY",
+  "entry_gate": {
+    "human_consent": "I ACCEPT",
+    "witness": "HOST_OBSERVED_DISTINCT_TURN",
+    "native_provider_attested": false
+  },
+  "transport": {
+    "preferred": "OBSERVED_AUTOMATIC",
+    "fallback": "SINGLE_OFFICIAL_GITHUB_COMMIT_ZIP_AFTER_I_ACCEPT_BEFORE_EDU",
+    "never_request_gateway_from_user": true,
+    "zip_verification": "GIT_BLOB_SHA_FOR_VERIFIER_PLUS_FULL_ZIP_GIT_TREE_ROOT_AGAINST_PINNED_COMMIT_TREE",
+    "tree_entries": "ZIP_DERIVED_NOT_INDEPENDENT_API_TREE",
+    "existing_loader": "scripts/project-repo-loader.mjs",
+    "legacy_postedu_zip_unchanged": true
+  },
+  "owners": {
+    "acceptance": "host/c72-public-mode-admission.mjs",
+    "postaccept": "host/project-c72-postaccept-reentry.mjs",
+    "mode": "host/c72-public-mode-admission.mjs",
+    "cognition": "host/c135-edu-v2-owner.mjs",
+    "ledger": "host/c87-durable-ledger.mjs",
+    "voice": "host/c125-output-port.mjs",
+    "recovery": "C135_PORTABLE_C87_PR179"
+  },
+  "language": {
+    "host_bridge": "scripts/project-edu-language-stdio.mjs",
+    "task_response_same_node_process": true,
+    "native_provider_call_in_node": false,
+    "owner_validates_ack": true
+  },
+  "runtime": {
+    "human_turn_transport": "scripts/project-edu-onezip-session.mjs",
+    "checkpoint_required_for_cross_process_turn": true,
+    "source_epoch_frozen": true,
+    "owner_receipts_must_be_reopened": true,
+    "native_delivery_attested": false
+  },
+  "release": {
+    "software_fixture_pass_is_not_field_pass": true,
+    "requires_real_zip": true,
+    "requires_real_original_c72_receipts": true,
+    "requires_real_human_turns": 2,
+    "requires_original_c87_readback": true,
+    "requires_original_c125_s03_visible": true,
+    "enterprise_sla": false,
+    "persistence_between_chats": false,
+    "canonical_active": false
+  }
+}

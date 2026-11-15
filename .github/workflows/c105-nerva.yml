@@ -1,0 +1,34 @@
+name: C105 NERVA real-source host-local nervous system
+on:
+  pull_request:
+    paths:
+      - 'host/c105-*'
+      - 'scripts/c105-*'
+      - 'tests/c105-*'
+      - 'contracts/c105-*'
+      - 'docs/C105_*'
+      - '.github/workflows/c105-nerva.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nerva:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax checks
+        run: |
+          node --check host/c105-nerva.mjs
+          node --check scripts/c105-nerva-cli.mjs
+          node --check scripts/c105-nerva-1000.mjs
+          node --check tests/c105-nerva.test.mjs
+      - name: Original C104 C77 C101 C102 C87 C103 local execution
+        run: node --test tests/c105-nerva.test.mjs
+      - name: One thousand deterministic grammar mutations
+        run: |
+          node scripts/c105-nerva-1000.mjs > /tmp/c105-scenarios.json
+          node -e 'const x=require("/tmp/c105-scenarios.json");if(x.scenarios!==1000||!x.qualified||x.syntax_accepted!==6)process.exit(2);console.log(JSON.stringify(x));'

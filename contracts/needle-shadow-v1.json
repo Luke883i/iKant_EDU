@@ -1,0 +1,34 @@
+{
+  "schema": "ikant-le-needle-shadow/v1",
+  "authority": 0,
+  "source_epoch": {
+    "head": "08e1bc0ad8ae80d43b628fb13a89a38c165094eb",
+    "tree": "67b1f0b4b4b8a5168fce89b994e93d763c03cb5e"
+  },
+  "runtime": "EDU_HOST_OPTIONAL_SHADOW",
+  "enabled_by_default": false,
+  "model_name": "Cactus Needle 3 (separate optional install)",
+  "max_input_bytes": 8192,
+  "max_output_bytes": 4096,
+  "max_calls": 3,
+  "max_fields": 4,
+  "max_worker_ms": 2000,
+  "api": "needle.Needle(...).complete only; run forbidden",
+  "toolset": [
+    "route_hint",
+    "extract_slots"
+  ],
+  "prohibitions": [
+    "no C72/C59/C87/C125/C135 modification",
+    "no real tool execution",
+    "no original voice",
+    "no external HTTP by design",
+    "no unattended reads or writes",
+    "no provider-native claim",
+    "no historical admission upgrade",
+    "never infer calibrated confidence"
+  ],
+  "release": "PRODUCT_NO_GO",
+  "research_gate": "EMPIRICAL_NEEDLE_BENCHMARK_NOT_ATTESTED",
+  "permissions": "Explicit opt-in and local-data authorization per run; generic process isolation is NOT an OS network sandbox."
+}

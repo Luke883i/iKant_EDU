@@ -1,0 +1,32 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/m3-source-closure-20261108.json",
+  "source_main": "b29e52b8bc1c8d4a9acdfdf9438632842504c8ac",
+  "scope": "HOST_ENGINEERING_M4_SOURCE_READBACK_WITH_PINNED_WORKFLOW_RESTORED",
+  "paths": [
+    {
+      "path": "governance/changes/m3-source-closure-20261108.json",
+      "operation": "ADD",
+      "reason": "Review-required source-only declaration: relocate M3 diagnostic from prohibited workflow delta to an existing lexical callsite CLI on original checkout",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    },
+    {
+      "path": "scripts/project-review-callsites.mjs",
+      "operation": "MODIFY",
+      "reason": "Add CLI-only exact Git index/TREE and worktree SHA1 source evidence inside existing callsite artifact; existing exported API, workflow pins and owner lanes unchanged",
+      "human_review": "REVIEW_REQUIRED",
+      "destructive_effect": false
+    }
+  ],
+  "requires_human_review": true,
+  "required_checks_verified": false,
+  "human_signoffs": 0,
+  "release": false,
+  "source_only": true,
+  "provider_status": "UNKNOWN",
+  "cutover_permission": false,
+  "workflow_delta_removed": true,
+  "original_workflow_blob_restored": "b7c74385b2e3ca0c7f4e7978da67e242a85d09be"
+}

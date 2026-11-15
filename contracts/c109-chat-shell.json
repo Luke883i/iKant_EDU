@@ -1,0 +1,16 @@
+{
+  "schema": "ikant-le-c109-chat-shell/v1",
+  "authority": 0,
+  "source_scope": "one frozen main HEAD per chat lifecycle",
+  "entry": ["avvia iKant", "attiva iKant"],
+  "states": ["COLD", "TERMS", "MODE", "OPTIN", "READY", "CLOSED"],
+  "exact_human_gates": ["I ACCEPT", "EXPERIMENTAL", "AUTORIZZO BOZZE COHOST SPERIMENTALI NON VERIFICATE"],
+  "dispatch": "C109 -> C108 -> C107 -> original C70/C100/C87",
+  "surface_a": "unaltered actual machine voice or original terms/orientation; null on refusal",
+  "surface_b": "typed evidence and pinned navigational references; no invented host receipts",
+  "carrier_requirement": "real installed Node host bridge; Project files alone do not create a callable port",
+  "host_obligations": ["bind actual human message to session", "prevent concurrent turn overlap", "pin original source epoch", "physically execute Node", "pass original C72 selection", "keep separate cohost optin", "expose provider port or bounded candidate", "show surface_a without rewriting", "render surface_b separately", "never promote node CI to native ChatGPT evidence"],
+  "claims_never_implied": ["canonical_ACTIVE", "native_event_identity", "native_delivery", "independent_GitHub_origin", "real_model_provider_without_call", "durable_cognitive_memory_without_host_context"],
+  "no_second_writer": true,
+  "strictness": "no user-visible iKant voice before C108 original C87 readback"
+}

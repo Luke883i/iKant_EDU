@@ -1,0 +1,23 @@
+name: C34 pre-runtime handoff authenticity
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c34:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Falsify C34 1m
+        run: npm run falsify:c34
+      - name: C34 focused tests
+        run: node --test --test-concurrency=1 tests/c34-pre-runtime-handoff.test.mjs
+      - name: C33 regression
+        run: node --test --test-concurrency=1 tests/c33-post-187-closure.test.mjs
+      - name: Verify runtime root
+        run: npm run runtime-root:verify

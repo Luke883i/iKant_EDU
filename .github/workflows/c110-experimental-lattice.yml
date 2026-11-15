@@ -1,0 +1,34 @@
+name: C110 experimental route lattice and 10 million mutation campaigns
+on:
+  pull_request:
+    paths:
+      - 'host/c109-*'
+      - 'host/c110-*'
+      - 'scripts/c109-*'
+      - 'scripts/c110-*'
+      - 'contracts/c110-*'
+      - 'tests/c110-*'
+      - 'scripts/c107-pack.mjs'
+      - '.github/workflows/c110-experimental-lattice.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  experimental-lattice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax and isolated synthetic versus original boundary
+        run: |
+          node --check host/c110-experimental-lattice.mjs
+          node --check host/c109-chat-shell.mjs
+          node --check scripts/c109-chat-gateway.mjs
+          node --test tests/c110-lattice.test.mjs tests/c110-synthetic.test.mjs tests/c110-gateway.test.mjs
+      - name: Ten distinct deterministic million-case falsification campaigns
+        run: |
+          node scripts/c110-falsify-10m.mjs > /tmp/c110-10m.json
+          node -e 'const r=require("/tmp/c110-10m.json");if(!r.qualified||r.campaigns.length!==10||r.total_cases!==10000000||r.total_controls!==10000||r.campaigns.some(x=>!x.pass))process.exit(2);console.log(JSON.stringify({qualified:r.qualified,campaigns:r.campaigns.length,total_cases:r.total_cases,total_controls:r.total_controls}))'

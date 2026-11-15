@@ -1,0 +1,67 @@
+{
+  "schema": "ikant-le-c59-minimum-semantic-lattice/v1",
+  "authority": 0,
+  "basis": "PR68 executable-gap audit at 6fa1e554378d67b6a68d33ba76d684a8e1c57855",
+  "mechanisms": [
+    {
+      "id": "K0_PINNED_SOURCE",
+      "failure_if_deleted": "SOURCE_DRIFT"
+    },
+    {
+      "id": "K1_PREACCEPT_FREEZE",
+      "failure_if_deleted": "ACCEPTANCE_ORIENTATION_LAUNDERING"
+    },
+    {
+      "id": "K2_SINGLE_CALLER_ENTRY",
+      "failure_if_deleted": "PARALLEL_CALLER_ENTRY"
+    },
+    {
+      "id": "K3_SHARED_RUNTIME_PREDICATE",
+      "failure_if_deleted": "PRE_RUNTIME_ONLY_GATE"
+    },
+    {
+      "id": "K4_CANONICAL_HANDOFF_BINDING",
+      "failure_if_deleted": "HANDOFF_LAUNDERING"
+    },
+    {
+      "id": "K5_GITHUB_API_BASE64_SOURCE",
+      "failure_if_deleted": "SOURCE_PLANE_AMBIGUITY"
+    },
+    {
+      "id": "K6_VERIFIED_OPAQUE_RELAY",
+      "failure_if_deleted": "MODEL_BYTE_REWRITE_OR_LOCAL_DIRECT"
+    },
+    {
+      "id": "K7_LOCAL_WRITE_REOPEN",
+      "failure_if_deleted": "MATERIALIZATION_IDENTITY_GAP"
+    },
+    {
+      "id": "K8_CANONICAL_RUNTIME_ENTRY",
+      "failure_if_deleted": "CANONICAL_DEAD_PATH"
+    },
+    {
+      "id": "K9_LEGACY_AUTHORITY_QUARANTINE",
+      "failure_if_deleted": "LEGACY_ACTIVE_LAUNDERING"
+    },
+    {
+      "id": "K10_CANONICAL_ACTIVE_READBACK",
+      "failure_if_deleted": "FALSE_CANONICAL_ACTIVE"
+    },
+    {
+      "id": "K11_CLOSED_EXECUTABLE_REGISTRY",
+      "failure_if_deleted": "UNCENSUSED_EXECUTABLE_SURFACE"
+    }
+  ],
+  "selection": {
+    "space": "2^12",
+    "cases": 4096,
+    "valid_candidates_required": 1,
+    "winner_mask": 4095
+  },
+  "invariants": {
+    "every_mechanism_required": true,
+    "every_single_deletion_must_fail": true,
+    "canonical_active_requires_all_mechanisms": true,
+    "history_or_documentation_cannot_substitute_runtime_edge": true
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "ikant-c132-enterprise-candidate/v1",
+  "authority": 0,
+  "product_line": "1.0.0-edu.1",
+  "maturity": "ENTERPRISE_CANDIDATE_NOT_RELEASED",
+  "priority_zero": [
+    "BEGINNER_ACCESSIBLE_VISIBLE_HOST_COPY",
+    "ONE_PUBLIC_PRODUCT_NO_HIDDEN_SECOND_OWNER",
+    "INTEGRITY_IS_NOT_COGNITIVE_GAIN",
+    "DOCUMENT_VERSION_AND_EVIDENCE_COHERENCE"
+  ],
+  "gold_levels": ["HISTORICAL", "TRACKED_FILE", "CURATED", "EXECUTABLE", "INTEGRATED", "COGNITIVE_BENCHMARKED", "PUBLISHED"],
+  "owner": {
+    "current": "C70_C82_C114_C87_PR119_C125_HISTORICAL_PIN",
+    "new_candidate": "host/c132-reasoning-candidate.mjs",
+    "candidate_can_replace_owner": false,
+    "migration_requires_new_epoch_and_pins": true
+  },
+  "native_chat_hook_attested": false,
+  "canonical_manual_fallback_installed": false,
+  "external_llm_quality_uplift_proven": false,
+  "shadow_scope_improvement_testable": true,
+  "enterprise_ready": false,
+  "release_allowed_without_new_cognitive_owner": false,
+  "next_owner_work": "VERSIONED_COGNITIVE_EPOCH_AND_END_TO_END_READBACK"
+}

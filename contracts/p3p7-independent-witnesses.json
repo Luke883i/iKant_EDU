@@ -1,0 +1,10 @@
+{
+ "schema":"ikant-le-p3p7-external-witnesses/v1",
+ "scope":"PROOF_GATES_ONLY_NOT_AUTO_INSTALL_OR_ACTIVATION",
+ "P3":{"owner":"INDEPENDENT_HUMAN_STUDY_AUDITOR","need":["30_NON_SYNTHETIC_USERS","CONSENT_PROVENANCE","P50_P95_DROPOUTS"],"verified_here":false},
+ "P4":{"owner":"REAL_GATEWAY_OPERATOR","need":["TLS_ENDPOINT","USER_AUTHZ_ISOLATION","REPLAY_NEGATIVE_MULTI_SESSION"],"verified_here":false},
+ "P5":{"owner":"CHATGPT_NATIVE_PLUGIN_REGISTRY","need":["CONNECTED_APP","THREE_NATIVE_TOOL_CALLS","SESSION_ORIGIN"],"verified_here":false},
+ "P6":{"owner":"C59_ORIGINAL_RUNTIME_AND_PROVIDER","need":["NATIVE_EVENT_ID","C87_SINGLE_WRITER_READBACK","DOCX_SINGLE_READBACK","HOST_DELIVERY"],"verified_here":false},
+ "P7":{"owner":"HUMAN_RELEASE_AND_REAL_MODEL_EVALUATOR","need":["REAL_C137_BENCHMARK","CI_EXACT_MERGE_SHA","RELEASE_OWNER_APPROVAL"],"verified_here":false},
+ "external_conclusions_may_not_be_computed_from_caller_boolean":true
+}

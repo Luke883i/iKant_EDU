@@ -1,0 +1,113 @@
+{
+  "schema": "ikant-le-c78-host-bridge-contract/v1",
+  "authority": 0,
+  "purpose": "BOUNDED_POST_CONSENT_HOST_OWNED_BYTE_RELAY_AND_NODE_COGNITION",
+  "accepted_mode": "EXPERIMENTAL",
+  "single_acceptance": "I ACCEPT",
+  "no_canonical_owner": true,
+  "not_a_chrome_or_chatgpt_native_event_hook": true,
+  "source_head_frozen_first_contact": true,
+  "before_acceptance": {
+    "allowed_paths": [
+      "README.md",
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "AGENTS.md",
+      "TERMS.md"
+    ],
+    "github_api_direct_pinned": true,
+    "full_terms_verbatim": true,
+    "forbidden_actions": [
+      "git ls-remote",
+      "clone",
+      "archive",
+      "tree",
+      "history",
+      "download",
+      "Node",
+      "unapproved file reads"
+    ],
+    "no_c78_actions_before_mode_selection": true
+  },
+  "after_mode": {
+    "capsule": "C77_DERIVED_EXPERIMENTAL_PACKAGE",
+    "selection_receipt": "ikant-le-c72-mode-selection/v1",
+    "bridge_request": "ikant-le-c78-opaque-host-transfer/v1",
+    "external_source_witness_required_for_origin_claim": true,
+    "actual_carrier": "HOST_SUPPLIED_OPAQUE_BYTES",
+    "trust_model": "C77 manifest SHA-256 + per-file SHA-256 + original Git blob SHA1, all supplied by host. Self-consistency is NOT GitHub connector origin authentication.",
+    "stage_order": [
+      "ACTUAL_GITHUB_CONNECTOR_READ",
+      "HOST_BYTE_HANDOFF",
+      "STAGE_IN_FRESH_NODE_DIR",
+      "REOPEN_EACH_FILE",
+      "EXECUTE_C77_CHILD",
+      "VERIFY_SAME_INPUT_AND_RESULT",
+      "NATIVE_CHAT_SURFACE_A_HOST_PRESENTATION"
+    ],
+    "maximum_message_input_bytes": 600,
+    "maximum_transfer_bytes": 2500000,
+    "claimed_native_delivery_without_host_witness": false
+  },
+  "result_statuses": [
+    "C78_STOP",
+    "C78_NODE_BYTES_MATERIALIZED",
+    "C78_NODE_RESPONSE_READY_HOST_DELIVERY_PENDING"
+  ],
+  "first_unclosed_edges": [
+    "HOST_CONNECTOR_TO_NODE_TRANSFER",
+    "HOST_GITHUB_ORIGIN_AUTHENTICATION",
+    "HOST_NATIVE_CHAT_SURFACE_A_DELIVERY",
+    "HOST_PERSISTED_TWO_TURN_READBACK"
+  ],
+  "surface_a": {
+    "medium": "NORMAL_CHAT_ASSISTANT_MESSAGE",
+    "kind": "HOST_OWNED_UNSEALED_DRAFT",
+    "requires_actual_chat_rendering_witness": true
+  },
+  "surface_b": {
+    "experimental_docx_optional": true,
+    "requires_same_host_file_created_and_reopened": true,
+    "link_must_be_real": true
+  },
+  "native_state": {
+    "canonical_ACTIVE_allowed": false,
+    "persistent_writer_claim_allowed": false,
+    "original_native_message_id_attested": false
+  },
+  "open_physical_gaps": {
+    "automated_chatgpt_message_routing": "NOT_ATTESTED_BY_REPO_CI",
+    "connector_to_node_same_turn_on_chatgpt": "NOT_ATTESTED_BY_REPO_CI",
+    "trusted_external_provenance": "NOT_ATTESTED_BY_CALLER_MANIFEST",
+    "native_surface_a_delivery": "NOT_ATTESTED_BY_NODE_READBACK",
+    "native_docx_link": "NOT_ATTESTED_BY_FILENAME",
+    "second_native_turn_persistence": "NOT_ATTESTED_BY_TWO_LOCAL_INVOCATIONS"
+  },
+  "evidence_classes": [
+    "CI_NODE_EXECUTION",
+    "REAL_HOST_BYTE_TRANSFER",
+    "HOST_SOURCE_ORIGIN",
+    "REAL_HOST_MESSAGE_BINDING",
+    "NATIVE_CHAT_PRESENTATION",
+    "PERSISTED_CROSS_TURN_STATE"
+  ],
+  "DoD": {
+    "repository": [
+      "C77 full capsule in a new sandbox",
+      "all C77 files copied reopened and byte-hashed",
+      "first-turn C70/C71/C73 executed in Node20 and Node22",
+      "160 negative transport mutations",
+      "two distinct local inputs labelled stateless",
+      "0 false ACTIVE and 0 fabricated DOCX links",
+      "new and existing CI green"
+    ],
+    "native_host": [
+      "Real GitHub connector bytes physically written into Node",
+      "source/manifest bound to real GitHub refs from host",
+      "actual current human message dispatch",
+      "assistant chat visibly receives owner-qualified experimental draft",
+      "second human message triggers new actual dispatch"
+    ],
+    "status": "REPOSITORY_AND_NATIVE_HOST_TESTS_MUST_BE_REPORTED_SEPARATELY"
+  }
+}

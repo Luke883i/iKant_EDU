@@ -1,0 +1,7 @@
+{
+ "schema":"ikant-le-s05-first-run/v1","minimum_independent_users":30,
+ "measurements":["elapsed_ms","manual_steps","errors","completed"],
+ "percentiles":["p50","p95"],"host_generated_trials_are_human_evidence":false,
+ "user_provenance_owner":"INDEPENDENT_PILOT_OPERATOR","release_gate":"HUMAN_TRIALS_WITH_VERIFIED_PROVENANCE",
+ "credential_or_personal_data_required":false,"baseline":"S01_C72_V2_AND_S02_CONSUMER_GATED"
+}

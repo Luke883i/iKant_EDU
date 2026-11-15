@@ -1,0 +1,95 @@
+{
+  "schema": "ikant-le-host-capability-port/v1",
+  "authority": 0,
+  "purpose": "Host implements observable effects with any authorized physical technology; no owner replacement",
+  "inspiration": [
+    "C103",
+    "C104",
+    "C105"
+  ],
+  "binding": "HOST_SELECTED_PER_ATTEMPT_NOT_MODEL_INFERRED",
+  "selection": [
+    "LIVE_AUTHORIZED_CALLBACKS",
+    "HOST_OPAQUE_SOURCE_PACKET_TO_NODE",
+    "NODE_LOCAL_GITHUB_HTTPS_POST_ACCEPT_ONLY"
+  ],
+  "original_owner": "C72/v2",
+  "handoff": "host/project-c72-capability-port.mjs#bindC72Transport",
+  "runner": "scripts/project-c72-portable-cli.mjs",
+  "packet_schema": "ikant-host-c72-source-packet/v1",
+  "request_schema": "ikant-host-c72-port-request/v1",
+  "require": [
+    "distinct exact new human acceptance observed by Host",
+    "frozen first-turn SHA witness",
+    "pinned live HEAD rechecked",
+    "ordered five full original UTF-8 blobs with SHA-1",
+    "physical Node ingress and actual output readback",
+    "unchanged original C72 owner receipts and introduction",
+    "no blind retry on unknown outcome"
+  ],
+  "transport_semantics": {
+    "callback": "Host supplies actual callable functions for pinned GitHub reads",
+    "packet": "Host physically transports full pinned GitHub API results via authorized carrier to Node stdin/JSON; Node checks the Git object identity, not API event origin",
+    "ambiguous": "FAIL_CLOSED",
+    "unbound": "C72_SOURCE_BRIDGE_UNBOUND_NOT_PROVEN_ABSENT",
+    "fallback": "HOST_CHOICE_ONLY_WITH_OBSERVED_PHYSICAL_CAPABILITY"
+  },
+  "no_preaccept_extra_reads": true,
+  "no_preaccept_gateway_download": true,
+  "no_new_owner": true,
+  "no_new_writer": true,
+  "no_original_receipt_reconstruction": true,
+  "no_native_host_hook_installed": true,
+  "no_guaranteed_provider_capabilities": true,
+  "local_receipt_not_native_proof": true,
+  "release_evidence": [
+    "SOURCE_AND_CI",
+    "PHYSICAL_HOST_TRANSFER",
+    "NATIVE_USER_INGRESS",
+    "NATIVE_DELIVERY",
+    "PERSISTENCE"
+  ],
+  "native_chatgpt_qualified": false,
+  "product_status": "PRODUCT_NO_GO_UNTIL_FIELD_PROOF",
+  "orchestrator": "host/project-c72-physical-ingress.mjs#runC72SelectedHostIngress",
+  "selection_rule": "HOST_SELECTED_ONE_OBSERVED_CALLABLE_CARRIER_NO_BLIND_FALLBACK",
+  "node_https": "EXACT_PUBLIC_GITHUB_API_HEAD_AND_FIVE_PINNED_CONTENTS_AFTER_CONSENT_NO_REDIRECT_TOKEN_OR_NATIVE_EVENT_CLAIM",
+  "node_https_failure": "C72_HEAD_READ_OUTCOME_UNKNOWN_OR_C72_SOURCE_READ_OUTCOME_UNKNOWN_NO_OWNER_REPLAY",
+  "explicit_effect_contract": [
+    "exact human consent gate before all I/O",
+    "one pinned main HEAD recheck",
+    "five Git blob SHA1 recomputed from exact decoded bytes",
+    "unmodified original C72 owner receipt and complete introduction",
+    "no owner retry, no native provider or UI claims"
+  ],
+  "staged_file_recipe": "scripts/project-c72-staged-ingress-cli.mjs",
+  "staged_file_semantics": "POSTACCEPT_FIVE_PRIVATE_LOCAL_FILES_INDEPENDENT_BLOB_AND_FD_READBACK_TO_EXISTING_SOURCE_PACKET_OWNER",
+  "host_assisted_eight_file_staging": "scripts/project-c72-verified-staging.mjs#putRelayLocalFile",
+  "host_conditional_pareto_frontier": "host/project-c72-transport-frontier.mjs#chooseC72HostTransport",
+  "host_postedu_explicit_zip_frontier": "host/project-c72-transport-frontier.mjs#chooseEDUSourceTransport",
+  "host_file_carrier_not_bound_to_legacy_five_document_port": true,
+  "cold_seed": "host/project-c72-coldstart-seed.mjs#executeC72Coldstart",
+  "partial_source_kit": "scripts/project-c72-partial-source-kit.mjs",
+  "later_edu_mode_cli": "scripts/project-c72-cold-mode-cli.mjs",
+  "later_edu_mode_policy": "ORIGINAL_C72_V2_TWO_PINNED_FILES_WITH_FRESH_EDU_AND_PRIOR_ORIGINAL_RECEIPTS",
+  "partial_source_original_paths": [
+    "README.md",
+    "BOOTSTRAP.json",
+    "ADMISSION.json",
+    "AGENTS.md",
+    "TERMS.md",
+    "contracts/c72-public-mode-admission-v2.json",
+    "host/c72-public-mode-admission.mjs",
+    "host/project-c72-postaccept-reentry.mjs"
+  ],
+  "manual_c72_handoff": "AFTER_DISTINCT_I_ACCEPT_BEFORE_EDU_NEVER_OWNER_REPLAY",
+  "manual_c72_handoff_is_not_manual_edu_zip": true,
+  "separate_p1_zip_gate": "ORIGINAL_EDU_SELECTED_AND_SOURCE_ABSENT_AND_EXPLICIT_MANUAL_OR_PROVEN_NO_BRIDGE",
+  "seed_self_git_blob_verified": true,
+  "field_proof_required": "EIGHT_ACTUAL_PINNED_GITHUB_BLOBS_IN_NODE_AND_ORIGINAL_C72_RECEIPT",
+  "host_what_how_rule": "HOST_CHOOSES_ACTUALLY_CALLABLE_CARRIER_WHAT_REQUIRES_NODE_BYTES_SHA_READBACK_AND_ORIGINAL_C72",
+  "field_bridge_claim": "UNKNOWN_UNTIL_ACTUAL_TOOL_TO_NODE_BYTE_READBACK"
+  ,"project_edu_e16_unified_ingress": "host/project-c72-e16-unified-ingress.mjs#runC72ProjectE16Ingress",
+  "legacy_five_file_port_is_not_project_edu_e16": true,
+  "e16_effect_owner": "host/project-c72-coldstart-seed.mjs#executeC72Coldstart"
+}

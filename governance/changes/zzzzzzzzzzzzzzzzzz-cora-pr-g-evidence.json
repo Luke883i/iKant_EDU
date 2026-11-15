@@ -1,0 +1,37 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "838c8f7c26353b5256ab236bcc662a2cd6775ffa",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzz-cora-pr-g-evidence.json",
+  "scope": "PR_G_ORIGINAL_F_EVIDENCE_READBACK_AND_INDEPENDENT_REVIEW_NO_AUTHORITY",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzz-cora-pr-g-evidence.json",
+      "operation": "ADD",
+      "reason": "Append original V5-B source declaration for PR-G evidence verification, not new owner",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/cora-pr-g-evidence-readback.mjs",
+      "operation": "ADD",
+      "reason": "Read-only independent corroboration of original PR-F and V5-B/CORA/callsite evidence",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/cora-pr-g-evidence-readback.test.mjs",
+      "operation": "ADD",
+      "reason": "Negative falsification and readback tests for original F reticular evidence and unresolved consumers",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "README.md",
+      "operation": "MODIFY",
+      "reason": "Document PR-G evidence packet, independent review boundaries and exact checkout commands",
+      "human_review": "REVIEW_REQUIRED",
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzzzzz-cora-pr-f-qualification.json",
+      "supersedes_source_main": "6c08e7241751c5507048b0748d14a5648be8c1cb"
+    }
+  ]
+}

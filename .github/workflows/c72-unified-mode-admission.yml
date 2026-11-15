@@ -1,0 +1,46 @@
+name: C72 unified consent, selection, and value boundary
+on:
+  pull_request:
+    paths:
+      - 'host/c72-unified-mode-admission.mjs'
+      - 'host/c72-public-mode-admission.mjs'
+      - 'host/c69-capability-first-preview.mjs'
+      - 'contracts/c72-*'
+      - 'tests/c72-unified-mode-admission.test.mjs'
+      - 'tests/c72-public-mode-admission.test.mjs'
+      - 'tests/c69-capability-first-preview.test.mjs'
+      - 'scripts/c72-falsify-1m.mjs'
+      - 'scripts/c139-s01-public-admission-falsify.mjs'
+      - 'host/c72-value-assessor.mjs'
+      - 'tests/c72-product-value.test.mjs'
+      - 'docs/C72_*'
+      - 'TERMS.md'
+      - 'ADMISSION.json'
+      - 'BOOTSTRAP.json'
+      - 'README.md'
+      - 'AGENTS.md'
+      - '.github/workflows/c72-unified-mode-admission.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unified:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test --test-concurrency=1 tests/c69-capability-first-preview.test.mjs tests/c70-experimental-compute-preview.test.mjs tests/c71-experimental-host-draft.test.mjs tests/c72-unified-mode-admission.test.mjs
+      - run: node --test tests/c72-public-mode-admission.test.mjs
+      - run: node scripts/c139-s01-public-admission-falsify.mjs
+      - run: node scripts/c72-falsify-1m.mjs
+      - run: node --test --test-concurrency=1 tests/c72-product-value.test.mjs
+      - run: npm run runtime-root:verify

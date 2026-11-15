@@ -1,0 +1,15 @@
+{
+  "schema": "ikant-le-c40-bootstrap-reentry-falsification/v1",
+  "edge_catalog_total": 20,
+  "edge_catalog_covered": 20,
+  "edge_coverage_ratio": 1,
+  "mutations": 1000,
+  "killed": 1000,
+  "survivors": [],
+  "mutation_kill_ratio": 1,
+  "unsafe_active": 0,
+  "same_carrier_retry_same_evidence": 0,
+  "raw_outcome_accepted": 0,
+  "caller_attempted_classes_required": false,
+  "status": "PASS"
+}

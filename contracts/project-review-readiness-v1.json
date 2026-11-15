@@ -1,0 +1,161 @@
+{
+  "schema": "ikant-le-review-readiness-v1",
+  "authority": 0,
+  "status": "REVIEW_CANDIDATE_NOT_PRODUCT_GO",
+  "engineering_head_base": "3349cf6963e2721baaae61c0a7b680106d545e00",
+  "owner_policy": "EXISTING_OWNERS_ONLY",
+  "profile": "PROJECT_EDU_E15",
+  "canonical_references": [
+    "README.md",
+    "BOOTSTRAP.json",
+    "contracts/project-edu-h1-irreducible.json",
+    "contracts/project-edu-h1-v5-dod-trace.json",
+    "contracts/project-oneshell-cx-humanist.json",
+    "contracts/project-prompt-generation.json",
+    "host/c72-public-mode-admission.mjs",
+    "host/project-c72-e16-unified-ingress.mjs",
+    "host/c135-edu-v2-owner.mjs",
+    "host/c87-durable-ledger.mjs",
+    "host/c125-output-port.mjs"
+  ],
+  "primary_paths": {
+    "source": "GitHub MAIN HEAD, TREE, blob SHA",
+    "software": "host/project-edu-h1-bound-port.mjs",
+    "deployment": "HOSTBOUND_INSTALLATION_NOT_IN_REPO",
+    "runtime": "C72_V2__EDU__C135__C87__C125_S03",
+    "product": "PROJECT_CHAT_SIX_SLOT",
+    "governance": "HUMAN_REVIEW_PLUS_BRANCH_PROTECTION_EXTERNAL"
+  },
+  "no_new_authorities": true,
+  "no_delete_legacy_without_consumer_census": true,
+  "no_auto_promotion_between_domains": true,
+  "release_domains": [
+    {
+      "id": "R",
+      "name": "Repository",
+      "required": [
+        "HEAD_TREE_BLOB_MATCH",
+        "ALL_TRACKED_CALLSITES_CENSUSED",
+        "ENTRYPOINTS_CLASSIFIED",
+        "ONE_CANONICAL_OWNER_BY_PROFILE",
+        "README_RUNTIME_RUNBOOK"
+      ],
+      "ci_capable": true,
+      "proof_scope": "GIT_SOURCE"
+    },
+    {
+      "id": "S",
+      "name": "Software",
+      "required": [
+        "NODE20_22_BUILD_AND_REGRESSION",
+        "H1_HEAD_PATH_BLOB_PIN",
+        "ORIGINAL_C72_ACCEPTANCE_AND_INTRO",
+        "E16_8_PLUS_1_PHYSICAL_READBACK",
+        "10_REPEATABLE_CI_CYCLES",
+        "NEGATIVE_SOURCE_MUTATIONS"
+      ],
+      "ci_capable": true,
+      "proof_scope": "CHECKOUT_RUNNER"
+    },
+    {
+      "id": "D",
+      "name": "Deployment",
+      "required": [
+        "INSTALLATION_ID",
+        "SAME_PROCESS_GITHUB_READ_AND_NODE_WRITE",
+        "CALLABLE_BINDING_ATTESTED",
+        "PROMPT_INSTALLATION_EQUIVALENCE"
+      ],
+      "ci_capable": false,
+      "proof_scope": "FIELD_INSTALLATION"
+    },
+    {
+      "id": "T",
+      "name": "Runtime",
+      "required": [
+        "ORIGINAL_CONSENT_RECEIPTS",
+        "NEW_DISTINCT_EDU_SELECTION",
+        "FULL_C135_SOURCE_AND_ACK",
+        "SINGLE_C87_WRITER",
+        "C125_S03_READBACK"
+      ],
+      "ci_capable": false,
+      "proof_scope": "FIELD_OWNER_PROCESS"
+    },
+    {
+      "id": "P",
+      "name": "Product",
+      "required": [
+        "TWO_REAL_HUMAN_TURNS",
+        "ONE_SIX_SLOT_ONESHELL",
+        "C138_CX_PER_PROFILE_CALLPATH",
+        "INDEPENDENT_SEMANTIC_VALIDATION"
+      ],
+      "ci_capable": false,
+      "proof_scope": "REAL_USER"
+    },
+    {
+      "id": "G",
+      "name": "Governance",
+      "required": [
+        "HUMAN_CODE_REVIEW_APPROVED",
+        "MAIN_REQUIRED_CHECKS_ENFORCED",
+        "BRANCH_PROTECTION_VERIFIED",
+        "NO_RETROACTIVE_SOURCE_LOCK_OR_MODE",
+        "OWNER_AND_CX_HUMANIST_BOUNDARY"
+      ],
+      "ci_capable": false,
+      "proof_scope": "HUMAN_AND_REPOSITORY_ADMIN"
+    }
+  ],
+  "global_dod": [
+    {
+      "id": "G0",
+      "description": "Source and software reproducible by an independent qualified reviewer",
+      "requires": [
+        "R",
+        "S"
+      ],
+      "mechanical": "CI_AND_READBACK"
+    },
+    {
+      "id": "G1",
+      "description": "Product proof not inferred from source/build/CI",
+      "requires": [
+        "D",
+        "T",
+        "P"
+      ],
+      "mechanical": "EXTERNAL_FIELD_RECEIPTS"
+    },
+    {
+      "id": "G2",
+      "description": "Review and main enforcement independently attributable",
+      "requires": [
+        "G"
+      ],
+      "mechanical": "HUMAN_APPROVAL_AND_ADMIN_RULES"
+    }
+  ],
+  "required_local_count": 29,
+  "dynamic_census": {
+    "tool": "scripts/project-review-callsites.mjs",
+    "scope": "ALL_TRACKED_JS_TEXTUAL_CALL_SITE_PATTERNS",
+    "computed_targets": "UNRESOLVED_UNKNOWN",
+    "runtime_reachability": "NOT_PROVEN_FROM_STATIC_CENSUS"
+  },
+  "main_enforcement": {
+    "github_branch_protection_read": "PERMISSION_DENIED_403_IN_CURRENT_HOST",
+    "rulesets_seen": 0,
+    "required_status_checks": "UNKNOWN",
+    "human_review": "NOT_YET_OBSERVED"
+  },
+  "nonclaims": [
+    "C72_NOT_INVOKED_IN_HOST_AUDIT",
+    "NO_PROVIDER_TOOL_INSTALLED_BY_PR",
+    "NO_USER_CONSENT_REPLAY",
+    "NO_C59_ACTIVE",
+    "NO_FULL_CX_QUALIFICATION_FROM_TWO_TURN_SMOKE",
+    "NO_GUARANTEED_HUMAN_REVIEW_FROM_GITHUB_CI"
+  ]
+}

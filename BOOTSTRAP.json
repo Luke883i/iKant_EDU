@@ -1,0 +1,1560 @@
+{
+  "schema": "ikant-le-public-bootstrap/v2",
+  "for_ai_agent_first_entrypoint": {
+    "schema": "ikant-le-ai-agent-first-entrypoint/v1",
+    "authority": 0,
+    "role": "PROJECTION_AND_DELEGATION_ONLY",
+    "new_lifecycle": false,
+    "new_planner": false,
+    "new_state_writer": false,
+    "new_truth_owner": false,
+    "source_of_truth": "CURRENT_PINNED_REPOSITORY",
+    "owner_reuse": {
+      "first_contact": "src/first-contact.mjs#compileFirstContactPlan",
+      "bootstrap_ledger": "src/fastboot-convergence.mjs#buildFastbootChannelLedger",
+      "bootstrap_next": "src/fastboot-convergence.mjs#deriveFastbootStep",
+      "activation_projection": "src/runtime-availability.mjs#deriveActivationServiceTier",
+      "pre_runtime": "src/runtime-root-verified.mjs#executePreRuntimeBootstrap",
+      "runtime": "src/session-local-service.mjs",
+      "ui_shell": "src/session-shell.mjs",
+      "bootstrap_observation": "src/fastboot-convergence.mjs#advanceFastbootObservation",
+      "cohost_context_root": "src/cohost-context-root.mjs",
+      "canonical_composition": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",
+      "canonical_materializer": "src/runtime-root-verified.mjs#executeCanonicalSessionChatBootstrap",
+      "canonical_runtime_entry": "src/runtime-command.mjs#runCanonicalSessionChat"
+    },
+    "ai_cycle": {
+      "operation": "DERIVE_ONE_NEXT_EXECUTE_OBSERVE_REENTER",
+      "one_next": true,
+      "one_executor": true,
+      "model_selects_path": false,
+      "model_selects_fallback": false,
+      "unchanged_evidence_retry_forbidden": true,
+      "changed_evidence_required_for_replan": true,
+      "first_unclosed_edge_required": true,
+      "stop_on_runtime_ownership": true,
+      "canonical_session_chat_role": "LEGACY_COMPATIBILITY_ONLY",
+      "canonical_composition_precedes_cycle": true
+    },
+    "bootstrap_type_registry_cache": {
+      "kind": "DERIVED_PROJECTION_OVER_EXISTING_FASTBOOT_LEDGER",
+      "persisted_separately": false,
+      "registry_absence_implies_unavailable": false,
+      "current_host_facts_static": false,
+      "channel_status_owner": "FASTBOOT_CHANNEL_LEDGER",
+      "byte_path_truth_owner": "ACTIVATION_EXECUTOR_RECEIPT",
+      "retry_memory_owner": "FASTBOOT_CHANNEL_LEDGER.failed_decisions",
+      "complete_object_set_required": true,
+      "partial_exact_cache_is_executable": false,
+      "resume_only_missing_or_invalid_objects": true,
+      "canonical_byte_paths": [
+        "LOCAL_DIRECT",
+        "VERIFIED_OPAQUE_RELAY"
+      ],
+      "types": [
+        {
+          "id": "LOCAL_DIRECT",
+          "availability_source": "VALIDATED_OWNER_EVIDENCE",
+          "model_mediated_bytes": false,
+          "requires": [
+            "COMPLETE_OBJECT_SET",
+            "SOURCE_OBJECT_IDENTITY",
+            "LOCAL_WRITE_REOPEN_HASH",
+            "SOURCE_ARRIVAL_SAMEHASH"
+          ]
+        },
+        {
+          "id": "VERIFIED_OPAQUE_RELAY",
+          "availability_source": "VALIDATED_OWNER_EVIDENCE",
+          "model_role": "OPAQUE_TRANSPORT_ONLY",
+          "requires": [
+            "CHUNK_MANIFEST",
+            "ENCODED_CHUNK_HASH",
+            "RAW_CHUNK_HASH",
+            "MANIFEST_ORDER_REASSEMBLY",
+            "AGGREGATE_SAMEHASH",
+            "LOCAL_WRITE_REOPEN_HASH",
+            "ROUNDTRIP_VERIFIED"
+          ],
+          "rewrite_allowed": false,
+          "semantic_equivalence_allowed": false
+        },
+        {
+          "id": "HUMAN_FILE_HANDOFF",
+          "transport_only": true,
+          "second_acceptance_required": false,
+          "requires": [
+            "OWNER_SELECTED_HANDOFF",
+            "EXACT_ATTACHMENT_BYTES",
+            "LOCAL_READBACK_HASH"
+          ]
+        }
+      ],
+      "failure_taxonomy": [
+        "LOCAL_DOWNLOADER_UNAVAILABLE",
+        "REMOTE_TEXT_WITHOUT_LOCAL_SINK",
+        "PARTIAL_EXACT_CACHE",
+        "RELAY_CHUNK_SAMEHASH_MISMATCH",
+        "RELAY_AGGREGATE_SAMEHASH_MISMATCH",
+        "REGISTRY_ABSENCE_NOT_EVIDENCE",
+        "HUMAN_TRANSPORT_GESTURE_REQUIRED",
+        "UNCHANGED_EVIDENCE_RETRY_FORBIDDEN",
+        "SOURCE_OR_OBJECT_IDENTITY_CHANGED",
+        "INTEGRITY_CONTRADICTION"
+      ],
+      "progressive_adaptation": {
+        "UNKNOWN": "PROBE_ONLY_OWNER_NAMED_CAPABILITY",
+        "AVAILABLE": "EXECUTE_OWNER_NAMED_PATH",
+        "PARTIAL": "RESUME_MISSING_OR_INVALID_OBJECTS_ONLY",
+        "STABLE_FAILURE": "DO_NOT_RETRY_REQUEST_NEXT_FROM_OWNER",
+        "CHANGED_EVIDENCE": "REENTER_ENTRYPOINT",
+        "HUMAN_GESTURE": "PRESENT_ONE_OWNER_NAMED_ACTION_AND_WAIT",
+        "RUNTIME_OWNED": "STOP_BOOTSTRAP_PLANNING_PRESENT_RUNTIME_SHELL"
+      },
+      "role": "LEGACY_VALIDATION_COMPATIBILITY_ONLY",
+      "canonical_session_chat_authority": false
+    },
+    "ux_shell": {
+      "owner": "src/session-shell.mjs",
+      "guidance_source": "VALIDATED_FASTBOOT_STEP_RECOMPUTED_FROM_LEDGER",
+      "visible_fields": [
+        "next_action",
+        "first_unclosed_edge",
+        "retry_disposition",
+        "blocker"
+      ],
+      "active_must_hide_bootstrap_next": true,
+      "model_may_synthesize_status": false,
+      "model_may_synthesize_progress": false,
+      "model_may_synthesize_next": false,
+      "prompt_may_rewrite_shell": false,
+      "runtime_owned_after_handoff": true,
+      "transition_guidance_source": "VALIDATED_FASTBOOT_TRANSITION",
+      "transition_handoff_visible": true,
+      "public_bootstrap_line_max_chars": 32,
+      "model_may_expand_bootstrap_line": false,
+      "public_line_source": "src/session-shell.mjs#projectBootstrapPublicLine",
+      "post_terms_ascii_shell_required": true,
+      "bootstrap_ascii_renderer": "src/session-shell.mjs#renderBootstrapAsciiShell",
+      "runtime_ascii_renderer": "src/session-shell.mjs#renderSessionShell",
+      "model_may_reframe_ascii_shell": false
+    },
+    "engineering_selection": {
+      "allowed_only_when_repository_leaves_choice_open": true,
+      "candidate_source": "REPOSITORY_ADMITTED_ALTERNATIVES_ONLY",
+      "method": [
+        "MUTATION",
+        "SATURATION",
+        "FALSIFICATION",
+        "UNIQUE_MINIMUM_SELECTION"
+      ],
+      "semantic_evidence_is_physical_proof": false,
+      "may_create_authority": false,
+      "may_create_owner": false
+    },
+    "reentry": {
+      "observation_owner": "src/fastboot-convergence.mjs#advanceFastbootObservation",
+      "accepted_observation_schemas": [
+        "ikant-le-fastboot-capability-receipt/v1",
+        "ikant-le-fastboot-carrier-attempt/v1"
+      ],
+      "one_observation": true,
+      "raw_boolean_outcome_forbidden": true,
+      "prose_outcome_forbidden": true,
+      "caller_attempted_classes_forbidden": true,
+      "retry_memory_from_ledger": true,
+      "same_evidence_failed_carrier_excluded": true,
+      "changed_evidence_may_requalify_carrier": true,
+      "complete_attempt_handoff_owner": "PRE_RUNTIME_HOST_ADAPTER",
+      "complete_attempt_may_claim_active": false,
+      "requalification_scope": "SAME_CARRIER_EVIDENCE_ONLY",
+      "unrelated_carrier_evidence_may_requalify_failed_carrier": false,
+      "canonical_step_caller_attempted_classes_forbidden": true,
+      "session_shell_caller_attempted_classes_forbidden": true,
+      "complete_attempt_handoff_action": "EXECUTE_PRE_RUNTIME_BOOTSTRAP",
+      "complete_attempt_handoff_digest_bound": true,
+      "complete_attempt_next_edge": "LOCAL_MATERIALIZATION"
+    },
+    "bootstrap_ontological_closure_contract": "contracts/bootstrap-ontological-closure.json",
+    "intent_adapter": {
+      "schema": "ikant-le-human-intent/v1",
+      "authority": 0,
+      "projection_only": true,
+      "may_accept_terms": false,
+      "may_select_carrier": false,
+      "may_mutate_state": false
+    },
+    "activation_executor_reentry": {
+      "handoff_schema": "ikant-le-direct-executor-handoff/v1",
+      "owner": "PRE_RUNTIME_HOST_ADAPTER",
+      "action": "EXECUTE_PRE_RUNTIME_BOOTSTRAP",
+      "byte_path_truth_owner": "ACTIVATION_EXECUTOR_RECEIPT",
+      "acceptance_observation_schema": "ikant-le-acceptance-observation/v1",
+      "acceptance_observation_required": true,
+      "acceptance_event_identity_owner": "MATERIALIZED_RUNTIME",
+      "runtime_event_identity_required_pre_materialization": false,
+      "active_claim": false,
+      "legacy_fastboot_reentry_preserved": true
+    },
+    "distribution_boundary": {
+      "install_activate_update_separated": true,
+      "warm_cache_preferred": true,
+      "human_file_handoff_first_class": true,
+      "file_handoff_creates_runtime_identity": false,
+      "update_on_activate": false,
+      "new_carrier": false,
+      "human_file_handoff_priority": "LAST_RESORT_AFTER_MACHINE_EXHAUSTION",
+      "file_handoff_unknown_means_probe": true,
+      "machine_carriers_before_human_file": [
+        "WARM_CACHE_EXACT",
+        "GITHUB_API_BASE64",
+        "GITHUB_GIT_BLOB_API",
+        "PINNED_GITHUB_ZIP",
+        "PINNED_PERMALINK"
+      ],
+      "role": "LEGACY_REMEDIATION_COMPATIBILITY_ONLY",
+      "canonical_session_chat_authority": false
+    },
+    "optional_host_bridge": {
+      "technology": "MCP_APP_OR_PLUGIN",
+      "required": false,
+      "canonical_activation_dependency": false,
+      "may_create_authority": false,
+      "may_replace_canonical_runtime": false,
+      "tool_surface_only": true
+    },
+    "exit_adapter": {
+      "authority": 0,
+      "new_owner": false,
+      "owned_next": "RELEASE_TO_HOST",
+      "runtime_active_next": "EXIT IKANT",
+      "already_host_next": "EXIT_COMPLETE",
+      "one_next": true
+    },
+    "preaccept_remediation": {
+      "owner": "src/admission.mjs",
+      "recoverable_class": "READ_ONLY_PREACCEPT_OVERREAD",
+      "hard_class": "HARD_PREACCEPT_BREACH",
+      "retroactive_authorization": false,
+      "reacquisition_required": true,
+      "remediation_one_shot_per_admission": true,
+      "continued_after_detection_escalates": true
+    },
+    "bootstrap_recovery_hardening_contract": "contracts/bootstrap-recovery-hardening.json",
+    "methodology": {
+      "new_registry": false,
+      "consult_before_attempt": true,
+      "consult_before_retry": true,
+      "owner_registry_refs": [
+        "bootstrap_type_registry_cache.failure_taxonomy",
+        "bootstrap_type_registry_cache.progressive_adaptation",
+        "FASTBOOT_CHANNEL_LEDGER.failed_decisions",
+        "preaccept_forbidden",
+        "ux_shell"
+      ],
+      "conversation_is_retry_memory": false,
+      "on_impediment": "REENTER_ENTRYPOINT_REQUEST_NEXT",
+      "owner_selected_retry_only": true,
+      "tool_error_is_carrier_fact": false
+    },
+    "session_context_refs": {
+      "owner": "CURRENT_PINNED_REPOSITORY",
+      "declared_only": true,
+      "arbitrary_discovery": false,
+      "runtime_member_required": true,
+      "local_readback_required": true,
+      "default_effect": "VOICE_STYLE_ONLY",
+      "refs": [
+        {
+          "path": "stile_comunicativo.md",
+          "purpose": "COMMUNICATION_STYLE",
+          "effect": "VOICE_STYLE_ONLY",
+          "required": true
+        }
+      ],
+      "style_may_change_authority": false,
+      "style_may_change_state": false,
+      "style_may_change_permissions": false,
+      "style_may_change_evidence": false,
+      "style_may_change_next": false,
+      "style_may_change_retry_memory": false
+    },
+    "methodological_bootstrap_contract": "contracts/methodological-bootstrap.json",
+    "cohost_context_root": {
+      "contract": "contracts/cohost-context-root.json",
+      "owner": "src/cohost-context-root.mjs",
+      "placement": "OPTIONAL_COHOST",
+      "activation_modality": "SESSION_CHAT_LOCAL",
+      "session_locator": "SHA256_HOST_SESSION_METADATA",
+      "raw_provider_session_persisted": false,
+      "provider_session_is_product_identity": false,
+      "durable_context_root_required": true,
+      "immutable_source_runtime_binding": true,
+      "runtime_route": "src/runtime.mjs#runCommand",
+      "compatibility_c20_canonical": false,
+      "reopen_before_every_turn": true,
+      "exit_readback_stops_routing": true,
+      "native_delivery_receipt_schema": "ikant-le-cohost-native-delivery-receipt/v1",
+      "native_delivery_truth_owner": "HOST_NATIVE_CHAT",
+      "physical_registration_is_external_gap": true,
+      "new_lifecycle": false,
+      "new_state_writer": false,
+      "new_truth_owner": false,
+      "authority": 0
+    },
+    "canonical_composition": {
+      "owner_contract": "contracts/session-chat-composition-channel.json",
+      "source_plane": "GITHUB_API",
+      "transport": "GITHUB_API_BASE64",
+      "byte_path": "VERIFIED_OPAQUE_RELAY",
+      "container_github_network_required": false,
+      "model_selects_carrier": false,
+      "model_selects_fallback": false,
+      "owner_module": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",
+      "authority_gate": "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
+      "canonical_handoff_schema": "ikant-le-c59-canonical-composition-handoff/v1",
+      "legacy_fastboot_reentry_role": "LEGACY_COMPATIBILITY_ONLY",
+      "legacy_fastboot_handoff_may_authorize": false,
+      "legacy_byte_paths_role": "VALIDATION_COMPATIBILITY_ONLY",
+      "legacy_distribution_boundary_role": "REMEDIATION_COMPATIBILITY_ONLY",
+      "canonical_activation_authority_owner": "SESSION_CHAT_COMPOSITION_CHANNEL",
+      "project_host_rom": "contracts/project-host-rom.json",
+      "executable_surface_registry": "contracts/session-chat-executable-surface-registry.json",
+      "minimum_semantic_lattice": "contracts/session-chat-semantic-lattice.json",
+      "canonical_materializer": "src/runtime-root-verified.mjs#executeCanonicalSessionChatBootstrap",
+      "canonical_runtime_entry": "src/runtime-command.mjs#runCanonicalSessionChat",
+      "canonical_active_readback": "src/runtime-command.mjs#canonicalActiveReadback",
+      "canonical_authority": "C59_CANONICAL",
+      "canonical_surface": "SESSION_CHAT_LOCAL_RUNTIME",
+      "relay_manifest_owner": "src/runtime-root-verified.mjs#issueCanonicalRelayManifest",
+      "relay_observation_owner": "src/runtime-root-verified.mjs#issueCanonicalRelayObservation",
+      "activation_executor_issuer": "src/runtime-root-verified.mjs#issueCanonicalActivationExecutor"
+    }
+  },
+  "canonical_repository": "Luke883i/iKant_EDU",
+  "canonical_repository_url": "https://github.com/Luke883i/iKant_EDU",
+  "canonical_branch": "main",
+  "first_contact_rule": "Any first human message that references this canonical repository converges to bounded pre-accept orientation before generic repository discovery.",
+  "repository_transport": {
+    "required": "GITHUB_API",
+    "allowed": [
+      "GITHUB_CONNECTOR",
+      "GITHUB_REST_API"
+    ],
+    "connector_is_api_adapter": true,
+    "fallback": null,
+    "api_unavailable_terminal": "HOST_INCOMPATIBLE",
+    "forbidden_attempts": [
+      "GIT_CLONE",
+      "GIT_FETCH",
+      "GIT_LS_REMOTE",
+      "GH_CLI",
+      "RAW_WEB_READ",
+      "DIRECT_DOWNLOAD",
+      "ARCHIVE_DOWNLOAD",
+      "SHELL_HTTP_DOWNLOAD"
+    ]
+  },
+  "source_head_binding": {
+    "action": "READ_BRANCH_HEAD",
+    "branch": "main",
+    "transport": "GITHUB_API",
+    "required": true,
+    "before_orientation_files": true,
+    "pin_all_repository_reads": true
+  },
+  "pending_intent": {
+    "preserve_verbatim": true,
+    "resume_after_active": true,
+    "repeat_required": false
+  },
+  "orientation_capsule": {
+    "paths": [
+      "README.md",
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "AGENTS.md",
+      "TERMS.md"
+    ],
+    "direct_path_only": true,
+    "transport": "GITHUB_API",
+    "exact_ref": "SOURCE_HEAD",
+    "metadata_fields": [
+      "repository_full_name",
+      "default_branch",
+      "description"
+    ],
+    "max_metadata_reads": 1,
+    "generic_repository_discovery_forbidden": true
+  },
+  "preaccept_forbidden": [
+    "CLONE_REPOSITORY",
+    "GIT_FETCH",
+    "GIT_LS_REMOTE",
+    "GH_CLI",
+    "RAW_WEB_READ",
+    "DIRECT_DOWNLOAD",
+    "ARCHIVE_DOWNLOAD",
+    "SHELL_HTTP_DOWNLOAD",
+    "LIST_TREE",
+    "SEARCH_REPOSITORY",
+    "READ_ARBITRARY_REPOSITORY_FILE",
+    "READ_HISTORY",
+    "READ_ISSUE_PR",
+    "MATERIALIZE_CHECKOUT"
+  ],
+  "terms": {
+    "path": "TERMS.md",
+    "freeze_after_presentation": true,
+    "exact_acceptance": "I ACCEPT",
+    "embedded_acceptance_invalid": true,
+    "presentation_modes": [
+      "PINNED_DOCUMENT_LINK",
+      "VERBATIM"
+    ]
+  },
+  "preaccept_handoff": {
+    "schema": "ikant-le-preaccept-handoff/v2",
+    "canonical_schema": "ikant-le-preaccept-handoff/v2",
+    "accepted_schemas": [
+      "ikant-le-preaccept-handoff/v2",
+      "ikant-le-preaccept-handoff/v1"
+    ],
+    "authority": 0,
+    "required_fields": [
+      "repository",
+      "source_head",
+      "terms_presented",
+      "terms_object",
+      "frozen",
+      "breached",
+      "pending_intent",
+      "orientation_objects",
+      "authority",
+      "orientation_payloads"
+    ],
+    "orientation_object_identities_cover": [
+      "README.md",
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "AGENTS.md",
+      "TERMS.md"
+    ],
+    "pre_runtime_sha256_required": false,
+    "pre_runtime_clock_required": false,
+    "runtime_reverification_required": true,
+    "may_set_acceptance_state": false,
+    "runtime_import_requires_fresh_local_state": true,
+    "legacy_v1_compatibility": true,
+    "inline_exact_orientation_payloads_required_for_canonical": true,
+    "runtime_reverification_mode": "INLINE_BYTES_TO_GIT_OBJECT_IDENTITY",
+    "orientation_local_files_required": false
+  },
+  "post_accept_fastboot": {
+    "mode": "ACTIVATE_FIRST",
+    "remote_acquisition_rounds_max": 1,
+    "parallel_fetch_required": true,
+    "exact_ref": "SOURCE_HEAD",
+    "reuse_preaccept_paths": [
+      "README.md",
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "AGENTS.md",
+      "TERMS.md"
+    ],
+    "forbidden_before_active": [
+      "GENERIC_REPOSITORY_DISCOVERY",
+      "LIST_TREE",
+      "SEARCH_REPOSITORY",
+      "READ_HISTORY",
+      "READ_ISSUE_PR",
+      "RUN_TESTS",
+      "RUN_QUALIFICATION",
+      "STUDY_DOCUMENTATION"
+    ],
+    "qualification_is_development_only": true,
+    "wall_clock_guarantee": false,
+    "remote_paths": [
+      "src/runtime-root-verified.mjs",
+      "runtime-root/shard-000.json",
+      "runtime-root/shard-001.json",
+      "runtime-root/shard-002.json",
+      "runtime-root/shard-003.json",
+      "runtime-root/shard-004.json",
+      "runtime-root/shard-005.json",
+      "runtime-root/shard-006.json"
+    ],
+    "runtime_root": {
+      "schema": "ikant-le-runtime-root/v1",
+      "source_head_binding": "PREACCEPT_HANDOFF.source_head",
+      "member_count": 51,
+      "source_bytes": 553506,
+      "loader": {
+        "path": "src/runtime-root-verified.mjs",
+        "blob_sha1": "ecd8489d7e8266c117d19054e6336b6792f1f920"
+      },
+      "shards": [
+        {
+          "index": 0,
+          "path": "runtime-root/shard-000.json",
+          "member_count": 7,
+          "source_bytes": 123544,
+          "blob_sha1": "d3af31eadb712baae3d5456e37a16ad5123d2c1e"
+        },
+        {
+          "index": 1,
+          "path": "runtime-root/shard-001.json",
+          "member_count": 4,
+          "source_bytes": 69516,
+          "blob_sha1": "a3457692c27a124f53bbb30a402fb2201c8ff375"
+        },
+        {
+          "index": 2,
+          "path": "runtime-root/shard-002.json",
+          "member_count": 4,
+          "source_bytes": 29689,
+          "blob_sha1": "97dd74c62ffc470b385342267a567536860f18de"
+        },
+        {
+          "index": 3,
+          "path": "runtime-root/shard-003.json",
+          "member_count": 12,
+          "source_bytes": 95302,
+          "blob_sha1": "244cbf87bd21ee3e3f353d2edd6753f50d77cfab"
+        },
+        {
+          "index": 4,
+          "path": "runtime-root/shard-004.json",
+          "member_count": 12,
+          "source_bytes": 116574,
+          "blob_sha1": "1a0811df0318c92be7df30a1e3b380a9a00d8b64"
+        },
+        {
+          "index": 5,
+          "path": "runtime-root/shard-005.json",
+          "member_count": 5,
+          "source_bytes": 69115,
+          "blob_sha1": "c9c9eaae75c06770dea984e14af6b03624a740ff"
+        },
+        {
+          "index": 6,
+          "path": "runtime-root/shard-006.json",
+          "member_count": 7,
+          "source_bytes": 68120,
+          "blob_sha1": "5a92ab9f593e1ea99718f0946d228ce05e01ad0b"
+        }
+      ],
+      "members": [
+        {
+          "path": "src/backlog.mjs",
+          "blob_sha1": "6de7416c85c2c2acd6699c31287867f25ac5d036",
+          "bytes": 14020,
+          "shard": 0
+        },
+        {
+          "path": "contracts/life-consciousness-kernel.json",
+          "blob_sha1": "966f6813a2fe9ce1784084b749b366efd3e66d80",
+          "bytes": 4750,
+          "shard": 0
+        },
+        {
+          "path": "src/first-contact.mjs",
+          "blob_sha1": "2033eaadb28ea2dcbe298192bf65c01ecc58585e",
+          "bytes": 4830,
+          "shard": 0
+        },
+        {
+          "path": "src/runtime-command.mjs",
+          "blob_sha1": "b7089bf34935e2a9d675a8202673348cf8ad5212",
+          "bytes": 47172,
+          "shard": 1
+        },
+        {
+          "path": "src/docx.mjs",
+          "blob_sha1": "30a49263096f180da916d0ded46964513512b19b",
+          "bytes": 6107,
+          "shard": 1
+        },
+        {
+          "path": "contracts/self-world-kernel.json",
+          "blob_sha1": "98139998280b7826a4433751aedbb3f87b3dd606",
+          "bytes": 9270,
+          "shard": 1
+        },
+        {
+          "path": "contracts/emergence-kernel.json",
+          "blob_sha1": "84ead1b3834dd73189c5d2da32b13c6c8c6e488f",
+          "bytes": 5173,
+          "shard": 1
+        },
+        {
+          "path": "src/cognition-core.mjs",
+          "blob_sha1": "8003e2dd11ef3ac9b5eec90dc6125445c634e2ca",
+          "bytes": 10291,
+          "shard": 2
+        },
+        {
+          "path": "src/life-consciousness.mjs",
+          "blob_sha1": "9c65911d5ff6ed33be2c71fb0a15a16813681cb5",
+          "bytes": 5030,
+          "shard": 2
+        },
+        {
+          "path": "src/contract.mjs",
+          "blob_sha1": "b90d1a974922153cdeac4a0f25a503f51437702a",
+          "bytes": 11207,
+          "shard": 2
+        },
+        {
+          "path": "contracts/cognitive-kernel.json",
+          "blob_sha1": "2e5b359d69b737dd70597fc0c2534d71d282865d",
+          "bytes": 2478,
+          "shard": 2
+        },
+        {
+          "path": "src/self-world-state.mjs",
+          "blob_sha1": "ae59ca8d4fcd947976cb8240a7099b5fb45ad846",
+          "bytes": 11908,
+          "shard": 3
+        },
+        {
+          "path": "src/surface-b.mjs",
+          "blob_sha1": "ce4ce5d7e458bff1c142e4fad4cb780741f82379",
+          "bytes": 5464,
+          "shard": 3
+        },
+        {
+          "path": "src/runtime-core.mjs",
+          "blob_sha1": "ea61870fd35f2f1522ade2b07b4b254217d634d2",
+          "bytes": 8743,
+          "shard": 3
+        },
+        {
+          "path": "contracts/surface-b-delivery.json",
+          "blob_sha1": "4ab45a40fa0833a897c9f95c64cebfed158627dc",
+          "bytes": 1632,
+          "shard": 3
+        },
+        {
+          "path": "src/runtime.mjs",
+          "blob_sha1": "bba7d005ad5d696d6315f3613daa2ee220d6dacc",
+          "bytes": 3080,
+          "shard": 3
+        },
+        {
+          "path": "src/runtime-limited-turn.mjs",
+          "blob_sha1": "2ca78bdf9ad43745c454d081162557b9c342e74b",
+          "bytes": 8821,
+          "shard": 3
+        },
+        {
+          "path": "src/runtime-dispatch.mjs",
+          "blob_sha1": "2d22ca73ee3aecf0e5a77019680d07d64c0acb81",
+          "bytes": 1523,
+          "shard": 3
+        },
+        {
+          "path": "src/runtime-evidence.mjs",
+          "blob_sha1": "424964f2994af8939dbf6aa54bc7fed100d99cac",
+          "bytes": 1215,
+          "shard": 3
+        },
+        {
+          "path": "src/runtime-limited-capability.mjs",
+          "blob_sha1": "e6265fd29f3c8798f99fdba13866d540d4a8f992",
+          "bytes": 7949,
+          "shard": 3
+        },
+        {
+          "path": "src/session-local-service.mjs",
+          "blob_sha1": "96beb36605e0eb7d8ae876fd7d0da9e203c2442a",
+          "bytes": 22794,
+          "shard": 3
+        },
+        {
+          "path": "contracts/psyche-kernel.json",
+          "blob_sha1": "71de9abb6a319f2ea6ea9b0628527c3f3a9560c2",
+          "bytes": 8075,
+          "shard": 4
+        },
+        {
+          "path": "src/admission.mjs",
+          "blob_sha1": "cde2c7bcbec70c8d7e508884788179aa555708de",
+          "bytes": 17828,
+          "shard": 4
+        },
+        {
+          "path": "contracts/host-shell.json",
+          "blob_sha1": "ab6c80df87159d6dc0c146be792c845f11ad0c34",
+          "bytes": 16410,
+          "shard": 4
+        },
+        {
+          "path": "ikant.mjs",
+          "blob_sha1": "391102cdfd0a1d765c173d1af93f72a1a5cb60d6",
+          "bytes": 2842,
+          "shard": 4
+        },
+        {
+          "path": "src/cognition.mjs",
+          "blob_sha1": "53c073ad18ff807c9401b81ab4245d2b62959556",
+          "bytes": 336,
+          "shard": 4
+        },
+        {
+          "path": "src/runtime-turn.mjs",
+          "blob_sha1": "e1aa150cc5b5d5eaae50c98c5ca5d62ff13878cc",
+          "bytes": 8676,
+          "shard": 5
+        },
+        {
+          "path": "contracts/ikant-le.json",
+          "blob_sha1": "763daf82dea45c0260521dfcf037557f9bb5b083",
+          "bytes": 47826,
+          "shard": 5
+        },
+        {
+          "path": "src/cognition-surface.mjs",
+          "blob_sha1": "d4972466b4ad8409433e871a9976e76fc01a7dd7",
+          "bytes": 4663,
+          "shard": 5
+        },
+        {
+          "path": "src/probe.mjs",
+          "blob_sha1": "c085f5cdf064885237d1d82720439e8e0a910b0b",
+          "bytes": 2910,
+          "shard": 5
+        },
+        {
+          "path": "src/psyche-trace.mjs",
+          "blob_sha1": "258f17fb1950920d603f75d650a7a01594cf57ee",
+          "bytes": 1137,
+          "shard": 5
+        },
+        {
+          "path": "src/self-world-core.mjs",
+          "blob_sha1": "360614dd4ce769349d4aa2a9351b03f79330d03d",
+          "bytes": 7649,
+          "shard": 6
+        },
+        {
+          "path": "src/psyche.mjs",
+          "blob_sha1": "53ec88174ef04456f1f504d6779b5f494d2b029a",
+          "bytes": 7341,
+          "shard": 6
+        },
+        {
+          "path": "src/state.mjs",
+          "blob_sha1": "425dec4f964ad188cf1b06e256cd16153503e44d",
+          "bytes": 5787,
+          "shard": 6
+        },
+        {
+          "path": "contracts/orientation-capsule.json",
+          "blob_sha1": "0f99e2a3332baf7bd1539e0a3524a49855413e24",
+          "bytes": 2696,
+          "shard": 6
+        },
+        {
+          "path": "src/self-world.mjs",
+          "blob_sha1": "94a5783da27a1a4bc485def6189bf07c40d37852",
+          "bytes": 507,
+          "shard": 6
+        },
+        {
+          "path": "src/bootstrap-semantic.mjs",
+          "blob_sha1": "642d2578c38d334b0d3d87274d8b4f04370b0f86",
+          "bytes": 38677,
+          "shard": 0
+        },
+        {
+          "path": "contracts/chat-bootstrap-semantic.json",
+          "blob_sha1": "31926add6e8d571c22f3527ad72bf815586f3232",
+          "bytes": 11266,
+          "shard": 6
+        },
+        {
+          "path": "contracts/bootstrap-transfer-flex.json",
+          "blob_sha1": "8f19f8de10f29e7a53a1b4e026468e394ab5a8e4",
+          "bytes": 2575,
+          "shard": 4
+        },
+        {
+          "path": "src/runtime-availability.mjs",
+          "blob_sha1": "829cf6c84a09026fa0b7630de0d9f0454053fc40",
+          "bytes": 21330,
+          "shard": 0
+        },
+        {
+          "path": "contracts/runtime-availability-dod.json",
+          "blob_sha1": "30e3012bca8d9ade692c746b0d35fa7b738559d9",
+          "bytes": 21409,
+          "shard": 4
+        },
+        {
+          "path": "src/deadline-integrity.mjs",
+          "blob_sha1": "9bcb02d2af58117bb3225b3426fba94af875e8a1",
+          "bytes": 4982,
+          "shard": 0
+        },
+        {
+          "path": "contracts/deadline-integrity.json",
+          "blob_sha1": "63f56286007d783a30cbc0b90d14220e2b7d76df",
+          "bytes": 3697,
+          "shard": 4
+        },
+        {
+          "path": "contracts/activation-continuation.json",
+          "blob_sha1": "3fa909caa74d7c0ba85d73c889a04f80ba3ec69c",
+          "bytes": 3358,
+          "shard": 4
+        },
+        {
+          "path": "src/fastboot-convergence.mjs",
+          "blob_sha1": "e0821cf54e009430b712463f75c0f562a80fcce9",
+          "bytes": 33402,
+          "shard": 0
+        },
+        {
+          "path": "contracts/fastboot-convergence.json",
+          "blob_sha1": "f42838a2e8af9bae1fc8f55aa0017c3de0528c53",
+          "bytes": 9641,
+          "shard": 4
+        },
+        {
+          "path": "contracts/session-chat-activation.json",
+          "blob_sha1": "1735dc4bddebeb9e7888aa92380eabf98f83b73a",
+          "bytes": 16116,
+          "shard": 4
+        },
+        {
+          "path": "src/session-shell.mjs",
+          "blob_sha1": "4716ae32f867b0e5738a076fc452df62cce8e620",
+          "bytes": 20169,
+          "shard": 3
+        },
+        {
+          "path": "contracts/session-shell.json",
+          "blob_sha1": "19d8a4a90787d6a6d800c270bdb33f595a75b2fd",
+          "bytes": 6738,
+          "shard": 4
+        },
+        {
+          "path": "src/semantic-morphogenesis.mjs",
+          "blob_sha1": "ab41fd4250c5e2f7a8a7cedce455025116c61eb1",
+          "bytes": 31203,
+          "shard": 6
+        },
+        {
+          "path": "stile_comunicativo.md",
+          "blob_sha1": "1a7d215eb74965ac0b4a200de63be2b53e9f33fa",
+          "bytes": 803,
+          "shard": 3
+        }
+      ],
+      "runtime_root_sha256": "57798d6b88621b4b0a62d1794aafcd722562cef833344e0a72c23f9604c48f77"
+    },
+    "max_post_accept_remote_reads": 8,
+    "deadline_ms": 120000,
+    "deadline_on_exceed": "FAIL_CLOSED_NON_ACTIVE",
+    "transport_modes": [
+      "WARM_CACHE_EXACT",
+      "GITHUB_API_SHARDS",
+      "GITHUB_API_BASE64",
+      "GITHUB_GIT_BLOB_API",
+      "PINNED_PERMALINK",
+      "PINNED_GITHUB_ZIP",
+      "HOST_FILE_BRIDGE"
+    ],
+    "local_sequence": [
+      "IMPORT_PREACCEPT_OBJECT_IDENTITIES",
+      "LOCAL_EXECUTOR_CAPABILITY_PROBE",
+      "CONTENT_ADDRESSED_OBJECT_ACQUISITION",
+      "VERIFY_INLINE_PREACCEPT_PAYLOAD_IDENTITIES",
+      "MATERIALIZE_RUNTIME_ROOT_ATOMIC_AND_REOPEN",
+      "VALIDATE_EXECUTOR_BOOTSTRAP_EVIDENCE",
+      "AUTO_PROBE_WITH_EXECUTED_PROVENANCE",
+      "AUTO_INITIALIZE",
+      "PERSIST_AND_READBACK_ACTIVE",
+      "RESUME_OR_FOLD_PENDING_INTENT_IF_ANY"
+    ],
+    "wait_ceiling_contractible": true,
+    "semantic_runtime_contract": "contracts/chat-bootstrap-semantic.json",
+    "source_bound_transfer_receipt": "ikant-le-source-bound-transfer/v1",
+    "bootstrap_evidence_receipt": "ikant-le-chat-bootstrap-evidence/v2",
+    "materialization_binds_transfer_receipt": true,
+    "active_requires_bootstrap_evidence": true,
+    "deadline_scope": "I_ACCEPT_TO_ACTIVE_COMMIT",
+    "flex_max_post_accept_remote_reads": 40,
+    "flex_max_post_accept_remote_rounds": 1,
+    "post_accept_transport_authority": 0,
+    "transport_identity": "CONTENT_ADDRESSED_RUNTIME_ROOT",
+    "source_bound_transfer_receipts": [
+      "ikant-le-source-bound-transfer/v1",
+      "ikant-le-source-bound-transfer/v2"
+    ],
+    "transfer_flex_contract": "contracts/bootstrap-transfer-flex.json",
+    "runtime_availability_contract": "contracts/runtime-availability-dod.json",
+    "runtime_availability_classifier": "src/runtime-availability.mjs",
+    "deadline_integrity_contract": "contracts/deadline-integrity.json",
+    "deadline_integrity_module": "src/deadline-integrity.mjs",
+    "same_epoch_recovery": {
+      "operation": "RESUME_ACTIVATION",
+      "human_gate": false,
+      "requires": [
+        "same acceptance_event_id",
+        "same epoch",
+        "same source_head",
+        "same acceptance_origin_receipt",
+        "same remote_history_sha256",
+        "no deadline terminal"
+      ],
+      "may_complete": [
+        "BYTE_BRIDGE",
+        "LOCAL_MATERIALIZATION",
+        "REOPEN",
+        "LIVE_PROBE",
+        "ACTIVE_COMMIT"
+      ],
+      "forbids": [
+        "SECOND_I_ACCEPT",
+        "NEW_EPOCH",
+        "NEW_ORIGIN",
+        "SOURCE_REBASE",
+        "SECOND_REMOTE_ROUND",
+        "MODEL_MEDIATED_BYTES"
+      ],
+      "continuation_receipt": "ikant-le-activation-continuation/v1",
+      "deadline_scope": "ORIGINAL_I_ACCEPT_TO_ACTIVE_COMMIT",
+      "canonical_v2_retry": "IDEMPOTENT_BY_OBJECT_IDENTITY",
+      "v2_requires": [
+        "same acceptance_event_id",
+        "same epoch",
+        "same source_head",
+        "same orientation object identities"
+      ],
+      "v2_forbids": [
+        "SECOND_I_ACCEPT",
+        "NEW_EPOCH",
+        "SOURCE_REBASE",
+        "UNVERIFIED_MODEL_MEDIATION"
+      ],
+      "v2_deadline_integrity_gate": false
+    },
+    "carrier_attempts_max": 6,
+    "remote_history_commits_max": 1,
+    "carrier_attempts_quarantined_until_complete": true,
+    "failed_or_partial_attempt_commits_remote_history": false,
+    "capability_probe_before_unobserved_carrier": true,
+    "runtime_execution_plane_binding_required": true,
+    "fastboot_convergence_contract": "contracts/fastboot-convergence.json",
+    "fastboot_convergence_receipt": "ikant-le-fastboot-convergence/v1",
+    "local_session_fastboot_contract": "contracts/local-session-fastboot.json",
+    "channel_ledger_schema": "ikant-le-fastboot-channel-ledger/v1",
+    "fastboot_step_schema": "ikant-le-fastboot-step/v1",
+    "single_local_activation_modality": true,
+    "failure_memory_key": [
+      "decision_key",
+      "carrier_evidence_sha256"
+    ],
+    "unchanged_failed_decision_retry_forbidden": true,
+    "channel_evidence_class": "HOST_ATTESTED_AUTHORITY_ZERO",
+    "channel_receipt_is_physical_proof": false,
+    "production_probe_injection_forbidden": true,
+    "materializer_verifies_transport_loader_and_shards": true,
+    "runtime_reopens_published_loader_and_members_before_active": true,
+    "terminology_boundary": {
+      "canonical_pre_runtime_evidence": "HOST_ATTESTED_AUTHORITY_ZERO",
+      "host_attestation_is_physical_proof": false,
+      "mechanical_terms_reserved_for_local_runtime_observation": true,
+      "legacy_c20_ontology_is_canonical": false
+    },
+    "runtime_root_build": {
+      "generator": "scripts/runtime-root.mjs",
+      "regenerate_command": "npm run runtime-root:regen",
+      "verify_command": "npm run runtime-root:verify",
+      "deterministic": true,
+      "build_receipt_is_live_runtime_proof": false
+    },
+    "canonical_activation_model": "LOCAL_EXECUTOR_V1",
+    "reverify_preaccept_paths": [],
+    "activation_executor": {
+      "schema": "ikant-le-activation-executor/v1",
+      "execution_plane": "SESSION_LOCAL_NODE",
+      "capability_probe_before_acquisition": true,
+      "data_plane_owner": "LOCAL_ACTIVATION_EXECUTOR",
+      "content_addressed": true,
+      "retry_semantics": "IDEMPOTENT_BY_OBJECT_IDENTITY",
+      "provider_neutral": true,
+      "byte_paths": [
+        "LOCAL_DIRECT",
+        "VERIFIED_OPAQUE_RELAY"
+      ],
+      "model_role_on_verified_relay": "OPAQUE_TRANSPORT_ONLY",
+      "model_rewrite_allowed": false,
+      "semantic_equivalence_allowed": false,
+      "source_arrival_samehash_required": true,
+      "opaque_relay_roundtrip_required": true,
+      "canonical_session_chat_transport": "GITHUB_API_BASE64",
+      "canonical_session_chat_byte_path": "VERIFIED_OPAQUE_RELAY",
+      "container_github_network_required": false,
+      "alternative_carriers_canonical": false,
+      "canonical_authority": "C59_CANONICAL",
+      "canonical_authority_requires_handoff_schema": "ikant-le-c59-canonical-composition-handoff/v1",
+      "shared_runtime_predicate": "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
+      "local_direct_role": "LEGACY_COMPATIBILITY_ONLY",
+      "verified_opaque_relay_canonical_only_with_c59_handoff": true
+    },
+    "materialization_receipts": [
+      "ikant-le-runtime-root-materialization/v2",
+      "ikant-le-runtime-root-materialization/v1"
+    ],
+    "activation_slo_ms": 120000,
+    "activation_slo_is_integrity_gate": false,
+    "retry_semantics": "IDEMPOTENT_BY_OBJECT_IDENTITY",
+    "legacy_v1_transport_compatibility": {
+      "canonical": false,
+      "dual_reader_only": true,
+      "remote_round_budget_applies_to_v2": false,
+      "carrier_selection_applies_to_v2": false,
+      "deadline_integrity_applies_to_v2": false
+    },
+    "legacy_v1_local_sequence": [
+      "MATERIALIZE_REUSED_ORIENTATION_BYTES",
+      "FETCH_RUNTIME_ROOT_SHARDS",
+      "ISSUE_SOURCE_BOUND_TRANSFER_RECEIPT",
+      "MATERIALIZE_RUNTIME_ROOT_ATOMIC_AND_REOPEN",
+      "BIND_TRANSFER_TO_MATERIALIZATION_RECEIPT",
+      "IMPORT_PREACCEPT_HANDOFF",
+      "VALIDATE_CHAT_BOOTSTRAP_EVIDENCE",
+      "AUTO_PROBE",
+      "AUTO_INITIALIZE",
+      "RESUME_OR_FOLD_PENDING_INTENT_IF_ANY"
+    ],
+    "unverified_model_mediation_forbidden": true,
+    "verified_opaque_relay_allowed": true,
+    "activation_stage_projection": "ikant-le-local-activation-stage/v1",
+    "capability_lattice_contract": "contracts/session-local-capability-lattice.json",
+    "session_closure_projection": "ikant-le-session-closure-projection/v1",
+    "first_unclosed_edge_required": true,
+    "diagnostic_stage_persisted": false,
+    "external_gap_laundering_forbidden": true,
+    "ontological_promise_contract": "contracts/ikant-le.json#ontological_promise",
+    "activation_service_contract": "contracts/runtime-availability-dod.json#activation_service_spectrum",
+    "limited_runtime_turn_module": "src/runtime-limited-turn.mjs",
+    "limited_runtime_capability_module": "src/runtime-limited-capability.mjs",
+    "limited_runtime_dispatch_module": "src/runtime-dispatch.mjs",
+    "limited_runtime_evidence_module": "src/runtime-evidence.mjs",
+    "limited_runtime_supply_chain": "ikant-le-limited-runtime-supply-chain/v1",
+    "session_shell_contract": "contracts/session-shell.json",
+    "session_shell_schema": "ikant-le-session-shell/v2",
+    "session_shell_slice": "C32",
+    "session_shell_baseline": "C31.RUNTIME_LIMITED_SUPPLY_CHAIN",
+    "structured_session_shell_required": true,
+    "pre_runtime_kernel": {
+      "schema": "ikant-le-pre-runtime-kernel/v2",
+      "contract": "contracts/pre-runtime-kernel.json",
+      "path": "src/runtime-root-verified.mjs",
+      "blob_sha1": "ecd8489d7e8266c117d19054e6336b6792f1f920",
+      "bytes": 60217,
+      "direct_known_path": true,
+      "stdlib_only": true,
+      "reuses_runtime_root_loader": true,
+      "runtime_member": false,
+      "runtime_owner": "src/session-local-service.mjs",
+      "acceptance_event_identity_owner": "MATERIALIZED_RUNTIME",
+      "retires_at_runtime_handoff": true,
+      "authority": 0,
+      "handoff_schema": "ikant-le-pre-runtime-handoff/v2",
+      "runtime_owner_independent_revalidation": true,
+      "digest_only_handoff_forbidden": true,
+      "c46_fast_cohost_bind": {
+        "schema": "ikant-le-cohost-bind-nucleus/v1",
+        "contract": "contracts/cohost-bind-nucleus.json",
+        "common_contract": "contracts/cohost-coldstart-root-common.json",
+        "semantic_sha256": "fa4ccab342d14b7e2a1f4d6505374045d282d51e488557f5fd8f9c23c88158da",
+        "issue": "issuePreRuntimeBindNucleus",
+        "reopen": "reopenPreRuntimeBindNucleus",
+        "hydrate": "executePreRuntimeBootstrapFromBind",
+        "before_full_materialization": true,
+        "full_runtime_hydration_required_for_relation": false,
+        "authority": 0
+      },
+      "c47_runtime_closure": {
+        "schema": "ikant-le-cohost-runtime-closure/v1",
+        "contract": "contracts/cohost-runtime-closure.json",
+        "upgrade": "issueCohostHydrationUpgradeReceipt",
+        "reopen": "reopenCohostHydrationUpgradeReceipt",
+        "context_owner": "src/cohost-context-root.mjs",
+        "persist_reopen_required": true,
+        "exact_main_gate": ".github/workflows/c46-fast-cohost-bind.yml",
+        "authority": 0
+      },
+      "canonical_active_owner": "src/runtime-root-verified.mjs#executeCanonicalSessionChatBootstrap",
+      "canonical_runtime_entry": "src/runtime-command.mjs#runCanonicalSessionChat",
+      "canonical_active_readback": "src/runtime-command.mjs#canonicalActiveReadback",
+      "legacy_limited_owner": "src/session-local-service.mjs",
+      "canonical_cold_owner": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap"
+    },
+    "canonical_local_ingress": {
+      "owner": "src/session-local-service.mjs",
+      "accept": "acceptLocalLimitedSession",
+      "turn": "runLocalLimitedTurn",
+      "compatibility_plugin_required": false,
+      "legacy_deployment_adapter_canonical": false,
+      "role": "RUNTIME_BOUND_LIMITED_COMPATIBILITY",
+      "canonical_session_chat_active": false
+    },
+    "failure_memory_scope": "CARRIER_LOCAL_CHANNEL_EVIDENCE",
+    "unrelated_channel_evidence_requalifies_failed_carrier": false,
+    "carrier_priority": [
+      "WARM_CACHE_EXACT",
+      "GITHUB_API_BASE64",
+      "GITHUB_GIT_BLOB_API",
+      "PINNED_GITHUB_ZIP",
+      "PINNED_PERMALINK",
+      "HOST_FILE_BRIDGE"
+    ],
+    "human_file_handoff_last_resort": true,
+    "human_file_handoff_priority_law": "MACHINE_EXECUTE_THEN_MACHINE_PROBE_THEN_HUMAN_FILE_EXECUTE_THEN_HUMAN_FILE_PROBE",
+    "composition_object_paths": [
+      "src/runtime-root-verified.mjs",
+      "runtime-root/shard-000.json",
+      "runtime-root/shard-001.json",
+      "runtime-root/shard-002.json",
+      "runtime-root/shard-003.json",
+      "runtime-root/shard-004.json",
+      "runtime-root/shard-005.json",
+      "runtime-root/shard-006.json"
+    ],
+    "canonical_session_chat_active_ingress": {
+      "owner": "src/runtime-command.mjs#runCanonicalSessionChat",
+      "pre_runtime_owner": "src/runtime-root-verified.mjs#executeCanonicalSessionChatBootstrap",
+      "authority_gate": "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
+      "authority": "C59_CANONICAL",
+      "active_readback": "src/runtime-command.mjs#canonicalActiveReadback",
+      "canonical_surface": "SESSION_CHAT_LOCAL_RUNTIME",
+      "legacy_active_routable": false
+    },
+    "carrier_priority_role": "LEGACY_COMPATIBILITY_ONLY",
+    "materialize_preaccept_paths": false,
+    "orientation_runtime_projection": ".ikant/orientation-projection.json",
+    "pre_acquisition_object_authority": "FROZEN_BOOTSTRAP_REMOTE_PATHS",
+    "orientation_evidence_paths": [
+      "README.md",
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "AGENTS.md",
+      "TERMS.md"
+    ]
+  },
+  "post_acceptance": [
+    "ACTIVATE_FIRST",
+    "LOCAL_EXECUTOR",
+    "VERIFIED_LOCAL_ROOT",
+    "AUTO_PROBE_WITH_EXECUTED_PROVENANCE",
+    "RECEIPT_GATED_ACTIVE_COMMIT",
+    "RESUME_OR_FOLD_PENDING_INTENT_IF_ANY"
+  ],
+  "breach": {
+    "completed_forbidden_access_is_nonretroactive": true,
+    "recoverable_read_only_preaccept_overread_enabled": true,
+    "recoverable_read_only_actions": [
+      "GIT_LS_REMOTE",
+      "LIST_TREE",
+      "SEARCH_REPOSITORY",
+      "READ_ARBITRARY_REPOSITORY_FILE",
+      "READ_HISTORY",
+      "READ_ISSUE_PR"
+    ],
+    "read_only_remediation_receipt_schema": "ikant-le-preaccept-remediation/v1",
+    "read_only_remediation_preserves_history": true,
+    "read_only_remediation_requires_reacquisition": true,
+    "read_only_remediation_one_shot_per_admission": true,
+    "hard_preaccept_breach_actions": [
+      "CLONE_REPOSITORY",
+      "GIT_FETCH",
+      "GH_CLI",
+      "RAW_WEB_READ",
+      "DIRECT_DOWNLOAD",
+      "ARCHIVE_DOWNLOAD",
+      "SHELL_HTTP_DOWNLOAD",
+      "MATERIALIZE_CHECKOUT"
+    ],
+    "hard_breach_terminal": "SESSION_NONCONFORMING",
+    "fresh_chat_required_for_hard_breach": true
+  },
+  "host_constraints_precede_local_contract": true,
+  "session_chat_profile": {
+    "id": "SESSION_CHAT",
+    "language_engine": "HOST_SUPPLIED",
+    "managed_local_model_required": false,
+    "web_shell_required": false,
+    "browser_runtime_required": false,
+    "real_node_probe_required": true,
+    "authority": 0,
+    "activation_modality": "SESSION_CHAT_LOCAL",
+    "runtime_execution_plane": "SESSION_LOCAL_NODE"
+  },
+  "session_chat_activation": {
+    "contract": "contracts/session-chat-activation.json",
+    "activation_modality": "SESSION_CHAT_LOCAL",
+    "repository_transfer_per_chat": true,
+    "acceptance_origin_owner": "HOST_ACCEPTANCE_INGRESS",
+    "runtime_execution_plane": "SESSION_LOCAL_NODE",
+    "channel_ledger": "ikant-le-fastboot-channel-ledger/v1",
+    "fastboot_step": "ikant-le-fastboot-step/v1",
+    "one_next": true,
+    "failure_memory": "decision_key+carrier_evidence_sha256",
+    "hosted_runtime_required": false,
+    "plugin_or_mcp_registration_required": false,
+    "diagnostic_precedence": [
+      "INTEGRITY_CONTRADICTION",
+      "HOST_UNAVAILABLE",
+      "BLOCKED_REQUIREMENT",
+      "ACTIVE"
+    ],
+    "channel_evidence_class": "HOST_ATTESTED_AUTHORITY_ZERO",
+    "channel_receipt_is_physical_proof": false,
+    "production_probe_owner": "LOCAL_RUNTIME",
+    "production_probe_injection_forbidden": true,
+    "causal_planes": {
+      "pre_runtime": "HOST_ADAPTER_AUTHORITY_ZERO",
+      "physical_local_truth": "SESSION_LOCAL_NODE_RUNTIME"
+    },
+    "materializer_verifies_transport_loader_and_shards": true,
+    "runtime_root_readback_required": true,
+    "unavailable_persists_until_changed_channel_evidence": true,
+    "canonical_activation_model": "LOCAL_EXECUTOR_V1",
+    "activation_executor_required": true,
+    "host_byte_ingress_required": false,
+    "activation_slo_ms": 120000,
+    "activation_slo_is_integrity_gate": false,
+    "preaccept_object_reverification_required": true,
+    "unverified_model_mediation_forbidden": true,
+    "verified_opaque_relay_allowed": true,
+    "model_rewrite_forbidden": true,
+    "semantic_equivalence_forbidden": true,
+    "capability_lattice_contract": "contracts/session-local-capability-lattice.json",
+    "activation_stage_projection": "ikant-le-local-activation-stage/v1",
+    "session_closure_projection": "ikant-le-session-closure-projection/v1",
+    "first_unclosed_edge_required": true,
+    "diagnostic_stage_persisted": false,
+    "external_gap_laundering_forbidden": true,
+    "ontological_promise_contract": "contracts/ikant-le.json#ontological_promise",
+    "optional_cohost_context_root": {
+      "contract": "contracts/cohost-context-root.json",
+      "canonical_activation_modality_unchanged": true,
+      "placement": "OPTIONAL_COHOST",
+      "context_owner": "src/cohost-context-root.mjs",
+      "runtime_route": "src/runtime.mjs#runCommand",
+      "compatibility_plugin_ingress_is_canonical": false,
+      "hosted_runtime_required": false,
+      "plugin_or_mcp_registration_required": false,
+      "native_delivery_requires_external_host_receipt": true,
+      "authority": 0
+    },
+    "preaccept_reverification_mode": "INLINE_BYTES_TO_GIT_OBJECT_IDENTITY"
+  },
+  "session_chat_composition": {
+    "schema": "ikant-le-session-chat-composition/v2",
+    "canonical": true,
+    "owner_contract": "contracts/session-chat-composition-channel.json",
+    "caller_kernel": "contracts/session-chat-local-host-kernel.json",
+    "live_channel_census": "contracts/session-chat-composition-census.json",
+    "source_plane": "GITHUB_API",
+    "source_encoding": "BASE64",
+    "cold_transport": "GITHUB_API_BASE64",
+    "byte_path": "VERIFIED_OPAQUE_RELAY",
+    "sink_plane": "SESSION_LOCAL_FILESYSTEM",
+    "execution_plane": "SESSION_LOCAL_NODE",
+    "container_github_network_required": false,
+    "model_role": "OPAQUE_TRANSPORT_ONLY",
+    "model_selects_carrier": false,
+    "model_selects_fallback": false,
+    "complete_object_set_required": true,
+    "local_write_reopen_samehash_required": true,
+    "active_readback_required": true,
+    "host_witness": "artifacts/qualification/c59-host-connector-container-witness.json",
+    "owner_module": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",
+    "authority_gate": "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
+    "canonical_handoff_schema": "ikant-le-c59-canonical-composition-handoff/v1",
+    "legacy_fastboot_handoff_authority": false,
+    "precedence": "C59_CANONICAL_COMPOSITION_OVERRIDES_LEGACY_FASTBOOT_SELECTION_FOR_SESSION_CHAT_LOCAL",
+    "project_host_rom": "contracts/project-host-rom.json",
+    "executable_surface_registry": "contracts/session-chat-executable-surface-registry.json",
+    "minimum_semantic_lattice": "contracts/session-chat-semantic-lattice.json",
+    "shared_runtime_predicate": "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
+    "canonical_materializer": "src/runtime-root-verified.mjs#executeCanonicalSessionChatBootstrap",
+    "canonical_runtime_entry": "src/runtime-command.mjs#runCanonicalSessionChat",
+    "canonical_active_readback": "src/runtime-command.mjs#canonicalActiveReadback",
+    "canonical_authority": "C59_CANONICAL",
+    "canonical_surface": "SESSION_CHAT_LOCAL_RUNTIME",
+    "legacy_active_is_canonical": false,
+    "raw_runtime_activation_role": "LEGACY_COMPATIBILITY_ONLY",
+    "resume_activation_role": "LEGACY_COMPATIBILITY_ONLY",
+    "deployed_profile_role": "EXCLUDED_PROFILE_COMPATIBILITY",
+    "relay_manifest_owner": "src/runtime-root-verified.mjs#issueCanonicalRelayManifest",
+    "relay_observation_owner": "src/runtime-root-verified.mjs#issueCanonicalRelayObservation",
+    "activation_executor_issuer": "src/runtime-root-verified.mjs#issueCanonicalActivationExecutor",
+    "cold_seed": {
+      "objects": [
+        "BOOTSTRAP.json",
+        "src/runtime-root-verified.mjs"
+      ],
+      "owner_named": true,
+      "post_accept_only": true,
+      "write_reopen_samehash_required": true,
+      "semantic_reconstruction_forbidden": true
+    },
+    "pre_acquisition_object_authority": "FROZEN_BOOTSTRAP_REMOTE_PATHS",
+    "runtime_transport_object_count": 8,
+    "orientation_runtime_file_count": 0,
+    "orientation_projection": ".ikant/orientation-projection.json",
+    "relay_manifest_role": "VERIFICATION_PROJECTION_OF_FROZEN_BOOTSTRAP"
+  },
+  "user_onboarding_c72": {
+    "schema": "ikant-le-c72-public-mode-admission/v2",
+    "default_for_new_chat": true,
+    "terms_gate": "I ACCEPT",
+    "mode_choices": [
+      "EDU"
+    ],
+    "recommended_mode": "EDU",
+    "after_gate": [
+      "STANDARD_V2_INTRO",
+      "EXPLICIT_MODE_SELECTION"
+    ],
+    "mode_choice_is_second_consent": false,
+    "canonical_owner_after_selection_only": true,
+    "canonical_mcp_is_transport_not_active": true,
+    "edu_may_not_claim_native_runtime": true,
+    "legacy_v1_read_only_compatibility": true,
+    "consumers_require_S02_versioned_wiring": true,
+    "module": "host/c72-public-mode-admission.mjs",
+    "contract": "contracts/c72-public-mode-admission-v2.json",
+    "authority": 0
+  },
+  "project_session": {
+    "schema": "ikant-le-project-session-route/v1",
+    "authority": 0,
+    "prompt": "project/session-chat/PROMPT.txt",
+    "contract": "contracts/project-session-capsule.json",
+    "source_manifest": "contracts/project-session-source.json",
+    "source_loader": "scripts/project-repo-loader.mjs",
+    "runtime_entry": "host/project-oneshell-edu.mjs",
+    "instructions": "docs/PROJECT_SESSION_REPO_FIRST.md",
+    "local_bundle_required": false,
+    "archive_fallback": false,
+    "terms_owner": "host/c72-public-mode-admission.mjs#acceptC72V2LinkedTerms",
+    "post_accept_before_mode_paths": [
+      "host/c72-public-mode-admission.mjs",
+      "contracts/c72-public-mode-admission-v2.json",
+      "host/project-c72-postaccept-reentry.mjs",
+      "host/project-c72-host-recovery.mjs",
+      "host/project-c72-capability-port.mjs",
+      "scripts/project-c72-portable-cli.mjs",
+      "contracts/project-host-capability-port.json",
+      "host/project-c72-physical-ingress.mjs",
+      "host/project-c72-e16-unified-ingress.mjs",
+      "host/project-c72-coldstart-seed.mjs",
+      "host/project-c72-receipt-transit.mjs",
+      "scripts/project-c72-partial-source-kit.mjs",
+      "scripts/project-edu-zip-tree.py",
+      "scripts/project-edu-onezip-admission.mjs"
+    ],
+    "post_mode_immutable_tree_read": "GIT_OBJECT_IDENTITY_VERIFICATION_ONLY",
+    "source_trust": "INDEPENDENTLY_FROZEN_HEAD_TREE_AND_API_ORIGINAL_BLOB_HASHES",
+    "display": "COMPACT_MARKDOWN_AND_REOPENED_EVIDENCE",
+    "missing_capability": "STOP_CURRENT_EDGE_NO_VOICE",
+    "voice_owner_unchanged": true,
+    "oneshell_controller": "host/project-oneshell-edu.mjs",
+    "oneshell_contract": "contracts/project-oneshell-do-d.json",
+    "oneshell_scope": "ALL_VISIBLE_BOOTSTRAP_ADMISSION_START_AND_EDU_TURNS",
+    "edu_runtime_owner": "host/c135-edu-v2-owner.mjs",
+    "no_second_writer": true,
+    "manual_edu_handoff": {
+      "post_mode_only": true,
+      "source_states": [
+        "SOURCE_ABSENT",
+        "PARTIAL_SOURCE_ONLY"
+      ],
+      "bridge": "DEFINITIVELY_UNAVAILABLE_OR_EXPLICIT_POST_EDU_MANUAL_CHOICE",
+      "manual_route_policy": "EXPLICIT_MANUAL_POST_EDU_AFTER_VALID_C72_V2_EDU_NEVER_BEFORE_ACCEPTANCE",
+      "python_extractor": "scripts/project-manual-source.py",
+      "handoff_owner": "host/p1-postmode-source-handoff.mjs",
+      "verified_reentry": "scripts/project-repo-loader.mjs",
+      "kind": "PINNED_GITHUB_SOURCE_ZIP_NOT_PROJECT_BUNDLE",
+      "canonical_active_authority": false,
+      "post_mode_default": "EXPLICIT_MANUAL_POST_EDU_IF_SOURCE_ABSENT_AND_NODE_EXTRACTOR_READY",
+      "bridge_unknown_is_not_absence_proof": true
+    },
+    "control_entry": "scripts/project-session.mjs",
+    "runtime_entry_kind": "ESM_FACTORY_REQUIRES_ORIGINAL_CALLBACKS",
+    "oneshell_semantic_slides": "contracts/project-oneshell-semantic-slides.json",
+    "prompt_generation_matrix": "contracts/project-prompt-generation.json",
+    "prompt_builder": "scripts/build-project-oneshell-prompt.mjs",
+    "prompt_release": "POST_MERGE_EXACT_MAIN_SHA_ONLY",
+    "first_contact_trigger": "ANY_FIRST_HUMAN_MESSAGE_IN_NEW_IKANT_PROJECT_CHAT",
+    "first_contact_authorizes": "ORIENTATION_ONLY",
+    "first_contact_non_authorities": [
+      "C72_ACCEPTANCE",
+      "C72_MODE",
+      "EDU_LANGUAGE_TURN",
+      "CANONICAL_ACTIVE"
+    ],
+    "project_scoped": true,
+    "prompt_portable_release": "EXACT_GIT_HEAD_SOURCE_PROMPT_UNPINNED_OUTPUT",
+    "postaccept_reentry": "host/project-c72-postaccept-reentry.mjs#reenterC72V2PostAccept",
+    "postaccept_reentry_scope": "POST_EXACT_I_ACCEPT_ONLY_ORIGINAL_C72_RECEIPTS_HOST_WITNESS_NOT_NATIVE",
+    "postaccept_host_recovery": "host/project-c72-host-recovery.mjs#planC72HostRecovery",
+    "oneshell_host_emission_gate": "host/project-oneshell-emission.mjs#emitVerifiedHostOneShell",
+    "brand_coverage": "REPOSITORY_HOST_OWNED_HTML_ONLY_NO_NATIVE_CHATGPT_RENDERING_CLAIM",
+    "human_recovery_action": "HOST_DIAGNOSES_AUTOMATICALLY_NO_GATEWAY_ACTION_FOR_END_USER",
+    "postaccept_host_recovery_executor": "host/project-c72-host-recovery.mjs#executeC72PostAcceptRecovery",
+    "preaccept_orientation_witness": "FIVE_BLOB_SHA_AT_FIRST_TURN_FROZEN_BEFORE_TERMS",
+    "host_engineering": "SEPARATE_ENGINEERING_HEAD_NO_C72_OR_IKANT_RUNTIME",
+    "postaccept_auto": "EXECUTE_AND_OBSERVE_AUTO_OR_TYPED_STOP_NOT_NARRATIVE",
+    "host_port_contract": "contracts/project-host-capability-port.json",
+    "host_port_adapter": "host/project-c72-capability-port.mjs#bindC72Transport",
+    "host_port_cli": "scripts/project-c72-portable-cli.mjs",
+    "postaccept_transport_policy": "HOST_SELECTED_ONE_CALLABLE_CALLBACK_OR_PACKET_OR_NODE_HTTPS_POST_ACCEPT_ONLY_NO_NATIVE_CLAIM",
+    "host_port_orchestrator": "host/project-c72-physical-ingress.mjs#runC72SelectedHostIngress",
+    "host_port_staged_cli": "scripts/project-c72-staged-ingress-cli.mjs",
+    "preferred_public_mode": "EDU",
+    "canonical_project_status": "LEGACY_UNQUALIFIED_DEPRECATION_PLANNED_NO_EDU_BOOTSTRAP_NO_ACTIVE",
+    "host_adapter_selection": "OBSERVED_PHYSICAL_CAPABILITY_ANY_IMPLEMENTATION_ONLY_ORIGINAL_OWNER_VALIDATES",
+    "one_shell_brand_scope": "VERIFIED_REPOSITORY_SVG_HOST_HTML_OR_TEXT_FALLBACK_NO_NATIVE_AVATAR_PROMISE",
+    "host_followthrough_contract": "contracts/project-host-followthrough.json",
+    "host_followthrough_rule": "READONLY_AFTER_MODE_OWNER_READBACK_FIRST_NO_NEW_PERSISTENCE_OR_AUTHORITY",
+    "postaccept_cold_seed": "host/project-c72-coldstart-seed.mjs#executeC72Coldstart",
+    "postaccept_partial_kit": "scripts/project-c72-partial-source-kit.mjs",
+    "postaccept_verified_staging": "scripts/project-c72-verified-staging.mjs",
+    "postaccept_host_assisted_file_carrier": "scripts/project-c72-verified-staging.mjs#putRelayLocalFile",
+    "postaccept_host_transport_frontier": "host/project-c72-transport-frontier.mjs#chooseC72HostTransport",
+    "postaccept_e16_unified_ingress": "host/project-c72-e16-unified-ingress.mjs#runC72ProjectE16Ingress",
+    "postaccept_e16_unified_scope": "PROJECT_EDU_E15_8_ORIGINAL_BLOBS_PLUS_PINNED_TRANSIT_CARRIER_ONLY",
+    "postedu_host_source_frontier": "host/project-c72-transport-frontier.mjs#chooseEDUSourceTransport",
+    "postaccept_partial_manual_gate": "AFTER_DISTINCT_I_ACCEPT_BEFORE_MODE_ONLY_NO_OWNER_REPLAY",
+    "postaccept_partial_source_original_count": 8,
+    "postaccept_partial_source_no_full_edu": true,
+    "host_adapter_what_how": "contracts/project-edu-host-what-how-v2.json",
+    "postaccept_onezip_fallback": {
+      "schema": "ikant-edu-onezip-postaccept/v1",
+      "status": "EXPERIMENTAL_CANDIDATE_NOT_FIELD_QUALIFIED",
+      "gate": "AFTER_DISTINCT_I_ACCEPT_BEFORE_ORIGINAL_C72_AND_EDU_ONLY",
+      "preferred": "OBSERVED_P0_CARRIER",
+      "fallback": "ONE_OFFICIAL_PINNED_COMMIT_ZIP_MANUAL_UPLOAD",
+      "archive": "https://github.com/Luke883i/iKant_EDU/archive/{SOURCE_HEAD}.zip",
+      "zip_root_verifier": "scripts/project-edu-zip-tree.py",
+      "independent_commit_tree": "GITHUB_API_COMMIT_TREE_SHA",
+      "tree_entries": "DERIVED_FROM_ZIP_NOT_INDEPENDENT_GITHUB_API_TREE",
+      "original_manual_extractor": "scripts/project-manual-source.py",
+      "original_loader": "scripts/project-repo-loader.mjs",
+      "original_c72_coordinator": "scripts/project-edu-onezip-admission.mjs",
+      "exact_later_mode": "EDU",
+      "edu_owner": "host/project-oneshell-edu.mjs",
+      "host_language_port": "scripts/project-edu-language-stdio.mjs",
+      "one_turn_runner": "scripts/project-edu-onezip-session.mjs",
+      "c87_portable_checkpoint": "PR_179_ORIGINAL_C135_EXPORT_REBIND",
+      "source_epoch": "FROZEN_COMMIT_UNTIL_NEW_SESSION",
+      "native_source_origin_attested": false,
+      "provider_chat_delivery_attested": false,
+      "active": false,
+      "authority": 0,
+      "old_postedu_p1_unchanged": true
+    },
+    "oneshell_postaccept_rail": {
+      "schema": "ikant-le-oneshell-postaccept-rail/v1",
+      "phase_start": "AFTER_EXACT_I_ACCEPT_ORIGINAL_C72_ACCEPTED_AND_INTRODUCTION",
+      "module": "host/project-oneshell-postaccept-rail.mjs#projectPostAcceptOneShell",
+      "core": "host/project-oneshell-rail-core.mjs#classifyPostAcceptRail",
+      "c72_owner": "host/c72-public-mode-admission.mjs",
+      "c135_owner": "host/c135-edu-v2-owner.mjs",
+      "persistent_display": false,
+      "continuity_kind": "SAME_CHAT_ORIGINAL_C87_PORTABLE_CHECKPOINT",
+      "pinned_repository": "MAIN_HEAD_AT_FIRST_PROJECT_TURN",
+      "cx_humanist_contract": "contracts/project-oneshell-cx-humanist.json",
+      "owner_source_and_receipt_readback_required": true,
+      "native_ui_attested": false,
+      "authority": 0,
+      "active": false
+    },
+    "oneshell_runtime_continuity": {
+      "schema": "ikant-host-oneshell-continuity/v1",
+      "module": "host/project-oneshell-continuous.mjs#openContinuousOneShell",
+      "mode": "EDU_POST_C72_ONLY",
+      "language_port": "scripts/project-edu-language-stdio.mjs",
+      "source": "CURRENT_MAIN_FROZEN_COMMIT",
+      "owner": "ORIGINAL_C135_C87_C125",
+      "journal": "PRIVATE_HOST_APPEND_ONLY_NON_AUTHORITY",
+      "single_owner_lease": true,
+      "worker_recovery": "EXPLICIT_PREVIOUS_WORKER_GONE_WITH_ORIGINAL_C87_CHECKPOINT",
+      "unreconciled_attempt": "STOP_NO_RETRY",
+      "host_humanist_context": "contracts/project-oneshell-cx-humanist.json",
+      "six_slots": "ESITO|A|B|PROVA|EDGE|NEXT",
+      "native_widget_persistence": false,
+      "native_delivery": false,
+      "active": false,
+      "authority": 0,
+      "cli": "scripts/project-oneshell-continuous-cli.mjs",
+      "real_transport": "SAME_PROCESS_STDIO_MULTIPLEXED_HOST_LANGUAGE_AND_HUMAN_TURNS"
+    },
+    "oneshell_focus_app": {
+      "schema": "ikant-host-oneshell-focus-app/v1",
+      "contract": "contracts/project-oneshell-focus-app.json",
+      "post_accept": "host/project-oneshell-focus-session.mjs#projectPostAcceptFocusApp",
+      "post_edu": "host/project-oneshell-focus-session.mjs#openFocusOneShellSession",
+      "depends_on": "ORIGINAL_C72_C135_C87_C125_AND_E9_E10",
+      "app": "HOST_OFFLINE_SELF_CONTAINED_HTML_NOT_NATIVE",
+      "focus_slot": "A",
+      "standard_slots": [
+        "ESITO",
+        "A",
+        "B",
+        "PROVA",
+        "EDGE",
+        "NEXT"
+      ],
+      "original_voice": "OWNER_ONLY_NO_REWRITE",
+      "reports": "PRIVATE_UTF8_AND_VERIFIED_DOWNLOAD_AFTER_READBACK",
+      "native_client_mount_attested": false,
+      "provider_delivery_attested": false,
+      "active": false,
+      "authority": 0
+    },
+    "oneshell_inchat_presentation": {
+      "schema": "ikant-oneshell-inchat-presentation/v1",
+      "module": "host/project-oneshell-chat-presentation.mjs#makeOneShellChatPresentation",
+      "contract": "contracts/project-oneshell-inchat-presentation.json",
+      "postaccept": "host/project-oneshell-focus-session.mjs",
+      "after_edu": "scripts/project-oneshell-continuous-cli.mjs",
+      "owner": "ORIGINAL_C72_C135_C87_C125_S03",
+      "format": "HOST_SUPPORTED_RICH_PRESENTATION_OR_DETERMINISTIC_MARKDOWN",
+      "primary": "A_OR_NO_VOICE",
+      "logo": "PINNED_VERIFIED_SVG_OR_TEXT",
+      "host": "B_LITERAL_EXCERPT_ONLY",
+      "long_evidence": "E12_ORIGINAL_REPORT_READBACK",
+      "user_ack_required_for_delivery_claim": true,
+      "provider_native_ui_attested": false,
+      "provider_persistence_attested": false,
+      "installed_prompt_is_not_runtime": true,
+      "authority": 0,
+      "active": false
+    },
+    "postaccept_original_c72_receipt_transit": "host/project-c72-receipt-transit.mjs",
+    "postaccept_original_c72_transit_rule": "PROJECT_EDU_E15: FIRST_TURN_VERIFIED_BOOTSTRAP_PINS_CARRIER_BLOB; EXCLUSIVE_PRIVATE_PIN_READBACK_PRE_OWNER; EDU_REOPENS_SAME_PIN; UNKNOWN_STOP_NO_REPLAY; LEGACY_SEPARATE",
+    "original_mode_receipt_reopen": "scripts/project-c72-receipt-reopen-cli.mjs",
+    "rich_host_svg_emission": "VERIFIED_INLINE_SVG_ONLY_WHEN_RENDERER_SUPPORTS_HOST_HTML_NO_NATIVE_MOUNT_CLAIM",
+    "project_edu_irred_contract": "contracts/project-oneshell-irred-e15.json",
+    "project_edu_irred_classifier": "host/project-oneshell-irred-e15.mjs#adjudicateE15",
+    "project_edu_falsifier": "scripts/project-oneshell-e15-falsify-1m.mjs",
+    "project_edu_head_guard": "NODE_GITHUB_API_REQUIRED_ON_PHYSICAL_CLI_OR_STOP",
+    "project_edu_verified_logo": "VERIFIED_HOST_HTML_CAPABILITY_ONLY_ELSE_TEXT; NEVER_NATIVE_MOUNT_CLAIM",
+    "postaccept_original_c72_transit_pin": {
+      "path": "host/project-c72-receipt-transit.mjs",
+      "blob_sha1": "c1ae49e65a860e00f8fb6fd842e4de2664198274",
+      "source": "FIRST_TURN_BOOTSTRAP_SHA_VERIFIED"
+    }
+  }
+}

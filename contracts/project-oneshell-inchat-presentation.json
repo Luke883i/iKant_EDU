@@ -1,0 +1,99 @@
+{
+  "schema": "ikant-oneshell-inchat-presentation/v1",
+  "authority": 0,
+  "mode": "HOST_RENDER_ONLY",
+  "intent": "OneShell is a stable host-composed visual envelope around original owner slots, not a second LLM.",
+  "owners": {
+    "consent": "ORIGINAL_C72_V2",
+    "cognition": "ORIGINAL_C135",
+    "ledger": "ORIGINAL_C87_SINGLE_WRITER",
+    "voice": "ORIGINAL_C125_S03",
+    "visual": "ORIGINAL_VERIFIED_HOST_SVG_AND_E12"
+  },
+  "phases": [
+    "ORIENTATION_NO_VOICE",
+    "ACCEPTED_NO_VOICE",
+    "EDU_SELECTED_NO_VOICE",
+    "EDU_READY_NO_VOICE",
+    "OWNER_TURN",
+    "RECOVERED_TURN",
+    "STOP_NO_VOICE"
+  ],
+  "slots": [
+    "ESITO",
+    "A",
+    "B",
+    "PROVA",
+    "EDGE",
+    "NEXT"
+  ],
+  "hierarchy": {
+    "title": "iKant · OneShell",
+    "logo": "assets/brand/ikant-light.svg",
+    "logo_sha256": "b6dc3f6e22149ef9f96348ce8e677af034cd2377f26450af18d51bc5c43ae633",
+    "verify_with": "host/project-oneshell-visual.mjs",
+    "focus_A": "DOMINANT_3_TO_1",
+    "B": "SMALL_SUPPORT_ONLY",
+    "mobile": "A_FIRST",
+    "dividers": 2,
+    "badge": "NON_INTERACTIVE",
+    "exit_button": "FORBIDDEN"
+  },
+  "compression": {
+    "A": "ORIGINAL_OWNER_BYTES_OR_NO_VOICE_NEVER_COMPRESS",
+    "B": "LITERAL_EXCERPT_ONLY_NEVER_NEW_HOST_ANSWER",
+    "PROVA": "LITERAL_EXCERPT_ONLY_IF_FULL_REPORT_INDEPENDENTLY_REOPENED",
+    "EDGE": "FULL_ORIGINAL",
+    "NEXT": "FULL_ORIGINAL",
+    "annex": "E12_WRITTEN_WX0600_SHA_READBACK",
+    "unknown": "STOP_NO_VOICE_NO_RETRY"
+  },
+  "routing": {
+    "unaddressed_post_edu": "C135_ONLY",
+    "host_prefix": [
+      "Host:",
+      "@Host "
+    ],
+    "host_allowed": [
+      "CHECKUP",
+      "DOCUMENTATION"
+    ],
+    "host_cannot_answer_cognition": true,
+    "control": "ORIGINAL_TWO_TURN_EXIT"
+  },
+  "transport": {
+    "renderer": "host/project-oneshell-chat-presentation.mjs#makeOneShellChatPresentation",
+    "postaccept": "host/project-oneshell-focus-session.mjs#projectPostAcceptFocusApp",
+    "postedu": "host/project-oneshell-focus-session.mjs#openFocusOneShellSession",
+    "physical_host": "scripts/project-oneshell-continuous-cli.mjs",
+    "chat_fallback": "DETERMINISTIC_MARKDOWN_FROM_VALIDATED_FRAME",
+    "rich_chat": "HOST_CAPABILITY_DEPENDENT_NOT_REGISTERED",
+    "mcp_apps": "SEPARATE_REGISTERED_PLUGIN_AND_UI_RESOURCE_REQUIRED_FOR_PROVIDER_MANAGED_WIDGET",
+    "no_native_mount_claim": true
+  },
+  "success": {
+    "software": "C72_E9_AND_C135_E10_E12_AND_E13_NODE20_NODE22_PASS; HASH_AND_OWNER_GATES; 4096_STRUCTURAL_MASKS",
+    "chat": "HOST_ACTUALLY_PRESENTS_SIX_SLOTS_LOGO_WHEN_SUPPORTED_AND_ORIGINAL_A_WITH_NO_EXTRA_HOST_ANSWER",
+    "mcp_widget": "ONLY_IF_REGISTERED_AND_TOOL_UI_RESOURCE_RENDERED_AND_MULTI_TURN_FIELD_ATTESTED",
+    "release": "PRODUCT_NO_GO_UNTIL_CHAT_FIELD_READBACK"
+  },
+  "falsifiers": [
+    "A_REWRITE",
+    "UNVERIFIED_SVG",
+    "HOST_ANSWERS_UNADDRESSED",
+    "B_COMPRESSION_SYNTHETIC",
+    "PROVA_ELLIPSIS_WITHOUT_REOPENED_REPORT",
+    "FORGED_SANDBOX_LINK",
+    "INVALID_C87_REBIND",
+    "SIMULATED_NATIVE_MOUNT",
+    "PROMPT_INSTALLATION_EQUALS_RUNTIME"
+  ],
+  "evidence_boundary": {
+    "repository_code_attested_by_git": true,
+    "host_ui_not_provider_ui": true,
+    "provider_delivery_attested": false,
+    "persistent_widget_attested": false,
+    "independent_model_compliance_attested": false,
+    "active": false
+  }
+}

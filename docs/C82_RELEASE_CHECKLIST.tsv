@@ -1,0 +1,26 @@
+ID	Axis	Requirement	Metric_or_gate	Current_status	Source_of_evidence	Next_witness
+C82-01	Admission	Terms then later I ACCEPT then later EXPERIMENTAL	No preconsent file materialization	RETAINED	C72/C77/C78 tests	Real host session
+C82-02	Freeze	Single exact main HEAD and unchanged source identity	Zero silent repin	RETAINED	C77 manifest	Real host ref witness
+C82-03	Carrier	Actual machine-only or legacy parallel byte carriers	1..6 and <=8 workers	LIBRARY_IMPLEMENTED	C82 parallel carrier tests	Native host adapters
+C82-04	Carrier	One writer after complete verified byte coverage	100% bytes readback	IMPLEMENTED	C78 C82 tests	Real host execution
+C82-05	Carrier	SHA256 Git blob and Git Merkle integrity	Zero mismatch admitted	IMPLEMENTED	C77/C81 tests	Original Git objects
+C82-06	Provenance	Samehash never means authenticated GitHub source	Origin false until separately attested	RETAINED	C81 verifier	Host independent origin
+C82-07	Admission	Manual ZIP only after available machine carriers exhausted	Manual handoff rate target zero	UNMEASURED	Prior host forensic audit	Host traces
+C82-08	Latency	Host bootstrap first usable turn	tp95 <=120 seconds design target	UNMEASURED	Not available	>=50 host sessions
+C82-09	Cognition	Identity ontology recognition	>=95% precision/recall on holdout	NOT_MEASURED	C82 class suite only	Independent labeled holdout
+C82-10	Cognition	Task-specific bounded repository voice	At least six distinct paths; exact owner binding	IMPLEMENTED_BOUNDED	C70 C82 class tests	Independent relevance rubric
+C82-11	Cognition	Output semantically relevant to user problem	>=90% human graded on supported tasks	NOT_MEASURED	No independent grading	Blind rubric trials
+C82-12	Cognition	Unsupported tasks do not pretend to be answered	100% explicit unsupported on holdout	PARTIAL	C82 fallback tests	Negative controls
+C82-13	Falsification	Actual deterministic semantic mutations	>=10000, zero guard violations	IMPLEMENTED	C82 10000 Node calls	Held-out attacks
+C82-14	Input	No silent clipping over 600 UTF8 bytes	Explicit reject	IMPLEMENTED	C70 C78 tests	Long-input protocol next slice
+C82-15	Input	Lossless arbitrarily long supported task ingress	Exact chunked manifest and digest	NOT_IMPLEMENTED	No protocol	Chunking plus fuzz
+C82-16	Runtime	C77 C78 C79 C81 same-current-turn execution	Exact input and output SHA readback	IMPLEMENTED_LAB	40 focused Node tests	Real host witness
+C82-17	Security	No false ACTIVE persistent or native origin claims	Zero forbidden claims	RETAINED	C82 guards and receipts	Host independent audit
+C82-18	Voice	Host-candidate cannot slip into iKant voice	Zero HOST_CANDIDATE_BOUNDED in C81	RETAINED	C71/C81 tests	Host release tests
+C82-19	UI	Only exact runtime voice as first natural paragraph	100% byte equality where observable	SPECIFIED	UI shell v3 contract	Native chat rendering
+C82-20	UI	No fictional sticky overlay or UI actions	Zero unsupported UI claims	SPECIFIED	UI shell v3 contract	Actual client inspection
+C82-21	Artifacts	Summary backlog telemetry created and reopened	Up to 3 verified downloads	NOT_IMPLEMENTED	No native event stream	Producer plus host readback
+C82-22	Context	Full transcript coverage accurately stated	FULL or PARTIAL or NONE	NOT_ATTESTED	Missing transcript API	Host event stream
+C82-23	State	Persistence proven only with future readback	Writer plus second real turn	NOT_ATTESTED	Current host limits	Independent second turn
+C82-24	Product	C72 independent user-value H95	Wilson lower >=0.95, per dim >=0.90	NOT_MEASURED	C72 value contract	500 tasks/50 sessions/20 users
+C82-25	Canonical	C59/C64/C66/C68 unchanged	Zero ACTIVE or DOCX causal promotions	RETAINED	Repo source tests	Owner native receipt

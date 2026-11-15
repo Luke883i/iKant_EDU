@@ -1,0 +1,108 @@
+{
+  "schema": "ikant-le-project-host-rom/v2",
+  "authority": 0,
+  "role": "COLD_START_ROM_ONLY",
+  "repository": "https://github.com/Luke883i/iKant_LE",
+  "branch": "main",
+  "registers": [
+    "PENDING_INTENT",
+    "SOURCE_HEAD",
+    "FROZEN_ORIENTATION"
+  ],
+  "first_contact": {
+    "preserve_first_input_byte_for_byte": true,
+    "first_input_is_not_acceptance": true,
+    "substantive_reply_before_coldstart_forbidden": true,
+    "first_input_may_trigger_generic_host_work": false
+  },
+  "preaccept": {
+    "source_plane": "GITHUB_API_ONLY",
+    "resolve_branch_head_once": true,
+    "pin_all_reads_to_source_head": true,
+    "direct_paths": [
+      "README.md",
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "AGENTS.md",
+      "TERMS.md"
+    ],
+    "repository_search_forbidden": true,
+    "tree_discovery_forbidden": true,
+    "history_forbidden": true,
+    "issue_pr_inspection_forbidden": true,
+    "clone_fetch_archive_forbidden": true,
+    "local_materialization_forbidden": true,
+    "present_terms_verbatim": true,
+    "freeze_after_terms": true,
+    "exact_acceptance": "I ACCEPT",
+    "nonmatching_input_advances": false
+  },
+  "postaccept": {
+    "reread_main_forbidden": true,
+    "second_human_gate_forbidden": true,
+    "composition_descriptor": "FROZEN_ORIENTATION.BOOTSTRAP.session_chat_composition",
+    "invoke_only_repository_named_owner": true,
+    "host_capability_must_be_observed_callable": true,
+    "model_selects_carrier": false,
+    "model_selects_fallback": false,
+    "model_selects_retry": false,
+    "model_selects_byte_path": false,
+    "model_reconstructs_owner_semantics": false,
+    "compatibility_output_may_be_promoted_to_canonical": false,
+    "chat_is_ledger": false,
+    "untyped_evidence_forbidden": true,
+    "owner_edge_failure": "STOP_CURRENT_EDGE_ONLY"
+  },
+  "host_binding": {
+    "repository_symbol_proves_host_capability": false,
+    "callable_capability_requires_observation": true,
+    "source_plane_and_sink_plane_are_distinct": true,
+    "sink_network_failure_proves_source_failure": false,
+    "source_plane_must_be_callable_from_sink": false,
+    "opaque_transport_only_when_repository_owner_names_edge": true,
+    "transported_bytes_may_be_rewritten": false,
+    "transported_bytes_may_be_semantically_reconstructed": false,
+    "capability_probe_only_when_repository_owner_requires": true,
+    "unavailable_edge_may_authorize_alternative_path": false
+  },
+  "evidence": {
+    "code_is_execution_evidence": false,
+    "documentation_is_execution_evidence": false,
+    "test_pass_is_runtime_readback": false,
+    "physical_claim_requires_observed_edge": true,
+    "invent_hash_id_receipt_status_progress_next_forbidden": true
+  },
+  "failure": {
+    "autonomous_fallback_search_forbidden": true,
+    "retry_without_repository_owner_instruction_forbidden": true,
+    "unchanged_evidence_retry_forbidden": true,
+    "future_blocker_hunting_forbidden": true,
+    "failed_edge_does_not_replan_lifecycle": true,
+    "stop_scope": "CURRENT_EDGE_ONLY"
+  },
+  "runtime": {
+    "route_only_after_owner_validated_canonical_active_readback": true,
+    "pending_intent_resume_only_when_repository_authorizes": true,
+    "exact_exit": "EXIT IKANT",
+    "host_release_only_after_owner_validated_release": true
+  },
+  "precedence": {
+    "project_rom_after_delegation": "NON_AUTHORITATIVE",
+    "frozen_repository_owner_wins": true,
+    "higher_host_constraints_win": true,
+    "second_ikant_implementation_forbidden": true
+  },
+  "forbidden_literal_policy": {
+    "transport_ids_in_rom_forbidden": true,
+    "byte_path_ids_in_rom_forbidden": true,
+    "legacy_carrier_ids_in_rom_forbidden": true,
+    "runtime_module_paths_in_rom_forbidden": true
+  },
+  "qualification": {
+    "adversarial_mutations": 100,
+    "mutation_families": 20,
+    "harmful_survivors_required": 0,
+    "renderer_exact_match_required": true,
+    "repository_semantics_shadowed_required": false
+  }
+}

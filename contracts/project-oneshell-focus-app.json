@@ -1,0 +1,55 @@
+{
+  "schema": "ikant-host-oneshell-focus-app/v1",
+  "authority": 0,
+  "source_epoch": "MAIN_COMMIT_PINNED_AT_FIRST_TURN",
+  "source_owners": [
+    "host/c72-public-mode-admission.mjs",
+    "host/project-oneshell-postaccept-rail.mjs",
+    "host/project-oneshell-continuous.mjs",
+    "host/project-oneshell-emission.mjs"
+  ],
+  "value_proposition": {
+    "HUMAN": "One intelligible dialogue with original voice, uncertainty and agency",
+    "IKANT": "Owner-only A with full original bytes",
+    "HOST": "Compressed reliable B and evidence without a competing voice",
+    "READBACK": "Download only after physical write and readback",
+    "CONTINUITY": "Same C135 when live; verified C87 cold rebind otherwise"
+  },
+  "layout": {
+    "machine_slots": [
+      "ESITO",
+      "A",
+      "B",
+      "PROVA",
+      "EDGE",
+      "NEXT"
+    ],
+    "focus_slot": "A",
+    "desktop_main_fraction_min": 0.67,
+    "mobile_voice_first": true,
+    "dividers": 2,
+    "verified_svg": 1,
+    "host_summary": "VISUAL_ONLY_WITH_INTEGRAL_REPORT",
+    "original_a_compression": "FORBIDDEN",
+    "original_proof_loss": "FORBIDDEN"
+  },
+  "report": {
+    "file_mode": "WX_0600",
+    "source": "ORIGINAL_FRAME_VALUES",
+    "sha256_readback": true,
+    "download": "EMBEDDED_BASE64_ONLY_AFTER_READBACK",
+    "side_attachments": "IN_ROOT_REGULAR_0600_MAX_6_HASH_MATCH",
+    "never_synthesize_sandbox_url": true
+  },
+  "handoff": {
+    "postaccept": "host/project-oneshell-focus-session.mjs#projectPostAcceptFocusApp",
+    "postedu": "host/project-oneshell-focus-session.mjs#openFocusOneShellSession"
+  },
+  "field": {
+    "client_mount_proven": false,
+    "native_delivery_proven": false,
+    "ui_persistence_proven": false,
+    "provider_event_proven": false,
+    "active": false
+  }
+}

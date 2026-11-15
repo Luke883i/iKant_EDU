@@ -1,0 +1,43 @@
+name: MCP standalone candidate — source and SDK qualification
+on:
+  pull_request:
+    paths:
+      - 'plugins/ikant-le-session-chat/server/**'
+      - 'plugins/ikant-le-session-chat/mcp.standalone.template.json'
+      - 'tests/mcp-standalone-*.test.mjs'
+      - 'scripts/mcp-standalone-semantic-10k.mjs'
+      - 'render.mcp-standalone.candidate.yaml'
+      - 'docs/MCP_STANDALONE_RENDER_RUNBOOK.txt'
+      - '.github/workflows/mcp-standalone-assurance.yml'
+  workflow_dispatch:
+jobs:
+  candidate-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate source and Node scripts
+        run: |
+          node --check plugins/ikant-le-session-chat/server/server.mjs
+          node --check plugins/ikant-le-session-chat/server/mcp-standalone-policy.mjs
+          node --check plugins/ikant-le-session-chat/server/runtime-limits.mjs
+          node --check scripts/mcp-standalone-semantic-10k.mjs
+          node -e "JSON.parse(require('node:fs').readFileSync('plugins/ikant-le-session-chat/mcp.standalone.template.json'))"
+      - name: Standalone and original OAuth negative regressions
+        run: |
+          node --test tests/mcp-standalone-runtime-assurance.test.mjs tests/mcp-external-oauth-prepr.test.mjs tests/mcp-external-v2-refinement.test.mjs
+      - name: Install exact declared direct MCP SDK dependencies (not a lockfile claim)
+        run: npm install --ignore-scripts --no-audit --no-fund --prefix plugins/ikant-le-session-chat/server
+      - name: Real SDK HTTP transport with SYNTHETIC local OAuth server
+        run: node --test tests/mcp-standalone-http-qualification.probe.mjs
+      - name: Materialize ten thousand scenario questions
+        run: node scripts/mcp-standalone-semantic-10k.mjs mcp-standalone-10k.jsonl > mcp-standalone-10k-evidence.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mcp-standalone-10k-model-only-not-provider-proof
+          path: |
+            mcp-standalone-10k-evidence.json
+            mcp-standalone-10k.jsonl

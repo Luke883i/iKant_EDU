@@ -1,0 +1,207 @@
+name: OneShell EDU bootstrap runtime candidate
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+on:
+  pull_request:
+    paths:
+      - 'host/project-oneshell-edu.mjs'
+      - 'host/p1-postmode-source-handoff.mjs'
+      - 'tests/p1-postmode-source-handoff.test.mjs'
+      - 'tests/project-bootstrap-endtoend-100k.test.mjs'
+      - 'tests/test_project_manual_full_head.py'
+      - 'host/project-c72-preaccept-gate.mjs'
+      - 'host/project-c72-postaccept-reentry.mjs'
+      - 'host/project-c72-host-recovery.mjs'
+      - 'host/project-c72-capability-port.mjs'
+      - 'host/project-c72-physical-ingress.mjs'
+      - 'tests/project-c72-physical-ingress.test.mjs'
+      - 'scripts/project-c72-portable-cli.mjs'
+      - 'scripts/project-c72-staged-ingress-cli.mjs'
+      - 'tests/project-c72-staged-ingress.test.mjs'
+      - 'contracts/project-host-capability-port.json'
+      - 'tests/project-c72-portable-bridge.test.mjs'
+      - 'host/project-oneshell-emission.mjs'
+      - 'tests/project-c72-host-recovery-emission-p0.test.mjs'
+      - 'tests/project-c72-recovery-10k.test.mjs'
+      - 'tests/project-bootstrap-responsibility-matrix.test.mjs'
+      - 'contracts/project-prompt-generation.json'
+      - 'scripts/build-project-oneshell-prompt.mjs'
+      - 'project/session-chat/PROMPT.txt'
+      - 'contracts/project-c72-preaccept-gate.json'
+      - 'tests/project-c72-preaccept-gate.test.mjs'
+      - 'tests/project-c72-postaccept-reentry.test.mjs'
+      - 'tests/project-c72-preaccept-contract.test.mjs'
+      - 'host/project-oneshell-autopilot.mjs'
+      - 'host/project-oneshell-continuity.mjs'
+      - 'host/project-oneshell-compact.mjs'
+      - 'host/project-oneshell-visual.mjs'
+      - 'host/project-oneshell-host-boundary.mjs'
+      - 'host/project-oneshell-language-ack.mjs'
+      - 'host/c135-edu-v2-owner.mjs'
+      - 'contracts/project-oneshell-host-scope.json'
+      - 'tests/project-oneshell-host-boundary.test.mjs'
+      - 'tests/project-oneshell-language-ack.test.mjs'
+      - 'contracts/project-oneshell-visual-v2.json'
+      - 'contracts/project-oneshell-compact-continuity.json'
+      - 'host/p1-public-language-guard.mjs'
+      - 'host/project-oneshell-phases.mjs'
+      - 'contracts/project-oneshell-semantic-slides.json'
+      - 'BOOTSTRAP.json'
+      - 'scripts/project-manual-source.py'
+      - 'scripts/project-source-manifest.mjs'
+      - 'contracts/project-session-source.json'
+      - 'host/c97-uiux-projection.mjs'
+      - 'contracts/c97-chat-project-uiux.json'
+      - 'tests/c97-uiux-projection.test.mjs'
+      - 'tests/c32-session-shell.test.mjs'
+      - 'tests/c73-project-capsule.test.mjs'
+      - '.github/workflows/c97-chat-project-uiux.yml'
+      - 'tests/project-oneshell-edu.test.mjs'
+      - 'tests/project-oneshell-autopilot-100k.test.mjs'
+      - 'tests/project-oneshell-continuity.test.mjs'
+      - 'tests/project-oneshell-compact.test.mjs'
+      - 'tests/project-oneshell-visual-v2.test.mjs'
+      - 'scripts/oneshell-compact-select-100.mjs'
+      - 'tests/p1-human-language.test.mjs'
+      - 'tests/project-session-e2e.test.mjs'
+      - 'tests/project-edu-complete-chain.test.mjs'
+      - 'contracts/project-host-followthrough.json'
+      - 'tests/project-host-followthrough.test.mjs'
+      - 'host/project-oneshell-phases.mjs'
+      - 'tests/project-oneshell-phases.test.mjs'
+      - 'tests/project-oneshell-full-source.test.mjs'
+      - 'tests/test_project_manual_source.py'
+      - 'scripts/project-oneshell-falsify.mjs'
+      - '.github/workflows/project-oneshell-edu.yml'
+  workflow_dispatch:
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: node scripts/project-source-manifest.mjs verify
+      - run: node --test tests/project-bootstrap-responsibility-matrix.test.mjs tests/project-c72-portable-bridge.test.mjs tests/project-c72-physical-ingress.test.mjs tests/project-c72-staged-ingress.test.mjs
+      - name: C97 current UIUX projection and C32/C73 owner regression (Node 20/22)
+        run: node --test tests/c97-uiux-projection.test.mjs tests/c32-session-shell.test.mjs tests/c73-project-capsule.test.mjs
+      - run: npm run check
+      - name: P0 final emission + C72 human-recovery 1000 executed adversarial scenarios
+        run: |
+          mkdir -p "$RUNNER_TEMP/p0-c72-brand-1000"
+          IKANT_P0_TRACE_DIR="$RUNNER_TEMP/p0-c72-brand-1000" node --test tests/project-c72-host-recovery-emission-p0.test.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: p0-c72-brand-adversarial-1000-node-${{ matrix.node-version }}
+          path: ${{ runner.temp }}/p0-c72-brand-1000/
+          retention-days: 30
+          if-no-files-found: error
+      - name: C72 original recovery 10k first-witness/bridge adversarial executions
+        run: |
+          mkdir -p "$RUNNER_TEMP/c72-recovery-10k"
+          IKANT_C72_RECOVERY_TRACE_DIR="$RUNNER_TEMP/c72-recovery-10k" node --test tests/project-c72-recovery-10k.test.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: c72-recovery-first-witness-10k-node-${{ matrix.node-version }}
+          path: ${{ runner.temp }}/c72-recovery-10k/
+          retention-days: 30
+          if-no-files-found: error
+      - name: Original C72 reentry and 10k owner/brand semantic trace
+        run: |
+          mkdir -p "$RUNNER_TEMP/c72-brand-10k"
+          IKANT_C72_BRAND_TRACE_DIR="$RUNNER_TEMP/c72-brand-10k" node --test tests/project-c72-preaccept-gate.test.mjs tests/project-c72-preaccept-contract.test.mjs tests/project-c72-postaccept-reentry.test.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: c72-brand-semantic-10k-node-${{ matrix.node-version }}
+          path: ${{ runner.temp }}/c72-brand-10k/
+          retention-days: 30
+          if-no-files-found: error
+      - run: node --test tests/project-oneshell-edu.test.mjs tests/project-oneshell-continuity.test.mjs tests/project-oneshell-compact.test.mjs tests/project-oneshell-visual-v2.test.mjs tests/project-oneshell-host-boundary.test.mjs tests/project-oneshell-language-ack.test.mjs tests/project-oneshell-autopilot-100k.test.mjs tests/project-bootstrap-endtoend-100k.test.mjs tests/p1-postmode-source-handoff.test.mjs tests/p1-human-language.test.mjs tests/project-oneshell-phases.test.mjs tests/project-session-e2e.test.mjs tests/project-edu-complete-chain.test.mjs tests/project-host-followthrough.test.mjs tests/project-oneshell-full-source.test.mjs tests/project-repo-loader.test.mjs tests/p0-first-run-handoff.test.mjs
+      - run: node scripts/oneshell-compact-select-100.mjs "$RUNNER_TEMP/oneshell-compact-100.json"
+      - run: python3 tests/test_project_manual_source.py
+      - run: python3 tests/test_project_manual_full_head.py
+      - run: node --test tests/s02-edu-v2-original-owner-e2e.test.mjs
+      - run: node scripts/project-oneshell-host-boundary-falsify.mjs 100000
+      - name: Trace 100k seeded semantic scenarios
+        run: |
+          mkdir -p "$RUNNER_TEMP/oneshell-trace"
+          IKANT_ONESHELL_TRACE_DIR="$RUNNER_TEMP/oneshell-trace" node scripts/project-oneshell-falsify.mjs 100000
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oneshell-semantic-100k-node-${{ matrix.node-version }}
+          path: ${{ runner.temp }}/oneshell-trace/
+          retention-days: 30
+          if-no-files-found: error
+
+  p0-source-closure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/project-source-manifest.mjs verify
+
+  p0-contract-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run check
+
+  p0-owner-brand-1000:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/project-c72-host-recovery-emission-p0.test.mjs
+
+  p0-recovery-10k:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/project-c72-recovery-10k.test.mjs
+
+  p0-legacy-prompt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/project-oneshell-prompt.test.mjs
+
+  pr171-regression-slices:
+    name: PR171 isolate (${{ matrix.case }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        case:
+          - project-host-followthrough
+          - project-edu-complete-chain
+          - project-bootstrap-endtoend-100k
+          - project-c72-physical-ingress
+          - project-c72-portable-bridge
+          - project-c72-staged-ingress
+          - p1-postmode-source-handoff
+          - project-oneshell-phases
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Original executable test slice
+        run: node --test tests/${{ matrix.case }}.test.mjs

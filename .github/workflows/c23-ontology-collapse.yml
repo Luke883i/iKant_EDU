@@ -1,0 +1,35 @@
+name: c23-ontology-collapse
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'AGENTS.md'
+      - 'BOOTSTRAP.json'
+      - 'ADMISSION.json'
+      - 'contracts/host-shell.json'
+      - 'contracts/session-chat-activation.json'
+      - 'contracts/local-session-fastboot.json'
+      - 'contracts/ikant-le.json'
+      - 'contracts/chat-bootstrap-semantic.json'
+      - 'src/state.mjs'
+      - 'src/fastboot-convergence.mjs'
+      - 'src/runtime-availability.mjs'
+      - 'src/session-chat-deployment.mjs'
+      - 'runtime-root/**'
+      - 'tests/c23-ontology-collapse.test.mjs'
+      - 'scripts/c23-ontology-collapse-falsify.c'
+      - 'scripts/check.mjs'
+      - 'package.json'
+      - 'docs/GOVERNANCE.md'
+      - '.github/workflows/c23-ontology-collapse.yml'
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm run runtime-root:verify
+      - run: node --test --test-concurrency=1 tests/c23-ontology-collapse.test.mjs
+      - run: npm run falsify:c23

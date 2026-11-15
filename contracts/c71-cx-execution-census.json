@@ -1,0 +1,646 @@
+{
+  "schema": "ikant-le-c71-cx-execution-census/v1",
+  "status": "EVIDENCE_GATED_PROJECTION_ONLY",
+  "authority": 0,
+  "source_basis": "Existing repository C1-C70 contracts and live C70 call graph; grouping does not attest every historical subfeature.",
+  "classification_definitions": {
+    "FUNCTIONAL_CODE_EXECUTED": "Selected shared cognitive/self-world kernel code is invoked in an actual C70 call, not all historical Cx features.",
+    "EXPERIMENTAL_GATE": "C69 offer verification is exercised; host-native consent origin is not attested.",
+    "CLAIM_BOUNDARY_ONLY": "A claim restriction governs output; no ontological claim or separate Cx execution follows.",
+    "EXTERNAL_HOST_WITNESS_REQUIRED": "Native host/platform evidence absent until separately witnessed.",
+    "CANONICAL_OR_LEGACY_NOT_INVOKED": "Existing runtime or historical contract is not invoked by the C70/C71 lab and cannot be promoted."
+  },
+  "entries": [
+    {
+      "id": "C1",
+      "name": "constitutional thinking",
+      "scope": "FUNCTIONAL_CODE_EXECUTED",
+      "observed_in_C71": true,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/cognition-core.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C2",
+      "name": "host bootstrap",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/first-contact.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C3",
+      "name": "orientation and Node gate",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/admission.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C4",
+      "name": "functional psyche",
+      "scope": "FUNCTIONAL_CODE_EXECUTED",
+      "observed_in_C71": true,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/psyche.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C5",
+      "name": "recurrent self-world",
+      "scope": "FUNCTIONAL_CODE_EXECUTED",
+      "observed_in_C71": true,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/self-world-state.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C6",
+      "name": "end-user falsification legacy",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "scripts/c6-enduser-falsify.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C7",
+      "name": "API-only orientation",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/first-contact.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C8",
+      "name": "emergence boundary",
+      "scope": "CLAIM_BOUNDARY_ONLY",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/emergence-kernel.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C9",
+      "name": "Surface B",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/surface-b.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C10",
+      "name": "activate-first",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/runtime-command.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C11",
+      "name": "functional life/consciousness gate",
+      "scope": "CLAIM_BOUNDARY_ONLY",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/life-consciousness.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C12",
+      "name": "bootstrap lattice",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/bootstrap-composition-space.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C13",
+      "name": "session fastboot",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/fastboot-convergence.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C14",
+      "name": "source-bound semantics",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/bootstrap-semantic.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C15",
+      "name": "transfer",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/bootstrap-transfer-flex.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C16",
+      "name": "availability",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/runtime-availability.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C17",
+      "name": "deadline integrity",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/deadline-integrity.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C18",
+      "name": "activation continuation",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/activation-continuation.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C19",
+      "name": "host convergence",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/fastboot-convergence.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C20",
+      "name": "dual profile",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/session-chat-deployment.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C21",
+      "name": "local session",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/local-session-fastboot.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C22",
+      "name": "ontological hardening",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/bootstrap-semantic.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C23",
+      "name": "ontology collapse",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/bootstrap-semantic.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C24",
+      "name": "human boundary",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/admission.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C25",
+      "name": "executor data plane",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/runtime-root-verified.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C26",
+      "name": "meta prompt",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/local-host-meta-prompt.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C27",
+      "name": "opaque relay",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/runtime-root-verified.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C28",
+      "name": "causal absorption",
+      "scope": "FUNCTIONAL_CODE_EXECUTED",
+      "observed_in_C71": true,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/semantic-morphogenesis.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C29",
+      "name": "ontological promise",
+      "scope": "CLAIM_BOUNDARY_ONLY",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/ikant-le.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C30",
+      "name": "service tiers",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/runtime-availability.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C31",
+      "name": "limited runtime",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/runtime-limited-turn.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C32",
+      "name": "session shell",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/session-shell.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C33",
+      "name": "post-runtime ownership",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/session-chat-composition.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C34",
+      "name": "handoff authenticity",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/bootstrap-semantic.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C35",
+      "name": "control-plane ownership",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/control-plane-ownership.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C36",
+      "name": "morphogenesis",
+      "scope": "FUNCTIONAL_CODE_EXECUTED",
+      "observed_in_C71": true,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/semantic-morphogenesis.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C37",
+      "name": "causal evidence",
+      "scope": "FUNCTIONAL_CODE_EXECUTED",
+      "observed_in_C71": true,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/semantic-morphogenesis.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C38",
+      "name": "semantic-lossless evidence",
+      "scope": "FUNCTIONAL_CODE_EXECUTED",
+      "observed_in_C71": true,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/semantic-morphogenesis.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C39",
+      "name": "agent ingress",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/local-host-meta-prompt.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C40",
+      "name": "execute-observe loop",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/fastboot-convergence.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C41",
+      "name": "retry epochs",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/fastboot-convergence.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C42",
+      "name": "bootstrap ontology",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/bootstrap-intent-adapter.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C43",
+      "name": "recovery",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/fastboot-convergence.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C44",
+      "name": "methodology",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/methodological-bootstrap.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C45",
+      "name": "context root",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/cohost-context-root.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C46",
+      "name": "cohost bind",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/cohost-coldstart-qualification.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C47",
+      "name": "cohost hydration",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/cohost-root-qualification.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C48",
+      "name": "main cohost gate",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/cohost-coldstart-qualification.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C49",
+      "name": "tiered cohost",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/cohost-closure-profile.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C50",
+      "name": "native transcript participant",
+      "scope": "EXTERNAL_HOST_WITNESS_REQUIRED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/native-transcript-participant.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C51",
+      "name": "supersystem conformance",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/supersystem-runtime-conformance.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C52",
+      "name": "physical proof",
+      "scope": "EXTERNAL_HOST_WITNESS_REQUIRED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/physical-runtime-closure.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C53",
+      "name": "physical hardening",
+      "scope": "EXTERNAL_HOST_WITNESS_REQUIRED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/physical-runtime-closure-hardening-v1.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C54",
+      "name": "host consumption frame",
+      "scope": "EXTERNAL_HOST_WITNESS_REQUIRED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/host-consumption-frame.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C55",
+      "name": "caller prompt hardening",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/local-host-meta-prompt.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C56",
+      "name": "session prompt",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/local-host-meta-prompt.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C57",
+      "name": "host binding prompt",
+      "scope": "EXTERNAL_HOST_WITNESS_REQUIRED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/local-host-meta-prompt.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C58",
+      "name": "lifecycle gate",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/local-host-meta-prompt.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C59",
+      "name": "single composition",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/session-chat-composition.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C60",
+      "name": "Project ROM",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/project-host-rom.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C61",
+      "name": "cold producer",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/runtime-root-verified.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C62",
+      "name": "evidence runtime cut",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "contracts/evidence-runtime-cut.json",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C63",
+      "name": "parallel bridge",
+      "scope": "EXTERNAL_HOST_WITNESS_REQUIRED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "host/c63-canonical-parallel-bridge.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C64",
+      "name": "acceptance ingress",
+      "scope": "EXTERNAL_HOST_WITNESS_REQUIRED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/session-chat-composition.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C65",
+      "name": "pinned source sink",
+      "scope": "EXTERNAL_HOST_WITNESS_REQUIRED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "host/c63-canonical-parallel-bridge.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C66",
+      "name": "owner-qualified non-ACTIVE",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/session-chat-composition.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C67",
+      "name": "local recovery",
+      "scope": "CANONICAL_OR_LEGACY_NOT_INVOKED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "host/c63-canonical-parallel-bridge.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C68",
+      "name": "host acceptance hook",
+      "scope": "EXTERNAL_HOST_WITNESS_REQUIRED",
+      "observed_in_C71": false,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "host/c63-canonical-parallel-bridge.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C69",
+      "name": "experimental offer gate",
+      "scope": "EXPERIMENTAL_GATE",
+      "observed_in_C71": true,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "host/c69-capability-first-preview.mjs",
+      "anchor_is_execution_receipt": false
+    },
+    {
+      "id": "C70",
+      "name": "ephemeral compute kernels",
+      "scope": "FUNCTIONAL_CODE_EXECUTED",
+      "observed_in_C71": true,
+      "canonical_state_conferred": false,
+      "implementation_anchor": "src/c70-experimental-compute-preview.mjs",
+      "anchor_is_execution_receipt": false
+    }
+  ],
+  "anchor_semantics": "implementation_anchor documents an existing code/contract file relevant to the Cx, NEVER proofs full historic feature execution, current host callability or native integration"
+}

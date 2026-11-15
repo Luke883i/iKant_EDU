@@ -1,0 +1,68 @@
+name: Project repository review-readiness and H1 path proof
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'host/project-edu-h1-bound-port.mjs'
+      - 'contracts/project-review-readiness-v1.json'
+      - 'scripts/project-review-callsites.mjs'
+      - 'tests/project-review-readiness.test.mjs'
+      - 'tests/project-review-physical.test.mjs'
+      - 'tests/project-edu-h1-*.test.mjs'
+      - '.github/workflows/project-review-readiness.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'host/project-edu-h1-bound-port.mjs'
+      - 'contracts/project-review-readiness-v1.json'
+      - 'scripts/project-review-callsites.mjs'
+      - 'tests/project-review-readiness.test.mjs'
+      - 'tests/project-review-physical.test.mjs'
+      - 'tests/project-edu-h1-*.test.mjs'
+      - '.github/workflows/project-review-readiness.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  review-source-software-10x:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Exact source, code and governance syntax
+        run: |
+          node --check host/project-edu-h1-bound-port.mjs
+          node --check scripts/project-review-callsites.mjs
+          node -e "const x=require('./contracts/project-review-readiness-v1.json');if(x.release_domains.length!==6||x.authority!==0||x.no_new_authorities!==true||x.no_auto_promotion_between_domains!==true)process.exit(1)"
+      - name: Ten independent full-checkout software CI cycles
+        shell: bash
+        run: |
+          set -euo pipefail
+          for round in $(seq 1 10); do
+            echo "=== R6 cycle ${round} of 10 ==="
+            npm run check
+            node --test tests/project-review-readiness.test.mjs tests/project-review-physical.test.mjs tests/project-edu-h1-bound-port.test.mjs tests/project-edu-h1-original.test.mjs tests/project-edu-h1-dod-trace.test.mjs
+            node scripts/project-review-callsites.mjs > "${RUNNER_TEMP}/r6-callsite-${round}.json"
+            node --input-type=module -e "import fs from 'node:fs';let x=JSON.parse(fs.readFileSync(process.argv[1]));if(x.schema!=='ikant-host-callsite-census/v1'||x.tracked_file_count<1300||x.js_files_parsed<700||x.authority!==0)process.exit(1)" "${RUNNER_TEMP}/r6-callsite-${round}.json"
+            if [ "$round" -gt 1 ]; then
+              cmp "${RUNNER_TEMP}/r6-callsite-1.json" "${RUNNER_TEMP}/r6-callsite-${round}.json"
+            fi
+          done
+      - name: Machine-readable call-site census as review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: r6-callsite-${{ matrix.node }}-${{ github.sha }}
+          path: ${{ runner.temp }}/r6-callsite-1.json
+          retention-days: 30

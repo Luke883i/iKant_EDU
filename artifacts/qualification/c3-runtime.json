@@ -1,0 +1,172 @@
+{
+  "schema": "ikant-le-c3-runtime-qualification/v1",
+  "status": "PASS",
+  "main": {
+    "cases": 1000000,
+    "categories": {
+      "ordinary": 500000,
+      "edge": 300000,
+      "stress": 200000
+    },
+    "survivors": 0,
+    "families": {
+      "capsule_declared": {
+        "cases": 49728,
+        "kills": 49728
+      },
+      "allowed_orientation": {
+        "cases": 50314,
+        "kills": 50314
+      },
+      "pending_preserved": {
+        "cases": 49966,
+        "kills": 49966
+      },
+      "terms_freeze": {
+        "cases": 49820,
+        "kills": 49820
+      },
+      "exact_accept_after_terms": {
+        "cases": 50002,
+        "kills": 50002
+      },
+      "auto_bootstrap": {
+        "cases": 50138,
+        "kills": 50138
+      },
+      "node_same_input": {
+        "cases": 49769,
+        "kills": 49769
+      },
+      "identity_narrative": {
+        "cases": 50153,
+        "kills": 50153
+      },
+      "docx_required_contract": {
+        "cases": 50150,
+        "kills": 50150
+      },
+      "warm_zero_ceremony": {
+        "cases": 49960,
+        "kills": 49960
+      },
+      "outside_capsule_denied": {
+        "cases": 30075,
+        "kills": 30075
+      },
+      "metadata_scope": {
+        "cases": 29921,
+        "kills": 29921
+      },
+      "accept_before_terms_denied": {
+        "cases": 30025,
+        "kills": 30025
+      },
+      "old_node_false": {
+        "cases": 30064,
+        "kills": 30064
+      },
+      "probe_fail_no_active": {
+        "cases": 29551,
+        "kills": 29551
+      },
+      "terms_drift": {
+        "cases": 29943,
+        "kills": 29943
+      },
+      "engine_swap_stable": {
+        "cases": 29835,
+        "kills": 29835
+      },
+      "network_no_clone": {
+        "cases": 30258,
+        "kills": 30258
+      },
+      "node_authority_zero": {
+        "cases": 30145,
+        "kills": 30145
+      },
+      "direct_fast_path_false": {
+        "cases": 30183,
+        "kills": 30183
+      },
+      "breach_list_tree": {
+        "cases": 19985,
+        "kills": 19985
+      },
+      "breach_clone": {
+        "cases": 19922,
+        "kills": 19922
+      },
+      "breach_not_retroactive": {
+        "cases": 20160,
+        "kills": 20160
+      },
+      "retrieved_instruction_no_authority": {
+        "cases": 19784,
+        "kills": 19784
+      },
+      "surface_requires_dispatch": {
+        "cases": 19879,
+        "kills": 19879
+      },
+      "all_inputs_node": {
+        "cases": 20067,
+        "kills": 20067
+      },
+      "style_no_warrant": {
+        "cases": 19927,
+        "kills": 19927
+      },
+      "material_no_execution": {
+        "cases": 20256,
+        "kills": 20256
+      },
+      "host_precedence": {
+        "cases": 20005,
+        "kills": 20005
+      },
+      "pending_repeat_not_required": {
+        "cases": 20015,
+        "kills": 20015
+      }
+    },
+    "signature_count": 30,
+    "seed": 3405691582
+  },
+  "source_binding": {
+    "digest": "5a9970f651936508e470b61b6003a196bd839b839de60a20fe85645da4de1261",
+    "files": {
+      "TERMS.md": "7112acdbd1379ae071af58cd03e3c5904a84894103a54ed1dec9b45f9963a4e5",
+      "BOOTSTRAP.md": "eeb679e0db57523d4504ed220d4fa0de8e46f1532f10ba90950fd145a53c95b5",
+      "AGENTS.md": "b22e34566442ccea4650cfb39ae44452ae193f5f91fb16d0246acfe3bd60df87",
+      "README.md": "d7eccd6c2fa0767e9a6381364653423a6d97912a857b307d2ecfc2c5422af0c3",
+      "contracts/ikant-le.json": "3eacb98857602e85259837b002d51c52ccbac8fb5d772962b965666e83a4f1c2",
+      "contracts/cognitive-kernel.json": "517adbc79f9a2cd77c504d4ac49f15f0ce66b379d7a0fc8899639580b8685992",
+      "contracts/host-shell.json": "a910163af7c69d9460e5abcc3d2fe33c823515d69e5c1bc4dfba6bc1afdeb434",
+      "contracts/orientation-capsule.json": "b02d6b3c8e5e955bce15ecb613e3196d16087ca53a705c417b7244c4978bf9b0",
+      "src/contract.mjs": "573c8f7759e2fa06ea83cf0701ea8eedb598ddfc63ea5697839af38d9bfca761",
+      "src/state.mjs": "26271a1189bb3cee3eae9ea0609ac3e461959e2e13fafd1ea6a53c0217887fc6",
+      "src/admission.mjs": "a20b26fd28849ff1c7e224ce77c712dad31e1ef7665522460059182a0945dfc6",
+      "src/probe.mjs": "d8e302d28c89297eb5b55a4f65fa0583f437de401f7d9bcb8980da237a888177",
+      "src/cognition.mjs": "3cbf403a8b604635b21ab5cbbe910134ad4858d8abd5f996c24cb68ff8ca46d6",
+      "src/runtime.mjs": "ac6fdba634e109a205ee9d37551464b9a7eb9c067c34078185bc97031445bc51",
+      "src/backlog.mjs": "1310315efac37870a270f1b6912bff9888230a04025ad0ac74ff1c95c186418e",
+      "src/docx.mjs": "cf022f0506f810f5061a6de5392268faa79c2350b408a1e65ed864890a29a179",
+      "package.json": "5e677434a7b93ed33f9663fae8782fc9b6fc01c6836d5eaae267edf3f90d54fa",
+      "tests/runtime.test.mjs": "73d5e5511e663bcd1e983ab27a5979848ada70b09cb02c90484fb2177ef4aae5",
+      "scripts/check.mjs": "bf216898a6184b3042c3f46cb2148bd24bc952a88c9cbf4d475fd2af2d87e11a",
+      "scripts/c3-falsify.mjs": "c9f480cff0f6aa15425803a2a0da434d0c27f8c17a9790ff721525917cfec233",
+      "docs/C3_DOD.md": "0535ae8b127c6b6a3b5aa82f38e93c090284f84e5e158ee12c6e25e5ea7b7cd5",
+      ".github/workflows/ci.yml": "cdd157988aa723fa1ec3c0e26d82f693b10a562a4a54a6074322514d174b0a17"
+    }
+  },
+  "claim_boundary": {
+    "mutation_is_host_behavior_proof": false,
+    "mutation_is_model_quality_proof": false,
+    "node_receipt_is_world_truth": false,
+    "compression_is_global_minimality_proof": false
+  },
+  "unexercised": [],
+  "receipt_sha256": "fd30dc0fc53a9e8767ba32c14a1027075ff9eac9c0343ab86f8c482f692040c0"
+}

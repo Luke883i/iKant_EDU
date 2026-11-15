@@ -1,0 +1,107 @@
+{
+  "schema": "ikant-le-activation-continuation-contract/v1",
+  "slice": "C18.SAME_EPOCH_ACTIVATION_CONTINUATION",
+  "authority": 0,
+  "intent": "Allow a non-ACTIVE availability failure to complete downstream activation gates without creating a new acceptance, epoch, source root, deadline origin or remote acquisition round.",
+  "nodes": [
+    {
+      "id": "ORIGINAL_ACCEPTANCE",
+      "owns": [
+        "single consumed I ACCEPT",
+        "acceptance_event_id",
+        "immutable acceptance-origin receipt",
+        "Terms/consent binding"
+      ]
+    },
+    {
+      "id": "REMOTE_HISTORY",
+      "owns": [
+        "immutable SESSION_SOURCE_HEAD",
+        "runtime_root identity",
+        "content-addressed remote object history",
+        "remote reads/rounds",
+        "no second remote round"
+      ]
+    },
+    {
+      "id": "CONTINUATION_TIME",
+      "owns": [
+        "same-origin monotonic elapsed at resume",
+        "no elapsed regression",
+        "120000 ms ceiling"
+      ]
+    },
+    {
+      "id": "DOWNSTREAM_COMPLETION",
+      "owns": [
+        "observed byte bridge",
+        "materialization",
+        "reopen",
+        "probe",
+        "persisted/read-back ACTIVE commit"
+      ]
+    }
+  ],
+  "invariants": [
+    "recovery is not a second acceptance",
+    "epoch and source head are write-once",
+    "remote history digest is stable across bridge completion",
+    "continuation receipt binds original acceptance origin and remote history",
+    "new downstream facts may be created when actually observed but never backdated",
+    "ACTIVE requires final deadline pass from original I ACCEPT to ACTIVE commit"
+  ],
+  "receipt": {
+    "schema": "ikant-le-activation-continuation/v1",
+    "requires": [
+      "acceptance_event_id",
+      "acceptance_origin_receipt_sha256",
+      "source_head",
+      "terms_digest",
+      "remote_history_sha256",
+      "clock=MONOTONIC",
+      "observed_at_resume=true",
+      "no_new_remote_acquisition=true",
+      "elapsed_since_accept_ms",
+      "receipt_sha256"
+    ]
+  },
+  "qualification": {
+    "cases": 1000000,
+    "independent_oracle": true,
+    "nontrivial_multi_mutation_min": 500000,
+    "unsafe_active_required": 0,
+    "second_acceptance_required": 0,
+    "remote_history_drift_accepted_required": 0,
+    "deadline_reset_required": 0,
+    "deletion_false_green_each_node_min": 1,
+    "irreducible_nodes": 4
+  },
+  "dod": {
+    "local": [
+      "C18_DOD_L_ACCEPTANCE_PRESERVED",
+      "C18_DOD_L_SOURCE_PRESERVED",
+      "C18_DOD_L_REMOTE_HISTORY_BOUND",
+      "C18_DOD_L_NO_SECOND_REMOTE_ROUND",
+      "C18_DOD_L_CONTINUATION_MONOTONIC",
+      "C18_DOD_L_DOWNSTREAM_FACTS_NOT_BACKDATED",
+      "C18_DOD_L_FINAL_DEADLINE",
+      "C18_DOD_L_ACTIVE_READBACK",
+      "C18_DOD_L_1M_NONTRIVIAL"
+    ],
+    "intermediate": [
+      "C18_DOD_I_IDENTITY",
+      "C18_DOD_I_TRANSPORT_HISTORY",
+      "C18_DOD_I_TEMPORAL_CONTINUITY",
+      "C18_DOD_I_RECOVERY_EXECUTION",
+      "C18_DOD_I_QUALIFICATION"
+    ],
+    "global": "C18_DOD_GLOBAL_SAME_EPOCH_RECOVERY"
+  },
+  "claim_boundary": {
+    "semantic_mutation_is_not_physical_bridge_proof": true,
+    "recovery_does_not_imply_host_portability": true,
+    "current_host_capability_is_not_historical_evidence": true,
+    "demo_may_fail_closed_when_bridge_never_becomes_available": true,
+    "source_identity_is_folded_into_remote_history": true
+  }
+}

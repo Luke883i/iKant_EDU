@@ -1,0 +1,19 @@
+{
+  "schema": "ikant-le-c59-host-connector-container-witness/v1",
+  "source_head": "b1a2f75516fcf76ee46b4054ba46aff5c89d11bc",
+  "repository": "Luke883i/iKant_LE",
+  "object_path": "TERMS.md",
+  "source_plane": "GITHUB_CONNECTOR",
+  "source_encoding": "BASE64",
+  "source_blob_sha1": "698f58cc15af9702fe00bdee9ac6d527f3821f85",
+  "local_sink": "SESSION_CONTAINER:/tmp/ikant-terms.md",
+  "local_bytes": 2698,
+  "local_git_blob_sha1": "698f58cc15af9702fe00bdee9ac6d527f3821f85",
+  "local_sha256": "16128c9d39c2aa3453c6d5d2f0d19750af65898057dab0d04b17dd6782fba8c0",
+  "same_git_blob_sha": true,
+  "container_github_network_used": false,
+  "claim": "GitHub connector exact bytes can reach the session container and survive local decode/write/readback with the same Git blob identity; container GitHub connectivity is not required for this primitive.",
+  "claim_scope": "OBSERVED_IN_CURRENT_CHAT_HOST_ONLY",
+  "authority": 0,
+  "receipt_sha256": "3c0857c01db991bafc51982bc6e2e8aceb1beb45a99c893543e89a6775094170"
+}

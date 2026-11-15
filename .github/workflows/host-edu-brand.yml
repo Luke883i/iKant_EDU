@@ -1,0 +1,23 @@
+name: iKant EDU visual brand source qualification
+on:
+  pull_request:
+    paths:
+      - 'plugins/ikant-le-session-chat/plugin.json'
+      - 'plugins/ikant-le-session-chat/assets/**'
+      - 'plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
+      - 'host/ikant-*brand*.mjs'
+      - 'host/ikant-edu-branded-host.mjs'
+      - 'contracts/host-ikant-brand-projection-v1.json'
+      - 'tests/host-brand-icons.test.mjs'
+      - 'tests/host-edu-branded-voice.test.mjs'
+      - '.github/workflows/host-edu-brand.yml'
+  workflow_dispatch:
+jobs:
+  brand-safe-host-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/host-brand-icons.test.mjs tests/host-edu-branded-voice.test.mjs tests/p1-app-ui-contract.test.mjs tests/oneshell-thread-session.test.mjs

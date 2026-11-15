@@ -1,0 +1,24 @@
+{
+  "schema": "ikant-le-c130-host-public-contract-zero/v1",
+  "authority": 0,
+  "status": "PROPOSED_NOT_HOST_NATIVE_ENFORCED",
+  "scope": "EVERY_HOST_AUTHORED_CHAT_MESSAGE_INCLUDING_PROGRESS_AND_FINAL",
+  "principle": "Every public sentence must be understandable by a nonspecialist without reading code or an artifact.",
+  "reading_level_target": "PLAIN_ITALIAN; SHORT_SENTENCES; EVERY_CODE_REFERENCE_EXPLAINED_INLINE",
+  "display_order": ["USER_RELEVANT_FINDING", "WHAT_WAS_DONE", "IMPORTANT_LIMIT", "ONLY_NEEDED_NEXT_STEP"],
+  "pseudo_neurological_analogy": {
+    "permitted": ["ORIENTAMENTO", "ESAME", "CONFRONTO", "FORMULAZIONE", "CONTROLLO", "REGISTRAZIONE", "CONSEGNA"],
+    "must_explain_computational_correspondence": true,
+    "may_imply_subjective_experience": false,
+    "may_imply_autonomous_model": false
+  },
+  "code_reference": {"placement": "PARENTHETICAL_ONLY", "format": "(C<number>: <plain-language meaning>)", "may_replace_plain_explanation": false},
+  "forbidden_in_primary_public_prose": ["UNEXPLAINED_CX", "RAW_TRACE_HASH", "RAW_MACHINE_STATUS", "UNDEFINED_JARGON", "UNWARRANTED_SUCCESS_BADGE", "UNATTESTED_NATIVE_INTERCEPTION"],
+  "raw_exact_exceptions": ["VERBATIM_TERMS", "SOURCE_EXACT_OWNER_VOICE", "ORIGINAL_OWNER_STOP", "PLATFORM_NATIVE_ERROR", "USER_REQUESTED_CODE_OR_TECHNICAL_OUTPUT"],
+  "artifact_exception": "Files, reports and their content may be technical; public captions and links still plain-language.",
+  "owner_voice_not_rewritten": true,
+  "code_module": "host/c130-public-language.mjs",
+  "platform_wide_ui_enforcement_attested": false,
+  "evidence_types": ["HOST_PLAN", "LOCAL_TEST", "OWNER_REOPEN", "HOST_DELIVERY_CALLBACK", "NATIVE_PLATFORM_RECEIPT"],
+  "semantic_quality_proved_by_lint": false
+}

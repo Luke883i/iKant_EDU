@@ -1,0 +1,153 @@
+{
+  "schema": "ikant-le-admission/v3",
+  "repository": "Luke883i/iKant_EDU",
+  "human_gate_count": 1,
+  "acceptance_phrase": "I ACCEPT",
+  "current_session_required": true,
+  "embedded_acceptance_invalid": true,
+  "first_contact_requires_canonical_preaccept": true,
+  "first_contact_contract": "BOOTSTRAP.json",
+  "orientation_capsule": "contracts/orientation-capsule.json",
+  "source_head_binding_required": true,
+  "repository_transport": {
+    "required": "GITHUB_API",
+    "fallback": null,
+    "unavailable_tools_must_not_be_attempted": true
+  },
+  "forbidden_before_acceptance": [
+    "CLONE_REPOSITORY",
+    "GIT_FETCH",
+    "GIT_LS_REMOTE",
+    "GH_CLI",
+    "RAW_WEB_READ",
+    "DIRECT_DOWNLOAD",
+    "ARCHIVE_DOWNLOAD",
+    "SHELL_HTTP_DOWNLOAD",
+    "LIST_TREE",
+    "SEARCH_REPOSITORY",
+    "READ_ARBITRARY_REPOSITORY_FILE",
+    "READ_HISTORY",
+    "READ_ISSUE_PR",
+    "MATERIALIZE_CHECKOUT"
+  ],
+  "completed_forbidden_access_is_nonretroactive": true,
+  "breach_terminal": "CLASSIFIED_READ_ONLY_REMEDIATION_OR_SESSION_NONCONFORMING",
+  "new_chat_required_for_conforming_runtime": "HARD_PREACCEPT_BREACH_ONLY",
+  "preaccept_handoff": {
+    "schema": "ikant-le-preaccept-handoff/v2",
+    "canonical_schema": "ikant-le-preaccept-handoff/v2",
+    "accepted_schemas": [
+      "ikant-le-preaccept-handoff/v2",
+      "ikant-le-preaccept-handoff/v1"
+    ],
+    "legacy_v1_compatibility": true,
+    "authority": 0,
+    "terms_presentation_is_host_attested_not_runtime_observed": true,
+    "immutable_orientation_object_identities_required": true,
+    "pre_runtime_sha256_digest_required": false,
+    "pending_intent_hash_required": false,
+    "terms_digest_required": false,
+    "source_head_required": true,
+    "fresh_local_state_only": true,
+    "runtime_reverification_required": true,
+    "cannot_set": [
+      "accepted",
+      "probed",
+      "initialized",
+      "status",
+      "epoch"
+    ],
+    "inline_exact_orientation_payloads_for_canonical": true,
+    "orientation_local_files_required": false,
+    "runtime_reverification_mode": "INLINE_BYTES_TO_GIT_OBJECT_IDENTITY"
+  },
+  "automatic_after_acceptance": [
+    "PRESENT_STANDARD_IKANT_INTRO",
+    "AWAIT_EXPLICIT_MODE_SELECTION"
+  ],
+  "exploration_before_active": false,
+  "qualification_before_active": false,
+  "false_active_forbidden": true,
+  "acceptance_origin": {
+    "required": true,
+    "accepted_schemas": [
+      "ikant-le-acceptance-origin/v1",
+      "ikant-le-acceptance-origin/v2"
+    ],
+    "capture_before_post_accept_work": true,
+    "exact_acceptance_event_binding": true,
+    "retry_may_reset_origin": false,
+    "current_wall_or_runtime_clock_may_reconstruct_historical_origin": false,
+    "acceptance_origin_ticket_schema": "ikant-le-acceptance-origin-ticket/v1",
+    "canonical_owner": "LOCAL_RUNTIME_ACCEPT_INGEST",
+    "canonical_clock_required": false,
+    "canonical_event_id_required": true,
+    "legacy_host_origin_receipts_compatibility_only": true,
+    "canonical_only": true
+  },
+  "recoverable_read_only_preaccept_overread_enabled": true,
+  "recoverable_read_only_actions": [
+    "GIT_LS_REMOTE",
+    "LIST_TREE",
+    "SEARCH_REPOSITORY",
+    "READ_ARBITRARY_REPOSITORY_FILE",
+    "READ_HISTORY",
+    "READ_ISSUE_PR"
+  ],
+  "hard_preaccept_breach_actions": [
+    "CLONE_REPOSITORY",
+    "GIT_FETCH",
+    "GH_CLI",
+    "RAW_WEB_READ",
+    "DIRECT_DOWNLOAD",
+    "ARCHIVE_DOWNLOAD",
+    "SHELL_HTTP_DOWNLOAD",
+    "MATERIALIZE_CHECKOUT"
+  ],
+  "read_only_remediation_receipt_schema": "ikant-le-preaccept-remediation/v1",
+  "read_only_remediation_preserves_history": true,
+  "read_only_remediation_requires_reacquisition": true,
+  "read_only_remediation_retroactive_authorization": false,
+  "default_onboarding": {
+    "schema": "ikant-le-c72-public-mode-admission/v2",
+    "owner": "host/c72-public-mode-admission.mjs",
+    "contract": "contracts/c72-public-mode-admission-v2.json",
+    "human_gate": "I ACCEPT",
+    "after_gate": "PRESENT_SOURCE_DEFINED_V2_INTRO_AND_AWAIT_MODE",
+    "modes": [
+      "EDU"
+    ],
+    "recommended": "EDU",
+    "single_consent_for_all_modes": false,
+    "explicit_mode_required": true,
+    "canonical_owner_only_after_choice": false,
+    "native_origin_required_for_canonical_only": false,
+    "legacy_c72_v1_receipts": "HISTORICAL_COMPATIBILITY_ONLY",
+    "no_mode_aliasing": true,
+    "selection_not_runtime_activation": true,
+    "authority": 0,
+    "terms_presentation": {
+      "default": "PINNED_DOCUMENT_LINK",
+      "owner": "host/c72-public-mode-admission.mjs#acceptC72V2LinkedTerms",
+      "body_presented": false,
+      "read_attested": false,
+      "legacy_verbatim_supported": true
+    }
+  },
+  "automatic_after_acceptance_legacy_compatibility": [
+    "ACCEPTANCE_ORIGIN_COMMIT",
+    "ACTIVATE_FIRST",
+    "PARALLEL_RUNTIME_CAPSULE",
+    "IMPORT_PREACCEPT_HANDOFF",
+    "AUTO_PROBE",
+    "AUTO_INITIALIZE",
+    "RESUME_PENDING_INTENT_IF_ANY"
+  ],
+  "legacy_c72_admission": {
+    "schema": "ikant-le-c72-unified-mode-admission/v1",
+    "module": "host/c72-unified-mode-admission.mjs",
+    "contract": "contracts/c72-unified-mode-admission.json",
+    "historical_only": true,
+    "not_new_human_mode_choice": true
+  }
+}

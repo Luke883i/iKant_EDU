@@ -1,0 +1,113 @@
+name: P1-P7 OneShell Project release software qualification
+on:
+  pull_request:
+    paths:
+      - 'project/oneshell-v7/**'
+      - 'contracts/p1-p7-*'
+      - 'contracts/p3p7-*'
+      - 'contracts/oneshell-40-product-ci.json'
+      - 'docs/ONESHell_HOST_40_ISSUES.csv'
+      - 'scripts/oneshell-ci-product-alignment.mjs'
+      - 'tests/oneshell-ci-product-alignment.test.mjs'
+      - 'tests/oneshell-human-ux.test.mjs'
+      - 'tests/oneshell-identity-prewrite.test.mjs'
+      - 'host/p1-*'
+      - 'plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
+      - 'plugins/ikant-le-session-chat/server/server.mjs'
+      - 'host/c135-edu-v2-owner.mjs'
+      - 'host/s02-edu-versioned-consumer.mjs'
+      - 'scripts/host-*'
+      - 'tests/host-handoff-*'
+      - 'tests/oneshell-*'
+      - 'docs/ONESHell_*'
+      - 'docs/ONESHELL_THREAD_SESSION_V1.md'
+      - 'host/oneshell-thread-session.mjs'
+      - 'host/p3p7-*'
+      - 'scripts/p1p7-*'
+      - 'scripts/p2-build-*'
+      - 'tests/p1-*'
+      - 'tests/p0-*'
+      - 'scripts/p0p1-*'
+      - 'contracts/seeded/p0p1-*'
+      - 'contracts/p0p1-*'
+      - 'host/p0-*'
+      - 'tests/fixtures/epochs/p1-composite-epoch/**'
+      - 'scripts/p1-stage-composite-epoch.mjs'
+      - 'host/c114-ontology-language-policy.mjs'
+      - 'host/c107-host-language-port.mjs'
+      - 'tests/p2-*'
+      - 'tests/p3p7-*'
+      - '.github/workflows/p1-p7-oneshell-release.yml'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  candidate-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Runtime-root exactness
+        run: npm run runtime-root:verify
+      - name: Exact repository source and local annex/owner boundaries
+        run: |
+          node --test --test-concurrency=1 tests/p1-semantic-annex.test.mjs tests/p2-project-release.test.mjs tests/p3p7-witness-boundary.test.mjs tests/p1p7-contract.test.mjs
+      - name: One hundred original-owner local restart scenarios and offline source transfer
+        shell: bash
+        run: |
+          set -o pipefail
+          node --test --test-concurrency=1 tests/p1-human-language.test.mjs tests/p1-privacy-envelope.test.mjs tests/oneshell-human-ux.test.mjs tests/p1-first-run-100.test.mjs tests/s02-edu-v2-original-owner-e2e.test.mjs 2>&1 | tee "$RUNNER_TEMP/p1-original-tests.log"
+          PYTHONDONTWRITEBYTECODE=1 python3 tests/host-handoff-rehydrate.test.py 2>&1 | tee "$RUNNER_TEMP/p1-original-python.log"
+      - name: Capture P1 owner test error detail
+        if: ${{ failure() }}
+        id: p1_detail
+        run: node scripts/ci-failure-annotations.mjs first-detail tap "$RUNNER_TEMP/p1-original-tests.log" first_detail
+      - name: "P1 owner assertion detail [${{ steps.p1_detail.outputs.first_detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; original owner and offline transfer tests remain blocking"
+      - name: Product CI alignment with 40 requirements and fail-closed negative mutants
+        run: |
+          node --test tests/oneshell-ci-product-alignment.test.mjs tests/oneshell-identity-prewrite.test.mjs tests/c72-public-mode-admission.test.mjs tests/s02-unknown-delivery-stop.test.mjs tests/s03-host-slides.test.mjs tests/s07-connection-gate.test.mjs tests/s09-readiness.test.mjs
+          node scripts/oneshell-ci-product-alignment.mjs --json
+      - name: OneShell six-slot app, original owner, 10M semantic mutations
+        run: |
+          node --test tests/p1-app-exclusive-shell.test.mjs tests/p1-app-ui-contract.test.mjs tests/oneshell-thread-session.test.mjs tests/p1-postmode-source-handoff.test.mjs tests/c54-host-materialization.test.mjs
+          node scripts/p1-app-shell-falsify.mjs 10000000
+      - name: One million synthetic protocol mutations; 10k composite checks
+        run: node scripts/p1p7-closure-falsify.mjs 1000000
+      - name: P0/P1 original owner and ontology regression tests
+        run: node --test tests/p0-first-run-handoff.test.mjs tests/p0-thread-panel-readiness.test.mjs tests/p1-composite-ontology-route.test.mjs tests/c134-cognitive-epoch.test.mjs tests/c114-ontology-language.test.mjs
+      - name: P0/P1 deterministic four-contract selection
+        run: |
+          node scripts/p0p1-select-contracts.mjs > "$RUNNER_TEMP/p0p1-contracts.json"
+          cmp "$RUNNER_TEMP/p0p1-contracts.json" contracts/p0p1-100-selection.json
+      - name: P0/P1 one million owner policy oracles must execute without violations
+        run: node scripts/p0p1-seeded-falsify.mjs > "$RUNNER_TEMP/p0p1-1m.json"
+      - name: P0/P1 one million exact baseline receipt bytes
+        run: cmp "$RUNNER_TEMP/p0p1-1m.json" artifacts/qualification/p0p1-1m-seeded.json
+      - name: Deterministic Project builds, source-bound and NON-INSTALLED
+        shell: bash
+        run: |
+          set -euo pipefail
+          SHA="$(git rev-parse HEAD)"
+          TREE="$(git rev-parse 'HEAD^{tree}')"
+          python3 scripts/p2-build-oneshell-release.py build --out "$RUNNER_TEMP/oneshell-a" --expected-commit "$SHA" --expected-tree "$TREE"
+          python3 scripts/p2-build-oneshell-release.py build --out "$RUNNER_TEMP/oneshell-b" --expected-commit "$SHA" --expected-tree "$TREE"
+          cmp "$RUNNER_TEMP/oneshell-a/ONESHELL_PROJECT_V7.zip" "$RUNNER_TEMP/oneshell-b/ONESHELL_PROJECT_V7.zip"
+          cmp "$RUNNER_TEMP/oneshell-a/PROMPT_INNESCO.txt" "$RUNNER_TEMP/oneshell-b/PROMPT_INNESCO.txt"
+          cmp "$RUNNER_TEMP/oneshell-a/INSTALLAZIONE.md" "$RUNNER_TEMP/oneshell-b/INSTALLAZIONE.md"
+          python3 scripts/p2-build-oneshell-release.py verify --out "$RUNNER_TEMP/oneshell-a" --expected-commit "$SHA" --expected-tree "$TREE"
+      - name: Upload source-locked candidate, not ChatGPT plugin or deployed Project
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-oneshell-v7-candidate-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/oneshell-a/ONESHELL_PROJECT_V7.zip
+            ${{ runner.temp }}/oneshell-a/PROMPT_INNESCO.txt
+            ${{ runner.temp }}/oneshell-a/INSTALLAZIONE.md
+          if-no-files-found: error

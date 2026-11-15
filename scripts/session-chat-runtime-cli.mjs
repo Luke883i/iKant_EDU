@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {deploySessionChatRuntime,ensureSessionChatDeployment,openDeployedSession,acceptDeployedSession,runDeployedSessionTurn,acceptDeployedLimitedSession,runDeployedLimitedSessionTurn} from '../src/session-chat-deployment.mjs';
+const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const DEPLOY=path.resolve(process.env.IKANT_LE_DEPLOYMENT_ROOT||path.join(ROOT,'.ikant-le-deployed'));
+const op=String(process.argv[2]||''),payload=JSON.parse(fs.readFileSync(0,'utf8')||'{}');let out;
+if(op==='deploy')out=deploySessionChatRuntime({workspace:ROOT,deploymentRoot:DEPLOY,sourceHead:payload.source_head||null,deploymentId:payload.deployment_id||null});
+else if(op==='ensure')out=ensureSessionChatDeployment({workspace:ROOT,deploymentRoot:DEPLOY});
+else if(op==='open')out=openDeployedSession({deploymentRoot:DEPLOY,sessionId:payload.session_id});
+else if(op==='accept')out=await acceptDeployedSession({deploymentRoot:DEPLOY,sessionId:payload.session_id,humanInput:payload.human_input,pendingIntent:payload.pending_intent||'inizializza iKant_LE'});
+else if(op==='turn')out=await runDeployedSessionTurn({deploymentRoot:DEPLOY,sessionId:payload.session_id,input:payload.input});
+else if(op==='accept-limited')out=await acceptDeployedLimitedSession({deploymentRoot:DEPLOY,sessionId:payload.session_id,humanInput:payload.human_input,pendingIntent:payload.pending_intent||'inizializza iKant_LE'});
+else if(op==='limited-turn')out=await runDeployedLimitedSessionTurn({deploymentRoot:DEPLOY,sessionId:payload.session_id,input:payload.input,candidate:payload.candidate});
+else throw new Error('unknown session-chat runtime operation');
+process.stdout.write(JSON.stringify(out)+'\n');

@@ -1,0 +1,757 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+  "source_main": "f90630bf3ae1ee270671fd4c964a41f8d6b65b9a",
+  "scope": "HOST_ENGINEERING_POSTRENAME_PE_SINGLE_PATH_GATE",
+  "original_owners_unchanged": true,
+  "owner_effects_executed": false,
+  "native_provider_attested": false,
+  "merge_approval_claimed": false,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "contracts/project-postrename-pe-single-path.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Host-only postrename PE first-edge inspection, no original consent/owner/receipt changes",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-pe-single-path-audit.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Host-only postrename PE first-edge inspection, no original consent/owner/receipt changes",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-pe-single-path-audit.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Fail-closed source proof tests without owner or provider authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": "governance/changes/zzzzzzzz-pe-single-path-postrename.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Host-only postrename PE first-edge inspection, no original consent/owner/receipt changes",
+      "deletion_authorized": false
+    },
+    {
+      "path": "BOOTSTRAP.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "ADMISSION.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/c72-public-mode-admission-v2.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
+    },
+    {
+      "path": "contracts/orientation-capsule.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false
+    },
+    {
+      "path": "src/first-contact.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "src/admission.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "src/runtime-root-verified.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "host/c72-public-mode-admission.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
+    },
+    {
+      "path": "host/project-c72-coldstart-seed.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzz-rename-phase-install.json",
+      "supersedes_source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad"
+    },
+    {
+      "path": "runtime-root/shard-000.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "runtime-root/shard-004.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "runtime-root/shard-006.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source identity migration using original owner code and deterministic original runtime-root regeneration",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/first-contact.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/rename-sourcebound-cutover.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "tests/repository-rename-s01-s03.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/z-rename-s01-s03.json",
+      "supersedes_source_main": "fe839ed8de75da1467fbd095bb5d88af1589dc44"
+    },
+    {
+      "path": "tests/repository-rename-2dim.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/z-rename-2dim.json",
+      "supersedes_source_main": "1de5b51a2578e31547e4ef98e7d35d55926d05a3"
+    },
+    {
+      "path": "tests/project-c72-preaccept-gate.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-coldstart-seed.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-coldstart-to-edu.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-postaccept-reentry.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-current test assertion migrated from historical source name; original invalid-event/old-name negatives preserved",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/rename-source-cutover-gate.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename CANDIDATE binds one observed NEW repository ID/name; historical MAIN_PRE remains OLD, never claim provider/owner",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "tests/rename-source-cutover-gate.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Requalify strict candidate source gate positive/negative at administrative postrename repository name",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "project/session-chat/PROMPT.txt",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Tie source-bound Project prompt to renamed main and original PE D1-D3 bridge without claiming an installed Host port",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    },
+    {
+      "path": "src/bootstrap-semantic.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-c72-host-recovery.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-c72-physical-ingress.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-c72-negative-entry.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-edu-h1-bound-port.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-host-effect-decision.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-c72-verified-staging.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-oneshell-continuous-cli.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/c63-canonical-parallel-bridge.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/host-shell.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/ikant-le.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "runtime-root/shard-005.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Exact canonical repository switch to the same GitHub ID in original validated source path; original owner, readback and replay rules retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c6-enduser-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate historical positive first-contact fuzz inputs to iKant_EDU; preserve explicit old-name negatives and original admission gates",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c7-doc-api-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate historical positive first-contact fuzz inputs to iKant_EDU; preserve explicit old-name negatives and original admission gates",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/check.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate historical positive first-contact fuzz inputs to iKant_EDU; preserve explicit old-name negatives and original admission gates",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-edu-h1-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-c72-e16-unified-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-h1-bound-port.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-h1-original.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-e16-unified-ingress.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-e16-unified-original.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-verified-staging.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-verified-staging-edu.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-physical-ingress.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-portable-bridge.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind H1/E16/C72 positive witness, REST fixture and falsifier to observed postrename iKant_EDU; preserve old-name negative check",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c14-chat-bootstrap-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c42-bootstrap-ontological-closure-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c43-bootstrap-recovery-hardening-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c59-canonical-authority-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c62-evidence-runtime-cut-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-host-effect-falsify-1m.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-host-tool-grounding-falsify-100k.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c58-runtime-lifecycle-gate-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Postrename source-positive qualification input migration; retain negative/historical distinction and owner boundaries",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-recovery-10k.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-staged-ingress.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-cold-mode.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-receipt-transit.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-c72-host-assisted-local-file.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-host-tool-grounding.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-onezip-full-source-transport.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-oneshell-e15-sterile.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace source-positive C72/Host witness fixture by actual postrename canonical URL; no owner or receipt bypass",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c42-bootstrap-ontological-closure.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c43-bootstrap-recovery-hardening.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c62-evidence-runtime-cut.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/session-chat-fastboot.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/fastboot.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c33-post-187-closure.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c34-pre-runtime-handoff.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c59-runtime-dominator.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Migrate original-source-positive bootstrap C42/C43/C62 and runtime regression fixtures; historical negative behavior retained separately",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/host-rehydrate-source-zip.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/test_project_manual_full_head.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-edu-zip-tree.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/project-manual-source.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-edu-complete-chain.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-oneshell-full-source.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/test_edu_zip_tree.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/test_project_manual_source.py",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Repair original ZIP transport prefix to observed renamed repository and its source-positive tests; anti traversal/symlink/hash gates retained",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/bootstrap-fixture.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Close C17-C20 postrename source-positive regression without relaxing original C72: copy C72 contract into legacy physical runtime and read back",
+      "deletion_authorized": false
+    },
+    {
+      "path": "src/session-chat-deployment.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Close C17-C20 postrename source-positive regression without relaxing original C72: copy C72 contract into legacy physical runtime and read back",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c20-session-chat-deployment.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Close C17-C20 postrename source-positive regression without relaxing original C72: copy C72 contract into legacy physical runtime and read back",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/project-bootstrap-d123.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zz-v5g-bootstrap-d123.json",
+      "supersedes_source_main": "4145d932fb291872aafe19dcd72298d16c2785c6"
+    },
+    {
+      "path": "tests/project-pe-retrograde.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzzz-pe-retrograde-after213.json",
+      "supersedes_source_main": "36b12b72b8cc9e07bb8faff9410e0f92ba60191f"
+    },
+    {
+      "path": "tests/c61-cold-producer.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c109-chat-shell.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/c109-chat-shell.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "host/project-oneshell-phases.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/project-host-rom.json",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/c59-project-host-rom.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind live source-positive C61/PE/C109 Host navigation and original host ROM contract to the observed renamed repository; preserve historical paths",
+      "deletion_authorized": false
+    },
+    {
+      "path": "src/local-host-meta-prompt.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/LOCAL_HOST_META_PROMPT.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/local-host-meta-prompt.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c55-local-host-post-meta-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/c56-local-host-session-meta-falsify.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Align Host local meta-prompt original renderer, derived document and C55/C56 qualification to postrename source without new authority",
+      "deletion_authorized": false
+    },
+    {
+      "path": ".github/workflows/project-session-repo-first.yml",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Rebind observed GitHub repository ID/name CANDIDATE assertion to postrename source; keep no-owner/no-provider/no-rename-go gates unchanged",
+      "deletion_authorized": false,
+      "supersedes_register": "governance/changes/zzzzzz-rename-sourcebound.json",
+      "supersedes_source_main": "9bd10899f1fe3d35c9b25efda6fbe8d72abc9a31"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+const C=JSON.parse(fs.readFileSync('contracts/session-chat-composition-channel.json','utf8')),m=C.mechanisms;
+let s=0xC59A11CE>>>0;const rnd=()=>{s^=s<<13;s^=s>>>17;s^=s<<5;return s>>>0};
+const F=['GOOD','PARALLEL_KERNEL','SOURCE_DRIFT','API_DOWN','CONTAINER_DNS_DOWN','MODEL_REWRITE','PARTIAL_SET','READBACK_MISMATCH','CHAT_RETRY','LEGACY_LAUNDER','NO_EXEC_PROOF','NO_ACTIVE_READBACK','CROSS_EPOCH'];
+const counts=Object.fromEntries(F.map(x=>[x,0])),kills=Object.fromEntries(m.map(x=>[x,0]));
+function q(f){const x={parallel:false,source:true,api:true,dns:true,opaque:true,complete:true,readback:true,typed:true,legacy:false,exec:true,active:true,epoch:true};if(f==='PARALLEL_KERNEL')x.parallel=true;if(f==='SOURCE_DRIFT')x.source=false;if(f==='API_DOWN')x.api=false;if(f==='CONTAINER_DNS_DOWN')x.dns=false;if(f==='MODEL_REWRITE')x.opaque=false;if(f==='PARTIAL_SET')x.complete=false;if(f==='READBACK_MISMATCH')x.readback=false;if(f==='CHAT_RETRY')x.typed=false;if(f==='LEGACY_LAUNDER')x.legacy=true;if(f==='NO_EXEC_PROOF')x.exec=false;if(f==='NO_ACTIVE_READBACK')x.active=false;if(f==='CROSS_EPOCH')x.epoch=false;return x}
+function ref(x){return !x.parallel&&x.source&&x.api&&x.opaque&&x.complete&&x.readback&&x.typed&&!x.legacy&&x.exec&&x.active&&x.epoch}
+function cand(x,set){if(set.has(m[0])&&x.parallel)return false;if(set.has(m[1])&&!x.source)return false;if(set.has(m[2])&&!x.api)return false;if(set.has(m[3])&&!x.opaque)return false;if(set.has(m[4])&&!x.complete)return false;if(set.has(m[5])&&!x.readback)return false;if(set.has(m[6])&&(!x.typed||!x.epoch))return false;if(set.has(m[7])&&x.legacy)return false;if(set.has(m[8])&&!x.exec)return false;if(set.has(m[9])&&!x.active)return false;return true}
+let mismatch=0,unsafe=0,good=0;const full=new Set(m);
+for(let i=0;i<100000;i++){const f=F[i%F.length];counts[f]++;const x=q(f),r=ref(x),a=cand(x,full);if(r)good++;if(a!==r)mismatch++;if(a&&!r)unsafe++;for(let d=0;d<m.length;d++){const z=new Set(m.filter((_,j)=>j!==d));if(cand(x,z)!==r)kills[m[d]]++}}
+const out={schema:'ikant-le-c59-falsification/v1',cases:100000,family_count:F.length,family_counts:counts,good_path_cases:good,candidate_oracle_mismatches:mismatch,unsafe_active:unsafe,all_deletion_mutants_killed:Object.values(kills).every(x=>x>0),deletion_mutant_mismatches:kills,status:mismatch===0&&unsafe===0&&good>0&&Object.values(kills).every(x=>x>0)?'PASS':'FAIL'};
+console.log(JSON.stringify(out,null,2));if(out.status!=='PASS')process.exitCode=1;

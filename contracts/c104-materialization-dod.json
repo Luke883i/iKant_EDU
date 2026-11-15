@@ -1,0 +1,52 @@
+{
+  "schema": "ikant-le-c104-materialization-dod/v1",
+  "authority": 0,
+  "scope": "POST_C72_EXPERIMENTAL_RESUMABLE_SOURCE_ACQUISITION",
+  "head_binding": "EXACT_FROZEN_SOURCE_HEAD_FROM_CURRENT_SESSION_NOT_REPINNED",
+  "source_manifest": "C77_ORIGINAL_BUILDER_SOURCE_PATHS_PLUS_C71_ANCHOR_UNION_AT_HEAD",
+  "preferred_carrier_order": [
+    "EXACT_HEAD_VERIFIED_C77_ARTIFACT_C94_C95",
+    "EXISTING_C96_PARALLEL_MEMBER_CARRIER",
+    "C104_RESUMABLE_SOURCE_MEMBER_PORT",
+    "EXPLICIT_HUMAN_FILE_HANDOFF"
+  ],
+  "only_new_capability": "RESUMABLE_VERIFIED_MEMBER_CACHE_AND_MACHINE_NEXT",
+  "phase_invariant": {
+    "incomplete": "SOURCE_MATERIALIZATION",
+    "source_bytes_100_percent": "ORIGINAL_C77_C81_QUALIFICATION_PENDING",
+    "cognitive": "AFTER_ACTUAL_ORIGINAL_KERNEL_EXECUTION_AND_READBACK_ONLY"
+  },
+  "vetoes": [
+    "NO_IMPLICIT_HOST_HOOK",
+    "NO_RETRY_SAME_FAILED_ROUTE_WITHOUT_NEW_EVIDENCE",
+    "NO_PROMOTION_FROM_GITHUB_ARTIFACT_METADATA",
+    "NO_NEAR_100_PERCENT_EARLY_FINISH",
+    "NO_FAKE_SOURCE_ORIGIN",
+    "NO_UNATTESTED_USER_EVENT",
+    "NO_SENSITIVE_LEDGER",
+    "NO_CANONICAL_FALLBACK",
+    "NO_ADDITIONAL_OWNER_OR_WRITER"
+  ],
+  "monitor": {
+    "return_exact_missing_list": true,
+    "cache_check": "REOPEN_GIT_BLOB_SHA1_AND_SIZE",
+    "progress_derived_not_model_authored": true,
+    "concurrency_bound": 12,
+    "stopped_model_is_not_terminal_state": true,
+    "source_cache_not_runtime": true
+  },
+  "required_evidence": [
+    "C72_REAL_EXP_SELECTION",
+    "SOURCE_SPEC_SHA256",
+    "PER_MEMBER_GIT_BLOB_MATCH",
+    "INDEPENDENT_FILE_REOPEN",
+    "ZERO_MISSING",
+    "ORIGINAL_C77_BUILDER",
+    "ORIGINAL_KERNEL_C70_C71_READBACK"
+  ],
+  "field_chatgpt_auto_install_attested": false,
+  "native_per_turn_dispatch_attested": false,
+  "host_adapter_is_required_to_physically_transfer_bytes": true,
+  "post_source_runtime_contract": "ACTUAL_C77_COMPUTE_THEN_C101_C102_C87_READBACK_AND_EXISTING_C103_MINIMUM_VERIFIER",
+  "c103_envelope_pass_only_structural": true
+}

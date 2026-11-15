@@ -1,0 +1,92 @@
+{
+  "schema": "ikant-le-edu-host-what-how-v2/v1",
+  "authority": 0,
+  "decision": "EDU_HOSTBOUND_ONLY",
+  "historical_gold": [
+    "C103",
+    "PR118_P01_P04",
+    "C78_OPAQUE_RELAY"
+  ],
+  "no_receipt_migration": "C72_V1_EXPERIMENTAL_NEVER_RELABELED_V2_EDU",
+  "phases": [
+    {
+      "id": "FIRST",
+      "human": "ANY_FIRST_MESSAGE",
+      "what": "HEAD_PLUS_FIVE_PINNED_BLOB_SHA_TERMS_LINK",
+      "how": "HOST_GITHUB_API_ONLY",
+      "must_stop": true
+    },
+    {
+      "id": "ACCEPT",
+      "human": "LATER_EXACT_I_ACCEPT",
+      "what": "ORIGINAL_C72_V2_ACCEPTED_AND_FULL_INTRO",
+      "how": "ACTUAL_HOST_BYTES_TO_NODE_COLD_SEED",
+      "must_stop": true
+    },
+    {
+      "id": "MODE",
+      "human": "LATER_EXACT_EDU",
+      "what": "ORIGINAL_C72_V2_EDU_SELECTION",
+      "how": "REACQUIRE_OR_KEEP_VERIFIED_TWO_C72_FILES_AND_NODE_EXEC",
+      "must_stop": true
+    },
+    {
+      "id": "MANUAL_SOURCE",
+      "human": "ZIP_UPLOAD_AFTER_EDU",
+      "what": "PINNED_FULL_REPO_TREE_BLOB_AND_LOADER_READBACK",
+      "how": "EXPLICIT_MANUAL_POST_EDU_PROFILE",
+      "must_stop": false
+    },
+    {
+      "id": "COHOST",
+      "human": "NEW_INPUTS",
+      "what": "ONE_C135_SESSION_C87_SINGLE_WRITER_C125_S03_SAME_TURN",
+      "how": "CALLABLE_HOST_LANGUAGE_PORT_AND_LIVE_NODE",
+      "must_stop": false
+    }
+  ],
+  "invariants": {
+    "gate_order": "FIRST_ACCEPT_MODE_MANUAL_SOURCE_COHOST",
+    "before_accept": "NO_TREE_NO_GATEWAY_DOWNLOAD_NO_EXTRA_FILES",
+    "before_mode": "NO_FULL_EDU_ZIP_MANDATE",
+    "acceptance": "EXACT_ORIGINAL_C72_RECEIPT_AND_INTRO_NOT_RECONSTRUCTED",
+    "mode": "TWO_ORIGINAL_SOURCE_FILES_STAGED_FROM_VERIFIED_PACKET_NO_CI_CHECKOUT_DEPENDENCY",
+    "manual": "HUMAN_EXPLICIT_ZIP_CHOICE_IS_TRANSPORT_ONLY_NOT_C72_CONSENT",
+    "source": "PINNED_GITHUB_TREE_API_AND_GIT_BLOB_SHA1_AND_LOCAL_READBACK",
+    "runtime": "REAL_C135_LANGUAGE_PORT_NONCE_C87_C125_S03_AND_SAME_LIVE_INSTANCE",
+    "ontology": "NO_CANONICAL_ACTIVE_NO_NATIVE_EVENT_PROOF_NO_FAKE_VOICE",
+    "failure": "FIRST_EDGE_NO_OWNER_REPLAY_AFTER_UNKNOWN"
+  },
+  "fallback": {
+    "default": "AUTOMATIC_WHEN_OBSERVED",
+    "optional": "EXPLICIT_MANUAL_POST_EDU",
+    "manual_only_after_valid_edu": true,
+    "manual_never_enters_c72_preaccept": true
+  },
+  "proof_layers": [
+    "SEMANTIC_SIMULATION",
+    "ORIGINAL_NODE_EXECUTION",
+    "ACTUAL_HOST_CARRIER",
+    "ACTUAL_EDU_TURN",
+    "NATIVE_DELIVERY"
+  ],
+  "release_minimum": "ORIGINAL_NODE_EXECUTION_PLUS_FIELD_HOST_CARRIER_AND_THREE_TURNS",
+  "current_product_claim": "FIELD_NOT_ATTESTED",
+  "host_effect_contract": {
+    "what": [
+      "FIRST_HEAD_AND_FIVE_SHA",
+      "REAL_NEW_I_ACCEPT",
+      "PINNED_GITHUB_BYTES_WRITTEN_IN_NODE_REOPENED",
+      "ORIGINAL_C72_V2_ACCEPTED_INTRO",
+      "LATER_ORIGINAL_EDU_RECEIPT",
+      "MANUAL_ZIP_GIT_TREE_AND_NODE_LOADER",
+      "SAME_LIVE_C135_THREE_TURNS_C87_C125_S03"
+    ],
+    "how": "HOST_ANY_AUTHORIZED_ACTUALLY_CALLABLE_TRANSPORT_NO_DNS_ASSUMPTION",
+    "requires_observed_bridge": true,
+    "ci_not_field_proof": true,
+    "unknown_must_stop": true
+  },
+  "manual_default": "EXPLICIT_MANUAL_POST_EDU_IF_SOURCE_ABSENT_AND_NODE_EXTRACTOR_READY",
+  "field_release_claim": "PRODUCT_NO_GO_UNTIL_SEPARATE_HUMAN_TURN_NATIVE_HOST_WITNESSES"
+}

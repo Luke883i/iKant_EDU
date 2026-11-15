@@ -1,0 +1,231 @@
+{
+  "schema": "ikant-pr2-dod-of-dod/v1",
+  "baseline_main": "4f2e778a1c64c7df5868ac22e431c62c44f2188a",
+  "original_64_registry": "contracts/pr1-64-coverage.v1.json",
+  "original_64_count": 64,
+  "pr2_19_count": 19,
+  "threshold_99_percent": 64,
+  "noncompensatory": true,
+  "unknown_never_pass": true,
+  "product_go": false,
+  "native_provider_attested": false,
+  "security_review_attested": false,
+  "definition": {
+    "abstract": "A DoD is closed only by independent observation of the target condition, with a falsifier that rejects the opposite condition; a proof description is not the proof.",
+    "global": "All 64 previously enumerated obligations retain unique ownership; >=99% real closure means 64/64 verified, not 64/64 assigned.",
+    "intermediate": "Each runtime surface has a source-bound predicate, causal event/operation, readback, negative case, exact HEAD and evidence trust tier.",
+    "local": "Each obligation has observable byte/event, distinct oracle, bounded negative mutation, signed or authenticated provenance level, and PASS/BLOCKED/OPEN; no self-claim as success."
+  },
+  "evidence_status": "NOT_YET_QUALIFIED_BY_DECLARATION",
+  "rules": [
+    {
+      "id": "P03",
+      "domain": "PROJECT",
+      "path": "tests/project-c72-coldstart-to-edu.test.mjs",
+      "predicate": "ORIENTATION_PREACCEPT",
+      "requiredTier": "LOCAL_OWNER_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed ORIENTATION_PREACCEPT witness; validator must reject or declassify."
+    },
+    {
+      "id": "P04",
+      "domain": "PROJECT",
+      "path": "tests/c72-public-mode-admission.test.mjs",
+      "predicate": "DISTINCT_I_ACCEPT",
+      "requiredTier": "LOCAL_OWNER_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed DISTINCT_I_ACCEPT witness; validator must reject or declassify."
+    },
+    {
+      "id": "P05",
+      "domain": "PROJECT",
+      "path": "tests/project-c72-coldstart-to-edu.test.mjs",
+      "predicate": "SEPARATE_EDU_SELECTION",
+      "requiredTier": "LOCAL_OWNER_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed SEPARATE_EDU_SELECTION witness; validator must reject or declassify."
+    },
+    {
+      "id": "P06",
+      "domain": "PROJECT",
+      "path": "tests/project-oneshell-continuous.test.mjs",
+      "predicate": "NO_VOICE_WITHOUT_OWNER",
+      "requiredTier": "LOCAL_OWNER_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed NO_VOICE_WITHOUT_OWNER witness; validator must reject or declassify."
+    },
+    {
+      "id": "P07",
+      "domain": "PROJECT",
+      "path": "tests/project-oneshell-continuous.test.mjs",
+      "predicate": "C72_C135_C87_C125_CHAIN",
+      "requiredTier": "LOCAL_OWNER_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed C72_C135_C87_C125_CHAIN witness; validator must reject or declassify."
+    },
+    {
+      "id": "P08",
+      "domain": "PROJECT",
+      "path": "tests/project-oneshell-continuous.test.mjs",
+      "predicate": "LEDGER_REOPEN_AND_REPLAY_DENIAL",
+      "requiredTier": "LOCAL_OWNER_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed LEDGER_REOPEN_AND_REPLAY_DENIAL witness; validator must reject or declassify."
+    },
+    {
+      "id": "M03",
+      "domain": "MCP",
+      "path": "tests/s06-mcp-transport-security.test.mjs",
+      "predicate": "JWT_JWKS_CONFIG",
+      "requiredTier": "LOCAL_POLICY_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed JWT_JWKS_CONFIG witness; validator must reject or declassify."
+    },
+    {
+      "id": "M04",
+      "domain": "MCP",
+      "path": "tests/mcp-standalone-runtime-assurance.test.mjs",
+      "predicate": "READ_WRITE_SCOPE_SEPARATION",
+      "requiredTier": "LOCAL_POLICY_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed READ_WRITE_SCOPE_SEPARATION witness; validator must reject or declassify."
+    },
+    {
+      "id": "M05",
+      "domain": "MCP",
+      "path": "tests/mcp-standalone-http-qualification.probe.mjs",
+      "predicate": "ACTUAL_HTTP_ANONYMOUS_401",
+      "requiredTier": "SDK_DEPENDENT_HTTP",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed ACTUAL_HTTP_ANONYMOUS_401 witness; validator must reject or declassify."
+    },
+    {
+      "id": "M06",
+      "domain": "MCP",
+      "path": "tests/mcp-standalone-runtime-assurance.test.mjs",
+      "predicate": "UNKNOWN_WRITE_NO_RETRY",
+      "requiredTier": "LOCAL_PROCESS_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed UNKNOWN_WRITE_NO_RETRY witness; validator must reject or declassify."
+    },
+    {
+      "id": "M07",
+      "domain": "MCP",
+      "path": "tests/mcp-standalone-http-qualification.probe.mjs",
+      "predicate": "SDK_HTTP_INITIALIZE_TOOLS",
+      "requiredTier": "SDK_DEPENDENT_HTTP",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed SDK_HTTP_INITIALIZE_TOOLS witness; validator must reject or declassify."
+    },
+    {
+      "id": "M08",
+      "domain": "MCP",
+      "path": "plugins/ikant-le-session-chat/server/server.mjs",
+      "predicate": "PERSISTENCE_ACROSS_SERVER_RESTART",
+      "requiredTier": "RESTART_NOT_COVERED",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed PERSISTENCE_ACROSS_SERVER_RESTART witness; validator must reject or declassify."
+    },
+    {
+      "id": "T01",
+      "domain": "RUNTIME",
+      "path": "package.json",
+      "predicate": "FULL_NODE_SUITE_EXACT_HEAD",
+      "requiredTier": "CI_EXACT_HEAD_REQUIRED",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed FULL_NODE_SUITE_EXACT_HEAD witness; validator must reject or declassify."
+    },
+    {
+      "id": "T02",
+      "domain": "RUNTIME",
+      "path": "scripts/check.mjs",
+      "predicate": "ORIGINAL_CHECK_CHAIN",
+      "requiredTier": "CI_EXACT_HEAD_REQUIRED",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed ORIGINAL_CHECK_CHAIN witness; validator must reject or declassify."
+    },
+    {
+      "id": "T03",
+      "domain": "RUNTIME",
+      "path": "scripts/runtime-root.mjs",
+      "predicate": "RUNTIME_ROOT_ORIGINAL",
+      "requiredTier": "CI_EXACT_HEAD_REQUIRED",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed RUNTIME_ROOT_ORIGINAL witness; validator must reject or declassify."
+    },
+    {
+      "id": "T04",
+      "domain": "RUNTIME",
+      "path": "tests/project-oneshell-continuous.test.mjs",
+      "predicate": "TWO_OWNER_TURNS_AND_READBACK",
+      "requiredTier": "LOCAL_OWNER_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed TWO_OWNER_TURNS_AND_READBACK witness; validator must reject or declassify."
+    },
+    {
+      "id": "T06",
+      "domain": "RUNTIME",
+      "path": "src/cognition-core.mjs",
+      "predicate": "PARAPHRASE_INVARIANCE",
+      "requiredTier": "UNRESOLVED_COUNTEREXAMPLE",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed PARAPHRASE_INVARIANCE witness; validator must reject or declassify."
+    },
+    {
+      "id": "T08",
+      "domain": "RUNTIME",
+      "path": "tests/project-oneshell-continuous.test.mjs",
+      "predicate": "EVENT_RECEIPT_ORDER_AND_SOURCE",
+      "requiredTier": "LOCAL_OWNER_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed EVENT_RECEIPT_ORDER_AND_SOURCE witness; validator must reject or declassify."
+    },
+    {
+      "id": "T09",
+      "domain": "RUNTIME",
+      "path": "tests/project-oneshell-continuous.test.mjs",
+      "predicate": "COLD_RECOVERY_WITH_LOSS_WITNESS",
+      "requiredTier": "LOCAL_OWNER_TEST",
+      "declaredPass": false,
+      "externalNative": false,
+      "proofStatus": "OPEN_UNTIL_EXECUTED",
+      "falsifier": "Replace or omit the observed COLD_RECOVERY_WITH_LOSS_WITNESS witness; validator must reject or declassify."
+    }
+  ]
+}

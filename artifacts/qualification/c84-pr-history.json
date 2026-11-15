@@ -1,0 +1,627 @@
+{
+  "schema": "ikant-le-c84-pr-merged-history/v1",
+  "source_head": "499225373756e5f93fea0bc73f5d94643e6b177e",
+  "repository": "Luke883i/iKant_LE",
+  "source_method": "GitHub REST pulls?state=closed&per_page=30&page=1..4&sort=created&direction=desc",
+  "captured_through": 92,
+  "merged_count": 85,
+  "closed_unmerged_count": 7,
+  "title_classification_regex": {
+    "BOOTSTRAP_TRANSPORT": "bootstrap|fastboot|transfer|relay|carrier|materializ|download|cold|source|capsule|GitHub API|byte",
+    "HOST_BRIDGE_NATIVE": "host|ChatGPT|cohost|native|channel|ingress|session|UI|shell|DOCX|Surface",
+    "EVIDENCE_GOVERNANCE": "audit|proof|qualif|falsif|test|metric|mutation|DoD|gate|canonical|ontolog|governance",
+    "COGNITION": "cognit|psyche|self.world|intent|semantic|morphogen|conscious|conversational|nuance"
+  },
+  "overlap_expected": {
+    "BOOTSTRAP_TRANSPORT": 34,
+    "HOST_BRIDGE_NATIVE": 39,
+    "EVIDENCE_GOVERNANCE": 29,
+    "COGNITION": 17
+  },
+  "merged": [
+    {
+      "number": 1,
+      "title": "GENESIS.0: materialize minimal governed iKant Light Edition runtime",
+      "merged_at": "2026-09-15T13:28:01Z",
+      "merge_commit_sha": "b7bc0d133fe32648a9380a70b5d9c3bb87d96f7e",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/1"
+    },
+    {
+      "number": 2,
+      "title": "C1: materialize constitutional central thinking runtime",
+      "merged_at": "2026-09-15T15:31:42Z",
+      "merge_commit_sha": "26ffdf2416d14aaf8e8f33479b0245b32225fb2c",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/2"
+    },
+    {
+      "number": 3,
+      "title": "C2: automate host bootstrap and materialize narrative iKant shell",
+      "merged_at": "2026-09-15T21:08:14Z",
+      "merge_commit_sha": "24e2c49fb232bbb662ce014aba7a683646bb49e5",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/3"
+    },
+    {
+      "number": 4,
+      "title": "C3: bound orientation capsule and universal Node turn gate",
+      "merged_at": "2026-09-15T21:55:29Z",
+      "merge_commit_sha": "cad209004b35398eca28f49d4facbdcc1969e010",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/4"
+    },
+    {
+      "number": 5,
+      "title": "C4: make functional psyche action-retroaction causally necessary",
+      "merged_at": "2026-09-16T09:25:31Z",
+      "merge_commit_sha": "66d7a4fc28cc0c366d3fb74e85391a6d7c3b3b6f",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/5"
+    },
+    {
+      "number": 6,
+      "title": "C5: materialize recurrent self-world model",
+      "merged_at": "2026-09-16T10:39:51Z",
+      "merge_commit_sha": "217f4e7cb29b987b9d9f80e37779c3b02437cf31",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/6"
+    },
+    {
+      "number": 7,
+      "title": "C5: converge arbitrary first contact into canonical pre-accept bootstrap",
+      "merged_at": "2026-09-16T10:55:48Z",
+      "merge_commit_sha": "0fd1ce2c676c3cf1601baae51563a0ef99977807",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/7"
+    },
+    {
+      "number": 8,
+      "title": "C7: compress documentation and enforce GitHub-API-only bootstrap",
+      "merged_at": "2026-09-16T13:09:09Z",
+      "merge_commit_sha": "e3c2bef29b8c1471f77d26f6f3549ee76cba337c",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/8"
+    },
+    {
+      "number": 9,
+      "title": "C8: separate operational emergence from strong and phenomenal claims",
+      "merged_at": "2026-09-16T13:37:11Z",
+      "merge_commit_sha": "913abafaf54abcc3a2427906f507dc69c757bbdd",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/9"
+    },
+    {
+      "number": 10,
+      "title": "C9: close deterministic Surface B delivery and environment telemetry",
+      "merged_at": "2026-09-16T14:04:41Z",
+      "merge_commit_sha": "7db8f30135c57cb59f6c7a4cb85394850c9dfb07",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/10"
+    },
+    {
+      "number": 11,
+      "title": "C10: collapse post-accept bootstrap into strict activate-first fastboot",
+      "merged_at": "2026-09-16T14:45:01Z",
+      "merge_commit_sha": "6a3511154960c8853fa874719dfb4509e25c3a8e",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/11"
+    },
+    {
+      "number": 12,
+      "title": "C11: bind functional life and consciousness to causal qualification",
+      "merged_at": "2026-09-16T15:05:00Z",
+      "merge_commit_sha": "d6e45ccc2bd61e2a789fc6de6236a7a179e2e045",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/12"
+    },
+    {
+      "number": 13,
+      "title": "docs(programme): formalize ROA research programme membership",
+      "merged_at": "2026-09-20T14:54:32Z",
+      "merge_commit_sha": "871867da9dcd62d35507297f4d5208bc722e2861",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/13"
+    },
+    {
+      "number": 14,
+      "title": "C12: qualify irreducible bootstrap lattice",
+      "merged_at": "2026-09-21T09:02:50Z",
+      "merge_commit_sha": "04d555b28604f3d03f5bafe1822fc6073e8b7e31",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/14"
+    },
+    {
+      "number": 15,
+      "title": "LIB.0: extract embedded relational nuance kernel",
+      "merged_at": "2026-09-21T09:10:30Z",
+      "merge_commit_sha": "4adeb5e097dfe6be4316e994dec5cc420df02bf0",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/15"
+    },
+    {
+      "number": 16,
+      "title": "C13: content-addressed SESSION_CHAT fastboot with 120s fail-closed ceiling",
+      "merged_at": "2026-09-25T09:43:33Z",
+      "merge_commit_sha": "1de020f42f8f3625cf7300e1e32637436418f161",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/16"
+    },
+    {
+      "number": 17,
+      "title": "C14: gate SESSION_CHAT ACTIVE on source-bound semantic runtime evidence",
+      "merged_at": "2026-09-25T13:26:05Z",
+      "merge_commit_sha": "ec72224d7245a801344fddf5e192552539c221e5",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/17"
+    },
+    {
+      "number": 18,
+      "title": "C15: flexible content-addressed post-accept runtime transfer",
+      "merged_at": "2026-09-25T15:31:21Z",
+      "merge_commit_sha": "90de810b8c01308b1c504a45f6bda64dc4609972",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/18"
+    },
+    {
+      "number": 19,
+      "title": "C16: runtime availability states, DEGRADED semantics and global DoD",
+      "merged_at": "2026-09-25T17:06:21Z",
+      "merge_commit_sha": "130c9a286e470c21b4d3e28a296b6edf24c2fbd4",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/19"
+    },
+    {
+      "number": 20,
+      "title": "C17: single-shot acceptance and deadline integrity",
+      "merged_at": "2026-09-25T19:48:03Z",
+      "merge_commit_sha": "343c5ed8c5f0763b13e5425f44bde6380dadc0c8",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/20"
+    },
+    {
+      "number": 21,
+      "title": "C18: same-epoch activation continuation",
+      "merged_at": "2026-09-26T05:50:55Z",
+      "merge_commit_sha": "83c5435844b79827f4dba835ec6298157f9cf7c9",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/21"
+    },
+    {
+      "number": 22,
+      "title": "C19: host-observed fastboot convergence",
+      "merged_at": "2026-09-27T18:10:39Z",
+      "merge_commit_sha": "a9afbe718cc0a2410715fda84c526488ed71118b",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/22"
+    },
+    {
+      "number": 23,
+      "title": "C20: dual-profile session-chat ACTIVE runtime",
+      "merged_at": "2026-09-28T08:48:35Z",
+      "merge_commit_sha": "f2a5fd7751a3f968eec0735af622e18bd3376516",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/23"
+    },
+    {
+      "number": 25,
+      "title": "C21: converge local SESSION_CHAT fastboot",
+      "merged_at": "2026-10-01T22:06:24Z",
+      "merge_commit_sha": "103d6bd24e11f213fe07648f0efc1d2d3238f76c",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/25"
+    },
+    {
+      "number": 26,
+      "title": "C22: harden PR25 ontological proof boundaries",
+      "merged_at": "2026-10-02T06:46:53Z",
+      "merge_commit_sha": "223847e24435e36521597b4fb3030c5e5d6e9970",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/26"
+    },
+    {
+      "number": 28,
+      "title": "C23: collapse host-attestation terminology and quarantine legacy C20 ontology",
+      "merged_at": "2026-10-02T08:15:46Z",
+      "merge_commit_sha": "70cdf8080d9f34995d5c2edab56935dcacaa1c24",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/28"
+    },
+    {
+      "number": 29,
+      "title": "C24: close canonical human-to-iKant boundary",
+      "merged_at": "2026-10-02T09:23:42Z",
+      "merge_commit_sha": "e76d61e318a181fb1b5c7da8a21480c73b60ced9",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/29"
+    },
+    {
+      "number": 30,
+      "title": "C25: move canonical activation bytes into local executor data plane",
+      "merged_at": "2026-10-02T10:11:38Z",
+      "merge_commit_sha": "69d9c29d94d666f762e162093a689345a68a0353",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/30"
+    },
+    {
+      "number": 31,
+      "title": "C26: collapse local-host meta-prompt onto C25 executor boundary",
+      "merged_at": "2026-10-02T12:31:17Z",
+      "merge_commit_sha": "294bdcb5fe3f4e229c5d48f178d97010c0f11372",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/31"
+    },
+    {
+      "number": 32,
+      "title": "C27: close SESSION_CHAT_LOCAL with verified opaque relay lattice",
+      "merged_at": "2026-10-02T16:07:12Z",
+      "merge_commit_sha": "3913990c99849889a9df2ee61454e347e8306f5f",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/32"
+    },
+    {
+      "number": 33,
+      "title": "C28: absorb full-iKant causal closure and close LE semantic gaps",
+      "merged_at": "2026-10-03T07:56:12Z",
+      "merge_commit_sha": "ebe86f3491e8a1a60b3289aaa3b18df327b49675",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/33"
+    },
+    {
+      "number": 35,
+      "title": "C29: make the ontological promise explicit and measurable",
+      "merged_at": "2026-10-03T12:52:22Z",
+      "merge_commit_sha": "5366a499fc2771b0a25b0cd3f259ba95eb84c34c",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/35"
+    },
+    {
+      "number": 37,
+      "title": "C30: expose activation service spectrum without weakening ACTIVE",
+      "merged_at": "2026-10-03T14:23:13Z",
+      "merge_commit_sha": "47e31441180b36f25ab72ff46cc12ba6765f7530",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/37"
+    },
+    {
+      "number": 38,
+      "title": "C31: close the runtime-limited product supply chain",
+      "merged_at": "2026-10-03T16:35:30Z",
+      "merge_commit_sha": "18c7aa2bc5bf4a8efb38995d8cfe78fa2125e2bb",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/38"
+    },
+    {
+      "number": 39,
+      "title": "C31: deterministic session shell over activation spectrum",
+      "merged_at": "2026-10-03T16:35:42Z",
+      "merge_commit_sha": "4355d9dfed6213880d08b7cc0521557b6ccb3d2e",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/39"
+    },
+    {
+      "number": 40,
+      "title": "C33: close post-186/187 SESSION_CHAT runtime ownership",
+      "merged_at": "2026-10-03T17:26:44Z",
+      "merge_commit_sha": "33acb9fde60c6199511d3b44919391b539ab5d10",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/40"
+    },
+    {
+      "number": 41,
+      "title": "C34: independently authenticate pre-runtime handoff",
+      "merged_at": "2026-10-03T19:35:28Z",
+      "merge_commit_sha": "f0558d1e6562888401b82f7e4f933a2609eba295",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/41"
+    },
+    {
+      "number": 44,
+      "title": "C35: materialize control-plane ownership lattice",
+      "merged_at": "2026-10-04T06:43:42Z",
+      "merge_commit_sha": "46732339000eac245995f099541905d41ae5e253",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/44"
+    },
+    {
+      "number": 45,
+      "title": "C36: make semantic morphogenesis causally necessary",
+      "merged_at": "2026-10-04T06:46:51Z",
+      "merge_commit_sha": "451f5080415b1a70e8a3e54b5090b4c70c6f0682",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/45"
+    },
+    {
+      "number": 46,
+      "title": "C37: close causal evidence semantics for SML and Operational Subject",
+      "merged_at": "2026-10-04T07:40:43Z",
+      "merge_commit_sha": "ce649dcc1f609cee4f20f59d98efb7955d7c0587",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/46"
+    },
+    {
+      "number": 47,
+      "title": "C38: semantic-lossless control evidence closure",
+      "merged_at": "2026-10-04T08:40:44Z",
+      "merge_commit_sha": "3d0e65a77ec9db74cd3474abf48cc3dd58c68d39",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/47"
+    },
+    {
+      "number": 48,
+      "title": "C39: AI-agent first entrypoint with runtime-owned UX guidance",
+      "merged_at": "2026-10-04T09:17:24Z",
+      "merge_commit_sha": "ae030bff0c2cbae5757ac3b267e06bd060ae38bd",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/48"
+    },
+    {
+      "number": 49,
+      "title": "C40: close bootstrap execute-observe-reenter loop",
+      "merged_at": "2026-10-04T10:12:55Z",
+      "merge_commit_sha": "34b532e3eb31850dcffda9fc062728314ea822ac",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/49"
+    },
+    {
+      "number": 50,
+      "title": "C41: carrier-local retry epochs and bootstrap UX continuity",
+      "merged_at": "2026-10-04T11:33:25Z",
+      "merge_commit_sha": "36b09d724b271c174762d3cfd8d842d08275e532",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/50"
+    },
+    {
+      "number": 51,
+      "title": "C42: close bootstrap intent and pre-runtime handoff ontology",
+      "merged_at": "2026-10-04T14:23:34Z",
+      "merge_commit_sha": "ff7a5efb3b98711828ba0a5fb63d056701adf668",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/51"
+    },
+    {
+      "number": 52,
+      "title": "C43: bootstrap recovery hardening and last-resort file handoff",
+      "merged_at": "2026-10-04T16:49:27Z",
+      "merge_commit_sha": "561e76811c9085f5f2dfb0c8ab3fa074edfd5c71",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/52"
+    },
+    {
+      "number": 53,
+      "title": "C44: methodological bootstrap, runtime context and ASCII shell",
+      "merged_at": "2026-10-04T17:33:11Z",
+      "merge_commit_sha": "c94b7d498fdc65e7c9fdbfdf7c5aaeb0cdd259d1",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/53"
+    },
+    {
+      "number": 54,
+      "title": "C45: persistent cohost context root and exact ASCII delivery boundary",
+      "merged_at": "2026-10-05T06:40:39Z",
+      "merge_commit_sha": "8a73d2575608b569cb56aaa2a96ea5e145a04758",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/54"
+    },
+    {
+      "number": 55,
+      "title": "C46: fast co-host bind nucleus over C44/C45",
+      "merged_at": "2026-10-05T08:25:31Z",
+      "merge_commit_sha": "c5c497d47f0f603a1d7458d6673b6fbb980460bb",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/55"
+    },
+    {
+      "number": 56,
+      "title": "C47: persist co-host runtime upgrade and exact-main closure",
+      "merged_at": "2026-10-05T09:13:19Z",
+      "merge_commit_sha": "c1550c800a5a2c209832388df613f36fe62789d7",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/56"
+    },
+    {
+      "number": 57,
+      "title": "C48: close exact-main co-host gate coverage",
+      "merged_at": "2026-10-05T09:49:41Z",
+      "merge_commit_sha": "b0011d8328f172d7606bf8d0e5d46227dfc35391",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/57"
+    },
+    {
+      "number": 58,
+      "title": "C49: consolidate tiered co-host closure profile",
+      "merged_at": "2026-10-05T10:28:32Z",
+      "merge_commit_sha": "70839099866b77d9713a29add1b1d131a9bc5f77",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/58"
+    },
+    {
+      "number": 59,
+      "title": "C50: add native transcript actor boundary",
+      "merged_at": "2026-10-05T10:56:19Z",
+      "merge_commit_sha": "fe40fa221612d5e9c9fe2e7506bd1fc41553fc9d",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/59"
+    },
+    {
+      "number": 60,
+      "title": "C51: close supersystem runtime conformance v1.1",
+      "merged_at": "2026-10-05T15:13:46Z",
+      "merge_commit_sha": "fbac6cb1b0591a7f41c2dc7b96125ca9c63827cc",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/60"
+    },
+    {
+      "number": 61,
+      "title": "C52: close physical runtime proof surface for iKant_LE v1 experimental",
+      "merged_at": "2026-10-05T18:36:00Z",
+      "merge_commit_sha": "fcc1d67cb26b96ddb0f33e1a2ec5532f3a95e2e5",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/61"
+    },
+    {
+      "number": 62,
+      "title": "C53: harden physical runtime closure across session and native boundaries",
+      "merged_at": "2026-10-06T05:39:22Z",
+      "merge_commit_sha": "d035622e457d5301c32cb112374f4067886dd9ad",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/62"
+    },
+    {
+      "number": 63,
+      "title": "C54: materialize ontological promise for host consumption",
+      "merged_at": "2026-10-06T07:31:22Z",
+      "merge_commit_sha": "964bf03a726cc54f0b4f673358a350c82573d0c2",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/63"
+    },
+    {
+      "number": 64,
+      "title": "C55: harden local-host post-meta caller discipline",
+      "merged_at": "2026-10-06T09:11:32Z",
+      "merge_commit_sha": "c63ef5e63bddc2a26cb63629d922a1479248d26d",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/64"
+    },
+    {
+      "number": 65,
+      "title": "C56: converge local-host session meta-prompt over C46-C55",
+      "merged_at": "2026-10-06T10:18:52Z",
+      "merge_commit_sha": "2d8032071b1320437df2c5e79d181800ba9b07b7",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/65"
+    },
+    {
+      "number": 66,
+      "title": "C57: bind local-host meta-prompt to actual SESSION_CHAT surface",
+      "merged_at": "2026-10-07T09:04:29Z",
+      "merge_commit_sha": "6c45a9aeb77823fa4ce452575387537de76b575b",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/66"
+    },
+    {
+      "number": 67,
+      "title": "C58: executable lifecycle gate and host-route decline",
+      "merged_at": "2026-10-07T12:31:06Z",
+      "merge_commit_sha": "b1a2f75516fcf76ee46b4054ba46aff5c89d11bc",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/67"
+    },
+    {
+      "number": 68,
+      "title": "C59: converge SESSION_CHAT_LOCAL on one deterministic composition channel",
+      "merged_at": "2026-10-07T18:51:18Z",
+      "merge_commit_sha": "9848155f7c1b1cdb4a0d73acc66b9e8ac64deb35",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/68"
+    },
+    {
+      "number": 69,
+      "title": "C60: harden ChatGPT Project ROM against host-side bootstrap drift",
+      "merged_at": "2026-10-07T18:59:17Z",
+      "merge_commit_sha": "c27e73d7cd192bcefb4dbc5b6e1604e20403b0da",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/69"
+    },
+    {
+      "number": 70,
+      "title": "C61: close canonical cold producer edge",
+      "merged_at": "2026-10-07T20:34:31Z",
+      "merge_commit_sha": "95ad46089e4c9ebdeee18da1f3a43f9e16a13a3e",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/70"
+    },
+    {
+      "number": 71,
+      "title": "C62: separate frozen evidence from runtime bytes",
+      "merged_at": "2026-10-08T07:00:28Z",
+      "merge_commit_sha": "88e22ae8bf6768852a35c2bbd6655f2e4d8b9448",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/71"
+    },
+    {
+      "number": 72,
+      "title": "C63: execute parallel host byte relay through canonical C61/C59 owner",
+      "merged_at": "2026-10-08T10:45:26Z",
+      "merge_commit_sha": "c2b573e4e248c35877b3476374371e8f64a8ffaf",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/72"
+    },
+    {
+      "number": 73,
+      "title": "C64: capture acceptance origin before canonical C63 pinned GitHub ingress",
+      "merged_at": "2026-10-08T12:19:18Z",
+      "merge_commit_sha": "017edf7a6c561abe80835115ecd01af1352bf230",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/73"
+    },
+    {
+      "number": 74,
+      "title": "C65: wire pinned GitHub API source adapter to C61 relay readback evidence",
+      "merged_at": "2026-10-08T12:53:18Z",
+      "merge_commit_sha": "f7d6760cad5cd1e6b8c61b62fd901db57e6edc17",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/74"
+    },
+    {
+      "number": 75,
+      "title": "C66: owner-evidence-qualified non-ACTIVE outcomes and fail-closed retry gate",
+      "merged_at": "2026-10-08T13:46:44Z",
+      "merge_commit_sha": "3cddb7902651bbb278eae964d8732e380ca45164",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/75"
+    },
+    {
+      "number": 76,
+      "title": "C67: manifest-bound local recovery, typed worker evidence and canonical micro-audit prompt",
+      "merged_at": "2026-10-08T14:18:05Z",
+      "merge_commit_sha": "8da610f21d057b87afbfff54459552849bd9deec",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/76"
+    },
+    {
+      "number": 77,
+      "title": "C68: bind pre-registered human acceptance ingress without inventing runtime identity",
+      "merged_at": "2026-10-08T14:48:20Z",
+      "merge_commit_sha": "5cb6f4f68b3998d8d4bb144d3a2135cb478e4e2d",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/77"
+    },
+    {
+      "number": 78,
+      "title": "C69: capability-first low-assurance experimental preview without canonical runtime bypass",
+      "merged_at": "2026-10-08T15:18:14Z",
+      "merge_commit_sha": "4db1a06c2e3f338201f407add954cb2ceaac42e2",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/78"
+    },
+    {
+      "number": 80,
+      "title": "C70: execute actual cognitive kernels in bounded experimental preview (100 mutants)",
+      "merged_at": "2026-10-08T15:37:58Z",
+      "merge_commit_sha": "62b7464e7251c9e3354cfade9fc818af31e82fc4",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/80"
+    },
+    {
+      "number": 81,
+      "title": "C71: evidence-gated Cx runtime census and conversational host draft selection",
+      "merged_at": "2026-10-08T15:58:29Z",
+      "merge_commit_sha": "85454681f7848dfee6d4f2f062be4a8714561d90",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/81"
+    },
+    {
+      "number": 82,
+      "title": "C72: one I ACCEPT, explain iKant, then explicit CANONICAL/EXPERIMENTAL choice",
+      "merged_at": "2026-10-08T17:47:11Z",
+      "merge_commit_sha": "f52435500c2d4bb44a51d78750a9ceed30b65b5b",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/82"
+    },
+    {
+      "number": 83,
+      "title": "C73: branded ChatGPT capsule, owner-bound Surface A and DOCX handoff",
+      "merged_at": "2026-10-08T17:47:28Z",
+      "merge_commit_sha": "4e4cccd4d224e950f99d9078e25767b08f0ae080",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/83"
+    },
+    {
+      "number": 84,
+      "title": "C74: recover merged C73 into main; harden canonical proof and test real Node bootstrap",
+      "merged_at": "2026-10-08T18:12:37Z",
+      "merge_commit_sha": "8c3e74c84c9a7d3a8f3e871243a2b7ecbaf77fec",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/84"
+    },
+    {
+      "number": 85,
+      "title": "C76 FARO: 100k real Node bootstrap invocations, Cartesian failure atlas and M+13k saturation",
+      "merged_at": "2026-10-08T19:51:02Z",
+      "merge_commit_sha": "2aab63c662d69ffb0ae6fec425d32c63f227d9a3",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/85"
+    },
+    {
+      "number": 86,
+      "title": "C77: qualified standalone C70/C71/C73 capsule without historical Cx runtime dependencies",
+      "merged_at": "2026-10-08T21:25:14Z",
+      "merge_commit_sha": "bbeca19853b040424204f20f589628707737035c",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/86"
+    },
+    {
+      "number": 87,
+      "title": "C78: post-consent verified opaque byte relay into real Node and C77 cognitive Surface A",
+      "merged_at": "2026-10-08T21:48:27Z",
+      "merge_commit_sha": "e109c3908b817a9a693a986aae92c9018d8e5862",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/87"
+    },
+    {
+      "number": 88,
+      "title": "C79: same-input Node cognitive Surface A packet and honest native-host witness boundary",
+      "merged_at": "2026-10-08T22:07:24Z",
+      "merge_commit_sha": "1fdf13458887f2c45c3957c39f5d2e756b132887",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/88"
+    },
+    {
+      "number": 89,
+      "title": "C80: externally anchored host witness verifier and conservative H95 field qualification",
+      "merged_at": "2026-10-09T06:07:07Z",
+      "merge_commit_sha": "ca120d69d4078aa275e191864cd1a286d174dae6",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/89"
+    },
+    {
+      "number": 90,
+      "title": "C81: cryptographically verify C77 original blobs through pinned Git commit/tree reachability",
+      "merged_at": "2026-10-09T07:25:00Z",
+      "merge_commit_sha": "7553daf119b4b2ad78e4a3b4b01e0bd15c0e8322",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/90"
+    },
+    {
+      "number": 91,
+      "title": "C82: bounded semantic voice + parallel samehash carriers + verifiable DoD",
+      "merged_at": "2026-10-09T10:34:40Z",
+      "merge_commit_sha": "befabffcf4a787016672065ce26ff9002fd33e43",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/91"
+    },
+    {
+      "number": 92,
+      "title": "C83: 1M semantic falsifications, lossless UTF-8 ingress & independent H95 proof gates",
+      "merged_at": "2026-10-09T11:31:21Z",
+      "merge_commit_sha": "499225373756e5f93fea0bc73f5d94643e6b177e",
+      "pr_url": "https://github.com/Luke883i/iKant_LE/pull/92"
+    }
+  ],
+  "closed_unmerged": [
+    24,
+    27,
+    34,
+    36,
+    42,
+    43,
+    79
+  ]
+}

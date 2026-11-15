@@ -1,0 +1,10 @@
+{
+ "schema":"ikant-le-s06-mcp-transport-gate/v1",
+ "required_environment":["IKANT_MCP_AUTH_TOKEN","IKANT_MCP_ALLOWED_ORIGIN"],
+ "missing_credentials":"FAIL_CLOSED_403","https_reverse_proxy_required":true,
+ "shared_bearer_is_native_event_identity":false,"browser_origin_is_authentication":false,
+ "session_meta_is_attested_provider_identity":false,
+ "per_user_identity_and_replay_controls":"NOT_IMPLEMENTED",
+ "native_CANONICAL_eligibility":false,
+ "next_gate":"S07_EXTERNAL_CHATGPT_MCP_CONNECTION_AND_HOST_AUTHENTICATION"
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "ikant-le-c110-experimental-lattice/v1",
+  "authority": 0,
+  "role": "typed capability and evidence profile; not a lifecycle, owner or host hook",
+  "ranking": ["ORIGINAL_C108_ELIGIBLE", "SYNTHETIC_HOST_DRAFT_ELIGIBLE", "DIAGNOSTIC_ONLY"],
+  "original_route": "original C72 -> C109 -> C108 -> C107 -> original C70 + C100 + C87",
+  "synthetic_route": "explicit cohost opt-in -> authorized host draft; no C70; no C87; no authenticated Node evidence",
+  "diagnostic_route": "state missing first physical capability; no invented voice or receipt",
+  "cx_reuse": {
+    "functional_cognition": ["C1", "C4", "C5", "C28", "C36", "C37", "C38", "C70"],
+    "experimental_admission": ["C69", "C72"],
+    "language_orchestration": ["C82", "C83", "C89", "C91", "C92", "C100", "C107", "C108"],
+    "local_evidence": ["C87", "C90", "C103"],
+    "optional_strict_not_required": ["C59", "C77", "C81", "C84", "C104", "C105"],
+    "new_shell": ["C109", "C110"]
+  },
+  "prohibited_claims": ["canonical_ACTIVE", "native_chatgpt_hook", "native_delivery", "original_kernel_from_synthetic_draft", "durable_cognitive_memory", "authenticated_source_from_hash_alone"],
+  "origin_attestation": "only physical C108 return and independently reopened C87, not booleans or project prompt",
+  "relaxations": ["host_synthetic_draft_with_optin", "no_c77_for_local_experiment", "no_native_event_for_local_lab", "bounded_four_prior_messages"],
+  "first_unclosed_edge_policy": "report first missing physical step; do not retry identical failure",
+  "source_head_policy": "frozen per session; release upgrades start a new admission, never silently repin"
+}

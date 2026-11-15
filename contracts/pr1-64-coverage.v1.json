@@ -1,0 +1,802 @@
+{
+  "schema": "ikant-pr1-64-coverage-v1",
+  "source_corpus": "I4-I10 Reflection1 normalized 64 nodes; GitHub main 09798d194c1fc6a8557465b8d8875fd1972de940",
+  "claim_boundary": "MAPPED_NOT_PROVEN_BY_THIS_REGISTRY",
+  "product_go": false,
+  "total": 64,
+  "at_least_99pct_threshold": 64,
+  "abstract_dod": "Evidence of operation distinct from truth and authority",
+  "global_dod": "64 out of 64 original independent DoDs required for >=99%, no gap is a PASS",
+  "intermediate_dod": [
+    "Project EDU bootstrap/consent",
+    "MCP standalone OAuth",
+    "Historical V5-B source succession",
+    "Repository/runtime and human release separate"
+  ],
+  "nodes": [
+    {
+      "id": "S01",
+      "domain": "SOURCE",
+      "statement": "Identita byte della baseline Git",
+      "target_pr": "SETUP",
+      "oracle": "Git SHA/tree exact and prospective source readback; source: Reflection1 S01",
+      "falsifier": "Mutate the specific source/event/authority required by S01; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "S02",
+      "domain": "SOURCE",
+      "statement": "Aggancio alla HEAD upstream effettiva",
+      "target_pr": "SETUP",
+      "oracle": "Git SHA/tree exact and prospective source readback; source: Reflection1 S02",
+      "falsifier": "Mutate the specific source/event/authority required by S02; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "S03",
+      "domain": "SOURCE",
+      "statement": "Separazione genealogia locale sintetica e storia pubblica",
+      "target_pr": "SETUP",
+      "oracle": "Git SHA/tree exact and prospective source readback; source: Reflection1 S03",
+      "falsifier": "Mutate the specific source/event/authority required by S03; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S02"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "S04",
+      "domain": "SOURCE",
+      "statement": "Nuova source epoch V5-B autentica senza riscrivere pin storici",
+      "target_pr": "PR1",
+      "oracle": "Git SHA/tree exact and prospective source readback; source: Reflection1 S04",
+      "falsifier": "Mutate the specific source/event/authority required by S04; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S01",
+        "S02",
+        "S03"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "S05",
+      "domain": "SOURCE",
+      "statement": "Denominatore dei 46 file delta e SHA individuali",
+      "target_pr": "SETUP",
+      "oracle": "Git SHA/tree exact and prospective source readback; source: Reflection1 S05",
+      "falsifier": "Mutate the specific source/event/authority required by S05; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "S06",
+      "domain": "SOURCE",
+      "statement": "Readback CORA verificabile per commit reale",
+      "target_pr": "PR5",
+      "oracle": "Git SHA/tree exact and prospective source readback; source: Reflection1 S06",
+      "falsifier": "Mutate the specific source/event/authority required by S06; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S04",
+        "S05"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "S07",
+      "domain": "SOURCE",
+      "statement": "Bundle append-only con predecessori byte-identici",
+      "target_pr": "SETUP",
+      "oracle": "Git SHA/tree exact and prospective source readback; source: Reflection1 S07",
+      "falsifier": "Mutate the specific source/event/authority required by S07; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S05"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "S08",
+      "domain": "SOURCE",
+      "statement": "Firma ed esecuzione attestata da soggetto indipendente",
+      "target_pr": "PR5",
+      "oracle": "Git SHA/tree exact and prospective source readback; source: Reflection1 S08",
+      "falsifier": "Mutate the specific source/event/authority required by S08; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S06"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P01",
+      "domain": "PROJECT",
+      "statement": "Ingresso comprensibile nella sessione-chat EDU",
+      "target_pr": "PR1",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P01",
+      "falsifier": "Mutate the specific source/event/authority required by P01; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P02",
+      "domain": "PROJECT",
+      "statement": "Prompt e cinque documenti fonte bloccati a vera main",
+      "target_pr": "PR1",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P02",
+      "falsifier": "Mutate the specific source/event/authority required by P02; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S02"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P03",
+      "domain": "PROJECT",
+      "statement": "Primo messaggio produce solo ORIENTATION",
+      "target_pr": "PR2",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P03",
+      "falsifier": "Mutate the specific source/event/authority required by P03; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P02"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P04",
+      "domain": "PROJECT",
+      "statement": "I ACCEPT e messaggio distinto e osservato",
+      "target_pr": "PR2",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P04",
+      "falsifier": "Mutate the specific source/event/authority required by P04; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P03"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P05",
+      "domain": "PROJECT",
+      "statement": "EDU e messaggio separato dopo consenso",
+      "target_pr": "PR2",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P05",
+      "falsifier": "Mutate the specific source/event/authority required by P05; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P04"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P06",
+      "domain": "PROJECT",
+      "statement": "NO_VOICE senza owner invocabile",
+      "target_pr": "PR2",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P06",
+      "falsifier": "Mutate the specific source/event/authority required by P06; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P05"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P07",
+      "domain": "PROJECT",
+      "statement": "Unica catena C72-C135-C87-C125",
+      "target_pr": "PR2",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P07",
+      "falsifier": "Mutate the specific source/event/authority required by P07; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P05",
+        "S04"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P08",
+      "domain": "PROJECT",
+      "statement": "Ledger C87 persistente e replay negato",
+      "target_pr": "PR2",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P08",
+      "falsifier": "Mutate the specific source/event/authority required by P08; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P07"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P09",
+      "domain": "PROJECT",
+      "statement": "La UI distingue tracciato da fattualmente vero",
+      "target_pr": "PR1",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P09",
+      "falsifier": "Mutate the specific source/event/authority required by P09; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P08"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P10",
+      "domain": "PROJECT",
+      "statement": "Continuita cognitiva dichiarata nella finestra C107",
+      "target_pr": "PR1",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P10",
+      "falsifier": "Mutate the specific source/event/authority required by P10; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P08"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P11",
+      "domain": "PROJECT",
+      "statement": "Sessione reale ChatGPT Project con carrier e ricevute",
+      "target_pr": "PR5",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P11",
+      "falsifier": "Mutate the specific source/event/authority required by P11; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P07",
+        "S08"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "P12",
+      "domain": "PROJECT",
+      "statement": "Comprensione e operabilita per utenti indipendenti",
+      "target_pr": "PR5",
+      "oracle": "Original Project admission and independent runtime readback; source: Reflection1 P12",
+      "falsifier": "Mutate the specific source/event/authority required by P12; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P01",
+        "P11"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M01",
+      "domain": "MCP",
+      "statement": "Il servizio MCP e prodotto autonomo non composizione Project",
+      "target_pr": "PR1",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M01",
+      "falsifier": "Mutate the specific source/event/authority required by M01; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M02",
+      "domain": "MCP",
+      "statement": "C59 CANONICAL storico non e MCP corrente",
+      "target_pr": "PR1",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M02",
+      "falsifier": "Mutate the specific source/event/authority required by M02; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M03",
+      "domain": "MCP",
+      "statement": "Policy OAuth JWT JWKS PKCE e issuer",
+      "target_pr": "PR2",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M03",
+      "falsifier": "Mutate the specific source/event/authority required by M03; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M04",
+      "domain": "MCP",
+      "statement": "Separazione scope lettura scrittura e identita",
+      "target_pr": "PR2",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M04",
+      "falsifier": "Mutate the specific source/event/authority required by M04; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M03"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M05",
+      "domain": "MCP",
+      "statement": "401 senza credenziali e nessuna write",
+      "target_pr": "PR2",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M05",
+      "falsifier": "Mutate the specific source/event/authority required by M05; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M03"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M06",
+      "domain": "MCP",
+      "statement": "UNKNOWN write senza retry automatico",
+      "target_pr": "PR2",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M06",
+      "falsifier": "Mutate the specific source/event/authority required by M06; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M04"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M07",
+      "domain": "MCP",
+      "statement": "Server MCP reale initialize tools list call con SDK",
+      "target_pr": "PR2",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M07",
+      "falsifier": "Mutate the specific source/event/authority required by M07; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M03",
+        "M05"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M08",
+      "domain": "MCP",
+      "statement": "Persistenza dopo restart del servizio",
+      "target_pr": "PR2",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M08",
+      "falsifier": "Mutate the specific source/event/authority required by M08; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M07"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M09",
+      "domain": "MCP",
+      "statement": "TLS HTTPS e IdP realmente autorizzato",
+      "target_pr": "PR5",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M09",
+      "falsifier": "Mutate the specific source/event/authority required by M09; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M07",
+        "S08"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "M10",
+      "domain": "MCP",
+      "statement": "Widget MCP su client reale e accessibilita",
+      "target_pr": "PR5",
+      "oracle": "Standalone MCP OAuth scope and HTTP outcomes; source: Reflection1 M10",
+      "falsifier": "Mutate the specific source/event/authority required by M10; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M09"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R01",
+      "domain": "REPOSITORY",
+      "statement": "Censimento completo Git tracked root-to-leaf",
+      "target_pr": "PR3",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R01",
+      "falsifier": "Mutate the specific source/event/authority required by R01; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R02",
+      "domain": "REPOSITORY",
+      "statement": "Grafo consumer e writer per ogni candidato",
+      "target_pr": "PR3",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R02",
+      "falsifier": "Mutate the specific source/event/authority required by R02; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R03",
+      "domain": "REPOSITORY",
+      "statement": "Consumer dinamici e esterni gestiti UNKNOWN",
+      "target_pr": "PR3",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R03",
+      "falsifier": "Mutate the specific source/event/authority required by R03; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R02"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R04",
+      "domain": "REPOSITORY",
+      "statement": "Contrazione fisica senza shadow shim",
+      "target_pr": "PR3",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R04",
+      "falsifier": "Mutate the specific source/event/authority required by R04; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R02",
+        "R03",
+        "S04"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R05",
+      "domain": "REPOSITORY",
+      "statement": "Single owner preservato",
+      "target_pr": "PR3",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R05",
+      "falsifier": "Mutate the specific source/event/authority required by R05; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R02"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R06",
+      "domain": "REPOSITORY",
+      "statement": "README ingresso compresso senza perdere accesso tecnico",
+      "target_pr": "PR1",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R06",
+      "falsifier": "Mutate the specific source/event/authority required by R06; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R07",
+      "domain": "REPOSITORY",
+      "statement": "Documenti attuali separati dalla storia",
+      "target_pr": "PR1",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R07",
+      "falsifier": "Mutate the specific source/event/authority required by R07; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R06"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R08",
+      "domain": "REPOSITORY",
+      "statement": "Atlante documentale byte-exact",
+      "target_pr": "PR1",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R08",
+      "falsifier": "Mutate the specific source/event/authority required by R08; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R07"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R09",
+      "domain": "REPOSITORY",
+      "statement": "Archivi storici con provenienza e retention",
+      "target_pr": "PR3",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R09",
+      "falsifier": "Mutate the specific source/event/authority required by R09; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R10",
+      "domain": "REPOSITORY",
+      "statement": "Forma standard src tests docs scripts",
+      "target_pr": "PR3",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R10",
+      "falsifier": "Mutate the specific source/event/authority required by R10; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R04"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R11",
+      "domain": "REPOSITORY",
+      "statement": "Workflow e consumer stabili",
+      "target_pr": "PR4",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R11",
+      "falsifier": "Mutate the specific source/event/authority required by R11; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S02"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R12",
+      "domain": "REPOSITORY",
+      "statement": "Action GitHub 313 uses versionate con SHA",
+      "target_pr": "PR4",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R12",
+      "falsifier": "Mutate the specific source/event/authority required by R12; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R11",
+        "S04"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R13",
+      "domain": "REPOSITORY",
+      "statement": "Required checks e branch protection provider",
+      "target_pr": "PR4",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R13",
+      "falsifier": "Mutate the specific source/event/authority required by R13; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R12"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "R14",
+      "domain": "REPOSITORY",
+      "statement": "Supply chain dipendenze lock release provenance",
+      "target_pr": "PR4",
+      "oracle": "Git tree consumer/cutset and negative change oracle; source: Reflection1 R14",
+      "falsifier": "Mutate the specific source/event/authority required by R14; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "R12"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T01",
+      "domain": "RUNTIME",
+      "statement": "Regressione Node completa sulla HEAD reale",
+      "target_pr": "PR2",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T01",
+      "falsifier": "Mutate the specific source/event/authority required by T01; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T02",
+      "domain": "RUNTIME",
+      "statement": "Contratti check verificati",
+      "target_pr": "PR2",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T02",
+      "falsifier": "Mutate the specific source/event/authority required by T02; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "T01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T03",
+      "domain": "RUNTIME",
+      "statement": "runtime root e C44 verificati",
+      "target_pr": "PR2",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T03",
+      "falsifier": "Mutate the specific source/event/authority required by T03; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "T01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T04",
+      "domain": "RUNTIME",
+      "statement": "OneShell due turni con readback",
+      "target_pr": "PR2",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T04",
+      "falsifier": "Mutate the specific source/event/authority required by T04; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P07",
+        "T02"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T05",
+      "domain": "RUNTIME",
+      "statement": "C139 non e un fact checker",
+      "target_pr": "PR1",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T05",
+      "falsifier": "Mutate the specific source/event/authority required by T05; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P09"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T06",
+      "domain": "RUNTIME",
+      "statement": "Classificatore multilingue qualificato",
+      "target_pr": "PR2",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T06",
+      "falsifier": "Mutate the specific source/event/authority required by T06; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "T01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T07",
+      "domain": "RUNTIME",
+      "statement": "Euristiche complessita e maturita rappresentate nei limiti",
+      "target_pr": "PR1",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T07",
+      "falsifier": "Mutate the specific source/event/authority required by T07; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "T01"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T08",
+      "domain": "RUNTIME",
+      "statement": "Receipt eventi stessa origine",
+      "target_pr": "PR2",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T08",
+      "falsifier": "Mutate the specific source/event/authority required by T08; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "T04"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T09",
+      "domain": "RUNTIME",
+      "statement": "Crash recovery ledger C87",
+      "target_pr": "PR2",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T09",
+      "falsifier": "Mutate the specific source/event/authority required by T09; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P08"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "T10",
+      "domain": "RUNTIME",
+      "statement": "Runtime locale distinto da provider nei verdetti",
+      "target_pr": "PR5",
+      "oracle": "Node original-owner runtime test with event attribution; source: Reflection1 T10",
+      "falsifier": "Mutate the specific source/event/authority required by T10; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "T04",
+        "S06"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G01",
+      "domain": "GOVERNANCE",
+      "statement": "Nessun auto claim promuove authority",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G01",
+      "falsifier": "Mutate the specific source/event/authority required by G01; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "T10"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G02",
+      "domain": "GOVERNANCE",
+      "statement": "Revisore umano distinto dall autore",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G02",
+      "falsifier": "Mutate the specific source/event/authority required by G02; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "S08"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G03",
+      "domain": "GOVERNANCE",
+      "statement": "Retention e protezione dati Project MCP",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G03",
+      "falsifier": "Mutate the specific source/event/authority required by G03; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P08",
+        "M08"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G04",
+      "domain": "GOVERNANCE",
+      "statement": "Threat model e security testing",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G04",
+      "falsifier": "Mutate the specific source/event/authority required by G04; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M07"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G05",
+      "domain": "GOVERNANCE",
+      "statement": "Fattualita valutata da oracolo indipendente",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G05",
+      "falsifier": "Mutate the specific source/event/authority required by G05; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "T05"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G06",
+      "domain": "GOVERNANCE",
+      "statement": "Beneficio educativo misurato rispetto a LLM base",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G06",
+      "falsifier": "Mutate the specific source/event/authority required by G06; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "G05",
+        "P11"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G07",
+      "domain": "GOVERNANCE",
+      "statement": "Release GO attribuibile e non compensatoria",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G07",
+      "falsifier": "Mutate the specific source/event/authority required by G07; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "G01",
+        "G02",
+        "G03",
+        "G04",
+        "G05",
+        "G06",
+        "G08"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G08",
+      "domain": "GOVERNANCE",
+      "statement": "Deployment logging incident recovery",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G08",
+      "falsifier": "Mutate the specific source/event/authority required by G08; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "M09",
+        "P11"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G09",
+      "domain": "GOVERNANCE",
+      "statement": "Accessibilita localizzazione UX umana",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G09",
+      "falsifier": "Mutate the specific source/event/authority required by G09; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "P12",
+        "M10"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    },
+    {
+      "id": "G10",
+      "domain": "GOVERNANCE",
+      "statement": "Arresto finito con gap espliciti",
+      "target_pr": "PR5",
+      "oracle": "Independent authority, user and operator evidence; source: Reflection1 G10",
+      "falsifier": "Mutate the specific source/event/authority required by G10; fail closed; original R1 falsifier remains authoritative",
+      "dependencies": [
+        "G01",
+        "S07"
+      ],
+      "assessment": "NOT_PROMOTED_BY_REGISTRY"
+    }
+  ]
+}

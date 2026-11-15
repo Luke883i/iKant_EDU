@@ -1,0 +1,33 @@
+{
+  "schema": "ikant-le-c94-physical-local-qualification/v1",
+  "base_github_main": "11eecb86f08ebb90aa228d55c1e7f50da890f79d",
+  "historical_ci_artifact_sha256": "127c1df6c36d5b9d185a4e0d4cae497f77a1bb8779f9aa060a2da14b377df3d3",
+  "historical_ci_artifact_source_head": "66f074b34f34455b3c4188703d83ad71316baa06",
+  "real_historical_ci_zip": {
+    "C77_members": 34,
+    "manifest_and_original_blob_checks": "PASS",
+    "C71_derivation_against_original_sha1": "PASS",
+    "C77_cx_build_proof_entries": 70,
+    "local_files_written_and_reopened": 35
+  },
+  "positive_c84_test": {
+    "source_file_bytes": "REAL_HISTORICAL_CI_C77_BYTES",
+    "git_commit_and_tree_api": "DETERMINISTIC_SYNTHETIC_GIT_OBJECTS",
+    "provider_calls": 0,
+    "result": "PACKAGE_WRITTEN_REOPENED_FIXTURE_ONLY"
+  },
+  "node_tests": {"passed": 22, "failed": 0, "skipped": 0},
+  "adversarial_initial": {"cases": 4000, "unsafe_accepts": 4000, "classes": 4},
+  "adversarial_after": {"cases": 12000, "unsafe_accepts": 0, "classes": 4},
+  "general_after": {"cases": 120000, "survivors": 0, "classes": 12},
+  "C77_derivative_after": {"cases": 12000, "survivors": 0, "classes": 4},
+  "physical_github_api_action_downloads_in_current_host": 0,
+  "physical_real_provider_calls_in_current_host": 0,
+  "independent_semantic_truth_proven": false,
+  "real_C81_C86_owner_language_admission": false,
+  "real_chatgpt_native_delivery": false,
+  "canonical_active": false,
+  "field_H95_measured": false,
+  "first_unclosed_cold_host_edge": "GITHUB_ACTIONS_TOKEN_UNAVAILABLE_IN_NODE",
+  "release_class": "PREPR_STRUCTURALLY_TESTED_NOT_PLATFORM_E2E_RELEASE"
+}

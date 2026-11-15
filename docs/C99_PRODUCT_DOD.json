@@ -1,0 +1,23 @@
+{
+  "schema": "ikant-le-c99-product-dod/v1",
+  "authority": 0,
+  "source_epoch": "8e103319bfe0e2a91c85fdfc4bd0d0734e0922d8",
+  "repo_gates": [
+    {"id":"CENTRAL_RUNTIME_GRAPH","status":"TESTABLE_IN_REPO"},
+    {"id":"C98_INBOUND_RUNTIME_WIRING","status":"TESTABLE_IN_REPO"},
+    {"id":"STRUCTURAL_DENIAL_100K","status":"TESTABLE_IN_REPO"},
+    {"id":"OLD_STOP_COMPATIBILITY","status":"TESTABLE_IN_REPO"},
+    {"id":"PROJECT_PROMPT_3MD_SOURCE_ANCHOR","status":"TESTABLE_IN_REPO"}
+  ],
+  "host_gates": [
+    {"id":"LIVE_GITHUB_REF_AND_TERMS","status":"NOT_ATTESTED_BY_C99"},
+    {"id":"CURRENT_HEAD_C77_ARCHIVE_BYTES_TO_NODE","status":"NOT_ATTESTED_BY_C99"},
+    {"id":"C81_RAW_GIT_OBJECT_REACHABILITY","status":"NOT_ATTESTED_BY_C99"},
+    {"id":"C72_ACTUAL_HUMAN_EVENT","status":"NOT_ATTESTED_BY_C99"},
+    {"id":"C84_SAME_CURRENT_INPUT_OWNER","status":"NOT_ATTESTED_BY_C99"},
+    {"id":"NATIVE_CHAT_DELIVERY","status":"NOT_ATTESTED_BY_C99"},
+    {"id":"INTER_TURN_PERSISTENCE_AND_OPTOUT","status":"NOT_ATTESTED_BY_C99"},
+    {"id":"C59_CANONICAL_DOCX","status":"NOT_ATTESTED_BY_C99"},
+    {"id":"C80_H95_USER_VALUE","status":"NOT_MEASURED"}
+  ]
+}

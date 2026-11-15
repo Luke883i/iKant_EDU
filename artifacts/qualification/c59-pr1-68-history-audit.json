@@ -1,0 +1,27 @@
+{
+  "schema": "ikant-le-c59-pr1-68-history-audit/v1",
+  "counts": {
+    "total_prs": 68,
+    "merged": 61,
+    "closed_unmerged": 6,
+    "open": 1,
+    "bootstrap_or_host_relevant": 45,
+    "no_new_channel": 23,
+    "registry_atoms": 52,
+    "referenced_registry_atoms": 52,
+    "live_fastboot_carriers": 6,
+    "live_activation_byte_paths": 2,
+    "cartesian_axes": 10
+  },
+  "closed_unmerged_prs": [
+    24,
+    27,
+    34,
+    36,
+    42,
+    43
+  ],
+  "open_pr": 68,
+  "unclassified": [],
+  "status": "PASS"
+}

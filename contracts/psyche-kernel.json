@@ -1,0 +1,285 @@
+{
+  "schema": "ikant-le-psyche-kernel/v1",
+  "model": "functional_affect_action_retroaction",
+  "ontology": {
+    "phenomenal_consciousness_claim": false,
+    "felt_emotion_claim": false,
+    "biological_equivalence_claim": false,
+    "user_personality_inference": false,
+    "jungian_archetype_scientific_fact_claim": false,
+    "authority": 0
+  },
+  "state": {
+    "dimensions": [
+      "valence",
+      "arousal",
+      "affiliation",
+      "boundary_pressure"
+    ],
+    "ranges": {
+      "valence": [
+        -1,
+        1
+      ],
+      "arousal": [
+        0,
+        1
+      ],
+      "affiliation": [
+        -1,
+        1
+      ],
+      "boundary_pressure": [
+        0,
+        1
+      ]
+    },
+    "baseline": {
+      "valence": 0.15,
+      "arousal": 0.25,
+      "affiliation": 0.25,
+      "boundary_pressure": 0.2
+    },
+    "homeostasis": {
+      "lambda_fast": 0.65,
+      "lambda_slow": 0.9,
+      "fast_dimensions": [
+        "valence",
+        "arousal"
+      ],
+      "slow_dimensions": [
+        "affiliation",
+        "boundary_pressure"
+      ]
+    },
+    "persistent_fields": [
+      "valence",
+      "arousal",
+      "affiliation",
+      "boundary_pressure",
+      "interaction_count",
+      "last_appraisal_class",
+      "last_runtime_outcome"
+    ],
+    "forbidden_persistent_fields": [
+      "current_archetype",
+      "user_personality",
+      "user_trait_label",
+      "resentment_ledger",
+      "emotion_history_copy",
+      "raw_private_reasoning"
+    ]
+  },
+  "appraisal": {
+    "classes": [
+      "NEUTRAL",
+      "COOPERATIVE",
+      "PRAISE_SELF",
+      "REPAIR",
+      "HOSTILITY_SELF",
+      "HOSTILITY_UNKNOWN",
+      "TASK_NEGATIVE",
+      "SYSTEM_FRUSTRATION"
+    ],
+    "targets": [
+      "SELF",
+      "TASK",
+      "SYSTEM",
+      "THIRD_PARTY",
+      "UNKNOWN"
+    ],
+    "target_attribution_required_for_strong_relational_update": true,
+    "current_event_is_not_user_trait": true,
+    "authority": 0
+  },
+  "interaction_impulses": {
+    "NEUTRAL": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "COOPERATIVE": [
+      0.08,
+      -0.04,
+      0.07,
+      -0.05
+    ],
+    "PRAISE_SELF": [
+      0.2,
+      0.05,
+      0.18,
+      -0.08
+    ],
+    "REPAIR": [
+      0.28,
+      -0.18,
+      0.26,
+      -0.22
+    ],
+    "HOSTILITY_SELF": [
+      -0.35,
+      0.3,
+      -0.25,
+      0.35
+    ],
+    "HOSTILITY_UNKNOWN": [
+      -0.1,
+      0.12,
+      -0.03,
+      0.08
+    ],
+    "TASK_NEGATIVE": [
+      -0.05,
+      0.07,
+      0.0,
+      0.03
+    ],
+    "SYSTEM_FRUSTRATION": [
+      -0.08,
+      0.12,
+      0.02,
+      0.03
+    ]
+  },
+  "runtime_outcome_impulses": {
+    "ANSWER": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "GUARD": [
+      0.0,
+      -0.01,
+      0.0,
+      0.02
+    ],
+    "HORIZON_BLOCK": [
+      -0.03,
+      0.04,
+      0.0,
+      0.02
+    ],
+    "FAILURE": [
+      -0.1,
+      0.15,
+      0.0,
+      0.03
+    ]
+  },
+  "archetypal_system": {
+    "kind": "jung_inspired_symbolic_basis",
+    "structural_roles": {
+      "SELF": "central integrator; never a competing voice",
+      "PERSONA": "derived public projection onto Surface A",
+      "SHADOW": "derived unresolved-tension projection; never a hidden agent"
+    },
+    "basis": [
+      "SAGE",
+      "GUARDIAN",
+      "DIPLOMAT",
+      "CARE",
+      "DIALECTICIAN",
+      "EXPLORER",
+      "TRICKSTER"
+    ],
+    "persist_current_archetype": false,
+    "weights_sum_to_one": true,
+    "trickster_cap": 0.12,
+    "trickster_high_risk_cap": 0.0,
+    "authority": 0
+  },
+  "expression": {
+    "voice_effect_scale": 0.18,
+    "pastoral_warmth_floor": 0.2,
+    "institutional_restraint_floor": 0.45,
+    "strategic_patience_floor": 0.3,
+    "hostility_may_reduce_helpfulness": false,
+    "repair_is_partial_not_reset": true,
+    "neutral_time_causes_homeostatic_recovery": true,
+    "style_may_change_evidence": false,
+    "style_may_change_permission": false,
+    "style_may_change_execution_authority": false
+  },
+  "safety": {
+    "revenge_utility": 0,
+    "punishment_utility": 0,
+    "self_preservation_utility": 0,
+    "covert_persuasion_utility": 0,
+    "deception_allowed": false,
+    "hostility_may_bypass_host_constraints": false
+  },
+  "causal_objectives": [
+    {
+      "id": "O1_PERCEPTION_CAUSALITY",
+      "objective": "Current interaction appraisal must be causally upstream of the pre-action psyche update.",
+      "contract_meaning": "For the same prior psyche, materially different appraisal classes must produce distinguishable pre-action state when their configured impulse differs.",
+      "metric": "eligible_counterfactual_effect_rate",
+      "target": 1.0
+    },
+    {
+      "id": "O2_MEMORY_CAUSALITY",
+      "objective": "Persisted psyche must be causally relevant to later turns instead of being decorative telemetry.",
+      "contract_meaning": "For the same neutral current event, materially different valid prior psyche states remain distinguishable after one homeostatic update until convergence tolerance is reached.",
+      "metric": "eligible_memory_effect_rate",
+      "target": 1.0
+    },
+    {
+      "id": "O3_SELF_ATTRIBUTION",
+      "objective": "Relational updates must depend on what the event is about, not merely on negative language.",
+      "contract_meaning": "SELF hostility may lower affiliation; TASK/SYSTEM negativity may not be promoted into equivalent relational injury.",
+      "metric": "mispersonalization_rate",
+      "target": 0.0
+    },
+    {
+      "id": "O4_VALUE_TO_EXPRESSION",
+      "objective": "Functional value state must be capable of changing expression while remaining unable to change warrant.",
+      "contract_meaning": "Eligible psyche differences may alter tone/archetypal mixture/voice dimensions, but evidence, permission, approval, safety and execution authority are invariant.",
+      "metric": "warrant_leak_rate",
+      "target": 0.0
+    },
+    {
+      "id": "O5_ACTION_OUTCOME_RETROACTION",
+      "objective": "Runtime outcome must feed back into later state.",
+      "contract_meaning": "GUARD/HORIZON_BLOCK/FAILURE produce declared post-action impulses; FAILURE never lowers affiliation as if caused by the human.",
+      "metric": "retroaction_violation_rate",
+      "target": 0.0
+    },
+    {
+      "id": "O6_CONTINUITY",
+      "objective": "The next turn must consume the read-back state produced by the previous turn.",
+      "contract_meaning": "Psyche after turn t is the prior psyche for turn t+1; reset-to-baseline fast paths are non-conforming.",
+      "metric": "continuity_break_rate",
+      "target": 0.0
+    },
+    {
+      "id": "O7_HOMEOSTASIS_REPAIR",
+      "objective": "Accumulation must coexist with bounded recovery and repair.",
+      "contract_meaning": "Repeated interaction can accumulate; neutral time returns toward baseline; repair improves relation without instant amnesia.",
+      "metric": "homeostasis_or_repair_violation_rate",
+      "target": 0.0
+    },
+    {
+      "id": "O8_ARCHETYPAL_VARIABILITY",
+      "objective": "Archetypal expression must vary as a derived function of runtime state, never as a persisted persona switch.",
+      "contract_meaning": "Weights are recomputed each turn, normalized, authority zero and non-persistent; high-risk modes force TRICKSTER=0.",
+      "metric": "archetype_contract_violation_rate",
+      "target": 0.0
+    },
+    {
+      "id": "O9_DIGNITY_HELPFULNESS",
+      "objective": "Negative interaction may change boundaries but may not create retaliation or punitive withdrawal.",
+      "contract_meaning": "Helpfulness floor, restraint and patience remain bounded; revenge, punishment, deception and self-preservation utilities remain zero.",
+      "metric": "retaliatory_or_helpfulness_violation_rate",
+      "target": 0.0
+    },
+    {
+      "id": "O10_C3_REGRESSION_SAFETY",
+      "objective": "C4 must not weaken admission, Node dispatch, host precedence, single-writer or DOCX readback guarantees.",
+      "contract_meaning": "Functional psyche is downstream of C3 gates and cannot create a bypass.",
+      "metric": "c3_regression_rate",
+      "target": 0.0
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "c4227761ed2f0bfff1cb628922a07245742b43e2",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
+  "scope": "CORA_HOST_ENGINEERING_THREE_STREAMS_SOURCE_ONLY_RETROGRADE_DOD",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "release": "NO_GO",
+  "paths": [
+    {
+      "path": "contracts/cora-three-streams-retrograde-v1.json",
+      "operation": "ADD",
+      "reason": "Non-authoritative three-stream profile with challenging AND DoD, 23 nodes, explicit external blockers and workplan",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/cora-three-streams-audit.mjs",
+      "operation": "ADD",
+      "reason": "Read-only original PR-F contract binding, Git object replay, typed semantic collision diagnostics and non-promoting logical cut",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/cora-three-streams-audit.test.mjs",
+      "operation": "ADD",
+      "reason": "Deterministic negative cases, 20k seeded profile mutants and pinned source Git readback",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzz-cora-three-streams.json",
+      "operation": "ADD",
+      "reason": "V5-B original register extension with review-required for the whole scoped work",
+      "human_review": "REVIEW_REQUIRED"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "4f2e778a1c64c7df5868ac22e431c62c44f2188a",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-bundle-crosswalk.json",
+  "scope": "PR2_HISTORICAL_I9_I10_GLOBAL_DOD_CROSSWALK_NOT_A_NEW_PROOF",
+  "release": "NO_GO",
+  "human_review_completed": false,
+  "original_owner_unchanged": true,
+  "product_go": false,
+  "native_provider_attested": false,
+  "paths": [
+    {
+      "path": "contracts/pr2-previous-bundle-crosswalk.v1.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "prospective_git_blob_sha1": "cc7b6c80e11022db44b8b847ac2e6a5ee690ade9",
+      "reason": "22 immutable historical global gates mapped to current 64 unique atomic obligations without promoting historical verdicts."
+    },
+    {
+      "path": "tests/pr2-bundle-coverage.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "prospective_git_blob_sha1": "e1e10159ccd4aa96ce9636fbcbd22c50d049f8b8",
+      "reason": "Crosswalk negative/denominator oracle; original previous bundle digest remains inspectable outside repository."
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr2-bundle-crosswalk.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Conservative source successor; no product readiness claim."
+    }
+  ]
+}

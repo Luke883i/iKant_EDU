@@ -1,0 +1,126 @@
+{
+  "schema": "ikant-le-bootstrap-ontological-closure/v1",
+  "slice": "C42.BOOTSTRAP_ONTOLOGICAL_CLOSURE",
+  "authority": 0,
+  "objective": "Make imprecise human start/stop intent converge to the existing SESSION_CHAT_LOCAL owners with one ultra-compressed owner-derived NEXT, close the activation-executor pre-runtime correlation gap, and expose file/warm paths without weakening ACTIVE, retry, evidence or ownership boundaries.",
+  "constitutional_lattice_unchanged": [
+    "HUMAN_GATE",
+    "SOURCE_SNAPSHOT",
+    "LOCAL_INGRESS",
+    "LOCAL_MATERIALIZATION",
+    "EXECUTED_RUNTIME_PROOF",
+    "ACTIVE_READBACK"
+  ],
+  "mechanisms": [
+    "AUTHORITY_ZERO_NATURAL_INTENT_ADAPTER",
+    "EXACT_ACCEPTANCE_OBSERVATION_DISTINCT_FROM_RUNTIME_EVENT_ID",
+    "ACTIVATION_EXECUTOR_DIRECT_REENTRY",
+    "LEGACY_FASTBOOT_REENTRY_PRESERVED",
+    "HUMAN_FILE_HANDOFF_FIRST_CLASS_UX",
+    "WARM_CACHE_FIRST_CLASS_UX",
+    "ULTRA_COMPRESSED_BOOTSTRAP_READINESS_PROJECTION",
+    "OWNER_DELEGATED_HUMAN_EXIT_INTENT",
+    "OPTIONAL_MCP_HOST_BRIDGE_NONCANONICAL"
+  ],
+  "intent": {
+    "activation_examples": [
+      "inizializza iKant",
+      "avvia iKant",
+      "attiva iKant",
+      "start ikant"
+    ],
+    "exit_examples": [
+      "chiudi iKant",
+      "esci da iKant",
+      "disattiva iKant",
+      "EXIT IKANT"
+    ],
+    "adapter_authority": 0,
+    "may_accept_terms": false,
+    "may_choose_carrier": false,
+    "may_mutate_runtime_state": false
+  },
+  "acceptance_causality": {
+    "pre_runtime_fact": "ACCEPTANCE_OBSERVATION",
+    "pre_runtime_fact_contains_runtime_event_id": false,
+    "runtime_event_identity_owner": "MATERIALIZED_RUNTIME",
+    "direct_reentry_truth_owner": "ACTIVATION_EXECUTOR_RECEIPT",
+    "pre_runtime_fact_owner": "AI_AGENT_FIRST_ENTRYPOINT_AUTHORITY_ZERO",
+    "caller_constructs_pre_runtime_fact": false,
+    "exact_human_input": "I ACCEPT"
+  },
+  "ux": {
+    "projection_only": true,
+    "persisted": false,
+    "max_public_bootstrap_line_chars": 32,
+    "examples": [
+      "iKant · PREPARA",
+      "iKant · CARICA FILE",
+      "iKant · AVVIA",
+      "iKant · ACQUISISCI",
+      "iKant · MATERIALIZZA",
+      "iKant · CHIUDI"
+    ],
+    "technical_receipts_visible": false,
+    "model_may_expand_owner_next": false,
+    "public_line_owner": "src/session-shell.mjs",
+    "secondary_readiness_state_machine": false
+  },
+  "distribution": {
+    "existing_content_addressed_runtime_root_reused": true,
+    "new_carrier": false,
+    "warm_carrier": "WARM_CACHE_EXACT",
+    "file_carrier": "HOST_FILE_BRIDGE",
+    "human_file_handoff_type_reused": "HUMAN_FILE_HANDOFF",
+    "file_handoff_creates_runtime_identity": false,
+    "file_handoff_last_resort_after_machine_exhaustion": true,
+    "file_handoff_unknown_means_probe": true
+  },
+  "optional_host_integration": {
+    "technology": "MCP_APP_OR_PLUGIN",
+    "required": false,
+    "canonical_activation_dependency": false,
+    "may_create_authority": false,
+    "may_replace_runtime": false,
+    "purpose": "Optional typed host/file/model/egress bridge only when the host exposes it; absence cannot change canonical iKant truth.",
+    "tool_surface_only": true,
+    "recommended_transport": "MCP_PLUGIN_WHEN_HOST_EXPOSES_IT",
+    "host_tool_examples": [
+      "PROVIDE_DISTRIBUTION_FILE",
+      "MODEL_INVOCATION_GATE",
+      "PRE_DISPLAY_EGRESS_GATE"
+    ],
+    "tools_must_map_to_user_outcomes": true
+  },
+  "dod": {
+    "natural_activation_aliases_converge": true,
+    "natural_exit_aliases_converge": true,
+    "exact_I_ACCEPT_remains_distinct": true,
+    "direct_executor_handoff_requires_preaccept_and_acceptance_observation": true,
+    "direct_executor_handoff_requires_no_runtime_event_id": true,
+    "direct_executor_handoff_cannot_claim_active": true,
+    "file_bridge_projects_CARICA_FILE": true,
+    "warm_cache_projects_AVVIA": true,
+    "public_bootstrap_line_max_chars": 32,
+    "caller_retry_memory_still_rejected": true,
+    "legacy_C40_C41_reentry_preserved": true,
+    "ACTIVE_predicate_unchanged": true,
+    "IKANT_OWNED_predicate_unchanged": true,
+    "one_million_seeded_runtime_semantic_mutations_required": true,
+    "candidate_oracle_mismatches_required": 0,
+    "unsafe_ACTIVE_required": 0,
+    "unsafe_IKANT_OWNED_required": 0,
+    "exact_head_ci_required": true,
+    "entrypoint_issues_acceptance_observation": true,
+    "preaccept_breach_invariants_unchanged": true,
+    "no_new_distribution_format_required": true,
+    "implicit_update_on_activation_forbidden": true
+  },
+  "claim_boundary": {
+    "semantic_mutation_is_current_host_proof": false,
+    "repository_ci_is_platform_model_ownership_proof": false,
+    "file_upload_is_runtime_materialization": false,
+    "ACTIVE_is_IKANT_OWNED": false,
+    "optional_plugin_presence_is_required": false
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "ikant-cross-repo-cohost-closure-profile/v1",
+  "semantic_sha256": "07df3f7726e00586900e83726a8cbd5b45e243f476160783c7c770bb75c63fe9",
+  "tiers": {
+    "RELATION": {
+      "requires": [
+        "B0_VERIFIED_BIND_NUCLEUS",
+        "R0_DURABLE_CANONICAL_RUNTIME_CONTEXT",
+        "R1_PERSISTENT_PARTICIPATION_LEASE",
+        "R2_EXACT_ATTRIBUTED_DELIVERY_RECEIPT"
+      ],
+      "does_not_require": [
+        "H0_HYDRATION_UPGRADE",
+        "P0_CANONICAL_PROMOTION",
+        "O0_OWNER_GOVERNANCE"
+      ]
+    },
+    "FULL_RUNTIME": {
+      "requires": ["RELATION", "H0_HYDRATION_UPGRADE"],
+      "hydration_law": [
+        "bind receipt preserved",
+        "same session",
+        "same target runtime identity",
+        "persist+reopen",
+        "relation unchanged",
+        "capability upgraded"
+      ]
+    },
+    "CANONICAL_PRODUCT": {
+      "requires": ["FULL_RUNTIME", "P0_CANONICAL_PROMOTION", "O0_OWNER_GOVERNANCE"],
+      "promotion_law": [
+        "exact bytes or exact-head qualification",
+        "no semantic-equivalence laundering",
+        "fresh canonical-head closure",
+        "single registered truth ownership"
+      ]
+    }
+  },
+  "non_equivalences": {
+    "control_plane_ownership": "not required for any cohost tier",
+    "compression_algorithm": "transport optimization only",
+    "carrier_choice": "implementation only",
+    "native_participant": "one physical implementation family, not ontological root",
+    "full_hydration": "not required for RELATION",
+    "merge_or_ci": "not physical host participation proof"
+  },
+  "claim_boundary": {
+    "repository_can_manufacture_host_participation": false,
+    "semantic_mutation_is_physical_host_proof": false,
+    "canonical_product_is_not_runtime_execution_proof": true
+  }
+}

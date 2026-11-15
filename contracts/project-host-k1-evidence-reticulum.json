@@ -1,0 +1,195 @@
+{
+  "schema": "ikant-k1-evidence-reticulum/v1",
+  "authority": 0,
+  "source": "R2_18_DOD_RETICULUM_2026-10-31",
+  "source_head_base": "9427eabd32d4fb2f93ee3750b4ff88b1912e232d",
+  "profile": "PROJECT_EDU_E15",
+  "scope": "POST_ACCEPT_PRE_OWNER_TECHNICAL_ONLY",
+  "no_mcp": true,
+  "no_new_c72_c87_c135_c125_owner": true,
+  "no_preconsent_write": true,
+  "nodes": [
+    {
+      "id": "D00",
+      "depends_on": [],
+      "first_failure_edge": "OWNER_AUTHORITY_UNVERIFIED",
+      "qualification": "K1_SOFTWARE_NEGATIVE_OR_SOURCE_SCOPE_ONLY"
+    },
+    {
+      "id": "D01",
+      "depends_on": [
+        "D00"
+      ],
+      "first_failure_edge": "FIRST_TURN_WITNESS_UNBOUND",
+      "qualification": "ORIGINAL_OWNER_OR_FIELD_UNKNOWN"
+    },
+    {
+      "id": "D02",
+      "depends_on": [
+        "D01"
+      ],
+      "first_failure_edge": "DISTINCT_EVENT_REQUIRED",
+      "qualification": "ORIGINAL_OWNER_OR_FIELD_UNKNOWN"
+    },
+    {
+      "id": "D03",
+      "depends_on": [
+        "D02"
+      ],
+      "first_failure_edge": "CAPABILITY_UNBOUND_NOT_ABSENT",
+      "qualification": "K1_SOFTWARE_NEGATIVE_OR_SOURCE_SCOPE_ONLY"
+    },
+    {
+      "id": "D04",
+      "depends_on": [
+        "D02",
+        "D03"
+      ],
+      "first_failure_edge": "OWNER_OUTCOME_UNKNOWN_NO_REPLAY",
+      "qualification": "K1_SOFTWARE_NEGATIVE_OR_SOURCE_SCOPE_ONLY"
+    },
+    {
+      "id": "D05",
+      "depends_on": [
+        "D01",
+        "D03"
+      ],
+      "first_failure_edge": "GITHUB_ORIGIN_NOT_INDEPENDENTLY_REOPENED",
+      "qualification": "K1_SOFTWARE_NEGATIVE_OR_SOURCE_SCOPE_ONLY"
+    },
+    {
+      "id": "D06",
+      "depends_on": [
+        "D03",
+        "D04",
+        "D05"
+      ],
+      "first_failure_edge": "HOST_RELAY_PHYSICAL_READBACK_MISSING",
+      "qualification": "K1_SOFTWARE_NEGATIVE_OR_SOURCE_SCOPE_ONLY"
+    },
+    {
+      "id": "D07",
+      "depends_on": [
+        "D05",
+        "D06"
+      ],
+      "first_failure_edge": "K1_ORIGINAL_SOURCE_SET_INCOMPLETE",
+      "qualification": "K1_SOFTWARE_NEGATIVE_OR_SOURCE_SCOPE_ONLY"
+    },
+    {
+      "id": "D08",
+      "depends_on": [
+        "D02",
+        "D04",
+        "D07"
+      ],
+      "first_failure_edge": "ORIGINAL_C72_RECEIPT_NOT_REOPENED",
+      "qualification": "K1_SOFTWARE_NEGATIVE_OR_SOURCE_SCOPE_ONLY"
+    },
+    {
+      "id": "D09",
+      "depends_on": [
+        "D08"
+      ],
+      "first_failure_edge": "ORIGINAL_MODE_RECEIPT_MISSING",
+      "qualification": "ORIGINAL_OWNER_OR_FIELD_UNKNOWN"
+    },
+    {
+      "id": "D10",
+      "depends_on": [
+        "D09",
+        "D07"
+      ],
+      "first_failure_edge": "STOP_PROMPT_HEAD_PREFLIGHT",
+      "qualification": "ORIGINAL_OWNER_OR_FIELD_UNKNOWN"
+    },
+    {
+      "id": "D11",
+      "depends_on": [
+        "D09",
+        "D10"
+      ],
+      "first_failure_edge": "ORIGINAL_C135_NOT_RUNNING",
+      "qualification": "ORIGINAL_OWNER_OR_FIELD_UNKNOWN"
+    },
+    {
+      "id": "D12",
+      "depends_on": [
+        "D11"
+      ],
+      "first_failure_edge": "C87_CHECKPOINT_NOT_REOPENED",
+      "qualification": "ORIGINAL_OWNER_OR_FIELD_UNKNOWN"
+    },
+    {
+      "id": "D13",
+      "depends_on": [
+        "D11",
+        "D12"
+      ],
+      "first_failure_edge": "ORIGINAL_OWNER_VOICE_UNBOUND",
+      "qualification": "K1_SOFTWARE_NEGATIVE_OR_SOURCE_SCOPE_ONLY"
+    },
+    {
+      "id": "D14",
+      "depends_on": [
+        "D13"
+      ],
+      "first_failure_edge": "SEMANTIC_RETENTION_NOT_ATTESTED",
+      "qualification": "ORIGINAL_OWNER_OR_FIELD_UNKNOWN"
+    },
+    {
+      "id": "D15",
+      "depends_on": [
+        "D12",
+        "D14"
+      ],
+      "first_failure_edge": "EXIT_EVENT_NOT_DISTINCT",
+      "qualification": "ORIGINAL_OWNER_OR_FIELD_UNKNOWN"
+    },
+    {
+      "id": "D16",
+      "depends_on": [
+        "D00"
+      ],
+      "first_failure_edge": "PROOF_SCOPE_PROMOTION_FORBIDDEN",
+      "qualification": "K1_SOFTWARE_NEGATIVE_OR_SOURCE_SCOPE_ONLY"
+    },
+    {
+      "id": "D17",
+      "depends_on": [
+        "D08",
+        "D09",
+        "D10",
+        "D11",
+        "D12",
+        "D13",
+        "D14",
+        "D15",
+        "D16"
+      ],
+      "first_failure_edge": "PRODUCT_NO_GO",
+      "qualification": "ORIGINAL_OWNER_OR_FIELD_UNKNOWN"
+    }
+  ],
+  "edge_tests": [
+    "SELF_CONSISTENT_FAKE_SOURCE_REJECTED_BY_PINNED_LOCAL_GIT_OBJECTS_NOT_REMOTE_PROVENANCE",
+    "FAKE_C72_RECEIPT_NOT_IN_ORIGINAL_TRANSIT_REJECTED_NO_OWNER_CAUSALITY_CLAIM",
+    "HASH_CONSISTENT_FAKE_C135_FRAME_REJECTED_BY_ORIGINAL_WEAKSET"
+  ],
+  "proof_domains": {
+    "R": "PR_SOURCE_SHA_ONLY",
+    "S": "CI_ON_EXACT_SHA_REQUIRED",
+    "D": "UNKNOWN_CHATGPT_INSTALLATION",
+    "T": "UNKNOWN_C72_AND_C135_OWNER",
+    "P": "PRODUCT_NO_GO",
+    "G": "HUMAN_REVIEW_REQUIRED"
+  },
+  "blocking_edges": [
+    "REMOTE_GITHUB_CONNECTOR_ORIGIN_NOT_ATTESTED",
+    "C72_OWNER_CAUSALITY_REQUIRES_ORIGINAL_CALL_WITNESS",
+    "K1_FIELD_ORIGINAL_SOURCE_SET_INCOMPLETE",
+    "NATIVE_HOST_DELIVERY_NOT_ATTESTED"
+  ],
+  "no_more_semantic_commits_gate": "FAIL_CLOSED_UNTIL_LAST_PR_HEAD_GREEN_AND_OWNER_GOVERNANCE_REVIEW_AND_FIELD_DO_DS_SEPARATELY_VERIFIED",
+  "can_auto_promote_from_ci": false
+}

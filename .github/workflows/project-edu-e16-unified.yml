@@ -1,0 +1,53 @@
+name: Project EDU E16 unified original C72 ingress
+on:
+  pull_request:
+    paths:
+      - 'host/project-c72-e16-unified-ingress.mjs'
+      - 'tests/project-c72-e16-unified-*.test.mjs'
+      - 'scripts/project-c72-e16-unified-falsify.mjs'
+      - 'docs/PROJECT_EDU_E16_UNIFIED_INGRESS.md'
+      - 'BOOTSTRAP.json'
+      - 'project/session-chat/PROMPT.txt'
+      - 'scripts/project-source-manifest.mjs'
+      - 'contracts/project-session-source.json'
+      - '.github/workflows/project-edu-e16-unified.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-e16:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Verify manifest, prompt and all new source syntax
+        run: |
+          node scripts/project-source-manifest.mjs verify
+          node --check host/project-c72-e16-unified-ingress.mjs
+          node --check scripts/project-c72-e16-unified-falsify.mjs
+          node --test tests/project-oneshell-prompt.test.mjs tests/project-bootstrap-responsibility-matrix.test.mjs
+      - name: New boundary and original C72/E16 physical source integration
+        run: |
+          node --test tests/project-c72-e16-unified-ingress.test.mjs tests/project-c72-e16-unified-original.test.mjs
+      - name: Original two-process E16 and C135/C87/C125 nonregression
+        run: |
+          node --test tests/project-oneshell-e15-sterile.test.mjs tests/project-oneshell-e16-hardening.test.mjs tests/project-c72-receipt-transit.test.mjs
+      - name: Original legacy callback and OneZIP fallback nonregression
+        run: |
+          node --test tests/project-c72-physical-ingress.test.mjs tests/project-edu-onezip-route.test.mjs tests/project-c72-verified-staging.test.mjs
+      - name: One million reproducible normalized policy mutations
+        env:
+          E16_CASES: 1000000
+          E16_START: 0
+        run: |
+          node scripts/project-c72-e16-unified-falsify.mjs "$RUNNER_TEMP/e16-1m.json"
+          node -e "const x=require(process.argv[1]);if(x.cases!==1000000||x.mismatches!==0||x.physically_observed_real_c72_calls!==0||x.product_go!==false)process.exit(1)" "$RUNNER_TEMP/e16-1m.json"

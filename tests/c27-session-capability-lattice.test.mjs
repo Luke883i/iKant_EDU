@@ -1,0 +1,17 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';
+import {ROOT,readOrientationCapsule} from '../src/contract.mjs';
+import {classifyLocalActivationStage,validateLocalActivationStage} from '../src/runtime-availability.mjs';
+import {validateActivationExecutorReceipt} from '../src/bootstrap-semantic.mjs';
+import {runtimeRootDescriptor} from '../src/runtime-root-verified.mjs';
+import {runtimePaths} from '../src/state.mjs';
+import {bootstrapEvidenceV2} from './bootstrap-fixture.mjs';
+const gitBlobSha1=b=>crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
+const orientation=()=>readOrientationCapsule().paths.map(p=>{const b=fs.readFileSync(path.join(ROOT,p));return{path:p,blob_sha1:gitBlobSha1(b),bytes:b.length};});
+const reset=()=>fs.rmSync(runtimePaths().dir,{recursive:true,force:true});
+test('C27 current session-chat topology is N3 bridge probe required, not unavailable',()=>{const d=classifyLocalActivationStage({accepted:true,processor_available:true,source_visible:true,bridge_candidate:true,bridge_verified:false});assert.equal(d.stage,'N3_BRIDGE_PROBE_REQUIRED');assert.equal(d.next,'PROBE_OPAQUE_RELAY_ROUNDTRIP');assert.deepEqual(validateLocalActivationStage(d),{ok:true,errors:[]});});
+test('C27 verified relay moves only to ingress executable',()=>{const d=classifyLocalActivationStage({accepted:true,processor_available:true,source_visible:true,bridge_candidate:true,bridge_verified:true});assert.equal(d.stage,'N4_INGRESS_EXECUTABLE');assert.equal(d.active,false);});
+test('C27 ACTIVE requires complete downstream local chain',()=>{const base={accepted:true,processor_available:true,source_visible:true,bridge_candidate:true,bridge_verified:true,materialized_reopened:true,provenance_bound:true,runtime_bound:true,writer:true,active_readback:false};assert.equal(classifyLocalActivationStage(base).stage,'N7_RUNTIME_BOUND_DEGRADED');const a=classifyLocalActivationStage({...base,active_readback:true});assert.equal(a.stage,'N8_ACTIVE');assert.equal(a.active,true);});
+test('C27 integrity blocker is overlay and cannot be laundered into ACTIVE',()=>{const d=classifyLocalActivationStage({accepted:true,processor_available:true,source_visible:true,bridge_candidate:true,bridge_verified:true,materialized_reopened:true,provenance_bound:true,runtime_bound:true,writer:true,active_readback:true,blocked_integrity:true});assert.equal(d.stage,'N7_RUNTIME_BOUND_DEGRADED');assert.equal(d.fault_overlay,'BLOCKED_INTEGRITY');assert.equal(d.active,false);assert.equal(d.persisted,false);});
+test('C27 activation executor accepts verified opaque relay and rejects rewrite',()=>{reset();try{const d=runtimeRootDescriptor(),good=bootstrapEvidenceV2({sourceHead:'a'.repeat(40),bytePath:'VERIFIED_OPAQUE_RELAY'}).activation_executor,v=validateActivationExecutorReceipt(good,{sourceHead:'a'.repeat(40),runtimeRootSha256:d.runtime_root_sha256,runtimeRootDescriptor:d,orientationObjects:orientation()});assert.equal(v.ok,true);const bad=bootstrapEvidenceV2({sourceHead:'a'.repeat(40),bytePath:'VERIFIED_OPAQUE_RELAY',modelRewriteAllowed:true}).activation_executor,w=validateActivationExecutorReceipt(bad,{sourceHead:'a'.repeat(40),runtimeRootSha256:d.runtime_root_sha256,runtimeRootDescriptor:d,orientationObjects:orientation()});assert.equal(w.ok,false);assert.ok(w.errors.includes('model_rewrite'));}finally{reset();}});

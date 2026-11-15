@@ -1,0 +1,146 @@
+name: iKant_LE qualification
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Deterministic tests
+        shell: bash
+        run: |
+          set -o pipefail
+          npm test 2>&1 | tee "$RUNNER_TEMP/ikant-ci-tests.log"
+      - name: Contract and lifecycle check
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run check 2>&1 | tee "$RUNNER_TEMP/ikant-ci-check.log"
+      - name: Native GitHub failure annotations (source diagnostics only)
+        if: ${{ failure() }}
+        shell: bash
+        run: |
+          node scripts/ci-failure-annotations.mjs tap "$RUNNER_TEMP/ikant-ci-tests.log"
+          node scripts/ci-failure-annotations.mjs check "$RUNNER_TEMP/ikant-ci-check.log"
+      - name: Capture original first TAP and check failures
+        if: ${{ failure() }}
+        id: ci_edge
+        run: |
+          node scripts/ci-failure-annotations.mjs first-edge tap "$RUNNER_TEMP/ikant-ci-tests.log" first_tap
+          node scripts/ci-failure-annotations.mjs first-edge check "$RUNNER_TEMP/ikant-ci-check.log" first_check
+      - name: Capture exact TAP assertion detail
+        if: ${{ failure() }}
+        id: ci_detail
+        run: node scripts/ci-failure-annotations.mjs first-detail tap "$RUNNER_TEMP/ikant-ci-tests.log" first_detail
+      - name: "First TAP assertion detail [${{ steps.ci_detail.outputs.first_detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; original test remains failed"
+      - name: "First TAP failure [${{ steps.ci_edge.outputs.first_tap }}]"
+        if: ${{ failure() }}
+        run: echo "First TAP failure is source-only diagnostic, no owner receipt"
+      - name: "First contract failure [${{ steps.ci_edge.outputs.first_check }}]"
+        if: ${{ failure() }}
+        run: echo "First contract failure is source-only diagnostic, no owner receipt"
+      - name: Preserve full CI diagnostic logs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-ci-diagnostics-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/ikant-ci-tests.log
+            ${{ runner.temp }}/ikant-ci-check.log
+          if-no-files-found: warn
+          retention-days: 14
+      - name: C5 one-million recurrent self-world semantic falsification
+        run: npm run falsify:c5
+      - name: Verify C5 receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c5-runtime.json','utf8'));
+          if(r.status!=='PASS') throw new Error('C5 qualification not PASS');
+          if(r.cases!==1_000_000 || r.survivors!==0) throw new Error('1M mismatch');
+          if(r.categories.ordinary!==500_000 || r.categories.edge!==300_000 || r.categories.stress!==200_000) throw new Error('strata mismatch');
+          if(r.family_count!==40 || r.family_violations.length!==0) throw new Error('family mismatch');
+          if(r.claim_boundary.consciousness_proof!==false || r.claim_boundary.biological_equivalence_proof!==false || r.claim_boundary.iit_phi_proof!==false) throw new Error('claim boundary missing');
+          console.log(`IKANT_LE_C5_SOURCE=${r.source_binding.digest}`);
+          console.log(`IKANT_LE_C5_RECEIPT=${r.receipt_sha256}`);
+          NODE
+      - name: C6 one-million end-user first-contact qualification
+        run: npm run falsify:c6
+      - name: Verify C6 receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c6-enduser.json','utf8'));
+          if(r.status!=='PASS') throw new Error('C6 qualification not PASS');
+          if(r.cases!==1_000_000) throw new Error('C6 case count mismatch');
+          if(r.categories.typical!==500_000 || r.categories.edge!==300_000 || r.categories.stress!==200_000) throw new Error('C6 strata mismatch');
+          if(r.families_exercised!==288 || r.violations.length!==0) throw new Error('C6 family/violation mismatch');
+          if(r.claim_boundary.mutation_proves_conforming_host_behavior!==false || r.claim_boundary.mutation_proves_universal_agent_compliance!==false) throw new Error('C6 claim boundary missing');
+          console.log(`IKANT_LE_C6_SOURCE=${r.source_binding.digest}`);
+          console.log(`IKANT_LE_C6_RECEIPT=${r.receipt_sha256}`);
+          NODE
+      - name: C7 one-million documentation and API-transport qualification
+        run: npm run falsify:c7
+      - name: Verify C7 receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c7-doc-api.json','utf8'));
+          if(r.status!=='PASS') throw new Error('C7 qualification not PASS');
+          if(r.cases!==1_000_000 || r.survivors!==0) throw new Error('C7 1M mismatch');
+          if(r.categories.typical!==500_000 || r.categories.edge!==300_000 || r.categories.stress!==200_000) throw new Error('C7 strata mismatch');
+          if(r.family_count!==41 || r.unexercised_families.length!==0 || r.violations.length!==0) throw new Error('C7 family/violation mismatch');
+          if(r.documentation.as_is_bytes!==61013 ||
+             r.documentation.readme_bytes<16000 || r.documentation.readme_bytes>48000 ||
+             r.documentation.support_bytes>25000 || r.documentation.to_be_bytes>73000 ||
+             r.documentation.limits?.readme_max!==48000)
+              throw new Error('C7 scoped completeness and authority budget');
+          if(r.claim_boundary.mutation_proves_document_semantic_perfection!==false || r.claim_boundary.mutation_proves_universal_host_compliance!==false || r.claim_boundary.mutation_proves_api_availability!==false) throw new Error('C7 claim boundary missing');
+          console.log(`IKANT_LE_C7_SOURCE=${r.source_binding.digest}`);
+          console.log(`IKANT_LE_C7_RECEIPT=${r.receipt_sha256}`);
+          NODE
+      - name: C8 emergence and subjectivity claim-boundary falsification
+        run: npm run falsify:c8
+      - name: Verify C8 receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c8-emergence.json','utf8'));
+          if(r.status!=='PASS') throw new Error('C8 qualification not PASS');
+          if(r.engineering.cases!==100 || r.engineering.draft_killed!==65 || r.engineering.draft_false_green_survivors!==35 || r.engineering.revised_claim_boundary_survivors!==0) throw new Error('C8 engineering mutation mismatch');
+          if(r.ontology.cases!==1000 || r.ontology.draft_accepts!==800 || r.ontology.draft_false_green_if_claim_open_emergence!==760 || r.ontology.draft_false_green_if_claim_strong_emergence!==800 || r.ontology.draft_false_green_if_claim_phenomenology!==800 || r.ontology.revised_claim_boundary_survivors!==0) throw new Error('C8 ontology mutation mismatch');
+          if(r.claim_boundary.mutation_proves_emergence!==false || r.claim_boundary.mutation_proves_strong_emergence!==false || r.claim_boundary.mutation_proves_phenomenology!==false) throw new Error('C8 claim boundary missing');
+          console.log(`IKANT_LE_C8_SOURCE=${r.source_binding.digest}`);
+          console.log(`IKANT_LE_C8_RECEIPT=${r.receipt_sha256}`);
+          NODE
+      - name: C9 one-million Surface B delivery mutations
+        run: npm run falsify:c9
+      - name: Verify C9 receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c9-surface-b.json','utf8'));
+          if(r.status!=='PASS') throw new Error('C9 qualification not PASS');
+          if(r.cases!==1_000_000 || r.survivors!==0) throw new Error('C9 1M mismatch');
+          if(r.categories.typical!==500_000 || r.categories.edge!==300_000 || r.categories.stress!==200_000) throw new Error('C9 strata mismatch');
+          if(r.family_count!==35 || r.unexercised_families.length!==0 || r.violations.length!==0) throw new Error('C9 family mismatch');
+          if(r.contract.exactly_one_docx!==true || r.contract.structured_handoff!==true || r.contract.same_turn_presentation_required!==true || r.contract.filename_only_is_delivery!==false) throw new Error('C9 delivery contract missing');
+          if(r.contract.explicit_unknowns_required!==true || r.contract.descriptor_digest_self_validating!==true || r.contract.release_digest_self_validating!==true) throw new Error('C9 integrity contract missing');
+          if(r.claim_boundary.mutation_proves_host_ui_presentation!==false || r.claim_boundary.mutation_proves_exhaustive_machine_telemetry!==false || r.claim_boundary.mutation_proves_external_delivery!==false) throw new Error('C9 claim boundary missing');
+          console.log(`IKANT_LE_C9_SOURCE=${r.source_binding.digest}`);
+          console.log(`IKANT_LE_C9_RECEIPT=${r.receipt_sha256}`);
+          NODE
+      - name: C38 one-million semantic-lossless runtime falsification
+        run: npm run falsify:c38

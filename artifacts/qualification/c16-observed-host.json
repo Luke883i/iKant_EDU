@@ -1,0 +1,39 @@
+{
+  "schema": "ikant-le-c16-observed-host/v1",
+  "observed_at": "2026-09-25",
+  "authority": 0,
+  "scope": "current ChatGPT host surfaces observed during C16 authoring",
+  "observations": {
+    "github_connector_exact_head_read": true,
+    "github_connector_file_read": true,
+    "local_node_version": "22.16.0",
+    "local_fs_write_readback_append_delete": true,
+    "local_sha256": true,
+    "local_clock": true,
+    "local_dns_raw_githubusercontent": false,
+    "connector_to_local_filesystem_byte_bridge_observed": false,
+    "model_mediated_byte_reconstruction_permitted": false
+  },
+  "classification_input": {
+    "terms_presented": true,
+    "accepted": true,
+    "source_bound": true,
+    "consent_valid": true,
+    "transfer_identity": true,
+    "evidence_available": true,
+    "byte_bridge": false,
+    "local_root": false,
+    "host_probe": true,
+    "writer": true,
+    "deadline_ok": true,
+    "active_commit": false,
+    "integrity_codes": []
+  },
+  "expected_state": "DEGRADED",
+  "expected_primary_code": "BYTE_BRIDGE_UNAVAILABLE",
+  "claim_boundary": {
+    "not_private_model_introspection": true,
+    "not_universal_host_capability_claim": true,
+    "not_active_runtime_evidence": true
+  }
+}

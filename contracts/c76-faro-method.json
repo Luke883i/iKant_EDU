@@ -1,0 +1,111 @@
+{
+  "schema": "ikant-le-c76-faro-method/v1",
+  "name": "FARO",
+  "expanded_name": "Falsificazione Avversariale del Routing e dell'Origine",
+  "authority": 0,
+  "scope": "INDEPENDENT_ENGINEERING_AUDIT_NOT_INITIALIZATION",
+  "purpose": "Distinguish real executed local Node calls, browser sessions, and real native ChatGPT sessions; discover first physical edge and discriminate failed attempts from acquisitions.",
+  "target_source_branch": "main",
+  "source_head_must_be_git_commit": true,
+  "run_plane": "ACTUAL_GITHUB_ACTIONS_NODE_ON_EXACT_CHECKOUT",
+  "native_chrome_sessions_claimed": 0,
+  "test_space": {
+    "axes": [
+      {
+        "name": "host_route",
+        "levels": 10
+      },
+      {
+        "name": "source_blob_identity",
+        "levels": 10
+      },
+      {
+        "name": "mode_choice",
+        "levels": 10
+      },
+      {
+        "name": "terms_presentation",
+        "levels": 10
+      },
+      {
+        "name": "human_consent_text",
+        "levels": 10
+      }
+    ],
+    "cardinality": 100000,
+    "enumeration": "multiplicative_bijection_mod_100000",
+    "multiplier": 31337,
+    "offset": 54321,
+    "uniqueness_proof": "gcd(multiplier,100000)=1; every Cartesian tuple visited once",
+    "call_type": "REAL_IMPORTED_REPOSITORY_NODE_FUNCTIONS_IN_PROCESS",
+    "does_not_mean": "100000_NEW_NATIVE_CHATGPT_SESSIONS"
+  },
+  "convergence": {
+    "classifier": "tuple(route,typed_status,first_unclosed_edge)",
+    "observed_last_novelty_index_must_leave_at_least": 13000,
+    "scope": "OBSERVED_TEST_CORPUS_ONLY",
+    "universal_saturation_proven": false,
+    "no_novelty_is_conditional_on": "fixed observed classifier, corpus, seed, and actual executed source commit"
+  },
+  "safety": {
+    "must_never_claim_active": true,
+    "canonical_requires_pre_registered_original_ingress": true,
+    "experimental_never_canonical": true,
+    "never_invent_host_download_links": true,
+    "preserve_sealed_shell_and_docx_causal_order": true
+  },
+  "proof_tiers": [
+    "SOURCE_PINNED",
+    "CI_NODE_EXECUTED",
+    "HOST_NATIVE_INGRESS_WITNESSED",
+    "HOST_NATIVE_DELIVERY_WITNESSED",
+    "PERSISTED_TWO_TURN_READBACK"
+  ],
+  "accepted_claims": [
+    "REAL_NODE_C69_C70_C71_EXECUTION",
+    "CANONICAL_HANDOFF_DENIAL",
+    "PRECONSENT_ACTION_POLICY_CHECK",
+    "FINITELY_SATURATED_SEMANTIC_CLASSIFIER"
+  ],
+  "forbidden_promotions": [
+    "CHROME_SESSION_BOOTSTRAP",
+    "NATIVE_CHATGPT_MESSAGE_DISPATCH",
+    "PERSISTENT_IKANT_OWNER",
+    "ACTIVE",
+    "95_PERCENT_USER_VALUE",
+    "ONTOLOGICAL_CONSCIOUSNESS"
+  ],
+  "DoD": [
+    "100000_NUMBERED_ACTUAL_NODE_ATTEMPTS",
+    "100000_DISTINCT_CARTESIAN_TUPLES",
+    "AT_LEAST_ONE_C70_C71_C73_REAL_EXECUTION",
+    "AT_LEAST_ONE_LOCAL_C69_FILE_REOPEN",
+    "AT_LEAST_ONE_REAL_CANONICAL_OWNER_ENTRY_DENIAL",
+    "ZERO_FALSE_ACTIVE",
+    "ZERO_FAKE_DOCX_LINKS",
+    "ZERO_UNEXPECTED_EXCEPTIONS",
+    "NO_NEW_OBSERVED_CLASS_FOR_LAST_13000_ATTEMPTS",
+    "NODE20_AND_NODE22_REGRESSIONS",
+    "OBSERVABLE_CI_EVIDENCE",
+    "README_TERMS_AND_SOURCE_GIT_IDENTITY_RECORDED"
+  ],
+  "root_cause_taxonomy": [
+    "HOST_TOOL_UNAVAILABLE",
+    "SOURCE_HEAD_API_FAILURE",
+    "SOURCE_HEAD_PAYLOAD_INVALID",
+    "FORBIDDEN_PRECONSENT_TOOL_ATTEMPT",
+    "PINNED_TERMS_NOT_PRESENTED_VERBATIM",
+    "ACCEPTANCE_INVALID",
+    "MODE_CHOICE_INVALID",
+    "README_BLOB_INVALID",
+    "LOCAL_FILE_SINK_UNAVAILABLE",
+    "HOST_NATIVE_MESSAGE_INGRESS",
+    "HOST_ACCEPTANCE_EVENT_IDENTITY",
+    "EXPERIMENTAL_SCOPE_REJECTED",
+    "CANONICAL_OWNER_READBACK",
+    "HOST_NATIVE_ARTIFACT_DELIVERY",
+    "NO_REAL_HOST_TWO_TURN_WITNESS"
+  ],
+  "fixture_disclosure": "The consent I ACCEPT in CI is fixture text; it is not an actual ChatGPT human event.",
+  "external_gap": "Host-native Chrome/ChatGPT computer control is not exposed by this conversation tool set; no such attempts are counted."
+}

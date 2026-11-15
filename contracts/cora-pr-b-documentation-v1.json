@@ -1,0 +1,217 @@
+{
+  "schema": "ikant-cora-pr-b-documentation/v1",
+  "authority": 0,
+  "status": "HOST_ENGINEERING_CANDIDATE",
+  "source_repository": "Luke883i/iKant_EDU",
+  "source_base": "abd62d81d9b899743ee738fc04b59c2e065fe765",
+  "reuse": {
+    "reticulum": "contracts/cora-reticular-hygiene-v1.json",
+    "inventory": "scripts/v5b-repository-governance-audit.mjs",
+    "abstract_dod": "contracts/cora-pr-a-backlog-v1.json",
+    "document_index": "scripts/ikant-document-atlas.mjs",
+    "source_of_truth": "project/session-chat/PROMPT.txt"
+  },
+  "target": "R_S_D_T_P_G_DOCUMENTATION_COHERENCE_WITHOUT_NEW_OWNER",
+  "documents": [
+    {
+      "path": "README.md",
+      "role": "ENTRY",
+      "marker": "<!-- cora-pr-b-docs:v1 -->",
+      "required": [
+        "repository",
+        "software",
+        "prodotto",
+        "docs/ARCHITECTURE.md",
+        "docs/PRODUCT_POSITIONING.md"
+      ]
+    },
+    {
+      "path": "docs/START_HERE.md",
+      "role": "PUBLIC_GUIDE",
+      "marker": "<!-- cora-pr-b-docs:v1 -->",
+      "required": [
+        "repository",
+        "software",
+        "prodotto",
+        "ARCHITECTURE.md"
+      ]
+    },
+    {
+      "path": "docs/PRODUCT_POSITIONING.md",
+      "role": "PRODUCT_BOUNDARY",
+      "marker": "<!-- cora-pr-b-docs:v1 -->",
+      "required": [
+        "repository",
+        "software",
+        "prodotto",
+        "95%",
+        "NON ATTESTATO"
+      ]
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "role": "SOFTWARE_BOUNDARY",
+      "marker": "<!-- cora-pr-b-docs:v1 -->",
+      "required": [
+        "repository",
+        "software",
+        "prodotto",
+        "C72",
+        "C135",
+        "C87",
+        "C125",
+        "C59"
+      ]
+    },
+    {
+      "path": "docs/IKANT_LOCAL_SETUP.md",
+      "role": "EXECUTION_RUNBOOK",
+      "marker": "<!-- cora-pr-b-docs:v1 -->",
+      "required": [
+        "iKant_EDU.git",
+        "cd iKant_EDU",
+        "ORIENTATION",
+        "I ACCEPT",
+        "EDU",
+        "SOURCE_HEAD"
+      ]
+    },
+    {
+      "path": "docs/GOVERNANCE.md",
+      "role": "AUTHORITY_BOUNDARY",
+      "marker": "<!-- cora-pr-b-docs:v1 -->",
+      "required": [
+        "CORA",
+        "V5-B",
+        "owner",
+        "review",
+        "UNKNOWN"
+      ]
+    },
+    {
+      "path": "docs/IKANT_DEVELOPMENT_HISTORY.md",
+      "role": "HISTORICAL_LINEAGE",
+      "marker": "<!-- cora-pr-b-docs:v1 -->",
+      "required": [
+        "#213",
+        "#214",
+        "#215",
+        "#216",
+        "#217",
+        "#218"
+      ]
+    },
+    {
+      "path": "docs/IKANT_RUNTIME_AND_EVIDENCE.md",
+      "role": "EVIDENCE_BOUNDARY",
+      "marker": "<!-- cora-pr-b-docs:v1 -->",
+      "required": [
+        "DOCUMENTATO",
+        "OSSERVATO",
+        "NON ATTESTATO",
+        "provider",
+        "SOURCE_HEAD"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "B01",
+      "needs": [],
+      "proof": "Same Git HEAD and V5-B registered documentation delta"
+    },
+    {
+      "id": "B02",
+      "needs": [
+        "B01"
+      ],
+      "proof": "R/S/P and R/S/D/T/P/G boundaries distinguished, no new runtime owner"
+    },
+    {
+      "id": "B03",
+      "needs": [
+        "B02"
+      ],
+      "proof": "Current Git name, exact host orientation path, consent and no historical ZIP as default"
+    },
+    {
+      "id": "B04",
+      "needs": [
+        "B02"
+      ],
+      "proof": "Documentation separates original authority, source tests, runtime and provider evidence"
+    },
+    {
+      "id": "B05",
+      "needs": [
+        "B02"
+      ],
+      "proof": "Historical files retain provenance, old names explicit historical, not active"
+    },
+    {
+      "id": "B06",
+      "needs": [
+        "B03",
+        "B04",
+        "B05"
+      ],
+      "proof": "Single generated Markdown atlas remains byte-exact, links and read paths validated"
+    },
+    {
+      "id": "B07",
+      "needs": [
+        "B06"
+      ],
+      "proof": "Physical source-bound regression and deterministic semantic-negative mutants"
+    },
+    {
+      "id": "B08",
+      "needs": [
+        "B07"
+      ],
+      "proof": "Two independent engineer reviews, human decision and post-merge verification"
+    }
+  ],
+  "expected_source_test_status": "DOC_SOURCE_CANDIDATE_ONLY",
+  "logical_rule": "ALL_OF_NOT_WEIGHTED",
+  "unknown": "UNKNOWN_BLOCKS_PRETENSE_NOT_LEARNING",
+  "exit_cut": {
+    "source_candidate": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07"
+    ],
+    "engineering_complete": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "B06",
+      "B07",
+      "B08"
+    ],
+    "product": "EXTERNAL_OWNER_PROVIDER_HOLDOUT_NOT_IN_PR_B"
+  },
+  "protections": {
+    "new_owner": false,
+    "new_writer": false,
+    "change_runtime": false,
+    "change_prompt": false,
+    "delete_files": false,
+    "retire_workflows": false,
+    "infer_active_from_CI": false,
+    "infer_consumer_closure": false,
+    "forge_human_review": false
+  },
+  "review": {
+    "two_independent_engineers": "NOT_ATTESTED",
+    "human_decision": "NOT_ATTESTED",
+    "provider_delivery": "NOT_ATTESTED"
+  },
+  "result": "NO_REPOSITORY_OR_PRODUCT_RELEASE_CLAIM"
+}

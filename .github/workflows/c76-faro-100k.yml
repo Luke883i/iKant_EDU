@@ -1,0 +1,48 @@
+name: C76 FARO real Node 100k bootstrap attempts
+on:
+  pull_request:
+    paths:
+      - 'scripts/c76-faro-100k-actual-retries.mjs'
+      - 'contracts/c76-faro-method.json'
+      - 'docs/C76_FARO_METHOD.md'
+      - '.github/workflows/c76-faro-100k.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  faro-100k:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      FARO_JSON_OUT: c76-faro-report.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run 100000 actual Node invocations
+        run: node scripts/c76-faro-100k-actual-retries.mjs
+      - name: Publish bounded summary
+        if: always()
+        run: |
+          if test -f "$FARO_JSON_OUT"; then
+            node -e "const j=JSON.parse(require('node:fs').readFileSync(process.env.FARO_JSON_OUT,'utf8')); process.stdout.write(JSON.stringify({attempts:j.attempts,stages:j.real_stage_invocations,saturation:j.saturation,fail_mismatches:j.fail_mismatches},null,2)+'\n')" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: c76-faro-100k-execution-report
+          path: c76-faro-report.json
+          if-no-files-found: warn
+      - run: npm run runtime-root:verify
+      - run: npm run check
+  node20-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --test --test-concurrency=1 tests/c72-unified-mode-admission.test.mjs tests/c74-postmerge-bootstrap.test.mjs

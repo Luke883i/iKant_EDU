@@ -1,0 +1,19 @@
+{
+  "schema": "ikant-le-c41-retry-epoch-ux-falsification/v1",
+  "cases": 10000,
+  "families": 20,
+  "edge_catalog_total": 26,
+  "edge_catalog_covered": 26,
+  "edge_coverage_ratio": 1,
+  "candidate_oracle_mismatches": 0,
+  "killed": 10000,
+  "mutation_kill_ratio": 1,
+  "all_mutants_killed": true,
+  "caller_retry_memory_accepted": 0,
+  "unrelated_requalifications": 0,
+  "unbound_handoff_routes": 0,
+  "actionable_transition_ui_gaps": 0,
+  "unsafe_active": 0,
+  "status": "PASS",
+  "receipt_sha256": "d575de956438f708406ced9da0c4fa14f728874d57014621446b024fa96eb993"
+}

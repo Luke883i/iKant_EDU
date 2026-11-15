@@ -1,0 +1,53 @@
+{
+  "schema": "ikant-v5d-retrograde-oneshell-dod/v1",
+  "authority": 0,
+  "baseline_v5c_merge": "b3920c1bbfb856cead312e17b027e350ae2ec123",
+  "global": {
+    "id": "V5D-G",
+    "what": "A human sees a six-slot deterministic OneShell whose graphical and text representations contain no effect, authority, owner voice, delivery, persistence or action absent from the original independently reopened frame.",
+    "requires": ["V5D-I1", "V5D-I2", "V5D-I3", "V5D-I4", "V5D-I5"],
+    "required_external_proof": ["C72_C135_C87_C125_S03_ORIGINAL_REOPEN", "ACTUAL_PROVIDER_RENDER_AND_USER_READBACK", "TWO_INDEPENDENT_ENGINEERS_V5G_AND_HUMAN_RELEASE_DECISION"],
+    "ci_can_close_global": false,
+    "status": "OPEN_FIELD_AND_V5G_REQUIRED"
+  },
+  "intermediate": [
+    {"id":"V5D-I1","what":"Preserve owner authority and segregate voice from host frame","locals":["L01","L02","L03"]},
+    {"id":"V5D-I2","what":"Canonical six-slot fidelity in text and HTML","locals":["L04","L05","L06","L07"]},
+    {"id":"V5D-I3","what":"Visual promises bounded by the original evidence","locals":["L08","L09","L10"]},
+    {"id":"V5D-I4","what":"Noninteractive controls and report-bound compression","locals":["L11","L12","L13","L14"]},
+    {"id":"V5D-I5","what":"Repeatable falsification and separation of local/provider assurance","locals":["L15","L16","L17"]}
+  ],
+  "local": [
+    {"id":"L01","what":"C72→C135→C87→C125/S03 owner boundaries unchanged; guard read-only","oracle":"git diff + original regression tests"},
+    {"id":"L02","what":"Only validated original frame may flow through Host renderer","oracle":"renderOneShell original owner gate prior to guard"},
+    {"id":"L03","what":"Voice origin and sha of A must equal original; NO_VOICE not minted","oracle":"guard and negative fixtures"},
+    {"id":"L04","what":"Six slots and ordering must be byte-identical","oracle":"guard slot equality + per-slot SHA-256"},
+    {"id":"L05","what":"A/EDGE/NEXT exact fenced values, no trimming or paraphrase","oracle":"exact canonical Markdown regeneration"},
+    {"id":"L06","what":"B and PROVA excerpts only exact prefixes of original, only with reopened report","oracle":"literal prefix and private report original validation"},
+    {"id":"L07","what":"Rich HTML data-slot values match original escaped bytes","oracle":"six unique slots + byte-level HTML inspection"},
+    {"id":"L08","what":"Promise matrix: original frame vs Host model vs provider events","oracle":"contract explicit nonclaims + guard false claims"},
+    {"id":"L09","what":"Status/brand must not represent native app/ACTIVE/installed prompt","oracle":"render plan and nonpromotion flags"},
+    {"id":"L10","what":"Voice/frame separation and same-turn C125 provenance not inferred from graphics","oracle":"original renderOneShell WeakSet and guard origin"},
+    {"id":"L11","what":"No button, handler, fake activation or clickable exit in static chat HTML","oracle":"inert HTML structural check"},
+    {"id":"L12","what":"Focus E12 disclosures/downloads only after original file readback, not native chat gesture","oracle":"existing focus app regression tests"},
+    {"id":"L13","what":"No fabricated sandbox link/native provider delivery","oracle":"original chat presentation/report and guard negative fixtures"},
+    {"id":"L14","what":"If HTML unavailable, deterministic markdown fallback and exact same slot values","oracle":"text-only and rich-positive fixture + original presentation tests"},
+    {"id":"L15","what":"100,000 pre-seeded realistic typed negative faults rejected, 10,000 positive controls pass","oracle":"seeded CLI twice byte-equal"},
+    {"id":"L16","what":"DoD IDs and cross-slice path/CI consumer coverage mechanically complete","oracle":"test DoD graph + source manifest + V5-B governance audit"},
+    {"id":"L17","what":"CI fixtures do not mint receipts, installation, delivery or product release","oracle":"policy report always PRODUCT_NO_GO, original V5-G kept separate"}
+  ],
+  "promise_matrix": [
+    {"claim":"SOURCE_OBJECT_IDENTITY","plane":"GIT","allowed":"Git HEAD/TREE/blob only","not_proved":"LOCAL_WRITE"},
+    {"claim":"ORIGINAL_FRAME_BYTES","plane":"OWNER","allowed":"reopened original owner frame; A may be NO_VOICE","not_proved":"PROVIDER_DELIVERY"},
+    {"claim":"SIX_SLOT_PRESENTATION","plane":"HOST","allowed":"read-only HTML and Markdown correspondence","not_proved":"NATIVE_WIDGET_MOUNT"},
+    {"claim":"HOST_REPORT","plane":"LOCAL","allowed":"private file bytes and SHA readback","not_proved":"CHAT_ATTACHMENT_DELIVERED"},
+    {"claim":"PROVIDER_UI","plane":"PROVIDER","allowed":"UNKNOWN absent native receipt","not_proved":"INSTALLED_OR_PERSISTENT"},
+    {"claim":"ACTION","plane":"OWNER","allowed":"explicit owner-bound command only","not_proved":"CLICKABLE_STATUS_OR_SYNTHETIC_BUTTON"}
+  ],
+  "critical_existing_sources": ["host/project-oneshell-edu.mjs","host/project-oneshell-visual.mjs","host/project-oneshell-emission.mjs","host/project-oneshell-chat-presentation.mjs","host/project-oneshell-focus-app.mjs","host/s03-owner-bound-presentation.mjs","contracts/project-session-source.json"],
+  "new_gate": "host/project-v5d-oneshell-assurance.mjs#assessV5DProjection",
+  "v5g_separate": true,
+  "original_owner_modified": false,
+  "provider_attested": false,
+  "product_release": "PRODUCT_NO_GO"
+}

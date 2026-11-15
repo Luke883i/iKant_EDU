@@ -1,0 +1,20 @@
+{
+  "schema":"ikant-le-s03-six-slide-projection/v1",
+  "authority":0,
+  "owner":"HOST_PROJECTION_ONLY",
+  "source_of_truth":"ORIGINAL_C125_BYTES_AND_EVIDENCE_LINKS",
+  "slots":[
+    {"id":"ESITO","mini_prompt":"Summarize only verified result of this turn in <=96 UTF-8 chars","fallback":"NON_ATTESTATO"},
+    {"id":"A","mini_prompt":"Never create voice bytes; use original C125 already sealed, else NO_VOICE","fallback":"NO_VOICE"},
+    {"id":"B","mini_prompt":"Mention HOST-only interpretation separately from original C125 output","fallback":"HOST_ONLY"},
+    {"id":"PROVA","mini_prompt":"Point to immutable sha256 evidence; no invented file URL","fallback":"NESSUNA_PROVA"},
+    {"id":"EDGE","mini_prompt":"Use first observed open edge from owner or UNKNOWN","fallback":"UNKNOWN"},
+    {"id":"NEXT","mini_prompt":"Use one owner-authorized step, otherwise STOP","fallback":"STOP"}
+  ],
+  "voice_bytes_owned_by":"C87_VIA_C125",
+  "A_without_independent_original_owner_readback":"NO_VOICE",
+  "compress_evidence":"DIGEST_POINTER_NOT_TEXT_PARAPHRASE",
+  "native_ui_delivery_claim":false,
+  "miniprompt_grants_write":false,
+  "docx_proof_from_layout":false
+}

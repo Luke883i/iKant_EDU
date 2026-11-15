@@ -1,0 +1,15 @@
+{
+  "schema": "ikant-e15-irred-1m/v1",
+  "seed": 3780124710,
+  "cases": 1000000,
+  "structural_cases": 1000000,
+  "pass": 32638,
+  "reject": 967362,
+  "errors": 0,
+  "first_error": null,
+  "trace_sha256": "19dcb661e7b0f61eacaaf304026df3fb809fa3bc7626bfcfa0eace99ac226f48",
+  "model_calls": 0,
+  "provider_calls": 0,
+  "native_ui_attested": false,
+  "no_original_c72_or_c135_calls": true
+}

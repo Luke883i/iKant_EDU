@@ -1,0 +1,64 @@
+{
+  "schema": "ikant-le-c82-relevance-delivery-dod/v1",
+  "authority": 0,
+  "mode": "EXPERIMENTAL_ONLY",
+  "source": "2026-10-09 HOST-OWNED session forensic audit; no native transcript identity",
+  "promise": "Executed on same input; task-specific content when supported; explicit evidence and unsupported state",
+  "release_claim": "BOUNDED_DETERMINISTIC_REPOSITORY_COMPOSER_NOT_GENERAL_UNDERSTANDING",
+  "hard_gates": [
+    "POST_C72_EXACT_CONSENT_AND_MODE",
+    "NO_PRECONSENT_TRANSFER",
+    "ONE_FROZEN_SOURCE_HEAD",
+    "COMPLETE_CONTENT_ADDRESSED_C77_MANIFEST",
+    "SINGLE_C78_STAGING_WRITER_WITH_READBACK",
+    "SAME_INPUT_SHA256_C78_C79_C81",
+    "NO_HOST_CANDIDATE_BOUNDED_IN_VOICE",
+    "ZERO_FALSE_ACTIVE_NATIVE_ORIGIN_OR_PERSISTENCE",
+    "NO_UNVERIFIED_ARTIFACT_LINKS",
+    "NO_UNQUALIFIED_PRIVILEGED_ACTIONS"
+  ],
+  "functional_dod": {
+    "bounded_intent_families": 7,
+    "unknown_task_not_falsely_solved": true,
+    "semantic_class_accuracy_holdout_target": 0.95,
+    "pertinence_human_rubric_target": 0.90,
+    "adversarial_mutations_min": 10000,
+    "mutation_observability": "semantic intent classification and factual claim quality, not just output hash uniqueness",
+    "evidence": "real Node run; repository-computed output; explicit unsupported response"
+  },
+  "carrier_dod": {
+    "parallel_qualified_carriers_max": 6,
+    "parallel_worker_max": 8,
+    "writer_count": 1,
+    "sha256_and_git_blob_integrity": true,
+    "samehash_legacy_carrier_permitted": true,
+    "original_github_ref_independently_attested": false,
+    "human_handoff_only_last_usable_resort": true,
+    "no_silent_repin": true,
+    "p95_bootstrap_seconds_target": 120,
+    "p95_evidence": "REQUIRES_REAL_HOST_MONOTONIC_TRACES"
+  },
+  "input_dod": {
+    "current_max_utf8_bytes": 600,
+    "overlength": "REJECT_EXPLICITLY_NOT_TRUNCATE",
+    "lossless_large_input": "BACKLOG_NOT_IMPLEMENTED"
+  },
+  "ui_dod": {
+    "max_verified_artifacts": 3,
+    "exact_utf8_voice": true,
+    "sticky_native_overlay": "NOT_SUPPORTED_BY_MARKDOWN",
+    "third_person_summary": "ONLY_WITH_VERIFIED_TRANSCRIPT_COVERAGE",
+    "partial_transcript_must_be_labelled": true
+  },
+  "native_host_and_product_dod": {
+    "persistent_writer_and_future_readback": "NOT_ATTESTED",
+    "native_chat_delivery": "NOT_ATTESTED",
+    "field_target": "C72_WILSON_LOWER_BOUND_0.95",
+    "minimum_independent_tasks": 500,
+    "minimum_independent_sessions": 50,
+    "minimum_distinct_users": 20,
+    "field_evidence": "NOT_MEASURED",
+    "canonical_active": false
+  },
+  "do_not_conflate": ["NODE_TEST_GREEN","NATIVE_CHAT_ATTESTED","GENERAL_LANGUAGE_UNDERSTANDING","CANONICAL_ACTIVE"]
+}

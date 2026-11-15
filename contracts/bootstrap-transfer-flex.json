@@ -1,0 +1,51 @@
+{
+  "schema": "ikant-le-bootstrap-transfer-flex/v1",
+  "authority": 0,
+  "principle": "transport plurality, identity singularity",
+  "scope": "POST_ACCEPT_FASTBOOT_DELIVERY",
+  "preaccept_unchanged": {
+    "required_transport": "GITHUB_API",
+    "fallback": null,
+    "freeze_after_terms": true
+  },
+  "allowed_transports": [
+    "GITHUB_API_BASE64",
+    "GITHUB_GIT_BLOB_API",
+    "PINNED_PERMALINK",
+    "PINNED_GITHUB_ZIP",
+    "HOST_FILE_BRIDGE",
+    "WARM_CACHE_EXACT"
+  ],
+  "delivered_object_set": "BOOTSTRAP.post_accept_fastboot.remote_paths",
+  "identity_anchor": "BOOTSTRAP.post_accept_fastboot.runtime_root loader/shard Git blob identities at PREACCEPT_HANDOFF.source_head",
+  "invariants": [
+    "transport authority is zero",
+    "source_head remains the immutable pre-accept source root",
+    "the exact loader plus every runtime-root shard must be present exactly once",
+    "every delivered fastboot object must match the expected Git blob SHA-1 and record a SHA-256 readback digest",
+    "model-mediated byte reconstruction is forbidden",
+    "pinned URL modes must preserve source_head through redirects",
+    "GitHub ZIP is a carrier only: extraction is selective to remote_paths and rejects traversal, special or encrypted entries, duplicates, unsafe collisions, unsupported methods and oversized payloads",
+    "host-file bridge must perform local byte readback before a receipt is valid",
+    "warm cache requires exact source_head, exact runtime_root and reopen verification",
+    "remote read and round budgets remain bounded",
+    "the existing runtime-root-verified materializer remains authoritative for member verification, atomic publish and reopen",
+    "live host probe, receipt-gated ACTIVE commit and end-to-end deadline remain unchanged",
+    "carrier attempt is not REMOTE_HISTORY: failed or partial attempts remain quarantined and commit zero authoritative remote rounds",
+    "the single remote-round budget applies to REMOTE_HISTORY commit, not to bounded materially-distinct pre-commit carrier attempts",
+    "an executable carrier requires a physically observed source-to-runtime-execution-plane byte sink before COMPLETE"
+  ],
+  "budgets": {
+    "max_remote_reads_v2": 40,
+    "max_remote_rounds_v2": 1,
+    "deadline_ms": 120000,
+    "max_carrier_attempts": 6,
+    "max_remote_history_commits": 1
+  },
+  "receipt": "ikant-le-source-bound-transfer/v2",
+  "compatibility": {
+    "accept_v1_during_migration": true,
+    "v1_materialization_receipt_unchanged": true
+  },
+  "convergence_contract": "contracts/fastboot-convergence.json"
+}

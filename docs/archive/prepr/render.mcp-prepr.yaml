@@ -1,0 +1,31 @@
+# EXTERNAL MCP service only. Not EDU or CANONICAL mode installation.
+# Requires a paid Render plan with a persistent disk and an external OAuth 2.1 AS.
+# This is an opt-in pre-PR blueprint. Do NOT deploy it without OAuth/provider pilot.
+services:
+  - type: web
+    name: ikant-le-mcp-external-prepr
+    runtime: node
+    plan: starter
+    region: frankfurt
+    buildCommand: cd plugins/ikant-le-session-chat/server && npm install --ignore-scripts --no-audit --no-fund
+    startCommand: node plugins/ikant-le-session-chat/server/server.mjs
+    healthCheckPath: /healthz
+    disk:
+      name: ikant-mcp-persistent
+      mountPath: /var/data/ikant-le
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: IKANT_MCP_AUTH_MODE
+        value: oauth
+      - key: IKANT_LE_DEPLOYMENT_ROOT
+        value: /var/data/ikant-le/deployment
+      - key: IKANT_MCP_ALLOWED_ORIGIN
+        value: https://chatgpt.com
+      - key: IKANT_MCP_OAUTH_RESOURCE
+        sync: false
+      - key: IKANT_MCP_OAUTH_ISSUER
+        sync: false
+      - key: IKANT_MCP_OAUTH_JWKS_URL
+        sync: false

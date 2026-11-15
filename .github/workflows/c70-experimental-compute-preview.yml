@@ -1,0 +1,33 @@
+name: C70 independent executable cognitive preview
+on:
+  pull_request:
+    paths:
+      - 'src/c70-experimental-compute-preview.mjs'
+      - 'tests/c70-experimental-compute-preview.test.mjs'
+      - 'docs/C70_CAPABILITY_FRONTIER.md'
+      - '.github/workflows/c70-experimental-compute-preview.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/c70-experimental-compute-preview.mjs'
+      - 'tests/c70-experimental-compute-preview.test.mjs'
+      - '.github/workflows/c70-experimental-compute-preview.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-lab:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm run runtime-root:verify
+      - run: node --test --test-concurrency=1 tests/c69-capability-first-preview.test.mjs tests/c70-experimental-compute-preview.test.mjs
+      - run: node --test --test-concurrency=1 tests/c31-runtime-limited-turn.test.mjs tests/c58-runtime-lifecycle-gate.test.mjs
+      - run: npm run check

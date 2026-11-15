@@ -1,0 +1,33 @@
+name: C107 minimum original cognition prototype
+on:
+  pull_request:
+    paths:
+      - 'host/c107-*'
+      - 'scripts/c107-*'
+      - 'tests/c107-*'
+      - 'contracts/c107-*'
+      - '.github/workflows/c107-experimental.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-two-turn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax checks
+        run: |
+          node --check host/c107-experimental-turn.mjs
+          node --check scripts/c107-console.mjs
+          node --check scripts/c107-pack.mjs
+          node --check tests/c107-original.test.mjs
+      - name: Isolated original Node package and two-turn readback
+        run: node --test tests/c107-original.test.mjs
+      - name: Million deterministic semantic mutations
+        run: |
+          node scripts/c107-falsify-1m.mjs > c107-mutants.json
+          node -e 'const x=require("./c107-mutants.json");if(!x.qualified||x.negative_cases!==1000000||x.positive_controls!==10000||x.unexpected_promotions!==0)process.exit(2);console.log(JSON.stringify(x))'

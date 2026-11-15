@@ -1,0 +1,59 @@
+{
+  "schema": "ikant-le-c101-local-cohost-machine/v1",
+  "authority": 0,
+  "status": "EXPERIMENTAL_LOCAL_MACHINE_NONOWNER",
+  "placement": "OPTIONAL_POST_C72_EXPERIMENTAL_C100_OPT_IN_ONLY",
+  "compatibility": {
+    "first_contact_terms_c72_unchanged": true,
+    "canonical_c59_unmodified": true,
+    "strict_c84_unmodified_and_preferred_when_physically_qualified": true,
+    "c100_standalone_unchanged": true,
+    "c97_source_verified_surface_a_not_reused": true,
+    "c99_explicit_optional_host_choice_required": true,
+    "no_auto_ingress_hook_from_project_prompt": true,
+    "no_new_canonical_owner_or_writer": true
+  },
+  "source_reuse": [
+    "host/c72-unified-mode-admission.mjs#validateC72ModeSelection",
+    "host/c69-capability-first-preview.mjs#issueC69ExperimentalOffer",
+    "src/c70-experimental-compute-preview.mjs#runC70ExperimentalComputePreview",
+    "src/c71-experimental-host-draft.mjs#routeC71HostDraft",
+    "host/c100-cohost-experimental.mjs#prepareC100CohostDraft",
+    "host/c100-cohost-experimental.mjs#finalizeC100CohostDraft"
+  ],
+  "bounded_execution": {
+    "one_message_only": true,
+    "human_input_max_utf8_bytes": 600,
+    "draft_max_utf8_bytes": 3500,
+    "readonly_readme_blob_from_materialized_repository": true,
+    "one_ephemeral_c70_c71_chain": true,
+    "c71_guarded_or_identity_turn_never_overridden_by_host_draft": true,
+    "c100_fails_closed": true,
+    "result_is_exact_c71_voice_bytes": true,
+    "same_input_sha256_and_voice_sha256": true,
+    "byte_projection_not_llm_semantic_determinism": true,
+    "no_file_or_durable_writer": true
+  },
+  "result": {
+    "success": "C101_LOCAL_MACHINE_VOICE_READY_NOT_NATIVE_DELIVERED",
+    "failure": "C101_STOP",
+    "voice_slot": "DISCLOSED_EXPERIMENTAL_MACHINE_BOUND_DRAFT_NOT_C84_SURFACE_A",
+    "first_unclosed_edge_success": "HOST_NATIVE_AUTOMATIC_DISPATCH_AND_DELIVERY_NOT_ATTESTED",
+    "active": false,
+    "canonical_runtime": false,
+    "native_event_attested": false,
+    "native_delivery_attested": false,
+    "persistent": false,
+    "source_origin_attested": false,
+    "c84_owner_executed": false
+  },
+  "evidence_levels": {
+    "E0": "UNBOUND_HOST_MODEL_DRAFT",
+    "E1": "LOCAL_SOURCE_AND_HASH_CONSISTENCY_ONLY",
+    "E2_M": "REAL_LOCAL_C70_C71_C100_SAME_INPUT_MACHINE_READBACK_ONLY",
+    "E3": "C81_C84_OWNER_READBACK_NOT_ISSUED_BY_C101",
+    "E4": "NATIVE_EVENT_AND_DELIVERY_NOT_ISSUED_BY_C101"
+  },
+  "mandatory_human_field_trials": true,
+  "synthetic_tests_do_not_prove_host_integration": true
+}

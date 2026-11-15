@@ -1,0 +1,106 @@
+{
+  "schema": "ikant-le-c98-truth-audit/v1",
+  "base": "bc5fbcb938c7ba959de0eaef96f92e754d953d4b",
+  "merged_pr101_verified_from_github_connector": true,
+  "physical_open_edges": 14,
+  "edges": [
+    {
+      "priority": 1,
+      "id": "C72_NATIVE_ORIGINAL_EVENT_AND_ACCEPT_SELECTION_READBACK",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 2,
+      "id": "C77_CURRENT_HEAD_BYTES_FROM_REAL_GITHUB_CONNECTOR_IN_NODE",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 3,
+      "id": "HOST_CONNECTOR_TO_NODE_FILE_CALLBACK_INSTALLED",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 4,
+      "id": "C81_HOST_AUTHENTICATED_GITHUB_REF_ORIGIN",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 5,
+      "id": "C78_C79_C81_SAME_INPUT_RUNTIME_PACKET",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 6,
+      "id": "C90_ACTUAL_OWNER_EXECUTION",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 7,
+      "id": "C91_C92_TWO_REAL_MODEL_CALLS",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 8,
+      "id": "INDEPENDENT_SEMANTIC_ENTAILMENT",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 9,
+      "id": "C81_C86_GENERATIVE_VOICE_ADMISSION",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 10,
+      "id": "C97_NATIVE_RENDERER_AND_ACCESSIBILITY_E2E",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 11,
+      "id": "HOST_NATIVE_EVENT_INDEPENDENT_DELIVERY_READBACK",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 12,
+      "id": "C87_NEXT_TURN_PERSISTENCE_WITH_SINGLE_WRITER",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 13,
+      "id": "C59_CANONICAL_ACTIVE_SAME_TURN_DOCX",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    },
+    {
+      "priority": 14,
+      "id": "C72_H95_REAL_FIELD_LOWER_CONFIDENCE_BOUND",
+      "evidence": "NOT_INDEPENDENTLY_OBSERVED_IN_THIS_HOST_TURN",
+      "status": "OPEN"
+    }
+  ],
+  "model_proof_type": "SOURCE_BOUND_CONTRACT_AND_LOCAL_ADAPTER_TESTS",
+  "latest_live_host_passed_edges": [],
+  "h95_field": {
+    "required_fraction": 0.95,
+    "tasks_min": 500,
+    "host_sessions_min": 50,
+    "distinct_users_min": 20,
+    "observed": null,
+    "lower_confidence_bound": null,
+    "status": "NOT_MEASURED"
+  },
+  "first_unclosed_host_edge": "C72_NATIVE_ORIGINAL_EVENT_AND_ACCEPT_SELECTION_READBACK",
+  "first_unclosed_post_selection_edge": "HOST_CONNECTOR_TO_NODE_FILE_CALLBACK_INSTALLED",
+  "status": "HOST_GAPS_OPEN_NOT_95_PERCENT_PROVEN"
+}

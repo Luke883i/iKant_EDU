@@ -1,0 +1,415 @@
+{
+  "schema": "ikant-host-cora-m2-owner-provider-metrics/v1",
+  "authority": 0,
+  "owner": false,
+  "active": false,
+  "release": "NO_GO",
+  "source_status": "SOURCE_ONLY_ORIGINAL_OWNERS_NOT_INVOKED",
+  "source": {
+    "repository": "Luke883i/iKant_EDU",
+    "base_head": "e8a49c2b1a6ffcff15380518d166b8b55ee890a4",
+    "base_tree": "889543abff995f9fcdae1d6ac3903c5b80484cdf",
+    "original_pr_f": "contracts/cora-pr-f-integrated-qualification-v1.json",
+    "original_s3": "contracts/cora-s3-source-convergence-v1.json",
+    "original_m1": "scripts/cora-m1-shared-evidence.mjs",
+    "original_oneshell": "host/project-oneshell-edu.mjs"
+  },
+  "pinned_original_blobs": {
+    "contracts/c72-public-mode-admission-v2.json": "0bdb99589d907072917ba31f2938c9b600f39a05",
+    "host/c72-public-mode-admission.mjs": "eec28e35a1066802edc905c7d61c1ecbcef0082d",
+    "host/c135-edu-v2-owner.mjs": "e8bbe5741375e5d51f1caa02fdba2ecc5f6c049d",
+    "host/c87-durable-ledger.mjs": "9d4fd4038bd7e109bdbc5e0441f9e9acf497c846",
+    "host/c125-output-port.mjs": "14760e40051b2bbe0c3a2ebc9347e125fdd7d65a",
+    "host/s03-owner-bound-presentation.mjs": "fbbe31b5265d3885fdd04140b6f7ac2a2ce91399",
+    "host/project-oneshell-edu.mjs": "ddafa388f93b6aa1664fbf4a1ce73ba59fb752e1",
+    "host/project-oneshell-continuous.mjs": "0355428b71ec4d6aa13ec4b81323ee1c9336b102"
+  },
+  "abstract_dod": {
+    "logic": "NON_COMPENSATORY_DAG_AND",
+    "formula": "M2_SOURCE_AND_DISTINCT_ORIGINAL_C72_ACCEPTED_AND_DISTINCT_EDU_SELECTED_AND_ORIGINAL_C135_EVENT_AND_ONE_C87_REOPENED_LEDGER_AND_C125_S03_SAME_TURN_AT_MOST_ONCE_AND_NATIVE_PROVIDER_DELIVERY_ACK_AND_REPLAY_FENCE",
+    "source_not_owner_receipt": true,
+    "local_ledger_not_provider_persistence": true,
+    "callback_not_native_delivery": true,
+    "zero_native_receipt_minted": true,
+    "unknown_not_pass": true
+  },
+  "nodes": [
+    {
+      "id": "M2S0",
+      "scope": "SOURCE",
+      "needs": [],
+      "proof": "Pinned current HEAD, TREE and original commit identity"
+    },
+    {
+      "id": "M2S1",
+      "scope": "SOURCE",
+      "needs": [
+        "M2S0"
+      ],
+      "proof": "M1 original shared source evidence independently recomputed"
+    },
+    {
+      "id": "M2S2",
+      "scope": "SOURCE",
+      "needs": [
+        "M2S0"
+      ],
+      "proof": "C72 owner, terms/EDU mode contract blobs unchanged"
+    },
+    {
+      "id": "M2S3",
+      "scope": "SOURCE",
+      "needs": [
+        "M2S0"
+      ],
+      "proof": "Original C135 owner and source-bound runtime blob unchanged"
+    },
+    {
+      "id": "M2S4",
+      "scope": "SOURCE",
+      "needs": [
+        "M2S0"
+      ],
+      "proof": "Original C87 ledger sole-writer and reopen source unchanged"
+    },
+    {
+      "id": "M2S5",
+      "scope": "SOURCE",
+      "needs": [
+        "M2S0"
+      ],
+      "proof": "Original C125 output port and S03 same-turn source unchanged"
+    },
+    {
+      "id": "M2S6",
+      "scope": "SOURCE",
+      "needs": [
+        "M2S0"
+      ],
+      "proof": "Original OneShell start and continuous delegation source unchanged"
+    },
+    {
+      "id": "I_M2_SOURCE",
+      "scope": "INTERMEDIATE",
+      "needs": [
+        "M2S0",
+        "M2S1",
+        "M2S2",
+        "M2S3",
+        "M2S4",
+        "M2S5",
+        "M2S6"
+      ],
+      "proof": "All source prerequisites under same HEAD, not original event receipt"
+    },
+    {
+      "id": "M2E1",
+      "scope": "EXTERNAL",
+      "needs": [
+        "I_M2_SOURCE"
+      ],
+      "proof": "Separate exact human I ACCEPT and original C72 ACCEPTED receipt reopened"
+    },
+    {
+      "id": "M2E2",
+      "scope": "EXTERNAL",
+      "needs": [
+        "M2E1"
+      ],
+      "proof": "Distinct exact EDU event and owner mode selection receipt reopened"
+    },
+    {
+      "id": "M2E3",
+      "scope": "EXTERNAL",
+      "needs": [
+        "M2E2"
+      ],
+      "proof": "Original C135 real turn output bound to event and languagePort"
+    },
+    {
+      "id": "M2E4",
+      "scope": "EXTERNAL",
+      "needs": [
+        "M2E3"
+      ],
+      "proof": "Exactly one C87 event, nonce fence, private ledger reopened in distinct reader"
+    },
+    {
+      "id": "M2E5",
+      "scope": "EXTERNAL",
+      "needs": [
+        "M2E4"
+      ],
+      "proof": "Same-turn original C125/S03 bytes with single send attempt or NO_VOICE"
+    },
+    {
+      "id": "M2E6",
+      "scope": "EXTERNAL",
+      "needs": [
+        "M2E5"
+      ],
+      "proof": "Actual native provider identity, delivery and acknowledgment separately observed"
+    },
+    {
+      "id": "M2E7",
+      "scope": "EXTERNAL",
+      "needs": [
+        "M2E3",
+        "M2E4",
+        "M2E5"
+      ],
+      "proof": "Replay and uncertain-write/send safety demonstrated with actual attempt fence"
+    },
+    {
+      "id": "G_M2",
+      "scope": "GLOBAL",
+      "needs": [
+        "I_M2_SOURCE",
+        "M2E6",
+        "M2E7"
+      ],
+      "proof": "Only independent external originals can close M2; local model never promotes"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "SRC_HEAD_TREE",
+      "node": "M2S0",
+      "layer": "GIT",
+      "measure": "sha1_and_head_tree_exact",
+      "target": 2,
+      "default_state": "SOURCE_GIT"
+    },
+    {
+      "id": "SRC_M1_REUSE",
+      "node": "M2S1",
+      "layer": "LOCAL",
+      "measure": "original_m1_reconciliation",
+      "target": 1,
+      "default_state": "SOURCE_GIT"
+    },
+    {
+      "id": "SRC_C72",
+      "node": "M2S2",
+      "layer": "GIT",
+      "measure": "original_c72_and_contract_pins",
+      "target": 2,
+      "default_state": "SOURCE_GIT"
+    },
+    {
+      "id": "SRC_C135",
+      "node": "M2S3",
+      "layer": "GIT",
+      "measure": "original_c135_pin",
+      "target": 1,
+      "default_state": "SOURCE_GIT"
+    },
+    {
+      "id": "SRC_C87",
+      "node": "M2S4",
+      "layer": "GIT",
+      "measure": "original_c87_pin",
+      "target": 1,
+      "default_state": "SOURCE_GIT"
+    },
+    {
+      "id": "SRC_C125_S03",
+      "node": "M2S5",
+      "layer": "GIT",
+      "measure": "original_c125_and_s03_pins",
+      "target": 2,
+      "default_state": "SOURCE_GIT"
+    },
+    {
+      "id": "SRC_DELEGATION",
+      "node": "M2S6",
+      "layer": "GIT",
+      "measure": "oneshell_edu_and_continuous_pins",
+      "target": 2,
+      "default_state": "SOURCE_GIT"
+    },
+    {
+      "id": "HUMAN_ACCEPT",
+      "node": "M2E1",
+      "layer": "OWNER",
+      "measure": "distinct_exact_accept_original_receipt_reopened",
+      "target": 1,
+      "default_state": "NOT_ATTESTED"
+    },
+    {
+      "id": "HUMAN_EDU",
+      "node": "M2E2",
+      "layer": "OWNER",
+      "measure": "distinct_exact_edu_original_selection_reopened",
+      "target": 1,
+      "default_state": "NOT_ATTESTED"
+    },
+    {
+      "id": "COGNITIVE_TURN",
+      "node": "M2E3",
+      "layer": "OWNER",
+      "measure": "original_c135_bound_language_turn",
+      "target": 1,
+      "default_state": "NOT_ATTESTED"
+    },
+    {
+      "id": "LEDGER_EVENT",
+      "node": "M2E4",
+      "layer": "OWNER",
+      "measure": "single_writer_atomic_append_and_reopen",
+      "target": 1,
+      "default_state": "NOT_ATTESTED"
+    },
+    {
+      "id": "SAME_TURN_VOICE",
+      "node": "M2E5",
+      "layer": "OWNER",
+      "measure": "owner_s03_byte_identity_and_c125_at_most_once",
+      "target": 1,
+      "default_state": "NOT_ATTESTED"
+    },
+    {
+      "id": "NATIVE_DELIVERY",
+      "node": "M2E6",
+      "layer": "PROVIDER",
+      "measure": "native_delivery_identity_and_ack",
+      "target": 1,
+      "default_state": "NOT_ATTESTED"
+    },
+    {
+      "id": "NO_REPLAY",
+      "node": "M2E7",
+      "layer": "OWNER",
+      "measure": "nonce_and_uncertain_send_no_retry_oracle",
+      "target": 1,
+      "default_state": "NOT_ATTESTED"
+    }
+  ],
+  "checklist": [
+    {
+      "id": "CK01",
+      "node": "M2S0",
+      "criterion": "Pinned current HEAD, TREE and original commit identity",
+      "external": false,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK02",
+      "node": "M2S1",
+      "criterion": "M1 original shared source evidence independently recomputed",
+      "external": false,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK03",
+      "node": "M2S2",
+      "criterion": "C72 owner, terms/EDU mode contract blobs unchanged",
+      "external": false,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK04",
+      "node": "M2S3",
+      "criterion": "Original C135 owner and source-bound runtime blob unchanged",
+      "external": false,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK05",
+      "node": "M2S4",
+      "criterion": "Original C87 ledger sole-writer and reopen source unchanged",
+      "external": false,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK06",
+      "node": "M2S5",
+      "criterion": "Original C125 output port and S03 same-turn source unchanged",
+      "external": false,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK07",
+      "node": "M2S6",
+      "criterion": "Original OneShell start and continuous delegation source unchanged",
+      "external": false,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK08",
+      "node": "M2E1",
+      "criterion": "Separate exact human I ACCEPT and original C72 ACCEPTED receipt reopened",
+      "external": true,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK09",
+      "node": "M2E2",
+      "criterion": "Distinct exact EDU event and owner mode selection receipt reopened",
+      "external": true,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK10",
+      "node": "M2E3",
+      "criterion": "Original C135 real turn output bound to event and languagePort",
+      "external": true,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK11",
+      "node": "M2E4",
+      "criterion": "Exactly one C87 event, nonce fence, private ledger reopened in distinct reader",
+      "external": true,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK12",
+      "node": "M2E5",
+      "criterion": "Same-turn original C125/S03 bytes with single send attempt or NO_VOICE",
+      "external": true,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK13",
+      "node": "M2E6",
+      "criterion": "Actual native provider identity, delivery and acknowledgment separately observed",
+      "external": true,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    },
+    {
+      "id": "CK14",
+      "node": "M2E7",
+      "criterion": "Replay and uncertain-write/send safety demonstrated with actual attempt fence",
+      "external": true,
+      "verdict": "UNOBSERVED_UNTIL_INDEPENDENT_READBACK"
+    }
+  ],
+  "metric_policy": {
+    "source_metric_states": [
+      "SOURCE_OBSERVED",
+      "SOURCE_BLOCKED"
+    ],
+    "external_metric_states": [
+      "NOT_ATTESTED"
+    ],
+    "source_coverage_is_not_m2_completion": true,
+    "finite_mutations_are_not_independent_trials": true,
+    "field_evidence_requires_original_receipts_and_independent_readback": true,
+    "provider_evidence_requires_native_authenticated_ack": true,
+    "numeric_ratio_never_proves_field_success": true
+  },
+  "nonpromotion": {
+    "owner_invoked": false,
+    "provider_attested": false,
+    "original_receipt_issued": false,
+    "ledger_written": false,
+    "voice_sent": false,
+    "permission_to_retry": false,
+    "m2_complete": false,
+    "product_go": false,
+    "repository_standardized": false
+  },
+  "first_unclosed": "M2E1_ORIGINAL_C72_RECEIPT_NOT_ATTESTED",
+  "not_a_receipt": true
+}

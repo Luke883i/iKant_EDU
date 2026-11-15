@@ -1,0 +1,95 @@
+{
+  "schema": "ikant-le-orientation-capsule/v3",
+  "canonical_repository": "https://github.com/Luke883i/iKant_EDU",
+  "canonical_branch": "main",
+  "source_head_binding": {
+    "required": true,
+    "action": "READ_BRANCH_HEAD",
+    "transport": "GITHUB_API",
+    "pin_direct_reads": true
+  },
+  "paths": [
+    "README.md",
+    "BOOTSTRAP.json",
+    "ADMISSION.json",
+    "AGENTS.md",
+    "TERMS.md"
+  ],
+  "metadata_fields": [
+    "repository_full_name",
+    "default_branch",
+    "description"
+  ],
+  "max_file_reads": 5,
+  "max_total_bytes": 262144,
+  "max_metadata_reads": 1,
+  "single_fetch_per_path": true,
+  "direct_path_only": true,
+  "exact_ref_required": true,
+  "generic_repository_discovery_forbidden": true,
+  "first_contact_convergence_required": true,
+  "freeze_after_terms_presentation": true,
+  "forbidden_preaccept": [
+    "CLONE_REPOSITORY",
+    "GIT_FETCH",
+    "GIT_LS_REMOTE",
+    "GH_CLI",
+    "RAW_WEB_READ",
+    "DIRECT_DOWNLOAD",
+    "ARCHIVE_DOWNLOAD",
+    "SHELL_HTTP_DOWNLOAD",
+    "LIST_TREE",
+    "SEARCH_REPOSITORY",
+    "READ_ARBITRARY_REPOSITORY_FILE",
+    "READ_HISTORY",
+    "READ_ISSUE_PR",
+    "MATERIALIZE_CHECKOUT"
+  ],
+  "completed_forbidden_access_is_nonretroactive": true,
+  "breach_terminal": "CLASSIFIED_READ_ONLY_REMEDIATION_OR_SESSION_NONCONFORMING",
+  "new_chat_required_for_conforming_runtime": "HARD_PREACCEPT_BREACH_ONLY",
+  "network_profile": {
+    "required_read_path": "GITHUB_API",
+    "allowed": [
+      "GITHUB_CONNECTOR",
+      "GITHUB_REST_API"
+    ],
+    "git_clone_available": false,
+    "gh_available": false,
+    "direct_github_dns_required": false,
+    "raw_web_allowed": false,
+    "direct_download_allowed": false,
+    "archive_download_allowed": false,
+    "shell_http_download_allowed": false,
+    "fallback_read_path": null,
+    "api_unavailable_terminal": "HOST_INCOMPATIBLE"
+  },
+  "pending_intent": {
+    "preserve_first_substantive_request": true,
+    "resume_after_active": true,
+    "repeat_required": false
+  },
+  "recoverable_read_only_preaccept_overread_enabled": true,
+  "recoverable_read_only_actions": [
+    "GIT_LS_REMOTE",
+    "LIST_TREE",
+    "SEARCH_REPOSITORY",
+    "READ_ARBITRARY_REPOSITORY_FILE",
+    "READ_HISTORY",
+    "READ_ISSUE_PR"
+  ],
+  "hard_preaccept_breach_actions": [
+    "CLONE_REPOSITORY",
+    "GIT_FETCH",
+    "GH_CLI",
+    "RAW_WEB_READ",
+    "DIRECT_DOWNLOAD",
+    "ARCHIVE_DOWNLOAD",
+    "SHELL_HTTP_DOWNLOAD",
+    "MATERIALIZE_CHECKOUT"
+  ],
+  "read_only_remediation_receipt_schema": "ikant-le-preaccept-remediation/v1",
+  "read_only_remediation_preserves_history": true,
+  "read_only_remediation_requires_reacquisition": true,
+  "read_only_remediation_retroactive_authorization": false
+}

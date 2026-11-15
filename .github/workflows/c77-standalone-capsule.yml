@@ -1,0 +1,45 @@
+name: C77 standalone experimental cognitive capsule
+on:
+  pull_request:
+    paths:
+      - 'host/c77-*'
+      - 'scripts/c77-*'
+      - 'tests/c77-*'
+      - 'docs/C77_*'
+      - '.github/workflows/c77-standalone-capsule.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  standalone-capsule:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test --test-concurrency=1 tests/c77-standalone-capsule.test.mjs
+      - run: node --test --test-concurrency=1 tests/c71-experimental-host-draft.test.mjs tests/c74-postmerge-bootstrap.test.mjs
+      - name: Build standalone deliverable from exact checkout
+        if: matrix.node == '22'
+        run: |
+          node scripts/c77-build-capsule.mjs --out "$RUNNER_TEMP/c77-standalone" > "$RUNNER_TEMP/c77-build-receipt.json"
+          node -e "const x=require('node:fs'); const r=JSON.parse(x.readFileSync(process.env.RUNNER_TEMP+'/c77-build-receipt.json')); if(r.qualified_cx_count!==70 || r.write_reopen_verified!==true)process.exit(1); console.log(JSON.stringify(r));"
+      - name: Publish physical microcapsule and build receipt
+        if: matrix.node == '22'
+        uses: actions/upload-artifact@v4
+        with:
+          name: c77-qualified-standalone-microcapsule
+          path: |
+            ${{ runner.temp }}/c77-standalone/
+            ${{ runner.temp }}/c77-build-receipt.json
+          if-no-files-found: error
+      - run: npm run runtime-root:verify
+      - run: npm run check

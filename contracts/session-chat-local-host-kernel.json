@@ -1,0 +1,215 @@
+{
+  "schema": "ikant-le-session-chat-local-host-kernel/v4",
+  "slice": "C59.SINGLE_COMPOSITION_CHANNEL",
+  "authority": 0,
+  "composition_contract": "contracts/session-chat-composition-channel.json",
+  "live_channel_census": "contracts/session-chat-composition-census.json",
+  "repository": {
+    "full_name": "Luke883i/iKant_LE",
+    "url": "https://github.com/Luke883i/iKant_LE",
+    "branch": "main",
+    "source_head_binding": "GITHUB_API_EXACT_MAIN_HEAD_ONCE"
+  },
+  "trigger": {
+    "event": "ANY_FIRST_USER_INPUT",
+    "action": "START_FROM_REPO",
+    "before_substantive_response": true,
+    "preserve_pending_intent": "BYTE_EXACT"
+  },
+  "action_program": [
+    {
+      "id": "000",
+      "name": "START_FROM_REPO",
+      "owner": "HOST_ADAPTER",
+      "effect": "BEGIN_CANONICAL_REPOSITORY_BOOTSTRAP"
+    },
+    {
+      "id": "100",
+      "name": "BIND_SOURCE",
+      "owner": "REPOSITORY_TRANSPORT",
+      "transport": "GITHUB_API_ONLY",
+      "output": "SOURCE_HEAD"
+    },
+    {
+      "id": "110",
+      "name": "READ_ORIENTATION",
+      "owner": "REPOSITORY_TRANSPORT",
+      "paths": [
+        "README.md",
+        "BOOTSTRAP.json",
+        "ADMISSION.json",
+        "AGENTS.md",
+        "TERMS.md"
+      ],
+      "exact_ref": "SOURCE_HEAD"
+    },
+    {
+      "id": "120",
+      "name": "PRESENT_TERMS",
+      "owner": "TERMS.md",
+      "effect": "PRESENT_EXACT_TERMS"
+    },
+    {
+      "id": "130",
+      "name": "FREEZE",
+      "owner": "HOST_ADAPTER",
+      "effect": "FREEZE_PREACCEPT_ACQUISITION"
+    },
+    {
+      "id": "140",
+      "name": "WAIT_ACCEPTANCE",
+      "owner": "ADMISSION",
+      "exact_input": "I ACCEPT",
+      "type": "STOP"
+    },
+    {
+      "id": "200",
+      "name": "ACCEPT",
+      "owner": "ADMISSION",
+      "effect": "REUSE_FROZEN_SOURCE_AND_PENDING_INTENT"
+    },
+    {
+      "id": "300",
+      "name": "ACTIVATE_FIRST",
+      "owner": "SESSION_CHAT_COMPOSITION_CHANNEL",
+      "contract": "contracts/session-chat-composition-channel.json",
+      "one_path": true,
+      "transport": "GITHUB_API_BASE64",
+      "byte_path": "VERIFIED_OPAQUE_RELAY",
+      "container_github_network_required": false,
+      "model_selects_carrier": false,
+      "model_selects_fallback": false,
+      "owner_module": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",
+      "authority_gate": "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
+      "canonical_handoff_schema": "ikant-le-c59-canonical-composition-handoff/v1",
+      "legacy_handoff_may_authorize": false,
+      "cold_seed": {
+        "objects": [
+          "BOOTSTRAP.json",
+          "src/runtime-root-verified.mjs"
+        ],
+        "owner_named": true,
+        "post_accept_only": true,
+        "write_reopen_samehash_required": true,
+        "semantic_reconstruction_forbidden": true
+      }
+    },
+    {
+      "id": "310",
+      "name": "MATERIALIZE_LOCAL",
+      "owner": "CANONICAL_PRE_RUNTIME_MATERIALIZER",
+      "allowed_only_after_acceptance": true,
+      "content_addressed_runtime_root": true,
+      "readback_required": true,
+      "executed_provenance_required": true,
+      "live_probe_required": true,
+      "owner_module": "src/runtime-root-verified.mjs#executeCanonicalSessionChatBootstrap",
+      "canonical_handoff_required": true,
+      "canonical_runtime_entry": "src/runtime-command.mjs#runCanonicalSessionChat",
+      "canonical_active_readback": "src/runtime-command.mjs#canonicalActiveReadback",
+      "legacy_runtime_entry_may_authorize": false
+    },
+    {
+      "id": "400",
+      "name": "RUNTIME_ROUTE",
+      "owner": "CANONICAL_LOCAL_RUNTIME",
+      "allowed_only_after_active": true,
+      "canonical_surface": "SESSION_CHAT_LOCAL_RUNTIME",
+      "route_entry": "src/runtime-command.mjs#runCommand",
+      "canonical_authority_required": "C59_CANONICAL",
+      "legacy_active_routable": false
+    },
+    {
+      "id": "900",
+      "name": "EXIT",
+      "owner": "LOCAL_RUNTIME",
+      "exact_input": "EXIT IKANT"
+    },
+    {
+      "id": "990",
+      "name": "EDGE_STOP",
+      "owner": "CURRENT_EDGE",
+      "scope": "CURRENT_EDGE_ONLY",
+      "type": "STOP"
+    }
+  ],
+  "preaccept": {
+    "transport": "GITHUB_API_ONLY",
+    "materialize_local": false,
+    "generic_discovery": false,
+    "frozen_byte_evidence": true
+  },
+  "postaccept": {
+    "mode": "SINGLE_COMPOSITION_CHANNEL",
+    "source_plane": "GITHUB_API",
+    "cold_transport": "GITHUB_API_BASE64",
+    "byte_path": "VERIFIED_OPAQUE_RELAY",
+    "sink_plane": "SESSION_LOCAL_FILESYSTEM",
+    "execution_plane": "SESSION_LOCAL_NODE",
+    "container_github_network_required": false,
+    "runtime_root_exact_source": true,
+    "probe_required": true,
+    "active_readback_required": true,
+    "resume_pending_after_active_only": true,
+    "canonical_owner": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",
+    "canonical_handoff_schema": "ikant-le-c59-canonical-composition-handoff/v1",
+    "legacy_fastboot_handoff_authority": false,
+    "canonical_materializer": "src/runtime-root-verified.mjs#executeCanonicalSessionChatBootstrap",
+    "canonical_runtime_entry": "src/runtime-command.mjs#runCanonicalSessionChat",
+    "canonical_active_readback": "src/runtime-command.mjs#canonicalActiveReadback",
+    "shared_runtime_predicate": "src/bootstrap-semantic.mjs#validateCanonicalCompositionHandoff",
+    "canonical_authority": "C59_CANONICAL",
+    "legacy_active_is_canonical": false,
+    "relay_manifest_owner": "src/runtime-root-verified.mjs#issueCanonicalRelayManifest",
+    "activation_executor_issuer": "src/runtime-root-verified.mjs#issueCanonicalActivationExecutor",
+    "pre_acquisition_object_authority": "FROZEN_BOOTSTRAP_REMOTE_PATHS",
+    "runtime_transport_object_count": 8,
+    "orientation_runtime_file_count": 0,
+    "orientation_projection": ".ikant/orientation-projection.json"
+  },
+  "negative_controls": {
+    "repository_symbol_is_host_capability": false,
+    "tool_presence_is_success": false,
+    "tool_absence_is_carrier_unavailable": false,
+    "unknown_is_false": false,
+    "chat_is_ledger": false,
+    "model_may_invent_receipts": false,
+    "model_may_emulate_owner_from_source": false,
+    "model_may_select_legacy_carrier": false,
+    "container_github_network_is_bootstrap_dependency": false,
+    "unclassified_live_channel_allowed": false,
+    "future_blocker_search": false,
+    "substitute_ikant_output": false,
+    "legacy_fastboot_handoff_may_authorize": false,
+    "raw_run_command_may_authorize_canonical_active": false,
+    "resume_activation_may_authorize_canonical_active": false,
+    "deployed_profile_may_authorize_session_chat_local": false,
+    "project_rom_may_select_transport": false,
+    "uncensused_executable_surface_allowed": false
+  },
+  "prompt_form": {
+    "style": "COBOL_LIKE_NATURAL_LANGUAGE",
+    "flat_sections": true,
+    "indentation": false,
+    "named_actions": true,
+    "named_stops": true,
+    "single_assignment_semantics": true
+  },
+  "qualification": {
+    "selection_cases": 4096,
+    "adversarial_cases": 100000,
+    "all_live_channels_classified": true,
+    "unique_minimum_required": true,
+    "surviving_harmful_mutants_required": 0,
+    "canonical_authority_gate_required": true,
+    "semantic_lattice_mechanisms": 12,
+    "executable_surface_count": 24,
+    "canonical_active_issuer_count": 1,
+    "runtime_dominator_test_required": true,
+    "project_rom_parity_required": false,
+    "project_rom_historical_fixture_only": true
+  },
+  "project_host_rom": "contracts/project-host-rom.json",
+  "executable_surface_registry": "contracts/session-chat-executable-surface-registry.json",
+  "minimum_semantic_lattice": "contracts/session-chat-semantic-lattice.json"
+}

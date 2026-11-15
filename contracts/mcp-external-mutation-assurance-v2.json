@@ -1,0 +1,309 @@
+{
+  "schema": "ikant-mcp-external-v2-assurance",
+  "source_head": "2d12e2657d92864f56ed6f562a15e8de5a05fa67",
+  "tree_sha": "9df58eb066ee1229a0ac84ac40cb15597eef8dae",
+  "authority": 0,
+  "educhat_modes": [
+    "EDU",
+    "CANONICAL"
+  ],
+  "mcp_surface": "EXTERNAL_NOT_BOOTSTRAP_MODE",
+  "mcp_grants_canonical": false,
+  "audit_layers": [
+    "source HEAD exact",
+    "OAuth metadata",
+    "token verifier",
+    "tool authorization",
+    "C20 deployed legacy",
+    "C87/C125",
+    "Render",
+    "external ChatGPT pilot"
+  ],
+  "mutation_campaigns": [
+    {
+      "id": 1,
+      "name": "epoch_mode",
+      "seed": "3e140bfa30111201",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    },
+    {
+      "id": 2,
+      "name": "oauth_discovery",
+      "seed": "3e140bfa30111202",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    },
+    {
+      "id": 3,
+      "name": "jwt_crypto",
+      "seed": "3e140bfa30111203",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    },
+    {
+      "id": 4,
+      "name": "jwt_claims",
+      "seed": "3e140bfa30111204",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    },
+    {
+      "id": 5,
+      "name": "tenants",
+      "seed": "3e140bfa30111205",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    },
+    {
+      "id": 6,
+      "name": "http_frontdoor",
+      "seed": "3e140bfa30111206",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    },
+    {
+      "id": 7,
+      "name": "sdk_api",
+      "seed": "3e140bfa30111207",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    },
+    {
+      "id": 8,
+      "name": "writer",
+      "seed": "3e140bfa30111208",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    },
+    {
+      "id": 9,
+      "name": "render",
+      "seed": "3e140bfa30111209",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    },
+    {
+      "id": 10,
+      "name": "session_chat_noninterference",
+      "seed": "3e140bfa3011120a",
+      "cases": 1000000,
+      "representation": "typed finite E2E state vector, not real SDK requests"
+    }
+  ],
+  "dod": [
+    {
+      "id": "G1",
+      "level": "GLOBAL",
+      "claim": "C72 retains exactly EDU|CANONICAL",
+      "falsifier": "No third mode; original contract unchanged",
+      "metric": "source_modes=2; third_modes=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "G2",
+      "level": "GLOBAL",
+      "claim": "MCP is distribution surface, not C59 native authority",
+      "falsifier": "No OAuth principal can create C59 provider proof",
+      "metric": "native_claim_promotions=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "G3",
+      "level": "GLOBAL",
+      "claim": "Pinned source and convergence against live main",
+      "falsifier": "Head/tree match, every changed blob hashed",
+      "metric": "drift_accepted=0",
+      "status": "SOURCE_CHECK"
+    },
+    {
+      "id": "G4",
+      "level": "GLOBAL",
+      "claim": "Evidence must not overclaim synthetic semantics or empirical optimizer",
+      "falsifier": "Ten seeded model campaigns labeled non-live; 1k design candidate selection nonempirical",
+      "metric": "unattested_release_promotions=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "G5",
+      "level": "GLOBAL",
+      "claim": "EDU and CANONICAL owner code remains untouched",
+      "falsifier": "No diff under C72/C59/C107/C114/C139/C140",
+      "metric": "owner_paths_changed=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "I1",
+      "level": "INTERMEDIATE",
+      "claim": "OAuth resource metadata and JWT issuer+audi binding",
+      "falsifier": "Well-known and 401 discoverable; exact issuer path",
+      "metric": "wrong_issuer_aud_accepted=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "I2",
+      "level": "INTERMEDIATE",
+      "claim": "RS256 only, JWKS bound and JOSE extensions fail closed",
+      "falsifier": "Forged key, unrecognized crit/b64, duplicate kid rejected",
+      "metric": "invalid_tokens_accepted=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "I3",
+      "level": "INTERMEDIATE",
+      "claim": "Protected tools enforce write scope before writer",
+      "falsifier": "tool-level mcp/www_authenticate with error_description",
+      "metric": "missing_write_scope_runs=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "I4",
+      "level": "INTERMEDIATE",
+      "claim": "Concurrent JWKS fetch bounded and coalesced",
+      "falsifier": "100 concurrent requests -> 1 JWKS read; 64KB cap",
+      "metric": "jwks_fanout=1",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "I5",
+      "level": "INTERMEDIATE",
+      "claim": "Actual SDK HTTP initialize -> tools/list -> tools/call",
+      "falsifier": "Observed protocol round-trip with SDK deps",
+      "metric": "sdk_roundtrips>=3",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "I6",
+      "level": "INTERMEDIATE",
+      "claim": "Render single-instance HTTPS store after restart",
+      "falsifier": "Paid disk, source-head startup, backups/rollback",
+      "metric": "restored_session_mismatches=0",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "I7",
+      "level": "INTERMEDIATE",
+      "claim": "Owner C87/C125 at-most-one effects",
+      "falsifier": "Unknown send must stop; byte readback must match",
+      "metric": "duplicate_writes=0; blind_retries=0",
+      "status": "LOCAL_PARTIAL"
+    },
+    {
+      "id": "I8",
+      "level": "INTERMEDIATE",
+      "claim": "Principals isolated, scopes enforced, provider-native claim denied",
+      "falsifier": "Cross-principal same session hint never leaks",
+      "metric": "cross_tenant_leaks=0",
+      "status": "LOCAL_PARTIAL"
+    },
+    {
+      "id": "I9",
+      "level": "INTERMEDIATE",
+      "claim": "Full updated HEAD C140 and MCP no regressions",
+      "falsifier": "CI on exact merged HEAD with SDK",
+      "metric": "new_head_failures=0",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "L1",
+      "level": "LOCAL",
+      "claim": "Finite state-machine 10 campaigns 1m each",
+      "falsifier": "All 10m oracle comparisons match and 80 mutants killed",
+      "metric": "vectors=10000000; mutant_kills=80/80",
+      "status": "MODEL_TEST"
+    },
+    {
+      "id": "L2",
+      "level": "LOCAL",
+      "claim": "JWT signed claim/JOSE tests",
+      "falsifier": "Multiple signed negative cases",
+      "metric": "incorrect_signed_attacks_accepted=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "L3",
+      "level": "LOCAL",
+      "claim": "No HTTP config downgrade",
+      "falsifier": "Reject HTTP resource, unknown audience, unsafe config",
+      "metric": "unsafe_config_accepted=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "L4",
+      "level": "LOCAL",
+      "claim": "No header injection in challenge",
+      "falsifier": "CRLF and nonwhitelisted error_description rejected",
+      "metric": "header_injection_accepted=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "L5",
+      "level": "LOCAL",
+      "claim": "Render blueprint has no credentials",
+      "falsifier": "Static YAML schema + env sync:false",
+      "metric": "embedded_secret_count=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "L6",
+      "level": "LOCAL",
+      "claim": "Reproducible Git blob evidence",
+      "falsifier": "All changed paths hash and reopen physically",
+      "metric": "blob_mismatches=0",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "X1",
+      "level": "EXTERNAL",
+      "claim": "Real AS supports OAuth authorization code PKCE S256 CIMD/DCR",
+      "falsifier": "Real issuer metadata and consent/refresh/revoke",
+      "metric": "as_roundtrips>=3",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "X2",
+      "level": "EXTERNAL",
+      "claim": "Real ChatGPT plugin installs/connects/calls",
+      "falsifier": "User-controlled install, trace from actual provider",
+      "metric": "provider_calls>=3",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "X3",
+      "level": "EXTERNAL",
+      "claim": "Real Render persistent disk and rollback",
+      "falsifier": "Restart, corruption, replay, concurrent requests",
+      "metric": "bad_restores=0",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "X4",
+      "level": "EXTERNAL",
+      "claim": "Revocation and tenant deletion applied immediately",
+      "falsifier": "Revoked token replay denied within specified SLA",
+      "metric": "replay_accept_after_revocation=0",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "X5",
+      "level": "EXTERNAL",
+      "claim": "Independent 30-person and 300 blind-model evaluation",
+      "falsifier": "Privacy-aware participants and adjudication",
+      "metric": "independent_users>=30; blind_pairs>=300",
+      "status": "EXTERNAL_OPEN"
+    }
+  ],
+  "release": {
+    "current": "PRODUCT_NO_GO",
+    "closed_external_gates": 0,
+    "global_software_source_qualification": "PENDING_HEAD_REBASE_AND_SDK",
+    "no_synthetic_attestation": true,
+    "unknown_writer_result": "STOP_AND_READ_ONLY_RECONCILE"
+  },
+  "evidence_caution": "Semantic vectors test an explicitly selected threat model; correctness of its oracle, exact repository behavior, ChatGPT event provenance, native UI and truth of language are not established by synthetic count.",
+  "original_design_epoch": {
+    "head": "463c8474afccb9b5e7906b90fcb50bd751fe9579",
+    "tree": "4055f4f2ed485ca134a0d417c154bc43b56f411c",
+    "qualification": "HISTORICAL_DESIGN_ONLY"
+  }
+}

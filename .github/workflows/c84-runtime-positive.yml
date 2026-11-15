@@ -1,0 +1,28 @@
+name: C84 actual positive runtime closure
+on:
+  pull_request:
+    paths:
+      - 'host/c82-experimental-carriers.mjs'
+      - 'host/c84-experimental-transport.mjs'
+      - 'scripts/c84-experimental-turn-cli.mjs'
+      - 'tests/c84-real-runtime-positive.test.mjs'
+      - 'tests/c84-runtime-convergence.test.mjs'
+      - '.github/workflows/c84-runtime-positive.yml'
+jobs:
+  positive-runtime:
+    name: C84 Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Real C77 to C84 source and Node voice positive
+        run: node --test --test-concurrency=1 tests/c84-real-runtime-positive.test.mjs tests/c84-runtime-convergence.test.mjs

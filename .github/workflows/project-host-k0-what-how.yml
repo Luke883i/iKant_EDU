@@ -1,0 +1,62 @@
+name: K0 WHAT-HOW deterministic pre-effect qualification
+on:
+  pull_request:
+    paths:
+      - 'host/project-host-effect-decision.mjs'
+      - 'contracts/project-host-what-how-effect-v2.json'
+      - 'tests/project-host-effect-decision.test.mjs'
+      - 'scripts/project-host-effect-falsify-1m.mjs'
+      - 'docs/PROJECT_HOST_K0_WHAT_HOW_R4.md'
+      - '.github/workflows/project-host-k0-what-how.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'host/project-host-effect-decision.mjs'
+      - 'contracts/project-host-what-how-effect-v2.json'
+      - 'tests/project-host-effect-decision.test.mjs'
+      - 'scripts/project-host-effect-falsify-1m.mjs'
+      - 'docs/PROJECT_HOST_K0_WHAT_HOW_R4.md'
+      - '.github/workflows/project-host-k0-what-how.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  k0-preowner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Syntax and original source manifest
+        run: |
+          node --check host/project-host-effect-decision.mjs
+          node --check scripts/project-host-effect-falsify-1m.mjs
+          node scripts/project-source-manifest.mjs verify
+      - name: Original owner nonregression and K0 gate
+        shell: bash
+        run: |
+          set -o pipefail
+          node --test tests/project-host-effect-decision.test.mjs tests/project-edu-h1-bound-port.test.mjs tests/project-edu-h1-original.test.mjs tests/project-c72-e16-unified-ingress.test.mjs tests/project-c72-e16-unified-original.test.mjs 2>&1 | tee "$RUNNER_TEMP/k0-original-tests.log"
+      - name: Capture original K0 test first failure
+        if: ${{ failure() }}
+        id: k0_edge
+        run: node scripts/ci-failure-annotations.mjs first-edge tap "$RUNNER_TEMP/k0-original-tests.log" first_edge
+      - name: "K0 first failing assertion [${{ steps.k0_edge.outputs.first_edge }}]"
+        if: ${{ failure() }}
+        run: echo "K0 original test failure, owner gate remains blocking"
+      - name: One million seeded realistic pre-owner cases (twice)
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/project-host-effect-falsify-1m.mjs > "$RUNNER_TEMP/r4-first.json"
+          node scripts/project-host-effect-falsify-1m.mjs > "$RUNNER_TEMP/r4-repeat.json"
+          cmp "$RUNNER_TEMP/r4-first.json" "$RUNNER_TEMP/r4-repeat.json"
+          node --input-type=module -e "import fs from 'node:fs';const q=JSON.parse(fs.readFileSync(process.argv[1]));if(q.cases!==1000000||q.families!==40||q.mismatches!==0||q.wrongCarrier!==0||q.original_c72_calls!==0||q.product_pass!==false)process.exit(1)" "$RUNNER_TEMP/r4-first.json"

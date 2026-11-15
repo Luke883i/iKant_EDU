@@ -1,0 +1,67 @@
+{
+  "schema": "ikant-edu-v9-minimal-host-route/v1",
+  "authority": 0,
+  "role": "READ_ONLY_HOST_PROJECTION",
+  "owner_replaced": false,
+  "writer_replaced": false,
+  "source_epoch": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
+  "base_main_observed": "e9a452d2473524dea365b3518a9d4f47c6cad0b0",
+  "facts": [
+    "index_verified",
+    "terms_presented",
+    "common_accept_observed",
+    "experimental_selected",
+    "separate_draft_optin_observed",
+    "carrier_local_verified",
+    "machine_bridge_available",
+    "machine_attempts_exhausted",
+    "pr118_pr119_materialized",
+    "guided_owner_executed",
+    "independent_c87_readback"
+  ],
+  "route_order": [
+    "HOST_INDEX",
+    "TERMS",
+    "I_ACCEPT",
+    "EXPERIMENTAL",
+    "SEPARATE_COHOST_OPTIN",
+    "SOURCE_EXACT_LOCAL_BYTES",
+    "PR118_PR119_MATERIALIZED",
+    "PR119_GUIDED_TURN_ONLY",
+    "INDEPENDENT_C87_REOPEN",
+    "EXACT_SURFACE_A"
+  ],
+  "manual_handoff": "ONLY_AFTER_PROVEN_MACHINE_BRIDGE_EXHAUSTION",
+  "surface_a": "OWNER_READBACK_ONLY_OR_NO_VOICE",
+  "surface_b": [
+    "MODE",
+    "STATUS",
+    "TRACE_REF",
+    "CONTINUITY",
+    "FIRST_EDGE",
+    "NEXT"
+  ],
+  "limits": [
+    "FLAGS_ARE_NOT_ORIGIN_PROOF",
+    "NOT_A_NATIVE_HOOK",
+    "NOT_AN_ACTIVATION_OWNER",
+    "NOT_AN_ALTERNATE_WRITER",
+    "NOT_CANONICAL_ACTIVE",
+    "NOT_A_C107_SOURCE_EPOCH_UPDATE"
+  ],
+  "qualification": {
+    "exhaustive_states": 2048,
+    "oracle": "INDEPENDENT_PRIORITY_CLASSIFIER",
+    "mutation_domains": [
+      "MISSING_GATE",
+      "UNAVAILABLE_BYTES",
+      "BRIDGE_PROBE",
+      "EARLY_HANDOFF",
+      "DIRECT_C107_BYPASS",
+      "C87_POSTWRITE_RECONCILIATION",
+      "HOST_PROMOTION",
+      "GETTER_PROXY"
+    ],
+    "real_llm_calls": 0
+  }
+}

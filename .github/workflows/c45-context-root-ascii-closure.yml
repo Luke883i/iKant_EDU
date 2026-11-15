@@ -1,0 +1,33 @@
+name: C45 context root ASCII cohost closure
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'contracts/host-shell.json'
+      - 'contracts/session-shell.json'
+      - 'contracts/cohost-context-root.json'
+      - 'src/local-host-meta-prompt.mjs'
+      - 'src/cohost-context-root.mjs'
+      - 'scripts/c45-context-root-select.mjs'
+      - 'scripts/c45-context-root-falsify.mjs'
+      - 'tests/c45-context-root-ascii-closure.test.mjs'
+      - 'artifacts/qualification/c45-context-root-selection-10k.json'
+      - 'artifacts/qualification/c45-context-root-falsification-10m.json'
+      - 'docs/C45_CONTEXT_ROOT_ASCII_COHOST_CLOSURE.md'
+      - 'docs/ARCHITECTURE.md'
+      - 'scripts/check.mjs'
+      - 'package.json'
+jobs:
+  c45:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm run select:c45
+      - run: npm run falsify:c45
+      - run: node --test tests/c45-context-root-ascii-closure.test.mjs
+      - run: npm run runtime-root:verify
+      - run: npm run check:c29

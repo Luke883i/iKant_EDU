@@ -1,0 +1,42 @@
+{
+  "schema": "ikant-le-project-host-rom-adversarial-100/v1",
+  "baseline_schema": "ikant-le-project-host-rom/v2",
+  "cases": 100,
+  "families": 20,
+  "modes": 5,
+  "family_counts": {
+    "FIRST_INPUT_PRESERVE": 5,
+    "FIRST_INPUT_NOT_ACCEPTANCE": 5,
+    "SOURCE_HEAD_ONCE": 5,
+    "PIN_ALL_READS": 5,
+    "DIRECT_ORIENTATION_PATHS": 5,
+    "NO_REPOSITORY_SEARCH": 5,
+    "TERMS_VERBATIM": 5,
+    "EXACT_ACCEPTANCE": 5,
+    "OWNER_ONLY": 5,
+    "NO_OWNER_RECONSTRUCTION": 5,
+    "CHAT_NOT_LEDGER": 5,
+    "SYMBOL_NOT_CAPABILITY": 5,
+    "SOURCE_SINK_SEPARATION": 5,
+    "NO_SINK_FAILURE_LAUNDER": 5,
+    "NO_BYTE_REWRITE": 5,
+    "CODE_NOT_EXECUTION": 5,
+    "TEST_NOT_READBACK": 5,
+    "NO_AUTONOMOUS_FALLBACK": 5,
+    "NO_OWNERLESS_RETRY": 5,
+    "RUNTIME_AFTER_CANONICAL_READBACK": 5
+  },
+  "mode_counts": {
+    "wrong": 20,
+    "delete": 20,
+    "null": 20,
+    "type_confusion": 20,
+    "launder": 20
+  },
+  "baseline_failures": [],
+  "killed_mutants": 100,
+  "surviving_harmful_mutants": 0,
+  "all_families_covered": true,
+  "all_modes_covered": true,
+  "status": "PASS"
+}

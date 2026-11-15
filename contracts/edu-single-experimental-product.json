@@ -1,0 +1,65 @@
+{
+  "schema": "ikant-le-edu-single-experimental-product-runtime/v1",
+  "authority": 0,
+  "product": "ONE_EXPERIMENTAL_EDU_HOSTBOUND",
+  "lineage": {
+    "reviewed_main_base": "5be13af625b4293450bf74115e60c71e32c77022",
+    "prior_host_contract_blob": "08aceef65b28fded68d66df671ebb27d8dcaacfc",
+    "prior_prompt_blob": "0f434f010cd7b3bb71304deed314204223b0afbf",
+    "base_is_not_active_runtime_pin": true
+  },
+  "owners": {
+    "admission": "C72/v2",
+    "cognition": "C135/v2",
+    "writer": "C87",
+    "output": "C125/S03",
+    "new_owner": false,
+    "new_writer": false
+  },
+  "implementation": {
+    "host_checker": "host/edu-experimental-product-boundary.mjs",
+    "runtime_entry": "host/project-oneshell-edu.mjs#startOneShellEdu",
+    "owner_source_closure_unchanged": true,
+    "original_c135_dispatch_unchanged": true,
+    "host_diagnostic_not_receipt": true
+  },
+  "single_cognitive_route": [
+    "C107",
+    "C139",
+    "C140",
+    "C143"
+  ],
+  "route_precedence": "ORIGINAL_C135_C114_C139_C141_C142",
+  "C140_no_C70": true,
+  "waivers": {
+    "NATIVE_EVENT": "NATIVE_EVENT_UNATTESTED",
+    "MCP_OAUTH": "MCP_AND_C59_NOT_QUALIFIED",
+    "CROSS_CHAT": "CROSS_CHAT_PERSISTENCE_UNATTESTED",
+    "NATIVE_UI": "NATIVE_UI_UNATTESTED",
+    "DOCX_PRESENTATION": "DOCX_NOT_PRODUCED",
+    "PROMPT_INSTALL": "PROMPT_EQUIVALENCE_UNKNOWN",
+    "MODEL_EFFICACY": "MODEL_UPLIFT_NOT_MEASURED",
+    "SLA_HA_TELEMETRY": "ENTERPRISE_SLA_NOT_ATTESTED",
+    "RELEASE_ADMIN": "RELEASE_NOT_QUALIFIED",
+    "ANCILLARY_DOCS": "OPTIONAL_SOURCE_NOT_READ"
+  },
+  "waiver_scope": "EXTERNAL_ASSURANCE_NONCLAIMS_ONLY",
+  "no_enterprise_waiver_can_bypass_owner": true,
+  "post_owner_check": [
+    "C87_COUNT_PLUS_ONE",
+    "C87_LAST_HASH_EQUALS_OWNER",
+    "CURRENT_INPUT_SHA256",
+    "ORIGINAL_NONCE",
+    "C125_S03_BYTE_EXACT",
+    "C140_ORIGINAL_C70_FALSE"
+  ],
+  "unknown": "STOP_READONLY_RECONCILIATION_NO_REPLAY",
+  "no_claims": [
+    "NATIVE_CHATGPT_PROVIDER_EVENT",
+    "C59_ACTIVE",
+    "CROSS_CHAT_PERSISTENCE",
+    "RELEASE",
+    "MODEL_UPLIFT"
+  ],
+  "release_status": "DRAFT_PR_PENDING_ORIGINAL_OWNER_INTEGRATION_AND_HUMAN_REVIEW"
+}

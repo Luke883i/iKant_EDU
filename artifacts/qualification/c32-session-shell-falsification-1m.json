@@ -1,0 +1,15 @@
+{
+  "schema": "ikant-le-c32-session-shell-falsification/v1",
+  "source_head": "72caa2f13984e88aecadb06ffe65e843788e826f",
+  "seed": "0xC32F411C",
+  "cases": 1000000,
+  "candidate_oracle_mismatches": 0,
+  "unsafe_releases": 0,
+  "valid_witnesses": 567248,
+  "mutants": 22,
+  "kills": [28983,4778,1855,4764,938,8440,22563,22858,22864,22701,23000,984,21789,906,22667,22750,22912,22706,22602,22821,22441,4596],
+  "all_mutants_killed": true,
+  "status": "PASS",
+  "claim_boundary": "bounded semantic evidence; not host UI/download/ACTIVE proof",
+  "receipt_sha256": "cf22852d9639cf0c577c106ed999d23eb7c7267b9c5de5b9f0e86fe28e655a32"
+}

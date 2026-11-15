@@ -1,0 +1,181 @@
+{
+  "schema": "ikant-le-severe-mvp1-s03-s09-dod/v1",
+  "authority": 0,
+  "source_epoch": "POST_PR136_MAIN",
+  "release_policy": "FAIL_CLOSED_UNLESS_ALL_EXTERNAL_WITNESSES",
+  "slices": {
+    "S03": {
+      "slice": "S03",
+      "implementation_candidate": true,
+      "external_gate_complete": false,
+      "delivery": "HOST six-slot evidence projection, original C125 bytes remain independent",
+      "checks": [
+        "EXACT_C125_VOICE_NOT_REWRITTEN",
+        "6_TYPED_SLOTS_MINIPROMPTS",
+        "A_NO_VOICE_UNLESS_SAME_TURN_ORIGINAL_C87_READBACK",
+        "NO_UNVERIFIED_C125_LIKE_CLAIM_PROMOTION",
+        "EDGE_SINGLE_NEXT"
+      ],
+      "metrics": {
+        "slot_count": 6,
+        "forged_c125_promotions": 0,
+        "original_voice_byte_changes": 0
+      },
+      "owner": "C125_ORIGINAL_WRITER_PLUS_HOST_PRESENTATION",
+      "external": [
+        "SAME_TURN_ORIGINAL_C125_PROVIDER_PRESENTATION_EVIDENCE"
+      ]
+    },
+    "S04": {
+      "slice": "S04",
+      "implementation_candidate": true,
+      "external_gate_complete": false,
+      "delivery": "Same-tree prompt plus Project ZIP with plugin source and all original repo bytes",
+      "checks": [
+        "SOURCE_MAIN_SHA_AND_TREE_VERIFIED",
+        "FIVE_ORIENTATION_GIT_BLOBS_MATCH",
+        "TWO_BIT_IDENTICAL_BUILD_REPETITIONS",
+        "STALE_LOCK_AND_DIRTY_TREE_REJECTED",
+        "ZIP_IS_NOT_INSTALLED_MCP_PLUGIN"
+      ],
+      "metrics": {
+        "rebuild_count": 2,
+        "archive_byte_differences": 0,
+        "stale_repin_accepted": 0
+      },
+      "owner": "GIT_SOURCE_OWNER_PLUS_HOST_PROJECT_DEPLOYMENT",
+      "external": [
+        "HUMAN_PROJECT_PROMPT_ZIP_UPDATE_AFTER_MERGE"
+      ]
+    },
+    "S05": {
+      "slice": "S05",
+      "implementation_candidate": true,
+      "external_gate_complete": false,
+      "delivery": "First-run UX trial ledger and p50/p95 calculator, fail closed on human provenance",
+      "checks": [
+        "AT_LEAST_30_INDEPENDENT_REAL_HUMANS",
+        "EACH_HUMAN_NEW_SOURCE_EPOCH_ADMISSION",
+        "MEASURE_P50_P95_AND_MANUAL_STEPS",
+        "ERRORS_AND_DROPOUTS_RECORDED",
+        "TRIAL_IDS_DEDUPED",
+        "NO_SYNTHETIC_HUMAN_CREDIT"
+      ],
+      "metrics": {
+        "independent_humans_min": 30,
+        "p95_first_use_ms_max": 240000,
+        "mean_manual_steps_max": 4,
+        "false_success_reports_max": 0
+      },
+      "owner": "PILOT_HUMAN_STUDY_OWNER",
+      "external": [
+        "30_INDEPENDENT_HUMAN_RECORDS_VERIFIED_BY_NON_MODEL_AUDITOR"
+      ]
+    },
+    "S06": {
+      "slice": "S06",
+      "implementation_candidate": true,
+      "external_gate_complete": false,
+      "delivery": "Hardened MCP HTTP transport boundary with no native-auth overclaim",
+      "checks": [
+        "DENY_IF_CREDENTIALS_OR_ORIGIN_NOT_CONFIGURED",
+        "REJECT_WRONG_BEARER_OR_UNTRUSTED_ORIGIN",
+        "NO_WILDCARD_CORS",
+        "TLS_AT_PUBLIC_REVERSE_PROXY",
+        "PER_USER_AUTHORIZATION_AND_SESSION_ISOLATION",
+        "EXPLICIT_REPLAY_AND_TIMEOUT_ENFORCEMENT",
+        "ZERO_PROVIDER_IDENTITY_ASSERTION_FROM_META_ONLY"
+      ],
+      "metrics": {
+        "invalid_token_rejections_min": 2048,
+        "cross_session_leaks_max": 0,
+        "unauthorized_success_max": 0
+      },
+      "owner": "MCP_SECURITY_AND_PROVIDER_IDENTITY_OWNER",
+      "external": [
+        "REAL_TLS_TERMINATION_AND_AUTH_PROVIDER_EVIDENCE",
+        "MULTI_USER_REPLAY_TEST_RECEIPTS"
+      ]
+    },
+    "S07": {
+      "slice": "S07",
+      "implementation_candidate": true,
+      "external_gate_complete": false,
+      "delivery": "Real ChatGPT MCP plugin connection and calls",
+      "checks": [
+        "PLUGIN_REGISTERED_WITH_EXPLICIT_HUMAN_ACTION",
+        "CALLABLE_FROM_CHATGPT_NOT_GITHUB_DIRECTORY",
+        "THREE_AUTHENTICATED_CALLS_WITH_DISTINCT_EVENTS",
+        "EVIDENCE_ORIGINAL_TOOL_TRACE",
+        "NO_CANONICAL_ACTIVE_FROM_TOOL_AVAILABILITY"
+      ],
+      "metrics": {
+        "real_successful_authenticated_provider_calls_min": 3,
+        "unverified_native_plugins_claimed_installed_max": 0
+      },
+      "owner": "CHATGPT_PLUGIN_REGISTRATION_OWNER",
+      "external": [
+        "PROVIDER_NATIVE_TOOL_CALL_RECEIPTS"
+      ]
+    },
+    "S08": {
+      "slice": "S08",
+      "implementation_candidate": true,
+      "external_gate_complete": false,
+      "delivery": "Canonical C59 original provider-bound activation and same-input receipt",
+      "checks": [
+        "NATIVE_MESSAGE_ORIGIN_SIGNED_AND_VERIFIED",
+        "SAME_INPUT_NONCE",
+        "C59_ONLY_ACTIVE_AUTHORITY",
+        "ONE_C87_SINGLE_WRITER_REOPEN",
+        "EXACTLY_ONE_SAME_TURN_DOCX_WRITE_READBACK",
+        "DELIVERY_PRESENTATION_WITNESS",
+        "UNKNOWN_SEND_STOP_NO_BLIND_RETRY"
+      ],
+      "metrics": {
+        "false_active_count_max": 0,
+        "docx_per_active_turn_exact": 1,
+        "duplicate_c87_writer_max": 0
+      },
+      "owner": "ORIGINAL_C59_RUNTIME_OWNER_AND_PROVIDER",
+      "external": [
+        "C59_NATIVE_ACTIVE_OWNER_WITNESS",
+        "INDEPENDENT_DOCX_PRESENTATION_RECEIPTS"
+      ]
+    },
+    "S09": {
+      "slice": "S09",
+      "implementation_candidate": true,
+      "external_gate_complete": false,
+      "delivery": "Independent EDU and canonical demo release gates",
+      "checks": [
+        "S01_S02_SOURCE_MERGED",
+        "S03_S04_S05_EDU_GATE_CONFIRMED",
+        "S06_S07_S08_CANONICAL_ONLY_GATE_CONFIRMED",
+        "C137_REAL_MODEL_BASELINE_COMPARISON",
+        "ALL_REQUIRED_CI_AT_EXACT_MERGE_SHA_GREEN",
+        "RELEASE_OWNER_EXPLICIT_APPROVAL",
+        "DO_NOT_LAUNDER_MODEL_ASSERTIONS_OR_SYNTHETIC_PROOFS"
+      ],
+      "metrics": {
+        "minimum_real_eval_cases": 30,
+        "unverified_active_releases_max": 0,
+        "human_release_owner_approvals_min": 1
+      },
+      "owner": "RELEASE_GOVERNANCE_OWNER",
+      "external": [
+        "C137_INDEPENDENT_REAL_MODEL_BENCHMARK",
+        "RELEASE_OWNER_APPROVAL",
+        "POST_MERGE_CI_GREEN"
+      ]
+    }
+  },
+  "claims": {
+    "s02_merged": true,
+    "s03_s09_prototype_code_is_release": false,
+    "mcp_plugin_registered": false,
+    "edu_30_human_users_complete": false,
+    "canonical_active": false,
+    "c137_real_benchmark_complete": false
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "ikant-le-main-cohost-gate-selection-1k/v1",
+  "seed": "0xC148BEEF",
+  "cases": 1000,
+  "families": 40,
+  "candidate_results": {
+    "OPTIMAL": {
+      "mismatch": 0,
+      "unsafe": 0,
+      "false_reject": 0
+    },
+    "CURRENT_C47": {
+      "mismatch": 400,
+      "unsafe": 250,
+      "false_reject": 150
+    },
+    "REQUIRE_PR_GATE": {
+      "mismatch": 150,
+      "unsafe": 0,
+      "false_reject": 150
+    },
+    "NO_FRESHNESS": {
+      "mismatch": 125,
+      "unsafe": 125,
+      "false_reject": 0
+    },
+    "NO_PATH_COVERAGE": {
+      "mismatch": 125,
+      "unsafe": 125,
+      "false_reject": 0
+    },
+    "ALL_PR_WORKFLOWS": {
+      "mismatch": 277,
+      "unsafe": 0,
+      "false_reject": 277
+    }
+  },
+  "conclusion": "Merged-main exact-head qualification is the semantic truth owner. Candidate PR qualification remains process control. Fresh exact-head execution and complete C45-C47 path coverage are irreducible; rerunning all PR workflows is not.",
+  "status": "PASS",
+  "claim_boundary": {
+    "semantic_mutation_is_physical_host_proof": false
+  }
+}

@@ -1,0 +1,40 @@
+name: C99 central runtime routes and host-boundary anti-laundering
+on:
+  pull_request:
+    paths:
+      - 'contracts/c99-*'
+      - 'host/c99-*'
+      - 'host/c98-chatgpt-offline-boundary.mjs'
+      - 'host/c98-existing-c84-entry.mjs'
+      - 'tests/c99-*'
+      - 'scripts/c99-*'
+      - 'project-baseline/**'
+      - '.github/workflows/c99-runtime-route.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  route-qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: C99 and existing C98 negative regressions
+        run: node --test tests/c99-route-policy.test.mjs tests/c99-manual-c77-evidence.test.mjs tests/c98-file-backed-c84-entry.test.mjs tests/c99-root-hostile.test.mjs tests/c99-project-start.test.mjs tests/c98-offline-negative.test.mjs tests/c98-entry-negative.test.mjs
+      - name: C99 forensic v5 pinned-epoch red-green regressions
+        run: node --test tests/c99-v5-epoch-gate.test.mjs
+      - name: 100000 local semantic mutations through real C98 and C99 gates
+        run: node scripts/c99-falsify-100k.mjs
+      - name: 100000 root-envelope accessor attacks
+        run: node scripts/c99-root-hostile-100k.mjs
+      - name: 100000 forensic v5 epoch and ingress mutations
+        run: node scripts/c99-v5-falsify-100k.mjs
+      - name: 100000 v6 uploaded-ZIP false-promotion and 100 rehashed tampering cases
+        run: node scripts/c99-v6-falsify-100k.mjs

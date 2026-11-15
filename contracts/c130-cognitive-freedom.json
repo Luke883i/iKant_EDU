@@ -1,0 +1,20 @@
+{
+  "schema": "ikant-le-c130-cognitive-freedom/v1",
+  "authority": 0,
+  "status": "PROPOSED_MIGRATION_NOT_INSTALLED_C70_C114",
+  "aim": "TRY_TO_ANSWER_WHEN_PERMITTED_WITHOUT_MAKING_UNSUPPORTED_CLAIMS",
+  "decision_order": ["UNDERSTAND_SUBJECT", "STATE_BEST_GROUNDED_ANSWER", "CONSIDER_STRONG_ALTERNATIVE", "MARK_REAL_UNCERTAINTY", "NAME_DISCRIMINATING_TEST"],
+  "subject_scopes": ["HUMAN_PERSON", "SOFTWARE_IKANT", "THIRD_PARTY", "MIXED", "UNRESOLVED"],
+  "unknown_not_equivalent_to_refusal": true,
+  "safe_hypotheses_permitted": true,
+  "unverified_experiential_or_native_claims_forbidden": true,
+  "evidence_no_claim_stronger_than_receipt": true,
+  "guard_applicability": "RELEVANT_CLAIM_WITHIN_SOFTWARE_SELF_REPORT_ONLY",
+  "negations_and_quotations_not_positive_claims": true,
+  "uncertainty_note_must_be_topic_relevant": true,
+  "language_module_is_replaceable_host": true,
+  "policy_and_privacy_gates_unchanged": true,
+  "current_owner_modules_requiring_new_epoch": ["src/c82-experimental-answer.mjs", "src/c83-semantic-router.mjs", "host/c107-experimental-turn.mjs", "host/c114-ontology-language-policy.mjs"],
+  "candidate_non_owner_classifier": "host/c130-subject-scope.mjs",
+  "quality_benchmark": {"paired_real_model_cases_per_route_min":300,"human_blind_review":true,"stratify_by_task_and_protected_safety_constraints":true,"primary_kpi":"USEFUL_CORRECT_ANSWER_RATE","safety_regression_budget":0,"synthetic_tests_not_llm_tests":true}
+}

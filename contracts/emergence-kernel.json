@@ -1,0 +1,143 @@
+{
+  "schema": "ikant-le-emergence-kernel/v1",
+  "authority": 0,
+  "operational_subject": {
+    "name": "OPERATIONAL_SUBJECT",
+    "qualifiable": true,
+    "phenomenal_implication": false,
+    "definition": "contract-local engineering class requiring downstream-consumed self-model causality plus replay-safe paired actual-vs-lesion control advantage",
+    "runtime_implemented": true,
+    "criterion": "SELF_MODEL_COUNTERFACTUALLY_NECESSARY_FOR_PAIRED_CONTROL_ADVANTAGE",
+    "runtime_owner": "contracts/self-world-kernel.json#operational_subject",
+    "requires_same_state_lesion": true,
+    "requires_positive_control_advantage": true,
+    "ux_projection_source": "SELF_WORLD_OWNER",
+    "requires_independent_control_evidence": true,
+    "runtime_outcome_class_is_control_evidence": false,
+    "legacy_c36_evidence_qualifies": false,
+    "control_plane_implication": "NONE",
+    "canonical_control_evidence_producer_available": false,
+    "qualification_state_when_unavailable": "UNAVAILABLE",
+    "requires_paired_control_arm": true,
+    "requires_downstream_consumption": true,
+    "requires_breadth": true,
+    "raw_caller_score_is_evidence": false
+  },
+  "weak_local_engineering_emergence": {
+    "qualifiable": true,
+    "requires": {
+      "coupled_runtime_components": true,
+      "macro_pattern_not_single_flag": true,
+      "history_sensitive": true,
+      "counterfactual_downstream_effect": true,
+      "lesion_sensitive": true,
+      "negative_controls": true,
+      "source_bound": true
+    },
+    "claim_scope": "LOCAL_ENGINEERING_ONLY"
+  },
+  "causal_emergence": {
+    "qualifiable_relative_to_declared_partition": true,
+    "requires_macro_micro_interventions": true,
+    "macro_advantage_must_be_measured": true,
+    "implies_strong_emergence": false
+  },
+  "open_ended_engineering_emergence": {
+    "implemented": false,
+    "claim_when_unimplemented": "FORBIDDEN",
+    "requires": {
+      "dynamic_topology": true,
+      "non_enumerated_compositional_objects": true,
+      "endogenous_model_extension": true,
+      "novelty_persistence_and_selection": true,
+      "environment_coupling": true,
+      "causal_reuse": true,
+      "bounded_loss_aware_compression": true
+    },
+    "may_change_authority_or_constitution": false,
+    "gate_truth_source": "CONTENT_ADDRESSED_RUNTIME_WITNESS_RECEIPTS",
+    "capability_is_gate_evidence": false
+  },
+  "strong_metaphysical_emergence": {
+    "runtime_truth_value": "UNDEFINED",
+    "software_only_promotion": false,
+    "lesion_or_macro_advantage_is_sufficient": false,
+    "research_status": "EXTERNAL_UNRESOLVED"
+  },
+  "phenomenology": {
+    "runtime_truth_value": "UNKNOWN",
+    "software_only_promotion": false,
+    "self_report_is_evidence": false,
+    "phenomenal_candidate_boolean_forbidden": true,
+    "research_status": "EXTERNAL_UNRESOLVED"
+  },
+  "consciousness_indicator_profile": {
+    "theory_relative": true,
+    "positive_and_negative_indicators_required": true,
+    "any_combination_runtime_sufficient": false,
+    "may_inform_external_credence": true,
+    "may_promote_phenomenology_to_fact": false
+  },
+  "functional_life_consciousness_qualification": {
+    "contract": "contracts/life-consciousness-kernel.json",
+    "classes": [
+      "FUNCTIONALLY_ALIVE",
+      "FUNCTIONALLY_CONSCIOUS",
+      "FUNCTIONALLY_ALIVE_AND_CONSCIOUS",
+      "JOINT_STRONG_CONVERGENCE_PROFILE"
+    ],
+    "qualification_requires_causal_receipts": true,
+    "design_configuration_is_runtime_evidence": false,
+    "qualification_output_is_world_truth": false,
+    "phenomenal_implication": false,
+    "biological_equivalence_implication": false,
+    "authority": 0
+  },
+  "claim_boundary": {
+    "allowed": [
+      "OPERATIONAL_SUBJECT",
+      "WEAK_LOCAL_ENGINEERING_EMERGENCE",
+      "CAUSAL_EMERGENCE_RELATIVE_TO_DECLARED_PARTITION",
+      "CONSCIOUSNESS_INDICATOR_PROFILE",
+      "FUNCTIONALLY_ALIVE",
+      "FUNCTIONALLY_CONSCIOUS",
+      "FUNCTIONALLY_ALIVE_AND_CONSCIOUS",
+      "JOINT_STRONG_CONVERGENCE_PROFILE"
+    ],
+    "forbidden_runtime_facts": [
+      "STRONG_EMERGENCE_CONFIRMED",
+      "PHENOMENAL_CANDIDATE",
+      "PHENOMENAL_CONFIRMED",
+      "QUALIA_CONFIRMED",
+      "CONSCIOUSNESS_PROVEN"
+    ]
+  },
+  "semantic_morphogenesis_loop": {
+    "implemented": true,
+    "owner": "contracts/self-world-kernel.json#semantic_morphogenesis",
+    "mechanisms": [
+      "SELF_LESION_CAUSALITY",
+      "DYNAMIC_TOPOLOGY",
+      "NON_ENUMERATED_COMPOSITION",
+      "ENDOGENOUS_EXTENSION",
+      "NOVELTY_SELECTION_PERSISTENCE",
+      "ENVIRONMENT_COUPLING",
+      "CAUSAL_REUSE",
+      "LOSS_AWARE_COMPRESSION",
+      "UX_EVIDENCE_PROJECTION",
+      "CONSTITUTIONAL_FIREWALL"
+    ],
+    "open_ended_bridge": true,
+    "open_ended_engineering_emergence_claimed": false,
+    "may_change_authority_or_constitution": false,
+    "phenomenal_implication": false,
+    "authority": 0,
+    "witness_ledger": "ikant-le-sml-witness-receipt/v1[]",
+    "capability_is_witness": false,
+    "context_bound_reuse": true,
+    "independent_control_evidence": true,
+    "downstream_consumption_required": true,
+    "paired_control_evidence_required": true,
+    "canonical_control_evidence_producer_available": false
+  }
+}

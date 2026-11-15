@@ -1,0 +1,108 @@
+{
+  "schema": "ikant-cora-pr-c-ci/v1",
+  "authority": 0,
+  "active": false,
+  "product_go": false,
+  "release": "NO_GO",
+  "source": {
+    "repo": "Luke883i/iKant_EDU",
+    "main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa",
+    "workflow_tree": "5457f319ca2a8c1e1edbf8b597de05dbc1f77b92"
+  },
+  "reuse": {
+    "census": "scripts/v5b-repository-governance-audit.mjs#auditRepository",
+    "reticulum": "scripts/cora-minimal-absorption.mjs#observeReticularCensus",
+    "retention": "contracts/v1-workflow-retention.json",
+    "review": "V5-G_INDEPENDENT_HUMANS_REQUIRED"
+  },
+  "bounded_effect": {
+    "path": ".github/workflows/docs-ontology-coverage.yml",
+    "before_blob": "792fb99a98655cb22c40a7d4002a4c1b147c2843",
+    "after_blob": "62d1e83724dcb2d66f933bbdacdd5358dada6c1b",
+    "kind": "PR_ONLY_SUPERSEDED_RUN_CANCEL_AND_EXPLICIT_READ_PERMISSION",
+    "existing_workflows": 116,
+    "deleted": 0,
+    "added": 0,
+    "job_names_unchanged": true,
+    "trigger_paths_unchanged": true,
+    "steps_unchanged": true,
+    "read_permission_only": true,
+    "main_push_never_cancelled": true
+  },
+  "dod": [
+    {
+      "id": "C01",
+      "depends_on": [],
+      "proof": "Git main baseline, exact owner blob and original reticulum pins"
+    },
+    {
+      "id": "C02",
+      "depends_on": [
+        "C01"
+      ],
+      "proof": "V5-B permits explicitly pinned ADD to MODIFY succession without replay or invisible approval"
+    },
+    {
+      "id": "C03",
+      "depends_on": [
+        "C02"
+      ],
+      "proof": "CORA workflow baseline remains SHA-1 tree, scoped delta can be precisely reversed to original tree"
+    },
+    {
+      "id": "C04",
+      "depends_on": [
+        "C03"
+      ],
+      "proof": "Workflow new byte blob is exact and old commands, triggers and job names remain byte-identical"
+    },
+    {
+      "id": "C05",
+      "depends_on": [
+        "C04"
+      ],
+      "proof": "Pull request only superseded runs cancellable, push main never automatically cancelled; permissions read only"
+    },
+    {
+      "id": "C06",
+      "depends_on": [
+        "C03",
+        "C04",
+        "C05"
+      ],
+      "proof": "Original V5-B inventory covers all 116 live workflows and no retrospective retirement"
+    },
+    {
+      "id": "C07",
+      "depends_on": [
+        "C06"
+      ],
+      "proof": "Deterministic negative mutations and same commit CI checkout readback"
+    },
+    {
+      "id": "C08",
+      "depends_on": [
+        "C07"
+      ],
+      "proof": "Two independent engineers, human V5-G decision and post-merge requalification"
+    }
+  ],
+  "abstract_dod": "NON_COMPENSATORY_SOURCE_AND_TRIGGER_AND_COMMAND_AND_PERMISSIONS_AND_INDEPENDENT_REVIEW",
+  "unknowns": [
+    "GITHUB_REQUIRED_CHECKS_NOT_ADMIN_ATTESTED",
+    "WORKFLOW_CONSUMERS_EXTERNAL_UNKNOWN",
+    "HUMAN_REVIEW_NOT_ATTESTED",
+    "PROVIDER_AND_PRODUCT_NOT_PROVEN"
+  ],
+  "no_new_authority": true,
+  "retirement_authorized": false,
+  "source_candidate_only": true,
+  "expected_status": "SOURCE_CANDIDATE_REQUIRES_EXTERNAL_REVIEW",
+  "commit_chain": [
+    "C1_V5B_SUCCESSION_HARDENING",
+    "C2_CORa_TREE_EVOLUTION_HARDENING",
+    "C3_SCOPED_CI_HYGIENE_WITH_FALSIFIERS",
+    "C4_DOCS_AND_READBACK"
+  ],
+  "last_gate": "C08_EXTERNAL_REVIEW_OPEN"
+}

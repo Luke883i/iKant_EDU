@@ -1,0 +1,44 @@
+name: C42 bootstrap ontological closure
+
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'src/local-host-meta-prompt.mjs'
+      - 'src/bootstrap-intent-adapter.mjs'
+      - 'contracts/bootstrap-ontological-closure.json'
+      - 'tests/c42-bootstrap-ontological-closure.test.mjs'
+      - 'scripts/c42-bootstrap-ontological-closure-falsify.mjs'
+      - 'docs/LOCAL_HOST_META_PROMPT.md'
+      - 'docs/C42_BOOTSTRAP_ONTOLOGICAL_CLOSURE.md'
+      - 'package.json'
+      - '.github/workflows/c42-bootstrap-ontological-closure.yml'
+  push:
+    branches: ['c42/bootstrap-ontological-closure']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  c42:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Focused regression
+        run: node --test --test-concurrency=1 tests/local-host-meta-prompt.test.mjs tests/c40-bootstrap-reentry.test.mjs tests/c41-retry-epoch-ux.test.mjs tests/c42-bootstrap-ontological-closure.test.mjs
+      - name: Seeded 1M semantic falsification
+        run: npm run falsify:c42
+      - name: Runtime root unchanged and valid
+        run: npm run runtime-root:verify
+      - name: Upload C42 receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c42-bootstrap-ontological-closure
+          path: /tmp/c42.json
+          if-no-files-found: ignore

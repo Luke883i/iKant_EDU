@@ -1,0 +1,109 @@
+name: OneShell postaccept E9 host rail (experimental)
+on:
+  pull_request:
+    paths:
+      - 'host/project-oneshell-rail-core.mjs'
+      - 'host/project-oneshell-postaccept-rail.mjs'
+      - 'host/project-oneshell-continuous.mjs'
+      - 'host/project-oneshell-focus-app.mjs'
+      - 'host/project-oneshell-focus-session.mjs'
+      - 'host/project-oneshell-chat-presentation.mjs'
+      - 'contracts/project-oneshell-inchat-presentation.json'
+      - 'tests/project-oneshell-chat-presentation.test.mjs'
+      - 'scripts/project-oneshell-chat-falsify.mjs'
+      - 'contracts/project-oneshell-focus-app.json'
+      - 'tests/project-oneshell-focus-app.test.mjs'
+      - 'tests/project-oneshell-focus-session.test.mjs'
+      - 'scripts/project-oneshell-focus-falsify.mjs'
+      - 'scripts/project-oneshell-continuous-cli.mjs'
+      - 'scripts/project-edu-language-stdio.mjs'
+      - 'tests/project-oneshell-continuous.test.mjs'
+      - 'tests/project-c72-receipt-transit.test.mjs'
+      - 'tests/project-oneshell-e15-sterile.test.mjs'
+      - 'tests/project-oneshell-e16-hardening.test.mjs'
+      - 'host/project-oneshell-irred-e15.mjs'
+      - 'scripts/project-oneshell-e15-falsify-1m.mjs'
+      - 'contracts/project-oneshell-irred-e15.json'
+      - 'artifacts/qualification/e15-irred-1m.json'
+      - 'host/project-c72-receipt-transit.mjs'
+      - 'scripts/project-c72-receipt-reopen-cli.mjs'
+      - 'contracts/project-c72-receipt-transit.json'
+      - 'contracts/project-session-source.json'
+      - 'BOOTSTRAP.json'
+      - 'contracts/project-oneshell-cx-humanist.json'
+      - 'scripts/project-oneshell-rail-falsify.mjs'
+      - 'scripts/project-oneshell-source-pin-audit.mjs'
+      - 'tests/project-oneshell-postaccept-rail.test.mjs'
+      - 'tests/project-oneshell-postaccept-owner.test.mjs'
+      - 'project/session-chat/PROMPT.txt'
+      - 'scripts/project-source-manifest.mjs'
+      - 'contracts/project-session-source.json'
+      - '.github/workflows/oneshell-postaccept-e9.yml'
+  workflow_dispatch:
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Parse every new E9 source on both Node versions
+        run: |
+          node --check scripts/project-oneshell-source-pin-audit.mjs
+          node --check scripts/project-oneshell-rail-falsify.mjs
+          node --check host/project-oneshell-rail-core.mjs
+          node --check host/project-oneshell-postaccept-rail.mjs
+          node --check host/project-oneshell-continuous.mjs
+          node --check host/project-oneshell-focus-app.mjs
+          node --check host/project-oneshell-focus-session.mjs
+          node --check host/project-oneshell-chat-presentation.mjs
+          node --check scripts/project-oneshell-chat-falsify.mjs
+          node --check scripts/project-oneshell-continuous-cli.mjs
+          node --check tests/project-oneshell-postaccept-owner.test.mjs
+      - name: Verify execution source manifest
+        run: node scripts/project-source-manifest.mjs verify
+      - name: Pin audit A - check main and onezip metadata
+        run: node scripts/project-oneshell-source-pin-audit.mjs metadata
+      - name: Pin audit B - scan executable PR references
+        run: node scripts/project-oneshell-source-pin-audit.mjs references
+      - name: Pin audit C - forbid historical brand source head
+        run: node scripts/project-oneshell-source-pin-audit.mjs brand
+      - name: Forbid executable PR source pins (complete)
+        run: node scripts/project-oneshell-source-pin-audit.mjs
+      - name: Falsify 100000 deterministic structural masks
+        run: node scripts/project-oneshell-rail-falsify.mjs
+      - name: Verify original owner and same six-slot shell after acceptance
+        run: node --test tests/project-oneshell-postaccept-rail.test.mjs
+      - name: Execute physical two-turn OneShell continuity and cold C87 owner recovery
+        run: node --test tests/project-oneshell-continuous.test.mjs
+      - name: Real post-C72 focus app and post-EDU E10 two-turn focus session (Node20/22)
+        run: node --test tests/project-oneshell-focus-app.test.mjs tests/project-oneshell-focus-session.test.mjs
+      - name: Falsify 2048 voice/layout/download structural masks
+        run: node scripts/project-oneshell-focus-falsify.mjs
+      - name: E15 physically isolate original C72 accept and later EDU (no checkout in child)
+        run: node --test tests/project-oneshell-e15-sterile.test.mjs
+      - name: E16 strict-typing, envelope, native-delivery and 100k retrograde falsification
+        run: node --test tests/project-oneshell-e16-hardening.test.mjs
+      - name: E15 one-million deterministic semantic mutations and pinned trace
+        run: |
+          node scripts/project-oneshell-e15-falsify-1m.mjs > /tmp/e15-1m.json
+          cmp /tmp/e15-1m.json artifacts/qualification/e15-irred-1m.json
+      - name: Verify physical cross-process C72 transit with replay/tamper rejection
+        run: node --test tests/project-c72-receipt-transit.test.mjs
+      - name: Verify E13 in-chat six-slot packet, original voice and lossless evidence (Node20/22)
+        run: node --test tests/project-oneshell-chat-presentation.test.mjs
+      - name: Falsify 4096 deterministic chat-layout and voice-spoof masks
+        run: node scripts/project-oneshell-chat-falsify.mjs
+      - name: Full original C135 first and recovered owner OneShell rail
+        run: node --test tests/project-oneshell-postaccept-owner.test.mjs
+      - name: Original session e2e independent regression
+        run: node --test tests/project-session-e2e.test.mjs
+      - name: Original project prompt independent regression
+        run: node --test tests/project-oneshell-prompt.test.mjs
+      - name: Original one-ZIP independent regression
+        run: node --test tests/project-edu-onezip-route.test.mjs

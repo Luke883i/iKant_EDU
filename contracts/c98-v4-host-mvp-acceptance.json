@@ -1,0 +1,42 @@
+{
+  "schema":"ikant-le-c98-host-mvp-acceptance/v1",
+  "authority":0,
+  "github_baseline_head":"bc5fbcb938c7ba959de0eaef96f92e754d953d4b",
+  "goal":"A new authorized host turn follows C72 admission and one verified current-head C77 transfer into existing C82/C84/C81 same-input owner, with exact Surface A presentation and no unsupported status claims.",
+  "architectures":{
+    "PREFERRED_AUTOMATIC":"SEPARATELY_DEPLOYED_CHATGPT_APP_OR_MCP_SERVER_WITH_REAL_AUTHORIZED_GITHUB_SOURCE_AND_RUNTIME_PORTS",
+    "REUSE_EXISTING":"plugins/ikant-le-session-chat/server/server.mjs (legacy deployed compatibility: do not promote to canonical)",
+    "PREFERRED_CAPSULE":"POST_COMMIT_C77_CI_ARTIFACT_PINNED_BY_GITHUB_HEAD_AND_MANIFEST",
+    "ALTERNATIVE":"AUTHORIZED_HOST_MOUNTED_FILE_FROM_USER_OR_PROJECT_FALLBACK_EXPLICITLY_NONAUTOMATIC",
+    "DENIED":"GITHUB_DNS_OR_HTTPS_FROM_UNATTESTED_CHATGPT_SESSION_NODE; ZIP_SELF_REFERENCING_ITS_OWN_GIT_COMMIT; THIRD_PLANNER; GRO"
+  },
+  "source_only_transport":{
+    "from_file":"host/c98-local-file-archive-bridge.mjs#makeC98LocalFileArchiveBridge",
+    "to_owner":"host/c98-file-backed-c84-entry.mjs#executeC98FileBackedC84",
+    "reused_nodes":["host/c94-zip-c77.mjs","host/c98-archive-c82-port.mjs","host/c82-experimental-carriers.mjs","host/c84-experimental-transport.mjs"],
+    "origin_from_byte_integrity":false,
+    "host_installed":false,
+    "current_head_capsule_observed_in_node":false,
+    "native_ui_witnessed":false
+  },
+  "mvp_lanes":{
+    "SOURCE_ONLY":"real historical or current capsule imported and verified on Node; no iKant voice claim",
+    "EXPERIMENTAL_TEXT_MVP":"current real C72 ingress + exact source witness + same-input C84/C81 or accepted generated voice + exact ordinary-chat text; declare nonnative status; fresh-session independent recheck",
+    "HOST_APP_MVP":"deployed authorized app + authenticated host event + persistence reentry, independent witness; may not claim canonical ACTIVE",
+    "CANONICAL":"separate C59 owner + same-turn verified DOCX + registered native ingress and delivery; no C98 bypass",
+    "H95":"independent C72/C80 holdout at least 500 tasks 50 sessions 20 users, simultaneous Wilson bounds, all four hard gates, host-witness audit"
+  },
+  "hard_stop_edges":[
+    "C72_NATIVE_ORIGINAL_EVENT_AND_ACCEPT_SELECTION_READBACK",
+    "HOST_CONNECTOR_TO_NODE_FILE_CALLBACK_INSTALLED",
+    "C77_CURRENT_HEAD_BYTES_FROM_REAL_GITHUB_CONNECTOR_IN_NODE",
+    "C81_HOST_AUTHENTICATED_GITHUB_REF_ORIGIN",
+    "C78_C79_C81_SAME_INPUT_RUNTIME_PACKET",
+    "HOST_NATIVE_EVENT_INDEPENDENT_DELIVERY_READBACK"
+  ],
+  "evaluation_policy":"NO_NUMERIC_PRODUCT_SCORE_WITHOUT_INDEPENDENT_REAL_HOST_COHORT; C72/C80 ALREADY OWN METRICS",
+  "actual_independent_chatgpt_sessions_observed_by_c98_v4":0,
+  "actual_H95_field_trials_observed_by_c98_v4":0,
+  "canonical_active_claim":false,
+  "real_host_installation_claim":false
+}

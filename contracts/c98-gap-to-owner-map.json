@@ -1,0 +1,25 @@
+{
+  "schema":"ikant-le-c98-gap-owner-reticulum/v1",
+  "authority":0,
+  "semantic_commit_novelty":"NO_NEW_OWNER_ONLY_REUSED_OWNER_AND_PHYSICAL_WITNESS",
+  "base_source_head":"bc5fbcb938c7ba959de0eaef96f92e754d953d4b",
+  "gaps":[
+    {"edge":"C72_NATIVE_ORIGINAL_EVENT_AND_ACCEPT_SELECTION_READBACK","reuse":"host/c72-unified-mode-admission.mjs","proof":"independent host-authenticated original-event and later separate consent/mode callbacks"},
+    {"edge":"C77_CURRENT_HEAD_BYTES_FROM_REAL_GITHUB_CONNECTOR_IN_NODE","reuse":"host/c94-zip-c77.mjs + host/c98-archive-c82-port.mjs","proof":"current-head Actions artifact exact bytes inside Node with reopen and C77 verification"},
+    {"edge":"HOST_CONNECTOR_TO_NODE_FILE_CALLBACK_INSTALLED","reuse":"host/c98-c82-connector-port.mjs + host/c98-existing-c84-entry.mjs","proof":"genuine installed authorized callback observed, not synthetic function"},
+    {"edge":"C81_HOST_AUTHENTICATED_GITHUB_REF_ORIGIN","reuse":"host/c81-git-source-reachability.mjs","proof":"independent host attestation of GitHub ref origin plus Merkle bytes"},
+    {"edge":"C78_C79_C81_SAME_INPUT_RUNTIME_PACKET","reuse":"host/c84-experimental-transport.mjs","proof":"same current original input and returned C81 packet readback"},
+    {"edge":"C90_ACTUAL_OWNER_EXECUTION","reuse":"host/c90-turn-owner.mjs","proof":"actual execution on current input, no caller-provided voice"},
+    {"edge":"C91_C92_TWO_REAL_MODEL_CALLS","reuse":"host/c92-live-provider.mjs","proof":"two independent actual HTTPS provider responses with receipt and configured keys"},
+    {"edge":"INDEPENDENT_SEMANTIC_ENTAILMENT","reuse":"host/c91-evidence-review.mjs + host/c92-independent-check.mjs","proof":"external independent grounding; second model alone insufficient"},
+    {"edge":"C81_C86_GENERATIVE_VOICE_ADMISSION","reuse":"host/c86-surface-a.mjs + host/c94-native-delivery-boundary.mjs","proof":"owner-approved generated voice with authentic same-turn causal receipt"},
+    {"edge":"C97_NATIVE_RENDERER_AND_ACCESSIBILITY_E2E","reuse":"host/c97-uiux-projection.mjs","proof":"installed renderer + mobile desktop accessibility screenshots and action tests"},
+    {"edge":"HOST_NATIVE_EVENT_INDEPENDENT_DELIVERY_READBACK","reuse":"host/c94-native-delivery-boundary.mjs","proof":"external independently authenticated event identity and displayed output bytes"},
+    {"edge":"C87_NEXT_TURN_PERSISTENCE_WITH_SINGLE_WRITER","reuse":"host/c87-durable-ledger.mjs","proof":"persist, terminate, reopen in different real host turn; compare epoch and state"},
+    {"edge":"C59_CANONICAL_ACTIVE_SAME_TURN_DOCX","reuse":"src/runtime-command.mjs + host/c73-project-capsule.mjs","proof":"one owner ACTIVE and one DOCX written/reopened/presented same native turn"},
+    {"edge":"C72_H95_REAL_FIELD_LOWER_CONFIDENCE_BOUND","reuse":"host/c80-field-witness.mjs + contracts/c72-product-value-promise.json","proof":"real preregistered holdout cohort, independent issuer, qualified C80 numeric and external audit"}
+  ],
+  "host_attested_closed_gaps":[],
+  "field_H95_attested":false,
+  "current_host_status":"NOT_ATTESTED"
+}

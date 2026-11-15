@@ -1,0 +1,63 @@
+name: v1.0.experimental Project EDU OneShell reverse-release qualification
+on:
+  pull_request:
+    paths:
+      - 'host/c114-ontology-language-policy.mjs'
+      - 'host/p1-public-language-guard.mjs'
+      - 'scripts/project-edu-v1-experimental-*'
+      - 'tests/project-edu-v1-experimental-release.test.mjs'
+      - 'docs/PROJECT_EDU_V1_EXPERIMENTAL_RELEASE.md'
+      - 'docs/IKANT_DOCUMENT_ATLAS.md'
+      - '.github/workflows/project-edu-v1-experimental.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-edu-local-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Verify pinned source closure and runtime syntax
+        run: |
+          node scripts/project-source-manifest.mjs verify
+          node --check scripts/project-edu-v1-experimental-release-check.mjs
+          node --check scripts/project-edu-v1-experimental-mutate-10m.mjs
+      - name: Reverse release gate and Unicode falsification
+        run: |
+          node --test tests/project-edu-v1-experimental-release.test.mjs tests/c114-ontology-language.test.mjs tests/p1-human-language.test.mjs
+      - name: Physically exercise original local EDU rail and E15/E16
+        run: |
+          node --test tests/project-edu-onezip-full-source-transport.test.mjs tests/project-oneshell-continuous.test.mjs tests/project-oneshell-e15-sterile.test.mjs tests/project-oneshell-e16-hardening.test.mjs tests/project-c72-receipt-transit.test.mjs
+      - name: Original Host and cognition nonregression
+        run: |
+          node --test tests/project-host-negative-rail.test.mjs tests/project-oneshell-chat-presentation.test.mjs tests/cp11-guarded-prepr.test.mjs
+  original-policy-ten-million:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: 10 million deterministic semantic policy attacks with 1 million independent shape checks
+        run: |
+          node scripts/project-edu-v1-experimental-mutate-10m.mjs "$RUNNER_TEMP/v1-experimental-10m.json"
+          node -e "const x=require(process.argv[1]);if(x.cases!==10000000||x.discrepancies!==0||x.independent_shape_oracle_checks!==1000000||x.language_model_calls!==0||x.product_go!==false)process.exit(1)" "$RUNNER_TEMP/v1-experimental-10m.json"
+      - name: Preserve actual mutation receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-edu-v1-experimental-10m
+          path: ${{ runner.temp }}/v1-experimental-10m.json
+          retention-days: 14

@@ -1,0 +1,29 @@
+{
+  "schema": "ikant-edu-rename-sequential-step/v1",
+  "id": "S02",
+  "candidate_path": "docs/rename-sequence/S02_ORIGINAL_REGRESSIONS.json",
+  "baseline": {
+    "repo_id": 1371330383,
+    "head": "f5f42603294084d29cdb6d6e2106c0331d802536",
+    "tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943"
+  },
+  "state": "PLAN_ONLY_NO_EFFECT",
+  "file": "S02_ORIGINAL_REGRESSIONS.json",
+  "goal": "Dimostrare che la patch non rompe ingressi e boundary originali.",
+  "pre": "S01 PASS a una HEAD di preparazione esplicitamente congelata.",
+  "do": "Eseguire test originali su OLD_CANONICAL e test isolati sulla futura phase NEW_CANONICAL. Esercitare first-contact, linked Terms C72, handoff/runtime-root, seed, prompt builder, source manifest, C135/C87/C125/S03 e renderer. Iniettare fork, collisioni, ID/head/tree errati, Terms alterati, receipt vecchia, owner duplicato, send/ack ambigui. Confrontare gli esiti con baseline.",
+  "proof": [
+    "CI: check richiesti PASS, job e SHA del commit letti dal provider.",
+    "LOCALE: log, file e report riaperti, differenze spiegate.",
+    "OWNER: gli originali non vengono sostituiti da test/CI."
+  ],
+  "falsify": [
+    "Una regressione OLD o un falso PASS nel NEW simulato.",
+    "Un receipt pre-rename soddisfa un gate post-rename.",
+    "Una prova solo CI viene promossa a receipt owner."
+  ],
+  "pass": "Tutti i test obbligatori e i negativi chiusi, nessuna regressione non spiegata; il NEW resta non operativo.",
+  "stop": "REGRESSION_OR_AUTHORITY_LEAK",
+  "next": "S03",
+  "note": "10k casi sintetici non equivalgono a bootstrap/prodotto native."
+}

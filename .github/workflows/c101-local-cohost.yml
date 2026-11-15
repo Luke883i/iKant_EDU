@@ -1,0 +1,34 @@
+name: C101 local cohost machine qualification
+on:
+  pull_request:
+    paths:
+      - 'host/c101-local-cohost-machine.mjs'
+      - 'scripts/c101-*'
+      - 'tests/c101-local-machine.test.mjs'
+      - 'contracts/c101-local-cohost-machine.json'
+      - 'contracts/c101-reuse-and-carrier.json'
+      - 'docs/C101_ENGINEERING_DOD.md'
+      - 'tests/c101-hardening.test.mjs'
+      - '.github/workflows/c101-local-cohost.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source original integration test
+        run: node --test tests/c101-local-machine.test.mjs tests/c101-hardening.test.mjs
+      - name: Deterministic source kernel census
+        run: |
+          node scripts/c101-reuse-census.mjs > c101-inventory.json
+          node -e 'const x=require("./c101-inventory.json");if(!x.qualified||x.missing.length||x.missing_exports.length||x.admitted<10)process.exit(2);console.log(JSON.stringify({files_total:x.files_total,admitted:x.admitted,source_content_sha256:x.source_content_sha256}));'
+      - name: One hundred thousand negative mutations and thirty thousand scenarios
+        run: |
+          node scripts/c101-falsify-130k.mjs > c101-campaign.json
+          node -e 'const r=require("./c101-campaign.json");if(!r.qualified||r.synthetic_scenarios!==130000||r.negative_mutations!==100000||r.actual_full_c70_c71_c100_runs!==100||r.unexpected_survivors)process.exit(2);console.log(JSON.stringify(r));'

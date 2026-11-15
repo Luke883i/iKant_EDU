@@ -1,0 +1,654 @@
+{
+  "schema": "ikant-h1-v5-dod-trace/v1",
+  "authority": 0,
+  "source_gold_v5_zip_sha256": "ed598f48c11c776a5fb8338d3397bf604ec74c2c10b47b515ba7d35cb7461e17",
+  "original_nodal_semantics": "Gold V5 DOD_FINAL_RETICLE.json; statuses here are explicitly zero-authority projections",
+  "counts": {
+    "global": 8,
+    "intermediate": 14,
+    "local": 34,
+    "total": 56,
+    "proven_field": 0
+  },
+  "no_auto_promotion": true,
+  "claims": {
+    "repository": "SOURCE_AUDIT_SEPARATE",
+    "software": "PR_HEAD_CI_REQUIRED",
+    "deployment": "FIELD_UNBOUND_UNLESS_INDEPENDENT_PROVIDER_RECEIPT",
+    "runtime": "ORIGINAL_C72_EDU_C135_C87_C125_REQUIRED",
+    "product": "TWO_DISTINCT_HUMAN_TURNS_REQUIRED",
+    "full_cognition": "PER_CX_QUALIFICATION_REQUIRED"
+  },
+  "mechanical_software_probes": {
+    "L10": [
+      "tests/project-edu-h1-bound-port.test.mjs"
+    ],
+    "L11": [
+      "tests/project-edu-h1-bound-port.test.mjs",
+      "tests/project-edu-h1-original.test.mjs"
+    ],
+    "L13": [
+      "tests/project-edu-h1-original.test.mjs"
+    ],
+    "L14": [
+      "tests/project-edu-h1-original.test.mjs"
+    ],
+    "L23": [
+      "tests/project-edu-h1-original.test.mjs"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "L00",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L01",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [
+        "L00"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L02",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [
+        "L01"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L03",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [
+        "L00"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L04",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [
+        "L02",
+        "L03"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L05",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [
+        "L04"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L06",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [
+        "L05"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L07",
+      "level": "LOCAL",
+      "domain": "S",
+      "depends_on": [
+        "L00"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L08",
+      "level": "LOCAL",
+      "domain": "D",
+      "depends_on": [
+        "L04",
+        "L07"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L09",
+      "level": "LOCAL",
+      "domain": "D",
+      "depends_on": [
+        "L08"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L10",
+      "level": "LOCAL",
+      "domain": "S",
+      "depends_on": [
+        "L09"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L11",
+      "level": "LOCAL",
+      "domain": "S",
+      "depends_on": [
+        "L10"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L12",
+      "level": "LOCAL",
+      "domain": "T",
+      "depends_on": [
+        "L00"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L13",
+      "level": "LOCAL",
+      "domain": "T",
+      "depends_on": [
+        "L11",
+        "L12"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L14",
+      "level": "LOCAL",
+      "domain": "T",
+      "depends_on": [
+        "L13"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L15",
+      "level": "LOCAL",
+      "domain": "T",
+      "depends_on": [
+        "L14"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L16",
+      "level": "LOCAL",
+      "domain": "S",
+      "depends_on": [
+        "L15"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L17",
+      "level": "LOCAL",
+      "domain": "T",
+      "depends_on": [
+        "L16"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L18",
+      "level": "LOCAL",
+      "domain": "T",
+      "depends_on": [
+        "L17"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L19",
+      "level": "LOCAL",
+      "domain": "T",
+      "depends_on": [
+        "L18"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L20",
+      "level": "LOCAL",
+      "domain": "P",
+      "depends_on": [
+        "L03",
+        "L19"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L21",
+      "level": "LOCAL",
+      "domain": "P",
+      "depends_on": [
+        "L06",
+        "L20"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L22",
+      "level": "LOCAL",
+      "domain": "P",
+      "depends_on": [
+        "L04"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L23",
+      "level": "LOCAL",
+      "domain": "ALL",
+      "depends_on": [
+        "L13"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L24",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [
+        "L02"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L25",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [
+        "L05",
+        "L24"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L26",
+      "level": "LOCAL",
+      "domain": "ALL",
+      "depends_on": [
+        "L04",
+        "L14",
+        "L17"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L27",
+      "level": "LOCAL",
+      "domain": "S",
+      "depends_on": [
+        "L19"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L28",
+      "level": "LOCAL",
+      "domain": "D",
+      "depends_on": [
+        "L25"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L29",
+      "level": "LOCAL",
+      "domain": "R",
+      "depends_on": [
+        "L00"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L30",
+      "level": "LOCAL",
+      "domain": "ALL",
+      "depends_on": [
+        "L06",
+        "L09",
+        "L21"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L31",
+      "level": "LOCAL",
+      "domain": "S",
+      "depends_on": [
+        "L01",
+        "L02",
+        "L03"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L32",
+      "level": "LOCAL",
+      "domain": "T",
+      "depends_on": [
+        "L17",
+        "L31"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "L33",
+      "level": "LOCAL",
+      "domain": "P",
+      "depends_on": [
+        "L27",
+        "L32"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I00",
+      "level": "INTERMEDIATE",
+      "domain": "R",
+      "depends_on": [
+        "L00",
+        "L01",
+        "L02",
+        "L03"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I01",
+      "level": "INTERMEDIATE",
+      "domain": "R",
+      "depends_on": [
+        "L04",
+        "L05",
+        "L22"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I02",
+      "level": "INTERMEDIATE",
+      "domain": "S",
+      "depends_on": [
+        "L07",
+        "L10",
+        "L24"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I03",
+      "level": "INTERMEDIATE",
+      "domain": "D",
+      "depends_on": [
+        "L08",
+        "L09"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I04",
+      "level": "INTERMEDIATE",
+      "domain": "T",
+      "depends_on": [
+        "L11",
+        "L12",
+        "L13",
+        "L14",
+        "L23"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I05",
+      "level": "INTERMEDIATE",
+      "domain": "T",
+      "depends_on": [
+        "L15"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I06",
+      "level": "INTERMEDIATE",
+      "domain": "S",
+      "depends_on": [
+        "L16",
+        "L26"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I07",
+      "level": "INTERMEDIATE",
+      "domain": "T",
+      "depends_on": [
+        "L17",
+        "L18",
+        "L19"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I08",
+      "level": "INTERMEDIATE",
+      "domain": "P",
+      "depends_on": [
+        "L20"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I09",
+      "level": "INTERMEDIATE",
+      "domain": "P",
+      "depends_on": [
+        "L21"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I10",
+      "level": "INTERMEDIATE",
+      "domain": "R",
+      "depends_on": [
+        "L24",
+        "L25",
+        "L28",
+        "L29"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I11",
+      "level": "INTERMEDIATE",
+      "domain": "ALL",
+      "depends_on": [
+        "L06",
+        "L22",
+        "L23",
+        "L30"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I12",
+      "level": "INTERMEDIATE",
+      "domain": "P",
+      "depends_on": [
+        "L27"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "I13",
+      "level": "INTERMEDIATE",
+      "domain": "T",
+      "depends_on": [
+        "L31",
+        "L32",
+        "L33"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "G0",
+      "level": "GLOBAL",
+      "domain": "P",
+      "depends_on": [
+        "I03",
+        "I04",
+        "I05",
+        "I06",
+        "I07",
+        "I08",
+        "I09",
+        "I11"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "G1",
+      "level": "GLOBAL",
+      "domain": "R",
+      "depends_on": [
+        "I00",
+        "I01",
+        "I10"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "G2",
+      "level": "GLOBAL",
+      "domain": "S",
+      "depends_on": [
+        "I02",
+        "I06"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "G3",
+      "level": "GLOBAL",
+      "domain": "D",
+      "depends_on": [
+        "I03"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "G4",
+      "level": "GLOBAL",
+      "domain": "T",
+      "depends_on": [
+        "I04",
+        "I05",
+        "I07"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "G5",
+      "level": "GLOBAL",
+      "domain": "P",
+      "depends_on": [
+        "I08",
+        "I09",
+        "I11"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "G6",
+      "level": "GLOBAL",
+      "domain": "ALL",
+      "depends_on": [
+        "I10",
+        "I11",
+        "I12"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    },
+    {
+      "id": "G7",
+      "level": "GLOBAL",
+      "domain": "P",
+      "depends_on": [
+        "I13",
+        "G4"
+      ],
+      "status": "NOT_FIELD_ATTESTED",
+      "authority": 0
+    }
+  ]
+}

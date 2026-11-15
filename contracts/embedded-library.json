@@ -1,0 +1,62 @@
+{
+  "schema": "ikant-le-embedded-library/v1",
+  "slice": "LIB.0",
+  "profile": "EMBEDDED_RELATIONAL_NUANCE",
+  "intent": "Expose the smallest iKant_LE relational/expression kernel to external hosts without exporting runtime, admission, persistence, identity, planning, Surface A/B, or execution ownership.",
+  "authority": 0,
+  "source_kernel": "contracts/psyche-kernel.json",
+  "entrypoint": "./embedded/relational-nuance",
+  "exports": ["initialRelationalState", "projectRelationalNuance", "settleRelationalNuance", "validateRelationalState", "validateNuanceEnvelope", "embeddedLibraryContract"],
+  "host_owned": ["identity", "admission", "intent", "routing", "planner", "evidence", "permission", "approval", "grant", "lease", "execution", "reported_outcome", "world_truth", "state_persistence", "surface_a", "surface_b"],
+  "library_owned": ["bounded relational state transition", "derived archetypal mixture", "derived expression class", "derived voice delta"],
+  "persistent_state": {
+    "schema": "ikant-le-relational-state/v1",
+    "fields": ["affiliation", "boundary_pressure", "interaction_count", "last_appraisal_class", "last_runtime_outcome", "authority"],
+    "forbidden": ["valence", "arousal", "raw_prompt", "raw_text", "intent", "route", "planner", "evidence", "permission", "execution", "current_archetype", "user_personality", "user_trait_label", "resentment_ledger"],
+    "writer": "HOST_ONLY",
+    "library_persistence": false
+  },
+  "transient_host_inputs": {
+    "canonical_affect": ["valence", "arousal"],
+    "normalized_event": ["appraisal_class", "target", "confidence", "interaction"],
+    "central_context": ["mode", "interaction"],
+    "raw_prompt_allowed": false
+  },
+  "side_effects": {
+    "network": false,
+    "filesystem_write": false,
+    "state_write": false,
+    "process_spawn": false,
+    "background_task": false,
+    "environment_mutation": false,
+    "admission": false,
+    "identity": false,
+    "surface": false,
+    "planner": false,
+    "execution": false
+  },
+  "effects": {
+    "evidence": "NONE",
+    "permission": "NONE",
+    "approval": "NONE",
+    "grant": "NONE",
+    "lease": "NONE",
+    "route": "NONE",
+    "planner": "NONE",
+    "execution": "NONE",
+    "safety_relaxation": "FORBIDDEN"
+  },
+  "failure": {
+    "mode": "REJECT_ENRICHMENT",
+    "host_may_continue_without_library": true,
+    "may_fail_host_turn": false,
+    "may_create_fallback_semantic_owner": false
+  },
+  "conformance": {
+    "numeric_precision": 6,
+    "mutation_cases": 100000,
+    "mutation_survivors_required": 0,
+    "no_novelty_tail": 1000,
+    "standalone_runtime_must_remain_compatible": true
+  }
+}

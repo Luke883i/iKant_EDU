@@ -1,0 +1,53 @@
+{
+  "schema": "ikant-le-edu-c70-guided-v7/v1",
+  "authority": 0,
+  "merged_main_commit": "63f6869fbeef2096b3bb95164462fd09a03973a3",
+  "merged_main_tree": "0f8c3a300a641dd54acc2801563d8eb9ab1a1ef3",
+  "admitted_original_source_head": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
+  "single_original_carrier_sha256": "d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d",
+  "runtime_owner": "host/edu-cohost-outcome.mjs#createLocalCohostAdapter",
+  "source_consumer_owner": "host/c107-carrier-consumer.mjs",
+  "cognitive_preview_owner": "host/c107-experimental-turn.mjs#previewC107CognitivePlan",
+  "original_execution_owner": "host/c107-experimental-turn.mjs#executeC107Turn",
+  "guard_owner": "host/c114-ontology-language-policy.mjs#qualifyC114OntologyCandidate",
+  "single_ledger_writer": "host/c87-durable-ledger.mjs#appendC87Turn",
+  "prepr_extension": "host/edu-c70-method-v7.mjs#createGuidedCohostV7",
+  "prepr_semantic_projection": "host/c117-semantic-guidance.mjs#compileC117SemanticGuide",
+  "single_carrier": true,
+  "second_writer": false,
+  "second_c107_owner": false,
+  "preaccept_terms_unchanged": true,
+  "requires_original_c72_experimental": true,
+  "requires_separate_cohost_draft_authorization": true,
+  "execution_steps": [
+    "P01_STAGED_REOPEN_PR119",
+    "C70_ORIGINAL_PREVIEW_BEFORE_GENERATION",
+    "C117_GUIDANCE_AND_ACK_ON_SAME_INPUT",
+    "C114_ORIGINAL_PRECHECK_TO_BLOCK_PR119_DEMO_FALLBACK",
+    "PR119_RUNTURN_C107_C100_C87_SINGLE_WRITER",
+    "INDEPENDENT_C87_PROCESS_READBACK",
+    "P03_EXACT_HOST_BOUND_PRESENTATION"
+  ],
+  "denial": {"surface_a":"NO_VOICE","surface_b_owner":"CHATGPT_HOST","first_edge_required":true},
+  "positive_identity": "iKant EXPERIMENTAL | voce testuale host guidata da C70, validata e riaperta",
+  "model_engine_replacement_allowed": true,
+  "provider_name_required": false,
+  "forbidden_positive_claims": [
+    "AUTONOMOUS_IKANT_MIND",
+    "GENUINE_CONSCIOUSNESS",
+    "PROVIDER_ORIGIN_AUTHENTICATED",
+    "CHATGPT_NATIVE_PER_TURN_INTERPOSITION",
+    "CANONICAL_ACTIVE",
+    "CROSS_CHAT_PERSISTENCE",
+    "INDEPENDENT_SEMANTIC_CAUSALITY"
+  ],
+  "head_revision_requires_new_qualification": true,
+  "limits": {
+    "ack_proves_compliance":"PROTOCOL_ONLY_NOT_MODEL_COMPREHENSION",
+    "c114_guard":"LIMITED_TEXT_POLICY_NOT_GENERAL_TRUTH_VERIFIER",
+    "language_port":"HOST_SUPPLIED_NOT_AUTHENTICATED_PROVIDER",
+    "continuity":"SAME_ADAPTER_LOCAL_LEDGER_ONLY",
+    "release_lifecycle":"NOT_INSTALLED_IN_CHATGPT_PROJECT",
+    "semantic_campaign":"1000_ORIGINAL_C70_CALLS_NOT_LLM_TEST"
+  }
+}

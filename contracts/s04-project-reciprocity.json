@@ -1,0 +1,12 @@
+{
+  "schema":"ikant-le-s04-project-reciprocity/v1",
+  "authority":0,
+  "input_authority":"GIT_TREE_OF_CHECKED_OUT_SOURCE",
+  "three_surfaces":["repository main","PROMPT_INNESCO.txt","project.zip"],
+  "runtime_plugin_state":"SOURCE_ONLY_NOT_INSTALLED",
+  "promotion_requires":"MATCH_LIVE_MAIN_AND_HUMAN_PROJECT_UPDATE",
+  "source_lock_stale":"STOP_NOT_REPIN",
+  "deterministic_zip_timestamps":"1980-01-01T00:00:00",
+  "completeness_requires":"FULL_TREE_AND_SHA256_MANIFEST",
+  "no_native_hook_claim":true
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "ikant-le-host-negative-rail/v2",
+  "authority": 0,
+  "status": "HOST_NEGATIVE_SEMANTIC_SOURCE_WITH_R3_INGRESS_IMPLEMENTED",
+  "governs": "HOST_ACTION_PROPOSALS_ONLY_NOT_ORIGINAL_OWNER",
+  "source_head": "ENGINEERING_MAIN_AT_COMMIT_NOT_RUNTIME_PIN",
+  "original_owners_immutable": [
+    "C72_V2",
+    "C135",
+    "C87",
+    "C125_S03"
+  ],
+  "allowed_decisions": [
+    "STOP",
+    "PASS_TO_ORIGINAL_CHECK"
+  ],
+  "pass_is_permission": false,
+  "no_new_state_writer": true,
+  "no_new_c72_receipt": true,
+  "no_native_host_hook_claim": true,
+  "unbound_is_not_absent": true,
+  "dns_failure_scoped_to_epoch_and_host": true,
+  "override_on_observed_changed_network_only": true,
+  "p0_onezip_distinct_from_p1_postedu": true,
+  "read_boundary": "BEFORE_CONSENT_FIVE_IN_ORDER; POST_ACCEPT_EIGHT_PLUS_SEPARATE_TRANSIT; POST_EDU_TREE",
+  "ui": "NO_VOICE_UNLESS_SAME_TURN_ORIGINAL_C135_C87_C125_S03",
+  "host_bridge": "DECLARATIVE_PREDICATE_NOT_A_PHYSICAL_TRANSFER",
+  "integration": {
+    "proposal_boundary": "BEFORE_ORIGINAL_EFFECT_CALL",
+    "post_negative_gate": "RECHECK_ORIGINAL_OWNER_AND_REOPEN_EVIDENCE",
+    "source_of_evidence": "ORIGINAL_OWNER_OR_PHYSICAL_HOST_READBACK_ONLY",
+    "prompt_guidance": "NON_EXECUTABLE_WHEN_HOST_ADAPTER_UNBOUND",
+    "product_release": "PRODUCT_NO_GO_WITHOUT_FIELD_PROOF",
+    "physical_entrypoint": "host/project-c72-physical-ingress.mjs#runC72SelectedHostIngress",
+    "r3_pre_effect_gate": "host/project-c72-negative-entry.mjs#screenC72HostIngress",
+    "scope_limit": "Other coldseed / one-ZIP paths not intercepted"
+  },
+  "first_edge_priority": "ORDERED_R1_N01_TO_N23_FIRST_APPLICABLE",
+  "rule_ids": [
+    "N01_PRECONSENT_READ_BOUNDARY",
+    "N02_EXACT_NEW_ACCEPT",
+    "N03_FIRST_TURN_WITNESS_AND_HEAD",
+    "N04_PHYSICAL_C72_CARRIER",
+    "N05_C72_PRIOR_ATTEMPT_FENCE",
+    "N06_ORIGINAL_RECEIPTS_NOT_TEXT",
+    "N07_EDU_DISTINCT_TURN",
+    "N08_EDU_ORIGINAL_C72_TRANSIT",
+    "N09_EDU_FULL_SOURCE_PRE_C135",
+    "N10_ORIGINAL_SAME_TURN_VOICE",
+    "N11_HOST_NOT_IKANT",
+    "N12_NO_DNS_BLIND_REPROBE",
+    "N13_NODE_NETWORK_PHASE",
+    "N14_UNBOUND_IS_NOT_FAILED_TRANSFER",
+    "N15_P1_ONLY_AFTER_EDU",
+    "N16_P0_ONEZIP_NARROW_GATE",
+    "N17_NEVER_RETRY_ORIGINAL_C72",
+    "N18_NATIVE_UI_NEEDS_PROVIDER_RECEIPT",
+    "N19_NO_AUTOMATIC_EPOCH_REPIN",
+    "N20_C71_NOT_EDU_OWNER",
+    "N21_EXIT_TWO_TURN_AND_OWNER",
+    "N22_EDU_NEVER_CANONICAL_ACTIVE",
+    "N23_DNS_FAILURE_MUST_BE_OBSERVED"
+  ],
+  "limits": [
+    "HOST_EVIDENCE_FIELDS_ARE_NOT_ATTESTED_BY_THIS_FILTER",
+    "NO_C72_C135_RUNTIME_TEST_FROM_MODEL",
+    "NO_PROVIDER_NATIVE_DELIVERY_PROOF",
+    "NO_AUTOMATIC_INSTALLATION"
+  ]
+}

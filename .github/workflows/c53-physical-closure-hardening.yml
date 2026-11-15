@@ -1,0 +1,64 @@
+name: C53 physical closure hardening
+on:
+  pull_request:
+    paths:
+      - 'contracts/physical-runtime-closure-hardening-v1.json'
+      - 'src/physical-runtime-closure.mjs'
+      - 'src/session-local-service.mjs'
+      - 'tests/c52-physical-runtime-closure.test.mjs'
+      - 'scripts/c53-physical-hardening-falsify.py'
+      - 'artifacts/qualification/c53-*'
+      - 'BOOTSTRAP.json'
+      - 'runtime-root/**'
+      - '.github/workflows/c53-physical-closure-hardening.yml'
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  harden:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install deterministic mutation dependency
+        run: python -m pip install --disable-pip-version-check --no-input numpy==2.1.2
+      - name: Regenerate exact runtime root for changed runtime owner
+        run: npm run runtime-root:regen
+      - name: Execute materialized iKant runtime and hardening regressions
+        run: node --test --test-concurrency=1 tests/c34-pre-runtime-handoff.test.mjs tests/c46-coldstart-cohost-bind.test.mjs tests/c50-native-transcript-participant.test.mjs tests/c51-supersystem-runtime-conformance.test.mjs tests/c52-physical-runtime-closure.test.mjs
+      - name: Independent 10M pre-seeded semantic hardening falsification
+        run: python scripts/c53-physical-hardening-falsify.py
+      - name: Rebuild inherited C52 coverage and DoD after semantic simplification
+        run: |
+          node scripts/c52-bundle-coverage.mjs
+          node scripts/c52-build-dod.mjs
+      - name: Materialize deterministic qualification bytes
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          git add BOOTSTRAP.json runtime-root/shard-003.json artifacts/qualification/c53-physical-hardening-10m.json artifacts/qualification/c52-bundle-coverage.json artifacts/qualification/c52-candidate-blob-manifest.json artifacts/qualification/c52-runtime-physical-closure-dod.json
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "C53: materialize inherited exact qualification receipts"
+            git push origin HEAD:${{ github.head_ref }}
+          fi
+      - name: Exact runtime-root verification
+        run: npm run runtime-root:verify
+      - name: Claim boundary remains external
+        run: |
+          python - <<'PY'
+          import json
+          x=json.load(open('artifacts/qualification/c53-physical-hardening-10m.json'))
+          assert x['status']=='PASS'
+          assert x['claim_boundary']['semantic_falsification_is_live_host_proof'] is False
+          assert x['claim_boundary']['live_e0_e3_e4_e5_e6_still_required'] is True
+          PY

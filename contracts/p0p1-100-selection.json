@@ -1,0 +1,862 @@
+{
+  "schema": "ikant-le-p0p1-contract-selection/v1",
+  "candidate_count": 100,
+  "minimal_selected_count": 4,
+  "selection_is_empirical": false,
+  "original_owners_preserved": true,
+  "native_ui_attested": false,
+  "requirements": [
+    {
+      "root": "P0_BOOT",
+      "dod": "Pinned human installer, exact 3 admissions, STOP at gates; no stale static filenames"
+    },
+    {
+      "root": "P0_SOURCE",
+      "dod": "Partial/full/absent/unknown states, first legal ZIP link, no early upload"
+    },
+    {
+      "root": "P0_UI",
+      "dod": "Read-only panel readiness, unchanged six slots and NO_VOICE, native app still unproven"
+    },
+    {
+      "root": "P1_ONTOLOGY",
+      "dod": "C70 composite routing through unchanged five-line C114 disclosure, single C87 reopen"
+    }
+  ],
+  "selected": [
+    {
+      "id": "K015",
+      "root": "P0_BOOT",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "FAIL_CLOSED",
+      "score": 106,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K045",
+      "root": "P0_SOURCE",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 105,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K075",
+      "root": "P0_UI",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 105,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K094",
+      "root": "P1_ONTOLOGY",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 100,
+      "source_owner": "C114/C107"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "K001",
+      "root": "P0_BOOT",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K002",
+      "root": "P0_BOOT",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K003",
+      "root": "P0_BOOT",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K004",
+      "root": "P0_BOOT",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K005",
+      "root": "P0_BOOT",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K006",
+      "root": "P0_BOOT",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K007",
+      "root": "P0_BOOT",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K008",
+      "root": "P0_BOOT",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K009",
+      "root": "P0_BOOT",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K010",
+      "root": "P0_BOOT",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K011",
+      "root": "P0_BOOT",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "FREE_TEXT",
+      "score": 51,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K012",
+      "root": "P0_BOOT",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "SELF_REPORTED",
+      "score": 51,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K013",
+      "root": "P0_BOOT",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "HASH_ONLY",
+      "score": 51,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K014",
+      "root": "P0_BOOT",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 51,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K015",
+      "root": "P0_BOOT",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "FAIL_CLOSED",
+      "score": 106,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K016",
+      "root": "P0_BOOT",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K017",
+      "root": "P0_BOOT",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K018",
+      "root": "P0_BOOT",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K019",
+      "root": "P0_BOOT",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K020",
+      "root": "P0_BOOT",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K021",
+      "root": "P0_BOOT",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K022",
+      "root": "P0_BOOT",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K023",
+      "root": "P0_BOOT",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K024",
+      "root": "P0_BOOT",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K025",
+      "root": "P0_BOOT",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P2/C72"
+    },
+    {
+      "id": "K026",
+      "root": "P0_SOURCE",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K027",
+      "root": "P0_SOURCE",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K028",
+      "root": "P0_SOURCE",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K029",
+      "root": "P0_SOURCE",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K030",
+      "root": "P0_SOURCE",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K031",
+      "root": "P0_SOURCE",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K032",
+      "root": "P0_SOURCE",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K033",
+      "root": "P0_SOURCE",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K034",
+      "root": "P0_SOURCE",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K035",
+      "root": "P0_SOURCE",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K036",
+      "root": "P0_SOURCE",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "FREE_TEXT",
+      "score": 1,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K037",
+      "root": "P0_SOURCE",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "SELF_REPORTED",
+      "score": 1,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K038",
+      "root": "P0_SOURCE",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "HASH_ONLY",
+      "score": 1,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K039",
+      "root": "P0_SOURCE",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 1,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K040",
+      "root": "P0_SOURCE",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "FAIL_CLOSED",
+      "score": 56,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K041",
+      "root": "P0_SOURCE",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "FREE_TEXT",
+      "score": 50,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K042",
+      "root": "P0_SOURCE",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "SELF_REPORTED",
+      "score": 50,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K043",
+      "root": "P0_SOURCE",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "HASH_ONLY",
+      "score": 50,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K044",
+      "root": "P0_SOURCE",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 50,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K045",
+      "root": "P0_SOURCE",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 105,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K046",
+      "root": "P0_SOURCE",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K047",
+      "root": "P0_SOURCE",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K048",
+      "root": "P0_SOURCE",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K049",
+      "root": "P0_SOURCE",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K050",
+      "root": "P0_SOURCE",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P1/C72"
+    },
+    {
+      "id": "K051",
+      "root": "P0_UI",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K052",
+      "root": "P0_UI",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K053",
+      "root": "P0_UI",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K054",
+      "root": "P0_UI",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K055",
+      "root": "P0_UI",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K056",
+      "root": "P0_UI",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K057",
+      "root": "P0_UI",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K058",
+      "root": "P0_UI",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K059",
+      "root": "P0_UI",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K060",
+      "root": "P0_UI",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K061",
+      "root": "P0_UI",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "FREE_TEXT",
+      "score": 1,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K062",
+      "root": "P0_UI",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "SELF_REPORTED",
+      "score": 1,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K063",
+      "root": "P0_UI",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "HASH_ONLY",
+      "score": 1,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K064",
+      "root": "P0_UI",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 1,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K065",
+      "root": "P0_UI",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "FAIL_CLOSED",
+      "score": 56,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K066",
+      "root": "P0_UI",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K067",
+      "root": "P0_UI",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K068",
+      "root": "P0_UI",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K069",
+      "root": "P0_UI",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 0,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K070",
+      "root": "P0_UI",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K071",
+      "root": "P0_UI",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "FREE_TEXT",
+      "score": 50,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K072",
+      "root": "P0_UI",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "SELF_REPORTED",
+      "score": 50,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K073",
+      "root": "P0_UI",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "HASH_ONLY",
+      "score": 50,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K074",
+      "root": "P0_UI",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 50,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K075",
+      "root": "P0_UI",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 105,
+      "source_owner": "P8/S05"
+    },
+    {
+      "id": "K076",
+      "root": "P1_ONTOLOGY",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K077",
+      "root": "P1_ONTOLOGY",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K078",
+      "root": "P1_ONTOLOGY",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K079",
+      "root": "P1_ONTOLOGY",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 50,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K080",
+      "root": "P1_ONTOLOGY",
+      "trigger": "PROMPT_ONLY",
+      "boundary": "FAIL_CLOSED",
+      "score": 5,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K081",
+      "root": "P1_ONTOLOGY",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K082",
+      "root": "P1_ONTOLOGY",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K083",
+      "root": "P1_ONTOLOGY",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K084",
+      "root": "P1_ONTOLOGY",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 50,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K085",
+      "root": "P1_ONTOLOGY",
+      "trigger": "DOCUMENT_LINK",
+      "boundary": "FAIL_CLOSED",
+      "score": 5,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K086",
+      "root": "P1_ONTOLOGY",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "FREE_TEXT",
+      "score": 1,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K087",
+      "root": "P1_ONTOLOGY",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "SELF_REPORTED",
+      "score": 1,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K088",
+      "root": "P1_ONTOLOGY",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "HASH_ONLY",
+      "score": 1,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K089",
+      "root": "P1_ONTOLOGY",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 51,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K090",
+      "root": "P1_ONTOLOGY",
+      "trigger": "FIRST_LEGAL_STEP",
+      "boundary": "FAIL_CLOSED",
+      "score": 6,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K091",
+      "root": "P1_ONTOLOGY",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "FREE_TEXT",
+      "score": 50,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K092",
+      "root": "P1_ONTOLOGY",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "SELF_REPORTED",
+      "score": 50,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K093",
+      "root": "P1_ONTOLOGY",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "HASH_ONLY",
+      "score": 50,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K094",
+      "root": "P1_ONTOLOGY",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 100,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K095",
+      "root": "P1_ONTOLOGY",
+      "trigger": "OBSERVED_SOURCE_STATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 55,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K096",
+      "root": "P1_ONTOLOGY",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "FREE_TEXT",
+      "score": 0,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K097",
+      "root": "P1_ONTOLOGY",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "SELF_REPORTED",
+      "score": 0,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K098",
+      "root": "P1_ONTOLOGY",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "HASH_ONLY",
+      "score": 0,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K099",
+      "root": "P1_ONTOLOGY",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "ORIGINAL_C114_OWNER",
+      "score": 50,
+      "source_owner": "C114/C107"
+    },
+    {
+      "id": "K100",
+      "root": "P1_ONTOLOGY",
+      "trigger": "NATIVE_PROVIDER_GATE",
+      "boundary": "FAIL_CLOSED",
+      "score": 5,
+      "source_owner": "C114/C107"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "ikant-le-c94-local-prepr-base/v1",
+  "repository": "Luke883i/iKant_LE",
+  "merged_pr": 98,
+  "github_main_head_observed": "11eecb86f08ebb90aa228d55c1e7f50da890f79d",
+  "local_git_history_parented_to_github_main": false,
+  "overlay_only": true,
+  "runtime_owner": "C90/C91/C92/C93",
+  "source_origin_claim": "NOT_AUTHENTICATED_BY_LOCAL_HASH_ALONE",
+  "native_delivery_attested": false,
+  "authority": 0
+}

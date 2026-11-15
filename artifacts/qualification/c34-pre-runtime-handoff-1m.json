@@ -1,0 +1,24 @@
+{
+  "schema": "ikant-le-c34-pre-runtime-handoff-authenticity-1m/v1",
+  "seed": "0xC340187",
+  "cases": 1000000,
+  "requirements": ["FULL_PREACCEPT","FULL_EXECUTOR","SELF_RECHECK","MAT_EXEC_CROSSBIND"],
+  "winner_mask": 15,
+  "winner_mismatch": 0,
+  "winner_unsafe": 0,
+  "winner_false_reject": 0,
+  "winner_accepted": 498704,
+  "winner_cost_ties": 1,
+  "all_requirement_deletion_mutants_killed": true,
+  "deletion_mutants": [
+    {"removed":"FULL_PREACCEPT","mismatch":61741,"unsafe":61741,"killed":true},
+    {"removed":"FULL_EXECUTOR","mismatch":81581,"unsafe":81581,"killed":true},
+    {"removed":"SELF_RECHECK","mismatch":49342,"unsafe":49342,"killed":true},
+    {"removed":"MAT_EXEC_CROSSBIND","mismatch":68033,"unsafe":68033,"killed":true}
+  ],
+  "baseline": {"mask":0,"mismatch":315221,"unsafe":315221,"accepted":813925},
+  "attack_family_counts": {"preaccept_forge":110046,"executor_forge":140120,"self_forge":89764,"materialization_executor_drift":119818},
+  "status": "PASS",
+  "claim_boundary": "semantic mutation evidence is not current-host physical proof",
+  "receipt_sha256": "d9c692419f3b0488402d672d5a8e7401f1981b41a741064f2a29ced7c59dcb67"
+}

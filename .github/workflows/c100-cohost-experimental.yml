@@ -1,0 +1,31 @@
+name: C100 experimental cohost language boundary
+on:
+  pull_request:
+    paths:
+      - 'host/c100-*'
+      - 'contracts/c100-*'
+      - 'contracts/c99-canonical-runtime-paths.json'
+      - 'tests/c100-*'
+      - 'scripts/c100-*'
+      - 'docs/C100_*'
+      - '.github/workflows/c100-cohost-experimental.yml'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  c100-structural:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Real C72 acceptance, degraded non-owner boundary
+        run: node --test tests/c100-cohost-experimental.test.mjs
+      - name: 100k cartesian scenarios + 150k hostile mutants
+        run: |
+          node scripts/c100-falsify-250k.mjs > "$RUNNER_TEMP/c100-falsification.json"
+          node -e "const fs=require('node:fs'); const x=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+'/c100-falsification.json')); if(x.positive_scenarios!==100000||x.adversarial_mutants!==150000||x.unexpected_status_promotions!==0||x.qualified!==true)process.exit(1); console.log(JSON.stringify(x));"
+      - run: npm run check

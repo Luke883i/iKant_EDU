@@ -1,0 +1,37 @@
+{
+  "schema": "ikant-native-transcript-participant-10k/v1",
+  "semantic_sha256": "0fe2ca72875f9782d474fadf022b746c253f755244bfa39cb2dd66d361a2cb56",
+  "seed": "0x1A6E17A",
+  "cases": 10000,
+  "families": 49,
+  "positive_witnesses": 1635,
+  "candidate_results": {
+    "NATIVE_4_PRIMITIVE": {"mismatch":0,"unsafe":0,"false_reject":0},
+    "CURRENT_GENERIC_R1_R2": {"mismatch":1943,"unsafe":1943,"false_reject":0},
+    "APP_PANEL_AS_NATIVE": {"mismatch":2932,"unsafe":1490,"false_reject":1442},
+    "UI_MESSAGE_AS_NATIVE": {"mismatch":2043,"unsafe":408,"false_reject":1635},
+    "CONTROL_OWNERSHIP_AS_NATIVE": {"mismatch":5134,"unsafe":4224,"false_reject":910},
+    "NATIVE_NO_READBACK": {"mismatch":408,"unsafe":408,"false_reject":0},
+    "NATIVE_NO_SCHEDULER": {"mismatch":613,"unsafe":613,"false_reject":0},
+    "NATIVE_REQUIRES_FULL_RUNTIME": {"mismatch":204,"unsafe":0,"false_reject":204},
+    "NATIVE_REQUIRES_REMOTE_SCALE": {"mismatch":408,"unsafe":0,"false_reject":408}
+  },
+  "deletion_mutant_witness_counts": {
+    "S_SESSION": 205,
+    "P_PARTICIPANT_LEASE": 916,
+    "T_TURN_SCHEDULER": 817,
+    "D_NATIVE_DELIVERY": 1933
+  },
+  "receipt_compression_10k": {
+    "seed": "0x2A17C0DE",
+    "cases": 10000,
+    "families": 32,
+    "TWO_RECEIPT_NATIVE_BRIDGE": {"mismatch":0,"unsafe":0,"false_reject":0},
+    "GENERIC_LEASE_PLUS_DELIVERY": {"mismatch":3457,"unsafe":3457,"false_reject":0},
+    "NO_PARTICIPANT_ID": {"mismatch":776,"unsafe":776,"false_reject":0},
+    "NO_ROLE_PROOF": {"mismatch":1089,"unsafe":1089,"false_reject":0}
+  },
+  "conclusion": "Keep the native proof as two host receipts with different lifetimes: a session-scoped native participant lease containing persistent scheduling guarantees, and a turn-scoped native delivery receipt containing actor-role and exact readback guarantees.",
+  "status": "PASS",
+  "claim_boundary": {"semantic_mutation_is_physical_host_proof": false}
+}

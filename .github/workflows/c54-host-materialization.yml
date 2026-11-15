@@ -1,0 +1,147 @@
+name: C54 host materialization
+on:
+  pull_request:
+    paths:
+      - 'contracts/host-materialization-profile-v1.json'
+      - 'src/host-consumption-frame.mjs'
+      - 'src/session-chat-deployment.mjs'
+      - 'ikant.mjs'
+      - 'plugins/ikant-le-session-chat/server/server.mjs'
+      - 'plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
+      - 'tests/c54-host-materialization.test.mjs'
+      - 'scripts/c54-host-materialization-select-100k.mjs'
+      - 'scripts/c54-host-materialization-falsify-1m.mjs'
+      - 'scripts/c54-build-dod.mjs'
+      - 'docs/C54_HOST_MATERIALIZATION.md'
+      - 'AGENTS.md'
+      - 'docs/ARCHITECTURE.md'
+      - 'docs/GOVERNANCE.md'
+      - '.github/workflows/c54-host-materialization.yml'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Syntax
+        run: |
+          node --check src/host-consumption-frame.mjs
+          node --check src/session-chat-deployment.mjs
+          node --check ikant.mjs
+          node --check plugins/ikant-le-session-chat/server/server.mjs
+          node --check scripts/c54-host-materialization-select-100k.mjs
+          node --check scripts/c54-host-materialization-falsify-1m.mjs
+          node --check scripts/c54-build-dod.mjs
+      - name: Inherited runtime-to-host regressions
+        run: node --test --test-concurrency=1 tests/c32-session-shell.test.mjs tests/c45-context-root-ascii-closure.test.mjs tests/c50-native-transcript-participant.test.mjs tests/c52-physical-runtime-closure.test.mjs
+      - name: C54 import contract
+        run: node --input-type=module -e "await import('./src/contract.mjs')"
+      - name: C54 import session shell
+        run: node --input-type=module -e "await import('./src/session-shell.mjs')"
+      - name: C54 import host frame
+        run: node --input-type=module -e "await import('./src/host-consumption-frame.mjs')"
+      - name: C54 import deployment wrapper
+        run: node --input-type=module -e "await import('./src/session-chat-deployment.mjs')"
+      - name: C54 raw contract schema
+        run: node -e "const j=require('./contracts/ikant-le.json'); if(j.ontological_promise?.schema!=='ikant-le-ontological-promise/v1') process.exit(1)"
+      - name: C54 contract ROOT is checkout root
+        run: node --input-type=module -e "import path from 'node:path'; import {ROOT,CONTRACT_PATH} from './src/contract.mjs'; if(path.resolve(ROOT)!==path.resolve(process.cwd())||path.resolve(CONTRACT_PATH)!==path.resolve(process.cwd(),'contracts','ikant-le.json')) process.exit(1)"
+      - name: C54 readContract canonical schema
+        run: node --input-type=module -e "import {readContract} from './src/contract.mjs'; if(readContract().ontological_promise?.schema!=='ikant-le-ontological-promise/v1') process.exit(1)"
+      - name: C54 capture canonical promise test
+        id: c54diag
+        continue-on-error: true
+        run: node --test --test-concurrency=1 --test-name-pattern="canonical promise schema" tests/c54-host-materialization.test.mjs > /tmp/c54diag.txt 2>&1
+      - name: C54 publish diagnostic
+        if: steps.c54diag.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --body-file /tmp/c54diag.txt
+      - name: C54 diagnostic gate
+        if: steps.c54diag.outcome == 'failure'
+        run: exit 1
+      - name: C54 canonical promise atoms array
+        run: node --test --test-concurrency=1 --test-name-pattern="canonical promise atoms array" tests/c54-host-materialization.test.mjs
+      - name: C54 canonical promise atom count
+        run: node --test --test-concurrency=1 --test-name-pattern="canonical promise atom count" tests/c54-host-materialization.test.mjs
+      - name: C54 explicit canonical promise build
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline explicit canonical promise builds" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline builder promise-source guard
+        run: node --test --test-concurrency=1 --test-name-pattern="builder rejects no promise-source" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline builder promise-coverage guard
+        run: node --test --test-concurrency=1 --test-name-pattern="builder rejects no promise-coverage" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline builder artifact-proof guard
+        run: node --test --test-concurrency=1 --test-name-pattern="builder rejects no artifact-proof" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline builder shell-artifact guard
+        run: node --test --test-concurrency=1 --test-name-pattern="builder rejects no shell-artifact" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline builder
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline builder does not throw" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator schema
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator schema invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator authority
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator authority invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator shell
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator shell invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator continuity
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator continuity invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator promise
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator promise invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator runtime_evidence
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator runtime_evidence invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator presentation
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator presentation invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator artifact
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator artifact invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator claim_boundary
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator claim_boundary invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validator receipt
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline validator receipt invariant" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline validation
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline frame validates" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline shell
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline shell is owner-rendered" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline promise projection
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline projects all 36" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline acceptance action
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline exposes exact acceptance" tests/c54-host-materialization.test.mjs
+      - name: C54 ACTIVE frame
+        run: node --test --test-concurrency=1 --test-name-pattern="ACTIVE host frame preserves" tests/c54-host-materialization.test.mjs
+      - name: C54 shell continuity
+        run: node --test --test-concurrency=1 --test-name-pattern="shell continuity is stable" tests/c54-host-materialization.test.mjs
+      - name: C54 shell drift
+        run: node --test --test-concurrency=1 --test-name-pattern="rejects shell reframing" tests/c54-host-materialization.test.mjs
+      - name: C54 deployed baseline
+        run: node --test --test-concurrency=1 --test-name-pattern="reference deployed baseline" tests/c54-host-materialization.test.mjs
+      - name: C54 reference host app
+        run: node --test --test-concurrency=1 --test-name-pattern="host app consumes" tests/c54-host-materialization.test.mjs
+      - name: C54 authority projection
+        run: node --test --test-concurrency=1 --test-name-pattern="frame remains a zero-authority" tests/c54-host-materialization.test.mjs
+      - name: C54 ACTIVE dispatch evidence
+        run: node --test --test-concurrency=1 --test-name-pattern="deployed ACTIVE wrapper projects" tests/c54-host-materialization.test.mjs
+      - name: C54 validator corruption
+        run: node --test --test-concurrency=1 --test-name-pattern="validator rejects promise status" tests/c54-host-materialization.test.mjs
+      - name: C54 baseline-to-ACTIVE continuity
+        run: node --test --test-concurrency=1 --test-name-pattern="baseline and ACTIVE frames keep" tests/c54-host-materialization.test.mjs
+      - name: 100k semantic selection and saturation
+        run: node scripts/c54-host-materialization-select-100k.mjs --cases 100000 --output /tmp/c54-selection.json
+      - name: Independent 1m semantic falsification
+        run: node scripts/c54-host-materialization-falsify-1m.mjs --cases 1000000 --output /tmp/c54-falsification.json
+      - name: Build granular C54 DoD
+        run: node scripts/c54-build-dod.mjs --selection /tmp/c54-selection.json --falsification /tmp/c54-falsification.json --output /tmp/c54-dod.json
+      - name: Exact runtime-root unchanged
+        run: npm run runtime-root:verify
+      - name: Read-only CI invariant
+        run: |
+          test -z "$(git status --porcelain)"
+          node -e "const a=require('/tmp/c54-selection.json'),b=require('/tmp/c54-falsification.json'),d=require('/tmp/c54-dod.json');if(a.status!=='PASS'||b.status!=='PASS'||a.architecture_lattice.unique_minimum!==true||a.architecture_lattice.minimum_cost!==12||a.all_deletion_mutants_killed!==true||b.candidate_oracle_mismatches!==0||b.unsafe_promotions!==0||b.false_rejects!==0||b.independence?.candidate_is_not_oracle_alias!==true||d.status!=='PASS_REPOSITORY_HOST_MATERIALIZATION_READY'||d.promise_coverage?.total_projected_obligations!==43)process.exit(1)"

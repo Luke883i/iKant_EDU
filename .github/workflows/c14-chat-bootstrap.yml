@@ -1,0 +1,57 @@
+name: C14 chat-bootstrap semantic runtime qualification
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'contracts/chat-bootstrap-semantic.json'
+      - 'contracts/host-shell.json'
+      - 'contracts/ikant-le.json'
+      - 'src/bootstrap-semantic.mjs'
+      - 'src/runtime-core.mjs'
+      - 'src/runtime-command.mjs'
+      - 'src/runtime-root-verified.mjs'
+      - 'src/state.mjs'
+      - 'runtime-root/**'
+      - 'scripts/c14-chat-bootstrap-falsify.mjs'
+      - 'tests/bootstrap-fixture.mjs'
+      - 'tests/chat-bootstrap-semantic.test.mjs'
+      - '.github/workflows/c14-chat-bootstrap.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: One-million real end-user semantic mutations
+        run: npm run falsify:c14
+      - name: Fastboot regression tests
+        run: node --test --test-concurrency=1 tests/fastboot.test.mjs
+      - name: C13 descriptor shape
+        run: node --test --test-concurrency=1 --test-name-pattern="exposes exactly eight" tests/session-chat-fastboot.test.mjs
+      - name: C13 shard and member identities
+        run: node --test --test-concurrency=1 --test-name-pattern="mechanically bound" tests/session-chat-fastboot.test.mjs
+      - name: C13 atomic materialization
+        run: node --test --test-concurrency=1 --test-name-pattern="materializes atomically" tests/session-chat-fastboot.test.mjs
+      - name: C13 pure init fold
+        run: node --test --test-concurrency=1 --test-name-pattern="pure initialization" tests/session-chat-fastboot.test.mjs
+      - name: C13 mixed intent resume
+        run: node --test --test-concurrency=1 --test-name-pattern="mixed initialization" tests/session-chat-fastboot.test.mjs
+      - name: C14 semantic evidence tests
+        run: node --test --test-concurrency=1 tests/chat-bootstrap-semantic.test.mjs
+      - name: Verify C14 receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c14-chat-bootstrap-enduser.json','utf8'));
+          if(r.status!=='PASS'||r.cases!==1_000_000||r.strata.typical!==500_000||r.strata.edge!==300_000||r.strata.stress!==200_000) throw new Error('C14 case/strata mismatch');
+          if(r.candidate.mismatches!==0||r.irreducible.minimum_cardinality!==8||r.irreducible.minimum_lattices.length!==1||r.irreducible.zero_mismatch_subsets!==1) throw new Error('C14 convergence mismatch');
+          for(const [node,x] of Object.entries(r.irreducible.deletion)) if(x.false_green<=0||x.false_red!==0) throw new Error('C14 non-irreducible '+node);
+          if(r.claim_boundary.physical_connector_proof!==false||r.claim_boundary.wall_clock_measurement!==false) throw new Error('C14 claim boundary missing');
+          console.log('IKANT_LE_C14_RECEIPT='+r.receipt_sha256);
+          NODE

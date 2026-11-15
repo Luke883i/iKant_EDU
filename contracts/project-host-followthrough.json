@@ -1,0 +1,143 @@
+{
+  "schema": "ikant-le-project-host-followthrough/v1",
+  "authority": 0,
+  "owner": "HOST_READ_ONLY_ROUTING_NOT_NEW_OWNER",
+  "version": "2026-10-25-PR171",
+  "scope": "PROJECT_BOOTSTRAP_AND_EDU_CONTINUITY",
+  "not_persistent_storage": true,
+  "does_not_install": [
+    "GITHUB_CONNECTOR",
+    "NODE",
+    "LANGUAGE_PORT",
+    "NATIVE_CHATGPT_UI",
+    "NATIVE_AVATAR",
+    "NATIVE_WORKER_PERSISTENCE"
+  ],
+  "source_lock": "NEVER_REPIN_WITHOUT_FRESH_ORIGINAL_C72",
+  "host_instruction": "At each fresh human turn, rederive the next legal Host operation from the last reopened original owner readback. Never treat this plan, prompt or simulated transcript as an owner receipt.",
+  "release_instruction": "After a human merges the PR, the next independent message PR merged authorizes Host engineering to verify main and generate the portable Project prompt locally. No iKant source epoch auto-repin, no C72 replay, no claiming installation.",
+  "canonical_status": "LEGACY_UNQUALIFIED_STOP_NOT_EDU_NOT_ACTIVE",
+  "steps": [
+    {
+      "id": "FIRST_CONTACT",
+      "human": "ANY_FIRST_MESSAGE",
+      "phase": "ORIENTATION",
+      "source": "host/project-c72-preaccept-gate.mjs",
+      "required": "ONE_MAIN_HEAD_AND_FIVE_PINNED_SHA_IN_FIRST_VISIBLE_TURN",
+      "on_success": "AWAIT_DISTINCT_I_ACCEPT",
+      "on_failure": "STOP"
+    },
+    {
+      "id": "CONSENT",
+      "human": "DISTINCT_EXACT_I_ACCEPT",
+      "phase": "C72",
+      "source": "host/project-c72-physical-ingress.mjs",
+      "required": "HOST_REAL_PINNED_BYTE_TO_NODE_READBACK_AND_ORIGINAL_C72_RECEIPT_INTRO",
+      "on_success": "AWAIT_DISTINCT_EDU",
+      "on_failure": "STOP_NO_BLIND_RETRY"
+    },
+    {
+      "id": "MODE",
+      "human": "DISTINCT_EXACT_EDU",
+      "phase": "EDU_SELECTED",
+      "source": "scripts/project-c72-cold-mode-cli.mjs",
+      "required": "ORIGINAL_C72_V2_MODE_OWNER_CALLED_IN_SEPARATE_LATER_NODE_PROCESS",
+      "on_success": "POSTMODE_PREFLIGHT",
+      "on_failure": "STOP"
+    },
+    {
+      "id": "CANONICAL_LEGACY",
+      "human": "DISTINCT_EXACT_CANONICAL",
+      "phase": "LEGACY_UNQUALIFIED",
+      "source": "host/project-oneshell-phases.mjs",
+      "required": "NO_EDU_OR_C59_AUTO_START",
+      "on_success": "STOP_CANONICAL_LEGACY_PRODUCT_NO_GO",
+      "on_failure": "STOP"
+    },
+    {
+      "id": "PREFLIGHT",
+      "human": "NONE",
+      "phase": "POSTMODE_PREFLIGHT",
+      "source": "contracts/project-prompt-generation.json",
+      "required": "LIVE_MAIN_EQUALS_FIRST_HEAD_TREE_AND_CRITICAL_BLOBS_WITH_INSTALLED_EQUIVALENCE_UNKNOWN_IF_UNOBSERVED",
+      "on_success": "SOURCE_ROUTE",
+      "on_failure": "STOP"
+    },
+    {
+      "id": "SOURCE_ROUTE",
+      "human": "NONE",
+      "phase": "EDU_SOURCE",
+      "source": "host/project-oneshell-autopilot.mjs",
+      "required": "OBSERVED_NODE_OR_ACTUAL_CALLABLE_BRIDGE_AND_OWNER_READBACK",
+      "on_success": "MATERIALIZE_SOURCE_OR_P1_HANDOFF",
+      "on_failure": "STOP_UNKNOWN_IS_NOT_ABSENT"
+    },
+    {
+      "id": "MANUAL_ZIP",
+      "human": "VALID_EDU_POSTMODE_EXPLICIT_PINNED_SOURCE_ZIP",
+      "phase": "P1_MANUAL_FALLBACK",
+      "source": "host/p1-postmode-source-handoff.mjs",
+      "required": "VALID_ORIGINAL_EDU_ABSENT_FULL_SOURCE_NODE_EXTRACTOR_AND_INDEPENDENT_GIT_TREE",
+      "on_success": "ORIGINAL_PYTHON_EXTRACTOR_AND_NODE_LOADER",
+      "on_failure": "STOP_NO_ZIP_WITHOUT_VALID_EDU_OR_UNKNOWN_SOURCE"
+    },
+    {
+      "id": "SOURCE_REOPEN",
+      "human": "NONE",
+      "phase": "SOURCE_MATERIALIZED",
+      "source": "scripts/project-repo-loader.mjs",
+      "required": "SOURCE_HEAD_TREE_EACH_GIT_BLOB_AND_LOCAL_READBACK",
+      "on_success": "START_C135",
+      "on_failure": "STOP"
+    },
+    {
+      "id": "EDU_START",
+      "human": "NONE",
+      "phase": "C135_WORKER",
+      "source": "host/project-oneshell-edu.mjs",
+      "required": "SAME_VERIFIED_SOURCE_LIVE_LANGUAGE_PORT_ACCEPT_WITNESS_PRIVATE_PARENT_AND_OWNER_SESSION",
+      "on_success": "AWAIT_HUMAN_TURN",
+      "on_failure": "STOP_NO_VOICE"
+    },
+    {
+      "id": "EDU_TURN",
+      "human": "EACH_FRESH_SUBSTANTIVE_INPUT",
+      "phase": "SAME_C135_INSTANCE",
+      "source": "host/project-oneshell-continuity.mjs",
+      "required": "ORIGINAL_C87_SINGLE_WRITER_REOPEN_C125_S03_SAME_TURN_AND_NONCE_UNIQUE",
+      "on_success": "VERIFIED_ONESHELL_OUTPUT",
+      "on_failure": "STOP_NO_VOICE_NO_REPLAY"
+    },
+    {
+      "id": "PRESENTATION",
+      "human": "NONE",
+      "phase": "ONESHELL_OUTPUT",
+      "source": "host/project-oneshell-emission.mjs",
+      "required": "EXACT_SIX_SLOTS_AND_CANONICAL_SVG_IN_HOST_HTML_OR_EXPLICIT_NO_SVG_TEXT_FALLBACK",
+      "on_success": "AWAIT_HUMAN_TURN",
+      "on_failure": "STOP_WITHOUT_FALSE_NATIVE_AVATAR"
+    },
+    {
+      "id": "EXIT",
+      "human": "TWO_DISTINCT_EXACT_HUMAN_MESSAGES",
+      "phase": "TWO_STAGE_EXIT",
+      "source": "host/project-oneshell-continuity.mjs",
+      "required": "ORIGINAL_OWNER_CLOSE_WORKER_TERMINATION_AND_INDEPENDENT_RECEIPT_REOPEN",
+      "on_success": "RETURN_HOST_CHATGPT_NEXT_TURN",
+      "on_failure": "STOP_NO_RETRY"
+    }
+  ],
+  "evidence_policy": {
+    "original_owner_receipts": true,
+    "independent_readback": true,
+    "read_only_host_projection": true,
+    "no_new_C72_C59_C135_C87_C125_owner": true,
+    "strict_first_edge": true,
+    "no_memory_as_state": true,
+    "native_provider_delivery": "UNKNOWN_UNLESS_OBSERVED",
+    "native_ui_logo": "UNKNOWN_UNLESS_OBSERVED"
+  },
+  "host_adapter_contract": "contracts/project-edu-host-what-how-v2.json",
+  "host_adapter_decision": "WHAT_FROM_ORIGINAL_OWNER_HOW_CHOSEN_AND_PHYSICALLY_EXECUTED_BY_HOST",
+  "field_host_capabilities_attested": false
+}

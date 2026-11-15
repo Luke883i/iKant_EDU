@@ -1,0 +1,71 @@
+name: c24-canonical-boundary
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'contracts/session-chat-activation.json'
+      - 'contracts/local-session-fastboot.json'
+      - 'contracts/ikant-le.json'
+      - 'src/runtime-availability.mjs'
+      - 'runtime-root/**'
+      - 'scripts/runtime-root.mjs'
+      - 'scripts/c24-canonical-boundary-falsify.c'
+      - 'tests/c24-canonical-boundary.test.mjs'
+      - 'scripts/check.mjs'
+      - 'package.json'
+      - 'scripts/c24-canonical-ci.mjs'
+      - 'tests/c24-canonical-ci.test.mjs'
+      - '.github/workflows/c24-canonical-boundary.yml'
+jobs:
+  canonical-shard:
+    name: canonical-${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {shard: foundation, minutes: 45}
+          - {shard: boundaries, minutes: 45}
+          - {shard: activation, minutes: 45}
+          - {shard: semantics, minutes: 45}
+          - {shard: recovery-c42, minutes: 90}
+          - {shard: recovery-c43, minutes: 60}
+          - {shard: final, minutes: 45}
+    timeout-minutes: ${{ matrix.minutes }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Validate original canonical coverage
+        run: node scripts/c24-canonical-ci.mjs audit
+      - name: Execute original canonical commands in shard
+        run: node scripts/c24-canonical-ci.mjs run '${{ matrix.shard }}' "$RUNNER_TEMP"
+      - name: Upload SHA-bound completion receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c24-${{ matrix.shard }}-${{ github.sha }}
+          path: ${{ runner.temp }}/c24-${{ matrix.shard }}.json
+          if-no-files-found: error
+          retention-days: 14
+  canonical:
+    name: canonical
+    needs: [canonical-shard]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: c24-*-${{ github.sha }}
+          path: ${{ runner.temp }}/c24-all
+          merge-multiple: true
+      - name: Verify all seven receipts against this exact source and command plan
+        run: node scripts/c24-canonical-ci.mjs verify-receipts "$RUNNER_TEMP/c24-all"
+      - name: Fail closed if any source shard failed, timed out or was cancelled
+        env:
+          SHARD_RESULT: ${{ needs.canonical-shard.result }}
+        run: test "$SHARD_RESULT" = success

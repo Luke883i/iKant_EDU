@@ -1,0 +1,33 @@
+name: C107 host language port original source and byte-exact voice
+on:
+  pull_request:
+    paths:
+      - 'host/c107-*'
+      - 'scripts/c107-*'
+      - 'tests/c107-*'
+      - '.github/workflows/c107-host-language.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-node-model-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check original runtime and port syntax
+        run: |
+          node --check host/c107-experimental-turn.mjs
+          node --check host/c107-host-language-port.mjs
+          node --check scripts/c107-model-stdio.mjs
+          node --check tests/c107-model-bridge.test.mjs
+      - name: Rebuild original Git source package and run two model-linked local turns
+        run: node --test tests/c107-model-bridge.test.mjs
+      - name: Original standalone runtime and million negative preflight mutations
+        run: |
+          node --test tests/c107-original.test.mjs
+          node scripts/c107-falsify-1m.mjs > /tmp/c107-mutation.json
+          node -e 'const r=require("/tmp/c107-mutation.json");if(r.negative_cases!==1000000||r.unexpected_promotions!==0||!r.qualified)process.exit(2)'

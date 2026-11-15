@@ -1,0 +1,30 @@
+name: C45 cross-repo cohost root
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/cohost-root-common.json'
+      - 'src/cohost-root-qualification.mjs'
+      - 'tests/c45-cohost-root-common.test.mjs'
+      - 'scripts/c45-cohost-root-common-falsify.mjs'
+      - 'artifacts/qualification/c45-cohost-root-cross-repo-prepr.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cohost-root:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Common fingerprint and focused runtime tests
+        run: |
+          node -e "const fs=require('fs');const c=JSON.parse(fs.readFileSync('contracts/cohost-root-common.json'));if(c.common_semantic_sha256!=='1d5360e5d1df2babb743c83cfee0d64158f35966580d3118f9bc2383dfb38692')process.exit(1)"
+          node --test tests/c45-cohost-root-common.test.mjs
+      - name: One million compressed root mutations
+        run: node scripts/c45-cohost-root-common-falsify.mjs

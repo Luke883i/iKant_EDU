@@ -1,0 +1,64 @@
+{
+  "schema": "ikant-le-qualification-summary/v1",
+  "status": "PASS",
+  "main": {
+    "cases": 10000000,
+    "survivors": 0,
+    "receipt_sha256": "c3dae5c4449530ddc120c444f6d4fc2e0aa74791192f829e5d02113c21b4fa6f",
+    "categories": {
+      "ordinary": 5000000,
+      "edge": 3000000,
+      "stress": 2000000
+    },
+    "wilson95_survivor_probability_upper_bound": 3.8414573450141057e-7
+  },
+  "no_novelty_tail": {
+    "cases": 1000000,
+    "survivors": 0,
+    "receipt_sha256": "53979cf4825fa3354337cfe44a03056f1edced38f117fcd93b6d918373df9d2c"
+  },
+  "total_cases": 11000000,
+  "source_binding": {
+    "source_count": 12,
+    "digest": "efb1f9be1eb26ce4dbe2c2f70fe48c1f9ff70f300a006c3e3bae079d367967d4",
+    "files": {
+      "src/contract.mjs": "687dc5a5f1cbddca9ecd7e05fa7cdd8d03c23db388e69ede0711a44c749ae4fa",
+      "src/state.mjs": "31e0b992dea200bb07b692ffbb742b22fcaa38efa97c7b21a685b175fea0c02a",
+      "src/probe.mjs": "66a40a0d84ac76a06d991cd392154312f27c588e90f237193196d5fe60af5f64",
+      "src/runtime.mjs": "aa67e8c037b9de47e85ef16996fd0c81c8f980cc81f8d16af956e7d9f8182864",
+      "src/backlog.mjs": "03ac73fc0960cbf94f80905d4f5049f03b7bf4ac6deec248a47da8fb82f7318d",
+      "src/docx.mjs": "5562927b32a0c1ca2e71c9dbc2510febfec8c949ee35c944555de761300fc951",
+      "contracts/ikant-le.json": "30059f47ab6e9249672124ba72c4b4f78288a72eaaf192f04ce9e676d12873a9",
+      "scripts/falsify.mjs": "918fa69adafa3396cd9caf575c97e3aecdb8bb99d649e1d3123201a11a159cc9",
+      "scripts/check.mjs": "1e22d7818e5c1ea85ff6b5ac1d708cab00af3ac9c8f3f918b7fdeb6ab6b7e332",
+      "tests/runtime.test.mjs": "773353761a1fe3897457071db91353b4a09b46bcf1ac40e614b2440a46dd5231",
+      "TERMS.md": "ba6e38fc1ba7435f26c7a0467038e6087212456c79bc773b82487990ed2e7051",
+      "AGENTS.md": "2749f22d307009111e7e981c361650100f844315127f745e1fb25b87d0d1c636"
+    }
+  },
+  "abstractions": [
+    "wording",
+    "state-machine",
+    "authority",
+    "surface",
+    "artifact-model",
+    "governance"
+  ],
+  "exact_small_state_enumeration": {
+    "statuses": 5,
+    "input_kinds": 5,
+    "pairs": 25
+  },
+  "physical_smoke": {
+    "docx_bytes": 5528,
+    "zip_signature_ok": true
+  },
+  "claim_boundary": {
+    "semantic_mutation_is_physical_proof": false,
+    "model_quality_proven": false,
+    "production_reliability_proven": false,
+    "prompt_injection_immunity_proven": false,
+    "world_truth_proven": false
+  },
+  "receipt_sha256": "7939aeca8b644c25f29e9ca18b75166bf02ac6c622668855ae3fea5801050987"
+}

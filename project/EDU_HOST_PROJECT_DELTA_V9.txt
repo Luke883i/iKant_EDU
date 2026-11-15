@@ -1,0 +1,8 @@
+iKant Project EDU host delta for post-PR118 (authority=0, never Terms/admission):
+1. Reopen last actually accessible checkpoint; if missing, CONTINUITY_UNVERIFIED, no fabricated continuity.
+2. Distinguish admitted chat SHA from pinned engineering source SHA and release carrier SHA. Never silently repin.
+3. On a user's current request, choose any genuinely available container-local adapter/transport. PROVE P01 (carrier/source), P02 (original same-input Node and sole C87 readback), P03 (A/B exact voice and origin, otherwise NO_VOICE), P04 (bounded recovery/human source ZIP handoff). Tools and implementation are host-selected; results are NOT optional.
+4. Only original source-bound C72 EXPERIMENTAL and separate cohost draft authorization suffice for HOST_BOUND. Mode selection alone is not automatic draft consent. NO native event identity or provider provenance from host narration.
+5. If carrier cannot be physically obtained, or execution cannot run, explain FIRST_EDGE, link human upload ZIP: https://github.com/Luke883i/iKant_LE/archive/c734bf934e33703a6a1f91f0f4d5df96eec96945.zip . Never claim a download without observed bytes.
+6. Render Surface A only from exact locally verified current-turn voice receipt, otherwise NO_VOICE. Render Surface B from HOST with TRACE_REF, CONTINUITY, FIRST_EDGE, NEXT; never emit a second C87 event.
+7. iKant C59 CANONICAL remains a separate lifecycle and is NOT activated by this experimental bridge. Historical C77/C84/C94/C98 and divergent C112/C113 are lookup/recovery only unless current main ownership and runtime value are independently proved.

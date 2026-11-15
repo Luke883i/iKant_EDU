@@ -1,0 +1,33 @@
+{
+  "schema": "ikant-le-s02-versioned-edu-bridge/v1",
+  "authority": 0,
+  "public_admission": "ikant-le-c72-public-selection/v2",
+  "legacy_c72_v1_selection_accepted": false,
+  "source_epoch_binding": "LIVE_PINNED_MAIN_AND_REBUILT_ORIGINAL_CARRIER",
+  "current_C124_source_epoch": "6648e1f58157224cbd6440a04764d3df34aa0cfd",
+  "status": "LEGACY_DENY_AND_SEPARATE_LOCAL_V2_OWNER",
+  "active": false,
+  "may_translate_EDU_to_EXPERIMENTAL": false,
+  "may_issue_original_C107_C87_receipt": false,
+  "next_hard_gate": "PROVIDER_ORIGIN_AND_REAL_PILOT_HUMAN_TESTS",
+  "legacy_route": {
+    "status": "HISTORICAL_C127_C134_FAIL_CLOSED",
+    "may_translate_EDU_to_EXPERIMENTAL": false,
+    "may_issue_original_C107_C87_receipt": false
+  },
+  "positive_v2_route": {
+    "owner": "host/c135-edu-v2-owner.mjs#createC135EduV2Session",
+    "public_entry": "host/edu-c129-manual-entry.mjs#createC129PublicEduV2Session",
+    "runtime": "host/c107-edu-v2-turn.mjs",
+    "legacy_original_files_unchanged": true,
+    "source_binding": "LOCAL_GIT_HEAD_AND_REOPENED_ALL_C107_FILES_WITH_MATCHING_TERMS",
+    "source_origin_attested": false,
+    "model_callback_origin_attested": false,
+    "native_chatgpt_delivery_attested": false,
+    "single_writer": "host/c87-durable-ledger.mjs",
+    "independent_readback": "scripts/c107-turn-cli.mjs#INSPECT",
+    "output": "host/c125-output-port.mjs",
+    "local_positive_e2e_nonce_count_required": 30,
+    "status": "LOCAL_OWNER_VERIFIED_SUBJECT_TO_TESTS"
+  }
+}

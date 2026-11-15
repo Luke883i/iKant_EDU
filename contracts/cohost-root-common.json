@@ -1,0 +1,27 @@
+{
+  "schema": "ikant-cross-repo-cohost-root-common/v1",
+  "common_semantic_sha256": "1d5360e5d1df2babb743c83cfee0d64158f35966580d3118f9bc2383dfb38692",
+  "promise": "COHOST_SAME_SESSION",
+  "root_spine": [
+    {"id":"R0_DURABLE_CANONICAL_RUNTIME_CONTEXT","law":"same host session -> same durable iKant context across host/model replacement; immutable source/runtime/session binding; reopen/revalidate before reliance; canonical runtime ingress before response closure"},
+    {"id":"R1_PERSISTENT_PARTICIPATION_LEASE","law":"external session-bound lease grants current and future iKant turn opportunity as a distinct actor without per-message reselection and fails closed on silent host bypass"},
+    {"id":"R2_EXACT_ATTRIBUTED_DELIVERY_RECEIPT","law":"external turn receipt binds same session/turn, actor iKant, and exact runtime-owned visible bytes"}
+  ],
+  "host_evidence_interfaces": [
+    {"id":"PERSISTENT_PARTICIPATION_LEASE","scope":"SESSION","required":["external_observation","same_session","persistent_route","current_turn_entitlement","actor_ikant","no_manual_reselection","bypass_guard"]},
+    {"id":"EXACT_ATTRIBUTED_DELIVERY_RECEIPT","scope":"TURN","required":["external_observation","same_session","same_turn","actor_ikant","exact_runtime_bytes"]}
+  ],
+  "allowed_implementation_families": ["NATIVE_PARTICIPANT","BROKERED_DUAL_ACTOR","GENERIC_PERSISTENT_SUBSCRIPTION"],
+  "negative_controls": ["RUNTIME_BOUND_ONLY","IKANT_OWNED_ONLY","IKANT_APP_SURFACE_ONLY","PER_MESSAGE_SELECTION","PROMPT_ONLY","CONVERSATION_MEMORY_AS_PERSISTENCE"],
+  "additional_seeded_falsification": {
+    "cases": 4000000,
+    "campaigns": [
+      {"seed":"0xC0A057005EED","cases":1000000,"families":32,"mismatches":0,"unsafe":0,"mutants":"10/10"},
+      {"seed":"0x1A2B3C4D5E6F","cases":1000000,"families":32,"mismatches":0,"unsafe":0,"mutants":"10/10"},
+      {"seed":"0x54C45198CAFE","cases":1000000,"families":32,"mismatches":0,"unsafe":0,"mutants":"10/10"},
+      {"seed":"0xB12D63E20261005","cases":1000000,"families":24,"mismatches":0,"unsafe":0,"mutants":"9/9"}
+    ]
+  },
+  "authority_effect": "CLASSIFICATION_ONLY",
+  "semantic_mutation_is_physical_host_proof": false
+}

@@ -1,0 +1,43 @@
+name: LIB0 embedded relational nuance
+on:
+  pull_request:
+    paths:
+      - 'contracts/embedded-*'
+      - 'src/embedded-*'
+      - 'scripts/lib0-*'
+      - 'tests/lib0-*'
+      - 'artifacts/qualification/lib0-*'
+      - 'package.json'
+      - '.github/workflows/lib0-embedded-nuance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify-lib0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      # Common npm test/check belongs to ci.yml; keep vectors and mutation evidence here.
+      - name: Verify committed cross-language vectors
+        run: |
+          npm run vectors:lib0
+          git diff --exit-code -- contracts/embedded-library-vectors.json
+      - name: LIB0 one-hundred-thousand semantic mutations
+        run: |
+          npm run falsify:lib0
+          git diff --exit-code -- artifacts/qualification/lib0-embedded-nuance.json
+      - name: Verify LIB0 receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/lib0-embedded-nuance.json','utf8'));
+          if(r.status!=='PASS'||r.cases!==100_000||r.survivors!==0)throw new Error('LIB0 qualification mismatch');
+          if(r.strata.typical!==50_000||r.strata.edge!==30_000||r.strata.stress!==20_000)throw new Error('LIB0 strata mismatch');
+          if(r.families!==33||r.unexercised_families.length!==0||r.tail_new_signatures!==0||r.no_novelty_tail!==1_000)throw new Error('LIB0 saturation mismatch');
+          console.log(`IKANT_LE_LIB0_SOURCE=${r.source_sha256}`);
+          console.log(`IKANT_LE_LIB0_RECEIPT=${r.receipt_sha256}`);
+          NODE

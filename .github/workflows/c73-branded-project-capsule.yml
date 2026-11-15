@@ -1,0 +1,30 @@
+name: C73 branded project capsule
+on:
+  pull_request:
+    paths:
+      - 'host/c73-project-capsule.mjs'
+      - 'tests/c73-project-capsule.test.mjs'
+      - 'contracts/c73-project-capsule.json'
+      - 'assets/brand/**'
+      - 'docs/C73_*'
+      - '.github/workflows/c73-branded-project-capsule.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  branded-capsule:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test --test-concurrency=1 tests/c73-project-capsule.test.mjs tests/c72-unified-mode-admission.test.mjs tests/c32-session-shell.test.mjs
+      - run: npm run check
+      - run: npm run runtime-root:verify

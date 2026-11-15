@@ -1,0 +1,77 @@
+name: EDU HostBound manual WHAT-HOW executable qualification
+on:
+  pull_request:
+    paths:
+      - 'scripts/project-c72-cold-mode-cli.mjs'
+      - 'tests/project-c72-cold-mode.test.mjs'
+      - 'host/p1-postmode-source-handoff.mjs'
+      - 'host/project-oneshell-edu.mjs'
+      - 'tests/p1-postmode-source-handoff.test.mjs'
+      - 'tests/project-edu-complete-chain.test.mjs'
+      - 'tests/project-edu-host-closure-3x10k.test.mjs'
+      - 'contracts/project-host-followthrough.json'
+      - 'contracts/project-host-capability-port.json'
+      - 'docs/EDU_HOST_WHAT_HOW_V2.md'
+      - 'scripts/project-edu-what-how-falsify.mjs'
+      - 'contracts/project-edu-host-what-how-v2.json'
+      - 'project/session-chat/PROMPT.txt'
+      - 'BOOTSTRAP.json'
+      - '.github/workflows/project-edu-hostbound-manual.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  hostbound:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Original C72 and EDU complete-chain tests
+        shell: bash
+        run: |
+          set -o pipefail
+          node --test tests/project-c72-cold-mode.test.mjs tests/p1-postmode-source-handoff.test.mjs tests/project-edu-complete-chain.test.mjs 2>&1 | tee "$RUNNER_TEMP/edu-complete-chain.log"
+      - name: Capture original EDU first failure
+        if: ${{ failure() }}
+        id: edu_edge
+        run: node scripts/ci-failure-annotations.mjs first-edge tap "$RUNNER_TEMP/edu-complete-chain.log" first_edge
+      - name: "EDU first failing assertion [${{ steps.edu_edge.outputs.first_edge }}]"
+        if: ${{ failure() }}
+        run: echo "EDU original test failure, owner gate remains blocking"
+      - name: Capture original EDU assertion detail
+        if: ${{ failure() }}
+        id: edu_detail
+        run: node scripts/ci-failure-annotations.mjs first-detail tap "$RUNNER_TEMP/edu-complete-chain.log" first_detail
+      - name: "EDU assertion detail [${{ steps.edu_detail.outputs.first_detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; original EDU gate remains failed"
+      - run: python3 tests/test_project_manual_full_head.py
+      - run: node scripts/project-source-manifest.mjs verify
+      - name: Three independent seeded 10k WHAT/HOW, P1 and continuity campaigns
+        run: |
+          mkdir -p "$RUNNER_TEMP/three-gates"
+          IKANT_EDU_THREE_GATES_DIR="$RUNNER_TEMP/three-gates" node --test tests/project-edu-host-closure-3x10k.test.mjs
+      - run: npm run check
+      - name: Seeded 10k original C72 admission and post-EDU semantics
+        run: |
+          mkdir -p "$RUNNER_TEMP/what-how"
+          IKANT_EDU_ROUTE_TRACE_DIR="$RUNNER_TEMP/what-how" node scripts/project-edu-what-how-falsify.mjs 10000
+      - name: Seeded 100k adversarial host/mode/bridge envelopes
+        run: |
+          IKANT_EDU_ROUTE_TRACE_DIR="$RUNNER_TEMP/what-how" node scripts/project-edu-what-how-falsify.mjs 100000
+      - uses: actions/upload-artifact@v4
+        with:
+          name: edu-what-how-${{ matrix.node }}-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/what-how/
+            ${{ runner.temp }}/three-gates/
+          retention-days: 30
+          if-no-files-found: error

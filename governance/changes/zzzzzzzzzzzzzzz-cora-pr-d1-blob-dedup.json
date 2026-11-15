@@ -1,0 +1,68 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "9b4d29ecc840f55b1d67dae98f5727d31b89b435",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json",
+  "scope": "PR_D1_SOFTWARE_CONSOLIDATION_NO_REMOVAL",
+  "original_owner_unchanged": true,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzz-cora-pr-d1-blob-dedup.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Register bounded PR-D1 implementation deduplication via original V5-B",
+      "destructive_effect": false
+    },
+    {
+      "path": "contracts/cora-pr-d1-blob-dedup-v1.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Read only PR-D1 reticular DoD with original CORA dependencies",
+      "destructive_effect": false
+    },
+    {
+      "path": "tests/cora-pr-d1-blob-dedup.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Independent deterministic semantic mutation and Git blob SHA1 equivalence assurance",
+      "destructive_effect": false
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Export hardened byte-correct Git blob SHA1 once at original V5-B source",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    },
+    {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Verify hardened original Git hash helper for UTF8 bytes, buffers and bad inputs",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    },
+    {
+      "path": "scripts/cora-pr-c-ci.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Replace duplicate Git blob SHA1 code with canonical V5-B implementation",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    },
+    {
+      "path": "tests/cora-pr-c-ci.test.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Preserve prior CI scope and exact hash checks using V5-B helper",
+      "destructive_effect": false,
+      "supersedes_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json",
+      "supersedes_source_main": "b6058b129ee1df0dcbbb3c92cf1f750ee9e024fa"
+    }
+  ]
+}

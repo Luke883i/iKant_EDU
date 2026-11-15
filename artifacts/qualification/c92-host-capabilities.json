@@ -1,0 +1,12 @@
+{
+  "schema": "ikant-le-c92-current-host-probe/v1",
+  "node": "v22.16.0",
+  "model_configuration": "MISSING",
+  "model_config_edge": "REAL_PROVIDER_CONFIGURATION_MISSING",
+  "provider_dns_status": "DNS_EAI_AGAIN",
+  "provider_network_request_executed": false,
+  "provider_response_receipts": 0,
+  "e2e_owner_surface_observed": false,
+  "consequence": "REAL_PROVIDER_E2E_NOT_DEMONSTRATED",
+  "active": false
+}

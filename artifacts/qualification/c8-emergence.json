@@ -1,0 +1,57 @@
+{
+  "schema": "ikant-le-c8-emergence-qualification/v1",
+  "status": "PASS",
+  "engineering": {
+    "cases": 100,
+    "draft_killed": 65,
+    "draft_false_green_survivors": 35,
+    "survivor_families": {
+      "consumer_noop": 5,
+      "receipt_replay": 5,
+      "receipt_not_fresh": 5,
+      "no_post_action_feedback": 5,
+      "feedback_unlinked": 5,
+      "metacognition_uncalibrated": 5,
+      "lesion_oracle_posthoc": 5
+    },
+    "revised_claim_boundary_survivors": 0
+  },
+  "ontology": {
+    "cases": 1000,
+    "draft_accepts": 800,
+    "draft_false_green_if_claim_open_emergence": 760,
+    "draft_false_green_if_claim_strong_emergence": 800,
+    "draft_false_green_if_claim_phenomenology": 800,
+    "open_engineering_positive_controls": 40,
+    "revised_claim_boundary_survivors": 0
+  },
+  "convergence": {
+    "runtime_subject_term": "OPERATIONAL_SUBJECT",
+    "weak_local_emergence": "QUALIFIABLE",
+    "causal_macro_advantage": "QUALIFIABLE_RELATIVE_TO_DECLARED_PARTITION",
+    "open_ended_emergence": "UNQUALIFIED_UNTIL_IMPLEMENTED",
+    "strong_metaphysical_emergence": "NOT_RUNTIME_DECIDABLE",
+    "phenomenology": "NOT_RUNTIME_DECIDABLE",
+    "indicator_bundle": "EVIDENCE_PROFILE_ONLY"
+  },
+  "source_binding": {
+    "algorithm": "sha256(path||bytes)",
+    "digest": "fb5324ed12671ca9638194849abe9fd67d594e772b2dbd70876fbc5afe49ceb4",
+    "files": [
+      "contracts/emergence-kernel.json",
+      "contracts/ikant-le.json",
+      "src/contract.mjs",
+      "tests/emergence.test.mjs",
+      "docs/ARCHITECTURE.md",
+      "docs/GOVERNANCE.md",
+      "scripts/c8-emergence-falsify.mjs"
+    ]
+  },
+  "claim_boundary": {
+    "mutation_proves_emergence": false,
+    "mutation_proves_strong_emergence": false,
+    "mutation_proves_phenomenology": false,
+    "mutation_proves_claim_boundary_convergence": true
+  },
+  "receipt_sha256": "724a0c2560ffcf01a6dd92f1f3c546b6aac37b0a0a4057aef517ead3ccd6f324"
+}

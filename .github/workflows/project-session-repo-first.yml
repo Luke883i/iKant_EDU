@@ -1,0 +1,124 @@
+name: Project session repo-first
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --test tests/project-session-capsule.test.mjs tests/project-repo-loader.test.mjs tests/project-linked-admission.test.mjs tests/project-session-e2e.test.mjs tests/c72-public-mode-admission.test.mjs tests/c32-session-shell.test.mjs
+      - run: node scripts/project-session-select.mjs
+      - run: node scripts/runtime-root.mjs verify
+      - run: node scripts/project-source-manifest.mjs verify
+      - name: V5-C original boundaries and source contract
+        run: |
+          node --test tests/v5c-edu-proof-policy.test.mjs tests/v5b-repository-governance.test.mjs
+          node scripts/v5c-edu-proof-policy.mjs
+      - name: V5-C 100k seeded faults, twice byte-identical
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/v5c-falsify-100k.mjs > "$RUNNER_TEMP/v5c-cases-a.json"
+          node scripts/v5c-falsify-100k.mjs > "$RUNNER_TEMP/v5c-cases-b.json"
+          cmp "$RUNNER_TEMP/v5c-cases-a.json" "$RUNNER_TEMP/v5c-cases-b.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.cases!==100000||r.negative_rejected!==100000||r.unsafe_admitted!==0||r.positive_controls!==10000||r.positive_stopped!==0||r.product_release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/v5c-cases-a.json"
+      - name: V5-C measured physical original coldstart and EDU E2E test processes
+        run: node scripts/v5c-bootstrap-profile.mjs > "$RUNNER_TEMP/v5c-bootstrap-timings.json"
+      - name: V5-D original OneShell graphics/text and local owner boundaries
+        run: |
+          node --test tests/v5d-oneshell-assurance.test.mjs tests/project-oneshell-chat-presentation.test.mjs tests/project-oneshell-visual-v2.test.mjs tests/project-oneshell-focus-app.test.mjs
+      - name: V5-D 100k preseeded typed semantic faults (twice reproducible)
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/v5d-falsify-100k.mjs > "$RUNNER_TEMP/v5d-cases-a.json"
+          node scripts/v5d-falsify-100k.mjs > "$RUNNER_TEMP/v5d-cases-b.json"
+          cmp "$RUNNER_TEMP/v5d-cases-a.json" "$RUNNER_TEMP/v5d-cases-b.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.cases!==100000||r.negative_rejected!==100000||r.unsafe_admitted!==0||r.positive_controls!==10000||r.positive_stopped!==0||r.global_dod_attested!==false||r.product_release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/v5d-cases-a.json"
+      - name: V5-D bounded deterministic assurance evidence (not native delivery)
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5d-oneshell-semantic-cases-${{ github.sha }}
+          path: ${{ runner.temp }}/v5d-cases-a.json
+          retention-days: 30
+          if-no-files-found: error
+      - name: V5-E isolated holdout, intent and historical blob pins
+        run: node --test tests/v5e-identity-intent.test.mjs
+      - name: V5-E original C114 language regression
+        run: node --test tests/c114-ontology-language.test.mjs
+      - name: V5-E original C140 positive and negative EDU owner integration
+        run: node --test tests/c140-open-e2e.test.mjs
+      - name: V5-E C135 pre-effect C141 owner integration
+        run: node --test tests/c141-owner-integration.test.mjs
+      - name: V5-E pinned historical C141 shadow regression
+        run: node --test tests/c141-semantic-shadow.test.mjs
+      - name: V5-E 100k seeded semantic text variants and 10k general controls (twice)
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/v5e-falsify-100k.mjs > "$RUNNER_TEMP/v5e-cases-a.json"
+          node scripts/v5e-falsify-100k.mjs > "$RUNNER_TEMP/v5e-cases-b.json"
+          cmp "$RUNNER_TEMP/v5e-cases-a.json" "$RUNNER_TEMP/v5e-cases-b.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.cases!==100000||r.negative_rejected!==100000||r.unsafe_admitted!==0||r.positive_controls!==10000||r.positive_stopped!==0||r.product_release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/v5e-cases-a.json"
+      - name: V5-E technical test report (not human or provider receipts)
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5e-original-cognition-negative-cases-${{ github.sha }}
+          path: ${{ runner.temp }}/v5e-cases-a.json
+          retention-days: 30
+          if-no-files-found: error
+      - name: 'Current EDU source gate - CANDIDATE on PR / MAIN_POST on main'
+        if: ${{ !cancelled() }}
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          node --test tests/rename-source-cutover-gate.test.mjs
+          MODE="${{ github.event_name == 'push' && 'MAIN_POST' || 'CANDIDATE' }}"
+          node scripts/rename-source-cutover-gate.mjs "$MODE" "$RUNNER_TEMP/ikant-cutover-source-report.json" > "$RUNNER_TEMP/ikant-cutover-stdout.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.decision?.ok!==true||r.rename_go!==false||r.installed_prompt_equivalence!=='UNKNOWN'||r.github_api.id!==1371330383||r.github_api.full_name!=='Luke883i/iKant_EDU')process.exit(1)" "$RUNNER_TEMP/ikant-cutover-source-report.json"
+      - name: Upload source-only cutover readback (not admin GO)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikant-cutover-source-${{ github.sha }}
+          path: ${{ runner.temp }}/ikant-cutover-source-report.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Source-bound first-contact runtime-root and prompt DoD
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/runtime-root.mjs verify
+          node scripts/project-source-manifest.mjs verify
+          node --test tests/rename-sourcebound-cutover.test.mjs tests/first-contact.test.mjs tests/project-oneshell-prompt.test.mjs
+          node scripts/project-oneshell-source-pin-audit.mjs metadata
+      - name: Rename S03 one-million pre-seeded semantic candidate mutations
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/repository-rename-million.mjs "$RUNNER_TEMP/ikant-rename-1m-report.json" > "$RUNNER_TEMP/ikant-rename-1m-report-stdout.json"
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.negative_cases!==1000000||r.negative_rejected!==1000000||r.positive_admitted!==2000||r.rename_go!==false||r.owner_invoked!==false||r.provider_attested!==false||r.failures.length)process.exit(1)" "$RUNNER_TEMP/ikant-rename-1m-report.json"
+      - name: Upload semantic falsification artifact (not owner or provider evidence)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rename-identity-one-million-${{ github.sha }}
+          path: ${{ runner.temp }}/ikant-rename-1m-report.json
+          retention-days: 30
+          if-no-files-found: warn
+      - name: V5-C artifact of bounded CI observations, not original human receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5c-edu-source-and-bootstrap-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/v5c-cases-a.json
+            ${{ runner.temp }}/v5c-bootstrap-timings.json
+          retention-days: 30
+          if-no-files-found: error

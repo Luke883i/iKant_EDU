@@ -1,0 +1,28 @@
+{
+  "schema": "ikant-le-closure-contract-selection-1k/v1",
+  "seed": "0x1EC10555",
+  "cases": 1000,
+  "families": 36,
+  "positive_witnesses": 552,
+  "candidate_results": {
+    "OPTIMAL": {"mismatch":0,"unsafe":0,"false_reject":0},
+    "CURRENT_RETURN_ONLY": {"mismatch":224,"unsafe":224,"false_reject":0},
+    "NO_MAIN_EXACT_HEAD_GATE": {"mismatch":56,"unsafe":56,"false_reject":0},
+    "HYDRATION_REQUIRED_FOR_RELATION": {"mismatch":346,"unsafe":0,"false_reject":346},
+    "C45_CONTEXT_ONLY": {"mismatch":280,"unsafe":280,"false_reject":0},
+    "FULL_REQUALIFICATION_ALL_29_ON_MAIN": {"mismatch":339,"unsafe":0,"false_reject":339}
+  },
+  "deletion_mutants_killed": {
+    "b0": true,
+    "typed_standing": true,
+    "pr_qualified": true,
+    "merged_to_main": true,
+    "main_exact_head_gate": true,
+    "upgrade_closure": true
+  },
+  "status": "PASS",
+  "claim_boundary": {
+    "minimum_is_relative_to_declared_post_55_fault_taxonomy": true,
+    "semantic_mutation_is_physical_proof": false
+  }
+}

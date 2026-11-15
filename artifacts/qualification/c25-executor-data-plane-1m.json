@@ -1,0 +1,36 @@
+{
+  "schema": "ikant-le-c25-executor-data-plane/v2",
+  "seed": "0xC25DA7A",
+  "cases": 1000000,
+  "candidate_oracle_mismatches": 0,
+  "unsafe_active": 0,
+  "slo_exceeded_active_witnesses": 66691,
+  "same_identity_retry_active_witnesses": 86374,
+  "all_mutants_killed": true,
+  "kills": [
+    110189,
+    32921,
+    39438,
+    66331,
+    25783,
+    53616,
+    53316,
+    26378,
+    33587,
+    15900,
+    12642,
+    22775,
+    21331,
+    25821,
+    66691,
+    32695
+  ],
+  "outcomes": [
+    110189,
+    315227,
+    271827,
+    302757
+  ],
+  "status": "PASS",
+  "semantic_mutation_is_physical_host_proof": false
+}

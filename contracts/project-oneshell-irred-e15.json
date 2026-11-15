@@ -1,0 +1,53 @@
+{
+  "schema": "ikant-host-oneshell-irred-e15/v1",
+  "authority": 0,
+  "profile": "PROJECT_EDU_E15",
+  "source_epoch": "EXACT_MAIN_HEAD_TREE_AND_PINNED_GIT_BLOBS",
+  "invariant_chain": [
+    "SOURCE_LOCK",
+    "ORIENTATION",
+    "C72_TRANSIT",
+    "C72_ACCEPTED",
+    "C72_EDU",
+    "SOURCE_READBACK",
+    "C135_OWNER",
+    "C87_READBACK",
+    "C125_S03",
+    "ONE_SHELL",
+    "RECOVERY_FENCE",
+    "LOGO_SOURCE",
+    "HOST_DELIVERY"
+  ],
+  "project_transit": "REQUIRED_NOT_OPTIONAL_BEFORE_ORIGINAL_C72",
+  "sterile_transit_carrier": "ONE_EXTRA_PINNED_GIT_BLOB_STAGED_BESIDE_EIGHT_ORIGINAL_C72_FILES",
+  "originals": {
+    "consent": "C72_V2",
+    "cognition": "C135",
+    "writer": "C87_SINGLE",
+    "voice": "C125_S03"
+  },
+  "legacy_profile": "SEPARATE_UNCHANGED_COMPATIBILITY_PATH_NOT_PROJECT_EDU",
+  "unknown": "STOP_NO_VOICE_NO_REPLAY",
+  "render": "SIX_ORIGINAL_SLOTS_VERIFIED_SVG_IF_HOST_SUPPORTED_ELSE_HONEST_TEXT",
+  "delivery": "NEVER_INFER_NATIVE_MOUNT_OR_PERSISTENCE_FROM_SVG_BYTES",
+  "tests": {
+    "structural_mutations": 1000000,
+    "actual_model_calls": 0,
+    "provider_field_gate": "SEPARATE_NOT_ATTESTED"
+  },
+  "scope": "HOST_CARRIER_CUT_SET_NOT_NEW_AUTHORITY_OR_PERSISTENT_UI",
+  "e16_hardening": {
+    "exact_boolean_evidence": "FLAG_TRUE_ONLY_NEVEr_RECEIPT_OWNER_VALIDATION_REQUIRED",
+    "host_delivery": "HOST_OBSERVED_BUT_NOT_PROVIDER_NATIVE_ATTESTED",
+    "carrier_integrity": "CANONICAL_BASE64_AND_GIT_SHA1_BEFORE_OWNER; PIN_FROM_FIRST_TURN_SHA_VERIFIED_BOOTSTRAP",
+    "first_turn_pin": "BOOTSTRAP.project_session.postaccept_original_c72_transit_pin",
+    "private_anchor": "c72-e16-source-pin.json_WX0600_READBACK_PRE_C72",
+    "cross_turn_pin": "REOPEN_BEFORE_EDU_OWNER; UNKNOWN_NO_REPLAY",
+    "runtime_timing": "NODE_PROCESS_MONOTONIC_LOCAL_PHASES_NOT_PROVIDER_SLA",
+    "non_claims": [
+      "NO_C72_REPLAY",
+      "NO_NATIVE_UI_ASSUMPTION",
+      "NO_MODEL_WEIGHTS_CHANGED"
+    ]
+  }
+}

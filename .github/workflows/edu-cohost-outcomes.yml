@@ -1,0 +1,35 @@
+name: EDU host outcome-only local H2 after PR118
+on:
+  pull_request:
+    paths:
+      - 'contracts/edu-cohost-*'
+      - 'host/edu-cohost-outcome.mjs'
+      - 'scripts/edu-*'
+      - 'tests/edu-cohost-outcome.test.mjs'
+      - 'project/EDU_HOST_PROJECT_DELTA_V9.txt'
+      - 'docs/POST118_RISK_AND_SCOPE.md'
+      - '.github/workflows/edu-cohost-outcomes.yml'
+  push:
+    branches:
+      - main
+      - prepr/c119-edu-cohost-outcomes-v9
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  outcome-qualification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Pin unchanged PR118 source transport byte digest
+        run: |
+          echo 'd17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d  release/v8/ikant-c107-source-c734bf934e33.ikc.br' | sha256sum -c -
+      - name: Nine original-runtime and hostile-host-frame tests
+        run: node --test tests/edu-cohost-outcome.test.mjs
+      - name: Million host gate negative cases, zero C87 append
+        run: node scripts/edu-host-falsify-1m.mjs "$RUNNER_TEMP/edu-host-1m.json"
+      - name: PR118 single-writer consumer remains independently green
+        run: node --test tests/c107-carrier-consumer.test.mjs

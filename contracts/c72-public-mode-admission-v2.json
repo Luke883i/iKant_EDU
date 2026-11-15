@@ -1,0 +1,64 @@
+{
+  "schema": "ikant-le-c72-public-mode-admission/v2",
+  "authority": 0,
+  "default_for_new_admission": true,
+  "human_gate": "I ACCEPT",
+  "mode_choices": [
+    "EDU"
+  ],
+  "recommended_mode": "EDU",
+  "mode_is_not_transport": true,
+  "legacy_v1": {
+    "module": "host/c72-unified-mode-admission.mjs",
+    "contract": "contracts/c72-unified-mode-admission.json",
+    "historical_receipts_only": true,
+    "no_silent_relabeling": true,
+    "no_v1_receipt_minting_from_v2": true
+  },
+  "public_module": "host/c72-public-mode-admission.mjs",
+  "receipts": {
+    "offer": "ikant-le-c72-public-terms-offer/v2",
+    "accepted": "ikant-le-c72-public-accepted/v2",
+    "orientation": "ikant-le-c72-public-orientation/v2",
+    "selection": "ikant-le-c72-public-selection/v2"
+  },
+  "authoritative_claims": {
+    "selection_is_active": false,
+    "selection_is_native": false,
+    "selection_is_persistent": false,
+    "selection_installs_plugin": false,
+    "text_hash_attests_native_human_origin": false
+  },
+  "status": {
+    "EDU": "EDU_SELECTED_NOT_RUNNING"
+  },
+  "first_edge": {
+    "EDU": "EDU_OWNER_CONSUMER_V2_NOT_QUALIFIED"
+  },
+  "terms_scope": "SOURCE_HEAD_BOUND_CURRENT_SESSION_ONLY",
+  "runtime_consumer_boundary": "S02_VERSIONED_EDU_CONSUMER_WIRING_REQUIRED",
+  "no_cross_version_receipt_upgrade": true,
+  "ui_claims_are_projections_only": true,
+  "linked_terms_presentation": {
+    "owner": "host/c72-public-mode-admission.mjs",
+    "issue": "issueC72V2LinkedTermsOffer",
+    "accept": "acceptC72V2LinkedTerms",
+    "terms_body_presented": false,
+    "terms_read_attested": false,
+    "legacy_verbatim_unchanged": true
+  },
+  "source_identity": {
+    "repository_id": 1371330383,
+    "canonical_repository": "Luke883i/iKant_EDU",
+    "planned_repository": "Luke883i/iKant_EDU",
+    "single_canonical_per_source_epoch": true,
+    "required_match": [
+      "BOOTSTRAP.json",
+      "ADMISSION.json",
+      "pinned_terms_link"
+    ],
+    "new_name_does_not_activate_automatically": true,
+    "provider_readback_is_separate": true
+  },
+  "external_mcp_surface": "INDEPENDENT_FROM_EDU_NO_RECEIPT_OR_STATE_TRANSFER"
+}

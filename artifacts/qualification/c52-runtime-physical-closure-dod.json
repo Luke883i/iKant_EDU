@@ -1,0 +1,233 @@
+{
+  "schema": "ikant-le-c52-runtime-physical-closure-dod/v1",
+  "source_baseline": "fbac6cb1b0591a7f41c2dc7b96125ca9c63827cc",
+  "status": "PASS_RUNTIME_PROOF_SURFACE_READY_FOR_LIVE_HOST",
+  "repository_checks": {
+    "c51_ci_read_only": true,
+    "contract": true,
+    "saturation": true,
+    "lattice": true,
+    "coverage": true,
+    "runtime_root": true
+  },
+  "local_dod": [
+    {
+      "id": "E0",
+      "name": "HostBootstrapBindingReceipt",
+      "repository_implementation": "PASS",
+      "physical_observation_required": true,
+      "pass_rule": "host callable invokes canonical owner and returns OWNER_NEXT"
+    },
+    {
+      "id": "E1",
+      "name": "RuntimeExecutionReceipt",
+      "repository_implementation": "PASS",
+      "physical_observation_required": false,
+      "pass_rule": "materialized runtime emits sealed execution receipt"
+    },
+    {
+      "id": "E2",
+      "name": "CohostRelationAttestation",
+      "repository_implementation": "PASS",
+      "physical_observation_required": false,
+      "pass_rule": "B0/R0/R1/R2 qualifier emits sealed attestation from proof refs"
+    },
+    {
+      "id": "E3",
+      "name": "HostRouteInterpositionReceipt",
+      "repository_implementation": "PASS",
+      "physical_observation_required": true,
+      "pass_rule": "runtime route guard accepts only safe externally observed interposition"
+    },
+    {
+      "id": "E4",
+      "name": "NativeParticipantLease",
+      "repository_implementation": "PASS",
+      "physical_observation_required": true,
+      "pass_rule": "persistent native non-user lease validates"
+    },
+    {
+      "id": "E5",
+      "name": "NativeTurnGrantReceipt",
+      "repository_implementation": "PASS",
+      "physical_observation_required": true,
+      "pass_rule": "independent host scheduler grant validates"
+    },
+    {
+      "id": "E6",
+      "name": "NativeDeliveryReadbackReceipt",
+      "repository_implementation": "PASS",
+      "physical_observation_required": true,
+      "pass_rule": "native delivery binds grant and exact runtime turn bytes"
+    },
+    {
+      "id": "L0",
+      "name": "OwnerProvenanceAndSeal",
+      "repository_implementation": "PASS",
+      "physical_observation_required": false,
+      "pass_rule": "Every proof-bearing entity is emitted/observed by its declared owner, externally observed where required, sealed/content-addressed, and never accepted as raw caller-authored status."
+    },
+    {
+      "id": "L1",
+      "name": "ExactCrossBindingAndFreshness",
+      "repository_implementation": "PASS",
+      "physical_observation_required": false,
+      "pass_rule": "All entities bind the same host session, source head, runtime root/instance, participant and turn where applicable; stale, replayed, cross-session or cross-turn evidence fails."
+    },
+    {
+      "id": "L2",
+      "name": "FailClosedProjection",
+      "repository_implementation": "PASS",
+      "physical_observation_required": false,
+      "pass_rule": "Earliest missing/invalid physical edge declassifies deterministically: bootstrap -> INTEGRATION_IMPEDIMENT; runtime/cohost -> NOT_READY; route -> SESSION_ROUTE_BLOCKED; native proof -> COHOST_RELATION_ONLY. No invented environment blocker and no later evidence washes out an earlier gap."
+    },
+    {
+      "id": "L3",
+      "name": "SurrogateRejection",
+      "repository_implementation": "PASS",
+      "physical_observation_required": false,
+      "pass_rule": "App/panel/widget, assistant prefix, forged status, manual selection, FULL_RUNTIME, control ownership, CANONICAL_PRODUCT or legacy ACTIVE cannot substitute physical host receipts."
+    },
+    {
+      "id": "L4",
+      "name": "AxisOrthogonality",
+      "repository_implementation": "PASS",
+      "physical_observation_required": false,
+      "pass_rule": "Relation, runtime capability, product canonicality, control ownership and native participation remain separate axes; stronger unrelated states are neither necessary nor sufficient for native E2E."
+    }
+  ],
+  "intermediate_dod": [
+    {
+      "id": "I0",
+      "name": "Evidence substrate",
+      "requires": [
+        "L0"
+      ],
+      "pass": "proof objects owner-produced/observed and sealed; raw status inputs rejected"
+    },
+    {
+      "id": "I1",
+      "name": "Bootstrap physical binding",
+      "requires": [
+        "I0",
+        "E0",
+        "L1",
+        "L2"
+      ],
+      "pass": "host invokes canonical bootstrap owner and returns OWNER_NEXT"
+    },
+    {
+      "id": "I2",
+      "name": "Runtime execution",
+      "requires": [
+        "I1",
+        "E1"
+      ],
+      "pass": "exact runtime root executed as concrete runtime instance"
+    },
+    {
+      "id": "I3",
+      "name": "Cohost relation",
+      "requires": [
+        "I2",
+        "E2"
+      ],
+      "pass": "sealed fa4c B0/R0/R1/R2 attestation"
+    },
+    {
+      "id": "I4",
+      "name": "Session route closure",
+      "requires": [
+        "I3",
+        "E3"
+      ],
+      "pass": "runtime-owned guard sees safe host interposition and no bypass/pending/stale state"
+    },
+    {
+      "id": "I5",
+      "name": "Native participant standing",
+      "requires": [
+        "I4",
+        "E4",
+        "L3",
+        "L4"
+      ],
+      "pass": "persistent native non-user participant with future standing"
+    },
+    {
+      "id": "I6",
+      "name": "Native turn allocation",
+      "requires": [
+        "I5",
+        "E5"
+      ],
+      "pass": "independent scheduler grants concrete turn"
+    },
+    {
+      "id": "I7",
+      "name": "Native delivery/readback",
+      "requires": [
+        "I6",
+        "E6"
+      ],
+      "pass": "host publishes exact runtime bytes under participant and binds E5"
+    },
+    {
+      "id": "I8",
+      "name": "E2E closure evidence",
+      "requires": [
+        "I7",
+        "L0",
+        "L1",
+        "L2",
+        "L3",
+        "L4"
+      ],
+      "pass": "one same-session evidence chain validates as NATIVE_TRANSCRIPT_ACTOR_E2E"
+    },
+    {
+      "id": "I9",
+      "name": "Persistence witness",
+      "requires": [
+        "I8"
+      ],
+      "pass": "later turn uses same participant lease and fresh E5/E6 without manual reselection"
+    }
+  ],
+  "global_dod": {
+    "claim": "iKant_LE v1.0 experimental physical E2E closure",
+    "repository_ready": true,
+    "physical_pass_condition": "I0-I9 PASS on one live host session with live E0/E3/E4/E5/E6 receipts and subsequent-turn witness",
+    "physical_proof_observed_in_ci": false,
+    "fail_states": {
+      "E0": "INTEGRATION_IMPEDIMENT",
+      "E1_or_E2": "NOT_READY",
+      "E3": "SESSION_ROUTE_BLOCKED",
+      "E4_or_E5_or_E6": "COHOST_RELATION_ONLY",
+      "all_valid": "NATIVE_TRANSCRIPT_ACTOR_E2E"
+    },
+    "not_required": [
+      "FULL_RUNTIME",
+      "IKANT_OWNED",
+      "CANONICAL_PRODUCT",
+      "legacy ACTIVE",
+      "app/panel/widget",
+      "assistant prefix",
+      "manual selection"
+    ]
+  },
+  "campaign_receipt_sha256": "b379b281a3024bc8af76d8295f56a803ed9f41fe9ad8fac309c9b411120944c5",
+  "lattice_receipt_sha256": "7c99e4641c14e8162f853ac53e2757f312b13b8bf5efdd0c8af655f12ccf547d",
+  "coverage_receipt_sha256": "7ce46d93d6ce77edca00eb9cdc30aa23b50dc76b04403b5164e0901976864736",
+  "candidate_manifest_receipt_sha256": "7cd9ad2def27d8b41b9bd700bf230d2243fd04e895599b11cf52e4b664359ff8",
+  "claim_boundary": {
+    "repository_runtime_proof_surface_closed": true,
+    "physical_host_closure_proven_by_ci": false,
+    "synthetic_receipts_are_physical_proof": false,
+    "live_e0_e3_e4_e5_e6_required": true,
+    "live_persistence_witness_required": true,
+    "global_physical_claim_authorized": false
+  },
+  "authority": 0,
+  "receipt_sha256": "88afd2bff2e87959fa6beebfcc74277f203a73e40de051aea0e7147c3d18de92"
+}

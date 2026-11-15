@@ -1,0 +1,24 @@
+{
+  "schema": "ikant-le-c29-engineering-needs-1k/v2",
+  "seed": "0xC29AEE01",
+  "cases": 1000,
+  "baseline_source_head": "ebe86f3491e8a1a60b3289aaa3b18df327b49675",
+  "baseline_score_bps": 9400,
+  "target_bps": 9901,
+  "baseline_failed_atoms": ["C3","I2"],
+  "passing_mutated_packages": 90,
+  "action_presence_among_passing": {"FIX_C3_TYPED_RELAY_CONTRADICTION":90,"ADD_I2_PROMISE_ASSESSOR_QUALIFICATION":90},
+  "minimal_action_packages": [
+    {"fix_c3":false,"add_i2":false,"score_bps":9400,"respects_promise":false},
+    {"fix_c3":false,"add_i2":true,"score_bps":9650,"respects_promise":false},
+    {"fix_c3":true,"add_i2":false,"score_bps":9750,"respects_promise":false},
+    {"fix_c3":true,"add_i2":true,"score_bps":10000,"respects_promise":true}
+  ],
+  "required_actions": ["FIX_C3_TYPED_RELAY_CONTRADICTION","ADD_I2_PROMISE_ASSESSOR_QUALIFICATION"],
+  "granular_actions": [
+    {"id":"FIX_C3_TYPED_RELAY_CONTRADICTION","files":["contracts/session-chat-activation.json"],"change":"scope legacy/unverified model-mediated byte rejection so VERIFIED_OPAQUE_RELAY remains legal only under authority-zero no-rewrite samehash law","verification":"contradiction scan + typed relay tests"},
+    {"id":"ADD_I2_PROMISE_ASSESSOR_QUALIFICATION","files":["contracts/ikant-le.json","src/contract.mjs","src/runtime.mjs","scripts/check.mjs"],"change":"materialize 36 atomic DoDs, >99 weighted assessor, first unmet and source-bound qualification","verification":"10k definition + real repository evidence + 10m semantic falsification + CI"}
+  ],
+  "claim_boundary": "1k engineering-pressure mutation is repository design evidence, not physical host proof",
+  "receipt_sha256": "8629c3694b771fe1a9e0c1047287075ab777f14fa5b5fb38e97d70299c5d618a"
+}

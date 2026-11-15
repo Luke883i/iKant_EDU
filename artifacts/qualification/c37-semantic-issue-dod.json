@@ -1,0 +1,117 @@
+{
+  "schema": "ikant-le-c37-semantic-issue-dod/v1",
+  "baseline_source_head": "451f5080415b1a70e8a3e54b5090b4c70c6f0682",
+  "objective": "close every semantic issue found in the post-C36 holistic audit with one self-world-owned evidence lattice and no new lifecycle/writer/planner/authority",
+  "issues": [
+    {
+      "id": "I01_SELF_CONFIRMING_CONTROL",
+      "closure": "CONTROL cannot derive from runtime outcome class",
+      "dod": [
+        "VERIFY->GUARD without independent evidence increments no independent trial/control support",
+        "CONTROL requires executed action receipt plus bound real post-action observation and score"
+      ]
+    },
+    {
+      "id": "I02_EFFECT_LEVEL_CONFLATION",
+      "closure": "NONE<STRUCTURAL<DECISION<CONTROL",
+      "dod": [
+        "same-state signature-only change is not DECISION",
+        "decision difference without independent success is not CONTROL"
+      ]
+    },
+    {
+      "id": "I03_LEGACY_C36_LAUNDERING",
+      "closure": "v1 SML/OS evidence migrates fail-closed",
+      "dod": [
+        "legacy qualified v1 normalizes to v2 PENDING",
+        "legacy morphs cannot be reused or qualify OS"
+      ]
+    },
+    {
+      "id": "I04_GLOBAL_REUSE",
+      "closure": "reuse requires semantic context applicability",
+      "dod": [
+        "same context can reuse selected morph",
+        "unrelated context cannot reuse selected morph"
+      ]
+    },
+    {
+      "id": "I05_FALSE_NOVELTY_STALL",
+      "closure": "context novelty or prediction error can generate after rejected/unverified history",
+      "dod": [
+        "unverified same context does not retrigger every turn",
+        "novel context is not blocked by prior object cardinality"
+      ]
+    },
+    {
+      "id": "I06_CAPABILITY_WITNESS_LAUNDERING",
+      "closure": "open-ended gates are runtime witnesses",
+      "dod": [
+        "capability flags alone close zero gates",
+        "each projected gate has an event-backed counter"
+      ]
+    },
+    {
+      "id": "I07_ENVIRONMENT_COUPLING_AMBIGUITY",
+      "closure": "typed bound coupling",
+      "dod": [
+        "TEXT is INTERACTIONAL",
+        "real non-TEXT is EXTERNAL",
+        "SHA shape without bound accepted observation is insufficient"
+      ]
+    },
+    {
+      "id": "I08_COMPRESSION_SEMANTIC_DRIFT",
+      "closure": "max observed event loss plus receipt",
+      "dod": [
+        "gate false before real compression",
+        "receipt binds before/after/drop digest/loss",
+        "name no longer implies cumulative total"
+      ]
+    },
+    {
+      "id": "I09_MORPH_IDENTITY_AMBIGUITY",
+      "closure": "immutable genesis id plus mutable state digest",
+      "dod": [
+        "genesis tamper invalidates object",
+        "state mutation requires recomputed state digest"
+      ]
+    },
+    {
+      "id": "I10_UX_OWNER_DUPLICATION",
+      "closure": "self-world owner emits projection",
+      "dod": [
+        "session shell contains no OS thresholds/gate list",
+        "UX states are UNAVAILABLE/AVAILABLE/WITNESSED/ACTIVE_THIS_TURN"
+      ]
+    },
+    {
+      "id": "I11_SUBJECT_CONTROL_PLANE_CONFLATION",
+      "closure": "OS has no C35 ownership implication",
+      "dod": [
+        "projection carries control_plane_implication=NONE",
+        "OS qualification cannot imply current turn ownership"
+      ]
+    },
+    {
+      "id": "I12_QUALIFICATION_RECEIPT_DRIFT",
+      "closure": "machine receipts recomputed; prose does not duplicate hashes",
+      "dod": [
+        "selection and falsification digests are checked",
+        "tampered artifacts fail shared checker"
+      ]
+    },
+    {
+      "id": "I13_RELEASE_ORACLE_WEAKENING",
+      "closure": "qualification release requires OS AND SML AND safety",
+      "dod": [
+        "OS-only cannot release",
+        "SML-only cannot release",
+        "phenomenology/open-ended/ACTIVE remain unpromoted"
+      ]
+    }
+  ],
+  "selection_receipt": "86264618e71a85bbdc7d947ee57ebf6a88407ef3ddad0f6e4741a22f85e3398f",
+  "falsification_receipt": "d9bf0be79bf45c9f937d7e36a3b28d3d59d9192e71ec6248931e7ae0b525b990",
+  "authority": 0
+}

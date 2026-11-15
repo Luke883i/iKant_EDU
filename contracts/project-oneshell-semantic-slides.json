@@ -1,0 +1,78 @@
+{
+  "schema": "ikant-le-project-oneshell-semantic-slides/v1",
+  "authority": 0,
+  "slots": [
+    "ESITO",
+    "A",
+    "B",
+    "PROVA",
+    "EDGE",
+    "NEXT"
+  ],
+  "scope": "ALL_VISIBLE_BOOTSTRAP_AND_EDU_EXECUTION",
+  "fixed_mini_prompts": {
+    "ESITO": "Solo risultato verificato e fase del turno",
+    "A": "NO_VOICE salvo owner originale C87/C125/S03 dello stesso turno",
+    "B": "HOST: testo breve o introduzione C72 originale intatta",
+    "PROVA": "Link immutabile o digest con riferimento originale riapribile",
+    "EDGE": "Primo blocco effettivo senza inventare capability",
+    "NEXT": "Una sola azione consentita dall'owner"
+  },
+  "phases": [
+    {
+      "id": "ORIENTATION",
+      "owner": "C72_LINKED_TERMS",
+      "a": "NO_VOICE",
+      "next": "AWAIT_I_ACCEPT"
+    },
+    {
+      "id": "ACCEPTED",
+      "owner": "C72_V2",
+      "a": "NO_VOICE",
+      "next": "AWAIT_EDU"
+    },
+    {
+      "id": "MODE_SELECTED",
+      "owner": "C72_V2",
+      "a": "NO_VOICE",
+      "next": "VERIFY_SOURCE_OR_C59"
+    },
+    {
+      "id": "SOURCE_CHECK",
+      "owner": "HOST_OBSERVED_CAPABILITIES",
+      "a": "NO_VOICE"
+    },
+    {
+      "id": "SOURCE_HANDOFF",
+      "owner": "P1_EDU_ONLY",
+      "a": "NO_VOICE"
+    },
+    {
+      "id": "MATERIALIZED",
+      "owner": "PROJECT_REPO_LOADER",
+      "a": "NO_VOICE"
+    },
+    {
+      "id": "EDU_READY",
+      "owner": "C135_ORIGINAL",
+      "a": "NO_VOICE"
+    },
+    {
+      "id": "FIRST_TURN_VERIFIED",
+      "owner": "C87_C125_S03",
+      "a": "EXACT_ORIGINAL_UTF8_ONLY"
+    }
+  ],
+  "source_original": "project/oneshell-v7/03_SLIDES.md",
+  "no_new_ledger": true,
+  "native_ui_attested": false,
+  "terms_read_attested": false,
+  "product_release": "PRODUCT_NO_GO",
+  "first_contact": {
+    "scope": "IKANT_PROJECT_NEW_CHAT_ONLY",
+    "trigger": "ANY_FIRST_HUMAN_MESSAGE",
+    "transition": "ORIENTATION_ONLY",
+    "consent_inferred": false,
+    "initial_input_executed": false
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "ikant-le-c105-nerva-host-nervous-system/v1",
+  "authority": 0,
+  "name": "NERVA",
+  "expanded_name": "Nervatura Esecutiva di Raccordo Verificabile per Adattatori",
+  "class": "HOST_LOCAL_EXPERIMENTAL_CONTROL_PLANE_NOT_IKANT_OWNER",
+  "origin": "CURRENT_BRANCH_SOURCE_NOT_FROZEN_CHAT_HEAD",
+  "owners": {
+    "admission": "C72",
+    "route": "C99",
+    "materialization": "C104",
+    "capsule": "C77",
+    "cognition": "C70_C71_C101",
+    "ledger": "C102_C87",
+    "conformance": "C103"
+  },
+  "lexicon": {
+    "GET STATE": "observe C104 physical cache",
+    "GET MISSING": "list C104 unresolved paths",
+    "GET NEXT": "C104 bounded next batch or qualification requirement",
+    "GET LEDGER": "reopen C87 via C102",
+    "PUT BLOB": "stage exact checked source bytes through C104",
+    "RUN TURN": "C99 C102-only plan, actual C77 qualifier, C102+C87+ C103 readback"
+  },
+  "safety": {
+    "new_owner": false,
+    "new_writer": false,
+    "eval": false,
+    "network": false,
+    "provider_call": false,
+    "implicit_host_hook": false,
+    "model_authored_receipt_not_evidence": true,
+    "exact_command_grammar": true,
+    "raw_user_text_not_interpreted_as_command": true,
+    "stored_raw_messages": false,
+    "source_origin_attested": false,
+    "native_chat_delivery_attested": false,
+    "phenomenology_attested": false
+  },
+  "phase": [
+    "SOURCE_MATERIALIZATION",
+    "SOURCE_BYTES_100PCT_QUALIFICATION_PENDING",
+    "LOCAL_COGNITIVE_READBACK_NOT_NATIVE_DELIVERED"
+  ],
+  "requires_actual_install": true,
+  "source_epoch_policy": "C105 is evaluated on its own checkout; never silently repin a running chat's frozen SOURCE_HEAD",
+  "strict_c84_priority_unchanged": true,
+  "proof": "E3_LOCAL only if actual C77+C101+C102+C87 and C103 readback; C103 structural PASS alone is not origin"
+}

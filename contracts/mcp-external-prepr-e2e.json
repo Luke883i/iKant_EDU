@@ -1,0 +1,208 @@
+{
+  "schema": "ikant-le-mcp-external-prepr/v1",
+  "source_epoch": {
+    "base_head": "463c8474afccb9b5e7906b90fcb50bd751fe9579",
+    "base_tree": "4055f4f2ed485ca134a0d417c154bc43b56f411c",
+    "target_head": "2d12e2657d92864f56ed6f562a15e8de5a05fa67",
+    "target_tree": "9df58eb066ee1229a0ac84ac40cb15597eef8dae",
+    "source_reconstruction": "ORIGINAL_GIT_COMMIT_AND_TREE_REOPENED_LOCALLY",
+    "previous_design_base_is_not_current_lock": true
+  },
+  "authority": 0,
+  "independent_third_surface": "MCP_EXTERNAL",
+  "session_chat_mode_choices": [
+    "EDU",
+    "CANONICAL"
+  ],
+  "source_owner": "Luke883i/iKant_LE",
+  "runtime_owner": "existing session-chat deployed compatibility (C20), not C59 activation",
+  "mcp_is_bootstrap_mode": false,
+  "eduv2_requires_mcp": false,
+  "canonical_native_activation_from_mcp": false,
+  "deployment_target": "Render HTTPS with persistent disk; single instance",
+  "client_target": "ChatGPT custom MCP plugin, manual user connection",
+  "oauth_model": "external OAuth 2.1 Authorization Server with authorization-code + PKCE S256; JWT RS256 resource-side verification",
+  "alternative_lattice": {
+    "axes": {
+      "auth": [
+        "none",
+        "opaque_shared",
+        "gateway_hmac_public",
+        "oauth_unbound",
+        "oauth_jwt_pinned"
+      ],
+      "isolation": [
+        "none",
+        "hint_only",
+        "namespace_only",
+        "principal_only",
+        "principal_scope_bound"
+      ],
+      "preservation": [
+        "rewrite_C72",
+        "inherit_C59",
+        "reuse_without_boundary",
+        "source_only",
+        "external_isolation"
+      ],
+      "deployment": [
+        "local_only",
+        "ephemeral",
+        "tls_only",
+        "disk",
+        "health",
+        "client_proof",
+        "pilot",
+        "rollback"
+      ]
+    },
+    "feasibility": "auth=4,isolation=4,preservation=4,deployment>=4",
+    "score_formula": "10*auth+9*isolation+12*preservation+2*deployment",
+    "weight_source": "engineering policy, not empirically optimized"
+  },
+  "dod": [
+    {
+      "id": "G1",
+      "level": "GLOBAL",
+      "claim": "EDU and CANONICAL C72 modes unchanged",
+      "falsifier": "third mode appears in C72/bootstrap",
+      "evidence": "git path diff + source tests",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "G2",
+      "level": "GLOBAL",
+      "claim": "No MCP code asserts C59/native ChatGPT ACTIVE",
+      "falsifier": "MCP OAuth token creates canonical authority",
+      "evidence": "schema + runtime flag tests",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "G3",
+      "level": "GLOBAL",
+      "claim": "Source-bound pinned baseline",
+      "falsifier": "base HEAD/TREE drift or unmatched blob",
+      "evidence": "GitHub independent HEAD and Git blob verification",
+      "status": "SOURCE_CHECK"
+    },
+    {
+      "id": "I1",
+      "level": "INTERMEDIATE",
+      "claim": "OAuth authorization issuer external, PRM discoverable",
+      "falsifier": "missing/Host-derived resource or no AS metadata",
+      "evidence": "module tests; actual provider still external",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "I2",
+      "level": "INTERMEDIATE",
+      "claim": "JWT RS256 signature, iss/aud/scope/exp/nbf checked",
+      "falsifier": "forged, expired or alien token accepted",
+      "evidence": "crypto mutation tests",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "I3",
+      "level": "INTERMEDIATE",
+      "claim": "per-user tenant session namespace and write scope",
+      "falsifier": "two token subs resolve to same session or read-only can mutate",
+      "evidence": "functional namespace, static handler guards",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "I4",
+      "level": "INTERMEDIATE",
+      "claim": "Legacy gateway compatibility retains original validation",
+      "falsifier": "gateway rejects valid fixture or accepts forged proof",
+      "evidence": "S06 original regression tests",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "I5",
+      "level": "INTERMEDIATE",
+      "claim": "Render port, health, paid disk and secret-free blueprint",
+      "falsifier": "hardcoded secrets, ephemeral runtime storage or wrong port",
+      "evidence": "static blueprint validation; live Render absent",
+      "status": "PARTIAL"
+    },
+    {
+      "id": "L1",
+      "level": "LOCAL",
+      "claim": "invalid OAuth config fails closed",
+      "falsifier": "startup with HTTP/unknown issuer or alternate JWKS",
+      "evidence": "config mutation tests",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "L2",
+      "level": "LOCAL",
+      "claim": "2048 signature mutants rejected",
+      "falsifier": "one mutation accepted",
+      "evidence": "Node crypto tests",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "L3",
+      "level": "LOCAL",
+      "claim": "JWT key-fetch bounded and duplicate kid refused",
+      "falsifier": "oversize JWKS or duplicate kid accepted",
+      "evidence": "synthetic resolver tests",
+      "status": "LOCAL_TEST"
+    },
+    {
+      "id": "L4",
+      "level": "LOCAL",
+      "claim": "No write/send on failed auth",
+      "falsifier": "unauthenticated tools/call reaches runtime",
+      "evidence": "needs real SDK/HTTP E2E and failure injection",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "X1",
+      "level": "EXTERNAL",
+      "claim": "Authentic OAuth PKCE AS metadata, token issuance and revocation",
+      "falsifier": "authorization provider absent or incompatible",
+      "evidence": "real independent IdP + ChatGPT consent",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "X2",
+      "level": "EXTERNAL",
+      "claim": "Render deployment encrypted disk, restart, isolation, rollback",
+      "falsifier": "loss, leak, outage, wrong resource on restart",
+      "evidence": "operator deployment receipts",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "X3",
+      "level": "EXTERNAL",
+      "claim": "Real ChatGPT initialize/tools/list/call and original delivery",
+      "falsifier": "tool not listed or callback fails",
+      "evidence": "three distinct provider-native call witnesses",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "X4",
+      "level": "EXTERNAL",
+      "claim": "Native event identity not inferred from OAuth principal or session hint",
+      "falsifier": "API host hint used as native message signature",
+      "evidence": "independent platform identity witness, otherwise no-go",
+      "status": "EXTERNAL_OPEN"
+    },
+    {
+      "id": "X5",
+      "level": "EXTERNAL",
+      "claim": "Independent pilot and semantic efficacy proven",
+      "falsifier": "fewer than 30 real users or blind trials incomplete",
+      "evidence": "external human pilot / model evaluation",
+      "status": "EXTERNAL_OPEN"
+    }
+  ],
+  "product_release": "PRODUCT_NO_GO",
+  "native_client_installed": false,
+  "canonical_active": false,
+  "semantic_truth_attested": false,
+  "no_secret_embedding": true,
+  "no_auto_registration": true,
+  "unknown_send": "STOP_RECONCILE_NO_BLIND_RETRY"
+}

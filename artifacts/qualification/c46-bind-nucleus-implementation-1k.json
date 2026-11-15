@@ -1,0 +1,19 @@
+{
+  "schema": "ikant-bind-nucleus-implementation-1k/v1",
+  "semantic_sha256": "fa4ccab342d14b7e2a1f4d6505374045d282d51e488557f5fd8f9c23c88158da",
+  "seed": "0x0C046B1D",
+  "cases": 1000,
+  "candidate_results": {
+    "PROPERTY_BASED": {"mismatch":0,"unsafe":0,"false_reject":0},
+    "REQUIRE_MICRO_SLICE": {"mismatch":401,"unsafe":0,"false_reject":401},
+    "REQUIRE_FULL_L3": {"mismatch":400,"unsafe":0,"false_reject":400},
+    "REQUIRE_LZMA": {"mismatch":418,"unsafe":0,"false_reject":418},
+    "KERNEL_WITHOUT_TARGET_BIND": {"mismatch":50,"unsafe":50,"false_reject":0},
+    "KERNEL_WITHOUT_REOPEN": {"mismatch":100,"unsafe":100,"false_reject":0}
+  },
+  "conclusion": "Existing pre-runtime kernel, dedicated micro-slice and full L3 are semantically equivalent implementations of B0 when the B0 properties hold. Existing-kernel qualification is the minimum transport default. A micro-slice is fallback/optimization, not an ontological requirement.",
+  "claim_boundary": {
+    "semantic_mutation_is_physical_host_proof": false,
+    "compression_benchmark_on_real_full_corpus_completed": false
+  }
+}

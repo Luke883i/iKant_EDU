@@ -1,0 +1,54 @@
+{
+  "schema": "ikant-le-c108-host-machine-matrix/v1",
+  "authority": 0,
+  "source_policy": "One pinned original C107 source epoch; original C87 writer; no native host hook implied",
+  "machines": [
+    {
+      "id": "DIRECT",
+      "needs": [
+        "verified_node",
+        "callable_language_generator"
+      ],
+      "route": "executeC107HostLanguageTurn"
+    },
+    {
+      "id": "STDIO",
+      "needs": [
+        "verified_node",
+        "node_child_process",
+        "callable_language_generator"
+      ],
+      "route": "C107 model STDIO subprocess"
+    },
+    {
+      "id": "BOUND",
+      "needs": [
+        "verified_node",
+        "host_supplied_current_input_text"
+      ],
+      "route": "executeC107Turn with C100"
+    }
+  ],
+  "capability_priority": [
+    "DIRECT",
+    "STDIO",
+    "BOUND"
+  ],
+  "invariants": [
+    "valid_C72_experimental_selection",
+    "separate_optin",
+    "same_input_sha256",
+    "strict_nonce",
+    "actual_original_C70",
+    "original_C100_exact_output_sha256",
+    "C87_append_reopen_one_new_event",
+    "no_native_delivery_claim"
+  ],
+  "limits": {
+    "canonical_active": false,
+    "native_chat_hook": false,
+    "model_provider_attestation": false,
+    "durable_memory_without_host_context": false
+  },
+  "equivalence": "Semantic invariants all ports; exact voice and C87 event digest only for deterministic provider, identical nonce and prior state"
+}

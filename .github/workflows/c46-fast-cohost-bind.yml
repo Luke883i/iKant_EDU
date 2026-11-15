@@ -1,0 +1,89 @@
+name: C46 fast cohost bind nucleus
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'contracts/pre-runtime-kernel.json'
+      - 'contracts/cohost-context-root.json'
+      - 'contracts/cohost-root-common.json'
+      - 'contracts/cohost-bind-nucleus.json'
+      - 'contracts/cohost-coldstart-root-common.json'
+      - 'contracts/cohost-runtime-closure.json'
+      - 'contracts/cohost-closure-profile.json'
+      - 'artifacts/qualification/c49-tiered-cohost-closure-1k.json'
+      - 'src/runtime-root-verified.mjs'
+      - 'src/cohost-context-root.mjs'
+      - 'src/cohost-root-qualification.mjs'
+      - 'src/cohost-coldstart-qualification.mjs'
+      - 'tests/c45-context-root-ascii-closure.test.mjs'
+      - 'tests/c45-cohost-root-common.test.mjs'
+      - 'tests/c46-coldstart-cohost-bind.test.mjs'
+      - 'tests/c47-cohost-runtime-closure.test.mjs'
+      - 'tests/c48-main-cohost-gate.test.mjs'
+      - 'scripts/c45-context-root-falsify.mjs'
+      - 'scripts/c45-cohost-root-common-falsify.mjs'
+      - 'scripts/c46-coldstart-cohost-falsify.mjs'
+      - 'scripts/c47-cohost-runtime-closure-falsify.mjs'
+      - 'scripts/c48-main-cohost-gate-falsify.mjs'
+      - 'artifacts/qualification/c45-context-root-selection-1k.json'
+      - 'artifacts/qualification/c45-context-root-falsification-10m.json'
+      - 'artifacts/qualification/c45-cohost-root-cross-repo-prepr.json'
+      - 'artifacts/qualification/c46-cohost-coldstart-root-1k.json'
+      - 'artifacts/qualification/c46-bind-nucleus-implementation-1k.json'
+      - 'artifacts/qualification/c47-cohost-runtime-closure-1k.json'
+      - 'artifacts/qualification/c48-main-cohost-gate-1k.json'
+      - 'scripts/check.mjs'
+      - '.github/workflows/c46-fast-cohost-bind.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'contracts/pre-runtime-kernel.json'
+      - 'contracts/cohost-context-root.json'
+      - 'contracts/cohost-root-common.json'
+      - 'contracts/cohost-bind-nucleus.json'
+      - 'contracts/cohost-coldstart-root-common.json'
+      - 'contracts/cohost-runtime-closure.json'
+      - 'src/runtime-root-verified.mjs'
+      - 'src/cohost-context-root.mjs'
+      - 'src/cohost-root-qualification.mjs'
+      - 'src/cohost-coldstart-qualification.mjs'
+      - 'tests/c45-context-root-ascii-closure.test.mjs'
+      - 'tests/c45-cohost-root-common.test.mjs'
+      - 'tests/c46-coldstart-cohost-bind.test.mjs'
+      - 'tests/c47-cohost-runtime-closure.test.mjs'
+      - 'tests/c48-main-cohost-gate.test.mjs'
+      - 'scripts/c45-context-root-falsify.mjs'
+      - 'scripts/c45-cohost-root-common-falsify.mjs'
+      - 'scripts/c46-coldstart-cohost-falsify.mjs'
+      - 'scripts/c47-cohost-runtime-closure-falsify.mjs'
+      - 'scripts/c48-main-cohost-gate-falsify.mjs'
+      - 'artifacts/qualification/c45-context-root-selection-1k.json'
+      - 'artifacts/qualification/c45-context-root-falsification-10m.json'
+      - 'artifacts/qualification/c45-cohost-root-cross-repo-prepr.json'
+      - 'artifacts/qualification/c46-cohost-coldstart-root-1k.json'
+      - 'artifacts/qualification/c46-bind-nucleus-implementation-1k.json'
+      - 'artifacts/qualification/c47-cohost-runtime-closure-1k.json'
+      - 'artifacts/qualification/c48-main-cohost-gate-1k.json'
+      - 'scripts/check.mjs'
+      - '.github/workflows/c46-fast-cohost-bind.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c46:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: C46 focused runtime witnesses
+        run: node --test tests/c46-coldstart-cohost-bind.test.mjs tests/c45-cohost-root-common.test.mjs tests/c47-cohost-runtime-closure.test.mjs tests/c48-main-cohost-gate.test.mjs
+      - name: C46 exact 1k semantic falsification
+        run: node scripts/c46-coldstart-cohost-falsify.mjs
+      - name: C47 exact 1k closure selection
+        run: node scripts/c47-cohost-runtime-closure-falsify.mjs
+      - name: C48 exact-main gate selection
+        run: node scripts/c48-main-cohost-gate-falsify.mjs

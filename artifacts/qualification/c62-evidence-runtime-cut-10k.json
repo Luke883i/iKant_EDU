@@ -1,0 +1,35 @@
+{
+  "schema": "ikant-le-c62-evidence-runtime-cut-falsification/v1",
+  "cases": 10000,
+  "family_count": 10,
+  "family_counts": {
+    "DROP_PAYLOAD": 1000,
+    "DUPLICATE_PAYLOAD_PATH": 1000,
+    "MUTATE_PAYLOAD_BYTES": 1000,
+    "SWAP_PAYLOAD_PATHS": 1000,
+    "MUTATE_IDENTITY_BLOB": 1000,
+    "MUTATE_IDENTITY_BYTES": 1000,
+    "DROP_IDENTITY": 1000,
+    "MUTATE_FROZEN_BOOTSTRAP": 1000,
+    "MUTATE_TERMS_OBJECT": 1000,
+    "MUTATE_SOURCE_HEAD": 1000
+  },
+  "rejected": 10000,
+  "unsafe_accept": 0,
+  "oracle_mismatch": 0,
+  "valid_false_reject": 0,
+  "deletion_mutants": 5,
+  "deletion_mutants_killed": 5,
+  "implementation_checks": {
+    "baseline_preaccept": true,
+    "baseline_manifest": true,
+    "runtime8": true,
+    "raw5_not_runtime": true,
+    "bootstrap_authority": true,
+    "manifest_projection": true,
+    "projection_descriptor": true,
+    "service_no_bootstrap_file_read": true,
+    "terms_projection": true
+  },
+  "status": "PASS"
+}

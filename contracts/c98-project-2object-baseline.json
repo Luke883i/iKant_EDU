@@ -1,0 +1,40 @@
+{
+  "schema": "ikant-le-c98-project-two-object-baseline/v1",
+  "authority": 0,
+  "product_goal": "A person with only iKant_LE GitHub source and a ChatGPT Edu Project types 'inizializza iKant'; the Project presents the exact source-owned admission and attempts source-executed iKant responses for subsequent human turns until owner-validated opt-out.",
+  "objects_owned": ["GITHUB_REPOSITORY", "CHATGPT_EDU_PROJECT"],
+  "additional_service_required_for_baseline": false,
+  "ui_format": "PROJECT_PROMPT_AND_EXACTLY_THREE_PROJECT_MD",
+  "no_claims": ["NATIVE_CHAT_CONTROL", "INSTALLED_MCP", "PERSISTENT_OWNER", "HOST_AUTHENTICATED_EVENTS", "OWNER_VOICE_WITHOUT_RUNTIME", "CANONICAL_ACTIVE", "H95_FIELD_PROVEN"],
+  "proof_levels": {
+    "L0_PROJECT_SHELL": "Installable from two objects; per-response diagnostic shell and terms workflow are conditional on successful source reads; native dispatch is not enforced.",
+    "L1_REAL_OWNER_TURN": "Only source-exact Node execution and same-input owner receipt allow byte-exact Surface A.",
+    "L2_SESSION_REENTRY": "Only an independently reopened durable writer receipt in a later human turn qualifies persistence.",
+    "L3_NATIVE_OR_H95": "Native event and independent human field metrics remain external, separate proof gates."
+  },
+  "acceptance": {
+    "preaccept_allowed_repo_paths": ["README.md", "BOOTSTRAP.json", "ADMISSION.json", "AGENTS.md", "TERMS.md"],
+    "exact_later_consent": "I ACCEPT",
+    "later_mode_choices": ["CANONICAL", "EXPERIMENTAL"],
+    "zero_fabricated_owner_surfaces": true,
+    "zero_node_github_network_without_verified_capability": true,
+    "zero_claimed_native_controls_from_project_prompt": true,
+    "do_not_install_mcp_by_prompt": true,
+    "exit_owner_confirmed_only": true
+  },
+  "owner_reuse": [
+    "host/c72-unified-mode-admission.mjs",
+    "host/c84-experimental-transport.mjs",
+    "host/c81-runtime-projection.mjs",
+    "host/c97-uiux-projection.mjs",
+    "host/c98-app-host-ingress.mjs"
+  ],
+  "first_unclosed_edge_after_shell": "CURRENT_HUMAN_INPUT_TO_REAL_SOURCE_BOUND_NODE_OWNER",
+  "strict_semantics": {
+    "prompt_compliance_is_tested_native_control": false,
+    "CI_success_is_ChatGPT_session_success": false,
+    "repoSHA_authenticates_ref_origin": false,
+    "user_sees_iKant_until_optout_guaranteed_by_PP": false,
+    "only_uploaded_project_guides_required": 3
+  }
+}

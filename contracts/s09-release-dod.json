@@ -1,0 +1,28 @@
+{
+  "schema": "ikant-le-s09-pilot-release-gates/v1",
+  "authority": 0,
+  "EDU_minimum": [
+    "S01_MERGED_MAIN",
+    "S02_ORIGINAL_EDU_V2_OWNER_30_SUCCESSFUL_TURNS",
+    "S03_C125_EXACT_A_AND_SIX_HOST_SLOTS",
+    "S04_MAIN_PROMPT_ZIP_SAMEHEAD",
+    "S05_30_INDEPENDENT_USERS",
+    "S09_C137_REAL_BENCHMARK",
+    "S09_CI_FULL_GREEN",
+    "S09_HUMAN_RELEASE_APPROVAL"
+  ],
+  "model_asserted_ready_is_valid": false,
+  "no_unattested_promotion": true,
+  "CANONICAL_minimum": [
+    "S01_MERGED_MAIN",
+    "S04_MAIN_PROMPT_ZIP_SAMEHEAD",
+    "S06_MCP_SECURE",
+    "S07_NATIVE_PLUGIN_CONNECTED",
+    "S08_C59_OWNER_NATIVE_PROVEN",
+    "S09_C137_REAL_BENCHMARK",
+    "S09_CI_FULL_GREEN",
+    "S09_HUMAN_RELEASE_APPROVAL"
+  ],
+  "independent_branches": true,
+  "canonical_must_not_require_EDU_user_study": true
+}

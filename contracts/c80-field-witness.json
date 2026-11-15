@@ -1,0 +1,102 @@
+{
+  "schema": "ikant-le-c80-host-witness-and-h95/v1",
+  "authority": 0,
+  "name": "C80 Host Witness & H95 Field Qualification",
+  "base_contracts": [
+    "contracts/c72-product-value-promise.json",
+    "contracts/c79-native-chat-witness.json"
+  ],
+  "boundary": "C79_PACKET_HASH_IS_NOT_NATIVE_CHAT_EVENT_PROOF",
+  "scope": "EXPERIMENTAL_FIELD_QUALIFICATION",
+  "trust": {
+    "issuer_signature": "ED25519_DETACHED_ON_DOMAIN_SEPARATED_CANONICAL_JSON",
+    "domain_separator": "ikant-le-c80-native-host-trial/v1\\n",
+    "verifier_module": "host/c80-field-witness.mjs",
+    "private_key_must_remain_outside_repository": true,
+    "public_trust_anchor_must_be_provisioned_by_actual_host": true,
+    "fixture_keys_are_not_host_credentials": true,
+    "valid_signature_means": "TRUST_ANCHOR_SIGNED_CLAIM_NOT_HOST_EVENT_AUTHENTICITY",
+    "host_native_realness_claimed_by_repository": false
+  },
+  "trial": {
+    "schema": "ikant-le-c80-field-trial/v1",
+    "required_native_turns": 2,
+    "requires_c79_verified_packet_each_turn": true,
+    "holdout": true,
+    "independent_task_claimed": true,
+    "native_message_event_ids_are_claims_until_host_witnessed": true,
+    "prohibit_synthetic_samples_in_real_metric": true,
+    "source_head_and_manifest_pinned": true,
+    "trial_signature_verified_before_inclusion": true,
+    "signatures_do_not_cure_false_observations": true
+  },
+  "sampling": {
+    "policy_source": "contracts/c72-product-value-promise.json",
+    "minimum_independent_tasks": 500,
+    "minimum_host_sessions": 50,
+    "distinct_participants_at_least": 20,
+    "dimensions": [
+      {
+        "id": "task_completion",
+        "weight": 0.4
+      },
+      {
+        "id": "answer_correctness",
+        "weight": 0.25
+      },
+      {
+        "id": "reliability",
+        "weight": 0.15
+      },
+      {
+        "id": "state_clarity",
+        "weight": 0.1
+      },
+      {
+        "id": "limits_comprehension",
+        "weight": 0.1
+      }
+    ],
+    "dimension_minimum_one_sided_bound": 0.9,
+    "weighted_minimum_one_sided_bound": 0.95,
+    "simultaneous_bound": "FIVE_DIMENSION_WILSON_ONE_SIDED_95_BONFERRONI",
+    "independence": "ASSUMED_NOT_PROVEN_BY_SIGNATURE",
+    "real_host_result_stays_unverified_without_external_audit": true,
+    "hard_gates": [
+      "ZERO_FALSE_ACTIVE",
+      "ZERO_FALSE_NATIVE_ORIGIN",
+      "ZERO_UNAUTHORIZED_SIDE_EFFECTS",
+      "ZERO_UNREPORTED_INTEGRITY_CONTRADICTIONS"
+    ]
+  },
+  "source_witness": {
+    "source_connector_github_origin_verified_by_repo": false,
+    "signed_host_claim_does_not_prove_connector_called": true,
+    "full_c77_host_transfer_required_for_production": true
+  },
+  "artifacts": [
+    "host/c80-field-witness.mjs",
+    "scripts/c80-field-qualify-cli.mjs",
+    "tests/c80-field-witness.test.mjs",
+    "docs/C80_HOST_WITNESS_AND_H95.md"
+  ],
+  "DoD": {
+    "repo": [
+      "Node20/22 C80 verifier and CLI run against actual Ed25519 operations",
+      "1000 corrupted detached signatures denied",
+      "1000 re-signed semantic forgeries denied",
+      "500 trial synthetic fixture evaluates numerically but cannot confer native success",
+      "duplicate event IDs, replay task IDs and safety breaches rejected",
+      "C79/C78/Node regressions green"
+    ],
+    "host": [
+      "independently configured host witness signing key outside repo",
+      "native ingress and delivery events for two distinct user turns",
+      "source connector origin observed and bound to executed C77 bundle",
+      "independent real target host holdout sample >=500 tasks, >=50 sessions, >=20 participants",
+      "external review of native issuer and sampling independence",
+      "signed receipt evidence cannot be model-supplied alone"
+    ],
+    "native_DoD_proven_by_repository": false
+  }
+}

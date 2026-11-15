@@ -1,0 +1,324 @@
+{
+  "schema": "ikant-project-edu-h1-irreducible/v1",
+  "authority": 0,
+  "engineering_base_head": "a0a8b3521861f8dfaef397604cda905df1bdd656",
+  "project_profile": "PROJECT_EDU_E15",
+  "issuer_route": "host/project-c72-e16-unified-ingress.mjs#runC72ProjectE16Ingress",
+  "stage0": "host/project-c72-coldstart-seed.mjs#executeC72Coldstart",
+  "bound_port": "host/project-edu-h1-bound-port.mjs#runH1OriginalAdmission",
+  "source_families": {
+    "C72_FILES": 8,
+    "TRANSIT": 1,
+    "COLD_SEED_SOURCE_VERIFY": 1
+  },
+  "no_new_c72_issuer": true,
+  "no_new_c87_writer": true,
+  "no_auto_repin": true,
+  "mandatory_prior_human_events": [
+    "FIRST_CONTACT_ORIENTATION",
+    "NEW_EXACT_I_ACCEPT",
+    "LATER_EXACT_EDU"
+  ],
+  "effect_sequence": [
+    "VALIDATE_PRIOR_WITNESS",
+    "BIND_REAL_READMAIN_AND_READPINNED",
+    "CALL_LIVE_HEAD",
+    "READ_AND_SHA_8PLUS1",
+    "VERIFY_FIRST_TURN_SHA_AND_BOOTSTRAP_PIN",
+    "WRITE_READBACK_PRIVATE_8PLUS1",
+    "VERIFY_INSTALLED_COLD_SEED",
+    "RESERVE_STABLE_HUMAN_EVENT",
+    "ONE_ORIGINAL_E16_EFFECT",
+    "REOPEN_ORIGINAL_C72_RECEIPT",
+    "STOP_AWAIT_SEPARATE_EDU"
+  ],
+  "owner_effect_prohibition": [
+    "NO_OWNER_IF_ANY_PRE_EFFECT_GATE_FAILS",
+    "NO_BLIND_RETRY_AFTER_UNKNOWN",
+    "NO_HUMANIST_NAME_AS_DISPATCH_KEY",
+    "NO_HOST_AUTHORED_C72_OR_C135_RECEIPT"
+  ],
+  "status_classes": {
+    "REPOSITORY": [
+      "SOURCE_VERIFIED",
+      "SOURCE_UNKNOWN"
+    ],
+    "SOFTWARE": [
+      "STERILE_QUALIFIED",
+      "SOFTWARE_UNQUALIFIED"
+    ],
+    "DEPLOYMENT": [
+      "HOSTBOUND_CALLBACK_OBSERVED",
+      "PROVIDER_INSTALLATION_UNATTESTED"
+    ],
+    "RUNTIME": [
+      "ORIGINAL_OWNER_RECEIPT_REOPENED",
+      "NO_VOICE",
+      "OUTCOME_UNKNOWN"
+    ],
+    "PRODUCT": [
+      "FIELD_H1_QUALIFIED_ONLY_WITH_FIELD_WITNESS",
+      "PRODUCT_NO_GO"
+    ]
+  },
+  "explicit_nonclaims": [
+    "NATIVE_EVENT_IDENTITY",
+    "GITHUB_CALLBACK_AUTHENTICATED_BY_HASH",
+    "PROJECT_PROMPT_INSTALLED",
+    "PROVIDER_NATIVE_UI",
+    "C59_ACTIVE",
+    "ALL_CX_COGNITION_EXECUTED"
+  ],
+  "humanist_source": "contracts/project-oneshell-cx-humanist.json",
+  "historical_40_obligations": [
+    {
+      "id": "P01",
+      "abstraction": "A0_PROVIDER",
+      "cut": "EXTERNAL_DEPLOYMENT_WITNESS_NOT_CI",
+      "evidence_class": "EXTERNAL_FIELD_REQUIRED"
+    },
+    {
+      "id": "P02",
+      "abstraction": "A0_PROVIDER",
+      "cut": "EXTERNAL_DEPLOYMENT_WITNESS_NOT_CI",
+      "evidence_class": "EXTERNAL_FIELD_REQUIRED"
+    },
+    {
+      "id": "P03",
+      "abstraction": "A1_HUMAN",
+      "cut": "ORIGINAL_HUMAN_TURN_AND_SOURCE_LOCK",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P04",
+      "abstraction": "A1_HUMAN",
+      "cut": "ORIGINAL_HUMAN_TURN_AND_SOURCE_LOCK",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P05",
+      "abstraction": "A2_HOST_CONTROL",
+      "cut": "ONE_EXECUTABLE_BOUND_EFFECT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P06",
+      "abstraction": "A2_HOST_CONTROL",
+      "cut": "ONE_EXECUTABLE_BOUND_EFFECT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P07",
+      "abstraction": "A2_HOST_CONTROL",
+      "cut": "ONE_EXECUTABLE_BOUND_EFFECT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P08",
+      "abstraction": "A3_TOOL_ADAPTER",
+      "cut": "CALLBACK_AND_READBACK_SAME_NODE",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P09",
+      "abstraction": "A3_TOOL_ADAPTER",
+      "cut": "CALLBACK_AND_READBACK_SAME_NODE",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P10",
+      "abstraction": "A4_STAGE0",
+      "cut": "STERILE_COLD_SEED",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P11",
+      "abstraction": "A5_SOURCE",
+      "cut": "PINNED_GIT_SHA_8PLUS1",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P12",
+      "abstraction": "A5_SOURCE",
+      "cut": "PINNED_GIT_SHA_8PLUS1",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P13",
+      "abstraction": "A5_SOURCE",
+      "cut": "PINNED_GIT_SHA_8PLUS1",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P14",
+      "abstraction": "A6_C72",
+      "cut": "ONE_ORIGINAL_C72_AND_PRIVATE_RECEIPT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P15",
+      "abstraction": "A6_C72",
+      "cut": "ONE_ORIGINAL_C72_AND_PRIVATE_RECEIPT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P16",
+      "abstraction": "A7_EDU",
+      "cut": "SEPARATE_EDU_ORIGINAL_C135",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P17",
+      "abstraction": "A7_EDU",
+      "cut": "SEPARATE_EDU_ORIGINAL_C135",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P18",
+      "abstraction": "A8_DELIVERY",
+      "cut": "NATIVE_DELIVERY_SEPARATE",
+      "evidence_class": "EXTERNAL_FIELD_REQUIRED"
+    },
+    {
+      "id": "P19",
+      "abstraction": "A2_HOST_CONTROL",
+      "cut": "ONE_EXECUTABLE_BOUND_EFFECT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P20",
+      "abstraction": "A2_HOST_CONTROL",
+      "cut": "ONE_EXECUTABLE_BOUND_EFFECT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P21",
+      "abstraction": "A3_TOOL_ADAPTER",
+      "cut": "CALLBACK_AND_READBACK_SAME_NODE",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P22",
+      "abstraction": "A2_HOST_CONTROL",
+      "cut": "ONE_EXECUTABLE_BOUND_EFFECT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P23",
+      "abstraction": "A9_GOVERNANCE",
+      "cut": "R_S_D_T_P_RELEASE_CLAIMS",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P24",
+      "abstraction": "A6_C72",
+      "cut": "ONE_ORIGINAL_C72_AND_PRIVATE_RECEIPT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P25",
+      "abstraction": "A8_DELIVERY",
+      "cut": "NATIVE_DELIVERY_SEPARATE",
+      "evidence_class": "EXTERNAL_FIELD_REQUIRED"
+    },
+    {
+      "id": "P26",
+      "abstraction": "A0_PROVIDER",
+      "cut": "EXTERNAL_DEPLOYMENT_WITNESS_NOT_CI",
+      "evidence_class": "EXTERNAL_FIELD_REQUIRED"
+    },
+    {
+      "id": "P27",
+      "abstraction": "A1_HUMAN",
+      "cut": "ORIGINAL_HUMAN_TURN_AND_SOURCE_LOCK",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P28",
+      "abstraction": "A5_SOURCE",
+      "cut": "PINNED_GIT_SHA_8PLUS1",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P29",
+      "abstraction": "A4_STAGE0",
+      "cut": "STERILE_COLD_SEED",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P30",
+      "abstraction": "A2_HOST_CONTROL",
+      "cut": "ONE_EXECUTABLE_BOUND_EFFECT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P31",
+      "abstraction": "A6_C72",
+      "cut": "ONE_ORIGINAL_C72_AND_PRIVATE_RECEIPT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P32",
+      "abstraction": "A6_C72",
+      "cut": "ONE_ORIGINAL_C72_AND_PRIVATE_RECEIPT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P33",
+      "abstraction": "A2_HOST_CONTROL",
+      "cut": "ONE_EXECUTABLE_BOUND_EFFECT",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P34",
+      "abstraction": "A9_GOVERNANCE",
+      "cut": "R_S_D_T_P_RELEASE_CLAIMS",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P35",
+      "abstraction": "A9_GOVERNANCE",
+      "cut": "R_S_D_T_P_RELEASE_CLAIMS",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P36",
+      "abstraction": "A8_DELIVERY",
+      "cut": "NATIVE_DELIVERY_SEPARATE",
+      "evidence_class": "EXTERNAL_FIELD_REQUIRED"
+    },
+    {
+      "id": "P37",
+      "abstraction": "A9_GOVERNANCE",
+      "cut": "R_S_D_T_P_RELEASE_CLAIMS",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P38",
+      "abstraction": "A9_GOVERNANCE",
+      "cut": "R_S_D_T_P_RELEASE_CLAIMS",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    },
+    {
+      "id": "P39",
+      "abstraction": "A8_DELIVERY",
+      "cut": "NATIVE_DELIVERY_SEPARATE",
+      "evidence_class": "EXTERNAL_FIELD_REQUIRED"
+    },
+    {
+      "id": "P40",
+      "abstraction": "A9_GOVERNANCE",
+      "cut": "R_S_D_T_P_RELEASE_CLAIMS",
+      "evidence_class": "SOFTWARE_AND_FIELD_DISTINCT"
+    }
+  ],
+  "coverage_denominator": 40,
+  "normative_coverage_only_not_problem_resolution": true,
+  "release_gates": {
+    "SOFTWARE": "CI_ORIGINAL_OWNER_REGRESSION",
+    "DEPLOYMENT": "INSTALLATION_ID_AND_SAME_PROCESS_CALLBACK",
+    "RUNTIME": "ORIGINAL_C72_EDU_C135_C87_C125_RECEIPTS",
+    "PRODUCT": "TWO_REAL_HUMAN_EDU_TURNS_AND_VERIFIED_VISIBLE_ONE_SHELL",
+    "COGNITIVE": "CURRENT_CX_CALLPATH_COVERAGE_AND_INDEPENDENT_SEMANTIC_QUALITY"
+  }
+}

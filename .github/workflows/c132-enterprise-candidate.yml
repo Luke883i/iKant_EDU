@@ -1,0 +1,53 @@
+name: c132-enterprise-candidate-qualification
+on:
+  pull_request:
+    paths:
+      - 'contracts/c132-enterprise-candidate.json'
+      - 'contracts/c133-shadow-language-port.json'
+      - 'host/c132-reasoning-candidate.mjs'
+      - 'host/c133-shadow-language-port.mjs'
+      - 'host/edu-c129-manual-entry.mjs'
+      - 'scripts/c132-*'
+      - 'tests/c132-enterprise-candidate.test.mjs'
+      - 'tests/c133-shadow-language-port.test.mjs'
+      - 'docs/C132_ENTERPRISE_CANDIDATE.md'
+      - 'docs/C133_SHADOW_LANGUAGE_BRIDGE.md'
+      - 'docs/PRODUCT_DASHBOARD.md'
+      - '.github/workflows/c132-enterprise-candidate.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'contracts/c132-enterprise-candidate.json'
+      - 'contracts/c133-shadow-language-port.json'
+      - 'host/c132-reasoning-candidate.mjs'
+      - 'host/c133-shadow-language-port.mjs'
+      - 'host/edu-c129-manual-entry.mjs'
+      - 'scripts/c132-*'
+      - 'tests/c132-enterprise-candidate.test.mjs'
+      - 'tests/c133-shadow-language-port.test.mjs'
+      - 'docs/C132_ENTERPRISE_CANDIDATE.md'
+      - 'docs/C133_SHADOW_LANGUAGE_BRIDGE.md'
+      - 'docs/PRODUCT_DASHBOARD.md'
+jobs:
+  shadow-cognition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Four priority-zero gates
+        run: node scripts/c132-zero-gates.mjs
+      - name: Design and decision search
+        run: node scripts/c132-decision-lattice.mjs --json
+      - name: Inventory gold without inferring cognition
+        run: node scripts/c132-gold-dashboard.mjs
+      - name: Cognition shadow regressions and 10000 bounded variants
+        run: node --test tests/c132-enterprise-candidate.test.mjs
+      - name: Fixed corpus measurement against original C82
+        run: node scripts/c132-cognitive-benchmark.mjs
+      - name: C133 actual EDU languagePort bridge and original readback regressions
+        run: node --test tests/c133-shadow-language-port.test.mjs tests/edu-c129-manual-entry.test.mjs
+      - name: Source-root source integrity
+        run: npm run runtime-root:verify

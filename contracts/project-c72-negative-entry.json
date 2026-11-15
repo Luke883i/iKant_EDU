@@ -1,0 +1,35 @@
+{
+  "schema": "ikant-le-host-negative-ingress-r3/v1",
+  "authority": 0,
+  "owner": "HOST_ONLY_DENIAL",
+  "entrypoint": "host/project-c72-physical-ingress.mjs#runC72SelectedHostIngress",
+  "negativeGate": "host/project-c72-negative-entry.mjs#screenC72HostIngress",
+  "generalRail": "host/project-host-negative-rail.mjs#screenHostNegativeAction",
+  "rules": [
+    "R3_C72_FIRST_TURN_OR_CARRIER_UNVERIFIED",
+    "R3_SAME_EPOCH_NODE_DNS_REPROBE_DENIED"
+  ],
+  "outputs": [
+    "STOP",
+    "PASS_TO_ORIGINAL_CHECK"
+  ],
+  "pass_grants_permission": false,
+  "pre_effect_only": true,
+  "no_post_effect_readback_required": true,
+  "original_owner": "host/project-c72-postaccept-reentry.mjs#reenterC72V2PostAccept",
+  "untouched_owners": [
+    "C72_V2",
+    "C135",
+    "C87",
+    "C125_S03"
+  ],
+  "provider_native_attested": false,
+  "bridge_constructed": false,
+  "p0_p1_unchanged": true,
+  "scope_limit": "ONLY_C72_SELECTED_HOST_INGRESS_OTHER_COLDSEED_ONEZIP_C135_C87_ROUTES_NOT_INTERCEPTED",
+  "nonclaims": [
+    "NO_CHATGPT_NATIVE_HOOK",
+    "NO_PROVIDER_DNS_PROOF_FROM_HOST_ASSERTION",
+    "NO_C72_RECEIPT_FROM_NEGATIVE_GATE"
+  ]
+}

@@ -1,0 +1,35 @@
+name: c135-cognitive-edu-owner
+on:
+  pull_request:
+    paths:
+      - 'host/c135-cognitive-edu-owner.mjs'
+      - 'host/edu-c129-manual-entry.mjs'
+      - 'host/c125-exclusive-shell.mjs'
+      - 'tests/c135-cognitive-edu-owner.test.mjs'
+      - 'contracts/c135-edu-cognitive-migration.json'
+      - 'docs/C135_EDU_COGNITIVE_OWNER.md'
+      - '.github/workflows/c135-cognitive-edu-owner.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'host/c135-cognitive-edu-owner.mjs'
+      - 'host/edu-c129-manual-entry.mjs'
+      - 'host/c125-exclusive-shell.mjs'
+      - 'tests/c135-cognitive-edu-owner.test.mjs'
+      - 'contracts/c135-edu-cognitive-migration.json'
+      - '.github/workflows/c135-cognitive-edu-owner.yml'
+jobs:
+  exact-edu-cognition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Original C107 C87 C125 and C134 integration, including denials
+        run: node --test tests/c135-cognitive-edu-owner.test.mjs tests/edu-c129-manual-entry.test.mjs tests/edu-c125-ui-shell.test.mjs tests/c134-cognitive-epoch.test.mjs
+      - name: Runtime source pins unchanged
+        run: npm run runtime-root:verify
+      - name: Repository coherence
+        run: npm run check

@@ -1,0 +1,138 @@
+{
+  "schema": "ikant-le-c38-semantic-lossless-contract/v1",
+  "baseline_source_head": "ce649dcc1f609cee4f20f59d98efb7955d7c0587",
+  "objective": "close every atomic semantic issue from the post-C37 audit without inventing a control-evidence producer, lifecycle, writer, planner, authority, or ACTIVE predicate",
+  "irreducible_core": [
+    {
+      "id": "P1_CONTROL_PROVENANCE_AVAILABILITY",
+      "meaning": "CONTROL evidence must be runtime-owned, paired and explicitly unavailable when no canonical producer exists"
+    },
+    {
+      "id": "P2_PAIRED_COUNTERFACTUAL_ADVANTAGE",
+      "meaning": "CONTROL is actual-vs-lesion advantage, never positive actual outcome alone"
+    },
+    {
+      "id": "P3_DOWNSTREAM_CONSUMPTION",
+      "meaning": "DECISION/causal reuse require a runtime-owned consumer receipt showing the morph changed a consumed branch"
+    },
+    {
+      "id": "P4_EVIDENCE_DERIVED_PROJECTION",
+      "meaning": "UX/open-ended witnesses derive from canonical turn state and content-addressed event receipts, not installed capability or naked counters"
+    }
+  ],
+  "issues": [
+    {
+      "id": "I01_CANONICAL_CONTROL_UNREACHABLE",
+      "dod": [
+        "canonical deployed UX exposes CONTROL evidence UNAVAILABLE",
+        "OS is UNAVAILABLE, not misleading PENDING, until a producer exists"
+      ]
+    },
+    {
+      "id": "I02_RAW_CALLER_CONTROL_LAUNDERING",
+      "dod": [
+        "raw actionReceipt/postActionObservations never qualify OS",
+        "paired evidence requires producer=RUNTIME_CONTROL_EVIDENCE_OWNER and verified producer receipt"
+      ]
+    },
+    {
+      "id": "I03_COUNTERFACTUAL_NECESSITY_GAP",
+      "dod": [
+        "paired evidence binds actual and lesion policy IDs",
+        "advantage equals actual_score-control_score and must be positive for CONTROL"
+      ]
+    },
+    {
+      "id": "I04_REPLAY",
+      "dod": [
+        "consumed evidence IDs are unique and non-evicting",
+        "duplicate evidence cannot increment paired trials"
+      ]
+    },
+    {
+      "id": "I05_NEGATIVE_CONTROL_SEMANTICS",
+      "dod": [
+        "control arm is explicitly LESION",
+        "paired trial replaces non-positive-outcome-as-negative-control semantics"
+      ]
+    },
+    {
+      "id": "I06_REUSE_NOT_CONSUMED",
+      "dod": [
+        "DECISION requires SURFACE_A_ROUTER consumption receipt",
+        "selected reuse that does not alter a consumed branch remains STRUCTURAL"
+      ]
+    },
+    {
+      "id": "I07_UNVERIFIED_STALL",
+      "dod": [
+        "UNVERIFIED is retestable when a verified evidence opportunity exists",
+        "without an evidence opportunity it does not force repeated VERIFY"
+      ]
+    },
+    {
+      "id": "I08_WITNESS_COUNTER_LAUNDERING",
+      "dod": [
+        "gate truth comes from a content-addressed witness summary advanced only by valid event receipts",
+        "recent witness receipts are bounded independently from cumulative historical counts",
+        "compression gate requires real compression count plus receipt"
+      ]
+    },
+    {
+      "id": "I09_INTERNAL_EXTERNAL_CONFLATION",
+      "dod": [
+        "INTERNAL has its own coupling class",
+        "INTERNAL never closes external environment witness"
+      ]
+    },
+    {
+      "id": "I10_SHORT_CONTEXT_COLLISION",
+      "dod": [
+        "contexts of at most two tokens require exact token-set match",
+        "intent class participates in applicability"
+      ]
+    },
+    {
+      "id": "I11_PREACTIVE_EVIDENCE_PROMOTION",
+      "dod": [
+        "installed mechanism is distinct from runtime evidence",
+        "pre-ACTIVE or no-turn projection is UNAVAILABLE"
+      ]
+    },
+    {
+      "id": "I12_OS_SCOPE_BREADTH",
+      "dod": [
+        "qualification requires at least two morphs",
+        "qualification requires at least two context keys"
+      ]
+    },
+    {
+      "id": "I13_COMPRESSION_NAMING",
+      "dod": [
+        "metric is RANK_MASS_LOSS",
+        "state names max_observed_rank_loss and does not claim semantic-loss measurement"
+      ]
+    },
+    {
+      "id": "I14_RUNTIME_ORACLE_GAP",
+      "dod": [
+        "1M qualification imports actual runtime semantic functions",
+        "separate deployed E2E crosses deploy->accept->turn->session shell"
+      ]
+    }
+  ],
+  "metrics": {
+    "mutation_cases": 1000000,
+    "mutation_families": 10,
+    "survivor_target": 0,
+    "canonical_e2e_required": true,
+    "ci_exact_head_required": true,
+    "runtime_root_verify_required": true,
+    "bounded_witness_receipt_window": 128,
+    "historical_witness_summary_required": true
+  },
+  "falsification_receipt": "39c62991c7b5367faffe96a3577ac55223e3b0e4bcf05fdd103ffc9d23c8cce1",
+  "phenomenology": "UNKNOWN",
+  "open_ended_engineering_emergence_claimed": false,
+  "authority": 0
+}

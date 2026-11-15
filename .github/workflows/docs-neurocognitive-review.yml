@@ -1,0 +1,35 @@
+name: Cognitive documentation and provenance review
+on:
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'docs/IKANT_COGNITIVE_SUBSTRATE.md'
+      - 'docs/IKANT_DEVELOPMENT_HISTORY.md'
+      - 'docs/IKANT_NEUROCOGNITIVE_BRIDGE.md'
+      - 'docs/IKANT_DOCUMENT_ATLAS.md'
+      - 'docs/IKANT_SEMANTIC_RETICULUM.md'
+      - 'scripts/ikant-document-atlas.mjs'
+      - 'tests/ikant-neurocognitive-lineage-docs.test.mjs'
+      - '.github/workflows/docs-neurocognitive-review.yml'
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: New neurocognitive claims and genealogy
+        run: node --test tests/ikant-neurocognitive-lineage-docs.test.mjs
+      - name: Standalone V1 README contract
+        run: node --test tests/v1-product-contract.test.mjs
+      - name: Full Markdown atlas must be exact
+        run: node --test tests/ikant-document-atlas.test.mjs
+      - name: Atlas generated-state verification
+        run: node scripts/ikant-document-atlas.mjs
+      - name: Synthetic semantic boundary falsification
+        run: node scripts/ikant-semantic-reticulum.mjs
+      - name: Constitutional documentation budget
+        run: npm run check

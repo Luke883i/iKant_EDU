@@ -1,0 +1,24 @@
+{
+  "schema": "ikant-c134-source-epoch-contract/v1",
+  "authority": 0,
+  "role": "VERSIONED_ORIGINAL_COGNITIVE_OWNER_CANDIDATE",
+  "source_epoch": "aa62bdaf38b7b04e0466679a75a19734092d373e",
+  "source_kind": "EXPERIMENTAL_COMPOSITE_NOT_GIT_COMMIT",
+  "git_commit_claim": false,
+  "source_files": [
+    "src/c83-semantic-router.mjs",
+    "host/c114-ontology-language-policy.mjs",
+    "host/c107-experimental-turn.mjs",
+    "host/edu-c70-method-v7.mjs"
+  ],
+  "historical_pin_changes": 0,
+  "c82_c83_router_updated": true,
+  "c114_preserved_for_software_identity": true,
+  "c107_original_writer_preserved": true,
+  "experimental_stage_only": true,
+  "edu_c129_operational_route_changed": false,
+  "canonical_active": false,
+  "independent_llm_gain_attested": false,
+  "native_hook_attested": false,
+  "next": "C135_QUALIFIED_MANUAL_EDU_ADMISSION_AND_C87_C125_E2E"
+}

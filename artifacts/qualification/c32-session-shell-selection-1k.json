@@ -1,0 +1,30 @@
+{
+  "schema": "ikant-le-c32-session-shell-selection/v1",
+  "source_head": "72caa2f13984e88aecadb06ffe65e843788e826f",
+  "seed": "0xC32A11CE",
+  "candidates": 1000,
+  "valid_candidates": 1,
+  "invalid_candidates": 999,
+  "winner_index": 0,
+  "winner_cost": 0,
+  "winner_cost_ties": 1,
+  "winner": {
+    "status_owner": "ACTIVATION_SERVICE_PROJECTION",
+    "fault_precedence": true,
+    "active_unchanged": true,
+    "voice_policy": "TIER_SCOPED",
+    "self_summary": "LEDGER_STATE_PROJECTION_NON_REINGESTED",
+    "behavior_source": "STATE_PLUS_TIER",
+    "artifact_policy": "ACTIVE_ONE_PLUS_LIMITED_NONCANONICAL",
+    "release": "ARTIFACT_READY_ATOMIC_FRAME",
+    "visual_order": "VOICE_STATUS_SELF_ARTIFACTS",
+    "new_lifecycle": false,
+    "new_writer": false,
+    "new_status_state": false,
+    "persisted_summary": false,
+    "model_authority": 0
+  },
+  "selection_rule": "all constitutional shell invariants; unique minimum owner/state cost",
+  "claim_boundary": "engineering selection evidence, not host UI or ACTIVE proof",
+  "receipt_sha256": "6b2d16d33e4bffa06b524646633614ab40a76c824db962ba07ce858c2225ad7b"
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "ikant-le-c72-unified-mode-admission/v1",
+  "authority": 0,
+  "version": "1.0",
+  "single_gate": "I ACCEPT",
+  "mode_choices": [
+    "CANONICAL",
+    "EXPERIMENTAL"
+  ],
+  "common_gate_semantics": "TERMS_ACCEPTED_NO_MODE_CHOSEN",
+  "mode_choice_required_after_common_acceptance": true,
+  "mode_choice_is_second_consent": false,
+  "native_ingress_required_for_textual_acceptance": false,
+  "native_ingress_required_for_canonical_activation": true,
+  "acceptance_observed_basis": "HOST_MODEL_TEXT_ONLY",
+  "canonical_selection": {
+    "result": "CANONICAL_REQUESTED_NOT_ACTIVE",
+    "requires": [
+      "PRE_REGISTERED_HOST_MESSAGE_HOOK",
+      "EXACT_ORIGINAL_EVENT_ID",
+      "FROZEN_SOURCE",
+      "CANONICAL_OWNER",
+      "MATERIALIZE_REOPEN",
+      "NODE_PROBE",
+      "SINGLE_WRITER_READBACK",
+      "ACTIVE_READBACK"
+    ],
+    "default_recommendation": "NOT_RECOMMENDED_WITHOUT_HOST_RECEIPTS",
+    "promote_active_by_choice": false
+  },
+  "experimental_selection": {
+    "result": "EXPERIMENTAL_SELECTED_NOT_RUNNING",
+    "no_second_consent": true,
+    "requires_for_execution": [
+      "SOURCE_PROVENANCE",
+      "NODE_20_PLUS_ACTUALLY_CALLABLE",
+      "ACTUAL_C70_C71_EXECUTION",
+      "SAME_INPUT_BOUND_OUTPUT"
+    ],
+    "permitted_operations": [
+      "REPOSITORY_STUDY",
+      "EXPERIMENTAL_DESIGN",
+      "DRAFT_USER_REQUESTED_OUTPUT"
+    ],
+    "never_claim": [
+      "ACTIVE",
+      "CANONICAL_RUNTIME",
+      "NATIVE_EVENT_ATTESTED",
+      "NATIVE_TRANSCRIPT_INTERPOSITION",
+      "PERSISTENCE_WITHOUT_READBACK"
+    ]
+  },
+  "standard_intro": {
+    "selection_required": true,
+    "word_min": 90,
+    "word_max": 200,
+    "mandatory": [
+      "identity",
+      "architecture",
+      "functional_value",
+      "limitations",
+      "canonical_risk",
+      "experimental_default",
+      "selection"
+    ],
+    "variants_evaluated": 100,
+    "scores_are_user_evidence": false
+  },
+  "proof_boundary": {
+    "source_head_sha40": true,
+    "terms_digest_sha256": true,
+    "presentation_receipt_is_host_claim": true,
+    "replay_resistance": false,
+    "cryptographic_human_identity": false,
+    "selecting_mode_does_not_route_messages": true,
+    "legacy_c69_dual_consent_accepted_only_for_compatibility": true,
+    "no_legacy_flow_is_new_default": true
+  },
+  "legacy_migration": {
+    "prior": "I ACCEPT -> ACTIVATE_FIRST; independent I ACCEPT EXPERIMENTAL",
+    "now": "I ACCEPT -> STANDARD_INTRO -> CHOOSE_MODE; canonical_only_after_choice; experimental_single_gate",
+    "nonretrospective": true,
+    "legacy_runtime_native_activation_not_upgraded": true,
+    "original_canonical_owner_does_not_change": true
+  }
+}

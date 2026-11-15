@@ -1,0 +1,28 @@
+name: edu-c126-post125-envelope-hardening
+on:
+  pull_request:
+    paths:
+      - 'host/edu-c126-channel-qualifier.mjs'
+      - 'host/edu-c70-method-v7.mjs'
+      - 'tests/edu-c126-channel-qualifier.test.mjs'
+      - 'scripts/edu-c126-1m-falsify.c'
+      - '.github/workflows/edu-c126-post125-hardening.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c126-envelope-and-original-owner:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Direct C126 adversarial tests plus actual C124/PR119/C87 and legacy
+        run: node --test tests/edu-c126-channel-qualifier.test.mjs tests/edu-c124-guided-source.test.mjs tests/edu-c70-method-v7.test.mjs
+      - name: Seeded one-million finite semantic fault policies
+        run: |
+          cc -O3 -std=c11 -Wall -Wextra -Werror scripts/edu-c126-1m-falsify.c -o /tmp/edu-c126
+          /tmp/edu-c126 1000000 0xc126202610140001 > /tmp/edu-c126.json
+          node --input-type=module -e "import fs from 'node:fs'; const x=JSON.parse(fs.readFileSync('/tmp/edu-c126.json')); if(x.cases!==1000000||x.oracle_mismatches!==0||x.real_llm_calls!==0)process.exit(1);console.log(JSON.stringify(x))"

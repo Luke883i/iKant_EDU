@@ -1,0 +1,242 @@
+{
+  "schema": "ikant-c136-p0-post133-gate/v1",
+  "authority": 0,
+  "merge_commit_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a",
+  "source": "GITHUB_CHECK_RUNS_API_SNAPSHOT",
+  "observed_total": 32,
+  "observed_success": 32,
+  "completed_success_only": true,
+  "pr133_merged": true,
+  "roles": {
+    "C135_EDU": "MERGED_MAIN_EDU_EXPERIMENTAL_OWNER_PATH",
+    "C136_CANONICAL": "CANDIDATE_PREACTIVATION_ONLY"
+  },
+  "release_published": false,
+  "native_hook_attested": false,
+  "check_runs": [
+    {
+      "id": 116316151647,
+      "name": "c81-reachability (20)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316151662,
+      "name": "qualify",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316151891,
+      "name": "faro-100k",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316151901,
+      "name": "exact-edu-cognition",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316151947,
+      "name": "bridge-node (20)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152037,
+      "name": "c81-reachability (22)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152112,
+      "name": "postmerge-e2e (22)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152123,
+      "name": "c107-carrier-consumer",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152196,
+      "name": "postmerge-e2e (20)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152200,
+      "name": "node20-regression",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152317,
+      "name": "standalone-capsule (20)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152546,
+      "name": "bridge-node (22)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152652,
+      "name": "isolated-source-cognition",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152695,
+      "name": "standalone-capsule (22)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152751,
+      "name": "qualify",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152816,
+      "name": "unified (20)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152935,
+      "name": "qualify",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152993,
+      "name": "branded-capsule (22)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316152999,
+      "name": "c100-structural",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153105,
+      "name": "native-chat-frame (20)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153163,
+      "name": "qualify",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153232,
+      "name": "outcome-qualification",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153234,
+      "name": "c81-projection (20)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153270,
+      "name": "qualify",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153335,
+      "name": "harden",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153424,
+      "name": "native-chat-frame (22)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153484,
+      "name": "branded-capsule (20)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153593,
+      "name": "c81-projection (22)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153719,
+      "name": "witness-field-qualification (22)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316153941,
+      "name": "witness-field-qualification (20)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316154482,
+      "name": "unified (22)",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    },
+    {
+      "id": 116316156102,
+      "name": "shadow-cognition",
+      "conclusion": "success",
+      "status": "completed",
+      "head_sha": "35c144524e79f581980bb44ee04dc9fff0c4c10a"
+    }
+  ]
+}

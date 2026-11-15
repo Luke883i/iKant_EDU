@@ -1,0 +1,34 @@
+{
+  "schema": "ikant-le-p0p1-realistic-mutation/v1",
+  "source_epoch_base": "3316155892b4a6cb2b34ea74720a2d32edc6ea21",
+  "test_selection_head": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "seed": 88314520261019,
+  "language_axes": [
+    20,
+    10,
+    10,
+    10,
+    5,
+    10
+  ],
+  "generated_compositions": 1000000,
+  "unique_compositions_by_construction": 1000000,
+  "owner_policy_evaluations": {
+    "source": 1000000,
+    "panel": 1000000,
+    "ontology": 1000000,
+    "blocked": 992000
+  },
+  "oracle_violations": 0,
+  "sha256_corpus_stream": "da3f3a660be2540695af12d85300f4d89e9656bdf4fe093a2fa14459f060534a",
+  "note": "Synthetic pretrained lexicon cross-product; no one million independent model turns or human semantic labels.",
+  "candidate_contracts": 100,
+  "selected_contract_ids": [
+    "K015",
+    "K045",
+    "K075",
+    "K094"
+  ],
+  "provider_panel_attested": false,
+  "active": false
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "ikant-cora-pr-d1-blob-consolidation/v1",
+  "authority": 0,
+  "phase": "HOST_ENGINEERING",
+  "product_go": false,
+  "release": "NO_GO",
+  "source_base": "9b4d29ecc840f55b1d67dae98f5727d31b89b435",
+  "reuse": {
+    "inventory": "scripts/v5b-repository-governance-audit.mjs#auditRepository",
+    "reticulum": "contracts/cora-reticular-hygiene-v1.json",
+    "predecessor_register": "governance/changes/zzzzzzzzzzzzzz-cora-pr-c-ci.json"
+  },
+  "scope": {
+    "kind": "SINGLE_GIT_BLOB_SHA1_IMPLEMENTATION",
+    "canonical": "scripts/v5b-repository-governance-audit.mjs#gitBlobSha1",
+    "consumer": "scripts/cora-pr-c-ci.mjs#qualifyWorkflowPatch",
+    "no_owner_changes": true,
+    "no_workflow_changes": true,
+    "no_deletions": true,
+    "no_new_owner": true,
+    "preexisting_implementations": 2,
+    "post_change_implementations": 1
+  },
+  "reticular_dod": [
+    {
+      "id": "D01",
+      "requires": [],
+      "proof": "Pinned BASE HEAD/TREE, unchanged four original owner Git blobs"
+    },
+    {
+      "id": "D02",
+      "requires": [
+        "D01"
+      ],
+      "proof": "V5-B source and new paths declared in exact predecessor/source-epoch extension"
+    },
+    {
+      "id": "D03",
+      "requires": [
+        "D02"
+      ],
+      "proof": "Shared V5-B Git blob helper accepts Buffer, Uint8Array and UTF-8 string, fails unsupported types"
+    },
+    {
+      "id": "D04",
+      "requires": [
+        "D03"
+      ],
+      "proof": "Original V5-B Git-index/worktree SHA-1 equivalence and unchanged observation outcomes"
+    },
+    {
+      "id": "D05",
+      "requires": [
+        "D03"
+      ],
+      "proof": "PR-C exact old/new workflow digest and rollback behavior preserved with one shared consumer"
+    },
+    {
+      "id": "D06",
+      "requires": [
+        "D04",
+        "D05"
+      ],
+      "proof": "Seeded deterministic 10k byte/Unicode mutation vectors with independent crypto oracle, real git hash-object fixtures and negative cases"
+    },
+    {
+      "id": "D07",
+      "requires": [
+        "D06"
+      ],
+      "proof": "Clean checkout complete CI success and independent Git HEAD/TREE/diff readback"
+    },
+    {
+      "id": "D08",
+      "requires": [
+        "D07"
+      ],
+      "proof": "Two qualified independent engineers, human V5-G decision and postmerge revalidation"
+    }
+  ],
+  "abstract_dod": "NON_COMPENSATORY_GIT_IDENTITY_AND_PROVEN_CONSUMERS_AND_BEHAVIOR_EQUIVALENCE_AND_REVERSIBILITY_AND_INDEPENDENT_REVIEW",
+  "claims": {
+    "source_readback_not_human_review": true,
+    "same_digest_not_runtime_proof": true,
+    "fixture_mutations_not_10000_physical_git_edits": true,
+    "ci_not_provider_delivery": true,
+    "unknown_consumers_not_unused": true
+  },
+  "exits": {
+    "source_candidate": "D01_D06",
+    "git_ci": "D07",
+    "external": "D08",
+    "repository_standardized": "BLOCKED_EXTERNAL",
+    "product_qualified": "BLOCKED_EXTERNAL"
+  },
+  "review": "NOT_ATTESTED",
+  "required_checks": "UNKNOWN_PROVIDER_NOT_ATTESTED",
+  "owner_invoked": false
+}

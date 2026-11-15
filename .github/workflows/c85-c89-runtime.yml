@@ -1,0 +1,36 @@
+name: C85-C89 semantic runtime transplant
+on:
+  pull_request:
+    paths:
+      - 'host/c8[5-9]-*.mjs'
+      - 'scripts/c8[5-9]-falsify-100k.mjs'
+      - 'tests/c85-*.test.mjs'
+      - '.github/workflows/c85-c89-runtime.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-c85-c89:
+    name: C85-C89 Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Five independently falsified slice modules
+        run: |
+          node scripts/c85-falsify-100k.mjs
+          node scripts/c86-falsify-100k.mjs
+          node scripts/c87-falsify-100k.mjs
+          node scripts/c88-falsify-100k.mjs
+          node scripts/c89-falsify-100k.mjs
+      - name: Source-bound positive C84 to C86 and crosschain tests
+        run: node --test --test-concurrency=1 tests/c85-c86-c84-real-source.test.mjs tests/c85-c89-crosschain.test.mjs

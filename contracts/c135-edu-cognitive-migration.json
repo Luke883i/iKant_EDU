@@ -1,0 +1,45 @@
+{
+  "schema": "ikant-c135-cognitive-edu-migration/v1",
+  "authority": 0,
+  "source_main_at_branch": "aab9d474455fad06c7b9134d855be80b0c063a54",
+  "product_tier": "EXPERIMENTAL_EDU_ONLY",
+  "entry": "host/edu-c129-manual-entry.mjs",
+  "explicit_selection": "C134_COMPOSITE",
+  "default_legacy_selection_unchanged": true,
+  "manual_only": true,
+  "original_c127_same_inode_required": true,
+  "original_c107_pin_mutated": false,
+  "original_c124_three_blob_pin_mutated": false,
+  "c134_composite_epoch": "aa62bdaf38b7b04e0466679a75a19734092d373e",
+  "c134_four_blob_staging_required": true,
+  "c134_epoch_git_commit": false,
+  "original_c70_before_host_language": true,
+  "c126_structural_channels_required": 12,
+  "original_c114_strict_self_ontology": true,
+  "bounded_c134_nonself_claim_gate": true,
+  "original_c87_only_writer": true,
+  "independent_c107_readback_before_send": true,
+  "c125_new_receipt_schema": "ikant-c135-owner-evidence/v1",
+  "c125_legacy_pr119_receipt_preserved": true,
+  "c125_at_most_once_attempt": true,
+  "host_language_fixture_not_general_llm_proof": true,
+  "native_chatgpt_hook_attested": false,
+  "canonical_active_attested": false,
+  "provider_origin_attested": false,
+  "actual_model_cognitive_uplift_attested": false,
+  "dob": {
+    "target": "EDU owner route integration",
+    "criteria": [
+      "positive C87 and C125 exact",
+      "denied claims prewrite",
+      "replay/close/concurrency no write",
+      "CI same commit",
+      "source pins unchanged"
+    ]
+  },
+  "next_parallel": [
+    "C136_CANONICAL_FALLBACK",
+    "C137_LLM_EFFICACY_DESIGN"
+  ],
+  "release_requires": "C137_REAL_MODEL_EVALUATION_AND_C138_SAME_MAIN_COMMIT"
+}

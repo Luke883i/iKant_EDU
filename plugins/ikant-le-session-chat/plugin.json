@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "ikant-le-session-chat",
+  "version": "0.1.0",
+  "description": "Deploy-once iKant_LE SESSION_CHAT runtime with app-bound exact acceptance and local ACTIVE readback.",
+  "repository": "https://github.com/Luke883i/iKant_LE",
+  "keywords": [
+    "ikant-le",
+    "mcp",
+    "session-chat"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "iKant_LE",
+        "shortDescription": "Deploy-once iKant_LE session runtime",
+        "longDescription": "Bind a ChatGPT session to a predeployed, source-attested iKant_LE runtime and reach ACTIVE after exact acceptance.",
+        "developerName": "iKant_LE",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "defaultPrompt": [
+          "Open iKant_LE",
+          "Initialize iKant_LE"
+        ],
+        "logo": "./assets/ikant-light.svg",
+        "logoDark": "./assets/ikant-dark-square.svg",
+        "composerIcon": "./assets/ikant-light.svg",
+        "composerIconDark": "./assets/ikant-dark-square.svg"
+      }
+    }
+  }
+}

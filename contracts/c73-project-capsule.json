@@ -1,0 +1,68 @@
+{
+  "schema": "ikant-le-c73-project-capsule/v1",
+  "authority": 0,
+  "owner": "HOST_PRESENTATION_ONLY",
+  "requires_one_canonical_shell_source": "src/session-shell.mjs",
+  "canonical_frame_owner": "src/host-consumption-frame.mjs",
+  "identity": {
+    "label": "iKant",
+    "kind": "BRAND_MARK_NOT_STATUS_RECEIPT",
+    "assets": {
+      "light": "assets/brand/ikant-light.svg",
+      "dark": "assets/brand/ikant-dark.svg"
+    },
+    "alt": "iKant — rete funzionale stilizzata",
+    "host_theme_may_be_unknown": true,
+    "never_claim_sentience_from_logo": true
+  },
+  "visual_layout": [
+    "BRAND",
+    "MODE_AND_ATTESTED_STATUS",
+    "SURFACE_B_DOWNLOAD_REFERENCES",
+    "SURFACE_A_NATIVE_CHAT",
+    "FIRST_OPEN_EDGE"
+  ],
+  "causal_release_order": [
+    "RUNTIME_DOCX_WRITE_AND_REOPEN",
+    "HOST_MATERIALIZE_VERIFIED_ARTIFACT",
+    "PRESENT_OWNER_BOUND_SURFACE_A"
+  ],
+  "canonical": {
+    "valid_owner_shell_required": true,
+    "valid_host_consumption_frame_required": true,
+    "one_substantive_docx_required": true,
+    "no_filename_only_delivery": true,
+    "no_sandbox_link_without_physically_verified_file": true,
+    "no_model_rewrite_of_owner_sealed_surface_a": true,
+    "terminal_status_on_frame_only": "CANONICAL_FRAME_READY_HOST_DELIVERY_PENDING",
+    "native_participation_requires_separate_witness": true
+  },
+  "experimental": {
+    "reuses_layout_not_authority": true,
+    "source": "C71_HOST_OWNED_DRAFT",
+    "single_turn_readback_required": true,
+    "docx": "OPTIONAL_HOST_OWNED_NONCANONICAL_ARTIFACT",
+    "no_canonical_surface_b_claim": true,
+    "continuity": "NOT_ATTESTED_BETWEEN_NATIVE_USER_MESSAGES",
+    "status_on_frame_only": "EXPERIMENTAL_DRAFT_READY_HOST_DELIVERY_UNATTESTED"
+  },
+  "prompt": {
+    "role": "PERSISTENT_PRESENTATION_POLICY_NOT_PERSISTENT_MEMORY",
+    "never_creates": [
+      "STATE_WRITER",
+      "RUNTIME_ROUTE",
+      "NEW_SHELL_OWNER",
+      "NATIVE_THEME_DETECTOR",
+      "HOST_NATIVE_ARTIFACT_URL",
+      "FUTURE_TURN_LEASE"
+    ],
+    "ordinary_chat_is_surface_a": true,
+    "docx_link_is_host_native_action": true,
+    "evidence_overrides_cosmetics": true
+  },
+  "proof_boundary": {
+    "host_ui_display_not_proven_by_repository_ci": true,
+    "logo_is_decoration": true,
+    "existing_C72_acceptance_and_mode_choice_unchanged": true
+  }
+}

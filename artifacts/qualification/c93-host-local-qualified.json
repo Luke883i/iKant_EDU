@@ -1,0 +1,31 @@
+{
+  "schema": "ikant-le-c93-local-qualified-campaign/v1",
+  "base": "53e9519ea8a9b392f1a4cb288db01937cde58c76",
+  "node": "v22.16.0",
+  "targeted_before": {
+    "cases": 12000,
+    "unexpected_accepts": 12000,
+    "classes": 4
+  },
+  "targeted_after": {
+    "cases": 36000,
+    "unexpected_accepts": 0,
+    "classes": 4
+  },
+  "general_after": {
+    "cases": 100000,
+    "unexpected_accepts": 0,
+    "classes": 10
+  },
+  "node_tests": {
+    "passed": 16,
+    "failed": 0
+  },
+  "evidence_scope": "LOCAL_NODE_NEGATIVE_AND_HANDOFF_FIXTURE_ONLY",
+  "actual_model_provider_calls": 0,
+  "actual_c90_c91_c92_positive_owner": false,
+  "c81_object_reachability_in_current_host": false,
+  "native_chat_delivery_attested": false,
+  "c72_h95_measured": false,
+  "canonical_active": false
+}

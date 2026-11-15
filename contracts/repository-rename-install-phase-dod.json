@@ -1,0 +1,105 @@
+{
+  "schema": "ikant-rename-install-phase-dod/v1",
+  "authority": 0,
+  "source_main": "e2e47f99320f1f1fcf7a5b22ae3ca58023441dad",
+  "source_tree": "451fde1152cb59496023173c3479c444096d21c3",
+  "repository_id": 1371330383,
+  "from": "Luke883i/iKant_LE",
+  "to": "Luke883i/iKant_EDU",
+  "global": {
+    "what": "Install a fail-closed ORIGINAL C72 source-epoch binding while retaining OLD main as the only canonical repo; test NEW only against an independently coherent future source set.",
+    "pass_requires": [
+      "S01",
+      "S02",
+      "S03",
+      "S04"
+    ],
+    "status": "PRE_CUTOVER_TECHNICAL_CANDIDATE_NOT_RENAME_GO"
+  },
+  "stages": [
+    {
+      "id": "S01",
+      "what": "C72 public owner derives its one canonical name from the separately SHA-staged original C72 contract; coldseed checks Terms against the SHA-verified BOOTSTRAP, ADMISSION and C72 contract before owner invocation.",
+      "pre": "OLD main/Tree pinned, eight original source blobs, single physical carrier and no attempted owner.",
+      "effect": "Three changed original source files; original old URLs and accepted digest unchanged for OLD source; NEW request on OLD files STOP.",
+      "proof": [
+        "C72 public OLD fixture unchanged",
+        "coldseed old source original regression",
+        "NEW Terms + OLD staged source STOP pre-owner"
+      ],
+      "falsifiers": [
+        "caller supplied redirect selects NEW on OLD source",
+        "contract/BOOTSTRAP/ADMISSION disagreement",
+        "receipt reused after source epoch change"
+      ],
+      "status": "TO_QUALIFY"
+    },
+    {
+      "id": "S02",
+      "what": "Validate original root integrity, project manifest, the six original shadow cases and the new C72 transition tests at the same branch SHA.",
+      "pre": "S01 changes materialized as Git blobs and re-read.",
+      "effect": "Test-only; no actual owner/provider activation.",
+      "proof": [
+        "original C72 zero-checkout",
+        "original runtime root verifier",
+        "original source manifest verifier",
+        "six prospective tests and ALL",
+        "required GitHub CI checks"
+      ],
+      "falsifiers": [
+        "root/gitsha drift",
+        "regression of OLD receipt bytes",
+        "prospective NEW shadow fails"
+      ],
+      "status": "TO_QUALIFY"
+    },
+    {
+      "id": "S03",
+      "what": "One million realistic deterministic seeded semantic source-identity mutation cases, 25 families x 40,000, plus 2,000 positive structural controls.",
+      "pre": "The same model is executed by Node on source PR checkout; fixed seed and transcript digest retained.",
+      "effect": "None in the owner, repository admin, or provider.",
+      "proof": [
+        "source JavaScript blob readback",
+        "one-million report and seed",
+        "1,000,000 negatives rejected with expected typed EDGE",
+        "2,000 structural positives bounded and not upgraded to GO"
+      ],
+      "falsifiers": [
+        "fake repo id, fork, host, HEAD, TREE, Terms, source epoch, same-turn consent, replay, spoofed native receipt, dual canonical accepted",
+        "nondeterministic digest"
+      ],
+      "status": "TO_QUALIFY"
+    },
+    {
+      "id": "S04",
+      "what": "Check actual GitHub repository ID/full_name/HEAD/TREE and independent human/consumer/provider evidence before one admin click.",
+      "pre": "S01-S03 source-only PASS; originals reviewed.",
+      "effect": "Admin rename remains NOT INVOKED in this PR.",
+      "proof": [
+        "two independent reviewers",
+        "external consumer owner closure",
+        "provider prompt installed readback",
+        "admin authorization immediately before cutover"
+      ],
+      "falsifiers": [
+        "UNKNOWN elevated to PASS",
+        "GitHub redirect presumed to validate exact owner",
+        "synthetic CI mistaken for native C72"
+      ],
+      "status": "OPEN_HUMAN_PROVIDER"
+    }
+  ],
+  "source_epoch_rule": "PRE: OLD canonical from verified source. POST: NEW requires a distinct Git HEAD with matching original BOOTSTRAP, ADMISSION, C72 contract and physical GitHub metadata readback; never transfer receipts between epochs.",
+  "no_administrative_effect": true,
+  "owner_not_invoked": true,
+  "provider_not_attested": true,
+  "external_consumers_closed": false,
+  "rename_go": false,
+  "constraints": [
+    "NO_SHADOW_PASS_IS_ADMIN_GO",
+    "NO_DUAL_CANONICAL_IN_ONE_EPOCH",
+    "NO_AUTO_REPIN_OF_OLD_SESSIONS",
+    "NO_REPLAY_OF_ORIGINAL_OWNER_ATTEMPTS",
+    "NO_RENAMING_AS_PART_OF_TESTS"
+  ]
+}

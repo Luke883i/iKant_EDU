@@ -1,0 +1,18 @@
+{
+  "schema": "ikant-le-c61-cold-producer-falsification/v1",
+  "cases": 1048576,
+  "dimensions": 20,
+  "active_vectors": 1,
+  "unsafe_active": 0,
+  "deletion_mutants": 20,
+  "deletion_mutants_killed": 20,
+  "implementation_checks": {
+    "owner": true,
+    "kernel_owner": true,
+    "registry": true,
+    "exports": true,
+    "object_count": true,
+    "seed_count": true
+  },
+  "status": "PASS"
+}

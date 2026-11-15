@@ -1,0 +1,133 @@
+{
+  "schema": "ikant-le-oneshell-cx-humanist/v1",
+  "authority": 0,
+  "source_policy": "MAIN_COMMIT_FROZEN_FOR_SESSION_NOT_A_PR_REF",
+  "interpretation": "HUMAN_MEANINGS_DO_NOT_CREATE_RUNTIME_AUTHORITIES_OR_COGNITION",
+  "human_goal": "one coherent iKant dialogue within one ChatGPT Project chat with candid limits and original receipts",
+  "roles": [
+    {
+      "id": "HUMAN",
+      "human_value": "Agency: separate I ACCEPT / EDU / human turn / two-step EXIT",
+      "boundary": "Native message identity not attested"
+    },
+    {
+      "id": "HOST",
+      "human_value": "Source transport, original owner invocation, six-slot presentation and evidence",
+      "boundary": "Never speaks as iKant"
+    },
+    {
+      "id": "C72",
+      "owner": "host/c72-public-mode-admission.mjs",
+      "human_value": "Informed consent and intelligible choice",
+      "boundary": "Receipt is not cognitive start"
+    },
+    {
+      "id": "C70",
+      "owner": "src/c70-edu-v2-compute-preview.mjs",
+      "human_value": "Reasoned planning before output",
+      "boundary": "A plan is not an answer"
+    },
+    {
+      "id": "C114",
+      "owner": "host/c114-ontology-language-policy.mjs",
+      "human_value": "Careful identity without invented subjectivity",
+      "boundary": "No consciousness proof"
+    },
+    {
+      "id": "C139",
+      "owner": "host/c139-epistemic-policy.mjs",
+      "human_value": "Legible uncertainty and limits of reasoning",
+      "boundary": "No privileged introspection"
+    },
+    {
+      "id": "C140",
+      "owner": "host/c140-open-edu-turn.mjs",
+      "human_value": "Bounded openness for other questions",
+      "boundary": "Do not claim C70 ran if false"
+    },
+    {
+      "id": "C141/C142",
+      "owner": "host/c141-semantic-shadow.mjs",
+      "human_value": "Conflict handling and semantic routing",
+      "boundary": "Not a second C135"
+    },
+    {
+      "id": "C87",
+      "owner": "host/c87-durable-ledger.mjs",
+      "human_value": "Traceability and worker-loss continuity",
+      "boundary": "Not cross-chat memory"
+    },
+    {
+      "id": "C125/S03",
+      "owner": "host/c125-output-port.mjs",
+      "human_value": "One answer with exact verifiable provenance",
+      "boundary": "Not native client delivery"
+    },
+    {
+      "id": "C135",
+      "owner": "host/c135-edu-v2-owner.mjs",
+      "human_value": "Governed cognition with falsifiable stops",
+      "boundary": "Not platform-native ACTIVE"
+    },
+    {
+      "id": "S05",
+      "owner": "host/s05-cil-human-shell.mjs",
+      "human_value": "Human-readable six-slot relation",
+      "boundary": "Read-only, no authority"
+    },
+    {
+      "id": "ONESHell",
+      "owner": "host/project-oneshell-postaccept-rail.mjs",
+      "human_value": "Continuity of understandable dialogue after consent",
+      "boundary": "No native persistent widget guarantee"
+    }
+  ],
+  "six_slots": [
+    {
+      "key": "ESITO",
+      "human_label": "Dove siamo",
+      "human_function": "Phase and truthful status"
+    },
+    {
+      "key": "A",
+      "human_label": "La voce di iKant",
+      "human_function": "Original owner bytes only or NO_VOICE"
+    },
+    {
+      "key": "B",
+      "human_label": "Host: che cosa è successo",
+      "human_function": "Human summary without competing voice"
+    },
+    {
+      "key": "PROVA",
+      "human_label": "Perche posso fidarmi del percorso",
+      "human_function": "Reopenable receipts, not a truth oracle"
+    },
+    {
+      "key": "EDGE",
+      "human_label": "Che cosa manca davvero",
+      "human_function": "First unmet invariant"
+    },
+    {
+      "key": "NEXT",
+      "human_label": "Che cosa posso fare ora",
+      "human_function": "One real action or STOP"
+    }
+  ],
+  "epistemic_limits": [
+    "SOURCE_PASS_NOT_FIELD_PASS",
+    "ORIGINAL_C125_NOT_NATIVE_DELIVERY",
+    "UI_NOT_PERSISTENT_UNLESS_NATIVE_CLIENT_PROVES_IT",
+    "C87_CHECKPOINT_NOT_CROSS_CHAT_MEMORY",
+    "SINGLE_SESSION_SOURCE_EPOCH_STOP_ON_DRIFT"
+  ],
+  "canonical_active": false,
+  "runtime_speech_policy": {
+    "schema": "ikant-oneshell-host-humanist-runtime/v1",
+    "host_b": "Explain human utility, limitations, accountability, evidence, and next action, without implying native UI.",
+    "ikant_candidate": "Pass role-specific human_value and boundary to Host language port as nonauthoritative context. Original C135 controls candidate acceptance and C87/C125.",
+    "no_voice_fallback": true,
+    "original_ack_unchanged": true,
+    "provider_ui_not_claimed": true
+  }
+}

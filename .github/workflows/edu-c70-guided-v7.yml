@@ -1,0 +1,33 @@
+name: EDU C70 guided runtime v7 qualification
+on:
+  pull_request:
+    paths:
+      - 'host/edu-c70-method-v7.mjs'
+      - 'host/c117-semantic-guidance.mjs'
+      - 'host/edu-cohost-outcome.mjs'
+      - 'host/c107-carrier-consumer.mjs'
+      - 'contracts/edu-c70-guided-v7.json'
+      - 'project/EDU_HOST_PROJECT_DELTA_V7.txt'
+      - 'scripts/edu-c70-v7-falsify-1k.mjs'
+      - 'tests/edu-c70-method-v7.test.mjs'
+      - 'release/v8/**'
+      - '.github/workflows/edu-c70-guided-v7.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  guided-v7:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify unchanged original C107 carrier digest
+        run: echo 'd17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d  release/v8/ikant-c107-source-c734bf934e33.ikc.br' | sha256sum -c -
+      - name: Execute original runtime, merged EDU owner and guided-turn regression
+        run: node --test tests/edu-c70-method-v7.test.mjs tests/edu-cohost-outcome.test.mjs tests/c107-carrier-consumer.test.mjs tests/c114-ontology-language.test.mjs tests/c115-topic-routing.test.mjs
+      - name: Falsify 1000 original C70 inputs with fixed seed
+        run: node scripts/edu-c70-v7-falsify-1k.mjs

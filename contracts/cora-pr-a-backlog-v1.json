@@ -1,0 +1,93 @@
+{
+  "schema": "ikant-cora-pr-a-backlog/v1",
+  "authority": 0,
+  "kind": "HOST_ENGINEERING_READ_ONLY_BACKLOG",
+  "source_repository": "Luke883i/iKant_EDU",
+  "source_base": "b60e3ac2b9fa9cb4167b7413d594c502c0fa9459",
+  "existing_inventory": "scripts/v5b-repository-governance-audit.mjs#auditRepository",
+  "existing_reticulum": "scripts/cora-minimal-absorption.mjs#observeReticularCensus",
+  "existing_contract": "contracts/cora-reticular-hygiene-v1.json",
+  "abstract_dod": "SOURCE_IDENTITY_AND_TOTAL_CENSUS_AND_EXPLICIT_UNKNOWNS_AND_CONSUMER_CLOSURE_AND_REVERSIBLE_NONREGRESSION_AND_INDEPENDENT_REVIEW",
+  "pr_a_dod": [
+    {
+      "id": "A01",
+      "requires": [],
+      "proof": "Full Git HEAD/TREE/index reconciliation from original CORA readback"
+    },
+    {
+      "id": "A02",
+      "requires": [
+        "A01"
+      ],
+      "proof": "One exact original V5-B row for every tracked file and every workflow"
+    },
+    {
+      "id": "A03",
+      "requires": [
+        "A02"
+      ],
+      "proof": "Candidate decisions preserve UNKNOWN and original owner and workflow retention boundaries"
+    },
+    {
+      "id": "A04",
+      "requires": [
+        "A03"
+      ],
+      "proof": "Finite reproducible sorted backlog with source-blob witnesses, triggers, flags, consumers and next tests"
+    },
+    {
+      "id": "A05",
+      "requires": [
+        "A03"
+      ],
+      "proof": "Seeded semantic fault vectors independently falsified, 10000000 cases on Node"
+    },
+    {
+      "id": "A06",
+      "requires": [
+        "A04",
+        "A05"
+      ],
+      "proof": "Exact PR HEAD checkout test, post-merge requalification and independent review"
+    }
+  ],
+  "profiles": [
+    "ORIGINAL_SOURCE_GUARD",
+    "DYNAMIC_CONSUMER",
+    "WORKFLOW_HAZARD",
+    "WORKFLOW_REVIEW",
+    "DOCUMENT_VIGENCY",
+    "NO_LITERAL_IMPORTER",
+    "UNCLASSIFIED_RETAIN"
+  ],
+  "allowed_decisions": [
+    "RETAIN_GUARDED",
+    "INVESTIGATE_ONLY",
+    "RETAIN_PENDING_REVIEW"
+  ],
+  "authority_boundaries": {
+    "new_owner": false,
+    "new_writer": false,
+    "automatic_delete": false,
+    "automatic_workflow_retirement": false,
+    "automatic_release": false,
+    "assert_all_consumers_closed": false,
+    "promote_unknown_to_unused": false,
+    "ci_proves_external_owner_or_provider": false,
+    "mutations_are_physical_repo_edits": false
+  },
+  "evidence_model": {
+    "local": "EXACT_HEAD_SOURCE_CENSUS_CANDIDATE_ONLY",
+    "dynamic_consumers": "UNKNOWN_UNTIL_TRACED",
+    "human_approval": "NOT_ATTESTED",
+    "branch_rules": "UNKNOWN_UNTIL_GITHUB_ADMIN_READBACK",
+    "product": "NO_GO"
+  },
+  "commit_plan": [
+    "C1_POLICY_AND_V5B_EXTENSION",
+    "C2_BACKLOG_AND_10M_FALSIFIER",
+    "C3_TEST_AND_README_RUNBOOK",
+    "C4_GENERATED_MARKDOWN_ATLAS_CLOSURE"
+  ],
+  "release": "NO_GO"
+}

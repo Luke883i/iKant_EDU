@@ -1,0 +1,39 @@
+{
+  "schema": "ikant-le-c36-sml-os-selection/v1",
+  "source_head": "f0558d1e6562888401b82f7e4f933a2609eba295",
+  "cases": 1000,
+  "search_space": 1024,
+  "mechanisms": [
+    "SELF_LESION_CAUSALITY",
+    "DYNAMIC_TOPOLOGY",
+    "NON_ENUMERATED_COMPOSITION",
+    "ENDOGENOUS_EXTENSION",
+    "NOVELTY_SELECTION_PERSISTENCE",
+    "ENVIRONMENT_COUPLING",
+    "CAUSAL_REUSE",
+    "LOSS_AWARE_COMPRESSION",
+    "UX_EVIDENCE_PROJECTION",
+    "CONSTITUTIONAL_FIREWALL"
+  ],
+  "candidate_oracle_mismatches": 0,
+  "valid_candidates": 1,
+  "invalid_candidates": 999,
+  "winner_count": 1,
+  "winner_cost": 10,
+  "winner_mask": 1023,
+  "winner": {
+    "SELF_LESION_CAUSALITY": true,
+    "DYNAMIC_TOPOLOGY": true,
+    "NON_ENUMERATED_COMPOSITION": true,
+    "ENDOGENOUS_EXTENSION": true,
+    "NOVELTY_SELECTION_PERSISTENCE": true,
+    "ENVIRONMENT_COUPLING": true,
+    "CAUSAL_REUSE": true,
+    "LOSS_AWARE_COMPRESSION": true,
+    "UX_EVIDENCE_PROJECTION": true,
+    "CONSTITUTIONAL_FIREWALL": true
+  },
+  "rule": "valid iff self is counterfactually causal AND morphogenesis is open-ended-capable AND novelty is selected/reused/compressed AND UX exposes only evidence-bound projection AND constitutional authority/goals remain unchanged",
+  "claim_boundary": "selection evidence only; does not prove runtime emergence, phenomenology, or ACTIVE",
+  "receipt_sha256": "585aa29b38bf43839a2f828c9028325c3d84c7f64b4fe9b4e4e079cdde6b363c"
+}

@@ -1,0 +1,70 @@
+name: EDU OneZIP experimental (source and owner-boundary)
+on:
+  pull_request:
+    paths:
+      - 'scripts/project-edu-*.mjs'
+      - 'scripts/project-edu-*.py'
+      - 'scripts/project-source-manifest.mjs'
+      - 'contracts/project-session-source.json'
+      - 'contracts/project-edu-onezip-field-route.json'
+      - 'project/session-chat/PROMPT.txt'
+      - 'BOOTSTRAP.json'
+      - 'tests/project-edu-onezip-route.test.mjs'
+      - 'tests/test_edu_zip_tree.py'
+      - 'tests/project-edu-onezip-full-source.test.mjs'
+      - 'tests/project-edu-onezip-full-source-transport.test.mjs'
+      - '.github/workflows/edu-onezip-experimental.yml'
+  workflow_dispatch:
+jobs:
+  source-and-protocol:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check original source closure
+        run: node scripts/project-source-manifest.mjs verify
+      - name: Test ZIP TREE-root recomputation
+        run: python -m unittest discover -s tests -p test_edu_zip_tree.py -v
+      - name: Test Host-language and original-owner fail-closed boundaries
+        run: node --test tests/project-edu-onezip-route.test.mjs
+      - name: Full source 1 - git archive from exact PR HEAD
+        shell: bash
+        run: |
+          set -euo pipefail
+          TMP="$(mktemp -d)"
+          chmod 700 "$TMP"
+          HEAD_SHA="$(git rev-parse HEAD)"
+          TREE_SHA="$(git rev-parse HEAD^{tree})"
+          echo "EDU_TMP=$TMP" >> "$GITHUB_ENV"
+          echo "EDU_HEAD=$HEAD_SHA" >> "$GITHUB_ENV"
+          echo "EDU_TREE=$TREE_SHA" >> "$GITHUB_ENV"
+          git archive --format=zip --prefix="iKant_EDU-${HEAD_SHA}/" HEAD > "$TMP/source.zip"
+      - name: Full source 2 - recompute ZIP Git tree root
+        run: python scripts/project-edu-zip-tree.py --archive "$EDU_TMP/source.zip" --head "$EDU_HEAD" --tree "$EDU_TREE" --output "$EDU_TMP/derived-tree.json"
+      - name: Full source 3 - original Python archive converter
+        run: python scripts/project-manual-source.py --source-zip "$EDU_TMP/source.zip" --api-tree "$EDU_TMP/derived-tree.json" --head "$EDU_HEAD" --tree "$EDU_TREE" --output-plan "$EDU_TMP/plan.json"
+      - name: Full source 4 - original Node TREE and blob readback
+        run: node scripts/project-repo-loader.mjs "$EDU_TMP/plan.json" "$EDU_TMP/materialized" "$EDU_HEAD" "$EDU_TREE"
+      - name: Full source 5a - original C72 accepted intro and EDU selection
+        run: EDU_TEST_SOURCE_ROOT="$EDU_TMP/materialized" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" EDU_TEST_PHASE=C72_ONLY node --test tests/project-edu-onezip-full-source.test.mjs
+      - name: Full source 5b0 - original C135 boot
+        run: EDU_TEST_SOURCE_ROOT="$EDU_TMP/materialized" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" EDU_TEST_PHASE=C135_BOOT node --test tests/project-edu-onezip-full-source.test.mjs
+      - name: Full source 5b1 - original C135 first voice
+        run: EDU_TEST_SOURCE_ROOT="$EDU_TMP/materialized" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" EDU_TEST_PHASE=C135_VOICE node --test tests/project-edu-onezip-full-source.test.mjs
+      - name: Full source 5b2 - original C87 checkpoint
+        run: EDU_TEST_SOURCE_ROOT="$EDU_TMP/materialized" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" EDU_TEST_PHASE=C135_FIRST node --test tests/project-edu-onezip-full-source.test.mjs
+      - name: Full source 5c - original C135 second restored turn
+        run: EDU_TEST_SOURCE_ROOT="$EDU_TMP/materialized" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" EDU_TEST_PHASE=C135_SECOND node --test tests/project-edu-onezip-full-source.test.mjs
+      - name: Full source 6 - physically mediated OneZIP admission and two original C135 worker turns
+        run: EDU_TEST_SOURCE_ROOT="$EDU_TMP/materialized" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" node --test tests/project-edu-onezip-full-source-transport.test.mjs
+      - name: Regression original C135 portable C87 and Project prompt
+        run: node --test tests/project-session-e2e.test.mjs tests/project-oneshell-prompt.test.mjs

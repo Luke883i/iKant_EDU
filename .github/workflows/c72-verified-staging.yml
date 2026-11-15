@@ -1,0 +1,41 @@
+name: C72 host-to-Node physical staging qualification
+on:
+  pull_request:
+    paths:
+      - 'scripts/project-c72-verified-staging.mjs'
+      - 'tests/project-c72-verified-staging.test.mjs'
+      - 'tests/project-c72-verified-staging-edu.test.mjs'
+      - 'tests/project-c72-host-assisted-local-file.test.mjs'
+      - 'tests/project-c72-transport-frontier-10k.test.mjs'
+      - 'host/project-c72-transport-frontier.mjs'
+      - 'docs/C72_HOST_TOOL_TO_NODE_RELAY.md'
+      - 'project/session-chat/PROMPT.txt'
+      - 'BOOTSTRAP.json'
+      - '.github/workflows/c72-verified-staging.yml'
+  workflow_dispatch:
+jobs:
+  staging:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Test PR175 staging
+        run: node --test tests/project-c72-verified-staging.test.mjs
+      - name: Test PR175 staged original admission
+        run: node --test tests/project-c72-verified-staging-edu.test.mjs
+      - name: Test PR176 assisted file carrier
+        run: node --test tests/project-c72-host-assisted-local-file.test.mjs
+      - name: Test original EDU cold-mode
+        run: node --test tests/project-c72-cold-mode.test.mjs
+      - name: Test Pareto frontier 10000 cases
+        run: node --test tests/project-c72-transport-frontier-10k.test.mjs
+      - run: node --test tests/project-c72-coldstart-seed.test.mjs
+      - run: node scripts/project-source-manifest.mjs verify

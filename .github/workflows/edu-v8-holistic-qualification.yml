@@ -1,0 +1,28 @@
+name: EDU v8 runtime/host truthfulness qualification
+on:
+  pull_request:
+    paths:
+      - 'host/edu-c70-method-v7.mjs'
+      - 'host/edu-v8-release-policy.mjs'
+      - 'tests/edu-v8-*'
+      - 'scripts/edu-v8-*'
+      - 'contracts/edu-v8-holistic-dod.json'
+      - 'project/EDU_HOST_PROJECT_DELTA_V15.txt'
+      - '.github/workflows/edu-v8-holistic-qualification.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  runtime-and-project-claims:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Keep released source carrier pin unmodified
+        run: echo 'd17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d  release/v8/ikant-c107-source-c734bf934e33.ikc.br' | sha256sum -c -
+      - name: Original C107, merged host and v8 race/claim regressions
+        run: node --test tests/edu-v8-concurrency.test.mjs tests/edu-v8-release-policy.test.mjs tests/edu-c70-method-v7.test.mjs tests/edu-cohost-outcome.test.mjs tests/c107-carrier-consumer.test.mjs tests/c114-ontology-language.test.mjs tests/c115-topic-routing.test.mjs
+      - name: Seeded one-million abstract evidence attacks (not one-million LLM calls)
+        run: node scripts/edu-v8-runtime-falsify-1m.mjs

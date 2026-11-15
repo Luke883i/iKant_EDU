@@ -1,0 +1,190 @@
+{
+  "schema": "ikant-v5b-repository-governance-dod/v1",
+  "authority": 0,
+  "product_release": "PRODUCT_NO_GO",
+  "source_epoch": "ed37cac39cd95b9e142962dd370452b39e2fd8f7",
+  "source_tree": "ed7540037db451d2727979656ef46ddf630edd59",
+  "global": {
+    "id": "V5B-G",
+    "what": "Un ingegnere esterno può identificare e qualificare funzione, provenienza, consumer, manutentore e stato di ogni file e ogni workflow, modificare o rimuovere solo dopo prova di sostituibilità e review ingegneristica ordinaria",
+    "required": [
+      "V5B-I1",
+      "V5B-I2",
+      "V5B-I3",
+      "V5B-I4",
+      "V5B-I5"
+    ],
+    "accept": "full inventory human reviewed; no critical unresolved dependency; required checks/provider governance observed; clean-room reviewer passes",
+    "status": "NOT_ATTESTED"
+  },
+  "intermediate": [
+    {
+      "id": "V5B-I1",
+      "what": "Copertura e provenienza verificabili",
+      "requires": [
+        "V5B-L01",
+        "V5B-L02",
+        "V5B-L03"
+      ]
+    },
+    {
+      "id": "V5B-I2",
+      "what": "Funzione e consumer verificati, non inferiti come fatti",
+      "requires": [
+        "V5B-L04",
+        "V5B-L05",
+        "V5B-L06"
+      ]
+    },
+    {
+      "id": "V5B-I3",
+      "what": "CI/CD subordinata alla manutenzione e ai gate umani",
+      "requires": [
+        "V5B-L07",
+        "V5B-L08",
+        "V5B-L09"
+      ]
+    },
+    {
+      "id": "V5B-I4",
+      "what": "Spostamento/eliminazione richiede prova non regressiva su stesso epoch",
+      "requires": [
+        "V5B-L10",
+        "V5B-L11",
+        "V5B-L12"
+      ]
+    },
+    {
+      "id": "V5B-I5",
+      "what": "Prove e trasferibilità indipendente",
+      "requires": [
+        "V5B-L13",
+        "V5B-L14",
+        "V5B-L15"
+      ]
+    }
+  ],
+  "local": [
+    {
+      "id": "V5B-L01",
+      "object": "Git tracked paths",
+      "what": "exact 100% index, including SHA1 blob and file size, no omissions",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L02",
+      "object": "Git provenance",
+      "what": "HEAD/TREE/path/blob verified and changes classified by exact ref",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L03",
+      "object": "inventory refresh",
+      "what": "every changed/added/deleted file flagged, not silently promoted",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L04",
+      "object": "function",
+      "what": "one provisional role for every file; verified only with consumer/readback/human review",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L05",
+      "object": "static dependency graph",
+      "what": "local imports, literals, dynamic unresolved links labelled UNKNOWN",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L06",
+      "object": "owners",
+      "what": "no fabricated human accountable; unreviewed remains open",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L07",
+      "object": "workflow paths",
+      "what": "100% workflows parsed and purpose, triggers, jobs, side-effect candidates indexed",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L08",
+      "object": "required status checks",
+      "what": "provider branch protection/rulesets fetched or UNKNOWN; never inferred from YAML",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L09",
+      "object": "retention",
+      "what": "baseline 87 named workflows protected until individual approval and equivalence proof",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L10",
+      "object": "removal safety",
+      "what": "zero file or check deletion without verified consumer closure and original contract review",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L11",
+      "object": "rename safety",
+      "what": "all literal/dynamic refs, generated manifests and packaging sources checked",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L12",
+      "object": "duplication",
+      "what": "SHA-equal bytes only; equivalence of effects not concluded from blob identity",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L13",
+      "object": "1000 alternatives",
+      "what": "bounded objective and eligibility with reproducible witness",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L14",
+      "object": "100000 mutations",
+      "what": "20 seeded realistic negative families plus positive controls, repeatability proven",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    },
+    {
+      "id": "V5B-L15",
+      "object": "independent review",
+      "what": "external engineer demonstrates modify and rollback; no CI as product proof",
+      "status": "OPEN_UNTIL_ORIGINAL_EVIDENCE"
+    }
+  ],
+  "evidence_ladder": [
+    "git_tree_blob",
+    "source_content_and_dependency_analysis",
+    "local_test_readback",
+    "workflow_result",
+    "human_approval",
+    "provider_runtime_installation"
+  ],
+  "nonclaims": [
+    "zero_unresolved_dynamic_links",
+    "all_files_human_reviewed",
+    "required_checks_verified",
+    "product_installed",
+    "native_runtime_active",
+    "workflow_count_is_bad",
+    "SHA_equality_is_functional_equivalence"
+  ],
+  "implementation_rules": {
+    "new_runtime_owner": false,
+    "new_CI_workflow": false,
+    "prefer_extend_existing_workflow": true,
+    "read_only_auditor": true,
+    "do_not_auto_delete": true,
+    "one_source_registry": true,
+    "pr_not_a_release": true,
+    "model_falsification_not_llm_semantic_benchmark": true
+  },
+  "preservation": {
+    "V5A_source_head": "ed37cac39cd95b9e142962dd370452b39e2fd8f7",
+    "V5A_original_owner_modifications": 0
+  }
+}

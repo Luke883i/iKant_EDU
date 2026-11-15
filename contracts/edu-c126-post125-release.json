@@ -1,0 +1,52 @@
+{
+  "schema": "ikant-edu-c126-post125-release-contract/v1",
+  "authority": 0,
+  "base_main_observed": "19e9b30380c42ffea0c77db7661cc9eeb0b73455",
+  "pr_number": 126,
+  "activation": "CANDIDATE_VIEW_ONLY_UNTIL_MERGED_AND_REOPENED",
+  "original_source_pin": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
+  "original_c107_carrier_sha256": "d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d",
+  "c124_composite_epoch": "6648e1f58157224cbd6440a04764d3df34aa0cfd",
+  "new_source_epoch": false,
+  "changed_original_C107": false,
+  "changed_original_C87": false,
+  "source_owner": "ORIGINAL_C70",
+  "host_owner": "EXISTING_PR119",
+  "view_owner": "EXISTING_C125",
+  "added_guard": "host/edu-c126-channel-qualifier.mjs",
+  "required_order": [
+    "C72_HUMAN_GATE",
+    "ORIGINAL_C70_PREVIEW",
+    "C124_12_CHANNELS",
+    "C126_PRELANGUAGE_VALIDATE",
+    "C117_ACK_AND_C124_ACK_PROTOCOL_ONLY",
+    "C114_PREWRITE",
+    "EXCLUSIVE_C87_WRITER",
+    "INDEPENDENT_C87_REOPEN",
+    "EXACT_C125_VOICE"
+  ],
+  "fail_mode": "NO_VOICE_BEFORE_HOST_CALLBACK",
+  "forbidden_claims": [
+    "MODEL_SEMANTIC_CAUSALITY",
+    "NATIVE_CHATGPT_PER_TURN",
+    "PROVIDER_AUTHENTICATION",
+    "CROSS_CHAT_PERSISTENCE",
+    "CANONICAL_ACTIVE"
+  ],
+  "local_mutations": {
+    "seed": "0xc126202610140001",
+    "finite_scenarios": 1000000,
+    "classes": 24,
+    "oracle": "INDEPENDENT_NEGATIVE_GROUPS",
+    "direct_node_mutations": 4096,
+    "real_llm_calls": 0
+  },
+  "dod": {
+    "L0": "SOURCE_IDENTITY",
+    "L1": "TYPED_COMPLETE_12_OF_12",
+    "L2": "C87_ORIGINAL_INDEPENDENT_REOPEN",
+    "L3": "C125_CONTROLLED_SEND",
+    "L4": "REAL_LLM_INDEPENDENT_ABLATIONS_OPEN",
+    "L5": "REPO_CI_ON_FINAL_HEAD"
+  }
+}

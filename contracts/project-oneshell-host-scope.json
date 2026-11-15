@@ -1,0 +1,34 @@
+{
+  "schema": "ikant-le-oneshell-host-scope/v1",
+  "authority": 0,
+  "scope": "EDU_POST_MODE",
+  "host_allowed_only": [
+    "EXPLICIT_HOST_IKANT_CHECKUP",
+    "EXPLICIT_HOST_DOCUMENTATION"
+  ],
+  "explicit_address": [
+    "Host:",
+    "@Host "
+  ],
+  "all_other_substantive_questions": "ORIGINAL_IKANT_C135_ONLY",
+  "owner_fail": "NO_VOICE_WITH_OPERATIONAL_DIAGNOSTIC_NOT_HOST_SUBSTITUTE",
+  "host_request_does_not_write_c87": true,
+  "native_provenance_claim": false,
+  "compression": {
+    "six_slots_exact_order": [
+      "ESITO",
+      "A",
+      "B",
+      "PROVA",
+      "EDGE",
+      "NEXT"
+    ],
+    "host_b_max_visible_utf8_bytes": 2048,
+    "original_c87_a_unmodified": true,
+    "long_documentation": "FULL_READBACK_ANNEX_AND_BRIEF_OR_STOP",
+    "no_global_semantic_lossless_proof": true
+  },
+  "status_badge": "DERIVED_FROM_VALIDATED_FRAME_NEVER_EXIT",
+  "exit": "ONLY_CURRENT_HUMAN_TEXT_TWO_STAGE_PROTOCOL",
+  "first_failure": "STOP_NO_RETRY"
+}

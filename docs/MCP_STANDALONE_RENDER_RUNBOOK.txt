@@ -1,0 +1,58 @@
+# iKant MCP external — standalone Render / Render-like candidate
+
+**Source baseline:** `e05f20df2ebc93c99d57e4ad421d27f45aa005f3` / TREE `695d0d95f365e2c9ff627582034b79b54d208993`. PR code is an overlay on this parent. **Not deployed, not registered in ChatGPT, not EDU or CANONICAL; PRODUCT_NO_GO.**
+
+## AS-IS
+
+The repository already implements a Streamable HTTP MCP endpoint at `plugins/ikant-le-session-chat/server/server.mjs` with `/mcp`, `/healthz`, RFC 9728 protected resource metadata, RS256/JWKS token verification, tool-level `ikant:connect` / `ikant:write`, a C20 deployed runtime adapter and a Render pre-PR Blueprint. The resource server **does not implement an OAuth authorization server**.
+
+Original EDU/CANONICAL admission stays C72-owned and has exactly two modes. This **MCP_EXTERNAL** distribution surface is independent of both and cannot attest provider-native C59 identity. The session hint `openai/session` is not a signed ChatGPT event.
+
+## Operator workflow: Render
+
+1. Qualify the PR with source-complete tests and independent owner review. Use `render.mcp-standalone.candidate.yaml` from the repository root or create an equivalent paid Node web service. Disable auto-deploy for first deployment.
+2. Configure a **real external OAuth 2.1 authorization server** (IdP). It must publish RFC 8414/OIDC discovery, support authorization-code + PKCE S256, CIMD/DCR or a registered client, and issue signed RS256 access tokens with exact issuer, audience/resource, expiry and scope. Implement revocation/short expiry and account separation. Configure the exact callback and client-document URLs provided by ChatGPT. No credentials belong in Git or chat.
+3. In Render, mount one persistent paid disk at `/var/data/ikant-le`, use a single service instance, and set `IKANT_MCP_DEPLOYMENT_PROFILE=standalone`, `IKANT_MCP_AUTH_MODE=oauth`, `IKANT_MCP_PERSISTENCE_ROOT=/var/data/ikant-le`, `IKANT_LE_DEPLOYMENT_ROOT=/var/data/ikant-le/deployment`, `IKANT_MCP_ALLOWED_ORIGIN=https://chatgpt.com`, and `IKANT_ONESHELL_THREAD_PANEL=0`. Set the three `sync:false` values in Render: `IKANT_MCP_OAUTH_RESOURCE=https://<REAL_HOST>/mcp`, `IKANT_MCP_OAUTH_ISSUER` and `IKANT_MCP_OAUTH_JWKS_URL` (issuer-origin HTTPS URL).
+4. The Node server listens on `0.0.0.0:$PORT`, behind Render-managed public HTTPS. Check `GET /healthz` after the deployment store has been physically reopened. Check `GET /.well-known/oauth-protected-resource/mcp`, then unauthenticated `POST /mcp` must return **401 with WWW-Authenticate: Bearer resource_metadata=...**; failed Origin/content-type/length must fail closed. Never use untrusted Host headers to construct resource metadata.
+5. Verify real issuer discovery and an IdP-issued token against JWT signature, `iss`, `aud`, `exp`, `iat`, `nbf`, and scopes. Run `initialize → tools/list → tools/call` with the real MCP SDK. A local mock IdP is only protocol qualification, not proof of the real IdP.
+6. In the **ChatGPT Plugins** management UI select **Add custom MCP server** (wording may vary), supply your verified HTTPS `/mcp`, choose OAuth, and link manually. Configure CIMD/DCR or a registered client as actually supported by the external IdP; the authorization callback and stable redirect mode must match the exact UI-provided URI. The optional `plugins/ikant-le-session-chat/mcp.standalone.template.json` is a schema/configuration example, **not** an installed plugin. Run a real connection trace, read tool, an exact human consent event, and a scoped write, each with independent source/runtime receipts.
+7. Perform faults: expired/wrong audience/scope/issuer token, malicious jwks kid, wrong Origin, forged session hint, cross-user same hint, crash after a possible write, simultaneous accepts, disk full/loss, restart with persistency check, and rollback to prior compatible source. On UNKNOWN write: **STOP and reconcile read-only, never blindly retry.**
+
+### Render-like (VM / Fly.io / Railway / Kubernetes)
+
+The same controls require public TLS, stable `/mcp`, Node >=20, a durable encrypted volume mounted under the configured deployment root, a single authoritative writer, explicit container shutdown/grace and real OAuth/ChatGPT linking. A k8s stateless replica or a volume-less deployment is *not* a safe drop-in equivalent. No auto scaling or zero-downtime claim until concurrency/store topology is redesigned. Render paid disk itself disables zero-downtime rollouts.
+
+## Falsifiable DoD (each separately proven)
+
+| Gate | Evidence required | Pre-PR status |
+|---|---|---|
+| G1 Source and modes | frozen HEAD/TREE, no original C72/C59/C87 replacement | source review candidate |
+| G2 OAuth resource | HTTPS metadata, real IdP discovery, PKCE S256, CIMD/DCR or registered client, exact `resource` | mock only; REAL_OAUTH_OPEN |
+| G3 Authorization | JWT signature, issuer/audience/expiry, per-tool scopes and UI challenge | bounded tests; real IdP open |
+| G4 MCP wire | SDK Streamable HTTP initialize/list/call including 401 and insufficient scope | CI synthetic attempt; results required |
+| G5 Worker | bounded child/stdio/time, unknown write classification, no blind retry, fault injection | local tests; real crash drill open |
+| G6 Store | physical reopen, restart recovery, writer locks, backup and rollback on paid disk | LIVE_RENDER_OPEN |
+| G7 ChatGPT | human-installed connection with 3 distinct authenticated tool traces and observable UX | CHATGPT_CONNECTION_OPEN |
+| G8 Operations | rate controls, privacy, secrets, audit logs, supply chain lock, revocation and user pilot | PRODUCT_NO_GO |
+
+The reproducible 10,000-question corpus is **20 domains × 5 source anchors × 10 actors × 10 mutation classes**. It produces a finite *policy-oracle* decision for each question, not 10,000 independent LLM judgments and not a universal semantic optimum. Global decision: `PRODUCT_NO_GO_UNTIL_REAL_AS_OAUTH_SDK_RENDER_CHATGPT_AND_HUMAN_PILOT`. Human approval remains necessary after all proofs.
+
+## Open debt / limitations
+
+- No committed npm lockfile. The current Blueprint uses npm install with pinned direct versions but may resolve changed transitives; supply-chain reproducibility is open.
+- `Content-Length` precheck is not a streamed-body size bound for transfer-encoding chunked requests; add a transport-safe, tested bound before production.
+- OAuth bearer tokens can be replayed until expiry unless revoked/introspected by an explicit AS design.
+- Killing a subprocess after timeout does not prove whether the original writer already committed. It is an unknown outcome and requires reconciliation.
+- This PR does not create an IdP, deploy on Render, register ChatGPT, prove native C59, or show a human pilot.
+- Positive HTTP SDK tests with a local generated CA are synthetic, not provider linking. Real tool callback behavior and provider UI must be independently witnessed.
+
+## Up-to-date reference documentation
+
+- https://developers.openai.com/plugins/build/auth
+- https://developers.openai.com/plugins/build/mcp-server
+- https://developers.openai.com/plugins/build/plugins
+- https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization
+- https://render.com/docs/blueprint-spec
+- https://render.com/docs/health-checks
+- https://render.com/docs/disks
+- https://render.com/docs/deploys

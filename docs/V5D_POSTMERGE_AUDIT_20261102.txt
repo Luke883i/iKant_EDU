@@ -1,0 +1,6 @@
+V5-D | POST-MERGE SOURCE & CI AUDIT | HOST authority=0
+PR #203 merged=true at d1fe2d1ac9988e53907baf790b9332d017e0eed6 (main verified). Git TREE 49e0d9f72e3fc4c3c7a94221329f47d7800d1ca6 complete, 1535 entries, not truncated. The PR's reviewed head a01af0543eae47c3c238e0da606673a13851c58b had 53/53 successful CI check-runs before merge. Postmerge merge-head check-runs at the start of V5-E audit: 38 success, one still in progress; this is not all-green attestation for that commit.
+
+Audit of bounded V5-D: contract G->I1-I5->L01-L17; six original OneShell slots, noninteractive HTML and canonical Markdown; unchanged A/EDGE/NEXT, no native UI or provider delivery receipt, original WeakSet frame validation before Host verifier. No C72/C135/C87/C125/S03 original owner replaced in V5-D. V5-D CI checks and 100k typed Host projection faults demonstrate software behaviors only, not model semantics, actual C72 admission or provider mounting/persistence.
+
+HARDENING CANDIDATE: V5-E improves cognition arbitration before effect, without expanding Host authority. Evidence classes: GIT source lock / CI source tests / original owner receipts / provider native delivery separated. The global V5-D field user experience and V5-G two-engineer review are OPEN. No repin of chat C72, no external native installation or ACTIVE claim. PRODUCT_NO_GO.

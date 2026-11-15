@@ -1,0 +1,134 @@
+name: OneShell HEAD-only prompt
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Project HEAD-only prompt
+        run: node --test tests/project-oneshell-prompt.test.mjs
+      - name: V5-B static syntax and pure safety tests
+        run: |
+          node --check scripts/v5b-repository-governance-audit.mjs
+          V5B_SKIP_LIVE=1 node --test tests/v5b-repository-governance.test.mjs
+      - name: V5-B collect diagnostic readback, preserve fail-closed
+        id: v5b_diagnostic
+        shell: bash
+        run: |
+          node scripts/v5b-repository-governance-audit.mjs summary > "$RUNNER_TEMP/v5b-inventory-summary.json" 2> "$RUNNER_TEMP/v5b-inventory-stderr.txt" || :
+          node scripts/v5b-repository-governance-audit.mjs full > "$RUNNER_TEMP/v5b-inventory-full.json" 2> "$RUNNER_TEMP/v5b-full-stderr.txt" || :
+          node --input-type=module -e "import fs from 'node:fs';let e='NONE';try{const r=JSON.parse(fs.readFileSync(process.argv[1]));e=r.errors[0]||'NONE';}catch{e='EXCEPTION_'+fs.readFileSync(process.argv[2],'utf8').slice(0,280)}fs.appendFileSync(process.env.GITHUB_OUTPUT,'first_edge='+e.replace(/[^A-Za-z0-9_:.+-]/g,'_').slice(0,210)+String.fromCharCode(10));" "$RUNNER_TEMP/v5b-inventory-summary.json" "$RUNNER_TEMP/v5b-inventory-stderr.txt"
+      - name: V5-B source-indexed gate [${{ steps.v5b_diagnostic.outputs.first_edge }}]
+        run: |
+          node --input-type=module -e "import fs from 'node:fs';const r=JSON.parse(fs.readFileSync(process.argv[1]));if(r.errors.length){console.error(JSON.stringify(r.errors));process.exit(1)}" "$RUNNER_TEMP/v5b-inventory-summary.json"
+      - name: V5-B live checkout assertions
+        run: node --test tests/v5b-repository-governance.test.mjs
+      - name: V5-B 1000 alternatives and 100k seeded tests repeated byte-identically
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/v5b-alternatives-1k.mjs > "$RUNNER_TEMP/v5b-alt-1.json"
+          node scripts/v5b-alternatives-1k.mjs > "$RUNNER_TEMP/v5b-alt-2.json"
+          cmp "$RUNNER_TEMP/v5b-alt-1.json" "$RUNNER_TEMP/v5b-alt-2.json"
+          node scripts/v5b-falsify-100k.mjs > "$RUNNER_TEMP/v5b-fuzz-1.json"
+          node scripts/v5b-falsify-100k.mjs > "$RUNNER_TEMP/v5b-fuzz-2.json"
+          cmp "$RUNNER_TEMP/v5b-fuzz-1.json" "$RUNNER_TEMP/v5b-fuzz-2.json"
+          node --input-type=module -e "import fs from 'node:fs';let a=JSON.parse(fs.readFileSync(process.argv[1]));let f=JSON.parse(fs.readFileSync(process.argv[2]));if(a.cases!==1000||a.selected.id!=='B-0001'||f.cases!==100000||f.negative_rejected!==100000||f.unsafe_admitted!==0||f.positive_controls!==10000||f.false_positive_stops!==0||f.product_release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/v5b-alt-1.json" "$RUNNER_TEMP/v5b-fuzz-1.json"
+      - name: Preserve read-only V5-B audit outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5b-source-inventory-and-governance-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/v5b-inventory-full.json
+            ${{ runner.temp }}/v5b-inventory-summary.json
+            ${{ runner.temp }}/v5b-alt-1.json
+            ${{ runner.temp }}/v5b-fuzz-1.json
+          retention-days: 30
+          if-no-files-found: error
+      - name: V5-A single normative EDU entrypoint and reticular regressions
+        run: |
+          node scripts/project-edu-entrypoint.mjs verify
+          node --test tests/project-v5a-entrypoint.test.mjs tests/v1-product-contract.test.mjs tests/c131-product-release.test.mjs
+      - name: V5-A 1000 bounded semantic alternatives and 100k seeded negative scenarios
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/project-v5a-alternative-study.mjs > "$RUNNER_TEMP/v5a-options-one.json"
+          node scripts/project-v5a-alternative-study.mjs > "$RUNNER_TEMP/v5a-options-two.json"
+          cmp "$RUNNER_TEMP/v5a-options-one.json" "$RUNNER_TEMP/v5a-options-two.json"
+          node scripts/project-v5a-falsify-100k.mjs > "$RUNNER_TEMP/v5a-fuzz-one.json"
+          node scripts/project-v5a-falsify-100k.mjs > "$RUNNER_TEMP/v5a-fuzz-two.json"
+          cmp "$RUNNER_TEMP/v5a-fuzz-one.json" "$RUNNER_TEMP/v5a-fuzz-two.json"
+          node --input-type=module -e "import fs from 'node:fs';let a=JSON.parse(fs.readFileSync(process.argv[1]));let b=JSON.parse(fs.readFileSync(process.argv[2]));if(a.generated!==1000||a.eligible<2||a.winner.id!=='A-0001'||b.cases!==100000||b.negative_rejected!==100000||b.unsafe_admitted!==0||b.positive_controls!==10000||b.false_positive_stops!==0||b.release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/v5a-options-one.json" "$RUNNER_TEMP/v5a-fuzz-one.json"
+      - name: Project responsibility matrix
+        run: node --test tests/project-bootstrap-responsibility-matrix.test.mjs
+      - name: Constitutional 7 laws + 3 actions, one million seeded cases twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/project-prompt-seven-three-falsify-1m.mjs > "$RUNNER_TEMP/what11-a.json"
+          node scripts/project-prompt-seven-three-falsify-1m.mjs > "$RUNNER_TEMP/what11-b.json"
+          cmp "$RUNNER_TEMP/what11-a.json" "$RUNNER_TEMP/what11-b.json"
+          node --input-type=module -e "import fs from 'node:fs';const q=JSON.parse(fs.readFileSync(process.argv[1]));if(q.scenarios!==1000000||q.unique_masks!==1000000||q.families!==40||q.divergences!==0||q.unsafe_promotions!==0||q.structural_counterexamples!==q.structurally_rejected||q.installed_prompt_attested!==false)process.exit(1)" "$RUNNER_TEMP/what11-a.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: prompt-7x3-seeded-one-million
+          path: ${{ runner.temp }}/what11-a.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Machine-readable Gold-first grounding and original C72 stager
+        run: |
+          node --test tests/project-host-tool-grounding.test.mjs
+          node --test tests/project-c72-host-assisted-local-file.test.mjs
+      - name: 100k pre-seeded grounding mutations repeated byte-identically
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/project-host-tool-grounding-falsify-100k.mjs > "$RUNNER_TEMP/grounding-a.json"
+          node scripts/project-host-tool-grounding-falsify-100k.mjs > "$RUNNER_TEMP/grounding-b.json"
+          cmp "$RUNNER_TEMP/grounding-a.json" "$RUNNER_TEMP/grounding-b.json"
+          node --input-type=module -e "import fs from 'node:fs';const x=JSON.parse(fs.readFileSync(process.argv[1]));if(x.cases!==100000||x.unique_states!==100000||x.unexpected!==0||x.privileged_promotions!==0||x.actual_c72_invocations!==0||x.release!=='PRODUCT_NO_GO')process.exit(1)" "$RUNNER_TEMP/grounding-a.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: host-tool-grounding-100k
+          path: ${{ runner.temp }}/grounding-a.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Original C72 portable bridge
+        run: node --test tests/project-c72-portable-bridge.test.mjs
+      - name: Original C72 physical ingress
+        run: node --test tests/project-c72-physical-ingress.test.mjs
+      - name: Original C72 staged ingress
+        run: node --test tests/project-c72-staged-ingress.test.mjs
+      - name: Host nonauthority followthrough
+        run: node --test tests/project-host-followthrough.test.mjs
+      - name: Build immutable HEAD-only prompt
+        shell: bash
+        run: |
+          HEAD=$(git rev-parse HEAD)
+          TREE=$(git rev-parse 'HEAD^{tree}')
+          MODE=candidate
+          if [ "$GITHUB_EVENT_NAME" = push ] && [ "$GITHUB_REF" = refs/heads/main ]; then MODE=canonical; fi
+          mkdir -p "$RUNNER_TEMP/ikant-prompt"
+          node scripts/build-project-oneshell-prompt.mjs --mode portable --head "$HEAD" --tree "$TREE" --out "$RUNNER_TEMP/ikant-prompt/portable"
+          node scripts/build-project-oneshell-prompt.mjs --mode "$MODE" --head "$HEAD" --tree "$TREE" --out "$RUNNER_TEMP/ikant-prompt/pinned"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oneshell-prompt-portable-and-head
+          path: ${{ runner.temp }}/ikant-prompt/
+          retention-days: 30
+          if-no-files-found: error

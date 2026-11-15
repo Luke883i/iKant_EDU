@@ -1,0 +1,24 @@
+{
+  "schema": "ikant-le-s05-cil-human-shell-poc/v1",
+  "authority": 0,
+  "owner": "HOST_PROJECTION_ONLY",
+  "source_of_voice": "S03_OWNER_BOUND_C87_C125_READBACK_ONLY",
+  "slot_order": ["ESITO", "A", "B", "PROVA", "EDGE", "NEXT"],
+  "cil_subset": {
+    "origin": "user-attached CIL_chat_v1.zip (not vendored)",
+    "intent": "explain_relation",
+    "declared_availability": {"VIZ": "no", "IUI": "yes"},
+    "object": "IUI.TEXT",
+    "count": 6,
+    "relation": "co_present",
+    "edges": 5,
+    "interactive_binding": false,
+    "persistent_ui": false,
+    "renderer_guarantee": false
+  },
+  "readback_required_for_A": true,
+  "no_native_active_from_layout": true,
+  "not_a_new_writer": true,
+  "docx_not_inferred": true,
+  "ten_thousand_mutations": "DEFERRED_REFLECTION_2_OF_3"
+}

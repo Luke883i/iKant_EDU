@@ -1,0 +1,17 @@
+{
+  "schema": "ikant-le-c140-open-edu/v1",
+  "authority": 0,
+  "owner": "C135_EDU_V2",
+  "requires": ["C72_V2_EDU_SELECTION", "EXACT_INPUT_SHA256", "C100_PLAN_ACK", "C87_SINGLE_WRITER_ATOMIC_GUARD", "INDEPENDENT_C87_REOPEN", "C125_AT_MOST_ONCE"],
+  "topic_whitelist": false,
+  "method": ["observable_evidence", "inference_vs_claim", "uncertainty", "counterexample", "falsifiability"],
+  "resource_limit_bytes": 12000,
+  "input_lossless": "SHA256_OF_FULL_UTF8_NO_TRUNCATION",
+  "extended_input_path_c70_executed": false,
+  "original_c107_and_c114_frozen": true,
+  "c139_unchanged": true,
+  "original_c87_writer": true,
+  "native_origin_attested": false,
+  "active": false,
+  "product_release": "PRODUCT_NO_GO_PENDING_NATIVE_AND_PILOT"
+}

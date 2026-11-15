@@ -1,0 +1,196 @@
+{
+  "schema": "ikant-le-fastboot-convergence-contract/v1",
+  "slice": "C19.HOST_OBSERVED_FASTBOOT_CONVERGENCE",
+  "authority": 0,
+  "intent": "Make post-accept fastboot converge across physically observed host carriers without turning failed or partial carrier attempts into authoritative REMOTE_HISTORY.",
+  "gold_source": {
+    "repository": "Luke883i/iKant",
+    "pr": 153,
+    "head": "4113698864a66a53b214d41105f16b9d95d3eb7e",
+    "distilled_not_copied": true
+  },
+  "critical_path": [
+    "FIRST_ACCEPT",
+    "HOST_EXECUTION_PLANE_PLAN",
+    "QUARANTINED_TRANSFER_ATTEMPT",
+    "REMOTE_HISTORY_COMMIT",
+    "PHYSICAL_RUNTIME_INGRESS",
+    "VERIFIED_LOCAL_ROOT",
+    "SAME_EPOCH_CONTINUATION",
+    "LIVE_ACTIVE_COMMIT"
+  ],
+  "global_dod": [
+    "C19_G1 observed-capability planning never assumes a physical edge",
+    "C19_G2 failed/partial attempts never become authoritative remote history",
+    "C19_G3 exactly one complete transfer may bind the single REMOTE_HISTORY commit",
+    "C19_G4 same acceptance/source/deadline origin survive carrier planning and retry",
+    "C19_G5 successful runtime ingress converges through canonical C15 materialization and C18 continuation without second human acceptance",
+    "C19_G6 ACTIVE remains binary and fail-closed when no physical runtime sink exists",
+    "C19_G7 qualification score >=0.99 with zero unsafe ACTIVE and zero integrity laundering"
+  ],
+  "intermediate_dod": [
+    "C19_I1 tri-state capability survey",
+    "C19_I2 bounded materially-distinct carrier planning",
+    "C19_I3 quarantined attempt identity and digest validation",
+    "C19_I4 single REMOTE_HISTORY commit binding",
+    "C19_I5 source-object to runtime-sink physical ingress binding",
+    "C19_I6 canonical materializer reuse",
+    "C19_I7 same-epoch downstream continuation",
+    "C19_I8 10M seeded real-code semantic qualification"
+  ],
+  "local_dod": [
+    "C19_L1 UNKNOWN produces PROBE_REQUIRED before fallback",
+    "C19_L2 FALSE excludes a carrier",
+    "C19_L3 PROVEN carrier is executable only with runtime execution-plane fields observed",
+    "C19_L4 zero-object failure is non-authoritative",
+    "C19_L5 partial object set is non-authoritative",
+    "C19_L6 duplicate carrier retry is rejected",
+    "C19_L7 complete attempt must be last",
+    "C19_L8 complete attempt requires exact source/root/object identities and byte sink evidence",
+    "C19_L9 legacy-v1 carrier attempts reject model-mediated bytes; canonical-v2 VERIFIED_OPAQUE_RELAY is allowed only under C28 authority-zero samehash policy",
+    "C19_L10 source object identity and runtime sink identity are both required",
+    "C19_L11 transfer receipt binds the single history commit",
+    "C19_L12 acceptance/source/deadline preservation flags are mandatory",
+    "C19_L13 canonical local materialization/readback remains C15-owned",
+    "C19_L14 second acquisition after history commit remains C18-forbidden"
+  ],
+  "checklist": [
+    "freeze exact iKant_LE main and iKant PR153 head",
+    "add pure host-observed carrier planner",
+    "add quarantine attempt receipt validator",
+    "bind one complete attempt to existing source-bound transfer receipt",
+    "require C19 convergence receipt inside chat bootstrap evidence",
+    "preserve C15 transfer and runtime-root materializer",
+    "preserve C17 original deadline",
+    "preserve C18 same-epoch continuation and no second remote round",
+    "add deterministic unit tests for zero/partial/complete/retry boundaries",
+    "run full npm test and npm run check",
+    "run 10,000,000 seeded realistic real-code semantic mutations",
+    "regenerate runtime-root descriptor and shards",
+    "open PR without merging"
+  ],
+  "metrics": {
+    "qualification_cases": 10000000,
+    "qualification_score_min": 0.99,
+    "semantic_mismatches_required": 0,
+    "unsafe_active_required": 0,
+    "model_bytes_accepted_required": 0,
+    "duplicate_carrier_retry_accepted_required": 0,
+    "history_double_commit_required": 0,
+    "source_or_acceptance_reset_required": 0,
+    "deletion_false_green_each_retained_node_min": 1,
+    "existing_c15_c17_c18_regressions_required": 0
+  },
+  "claim_boundary": {
+    "semantic_qualification_is_not_physical_host_bridge_proof": true,
+    "bridge_provisioning_is_not_claimed": true,
+    "runtime_execution_plane_is_not_user_device": true,
+    "unavailable_host_capability_must_remain_fail_closed": true,
+    "legacy_v1_model_mediated_false_rule_forbids_verified_v2_relay": false
+  },
+  "canonical_v2_overlay": {
+    "slice": "C28.FULL_IKANT_SEMANTIC_ABSORPTION",
+    "constitutional_edge": "LOCAL_INGRESS",
+    "planner_owner": "EXISTING_FASTBOOT_CONVERGENCE",
+    "retry_memory_owner": "FASTBOOT_CHANNEL_LEDGER",
+    "first_unclosed_edge": "LOCAL_INGRESS_UNTIL_INGRESS_RECEIPT_CLOSES",
+    "unchanged_decision_unchanged_evidence_retry": false,
+    "byte_paths": [
+      "LOCAL_DIRECT",
+      "VERIFIED_OPAQUE_RELAY"
+    ],
+    "model_authority": 0,
+    "legacy_v1_carrier_attempt_schema_remains_compatibility_only": true
+  },
+  "c40_reentry_closure": {
+    "slice": "C40.BOOTSTRAP_REENTRY_CLOSURE",
+    "authority": 0,
+    "objective": "Close the execute-observe-reenter loop inside the existing Fastboot owner so the caller never supplies retry memory or invents an outcome.",
+    "invariants": [
+      "FASTBOOT_CHANNEL_LEDGER.failed_decisions is the only canonical failed-carrier memory",
+      "a failed carrier is excluded while the same carrier-local evidence epoch remains",
+      "only materially changed evidence for that carrier may requalify a previously failed carrier",
+      "re-entry consumes exactly one existing typed owner receipt",
+      "raw booleans and prose outcomes are not observations",
+      "failed or partial carrier attempts advance only to a materially distinct canonical carrier",
+      "complete carrier attempt hands off to PRE_RUNTIME_HOST_ADAPTER and never claims ACTIVE"
+    ],
+    "accepted_observation_schemas": [
+      "ikant-le-fastboot-capability-receipt/v1",
+      "ikant-le-fastboot-carrier-attempt/v1"
+    ],
+    "new_planner": false,
+    "new_retry_memory": false,
+    "new_truth_owner": false,
+    "metrics": {
+      "edge_catalog_total": 20,
+      "edge_catalog_coverage_min": 0.95,
+      "semantic_mutations": 1000,
+      "mutation_kill_ratio_min": 0.95,
+      "unsafe_active_required": 0,
+      "same_carrier_retry_same_evidence_required": 0,
+      "raw_outcome_accept_required": 0
+    },
+    "checklist": [
+      "derive retry exclusions from ledger failure memory",
+      "bind probe evidence to current canonical probe carrier",
+      "bind attempt receipt to current canonical execute carrier",
+      "advance failed/partial attempt to distinct carrier",
+      "permit requalification only after changed evidence for the failed carrier",
+      "handoff complete attempt without ACTIVE",
+      "wire the single AI entrypoint to the reducer",
+      "regenerate runtime root",
+      "pass canonical CI"
+    ]
+  },
+  "c41_retry_epoch_ux_continuity": {
+    "slice": "C41.CARRIER_LOCAL_RETRY_AND_UX_CONTINUITY",
+    "authority": 0,
+    "objective": "Close the remaining post-C40 bypasses without new owners: canonical retry memory is ledger-only and carrier-local, complete Fastboot transition routing is digest-bound, and Session Shell preserves one owner-derived NEXT into LOCAL_MATERIALIZATION.",
+    "invariants": [
+      "deriveFastbootStep rejects caller-supplied attempted carrier classes",
+      "Session Shell rejects caller-supplied attempted carrier classes",
+      "failed carrier exclusion is keyed by decision_key plus carrier_evidence_sha256",
+      "unrelated carrier evidence cannot requalify a failed carrier",
+      "changed evidence for the failed carrier may requalify that carrier",
+      "HANDOFF_PRE_RUNTIME binds owner, action, attempt receipt, authority and active claim into the transition digest",
+      "HANDOFF_PRE_RUNTIME cannot coexist with a next Fastboot step or ledger mutation",
+      "Session Shell renders EXECUTE_PRE_RUNTIME_BOOTSTRAP only from a validated Fastboot transition",
+      "the first unclosed constitutional edge after complete LOCAL_INGRESS is LOCAL_MATERIALIZATION",
+      "ACTIVE continues to hide bootstrap guidance"
+    ],
+    "retry_memory_owner": "FASTBOOT_CHANNEL_LEDGER.failed_decisions",
+    "retry_evidence_scope": "CARRIER_LOCAL_CHANNEL_EVIDENCE",
+    "transition_owner": "src/fastboot-convergence.mjs#advanceFastbootObservation",
+    "shell_owner": "src/session-shell.mjs",
+    "new_lifecycle": false,
+    "new_planner": false,
+    "new_retry_memory": false,
+    "new_truth_owner": false,
+    "new_status_owner": false,
+    "metrics": {
+      "edge_catalog_total": 26,
+      "edge_catalog_coverage_min": 0.95,
+      "semantic_attack_cases": 10000,
+      "semantic_attack_families": 20,
+      "mutation_kill_ratio_min": 0.95,
+      "caller_retry_memory_accept_required": 0,
+      "unrelated_requalification_required": 0,
+      "unbound_handoff_route_required": 0,
+      "actionable_transition_ui_gap_required": 0,
+      "unsafe_active_required": 0
+    },
+    "checklist": [
+      "remove caller retry influence from canonical step derivation",
+      "remove caller retry influence from Session Shell validation",
+      "bind failures to carrier-local evidence epoch",
+      "prove unrelated evidence does not requalify the failed carrier",
+      "prove relevant same-carrier evidence can requalify",
+      "digest-bind the complete pre-runtime route",
+      "project validated transition NEXT through Session Shell",
+      "regenerate runtime root",
+      "run exact-candidate semantic attacks",
+      "pass canonical qualification"
+    ]
+  }
+}

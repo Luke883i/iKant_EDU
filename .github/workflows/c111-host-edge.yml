@@ -1,0 +1,36 @@
+name: C111 host A/B edge and source-exact cognitive execution
+on:
+  pull_request:
+    paths:
+      - 'host/c111-*'
+      - 'scripts/c111-*'
+      - 'tests/c111-*'
+      - 'scripts/c107-pack.mjs'
+      - '.github/workflows/c111-host-edge.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-local-edge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax
+        run: |
+          node --check host/c111-host-edge.mjs
+          node --check scripts/c111-host-edge-cli.mjs
+          node --check tests/c111-original.test.mjs
+      - name: Original C70 C100 C87 physically invoked and reopened
+        run: node --test tests/c111-original.test.mjs
+      - name: One million adverse host frames
+        run: |
+          node scripts/c111-falsify-1m.mjs > /tmp/c111-million.json
+          node -e 'const r=require("/tmp/c111-million.json");if(!r.passed||r.cases!==1000000||r.unexpected_promotions!==0)process.exit(2);console.log(JSON.stringify(r))'
+      - name: 100k abstract E2E state and grade simulations
+        run: |
+          node scripts/c111-simulate-100k.mjs > /tmp/c111-e2e.json
+          node -e 'const r=require("/tmp/c111-e2e.json");if(!r.passed||r.scenarios!==100000||r.violations!==0)process.exit(2);console.log(JSON.stringify(r))'

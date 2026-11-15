@@ -1,0 +1,396 @@
+{
+  "schema": "ikant-le-local-session-fastboot-contract/v7",
+  "slice": "C28.FULL_IKANT_SEMANTIC_ABSORPTION",
+  "authority": 0,
+  "objective": "Preserve SESSION_CHAT_LOCAL and the verified opaque relay while compressing C27 into one LOCAL_INGRESS owner with durable retry memory, first-unclosed-edge routing, explicit external gaps and six-edge repository closure.",
+  "product_boundary": {
+    "product_mode": "SESSION_CHAT",
+    "activation_modality": "SESSION_CHAT_LOCAL",
+    "language_engine": "HOST_SUPPLIED",
+    "runtime_execution_plane": "SESSION_LOCAL_NODE",
+    "managed_local_model_required": false,
+    "webapp_mode": false,
+    "hosted_runtime_required": false,
+    "plugin_or_mcp_registration_required": false,
+    "always_running_process_required": false,
+    "carrier_is_identity": false,
+    "conformance_is_identity": false
+  },
+  "forensic_method": {
+    "name": "CAUSAL_FORENSIC_CLOSURE",
+    "chain": [
+      "INTENT_OR_CLAIM",
+      "OWNER",
+      "PRECONDITIONS",
+      "INVARIANT",
+      "STATE_AND_TIME",
+      "OBSERVABLE_EFFECT",
+      "RECEIPT_OR_PROVENANCE",
+      "READBACK_OR_REOPEN",
+      "INDEPENDENT_ORACLE",
+      "COUNTERFACTUAL_OR_MUTATION",
+      "FAILURE_MEMORY",
+      "DISPOSITION",
+      "COMPRESSION_OR_DELETION_ORACLE"
+    ],
+    "debt_definition": "any missing, ambiguous, contradictory or unwitnessed required edge in the chain",
+    "reverse_derivation_required": true,
+    "forward_replay_required": true
+  },
+  "engineering_derivation": {
+    "seed": 202610012305,
+    "cases": 10000,
+    "candidate_mechanisms": 16,
+    "minimum_architecture_count": 1,
+    "minimum_cardinality": 15,
+    "receipt_sha256": "5029e8d3b589880a7620b92f788232a2245c0692f68e85ea2593ff39bfdeaef0",
+    "c28_contract_selection": {
+      "seed": "0xC28A11CE",
+      "candidates": 1000,
+      "valid": 8,
+      "winner_cost": 0,
+      "winner_cost_ties": 1,
+      "receipt_sha256": "39487904b0960fdc90286d735b5638bf679bca85c2fe13ddde7aa9c417b5fe00"
+    }
+  },
+  "qualification": {
+    "semantic_cases": 10000000,
+    "campaigns": 10,
+    "cases_per_campaign": 1000000,
+    "preseeded": true,
+    "candidate_oracle_mismatches_required": 0,
+    "all_mutants_witnessed_required": true,
+    "unsafe_active_required": 0,
+    "real_code_targeted_tests_required": true,
+    "local_activation_probe_required": true,
+    "full_repository_tests_required": true,
+    "workflow_green_required": true,
+    "pr25_audit_witnesses": [
+      "receipt-only bridge without local file must fail runtime validation",
+      "forged executed provenance with wrong module blob identities must fail",
+      "missing C21 transcript must prevent ACTIVE",
+      "caller probeRunner injection must not control production activation"
+    ],
+    "c23_ontology_mutation_cases": 10000000,
+    "c23_mutants": 13,
+    "c23_required_zero_unsafe_accept": true,
+    "c24_canonical_boundary_mutation_cases": 10000000,
+    "c24_mutants": 15,
+    "runtime_root_verify_required": true,
+    "c25_executor_data_plane_cases": 1000000,
+    "c25_preseeded": true,
+    "c25_unsafe_active_required": 0,
+    "c25_all_mutants_witnessed_required": true,
+    "c25_mutants": 16,
+    "c25_semantic_schema": "ikant-le-c25-executor-data-plane/v2",
+    "c27_session_capability_cases": 1000000,
+    "c27_preseeded": true,
+    "c27_mutants": 20,
+    "c27_candidate_oracle_mismatches_required": 0,
+    "c27_unsafe_active_required": 0,
+    "c27_current_host_stage_required": "N3_BRIDGE_PROBE_REQUIRED",
+    "c27_after_verified_relay_stage_required": "N4_INGRESS_EXECUTABLE",
+    "c28_contract_selection_cases": 1000,
+    "c28_contract_selection_unique_minimum_required": true,
+    "c28_semantic_closure_cases": 1000000,
+    "c28_mutants": 24,
+    "c28_candidate_oracle_mismatches_required": 0,
+    "c28_unsafe_active_required": 0,
+    "c28_all_mutants_killed_required": true,
+    "c28_repository_closed_with_external_gap_witness_required": true
+  },
+  "claim_boundary": {
+    "semantic_mutation_is_physical_proof": false,
+    "ci_is_current_chat_host_proof": false,
+    "receipt_schema_is_observation": false,
+    "degraded_is_active": false,
+    "source_identity_is_executed_provenance": false,
+    "host_channel_receipt_is_physical_proof": false,
+    "bridge_receipt_is_host_attestation_only": true,
+    "materializer_and_published_root_reopen_are_required_for_physical_truth": true,
+    "executed_provenance_receipt_without_exact_member_match_is_sufficient": false,
+    "pre_runtime_planner_is_runtime_self_bootstrap": false,
+    "self_signed_step_without_ledger_recompute_is_valid": false,
+    "failure_memory_external_to_ledger_is_canonical": false,
+    "model_generated_capability_is_host_attested_evidence": false,
+    "host_attested_evidence_is_mechanical_runtime_proof": false,
+    "legacy_c20_compatibility_is_current_product_truth": false,
+    "compatibility_alias_recognition_inside_runtime_is_allowed": false,
+    "deterministic_build_is_live_activation": false,
+    "model_context_is_byte_sink": false,
+    "activation_executor_provider_is_product_identity": false,
+    "slo_breach_is_integrity_failure": false,
+    "legacy_carrier_failure_memory_is_v2_retry_semantics": false,
+    "unmarked_legacy_mechanisms_are_canonical": false,
+    "verified_opaque_relay_is_model_authority": false,
+    "verified_opaque_relay_without_samehash_is_valid": false,
+    "diagnostic_projection_is_persisted_state": false,
+    "repository_closed_is_platform_callback_proof": false,
+    "current_host_reference_belongs_in_contract": false,
+    "external_gap_can_be_closed_by_repository_evidence": false,
+    "caller_supplied_attempted_classes_are_retry_truth": false
+  },
+  "terminology_policy": {
+    "canonical_pre_runtime_evidence": "HOST_ATTESTED",
+    "mechanical_terms_reserved_for": "LOCAL_RUNTIME_WRITE_REOPEN_HASH_PROBE_PERSISTED_READBACK",
+    "changed_evidence_term": "CHANNEL_EVIDENCE",
+    "acceptance_origin_ticket_term": "ACCEPTANCE_ORIGIN_TICKET",
+    "legacy_alias_policy": "FORBIDDEN_ON_CANONICAL_SURFACES; ENFORCED_BY_C23_DEVELOPMENT_GATES"
+  },
+  "legacy_compatibility": {
+    "slice": "C20",
+    "canonical": false,
+    "may_define_product_mode": false,
+    "may_enter_runtime_root": false,
+    "may_be_exported_by_runtime": false,
+    "may_appear_in_bootstrap_remote_paths": false,
+    "module": "src/session-chat-deployment.mjs",
+    "allowed_support_paths": [
+      "tests/c20-session-chat-deployment.test.mjs",
+      "scripts/c20-dual-profile-falsify.c",
+      ".github/workflows/c20-dual-profile-session-chat.yml",
+      "scripts/session-chat-runtime-cli.mjs",
+      "plugins/ikant-le-session-chat/**"
+    ],
+    "translation_boundary": "BEFORE_CANONICAL_RUNTIME",
+    "canonical_runtime_may_recognize_legacy_aliases": false
+  },
+  "canonical_relation": {
+    "lattice": [
+      "HUMAN_GATE",
+      "SOURCE_SNAPSHOT",
+      "LOCAL_INGRESS",
+      "LOCAL_MATERIALIZATION",
+      "EXECUTED_RUNTIME_PROOF",
+      "ACTIVE_READBACK"
+    ],
+    "edge_invariants": [
+      "ONE_HUMAN_GATE",
+      "SOURCE_OBJECT_IDENTITY",
+      "MODEL_TRANSPORT_AUTHORITY_ZERO",
+      "OPAQUE_RELAY_SAMEHASH",
+      "IDEMPOTENT_OBJECT_RETRY",
+      "SLO_NOT_INTEGRITY",
+      "COMPATIBILITY_ZERO_AUTHORITY"
+    ],
+    "human_decision_owner": "HUMAN",
+    "host_adapter_authority": 0,
+    "data_plane_owner": "LOCAL_ACTIVATION_EXECUTOR",
+    "runtime_identity_owner": "PINNED_LOCAL_RUNTIME",
+    "active_truth_owner": "PERSISTED_RUNTIME_READBACK",
+    "local_ingress_contains": [
+      "H0",
+      "HOST_ATTESTED_CHANNEL_LEDGER",
+      "ONE_CANONICAL_NEXT",
+      "DURABLE_FAILED_DECISIONS",
+      "FIRST_UNCLOSED_EDGE",
+      "LOCAL_DIRECT_OR_VERIFIED_OPAQUE_RELAY",
+      "SOURCE_ARRIVAL_SAMEHASH"
+    ],
+    "diagnostic_projection_persisted": false,
+    "current_host_facts_in_contract": false
+  },
+  "runtime_root_build": {
+    "generator": "scripts/runtime-root.mjs",
+    "regenerate_command": "npm run runtime-root:regen",
+    "verify_command": "npm run runtime-root:verify",
+    "membership_owner": "BOOTSTRAP.json.post_accept_fastboot.runtime_root.members",
+    "shard_assignment_owner": "existing runtime-root shard member paths",
+    "deterministic": true,
+    "environment_inputs_allowed": [],
+    "output_identity": "runtime_root_sha256",
+    "build_receipt_is_runtime_proof": false
+  },
+  "canonical_activation_model": "LOCAL_EXECUTOR_V1",
+  "activation_executor": {
+    "schema": "ikant-le-activation-executor/v1",
+    "execution_plane": "SESSION_LOCAL_NODE",
+    "capability_probe_before_acquisition": true,
+    "content_addressed": true,
+    "retry_semantics": "IDEMPOTENT_BY_OBJECT_IDENTITY",
+    "provider_neutral": true,
+    "required_objects": [
+      "PREACCEPT_ORIENTATION_OBJECTS",
+      "RUNTIME_ROOT_LOADER",
+      "RUNTIME_ROOT_SHARDS"
+    ],
+    "byte_paths": [
+      "LOCAL_DIRECT",
+      "VERIFIED_OPAQUE_RELAY"
+    ],
+    "model_role_on_verified_relay": "OPAQUE_TRANSPORT_ONLY",
+    "model_rewrite_allowed": false,
+    "semantic_equivalence_allowed": false,
+    "source_arrival_samehash_required": true,
+    "opaque_relay_roundtrip_required": true
+  },
+  "legacy_transfer_v1_compatibility": {
+    "canonical": false,
+    "dual_reader_only": true,
+    "carrier_ontology_may_define_v2": false,
+    "remote_round_budget_may_define_v2": false,
+    "deadline_integrity_may_define_v2": false
+  },
+  "legacy_v1_required_mechanisms": [
+    "single local activation modality",
+    "typed host-attested channel ledger with explicit non-physical claim boundary",
+    "one canonical NEXT and one executor",
+    "failure memory keyed by decision plus evidence",
+    "changed-evidence replan",
+    "byte bridge receipt as host attestation plus materializer verification and runtime-owned published-root reopen/samehash validation",
+    "executed-code provenance",
+    "content-addressed runtime root",
+    "single-shot acceptance origin",
+    "deadline continuity",
+    "persisted ACTIVE readback",
+    "reverse supply-chain audit",
+    "claim/readback/oracle forensic closure",
+    "truthful DEGRADED state",
+    "Surface B write/readback before Surface A release",
+    "runtime bootstrap validator requires the C21 ledger/step/bridge transcript",
+    "production runCommand and resumeActivation cannot inject a substitute probe",
+    "ledger-owned failed_decisions keyed by decision_key plus channel_evidence_sha256",
+    "fastboot step validator recomputes action/carrier/decision/evidence from the bound ledger"
+  ],
+  "legacy_v1_causal_planes": {
+    "pre_runtime_host_adapter": {
+      "authority": 0,
+      "owns": [
+        "host-attested channel receipts",
+        "one canonical NEXT",
+        "failure memory keyed by decision plus evidence",
+        "carrier execution"
+      ],
+      "cannot_prove": [
+        "local byte presence",
+        "executed code provenance",
+        "live Node probe",
+        "ACTIVE"
+      ]
+    },
+    "local_runtime": {
+      "owns": [
+        "reopen published loader plus every materialized runtime member",
+        "validate materialization",
+        "validate exact executed module identities",
+        "live Node probe",
+        "writer persistence",
+        "ACTIVE commit/readback"
+      ],
+      "cannot_delegate_live_probe": true
+    }
+  },
+  "canonical_v2_required_mechanisms": [
+    "single SESSION_CHAT_LOCAL activation modality",
+    "one exact standalone human acceptance",
+    "immutable source snapshot",
+    "local activation executor capability probe",
+    "typed content-addressed acquisition by LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY",
+    "orientation object identity re-verification",
+    "atomic runtime-root materialization and reopen",
+    "exact executed-code provenance",
+    "runtime-owned live Node probe",
+    "writer persistence/readback",
+    "persisted ACTIVE readback",
+    "same-epoch idempotent retry by object identity",
+    "truthful DEGRADED/BLOCKED_INTEGRITY separation",
+    "Surface B write/readback before Surface A release",
+    "single six-edge constitutional boundary",
+    "LOCAL_INGRESS absorbs processor and byte-path facets",
+    "durable ledger-owned retry memory",
+    "first-unclosed-edge projection",
+    "explicit external-gap vector",
+    "typed execute-observe-reenter through the existing Fastboot owner"
+  ],
+  "canonical_v2_causal_planes": {
+    "human_gate": {
+      "authority": "HUMAN",
+      "owns": [
+        "exact standalone I ACCEPT"
+      ],
+      "cannot_delegate": true
+    },
+    "host_control_plane": {
+      "authority": 0,
+      "owns": [
+        "bounded preaccept presentation",
+        "invoke local executor"
+      ],
+      "cannot_prove": [
+        "local byte presence",
+        "executed provenance",
+        "ACTIVE"
+      ]
+    },
+    "local_activation_executor": {
+      "authority": 0,
+      "owns": [
+        "capability probe",
+        "content-addressed acquisition",
+        "idempotent same-object retry"
+      ],
+      "byte_paths": [
+        "LOCAL_DIRECT",
+        "VERIFIED_OPAQUE_RELAY"
+      ],
+      "verified_opaque_relay": {
+        "model_role": "OPAQUE_TRANSPORT_ONLY",
+        "authority": 0,
+        "model_rewrite_allowed": false,
+        "semantic_equivalence_allowed": false,
+        "source_arrival_samehash_required": true,
+        "roundtrip_required": true
+      }
+    },
+    "local_runtime": {
+      "owns": [
+        "materialization validation",
+        "published-byte reopen",
+        "executed provenance",
+        "live probe",
+        "writer persistence",
+        "ACTIVE commit/readback"
+      ],
+      "cannot_delegate_live_probe": true
+    }
+  },
+  "c40_reentry_closure": {
+    "authority": 0,
+    "retry_memory_owner": "FASTBOOT_CHANNEL_LEDGER.failed_decisions",
+    "caller_attempted_classes_canonical": false,
+    "same_evidence_same_carrier_retry": false,
+    "distinct_carrier_retry_same_evidence": true,
+    "changed_evidence_may_requalify_carrier": false,
+    "observation_schemas": [
+      "ikant-le-fastboot-capability-receipt/v1",
+      "ikant-le-fastboot-carrier-attempt/v1"
+    ],
+    "complete_attempt_handoff": "PRE_RUNTIME_HOST_ADAPTER",
+    "complete_attempt_active_claim": false,
+    "changed_same_carrier_evidence_may_requalify_carrier": true,
+    "unrelated_carrier_evidence_may_requalify_failed_carrier": false
+  },
+  "c41_retry_epoch_ux_continuity": {
+    "authority": 0,
+    "retry_memory_owner": "FASTBOOT_CHANNEL_LEDGER.failed_decisions",
+    "failure_memory_key": [
+      "decision_key",
+      "carrier_evidence_sha256"
+    ],
+    "failure_memory_scope": "CARRIER_LOCAL_CHANNEL_EVIDENCE",
+    "canonical_step_caller_attempted_classes_forbidden": true,
+    "session_shell_caller_attempted_classes_forbidden": true,
+    "unrelated_carrier_evidence_may_requalify_failed_carrier": false,
+    "changed_same_carrier_evidence_may_requalify_carrier": true,
+    "complete_transition_route": {
+      "owner": "PRE_RUNTIME_HOST_ADAPTER",
+      "action": "EXECUTE_PRE_RUNTIME_BOOTSTRAP",
+      "digest_bound": true,
+      "active_claim": false,
+      "next_constitutional_edge": "LOCAL_MATERIALIZATION"
+    },
+    "new_planner": false,
+    "new_retry_memory": false,
+    "new_truth_owner": false
+  }
+}

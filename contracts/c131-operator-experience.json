@@ -1,0 +1,42 @@
+{
+  "schema": "ikant-le-operator-experience/v1",
+  "authority": 0,
+  "default_audience": "NON_SPECIALIST_OPERATOR",
+  "audience_property": "PRESENTATION_PREFERENCE_NOT_USER_IDENTITY_OR_CREDENTIAL",
+  "applies_to": [
+    "HOST_INTERIM_MESSAGE",
+    "HOST_FINAL_MESSAGE",
+    "HOST_STATUS_CARD",
+    "HOST_ARTIFACT_CAPTION",
+    "EXPERIMENTAL_HOST_SHELL_PRESENTATION"
+  ],
+  "basic_message_order": [
+    "WHAT_IT_MEANS",
+    "WHAT_HAS_ACTUALLY_HAPPENED",
+    "IMPORTANT_LIMIT",
+    "ONE_NEXT_ACTION_IF_REQUIRED"
+  ],
+  "maximum_visible_card_lines": 5,
+  "jargon_translation_required": true,
+  "references": "CODE_ONLY_AFTER_PLAIN_EXPLANATION_PARENTHESES",
+  "example": "Ho verificato che il registro conserva la stessa risposta (C87: controllo del registro).",
+  "do_not_persist_personal_classification": true,
+  "may_offer_technical_details_on_request": true,
+  "exact_byte_exceptions": [
+    "VERBATIM_TERMS",
+    "ORIGINAL_C87_VOICE",
+    "OWNER_STOP",
+    "NATIVE_PLATFORM_ERROR",
+    "EXPLICIT_TECHNICAL_OUTPUT"
+  ],
+  "prohibits": [
+    "INVENTED_PROGRESS",
+    "INVENTED_NATIVE_HOOK",
+    "INVENTED_RELEASE",
+    "INVENTED_COGNITIVE_CAUSALITY"
+  ],
+  "native_chatgpt_ui_control_attested": false,
+  "policy_consistency_with_higher_priority_required": true,
+  "implementation": "host/c131-operator-surface.mjs",
+  "release_source": "release/catalog.json"
+}

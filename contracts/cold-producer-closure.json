@@ -1,0 +1,52 @@
+{
+  "schema": "ikant-le-c61-cold-producer-closure/v1",
+  "authority": 0,
+  "source_head_base": "c27e73d7cd192bcefb4dbc5b6e1604e20403b0da",
+  "dod": {
+    "global": [
+      "ONE_COLD_OWNER",
+      "NO_CALLER_EXECUTOR_IN_CANONICAL_PATH",
+      "C59_HANDOFF_BEFORE_MATERIALIZE",
+      "ACTIVE_ONLY_AFTER_C59_READBACK"
+    ],
+    "intermediate": [
+      "TWO_OBJECT_SEED_ONLY",
+      "OWNER_ISSUED_RELAY_MANIFEST",
+      "OWNER_ISSUED_RELAY_OBSERVATIONS",
+      "OWNER_ISSUED_ACTIVATION_EXECUTOR"
+    ],
+    "local": [
+      "COMPLETE_COLD_OBJECT_SET",
+      "LOCAL_REOPEN_GIT_BLOB_SAMEHASH",
+      "SCRATCH_WORKSPACE_E2E",
+      "TAMPER_FAIL_CLOSED"
+    ]
+  },
+  "metrics": {
+    "cold_object_count": 8,
+    "seed_object_count": 2,
+    "exhaustive_mutations": 1048576,
+    "unsafe_active_required": 0,
+    "harmful_survivors_required": 0,
+    "canonical_cold_owner_count_required": 1,
+    "scratch_workspace_required": true,
+    "fixture_executor_positive_path_required": 0,
+    "ci_required": "ALL_GREEN",
+    "historical_c61_object_count": 13,
+    "superseded_by": "C62.EVIDENCE_RUNTIME_CUT"
+  },
+  "checklist": [
+    "BOOTSTRAP_OWNER_IS_COLD_KERNEL",
+    "SEED_IS_REPOSITORY_NAMED",
+    "MANIFEST_BINDS_8_RUNTIME_OBJECTS",
+    "OBSERVATION_READS_LOCAL_BYTES",
+    "EXECUTOR_DERIVED_FROM_8_RUNTIME_RECEIPTS_PLUS_RAW5_EVIDENCE",
+    "HANDOFF_BINDS_EXECUTOR",
+    "MATERIALIZER_REVALIDATES_HANDOFF",
+    "RUNTIME_READBACK_C59_CANONICAL",
+    "C61_TEST_GREEN",
+    "C61_1M_GREEN",
+    "RUNTIME_ROOT_VERIFY_GREEN",
+    "REPOSITORY_CHECK_GREEN"
+  ]
+}

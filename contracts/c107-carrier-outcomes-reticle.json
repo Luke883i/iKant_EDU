@@ -1,0 +1,168 @@
+{
+  "schema": "ikant-le-c107-carrier-consumption-reticle/v1",
+  "authority": 0,
+  "original_source_head": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
+  "release_commit": "cf213a2276802d73e844b706e6cd8431bc76bed6",
+  "version_scope": "PR118_CARRIER_CONSUMER_ONLY",
+  "nodes": [
+    {
+      "id": "R01",
+      "feature": "pinned_single_carrier",
+      "owner": "release/v8/ikant-c107-source-c734bf934e33.ikc.br",
+      "oracle": "transport_bytes=62448 AND transport_sha256 pinned",
+      "ci": "C107 real carrier consumption and host outcome gates",
+      "tier": "REMOTE_SOURCE_BYTES"
+    },
+    {
+      "id": "R02",
+      "feature": "bounded_decompress",
+      "owner": "host/c107-carrier-consumer.mjs#inspectC107Carrier",
+      "oracle": "frame bytes/digest exact; Brotli maxOutputLength=1000000",
+      "test": "tests/c107-carrier-consumer.test.mjs",
+      "tier": "BYTE_INTEGRITY"
+    },
+    {
+      "id": "R03",
+      "feature": "43_original_objects",
+      "owner": "host/c107-carrier-consumer.mjs#inspectC107Carrier",
+      "oracle": "43 unique safe paths; C107 package sha256 exactly pinned",
+      "test": "tests/c107-carrier-consumer.test.mjs",
+      "tier": "SOURCE_EXACT"
+    },
+    {
+      "id": "R04",
+      "feature": "physical_stage_reopen",
+      "owner": "host/c107-carrier-consumer.mjs#stageC107Carrier",
+      "oracle": "wx/fsync/reopen each object; no owner impersonation",
+      "test": "tests/c107-carrier-consumer.test.mjs",
+      "tier": "HOST_STAGE_ONLY"
+    },
+    {
+      "id": "R05",
+      "feature": "original_compute",
+      "owner": "scripts/c107-carrier-qualify.mjs",
+      "oracle": "2 original demo turns + 1 explicitly labeled host fixture",
+      "test": "tests/c107-carrier-consumer.test.mjs",
+      "tier": "ORIGINAL_LOCAL_EXECUTED"
+    },
+    {
+      "id": "R06",
+      "feature": "single_C87_writer",
+      "owner": "host/c87-durable-ledger.mjs",
+      "oracle": "3 original events, readback, nonce replay denied, corruption denied",
+      "test": "scripts/c107-carrier-qualify.mjs",
+      "tier": "ORIGINAL_LOCAL_EXECUTED"
+    },
+    {
+      "id": "R07",
+      "feature": "no_forged_voice",
+      "owner": "host/c107-carrier-consumer.mjs#qualifyC107Voice",
+      "oracle": "same input, voice SHA, receipt & ledger; 12 fake receipts rejected",
+      "test": "scripts/c107-carrier-qualify.mjs",
+      "tier": "HOST_PROJECTION_ONLY"
+    },
+    {
+      "id": "R08",
+      "feature": "bounded_retry_and_handoff",
+      "owner": "host/c107-carrier-consumer.mjs#c107Handoff",
+      "oracle": "at most 3 attempts, retries with new evidence, manual full source ZIP",
+      "test": "tests/c107-carrier-consumer.test.mjs",
+      "tier": "HOST_POLICY_ONLY"
+    },
+    {
+      "id": "R09",
+      "feature": "CI_consumer_on_actual_blob",
+      "owner": ".github/workflows/c107-carrier-consumption.yml",
+      "oracle": "tests + original physical turns on committed binary",
+      "tier": "CI_REQUIRED"
+    },
+    {
+      "id": "R10",
+      "feature": "frozen_source_unchanged",
+      "owner": "scripts/c107-pack.mjs",
+      "oracle": "original frozen Git worktree original C107/C114/C115 tests",
+      "tier": "ORIGINAL_SOURCE_CI"
+    },
+    {
+      "id": "R11",
+      "feature": "ChatGPT_native_per_turn_ingress",
+      "owner": "EXTERNAL_HOST",
+      "oracle": "independent real host callback with input/delivery evidence",
+      "tier": "OPEN_NOT_CLAIMED"
+    },
+    {
+      "id": "R12",
+      "feature": "independent_provider_origin",
+      "owner": "EXTERNAL_PROVIDER",
+      "oracle": "provider authenticated callback",
+      "tier": "OPEN_NOT_CLAIMED"
+    }
+  ],
+  "edges": [
+    {
+      "from": "R01",
+      "to": "R02",
+      "kind": "REQUIRED_FOR"
+    },
+    {
+      "from": "R02",
+      "to": "R03",
+      "kind": "REQUIRED_FOR"
+    },
+    {
+      "from": "R03",
+      "to": "R04",
+      "kind": "REQUIRED_FOR"
+    },
+    {
+      "from": "R04",
+      "to": "R05",
+      "kind": "REQUIRED_FOR"
+    },
+    {
+      "from": "R05",
+      "to": "R06",
+      "kind": "REQUIRED_FOR"
+    },
+    {
+      "from": "R06",
+      "to": "R07",
+      "kind": "REQUIRED_FOR"
+    },
+    {
+      "from": "R02",
+      "to": "R09",
+      "kind": "TESTED_BY"
+    },
+    {
+      "from": "R05",
+      "to": "R09",
+      "kind": "TESTED_BY"
+    },
+    {
+      "from": "R10",
+      "to": "R09",
+      "kind": "CROSS_CHECKED_BY"
+    },
+    {
+      "from": "R08",
+      "to": "R11",
+      "kind": "BLOCKED_HOST_FALLBACK"
+    },
+    {
+      "from": "R07",
+      "to": "R11",
+      "kind": "DOES_NOT_IMPLY"
+    },
+    {
+      "from": "R05",
+      "to": "R12",
+      "kind": "DOES_NOT_IMPLY"
+    }
+  ],
+  "mutation_seed": 20261013,
+  "physical_mutation_cases": 192,
+  "simulated_llm_calls": 0,
+  "stop_condition": "MUTATION_CI_FAILED_ORIGINAL_SOURCE_OR_P01_TO_P03_FAILED",
+  "first_external_edge": "NATIVE_CHATGPT_PER_TURN_DISPATCH"
+}

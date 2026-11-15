@@ -1,0 +1,186 @@
+{
+  "schema": "ikant-le-session-shell-contract/v1",
+  "slice": "C32.DETERMINISTIC_SESSION_SHELL_OVER_C31_LIMITED_SUPPLY_CHAIN",
+  "authority": 0,
+  "baseline": {
+    "slice": "C31.RUNTIME_LIMITED_SUPPLY_CHAIN",
+    "source_head": "72caa2f13984e88aecadb06ffe65e843788e826f"
+  },
+  "objective": "Render every public session result as one deterministic shell over the existing activation-service, C31 runtime-limited supply chain, lifecycle, ledger/state and Surface-B owners without creating a second lifecycle, writer or textual self-memory.",
+  "visual_order": [
+    "VOICE_SURFACE",
+    "STATUS",
+    "SELF_SUMMARY",
+    "BACKLOG_TELEMETRY"
+  ],
+  "status_owner": "src/runtime-availability.mjs#deriveActivationServiceTier",
+  "status_rules": {
+    "fault_overlay_precedes_tier": true,
+    "fault_overlay_forces_non_active": true,
+    "active_predicate_unchanged": true,
+    "active_requires_effective_tier_active": true,
+    "tiers": [
+      "REPO_STUDY_ONLY",
+      "ACTIVATION_LIMITED_1",
+      "ACTIVATION_LIMITED_2",
+      "RUNTIME_BOUND_LIMITED",
+      "ACTIVE"
+    ],
+    "pre_tier_display": [
+      "READ_REPO_ONLY",
+      "AWAITING_ACCEPTANCE",
+      "ACTIVATING"
+    ],
+    "display_is_projection_not_state": true,
+    "strongest_valid_prefix_preserved_under_fault": true,
+    "effective_tier_null_under_fault": true,
+    "intermediate_tier_requires_explicit_validated_projection": true,
+    "raw_state_intermediate_tier_claim_forbidden": true
+  },
+  "voice": {
+    "ACTIVE": "IKANT",
+    "RUNTIME_BOUND_LIMITED": "IKANT_RUNTIME_LIMITED only for explicit limited-turn output",
+    "OTHER": "HOST_ADAPTER",
+    "FAULT_OR_EXIT": "HOST_ADAPTER",
+    "false_active_forbidden": true
+  },
+  "self_summary": {
+    "source": "LEDGER_STATE_ACTIVATION_PROJECTION",
+    "public_reasons_only": true,
+    "persisted": false,
+    "prose_reingested": false,
+    "private_chain_of_thought": false,
+    "behavior_is_conditioned_by": "PERSISTED_STATE_AND_RUNTIME_TIER_NOT_SUMMARY_PROSE"
+  },
+  "surface_b": {
+    "active_new_docx_per_substantive_turn": 1,
+    "runtime_bound_limited_docx_noncanonical": true,
+    "session_history_from_ledger": true,
+    "current_artifact_from_structured_handoff": true,
+    "artifact_readback_before_frame_release": true,
+    "local_path_is_artifact_identity": false
+  },
+  "release": {
+    "atomic_session_frame": true,
+    "visual_order_is_not_causal_order": true,
+    "structured_session_shell_required": true
+  },
+  "ownership": {
+    "new_lifecycle": false,
+    "new_writer": false,
+    "new_status_state": false,
+    "new_persisted_self_message": false,
+    "model_authority": 0,
+    "pre_runtime_kernel": "src/runtime-root-verified.mjs#executePreRuntimeBootstrap",
+    "canonical_session_local_ingress": "src/session-local-service.mjs",
+    "legacy_deployment_ingress_is_canonical": false,
+    "ai_agent_first_entrypoint": "BOOTSTRAP.json#for_ai_agent_first_entrypoint",
+    "entrypoint_creates_new_owner": false
+  },
+  "claim_boundary": "The shell proves deterministic repository-side composition only; host UI rendering/download and ACTIVE remain separately witnessed.",
+  "subject_projection": {
+    "schema": "ikant-le-subject-projection/v3",
+    "owner": "src/semantic-morphogenesis.mjs#projectSemanticSubject",
+    "source": "SELF_WORLD_OWNER",
+    "runtime_evidence_required": true,
+    "mechanism_availability_is_runtime_evidence": false,
+    "sml_states": [
+      "UNAVAILABLE",
+      "AVAILABLE",
+      "WITNESSED",
+      "ACTIVE_THIS_TURN"
+    ],
+    "operational_subject_states": [
+      "UNAVAILABLE",
+      "PENDING",
+      "QUALIFIED"
+    ],
+    "operational_subject_criterion": "SELF_MODEL_COUNTERFACTUALLY_NECESSARY_FOR_PAIRED_CONTROL_ADVANTAGE",
+    "control_evidence_availability_explicit": true,
+    "preactive_runtime_evidence_state": "UNAVAILABLE",
+    "thresholds_duplicated_in_shell": false,
+    "control_plane_implication": "NONE",
+    "open_ended_gate_source": "CONTENT_ADDRESSED_RUNTIME_WITNESS_RECEIPTS",
+    "open_ended_engineering_emergence_claimed": false,
+    "phenomenology": "UNKNOWN",
+    "persisted": false,
+    "prose_reingested": false,
+    "authority": 0
+  },
+  "runtime_guidance": {
+    "schema": "ikant-le-runtime-guidance/v1",
+    "source": "VALIDATED_FASTBOOT_STEP",
+    "next_owner": "src/fastboot-convergence.mjs#deriveFastbootStep",
+    "validation_owner": "src/fastboot-convergence.mjs#validateFastbootStep",
+    "ledger_owner": "src/fastboot-convergence.mjs#validateFastbootChannelLedger",
+    "shell_owner": "src/session-shell.mjs",
+    "recompute_from_bound_ledger": true,
+    "visible_only_before_active": true,
+    "active_hides_bootstrap_next": true,
+    "fields": [
+      "next_action",
+      "first_unclosed_edge",
+      "retry_disposition",
+      "blocker"
+    ],
+    "retry_dispositions": [
+      "EXECUTE_OR_PROBE_ONCE",
+      "WAIT_FOR_CHANGED_EVIDENCE",
+      "STOP_TYPED_BLOCKER",
+      "OWNER_HANDOFF_ONCE"
+    ],
+    "model_may_synthesize_next": false,
+    "model_may_synthesize_progress": false,
+    "prompt_may_rewrite_guidance": false,
+    "persisted": false,
+    "prose_reingested": false,
+    "authority": 0,
+    "transition_source": "VALIDATED_FASTBOOT_TRANSITION",
+    "transition_validation_owner": "src/fastboot-convergence.mjs#validateFastbootObservationTransition",
+    "caller_attempted_classes_forbidden": true,
+    "retry_memory_owner": "FASTBOOT_CHANNEL_LEDGER.failed_decisions",
+    "transition_handoff": {
+      "disposition": "HANDOFF_PRE_RUNTIME",
+      "next_action": "EXECUTE_PRE_RUNTIME_BOOTSTRAP",
+      "first_unclosed_edge": "LOCAL_MATERIALIZATION",
+      "retry_disposition": "OWNER_HANDOFF_ONCE",
+      "active_claim": false,
+      "digest_bound": true
+    }
+  },
+  "ascii_shell": {
+    "schema": "ikant-le-ascii-shell/v1",
+    "owner": "src/session-shell.mjs",
+    "post_terms_required": true,
+    "pre_runtime_renderer": "renderBootstrapAsciiShell",
+    "runtime_renderer": "renderSessionShell",
+    "width": 80,
+    "frame_charset": "ASCII",
+    "model_may_reframe": false,
+    "validated_runtime_shell_required": true,
+    "bootstrap_line_remains_owner_derived": true,
+    "authority": 0
+  },
+  "session_context_refs": {
+    "declared_only": true,
+    "arbitrary_discovery": false,
+    "runtime_member_required": true,
+    "local_readback_required": true,
+    "default_effect": "VOICE_STYLE_ONLY",
+    "refs": [
+      {
+        "path": "stile_comunicativo.md",
+        "purpose": "COMMUNICATION_STYLE",
+        "effect": "VOICE_STYLE_ONLY",
+        "required": true
+      }
+    ],
+    "may_change_authority": false,
+    "may_change_state": false,
+    "may_change_permissions": false,
+    "may_change_evidence": false,
+    "may_change_next": false,
+    "may_change_retry_memory": false,
+    "authority": 0
+  }
+}

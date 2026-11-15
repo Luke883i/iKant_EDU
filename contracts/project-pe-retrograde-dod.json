@@ -1,0 +1,463 @@
+{
+  "schema": "ikant-host-pe-retrograde-dod/v2",
+  "authority": 0,
+  "active": false,
+  "original_owners": [
+    "C72",
+    "C135",
+    "C87",
+    "C125/S03"
+  ],
+  "engineering_base": {
+    "commit": "36b12b72b8cc9e07bb8faff9410e0f92ba60191f",
+    "tree": "58a0694f22d47d70279f0260c863a3bca3e13050",
+    "pr213_merged": true,
+    "repository_id": 1371330383,
+    "canonical_name": "Luke883i/iKant_LE"
+  },
+  "result": "G_PE",
+  "goal": "iniziamo -> [pinned Terms] -> distinct I ACCEPT -> distinct EDU -> original same-turn cognition/ledger/voice without technical user intervention",
+  "cost_objective": {
+    "priority": "LEXICOGRAPHIC_UNDER_HARD_ORIGINAL_GATES",
+    "min_human_messages": 3,
+    "unnecessary_technical_human_messages": 0,
+    "minimum_source_objects_not_reduced": true,
+    "c72_objects": 10,
+    "edu_files_plus_manifest": 191,
+    "cache_saves_only_repeated_bytes": true,
+    "p95_target_ms": 15000,
+    "p95_status": "NOT_MEASURED"
+  },
+  "gate_semantics": "AND_ALL_REQUIRED_NO_AVERAGING; missing provider truth NEVER PASS",
+  "evidence_ladder": [
+    "GIT",
+    "LOCAL",
+    "OWNER",
+    "PROVIDER",
+    "USER_VALUE"
+  ],
+  "nodes": [
+    {
+      "id": "GIT_HEAD",
+      "kind": "LEAF",
+      "rank": 0,
+      "level": "GIT",
+      "description": "Pin exactly one live HEAD in orientation",
+      "requires": [],
+      "witness_class": "GIT_OBJECT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "GIT_TREE",
+      "kind": "LEAF",
+      "rank": 0,
+      "level": "GIT",
+      "description": "Independent complete commit TREE before post-accept effects",
+      "requires": [],
+      "witness_class": "GIT_OBJECT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "GIT_BLOBS",
+      "kind": "LEAF",
+      "rank": 0,
+      "level": "GIT",
+      "description": "All source path and Git blob identities verified",
+      "requires": [],
+      "witness_class": "GIT_OBJECT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "SOURCE_EPOCH",
+      "kind": "LEAF",
+      "rank": 0,
+      "level": "GIT",
+      "description": "Live main HEAD equal frozen epoch at every original pre-effect gate",
+      "requires": [],
+      "witness_class": "GIT_OBJECT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "RENAME_COHERENCE",
+      "kind": "LEAF",
+      "rank": 0,
+      "level": "GIT",
+      "description": "GitHub repository ID 1371330383 agrees with BOOTSTRAP ADMISSION C72 and Terms link",
+      "requires": [],
+      "witness_class": "GIT_OBJECT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "FIRST_TURN",
+      "kind": "LEAF",
+      "rank": 1,
+      "level": "HOST",
+      "description": "First human turn only ORIENTATION; no other files after Terms",
+      "requires": [],
+      "witness_class": "DISTINCT_HOST_HUMAN_EVENT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "FIVE_DOCS",
+      "kind": "LEAF",
+      "rank": 0,
+      "level": "GIT",
+      "description": "Five pinned files and SHA-1 blobs in original read order",
+      "requires": [],
+      "witness_class": "GIT_OBJECT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "TERMS_LINK",
+      "kind": "LEAF",
+      "rank": 1,
+      "level": "HOST",
+      "description": "Terms pinned permalink displayed before distinct consent",
+      "requires": [],
+      "witness_class": "DISTINCT_HOST_HUMAN_EVENT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "EXACT_ACCEPT",
+      "kind": "LEAF",
+      "rank": 2,
+      "level": "HUMAN",
+      "description": "Second distinct human message exact I ACCEPT",
+      "requires": [],
+      "witness_class": "DISTINCT_HOST_HUMAN_EVENT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "C72_FENCE",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Original exclusive attempt reserved; unknown outcome never replayed",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "C72_OWNER",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Original C72 owner invoked once with real event and 10/10 original bytes",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "C72_REOPEN",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Original ACCEPT and ORIENTATION receipt files reopened independently",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "EXACT_EDU",
+      "kind": "LEAF",
+      "rank": 2,
+      "level": "HUMAN",
+      "description": "Third distinct human message exact EDU",
+      "requires": [],
+      "witness_class": "DISTINCT_HOST_HUMAN_EVENT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "MODE_OWNER",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Original C72 selection owner, no synthetic mode event",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "MODE_REOPEN",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Original EDU selection receipt reopened independently",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "NODE_BOUND",
+      "kind": "LEAF",
+      "rank": 3,
+      "level": "LOCAL",
+      "description": "Real callable private Node receiver and readback observed",
+      "requires": [],
+      "witness_class": "PRIVATE_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "ARG_COURIER",
+      "kind": "LEAF",
+      "rank": 3,
+      "level": "LOCAL",
+      "description": "Exact GitHub source bytes actually carried into private Node or alternate proven source carrier",
+      "requires": [],
+      "witness_class": "PRIVATE_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "D123_WIRED",
+      "kind": "LEAF",
+      "rank": 3,
+      "level": "LOCAL",
+      "description": "Optional D1-D3 fast path physically invoked from bound Host action; fallback preserves original owner",
+      "requires": [],
+      "witness_class": "PRIVATE_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "STAGE_10",
+      "kind": "LEAF",
+      "rank": 3,
+      "level": "LOCAL",
+      "description": "Ten original C72 sources with pinned readback and original stager fence",
+      "requires": [],
+      "witness_class": "PRIVATE_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "SOURCE_191",
+      "kind": "LEAF",
+      "rank": 3,
+      "level": "LOCAL",
+      "description": "190 original EDU manifest files plus manifest; no unsupported deletion",
+      "requires": [],
+      "witness_class": "PRIVATE_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "ORIGINAL_LOADER",
+      "kind": "LEAF",
+      "rank": 3,
+      "level": "LOCAL",
+      "description": "Original repository loader plan and full independent reopen verified",
+      "requires": [],
+      "witness_class": "PRIVATE_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "PROMPT_INSTALL_MATCH",
+      "kind": "LEAF",
+      "rank": 5,
+      "level": "PROVIDER",
+      "description": "Installed Project prompt verified byte-equivalent; UNKNOWN does not imply match",
+      "requires": [],
+      "witness_class": "NATIVE_PROVIDER_OBSERVATION",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "LANGUAGE_PORT",
+      "kind": "LEAF",
+      "rank": 5,
+      "level": "PROVIDER",
+      "description": "Provider languagePort and original C135 model interface actually bound",
+      "requires": [],
+      "witness_class": "NATIVE_PROVIDER_OBSERVATION",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "C135_OWNER",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Original C135 generated first EDU turn under C114/C139/C140/C141/C142/C143",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "C87_SINGLE",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Exactly one C87 append for the original turn",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "C87_REOPEN",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Independent original C87 ledger readback and checkpoint",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "C125_S03",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Original C125/S03 voice text bound to same turn",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "VOICE_ACK",
+      "kind": "LEAF",
+      "rank": 5,
+      "level": "PROVIDER",
+      "description": "Original C125/S03 acknowledgment observed without retry",
+      "requires": [],
+      "witness_class": "NATIVE_PROVIDER_OBSERVATION",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "PROVIDER_DELIVERY",
+      "kind": "LEAF",
+      "rank": 5,
+      "level": "PROVIDER",
+      "description": "Native ChatGPT delivery and user-visible frame observed",
+      "requires": [],
+      "witness_class": "NATIVE_PROVIDER_OBSERVATION",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "RECOVERY_NO_REPLAY",
+      "kind": "LEAF",
+      "rank": 4,
+      "level": "OWNER",
+      "description": "Unknown write/send/owner outcome reconciled read-only; no duplicate",
+      "requires": [],
+      "witness_class": "ORIGINAL_OWNER_READBACK",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "NO_HUMAN_REMEDIATION",
+      "kind": "LEAF",
+      "rank": 6,
+      "level": "USER_VALUE",
+      "description": "Novice user reached first original answer with no extra technical message",
+      "requires": [],
+      "witness_class": "EXTERNAL_NOVICE_HOLDOUT",
+      "status": "NOT_ATTESTED_UNTIL_OBSERVED"
+    },
+    {
+      "id": "I_IDENTITY",
+      "kind": "AND",
+      "requires": [
+        "GIT_HEAD",
+        "GIT_TREE",
+        "GIT_BLOBS",
+        "SOURCE_EPOCH",
+        "RENAME_COHERENCE"
+      ]
+    },
+    {
+      "id": "I_ORIENTATION",
+      "kind": "AND",
+      "requires": [
+        "I_IDENTITY",
+        "FIRST_TURN",
+        "FIVE_DOCS",
+        "TERMS_LINK"
+      ]
+    },
+    {
+      "id": "I_ACCEPTANCE",
+      "kind": "AND",
+      "requires": [
+        "I_ORIENTATION",
+        "EXACT_ACCEPT",
+        "C72_FENCE",
+        "C72_OWNER",
+        "C72_REOPEN"
+      ]
+    },
+    {
+      "id": "I_MODE",
+      "kind": "AND",
+      "requires": [
+        "I_ACCEPTANCE",
+        "EXACT_EDU",
+        "MODE_OWNER",
+        "MODE_REOPEN"
+      ]
+    },
+    {
+      "id": "I_SOURCE",
+      "kind": "AND",
+      "requires": [
+        "I_MODE",
+        "NODE_BOUND",
+        "ARG_COURIER",
+        "D123_WIRED",
+        "STAGE_10",
+        "SOURCE_191",
+        "ORIGINAL_LOADER"
+      ]
+    },
+    {
+      "id": "I_COGNITION",
+      "kind": "AND",
+      "requires": [
+        "I_SOURCE",
+        "PROMPT_INSTALL_MATCH",
+        "LANGUAGE_PORT",
+        "C135_OWNER",
+        "C87_SINGLE",
+        "C87_REOPEN",
+        "C125_S03",
+        "VOICE_ACK"
+      ]
+    },
+    {
+      "id": "I_CONTINUITY",
+      "kind": "AND",
+      "requires": [
+        "I_COGNITION",
+        "RECOVERY_NO_REPLAY"
+      ]
+    },
+    {
+      "id": "I_PROVIDER",
+      "kind": "AND",
+      "requires": [
+        "I_COGNITION",
+        "PROVIDER_DELIVERY"
+      ]
+    },
+    {
+      "id": "I_UX",
+      "kind": "AND",
+      "requires": [
+        "I_PROVIDER",
+        "NO_HUMAN_REMEDIATION"
+      ]
+    },
+    {
+      "id": "G_PE",
+      "kind": "AND",
+      "requires": [
+        "I_CONTINUITY",
+        "I_UX"
+      ]
+    }
+  ],
+  "forbidden": [
+    "HOST_MINTED_ACCEPT",
+    "HOST_MINTED_EDU",
+    "ACTIVE_FROM_CI",
+    "REPIN_WITHOUT_FRESH_C72",
+    "SOURCE_FILE_REMOVAL_FROM_STATIC_GRAPH",
+    "OWNER_REPLAY_AFTER_UNKNOWN",
+    "UNOBSERVED_PROVIDER_DELIVERY"
+  ],
+  "recovery": "Only EXACT I ACCEPT and EXACT EDU after corresponding original stages require human input. Technical EDGE -> Host probes and readbacks first, otherwise clear STOP without requiring repeated consent.",
+  "claim_scope": "SCOPED_TEST_CONTRACT_NOT_RUNTIME_OWNERSHIP_NOT_PROVIDER_PROOF"
+}

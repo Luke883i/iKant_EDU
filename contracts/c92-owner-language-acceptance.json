@@ -1,0 +1,18 @@
+{
+  "schema":"ikant-le-c92-experimental-provider-owner/v1",
+  "authority":0,
+  "base":"main@5fa8a7adb82e3a18cf0cde2a4c3202ddd93a388c",
+  "goal":"REAL_MODEL_PROVIDER -> SEPARATE_REVIEW -> SAME_INPUT_OWNER_ACCEPTANCE -> EXACT_EXPERIMENTAL_SURFACE_A",
+  "provider_protocol":"OPENAI_RESPONSES_HTTPS_TLS",
+  "caller_supplied_voice_or_provider_receipt":false,
+  "noncanonical":true,
+  "required_order":["C90_ACTUAL_CURRENT_INPUT_OWNER","C91_ACTUAL_RUNTIME_DELEGATION","HTTPS_GENERATOR_RESPONSE","HTTPS_DISTINCT_REVIEWER_RESPONSE","C92_SEPARATE_IN_PROCESS_VALIDATOR","C92_OWNER_APPROVAL","C92_EXACT_SURFACE_A_BYTES"],
+  "failure":"STOP_DIAGNOSTIC_ONLY",
+  "external_provider_credentials_required":true,
+  "same_provider_model_not_independent_organization":true,
+  "semantic_entailment_not_proved_by_two_models":true,
+  "provider_origin_receipt":"HTTPS_RESPONSE_WITH_ID_NOT_SIGNED_PROOF",
+  "native_delivery_attested":false,
+  "canonical_active":false,
+  "h95_value_attested":false
+}

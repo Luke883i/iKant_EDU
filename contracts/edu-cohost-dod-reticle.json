@@ -1,0 +1,159 @@
+{
+  "schema": "ikant-le-edu-cohost-dod-reticle/v1",
+  "authority": 0,
+  "base_main_after_pr118": "875d39081d20abe672e6a496ac593ef27be9a12d",
+  "reused_pr118_carrier_sha256": "d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d",
+  "new_objects_exactly": [
+    "host/edu-cohost-outcome.mjs",
+    "contracts/edu-cohost-outcomes.v1.json",
+    "contracts/edu-cohost-dod-reticle.json",
+    "tests/edu-cohost-outcome.test.mjs",
+    "scripts/edu-host-falsify-1m.mjs",
+    ".github/workflows/edu-cohost-outcomes.yml",
+    "project/EDU_HOST_PROJECT_DELTA_V9.txt",
+    "docs/POST118_RISK_AND_SCOPE.md"
+  ],
+  "tasks": [
+    {
+      "id": "Q01",
+      "owner": "PR118 host/c107-carrier-consumer.mjs",
+      "dod": "Source-exact 43/43 original source files from one carrier",
+      "metric": "transport SHA256, original package SHA256, staged readback",
+      "test": "PR118 tests/c107-carrier-consumer.test.mjs",
+      "state": "REUSED_REMOTE_PROVEN"
+    },
+    {
+      "id": "Q02",
+      "owner": "host/edu-cohost-outcome.mjs",
+      "dod": "Actual C107 C70 C100 C87 invoked for same human input",
+      "metric": "2 ORIGINAL_DEMO success, 2 distinct input digests, C87 readback",
+      "test": "tests/edu-cohost-outcome.test.mjs",
+      "state": "LOCAL_FIXTURE_TESTED"
+    },
+    {
+      "id": "Q03",
+      "owner": "host/edu-cohost-outcome.mjs",
+      "dod": "Require original C72 EXPERIMENTAL and separated host-draft authorization",
+      "metric": "Unauthorized candidate=NO_VOICE, zero append",
+      "test": "tests/edu-cohost-outcome.test.mjs",
+      "state": "LOCAL_FIXTURE_TESTED"
+    },
+    {
+      "id": "Q04",
+      "owner": "host/edu-cohost-outcome.mjs",
+      "dod": "A original exact voice, B host and all OneShell S01 evidence fields",
+      "metric": "TRACE_REF CONTINUITY FIRST_EDGE NEXT, A/B differ, no provider claim",
+      "test": "tests/edu-cohost-outcome.test.mjs",
+      "state": "LOCAL_FIXTURE_TESTED"
+    },
+    {
+      "id": "Q05",
+      "owner": "host/edu-cohost-outcome.mjs",
+      "dod": "Reject getters and Proxy before original owner side-effects",
+      "metric": "zero hostile getter invocation, zero C87 append",
+      "test": "tests/edu-cohost-outcome.test.mjs",
+      "state": "LOCAL_FIXTURE_TESTED"
+    },
+    {
+      "id": "Q06",
+      "owner": "host/edu-cohost-outcome.mjs",
+      "dod": "Bounded retry, human upload of exact pinned source ZIP",
+      "metric": "1+2 only on fresh evidence, manual fallback",
+      "test": "tests/edu-cohost-outcome.test.mjs",
+      "state": "LOCAL_FIXTURE_TESTED"
+    },
+    {
+      "id": "Q07",
+      "owner": "scripts/edu-host-falsify-1m.mjs",
+      "dod": "Real negative gate attack surface",
+      "metric": "1,000,000 requests, 10 families, zero mismatch and no C87 writes",
+      "test": "scripts/edu-host-falsify-1m.mjs",
+      "state": "LOCAL_FIXTURE_TESTED"
+    },
+    {
+      "id": "Q08",
+      "owner": ".github/workflows/edu-cohost-outcomes.yml",
+      "dod": "GitHub CI on actual merged PR118 consumer, original carrier",
+      "metric": "8 tests + million negatives + PR118 consumer tests",
+      "test": "GitHub Actions",
+      "state": "AWAITING_REMOTE_NEW_BRANCH"
+    },
+    {
+      "id": "Q09",
+      "owner": "EXTERNAL_HOST_NATIVE_TOOL",
+      "dod": "Actual ChatGPT per-turn callback registered and called",
+      "metric": "native input identity, per-turn delivery",
+      "test": "FIELD_WITNESS_REQUIRED",
+      "state": "OPEN_NOT_ATTESTED"
+    },
+    {
+      "id": "Q10",
+      "owner": "HUMAN_ORIGINAL_TERMS",
+      "dod": "If desired, explicit future revision of EXPERIMENTAL/draft optin",
+      "metric": "new Terms, later new acceptance",
+      "test": "ADMISSION_SEPARATE",
+      "state": "OUT_OF_SCOPE_NONRETROACTIVE"
+    }
+  ],
+  "relations": [
+    [
+      "Q01",
+      "Q02",
+      "REQUIRED_FOR"
+    ],
+    [
+      "Q02",
+      "Q04",
+      "REQUIRED_FOR"
+    ],
+    [
+      "Q03",
+      "Q02",
+      "CONSENT_GUARD"
+    ],
+    [
+      "Q05",
+      "Q02",
+      "PRE_EXECUTION_GUARD"
+    ],
+    [
+      "Q06",
+      "Q01",
+      "ON_FAILURE"
+    ],
+    [
+      "Q07",
+      "Q03",
+      "FALSIFIES"
+    ],
+    [
+      "Q07",
+      "Q05",
+      "FALSIFIES"
+    ],
+    [
+      "Q08",
+      "Q01",
+      "RERUNS"
+    ],
+    [
+      "Q08",
+      "Q02",
+      "RERUNS"
+    ],
+    [
+      "Q04",
+      "Q09",
+      "DOES_NOT_IMPLY"
+    ],
+    [
+      "Q10",
+      "Q03",
+      "FUTURE_SEPARATE_EPOCH"
+    ]
+  ],
+  "native_voice_in_this_project_chat": "NO_VOICE_UNTIL_REAL_PER_TURN_WITNESS",
+  "canonical_C59_modified": false,
+  "new_release_payloads": 0,
+  "new_ledger_writers": 0
+}

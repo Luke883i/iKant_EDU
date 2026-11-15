@@ -1,0 +1,31 @@
+name: c136-canonical-manual-recovery
+on:
+  pull_request:
+    paths:
+      - 'src/c136-canonical-recovery.mjs'
+      - 'tests/c136-canonical-recovery.test.mjs'
+      - 'contracts/c136-*'
+      - 'contracts/c134-convergence-lattice.json'
+      - 'docs/C136_*'
+      - '.github/workflows/c136-canonical-manual-recovery.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'src/c136-canonical-recovery.mjs'
+      - 'tests/c136-canonical-recovery.test.mjs'
+      - 'contracts/c136-*'
+      - '.github/workflows/c136-canonical-manual-recovery.yml'
+jobs:
+  canonical-manual-preactivation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: C136 fail-closed manual bytes + 10000 receipt mutations + legacy C59
+        run: node --test tests/c136-canonical-recovery.test.mjs tests/c59-single-composition.test.mjs tests/c59-canonical-authority-gate.test.mjs tests/c43-bootstrap-recovery-hardening.test.mjs
+      - name: Historical original runtime-root pins remain intact
+        run: npm run runtime-root:verify
+      - name: Main repository coherence
+        run: npm run check

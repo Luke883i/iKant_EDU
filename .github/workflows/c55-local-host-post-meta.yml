@@ -1,0 +1,42 @@
+name: C55 local host post-meta hardening
+on:
+  pull_request:
+    paths:
+      - 'src/local-host-meta-prompt.mjs'
+      - 'docs/LOCAL_HOST_META_PROMPT.md'
+      - 'contracts/local-host-post-meta-prompt.json'
+      - 'tests/local-host-meta-prompt.test.mjs'
+      - 'tests/c44-methodological-bootstrap.test.mjs'
+      - 'tests/c55-local-host-post-meta.test.mjs'
+      - 'scripts/c55-local-host-post-meta-select.mjs'
+      - 'scripts/c55-local-host-post-meta-falsify.mjs'
+      - '.github/workflows/c55-local-host-post-meta.yml'
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Syntax
+        run: |
+          node --check src/local-host-meta-prompt.mjs
+          node --check scripts/c55-local-host-post-meta-select.mjs
+          node --check scripts/c55-local-host-post-meta-falsify.mjs
+      - name: Focused prompt and inherited methodological tests
+        timeout-minutes: 15
+        run: node --test --test-concurrency=1 tests/local-host-meta-prompt.test.mjs tests/c44-methodological-bootstrap.test.mjs tests/c55-local-host-post-meta.test.mjs
+      - name: Ten-thousand semantic discovery and complete lattice
+        timeout-minutes: 10
+        run: node scripts/c55-local-host-post-meta-select.mjs
+      - name: Independent one-hundred-thousand semantic falsification
+        timeout-minutes: 10
+        run: node scripts/c55-local-host-post-meta-falsify.mjs --cases 100000
+      - name: Runtime root remains unchanged
+        run: npm run runtime-root:verify

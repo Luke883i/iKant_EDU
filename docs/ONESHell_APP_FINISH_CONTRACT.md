@@ -1,0 +1,10 @@
+# OneShell app: contratto minimo e DoD verificabile
+
+SOURCE: lo stesso HEAD/TREE per prompt, ZIP, plugin HTML, owner e test. Nessun ripin automatico.
+BOOT: avvia iKant → I ACCEPT → EDU in tre messaggi umani distinti, non comprimerli né inferire consenso; dopo EDU l'HOST deve provare adapter esistenti e, se mancano i byte originali, mostrare un unico URL ZIP del commit congelato, con istruzioni semplici.
+SHELL: sei slot ESITO|A|B|PROVA|EDGE|NEXT, solo all'interno della app o della proiezione HOST. A: byte del solo turno corrente dall'owner con ricevuta e runtime readback, altrimenti NO_VOICE. B: solo osservabilità tecnica, mai commento al dialogo. PROVA: frame/annex originali conservati, non inventati. Quando la traccia è troppo lunga, link a un annesso HOST fisicamente riaperto; testo originale di A mai compresso.
+CLAIMS: il browser usa il medesimo frame C54 e il medesimo owner del servizio già esistente. Non costituisce un secondo owner o memoria. Persistenza del widget: soltanto durante il ciclo di vita di una app MCP effettivamente registrata; persistenza trans-chat non provata da questo ZIP.
+NEGATIVE: falso event hash, receipt, frame, owner o voice SHA non possono promuovere A; zero prose fuori slot; non sostituire la prova con un template cosmetico.
+TEST: tests/p1-app-exclusive-shell.test.mjs, tests/p1-app-ui-contract.test.mjs, tests/c54-host-materialization.test.mjs, scripts/p1-app-shell-falsify.mjs con 10 milioni di iterazioni deterministiche su 64 maschere distinte; NON sono 10 milioni di conversazioni, né una misura di saturazione semantica universale.
+RELEASE NO-GO: effettiva registrazione e chiamabilità app, identità provider e invio, UX su 30 umani, persistenza app verificata e prova di tutto il flusso nel Project ChatGPT; la CI locale non attesta questi fatti.
+UNRESOLVED CANONS: provider lifecycle, retention trans-chat, articolazione semantica degli annex, consenso e autentica identità evento, autorizzazioni multiutente, disclosure privacy e resilienza alle connessioni interrotte.

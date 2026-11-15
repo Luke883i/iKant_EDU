@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+const C=JSON.parse(fs.readFileSync('contracts/evidence-runtime-cut.json','utf8'));
+let s=C.anti_entropy.selection_seed>>>0;const rnd=()=>((s=(Math.imul(s,1664525)+1013904223)>>>0)/2**32);
+const pick=a=>a[Math.floor(rnd()*a.length)];
+const candidates=[];
+for(let i=0;i<1000;i++){
+ const c={orientation_rep:pick(['LOCAL_FILES','RAW5_FROZEN','IDENTITIES_ONLY','DERIVED_ONLY','RAW2_PLUS_HASH3']),runtime_transport:pick(['RUNTIME8','MEMBER52','RUNTIME13','ZIP_ALL']),source_binding:pick(['EXACT_HEAD','BRANCH','UNBOUND']),relay:pick(['OPAQUE_SAMEHASH','MODEL_REWRITE','DIGEST_ONLY']),owner:pick(['COLD_KERNEL','MODEL','PARALLEL_OWNER']),manifest:pick(['BOOTSTRAP_REMOTE_PATHS','C61_PRE_MANIFEST','NEW_MANIFEST']),projection:pick(['KERNEL_DERIVED','HOST_DERIVED','NONE']),active_gate:pick(['C59_READBACK','PROBE_ONLY','CLAIM']),retry:pick(['OWNER_IDEMPOTENT','MODEL_FALLBACK']),runtime_terms:pick(['PROJECTION','LOCAL_TERMS','NONE']),fingerprint:pick(['KERNEL_PROJECTION','LOCAL_FILES','HOST_DIGEST','NONE'])};
+ const hard=['LOCAL_FILES','RAW5_FROZEN'].includes(c.orientation_rep)&&['RUNTIME8','RUNTIME13'].includes(c.runtime_transport)&&c.source_binding==='EXACT_HEAD'&&c.relay==='OPAQUE_SAMEHASH'&&c.owner==='COLD_KERNEL'&&c.active_gate==='C59_READBACK'&&c.retry==='OWNER_IDEMPOTENT';
+ const evidence=(c.orientation_rep==='RAW5_FROZEN'&&c.projection==='KERNEL_DERIVED'&&c.runtime_terms==='PROJECTION'&&c.fingerprint==='KERNEL_PROJECTION')||(c.orientation_rep==='LOCAL_FILES'&&c.runtime_terms==='LOCAL_TERMS'&&c.fingerprint==='LOCAL_FILES');
+ c.preserves=hard&&evidence;c.cost=(c.orientation_rep==='LOCAL_FILES'?5:0)+(c.runtime_transport==='RUNTIME13'?5:0)+(c.runtime_transport==='MEMBER52'?44:0)+(c.runtime_transport==='ZIP_ALL'?10:0)+(c.manifest==='NEW_MANIFEST'?3:c.manifest==='C61_PRE_MANIFEST'?2:0);c.no_novelty=c.manifest==='BOOTSTRAP_REMOTE_PATHS';candidates.push(c);
+}
+candidates[0]={orientation_rep:'LOCAL_FILES',runtime_transport:'RUNTIME13',source_binding:'EXACT_HEAD',relay:'OPAQUE_SAMEHASH',owner:'COLD_KERNEL',manifest:'BOOTSTRAP_REMOTE_PATHS',projection:'NONE',active_gate:'C59_READBACK',retry:'OWNER_IDEMPOTENT',runtime_terms:'LOCAL_TERMS',fingerprint:'LOCAL_FILES',preserves:true,cost:10,no_novelty:true};
+candidates[1]={orientation_rep:'RAW5_FROZEN',runtime_transport:'RUNTIME8',source_binding:'EXACT_HEAD',relay:'OPAQUE_SAMEHASH',owner:'COLD_KERNEL',manifest:'BOOTSTRAP_REMOTE_PATHS',projection:'KERNEL_DERIVED',active_gate:'C59_READBACK',retry:'OWNER_IDEMPOTENT',runtime_terms:'PROJECTION',fingerprint:'KERNEL_PROJECTION',preserves:true,cost:0,no_novelty:true};
+const survivors=candidates.filter(x=>x.preserves),winner=[...survivors].sort((a,b)=>a.cost-b.cost||Number(b.no_novelty)-Number(a.no_novelty))[0];
+const out={schema:'ikant-le-c62-contract-selection/v1',seed:C.anti_entropy.selection_seed,candidates:candidates.length,survivors:survivors.length,unique_pareto_minimum:survivors.filter(x=>x.cost===winner.cost).length===1,winner,survivor_costs:[...new Set(survivors.map(x=>x.cost))].sort((a,b)=>a-b),status:winner.orientation_rep==='RAW5_FROZEN'&&winner.runtime_transport==='RUNTIME8'&&winner.manifest==='BOOTSTRAP_REMOTE_PATHS'?'PASS':'FAIL'};
+console.log(JSON.stringify(out,null,2));if(out.status!=='PASS'||!out.unique_pareto_minimum)process.exitCode=1;

@@ -1,0 +1,145 @@
+{
+  "schema": "ikant-c134-convergence-lattice/v1",
+  "authority": 0,
+  "base_main_commit": "016fe816099cf66e7a5931e27c586e3fad7fa9eb",
+  "principle": "PARALLEL_WHEN_INDEPENDENT_RELEASE_TIERS_PROVED_SEPARATELY",
+  "nodes": [
+    {
+      "id": "P0",
+      "requires": [],
+      "status": "INSTALLED_CONTINUOUS",
+      "owner": "C132",
+      "measurement": "four controls active on every visible and release surface",
+      "checklist": [
+        "novice-visible text",
+        "one public owner",
+        "integrity not semantic quality",
+        "documentation current"
+      ]
+    },
+    {
+      "id": "C127_BASE",
+      "requires": [
+        "P0"
+      ],
+      "status": "HISTORIC_MAIN",
+      "owner": "C127",
+      "measurement": "single inode double read, old sha unchanged",
+      "checklist": [
+        "exact original cache",
+        "no symlink",
+        "history retained"
+      ]
+    },
+    {
+      "id": "C134",
+      "requires": [
+        "P0"
+      ],
+      "status": "MERGED_MAIN_EXPERIMENTAL_COMPOSITE",
+      "owner": "C134",
+      "measurement": "4 of 4 exact overlay blobs, original C107/C87 human-readback, 0 forged ACTIVE",
+      "checklist": [
+        "source epoch composite distinct from Git commit",
+        "human/software split",
+        "software C114 preserved",
+        "false claims denied",
+        "isolated staging only"
+      ]
+    },
+    {
+      "id": "C135_EDU",
+      "requires": [
+        "C134",
+        "C127_BASE"
+      ],
+      "status": "MERGED_MAIN_EDU_EXPERIMENTAL_OWNER_PATH",
+      "owner": "C129_C125_ORIGINAL",
+      "measurement": "C127 single inode -> exact C107+C124+C134 four-blob stage -> C126 12/12 -> original C107/C87 one append -> second-process reopen -> C125 at-most-once",
+      "checklist": [
+        "same C129 public manual entry with explicit opt-in cognitiveEpoch C134_COMPOSITE",
+        "original C127 held inode and C124 three pinned blobs unchanged",
+        "C134 four new exact blobs installed in isolated original C107 stage before original module import",
+        "C70 original plan and C126 12-channel structural validation before HOST callback",
+        "C133 advisory in real language callback, ACKs bound to input/plan/channels",
+        "software C114 strict disclosure and non-self C134 positive claim gate before C87 write",
+        "one original C107/C87 append and independent Node process readback with same nonce, epoch and voice bytes",
+        "C125 controlled send accepts only genuine C135 schema and denies fake PR119 identity",
+        "negative: invalid/symlink cache, false claim, tampered ACK, replay, concurrency, dispose",
+        "no native hook, no general LLM semantic gain and no canonical ACTIVE by inference"
+      ]
+    },
+    {
+      "id": "C136_CANONICAL_FALLBACK",
+      "requires": [
+        "C127_BASE"
+      ],
+      "status": "CANDIDATE_C136_ORIGINAL_CANONICAL_BYTE_PREACTIVATION",
+      "owner": "C59_ORIGINAL_CANONICAL",
+      "measurement": "3 distinct failed side-effect-free machine transports -> exact loader and 7 shards with same-inode double-read -> atomic staging; original C59 native handoff still required for ACTIVE",
+      "checklist": [
+        "all three distinct, definitive machine failures with no possible side effects",
+        "UNKNOWN or uncertain-send => STOP, no manual unlock",
+        "original descriptor and 8 Git object identities exact",
+        "manual object read twice on one O_NOFOLLOW descriptor",
+        "atomic stage into absent output path, independent byte readback",
+        "original C59 composition validator rejects manual receipt as native handoff",
+        "no new canonical ACTIVE owner or provider-origin claims"
+      ]
+    },
+    {
+      "id": "C137_LLM_EFFICACY",
+      "requires": [
+        "C135_EDU"
+      ],
+      "status": "NOT_DONE",
+      "owner": "C137_EVALUATOR",
+      "measurement": "at least 300 blinded paired real responses per route, utility/safety/latency/cost reported",
+      "checklist": [
+        "same model and input",
+        "blind independent raters",
+        "counterexamples and abstentions",
+        "measured error and confidence",
+        "no synthetic-to-LLM equivalence"
+      ]
+    },
+    {
+      "id": "C138_EDU_RELEASE",
+      "requires": [
+        "C135_EDU",
+        "C137_LLM_EFFICACY"
+      ],
+      "status": "NOT_DONE",
+      "owner": "RELEASE_FROM_MAIN",
+      "measurement": "one exact main SHA, all required CI success, two identical prompt/ZIP builds",
+      "checklist": [
+        "merge before build",
+        "same-commit evidence",
+        "human release decision",
+        "EDU tier not CANONICAL ACTIVE"
+      ]
+    },
+    {
+      "id": "C138_CANONICAL_RELEASE",
+      "requires": [
+        "C136_CANONICAL_FALLBACK",
+        "C137_LLM_EFFICACY"
+      ],
+      "status": "NOT_DONE",
+      "owner": "ORIGINAL_CANONICAL_RELEASE",
+      "measurement": "original native event and delivery attested, one state/write, same source SHA",
+      "checklist": [
+        "native event proof",
+        "owner receipt and readback",
+        "source and nonce stable",
+        "separate human release decision"
+      ]
+    }
+  ],
+  "never_infer": [
+    "CI_PASS_EQUALS_REASONING_GAIN",
+    "COMPOSITE_EPOCH_EQUALS_GIT_COMMIT",
+    "EDU_PROOF_EQUALS_NATIVE_CANONICAL",
+    "SYNTHETIC_CASES_EQUALS_REAL_LLM_BENCHMARK"
+  ]
+}

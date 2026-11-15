@@ -1,0 +1,59 @@
+{
+  "schema": "ikant-le-product-catalog/v1",
+  "role": "SOURCE_PATHS_AND_RELEASE_RULES_NOT_ACTIVE_RUNTIME",
+  "authority": 0,
+  "product": "iKant_LE",
+  "source_of_truth": {
+    "repository": "Luke883i/iKant_LE",
+    "branch": "main",
+    "commit_resolution": "EXACT_GIT_SHA_OF_BUILD_INPUT",
+    "pr_is_release_source": false,
+    "sources_after_merge_only": true
+  },
+  "public_entrypoints": {
+    "start_here": "docs/START_HERE.md",
+    "readme": "README.md",
+    "operator_dashboard": "docs/PRODUCT_DASHBOARD.md",
+    "roadmap": "docs/C130_PRODUCT_DOD.md",
+    "edu_prompt": "project/session-chat/PROMPT.txt",
+    "bundle_contract": "project/edu-oneshell/00_HOST_CONTRACT.md",
+    "canonical_owner": "contracts/session-chat-composition-channel.json",
+    "market_positioning": "docs/PRODUCT_POSITIONING.md",
+    "v1_decisions": "docs/V1_PRODUCT_DECISIONS.md",
+    "v1_evidence": "docs/V1_E2E_TRACEABILITY.md"
+  },
+  "packaging": {
+    "script": "scripts/c131-build-project-bundle.py",
+    "cache_generator": "scripts/c131-build-source-cache.mjs",
+    "manifest": "MANIFEST.json",
+    "bundle_is_runtime_installation": false,
+    "reproducibility": "SORTED_MEMBERS_ZERO_TIMESTAMP_FIXED_PERMISSIONS_EXACT_SHA256",
+    "required_included_paths": [
+      "00_HOST_CONTRACT.md",
+      "PROMPT_INNESCO.txt",
+      "runtime/C128_PROJECT_SOURCE_CACHE.json",
+      "MANIFEST.json"
+    ]
+  },
+  "publication": {
+    "source_commit_must_be_on_main": true,
+    "tests_and_integrity_required": true,
+    "signed_release_and_tag_decision": "HUMAN_OR_ORGANIZATION_POLICY",
+    "candidate_is_official": false,
+    "linking_rule": "GITHUB_RELEASE_BOUND_TO_EXACT_MAIN_COMMIT_SHA"
+  },
+  "guarantee_levels": {
+    "EXPERIMENTAL": "HOST_OWNED_NOT_CANONICAL_ACTIVE",
+    "CANONICAL": "ORIGINAL_OWNER_NATIVE_EVIDENCE_REQUIRED"
+  },
+  "history_policy": "KEEP_MERGED_PRS_AS_AUDIT_TRAIL_NOT_COMPETING_PRODUCT",
+  "never_imply": [
+    "PRODUCT_FROM_PR_BODY",
+    "BUNDLE_IS_RUNTIME",
+    "CHECKS_EQUAL_COGNITIVE_VALIDITY"
+  ],
+  "product_version": "1.0.0-edu.1",
+  "release_line": "EXPERIMENTAL_EDU_PRE_RELEASE",
+  "product_contract": "contracts/v1-product-baseline.json",
+  "canonical_runtime_not_claimed": true
+}

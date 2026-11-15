@@ -1,0 +1,45 @@
+{
+  "schema": "ikant-le-c99-postselection-convergence/v1",
+  "authority": 0,
+  "owner": "C99_EXISTING_ROUTE_POLICY",
+  "implementation": "host/c99-postselection-planner.mjs#planC99PostSelectionTurn",
+  "scope": "POST_C72_EXPERIMENTAL_NONEXECUTING_ROUTE_PLAN",
+  "strict_priority": [
+    "C84",
+    "C102_WITH_SEPARATE_OPT_IN",
+    "C100_WITH_SEPARATE_OPT_IN",
+    "E0_DISCLOSED_HOST_DRAFT_WITH_OPT_IN",
+    "DIAGNOSTIC_STOP"
+  ],
+  "per_turn": {
+    "selection": "REAL_ORIGINAL_C72",
+    "head": "FROZEN",
+    "human_input_utf8_bytes_max": 12000,
+    "c84_and_c102_utf8_bytes_max": 600,
+    "sensitive_input": "HOST_SAFETY_VETO_PRECEDES_ROUTE",
+    "physical_carriers": "REQUIRE_ACTUAL_TOOLS_NOT_BOOLEAN_HINTS"
+  },
+  "negative": {
+    "no_implicit_opt_in": true,
+    "canonical_never_falls_back": true,
+    "unchanged_failed_route_no_retry": true,
+    "project_prompt_is_not_runtime": true,
+    "source_file_is_not_executed": true,
+    "c103_envelope_pass_is_not_invocation": true,
+    "no_new_owner": true,
+    "no_writer": true,
+    "no_native_hook": true,
+    "no_source_head_repin": true
+  },
+  "evidence_dimensions": [
+    "SOURCE_BYTES",
+    "NODE_EXECUTION",
+    "CURRENT_INPUT_BOUND",
+    "LEDGER_REOPEN",
+    "HOST_EVENT_IDENTITY",
+    "HOST_DELIVERY",
+    "STATE_CONTINUITY"
+  ],
+  "evidence_label_policy": "NEVER_USE_E3_ALONE: distinguish C84_OWNER_EXECUTED from C101_C102_C87_LOCAL_EXECUTED",
+  "host_dod": "No host action is attested by this pure planner; call and independently inspect actual owner before displaying voice."
+}

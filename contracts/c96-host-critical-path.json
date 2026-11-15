@@ -1,0 +1,36 @@
+{
+  "schema": "ikant-le-c96-host-critical-path/v1",
+  "authority": 0,
+  "pinned_source_head_for_audit": "bf6c5bf9a1436d72c82ece6a5370d54b4ab35bd6",
+  "baseline_pr": 99,
+  "goal": "Consented human -> automatic dependency-deduplicated and provenance-bound acquisition -> physically executed runtime -> owner-controlled generated voice -> correct same-input host projection -> durable state and required native artifacts, without covert authority promotion.",
+  "pre_accept_exact_paths": ["README.md", "BOOTSTRAP.json", "ADMISSION.json", "AGENTS.md", "TERMS.md"],
+  "post_accept_requirements": ["exact_I_ACCEPT_prior_message", "later_exact_C72_mode_selection", "frozen_head_not_mutable_by_carrier", "manifest_byte_integrity", "all_C77_source_files", "C77_70_anchor_coverage", "C84_C85_C81_C90_source", "current_turn_C78_C79_C90_owner", "C91_C92_provider_and_independent_review", "C81_C86_generated_voice_admission", "real_host_surface_presentation", "persistent_state_and_next_turn_readback", "canonical_DOCX_if_CANONICAL", "C72_independent_H95_field_measurement"],
+  "constraints": {
+    "single_authoritative_manifest": true,
+    "cx_count_is_not_duplicate_capsule_count": true,
+    "do_not_assume_host_connector_hook_installed": true,
+    "manual_zip_only_when_no_safe_automatic_route_is_usable": true,
+    "manual_link_only_verified_real_url": true,
+    "source_evidence_not_source_origin": true,
+    "never_infer_native_event_from_model_output": true,
+    "never_call_provider_without_real_credentials": true,
+    "no_unqualified_runtime_voice": true,
+    "canonical_active_requires_c59_owner_and_same_turn_docx": true,
+    "field_H95_is_not_unit_test_coverage": true
+  },
+  "edge_catalog": [
+    {"id":"C72_NATIVE_INGRESS_AND_ADMISSION","category":"HOST","observed":"UNVERIFIED_CURRENT_HOST"},
+    {"id":"C77_HEAD_EXACT_ARTIFACT","category":"GITHUB","observed":"QUALIFIED_LOCAL_API_SIMULATION"},
+    {"id":"C95_CONNECTOR_NODE_BYTES","category":"HOST","observed":"QUALIFIED_LOCAL_CALLBACK_SIMULATION"},
+    {"id":"C77_C84_C85_C81_SOURCE","category":"RUNTIME","observed":"QUALIFIED_LOCAL_FIXTURE"},
+    {"id":"C78_C79_C90_SAME_INPUT","category":"RUNTIME_HOST","observed":"NOT_ATTESTED_CURRENT_INPUT"},
+    {"id":"C91_C92_LIVE_PROVIDER","category":"PROVIDER","observed":"NOT_ATTESTED"},
+    {"id":"INDEPENDENT_SEMANTIC_TRUTH","category":"EXTERNAL_WITNESS","observed":"NOT_ATTESTED"},
+    {"id":"C81_C86_GENERATED_VOICE_ADMISSION","category":"RUNTIME","observed":"NOT_IMPLEMENTED"},
+    {"id":"NATIVE_CHAT_DELIVERY_RECEIPT","category":"HOST","observed":"NOT_ATTESTED"},
+    {"id":"C59_SINGLE_WRITER_DOCX_ACTIVE","category":"CANONICAL","observed":"SEPARATE_OWNER_REQUIRED"},
+    {"id":"CROSS_CHAT_PERSISTENCE","category":"HOST_STATE","observed":"NOT_ATTESTED"},
+    {"id":"C72_H95_FIELD","category":"FIELD","observed":"NOT_MEASURED"}
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema": "ikant-le-cohost-runtime-closure/v1",
+  "slice": "C47.COHOST_RUNTIME_CLOSURE",
+  "owner": "src/runtime-root-verified.mjs",
+  "composes": [
+    "C45.COHOST_CONTEXT_ROOT",
+    "C46.FAST_COHOST_BIND_NUCLEUS"
+  ],
+  "objective": "Persist and reopen the C46 bind-to-runtime upgrade, bind it to the reopened C45 context root, and qualify the merged main exact head without requiring the entire PR workflow set to rerun.",
+  "runtime_upgrade": {
+    "schema": "ikant-le-cohost-hydration-upgrade/v1",
+    "bind_nucleus_receipt_required": true,
+    "materialization_receipt_required": true,
+    "runtime_owner_receipt_required": true,
+    "c45_context_manifest_receipt_required": true,
+    "same_session_locator_required": true,
+    "same_source_head_required": true,
+    "same_runtime_root_required": true,
+    "persist_reopen_required": true,
+    "cohost_relation_changes_on_hydration": false,
+    "runtime_capability_changes_on_hydration": true
+  },
+  "main_promotion": {
+    "semantic_truth_owner": ".github/workflows/c46-fast-cohost-bind.yml@push:main",
+    "pr_candidate_c46_gate_required": false,
+    "pr_candidate_gate_role": "PROCESS_CONTROL_ONLY",
+    "pr_candidate_gate_expected_for_merge_process": true,
+    "merged_to_main_required": true,
+    "exact_main_c47_gate_required": true,
+    "exact_main_gate_freshness_required": true,
+    "exact_main_path_coverage_required": true,
+    "all_pr_workflows_rerun_on_main_required": false
+  },
+  "new_lifecycle": false,
+  "new_turn_engine": false,
+  "new_state_owner": false,
+  "new_truth_owner": false,
+  "claim_boundary": {
+    "semantic_mutation_is_physical_host_proof": false,
+    "host_participation_is_not_created": true,
+    "merge_is_not_runtime_execution_proof": true
+  },
+  "additional_falsification": {
+    "schema": "ikant-le-main-cohost-gate-selection-1k/v1",
+    "seed": "0xC148BEEF",
+    "cases": 1000,
+    "families": 40,
+    "optimal": {
+      "mismatch": 0,
+      "unsafe": 0,
+      "false_reject": 0
+    },
+    "current_c47": {
+      "mismatch": 400,
+      "unsafe": 250,
+      "false_reject": 150
+    },
+    "require_pr_gate": {
+      "mismatch": 150,
+      "unsafe": 0,
+      "false_reject": 150
+    },
+    "no_freshness": {
+      "mismatch": 125,
+      "unsafe": 125,
+      "false_reject": 0
+    },
+    "no_path_coverage": {
+      "mismatch": 125,
+      "unsafe": 125,
+      "false_reject": 0
+    },
+    "all_pr_workflows": {
+      "mismatch": 277,
+      "unsafe": 0,
+      "false_reject": 277
+    },
+    "c49_tiered_profile": "artifacts/qualification/c49-tiered-cohost-closure-1k.json"
+  },
+  "canonical_profile": "contracts/cohost-closure-profile.json",
+  "canonical_profile_semantic_sha256": "07df3f7726e00586900e83726a8cbd5b45e243f476160783c7c770bb75c63fe9",
+  "tier_projection": {
+    "RELATION": "B0+R0+R1+R2",
+    "FULL_RUNTIME": "RELATION+H0_HYDRATION_UPGRADE",
+    "CANONICAL_PRODUCT": "FULL_RUNTIME+P0_CANONICAL_PROMOTION+O0_OWNER_GOVERNANCE",
+    "flat_all_requirements_for_relation": false
+  }
+}

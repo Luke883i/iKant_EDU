@@ -1,0 +1,46 @@
+{
+  "schema": "ikant-le-local-host-metaprompt-falsification/v4",
+  "prompt_sha256": "e70e313cebe6af4691f3c8aad2494ff0e1d80630c54f142087f688e0110540f9",
+  "prompt_chars": 1302,
+  "prompt_words": 171,
+  "selection": {
+    "candidate_architectures": 1024,
+    "obligations": [
+      "single_entrypoint",
+      "existing_owner_delegation",
+      "one_next",
+      "ledger_cache_reuse",
+      "changed_evidence_retry",
+      "byte_path_collapse",
+      "partial_coverage",
+      "relay_exactness",
+      "shell_recompute",
+      "runtime_handoff"
+    ],
+    "valid_candidates": 1,
+    "winner_mask": 1023,
+    "winner_cost": 10,
+    "winner_count": 1,
+    "unique_minimum": true
+  },
+  "families": {
+    "AUTHORITY": 10,
+    "NEW_PLANNER": 10,
+    "MODEL_PATH": 10,
+    "RETRY_UNCHANGED": 10,
+    "REGISTRY_ABSENCE": 10,
+    "PARTIAL_EXEC": 10,
+    "RELAY_WEAKEN": 10,
+    "SHELL_SYNTH": 10,
+    "ACTIVE_NEXT": 10,
+    "PROMPT_LEAK": 10
+  },
+  "mutations": 100,
+  "killed": 100,
+  "survivors": [],
+  "base_errors": [],
+  "runtime_ux_change": "VALIDATED_FASTBOOT_STEP_GUIDANCE_IN_SESSION_SHELL",
+  "claim_boundary": "bounded semantic selection/falsification plus repository-side UX contract discrimination; not current-host physical proof or ACTIVE proof",
+  "status": "PASS",
+  "receipt_sha256": "3dba08ccd6b2475a43fe9226da61ef7908c7ac7cb02302bad217b77478a9a3da"
+}

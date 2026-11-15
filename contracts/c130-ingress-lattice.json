@@ -1,0 +1,33 @@
+{
+  "schema": "ikant-le-c130-ingress-lattice/v1",
+  "authority": 0,
+  "status": "PROPOSED_OWNER_MIGRATION_NOT_CANONICAL_ENABLED",
+  "public_entry": "ONE_USER_ENTRY_WITH_EXPLICIT_ASSURANCE_CHOICE",
+  "common_admission": ["READ_SOURCE_PINNED_TERMS", "I_ACCEPT", "CHOOSE_MODE"],
+  "experimental": {
+    "transport": "ONE_MANUAL_USER_UPLOAD_ONLY",
+    "preferred_payload": "SINGLE_VERIFIABLE_OWNER_AND_CACHE_CAPSULE",
+    "machine_transport_attempts": 0,
+    "source_verification": "ORIGINAL_C127_OR_SUCCESSOR",
+    "no_native_active_claim": true
+  },
+  "canonical": {
+    "transport_decider": "EXISTING_C59_OWNER_ONLY",
+    "attempt_limit_N": 3,
+    "distinct_real_channel_receipt_required": true,
+    "after_three_real_failures": "OWNER_OFFERS_MANUAL_EXACT_PAYLOAD",
+    "uncertain_result_blocks_retry": true,
+    "integrity_mismatch_blocks_fallback": true,
+    "manual_payload_must_pass_same_authority_predicate": true,
+    "pre_registered_native_hook_still_required": true,
+    "same_input_writer_and_active_readback_required": true,
+    "new_manual_fallback_issuer_proven": false
+  },
+  "legacy_routes": {
+    "C127_MACHINE_TRANSFER": "INTERNAL_COMPATIBILITY_ONLY_EDU_EXCLUDED",
+    "C59_COLD_GITHUB_RELAY": "CANONICAL_OWNER_INTERNAL_ONLY",
+    "C20_OR_OLD_FASTBOOT": "NON_AUTHORITATIVE_COMPATIBILITY",
+    "PROJECT_PROMPT_OR_ZIP": "DATA_AND_ROUTING_ONLY"
+  },
+  "decision_projection": "host/c130-ingress-projection.mjs"
+}

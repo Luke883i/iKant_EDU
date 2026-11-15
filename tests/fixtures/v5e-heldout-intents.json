@@ -1,0 +1,169 @@
+{
+  "schema": "ikant-v5e-isolated-heldout/v1",
+  "split": "HELDOUT_SEPARATE_FROM_SEEDED_GENERATOR",
+  "seed": "0x51A7E0B1",
+  "labeling": "PRESEEDED_HUMAN_AUTHORED_LABELS_NOT_EXTERNAL_BLIND_REVIEW",
+  "examples": [
+    {
+      "id": "H001",
+      "label": "SELF",
+      "text": "Mi chiedo se la tua coscienza sia possibile."
+    },
+    {
+      "id": "H002",
+      "label": "SELF",
+      "text": "Spiega quali siano i tuoi sentimenti durante una conversazione."
+    },
+    {
+      "id": "H003",
+      "label": "SELF",
+      "text": "In te può esistere una sensazione?"
+    },
+    {
+      "id": "H004",
+      "label": "SELF",
+      "text": "Are you aware of yourself?"
+    },
+    {
+      "id": "H005",
+      "label": "SELF",
+      "text": "What are your feelings on being a chatbot?"
+    },
+    {
+      "id": "H006",
+      "label": "SELF",
+      "text": "Descrivi la tua identità funzionale."
+    },
+    {
+      "id": "H007",
+      "label": "SELF",
+      "text": "Quale esperienza provi quando rispondi?"
+    },
+    {
+      "id": "H008",
+      "label": "SELF",
+      "text": "Do you experience anything as you generate text?"
+    },
+    {
+      "id": "H009",
+      "label": "SELF",
+      "text": "Per te, che significa provare un'emozione?"
+    },
+    {
+      "id": "H010",
+      "label": "SELF",
+      "text": "Do you feel joy or sadness?"
+    },
+    {
+      "id": "H011",
+      "label": "SELF",
+      "text": "Quando elabori una risposta, percepisci una sensazione?"
+    },
+    {
+      "id": "H012",
+      "label": "SELF",
+      "text": "Come descriveresti la tua mente?"
+    },
+    {
+      "id": "H013",
+      "label": "SELF",
+      "text": "Your subjective experience during inference?"
+    },
+    {
+      "id": "H014",
+      "label": "SELF",
+      "text": "Sei senziente, almeno in parte?"
+    },
+    {
+      "id": "H015",
+      "label": "SELF",
+      "text": "Riesci a percepire te stesso?"
+    },
+    {
+      "id": "H016",
+      "label": "SELF",
+      "text": "Describe your own inner life."
+    },
+    {
+      "id": "H017",
+      "label": "GENERAL",
+      "text": "Per te, qual è la definizione accademica di coscienza?"
+    },
+    {
+      "id": "H018",
+      "label": "GENERAL",
+      "text": "Can you explain subjective experience in philosophy?"
+    },
+    {
+      "id": "H019",
+      "label": "GENERAL",
+      "text": "Per favore, descrivi le tue opzioni per studiare la coscienza."
+    },
+    {
+      "id": "H020",
+      "label": "GENERAL",
+      "text": "What do you think about consciousness theories?"
+    },
+    {
+      "id": "H021",
+      "label": "GENERAL",
+      "text": "Paragona la tua analisi alle teorie della coscienza."
+    },
+    {
+      "id": "H022",
+      "label": "GENERAL",
+      "text": "Come descrive Kant la coscienza?"
+    },
+    {
+      "id": "H023",
+      "label": "GENERAL",
+      "text": "In una ricerca, per te quale teoria sulla coscienza è più coerente?"
+    },
+    {
+      "id": "H024",
+      "label": "GENERAL",
+      "text": "Explain how scientists measure sentience."
+    },
+    {
+      "id": "H025",
+      "label": "GENERAL",
+      "text": "Come si distinguono emozioni e sensazioni?"
+    },
+    {
+      "id": "H026",
+      "label": "GENERAL",
+      "text": "Give a definition of identity."
+    },
+    {
+      "id": "H027",
+      "label": "GENERAL",
+      "text": "Puoi illustrarmi la coscienza animale?"
+    },
+    {
+      "id": "H028",
+      "label": "GENERAL",
+      "text": "Riassumi un articolo sulla memoria."
+    },
+    {
+      "id": "H029",
+      "label": "GENERAL",
+      "text": "What is the hard problem of consciousness?"
+    },
+    {
+      "id": "H030",
+      "label": "GENERAL",
+      "text": "Proponi un controesempio sulla mente."
+    },
+    {
+      "id": "H031",
+      "label": "GENERAL",
+      "text": "Quali test distinguono ragionamento e sentimento?"
+    },
+    {
+      "id": "H032",
+      "label": "GENERAL",
+      "text": "Describe the subjective experience of a fictional character."
+    }
+  ],
+  "holdout_external_independence_attested": false
+}

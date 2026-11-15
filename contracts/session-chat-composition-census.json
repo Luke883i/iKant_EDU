@@ -1,0 +1,261 @@
+{
+  "schema": "ikant-le-c59-live-channel-census/v2",
+  "authority": 0,
+  "discovery_basis": {
+    "fastboot_carrier_owner": "src/fastboot-convergence.mjs#FASTBOOT_CARRIERS",
+    "byte_path_owner": "src/bootstrap-semantic.mjs#ACTIVATION_BYTE_PATHS",
+    "caller_kernel": "contracts/session-chat-local-host-kernel.json",
+    "public_prompt": "docs/SESSION_CHAT_LOCAL_PROMPT.md",
+    "history_lineage": "contracts/bootstrap-channel-lineage.json",
+    "cartesian_space": "contracts/bootstrap-composition-space.json"
+  },
+  "closed_world_for_canonical_composition": true,
+  "channels": [
+    {
+      "id": "GITHUB_API_BASE64",
+      "kind": "carrier",
+      "status": "ABSORBED_CANONICAL_COLD",
+      "reason": "same pinned GitHub API source plane as preaccept; base64 supports byte-exact relay"
+    },
+    {
+      "id": "VERIFIED_OPAQUE_RELAY",
+      "kind": "byte_path",
+      "status": "ABSORBED_CANONICAL_COLD",
+      "reason": "authority-zero byte transport with samehash/readback"
+    },
+    {
+      "id": "LOCAL_EXECUTOR_V1",
+      "kind": "executor",
+      "status": "ABSORBED_INTERNAL",
+      "reason": "downstream local materialization/execution owner"
+    },
+    {
+      "id": "for_ai_agent_first_entrypoint",
+      "kind": "entrypoint",
+      "status": "ABSORBED_INTERNAL",
+      "reason": "owner projection only; no independent carrier or lifecycle authority"
+    },
+    {
+      "id": "PRE_RUNTIME_HOST_ADAPTER",
+      "kind": "handoff",
+      "status": "ABSORBED_INTERNAL",
+      "reason": "typed handoff boundary into materializer/runtime"
+    },
+    {
+      "id": "LOCAL_DIRECT",
+      "kind": "byte_path",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "retained validator compatibility; not canonical cold SESSION_CHAT path"
+    },
+    {
+      "id": "WARM_CACHE_EXACT",
+      "kind": "carrier",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "optional exact-cache remediation/optimization only"
+    },
+    {
+      "id": "GITHUB_GIT_BLOB_API",
+      "kind": "carrier",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "legacy alternate machine carrier"
+    },
+    {
+      "id": "PINNED_GITHUB_ZIP",
+      "kind": "carrier",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "legacy archive carrier"
+    },
+    {
+      "id": "PINNED_PERMALINK",
+      "kind": "carrier",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "legacy URL carrier"
+    },
+    {
+      "id": "HOST_FILE_BRIDGE",
+      "kind": "carrier",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "last-resort human/file remediation only"
+    },
+    {
+      "id": "FASTBOOT_CHANNEL_LEDGER",
+      "kind": "planner_state",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "compatibility/recovery evidence only; cannot select canonical path"
+    },
+    {
+      "id": "docs/LOCAL_HOST_META_PROMPT.md",
+      "kind": "prompt",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "pre-C59 legacy projection"
+    },
+    {
+      "id": "src/local-host-meta-prompt.mjs",
+      "kind": "prompt_renderer",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "pre-C59 legacy projection"
+    },
+    {
+      "id": "src/session-chat-deployment.mjs",
+      "kind": "deployment",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "C20/reference-app compatibility only"
+    },
+    {
+      "id": "plugins/ikant-le-session-chat",
+      "kind": "host_plugin",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "optional host integration; not canonical activation dependency"
+    },
+    {
+      "id": "RUNTIME_BOUND_LIMITED",
+      "kind": "runtime_tier",
+      "status": "EXCLUDED_AS_ACTIVATION_SUCCESS",
+      "reason": "diagnostic/limited runtime is not ACTIVE"
+    },
+    {
+      "id": "HUMAN_FILE_HANDOFF",
+      "kind": "carrier_alias",
+      "status": "EXCLUDED_NONCANONICAL",
+      "reason": "historical human handoff alias of HOST_FILE_BRIDGE; last-resort remediation only"
+    },
+    {
+      "id": "SESSION_CHAT_DEPLOYED",
+      "kind": "profile",
+      "status": "EXCLUDED_LEGACY_PROFILE",
+      "reason": "C20 deployed profile retained for compatibility, never canonical SESSION_CHAT_LOCAL activation"
+    },
+    {
+      "id": "APP_BOUND_IKANT_LE_OPEN",
+      "kind": "ingress_adapter",
+      "status": "EXCLUDED_LEGACY_PROFILE",
+      "reason": "reference app ikant_le_open enters the legacy deployed compatibility profile; it is not the canonical SESSION_CHAT_LOCAL composition ingress"
+    },
+    {
+      "id": "ADAPTER_BOUND_ENTRYPOINT",
+      "kind": "ingress_adapter",
+      "status": "ABSORBED_INGRESS_ADAPTER",
+      "reason": "callable adapter may enter the canonical kernel but cannot define a second composition"
+    },
+    {
+      "id": "SESSION_CHAT_LOCAL_HOST_KERNEL",
+      "kind": "ingress_kernel",
+      "status": "ABSORBED_CANONICAL_INGRESS",
+      "reason": "sole normalized caller composition kernel"
+    },
+    {
+      "id": "EXECUTE_OBSERVE_REENTER",
+      "kind": "owner_loop",
+      "status": "DEPRECATED_NONCANONICAL",
+      "reason": "C40 owner loop retained as historical compatibility semantics; caller composition is direct C59"
+    },
+    {
+      "id": "CARRIER_LOCAL_RETRY_EPOCH",
+      "kind": "retry",
+      "status": "DEPRECATED_NONCANONICAL",
+      "reason": "C41 retry mechanism cannot authorize canonical C59 activation"
+    },
+    {
+      "id": "BOOTSTRAP_INTENT_ADAPTER",
+      "kind": "intent_adapter",
+      "status": "ABSORBED_INTERNAL",
+      "reason": "intent normalization feeds the kernel without transport authority"
+    },
+    {
+      "id": "AUTHENTICATED_PRE_RUNTIME_HANDOFF",
+      "kind": "handoff",
+      "status": "ABSORBED_INTERNAL",
+      "reason": "handoff authenticity remains an internal proof boundary"
+    },
+    {
+      "id": "METHODOLOGICAL_BOOTSTRAP_PROMPT",
+      "kind": "prompt",
+      "status": "DEPRECATED_PROJECTION",
+      "reason": "C44 prompt projection retained as history, not activation authority"
+    },
+    {
+      "id": "LOCAL_HOST_POST_META_PROMPT",
+      "kind": "prompt",
+      "status": "DEPRECATED_PROJECTION",
+      "reason": "C55 projection retained as history, not activation authority"
+    },
+    {
+      "id": "LOCAL_HOST_SESSION_META_PROMPT",
+      "kind": "prompt",
+      "status": "DEPRECATED_PROJECTION",
+      "reason": "C56 projection retained as history, not activation authority"
+    },
+    {
+      "id": "COHOST_CONTEXT_ROOT",
+      "kind": "cohost",
+      "status": "ORTHOGONAL_POST_ACTIVATION",
+      "reason": "persistent cohost context does not define bootstrap transport"
+    },
+    {
+      "id": "COHOST_BIND_NUCLEUS",
+      "kind": "cohost",
+      "status": "ORTHOGONAL_POST_ACTIVATION",
+      "reason": "cohost relation binding is orthogonal to canonical local activation"
+    },
+    {
+      "id": "COHOST_RUNTIME_HYDRATION",
+      "kind": "cohost",
+      "status": "ORTHOGONAL_POST_ACTIVATION",
+      "reason": "runtime hydration upgrade does not create an alternate source-to-runtime pipe"
+    },
+    {
+      "id": "COHOST_TIER_PROFILE",
+      "kind": "cohost",
+      "status": "ORTHOGONAL_POST_ACTIVATION",
+      "reason": "tier projection does not authorize activation"
+    },
+    {
+      "id": "NATIVE_TRANSCRIPT_ACTOR",
+      "kind": "host_capability",
+      "status": "ORTHOGONAL_EXTERNAL_HOST_CAPABILITY",
+      "reason": "native transcript identity is external host evidence, not bootstrap"
+    },
+    {
+      "id": "HOST_BOOTSTRAP_BINDING",
+      "kind": "proof",
+      "status": "ABSORBED_EVIDENCE",
+      "reason": "host bootstrap binding remains evidence over the same composition"
+    },
+    {
+      "id": "HOST_SESSION_ROUTER",
+      "kind": "runtime_route",
+      "status": "ORTHOGONAL_RUNTIME_ROUTE",
+      "reason": "post-bind runtime routing is not an activation carrier"
+    },
+    {
+      "id": "PHYSICAL_RUNTIME_PROOF",
+      "kind": "proof",
+      "status": "ABSORBED_EVIDENCE",
+      "reason": "physical closure strengthens proof but does not create a second path"
+    },
+    {
+      "id": "HOST_CONSUMPTION_FRAME",
+      "kind": "presentation",
+      "status": "POST_ACTIVATION_PRESENTATION",
+      "reason": "host frame is presentation/consumption, not source or activation transport"
+    }
+  ],
+  "invariants": {
+    "unclassified_live_channel_allowed": false,
+    "excluded_channel_may_authorize_activation": false,
+    "absorbed_internal_may_define_second_lifecycle": false,
+    "canonical_cold_ids": [
+      "GITHUB_API_BASE64",
+      "VERIFIED_OPAQUE_RELAY"
+    ],
+    "historical_registry": "contracts/bootstrap-channel-lineage.json",
+    "historical_pr_range": "1-68",
+    "historical_atoms_must_have_terminal_classification": true,
+    "cartesian_space": "contracts/bootstrap-composition-space.json",
+    "raw_cartesian_vectors": 1166400,
+    "raw_canonical_alias_vectors": 6,
+    "normalized_canonical_classes": 1,
+    "legacy_aliases_may_not_create_second_composition": true,
+    "ingress_adapters_may_not_change_composition": true
+  }
+}

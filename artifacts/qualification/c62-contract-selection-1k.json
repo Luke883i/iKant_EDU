@@ -1,0 +1,28 @@
+{
+  "schema": "ikant-le-c62-contract-selection/v1",
+  "seed": 620071,
+  "candidates": 1000,
+  "survivors": 2,
+  "unique_pareto_minimum": true,
+  "winner": {
+    "orientation_rep": "RAW5_FROZEN",
+    "runtime_transport": "RUNTIME8",
+    "source_binding": "EXACT_HEAD",
+    "relay": "OPAQUE_SAMEHASH",
+    "owner": "COLD_KERNEL",
+    "manifest": "BOOTSTRAP_REMOTE_PATHS",
+    "projection": "KERNEL_DERIVED",
+    "active_gate": "C59_READBACK",
+    "retry": "OWNER_IDEMPOTENT",
+    "runtime_terms": "PROJECTION",
+    "fingerprint": "KERNEL_PROJECTION",
+    "preserves": true,
+    "cost": 0,
+    "no_novelty": true
+  },
+  "survivor_costs": [
+    0,
+    10
+  ],
+  "status": "PASS"
+}

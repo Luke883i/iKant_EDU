@@ -1,0 +1,58 @@
+name: CP11 C143 bounded semantic runtime (Node20/22)
+on:
+  pull_request:
+    paths:
+      - 'host/c143-*'
+      - 'host/c135-edu-v2-owner.mjs'
+      - 'host/c125-exclusive-shell.mjs'
+      - 'scripts/c107-pack.mjs'
+      - 'scripts/cp11-million-semantic-mutations.mjs'
+      - 'tests/cp11-guarded-prepr.test.mjs'
+      - 'docs/CP11_REBASED_SEMANTIC_DOD.md'
+      - '.github/workflows/c143-cp11-prepr.yml'
+  push:
+    paths:
+      - 'host/c143-*'
+      - 'host/c135-edu-v2-owner.mjs'
+      - 'host/c125-exclusive-shell.mjs'
+      - 'scripts/c107-pack.mjs'
+      - '.github/workflows/c143-cp11-prepr.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-cognitive-edu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Original source closure and syntax
+        run: |
+          node scripts/project-source-manifest.mjs verify
+          node --check host/c143-guarded-nonidentity-policy.mjs
+          node --check host/c143-edu-v2-turn.mjs
+          node --check scripts/cp11-million-semantic-mutations.mjs
+      - name: Original cognition, C114, C139, P1, C87, C125/S03
+        run: |
+          node --test tests/cp11-guarded-prepr.test.mjs tests/c114-ontology-language.test.mjs tests/c139-epistemic-edu-v2.test.mjs tests/p1-human-language.test.mjs tests/s02-edu-v2-original-owner-e2e.test.mjs tests/s02-unknown-delivery-stop.test.mjs
+      - name: PR188 original Host negative rail non-regression
+        run: |
+          node --test tests/project-host-negative-rail.test.mjs tests/project-c72-physical-ingress.test.mjs
+      - name: One million seeded semantic scenario cases
+        run: |
+          node scripts/cp11-million-semantic-mutations.mjs "$RUNNER_TEMP/cp11-million.json"
+          node -e "const x=require(process.argv[1]);if(x.total!==1000000||x.oracle_mismatches||x.unique_inputs<900000||x.allowed!==100000||x.denied!==900000)process.exit(1)" "$RUNNER_TEMP/cp11-million.json"
+      - name: PR188 million-case negative control (Node22)
+        if: matrix.node == '22'
+        run: |
+          node scripts/project-host-negative-falsify.mjs "$RUNNER_TEMP/r3-negative.json"
+          cmp "$RUNNER_TEMP/r3-negative.json" artifacts/qualification/negative-semantic-1m.json

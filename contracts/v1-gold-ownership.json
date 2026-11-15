@@ -1,0 +1,215 @@
+{
+  "schema": "ikant-le-v1-gold-ownership/v1",
+  "authority": 0,
+  "version": "1.0.0-edu.1",
+  "principle": "ONE_MAIN_SOURCE_HISTORY_IS_EVIDENCE_NOT_RELEASE",
+  "dispositions": {
+    "PRESERVE_ACTIVE": "Existing source owner: keep and test; never parallelize authority",
+    "REUSE_EXPERIMENTAL": "Verified EDU owner; do not confer canonical state",
+    "PROMOTE_ONLY_WITH_NATIVE_PROOF": "Port only inside canonical owner with original guarantees",
+    "EVOLVE_PINNED_SOURCE": "Change via new epoch and rebuilt pins; preserve historic hashes",
+    "PACKAGE_FROM_MAIN": "Generate public recipes from the exact main commit after merge",
+    "VERIFY_ONLY": "Evidence and regression, never runtime authority",
+    "RETAIN_COMPATIBILITY": "Historical test only; excluded from public execution"
+  },
+  "gold": [
+    {
+      "path": "README.md",
+      "role": "public entry",
+      "decision": "PACKAGE_FROM_MAIN"
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "host admission",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "TERMS.md",
+      "role": "human terms",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "BOOTSTRAP.json",
+      "role": "first contact",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "ADMISSION.json",
+      "role": "consent gate",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "src/first-contact.mjs",
+      "role": "first-contact owner",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "host/c72-unified-mode-admission.mjs",
+      "role": "text consent and mode",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "src/runtime-root-verified.mjs",
+      "role": "canonical root acquisition",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "src/bootstrap-semantic.mjs",
+      "role": "canonical validation",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "src/runtime-command.mjs",
+      "role": "canonical execution",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "src/session-local-service.mjs",
+      "role": "canonical session",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "contracts/session-chat-composition-channel.json",
+      "role": "canonical composition",
+      "decision": "PRESERVE_ACTIVE"
+    },
+    {
+      "path": "src/c70-experimental-compute-preview.mjs",
+      "role": "bounded compute-first plan",
+      "decision": "EVOLVE_PINNED_SOURCE"
+    },
+    {
+      "path": "src/c82-experimental-answer.mjs",
+      "role": "cognitive family",
+      "decision": "EVOLVE_PINNED_SOURCE"
+    },
+    {
+      "path": "src/c83-semantic-router.mjs",
+      "role": "lexical intent",
+      "decision": "EVOLVE_PINNED_SOURCE"
+    },
+    {
+      "path": "host/c114-ontology-language-policy.mjs",
+      "role": "positive claim guard",
+      "decision": "EVOLVE_PINNED_SOURCE"
+    },
+    {
+      "path": "host/c107-experimental-turn.mjs",
+      "role": "C70 to C87 owner",
+      "decision": "EVOLVE_PINNED_SOURCE"
+    },
+    {
+      "path": "src/c124-channel-bridge.mjs",
+      "role": "12 source-bound channels",
+      "decision": "EVOLVE_PINNED_SOURCE"
+    },
+    {
+      "path": "host/c124-source-overlay.mjs",
+      "role": "historic epoch evidence",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/c117-semantic-guidance.mjs",
+      "role": "host language steering",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/c100-cohost-experimental.mjs",
+      "role": "bound language draft",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/c87-durable-ledger.mjs",
+      "role": "single writer readback",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/edu-c127-source-transport.mjs",
+      "role": "single inode exact cache",
+      "decision": "PROMOTE_ONLY_WITH_NATIVE_PROOF"
+    },
+    {
+      "path": "host/edu-c125-shell-session.mjs",
+      "role": "controlled owner session",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/c125-output-port.mjs",
+      "role": "controlled send",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/c125-exclusive-shell.mjs",
+      "role": "exclusive presentation",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/edu-c129-manual-entry.mjs",
+      "role": "manual-only operator entry",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/c130-subject-scope.mjs",
+      "role": "advisory subject scope",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/c130-public-language.mjs",
+      "role": "public-facing HOST text",
+      "decision": "REUSE_EXPERIMENTAL"
+    },
+    {
+      "path": "host/c131-product-release-gate.mjs",
+      "role": "anti-false-release guard",
+      "decision": "VERIFY_ONLY"
+    },
+    {
+      "path": "project/edu-oneshell/00_HOST_CONTRACT.md",
+      "role": "host adapter contract",
+      "decision": "PACKAGE_FROM_MAIN"
+    },
+    {
+      "path": "project/edu-oneshell/PROMPT_INNESCO.txt",
+      "role": "derived project prompt",
+      "decision": "PACKAGE_FROM_MAIN"
+    },
+    {
+      "path": "scripts/c131-build-project-bundle.py",
+      "role": "reproducible ZIP recipe",
+      "decision": "PACKAGE_FROM_MAIN"
+    },
+    {
+      "path": "release/catalog.json",
+      "role": "single source catalog",
+      "decision": "PACKAGE_FROM_MAIN"
+    },
+    {
+      "path": "docs/V1_E2E_TRACEABILITY.md",
+      "role": "capability evidence",
+      "decision": "VERIFY_ONLY"
+    },
+    {
+      "path": "tests/edu-c129-manual-entry.test.mjs",
+      "role": "manual ingress tests",
+      "decision": "VERIFY_ONLY"
+    },
+    {
+      "path": "tests/c131-product-release.test.mjs",
+      "role": "release regression",
+      "decision": "VERIFY_ONLY"
+    },
+    {
+      "path": "host/c82-experimental-carriers.mjs",
+      "role": "legacy carrier",
+      "decision": "RETAIN_COMPATIBILITY"
+    }
+  ],
+  "migration_guards": [
+    "PINNED_FILE_CHANGE_NEEDS_NEW_SOURCE_EPOCH",
+    "CANONICAL_OWNER_UNCHANGED_WITHOUT_NATIVE_PROOF",
+    "MANUAL_EDU_NO_IMPLICIT_CONSENT",
+    "NO_SECOND_WRITER",
+    "NO_NATIVE_HOOK_CLAIM_FROM_TEST_FIXTURE",
+    "HISTORY_IS_NOT_RELEASE"
+  ]
+}

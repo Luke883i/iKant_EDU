@@ -1,0 +1,40 @@
+{
+  "schema": "ikant-le-host-brand-projection/v1",
+  "authority": 0,
+  "source_head": "92cc620299e9ee365386782921036e57d2f6bd0e",
+  "entrypoint": "plugins/ikant-le-session-chat/plugin.json",
+  "logo_source": [
+    "assets/brand/ikant-light.svg",
+    "assets/brand/ikant-dark.svg"
+  ],
+  "brand_surface": [
+    "plugin_manifest_when_registered",
+    "HOST_OWNED_APP_HEADER_WHEN_RENDERED",
+    "HOST_VERIFIED_A_LABEL"
+  ],
+  "ui_guarantee": "ONLY_IN_OWN_RENDERED_SURFACE",
+  "provider_native_icon_attested": false,
+  "app_installed_attested": false,
+  "active": false,
+  "owner_writer_modified": false,
+  "slots": [
+    "ESITO",
+    "A",
+    "B",
+    "PROVA",
+    "EDGE",
+    "NEXT"
+  ],
+  "requirements": [
+    "byte_equal_light_original",
+    "dark_path_equal_original_square_viewbox",
+    "plugin_declares_four_relative_icons",
+    "square_dimensions",
+    "icon_in_host_app_header",
+    "A_badge_visible_only_after_verified_voice",
+    "same_six_slots",
+    "no_original_owner_or_voice_modification",
+    "no_native_UI_promise",
+    "user_png_reference_digest_only"
+  ]
+}

@@ -1,0 +1,31 @@
+name: C109 original local chat shell and typed host gateway
+on:
+  pull_request:
+    paths:
+      - 'host/c109-*'
+      - 'scripts/c109-*'
+      - 'contracts/c109-*'
+      - 'tests/c109-*'
+      - 'scripts/c107-pack.mjs'
+      - '.github/workflows/c109-chat-shell.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  original-c109:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax check and original capsule chat shell
+        run: |
+          node --check host/c109-chat-shell.mjs
+          node --check scripts/c109-chat-gateway.mjs
+          node --test tests/c109-frame-policy.test.mjs tests/c109-chat-shell.test.mjs
+      - name: Million semantic frame mutations and positive controls
+        run: |
+          node scripts/c109-falsify-1m.mjs > /tmp/c109-semantic.json
+          node -e 'const x=require("/tmp/c109-semantic.json");if(!x.qualified||x.negative_cases!==1000000||x.positive_accepted!==10000||x.unexpected_acceptance!==0)process.exit(2)'

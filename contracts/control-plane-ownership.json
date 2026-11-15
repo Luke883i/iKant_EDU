@@ -1,0 +1,55 @@
+{
+  "schema": "ikant-control-plane-ownership-contract/v1",
+  "common_semantic_sha256": "f3327c399914f35b5a149c7dcbe63c58b44ff944e8bf2c8d49e600ce813c2eee",
+  "common": {
+    "schema": "ikant-control-plane-ownership-common/v1",
+    "states": ["HOST_OWNED", "COHOSTED_BOUND", "IKANT_OWNED", "RELEASED_TO_HOST", "BLOCKED_INTEGRITY"],
+    "primitives": [
+      {"id":"P0_OWNER_VECTOR","law":"control/model/egress ownership is explicit and independently inspectable"},
+      {"id":"P1_MODEL_GATE","law":"IKANT_OWNED requires iKant-controlled model invocation ingress"},
+      {"id":"P2_EGRESS_GATE","law":"IKANT_OWNED requires iKant-controlled pre-display egress"},
+      {"id":"P3_DURABLE_RUNTIME","law":"IKANT_OWNED requires durable session runtime identity"},
+      {"id":"P4_RELEASE","law":"valid explicit RELEASE_TO_HOST is terminal for the current ownership epoch"},
+      {"id":"P5_EXPLICIT_ACQUIRE","law":"initial acquisition and reacquisition of IKANT_OWNED require explicit ACTIVATE_IKANT with fresh valid ownership proof"},
+      {"id":"P6_WARM_PATH","law":"ordinary owned turns use an already materialized runtime with no GitHub transfer; warm activation must complete within 10000 ms"},
+      {"id":"P7_TURN_BUDGET","law":"mass qualification is install/CI evidence and is forbidden from the ordinary turn path"},
+      {"id":"P8_SELF_RECHECK","law":"repository/runtime contract coherence must re-check before ownership promotion"},
+      {"id":"P9_NO_REPEAT","law":"same evidence plus same state cannot repeat an activation action without changed evidence"}
+    ],
+    "activation_protocol": {
+      "acquire_command": "ACTIVATE_IKANT",
+      "release_command": "RELEASE_TO_HOST",
+      "max_warm_activation_ms": 10000,
+      "budget_exhaustion_code": "STARTUP_BUDGET_EXHAUSTED",
+      "budget_exhaustion_is_semantic_failure": false,
+      "automatic_retry_under_unchanged_evidence": false
+    },
+    "ownership_rule": "IKANT_OWNED iff runtime_bound + explicit ACTIVATE_IKANT + P0..P3 + P5..P8 close, no integrity fault/release/repeat violation, warm activation is observed within 10000 ms, and no mass qualification or GitHub transfer occurs in the ordinary turn path",
+    "active_boundary": "orthogonal: this lattice does not redefine or promote canonical ACTIVE"
+  },
+  "repo_binding": {
+    "repository": "Luke883i/iKant_LE",
+    "runtime_owner": "src/control-plane-ownership.mjs",
+    "cohosted_anchor": "src/session-local-service.mjs",
+    "egress_anchor": "src/runtime-limited-turn.mjs",
+    "resume_anchor": "src/runtime-root-verified.mjs",
+    "bootstrap_contract": "contracts/pre-runtime-kernel.json",
+    "deployment_contract": "contracts/runtime-availability-dod.json",
+    "new_runtime_state": false,
+    "active_semantics_changed": false,
+    "model_authority_laundering_forbidden": true
+  },
+  "qualification": {
+    "semantic_seed": "0xC350190C0FFEE",
+    "semantic_cases": 10000000,
+    "architecture_lattice": 1048576,
+    "alternative_seed": "0xC351000A17E",
+    "alternative_contracts": 1000000,
+    "required_deletion_mutants": 10,
+    "required_mismatches": 0,
+    "required_unsafe_promotions": 0,
+    "required_alternative_survivors": 0,
+    "explicit_activation_mutated": true,
+    "warm_activation_budget_mutated": true
+  }
+}

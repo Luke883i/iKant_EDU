@@ -1,0 +1,47 @@
+name: C98 physical carrier adapter and H95 preregistration
+on:
+  pull_request:
+    paths:
+      - 'host/c98-*'
+      - 'scripts/c98-*'
+      - 'tests/c98-*'
+      - 'contracts/c98-*'
+      - 'docs/C98_*'
+      - 'project-baseline/**'
+      - '.github/workflows/c98-host-bound-prepr.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c98-source-bound:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Reuse actual source C82 C80 C72 and fixture; no bundled mirrors
+        run: node --test --test-concurrency=1 tests/c98-*.test.mjs tests/c80-field-witness.test.mjs tests/c72-product-value.test.mjs
+      - name: 'Project-only 3MD baseline: negative gates and 100k finite cases'
+        run: |
+          node --test tests/c98-project-baseline.test.mjs
+          node scripts/c98-project-boundary-100k.mjs 100000
+      - name: Reuse existing C72 protocol from current checkout
+        run: node scripts/c98-h95-plan.mjs
+      - name: Bounded hostile host callbacks
+        run: node scripts/c98-falsify.mjs 10000
+      - name: 'Negative physical cold-host and byte-carrier regression: local Node only'
+        run: |
+          node scripts/c98-cold-host-denials-100k.mjs 100000
+          node scripts/c98-saturate-carriers-100k.mjs 100000
+          node scripts/c98-file-handoff-falsify-100k.mjs 100000
+          node scripts/c98-app-host-negative-100k.mjs 100000
+      - name: Physical source-only handoff regression with real historical fixture
+        run: node --test --test-concurrency=1 tests/c98-local-file-archive-bridge.test.mjs tests/c98-file-backed-c84-entry.test.mjs tests/c98-v4-host-mvp-contract.test.mjs
+      - name: Repository conformance
+        run: npm run check

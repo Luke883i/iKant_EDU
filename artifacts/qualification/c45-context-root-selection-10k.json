@@ -1,0 +1,99 @@
+{
+  "schema": "ikant-le-c45-context-root-selection/v1",
+  "slice": "C45.CONTEXT_ROOT_ASCII_COHOST_CLOSURE",
+  "seed": "0xC45C0A57",
+  "candidates": 10000,
+  "mechanisms": [
+    "OPAQUE_SESSION_LOCATOR",
+    "DURABLE_CONTEXT_ROOT",
+    "IMMUTABLE_CONTEXT_BINDING",
+    "CANONICAL_RUNTIME_ROUTE",
+    "REOPEN_BEFORE_EACH_TURN",
+    "ASCII_SHELL_SEAL",
+    "NATIVE_DELIVERY_EXTERNAL_RECEIPT",
+    "OPTIONAL_COHOST_PLACEMENT",
+    "DEDICATED_ARTIFACT_DELIVERY",
+    "EXIT_TOMBSTONE",
+    "ACCOUNT_GLOBAL_SINGLETON",
+    "CONVERSATION_MEMORY_FALLBACK",
+    "CANONICAL_HOSTED_ACTIVATION_MODE",
+    "PROMOTE_C20_COMPATIBILITY"
+  ],
+  "required": [
+    "OPAQUE_SESSION_LOCATOR",
+    "DURABLE_CONTEXT_ROOT",
+    "IMMUTABLE_CONTEXT_BINDING",
+    "CANONICAL_RUNTIME_ROUTE",
+    "REOPEN_BEFORE_EACH_TURN",
+    "ASCII_SHELL_SEAL",
+    "NATIVE_DELIVERY_EXTERNAL_RECEIPT",
+    "OPTIONAL_COHOST_PLACEMENT"
+  ],
+  "forbidden": [
+    "ACCOUNT_GLOBAL_SINGLETON",
+    "CONVERSATION_MEMORY_FALLBACK",
+    "CANONICAL_HOSTED_ACTIVATION_MODE",
+    "PROMOTE_C20_COMPATIBILITY"
+  ],
+  "valid_candidates": 3,
+  "minimum_cost": 8,
+  "winner_mask": 255,
+  "minimum_ties": 1,
+  "unique_minimum": true,
+  "alternatives": [
+    {
+      "id": "A_CANONICAL_CONTEXT_ROOT_OVERLAY",
+      "mask": 255,
+      "status": "WINNER",
+      "reason": "reuses SESSION_CHAT_LOCAL owners and adds only optional cohost placement"
+    },
+    {
+      "id": "B_C20_PROMOTION",
+      "mask": 8447,
+      "status": "REJECT",
+      "reason": "violates C1 and compatibility quarantine"
+    },
+    {
+      "id": "C_CONVERSATION_PERSISTENCE",
+      "mask": 2301,
+      "status": "REJECT",
+      "reason": "model/chat context becomes state and retry memory"
+    },
+    {
+      "id": "D_ACCOUNT_SINGLETON",
+      "mask": 1279,
+      "status": "REJECT",
+      "reason": "cross-session identity and state collision"
+    },
+    {
+      "id": "E_HOSTED_NEW_MODE",
+      "mask": 4351,
+      "status": "REJECT",
+      "reason": "creates a second canonical activation modality"
+    },
+    {
+      "id": "F_NINE_NODE_ARTIFACT",
+      "mask": 511,
+      "status": "VALID_BUT_DOMINATED",
+      "reason": "artifact delivery already inherited from canonical E2/E3 runtime"
+    },
+    {
+      "id": "G_NINE_NODE_EXIT_TOMBSTONE",
+      "mask": 767,
+      "status": "VALID_BUT_DOMINATED",
+      "reason": "EXITED ledger readback is sufficient to stop routing without a second lifecycle state"
+    },
+    {
+      "id": "H_SEVEN_NODE_RAW_SESSION_BINDING",
+      "mask": 254,
+      "status": "REJECT",
+      "reason": "provider session handle can leak into product identity/persistence"
+    }
+  ],
+  "cost_distribution": {
+    "8": 1,
+    "9": 1,
+    "10": 1
+  },
+  "receipt_sha256": "6ac76be3d7672b91c8d82dbd41c2c0457fa65d588df1ddef22271cc88ffa1c82"
+}

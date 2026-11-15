@@ -1,0 +1,33 @@
+name: C31 runtime-limited supply chain
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c31:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Falsify runtime-limited supply chain 1m
+        run: npm run falsify:c31
+      - name: C31 dispatch test
+        run: node --test --test-concurrency=1 tests/c31-runtime-limited-supply-chain.test.mjs
+      - name: C31 acceptance test
+        run: node --test --test-concurrency=1 tests/c31-runtime-limited-acceptance.test.mjs
+      - name: C31 turn test
+        run: node --test --test-concurrency=1 tests/c31-runtime-limited-turn.test.mjs
+      - name: C31 replay test
+        run: node --test --test-concurrency=1 tests/c31-runtime-limited-replay.test.mjs
+      - name: C31 tamper/ingress test
+        run: node --test --test-concurrency=1 tests/c31-runtime-limited-tamper.test.mjs
+      - name: C30 regression
+        run: node --test --test-concurrency=1 tests/c30-activation-service.test.mjs
+      - name: C20 ACTIVE deployment regression
+        run: node --test --test-concurrency=1 tests/c20-session-chat-deployment.test.mjs
+      - name: Verify runtime root
+        run: npm run runtime-root:verify

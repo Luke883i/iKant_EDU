@@ -1,0 +1,52 @@
+name: S03-S09 MVP1 candidate software qualification
+on:
+  pull_request:
+    paths:
+      - 'contracts/s0*-*'
+      - 'host/s03-*'
+      - 'tests/pilot/s0*-*'
+      - 'scripts/s04-*'
+      - 'scripts/s09-*'
+      - 'scripts/s03-s09-*'
+      - 'plugins/ikant-le-session-chat/server/**'
+      - 'tests/s0*-*'
+      - 'tests/c115-project-edu-baseline.test.mjs'
+      - 'project/edu-oneshell/**'
+      - 'docs/S03_S09_POST137_RUNTIME_COMPLETION.md'
+      - '.github/workflows/s03-s09-mvp1-candidate.yml'
+  push:
+    branches: [main]
+jobs:
+  candidate-software-gates:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Repository invariant and immutable runtime root
+        run: |
+          npm run check
+          npm run runtime-root:verify
+      - name: Per-slice software gates (NOT provider or user pilot)
+        run: |
+          node --test --test-concurrency=1 tests/s02-edu-v2-original-owner-e2e.test.mjs tests/s02-unknown-delivery-stop.test.mjs tests/s03-host-slides.test.mjs tests/s03-owner-bound-presentation.test.mjs tests/s04-project-reciprocity.test.mjs tests/s04-prompt-miniprompts.test.mjs tests/s04-bundle-negative.test.mjs tests/s05-first-run-metrics.test.mjs tests/s05-independent-witness.test.mjs tests/s06-mcp-transport-security.test.mjs tests/s06-gateway-identity.test.mjs tests/s07-connection-gate.test.mjs tests/s08-canonical-boundary.test.mjs tests/s09-readiness.test.mjs tests/s09-semantic-dag.test.mjs tests/s03-s09-severe-dod.test.mjs tests/s03-s09-c59-edu-preview-fence.test.mjs
+      - name: Two independently rebuilt Project bundles (not installed)
+        shell: bash
+        run: |
+          set -euo pipefail
+          TREE="$(git rev-parse 'HEAD^{tree}')"
+          python3 scripts/s04-build-project.py build --out "$RUNNER_TEMP/build1" --expected-tree "$TREE" --expected-commit "$(git rev-parse HEAD)"
+          python3 scripts/s04-build-project.py build --out "$RUNNER_TEMP/build2" --expected-tree "$TREE" --expected-commit "$(git rev-parse HEAD)"
+          cmp "$RUNNER_TEMP/build1/PROJECT_PREPR.zip" "$RUNNER_TEMP/build2/PROJECT_PREPR.zip"
+          cmp "$RUNNER_TEMP/build1/PROMPT_INNESCO_PREPR.txt" "$RUNNER_TEMP/build2/PROMPT_INNESCO_PREPR.txt"
+          if python3 scripts/s04-build-project.py build --out "$RUNNER_TEMP/stale" --expected-tree "$TREE" --expected-commit 0000000000000000000000000000000000000000; then
+            echo 'STALENESS_GATE_FAILED' >&2; exit 1; fi
+      - name: Report remaining REAL external gates (must remain blocked)
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/s03-s09-dod-audit.mjs
+          node scripts/s09-readiness.mjs

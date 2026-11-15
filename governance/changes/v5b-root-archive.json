@@ -1,0 +1,110 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "self_path": "governance/changes/v5b-root-archive.json",
+  "source_main": "0b86fce541939d600bfd8565b97404ad64795185",
+  "baseline_source_tree": "c3f442f41cf9ddf4dc73e60f3b85e3b6a65214e8",
+  "policy": "REVIEW_REQUIRED_EVERY_DELTA_NO_MINTED_APPROVAL",
+  "human_signoffs": 0,
+  "automatic_approval": false,
+  "paths": [
+    {
+      "path": "README_C94_PREPR.md",
+      "operation": "REMOVE",
+      "reason": "Relocate historical pre-PR evidence without mutating blob bytes; root path has no active runtime consumer",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "README_C96_PREPR.md",
+      "operation": "REMOVE",
+      "reason": "Relocate historical pre-PR evidence without mutating blob bytes; root path has no active runtime consumer",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "README_C98_PREPR.md",
+      "operation": "REMOVE",
+      "reason": "Relocate historical pre-PR evidence without mutating blob bytes; root path has no active runtime consumer",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "C94_BASE_LOCK.json",
+      "operation": "REMOVE",
+      "reason": "Relocate historical pre-PR evidence without mutating blob bytes; root path has no active runtime consumer",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/archive/prepr/README_C94_PREPR.md",
+      "operation": "ADD",
+      "reason": "Introduce immutable archived evidence or versioned archive qualification under V5-B change review",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/archive/prepr/README_C96_PREPR.md",
+      "operation": "ADD",
+      "reason": "Introduce immutable archived evidence or versioned archive qualification under V5-B change review",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/archive/prepr/README_C98_PREPR.md",
+      "operation": "ADD",
+      "reason": "Introduce immutable archived evidence or versioned archive qualification under V5-B change review",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/archive/prepr/C94_BASE_LOCK.json",
+      "operation": "ADD",
+      "reason": "Introduce immutable archived evidence or versioned archive qualification under V5-B change review",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "contracts/v5b-root-archive-plan.json",
+      "operation": "ADD",
+      "reason": "Introduce immutable archived evidence or versioned archive qualification under V5-B change review",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "tests/v5b-root-archive.test.mjs",
+      "operation": "ADD",
+      "reason": "Introduce immutable archived evidence or versioned archive qualification under V5-B change review",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "governance/changes/v5b-root-archive.json",
+      "operation": "ADD",
+      "reason": "Introduce immutable archived evidence or versioned archive qualification under V5-B change review",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "scripts/ikant-document-atlas.mjs",
+      "operation": "MODIFY",
+      "reason": "Update documentation cross-links and exact atlas generation for byte-identical historical root relocation",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "reason": "Update documentation cross-links and exact atlas generation for byte-identical historical root relocation",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    },
+    {
+      "path": "docs/C96_GITHUB_TRANSPLANT_PROVENANCE.md",
+      "operation": "MODIFY",
+      "reason": "Update documentation cross-links and exact atlas generation for byte-identical historical root relocation",
+      "human_review": "REVIEW_REQUIRED",
+      "deletion_authorized": false
+    }
+  ]
+}

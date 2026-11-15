@@ -1,0 +1,69 @@
+name: C72 coldstart source kit qualification
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  original-c72-coldstart:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['20','22']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Original C72 coldstart positive and negative
+        run: node --test tests/project-c72-coldstart-*.test.mjs
+      - name: Generate narrow source handoff and physical readback
+        run: |
+          node scripts/project-c72-partial-source-kit.mjs "${GITHUB_SHA}" "${RUNNER_TEMP}/C72-PARTIAL-SOURCE-${GITHUB_SHA}.json"
+          test -s "${RUNNER_TEMP}/C72-PARTIAL-SOURCE-${GITHUB_SHA}.json"
+      - name: D123 focused original-bound regression with diagnostic TAP
+        id: d123_regression
+        shell: bash
+        run: |
+          set +e
+          node --test tests/project-bootstrap-d123.test.mjs > "$RUNNER_TEMP/d123-${{ matrix.node }}.tap" 2>&1
+          STATUS=$?
+          set -e
+          EDGE=$(grep -m1 '^not ok ' "$RUNNER_TEMP/d123-${{ matrix.node }}.tap" | sed -E 's/^not ok [0-9]+ - //; s/[^A-Za-z0-9_-]+/_/g' | cut -c1-100 || :)
+          ERROR=$(grep -m1 '^  error: ' "$RUNNER_TEMP/d123-${{ matrix.node }}.tap" | sed -E 's/^  error: //; s/[^A-Za-z0-9_-]+/_/g' | cut -c1-70 || :)
+          if [ -z "$EDGE" ]; then EDGE=PASS; fi
+          if [ -z "$ERROR" ]; then ERROR=NONE; fi
+          printf 'exit_code=%s\nedge=%s-%s\n' "$STATUS" "$EDGE" "$ERROR" >> "$GITHUB_OUTPUT"
+      - name: Preserve D123 focused regression log on failure
+        if: steps.d123_regression.outputs.exit_code != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: d123-${{ matrix.node }}-${{ steps.d123_regression.outputs.edge }}
+          path: ${{ runner.temp }}/d123-${{ matrix.node }}.tap
+          retention-days: 7
+          if-no-files-found: error
+      - name: Enforce D123 focused original-bound regression
+        run: test "${{ steps.d123_regression.outputs.exit_code }}" = '0'
+      - name: PE post-213 31-gate original C72 cache/stager regression
+        run: node --test tests/project-pe-retrograde.test.mjs
+      - name: PE post-213 10M finite semantic falsification
+        run: |
+          node scripts/project-pe-retrograde-falsify.mjs 10000000 883 > "$RUNNER_TEMP/pe-10m-${{ matrix.node }}.json"
+          node --input-type=module -e "import fs from 'node:fs'; const r=JSON.parse(fs.readFileSync(process.argv[1],'utf8')); if(r.cases_executed!==10000000||r.families!==40||r.independent_oracle_disagreements!==0||r.monotonicity_violations!==0||r.distinct_semantic_signatures<1000) process.exit(1);" "$RUNNER_TEMP/pe-10m-${{ matrix.node }}.json"
+      - name: Preserve finite PE semantic evidence, not owner or provider receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pe-retrograde-10m-node-${{ matrix.node }}
+          path: ${{ runner.temp }}/pe-10m-${{ matrix.node }}.json
+          retention-days: 14
+          if-no-files-found: ignore
+      - name: Publish partial source from merged main only
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.node == '22'
+        uses: actions/upload-artifact@v4
+        with:
+          name: c72-partial-source-${{ github.sha }}
+          path: ${{ runner.temp }}/C72-PARTIAL-SOURCE-${{ github.sha }}.json
+          retention-days: 30

@@ -1,0 +1,44 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "0b582b52265dd6af5936ea9034ccae0ddb877800",
+  "self_path": "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
+  "scope": "HOST_ENGINEERING_READ_ONLY_CORA_RETICULAR_ADAPTER",
+  "original_owner_unchanged": true,
+  "active": false,
+  "human_review_completed": false,
+  "paths": [
+    {
+      "path": "governance/changes/zzzzzzzzzzz-cora-reticular-hygiene.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Register the exact three-commit, five-path source-only reticular standardization candidate"
+    },
+    {
+      "path": "contracts/cora-reticular-hygiene-v1.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Define non-compensatory source, external and product DoD lattice without new owners"
+    },
+    {
+      "path": "scripts/cora-minimal-absorption.mjs",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Bind the existing CORA absorption adapter to original V5-B physical Git-indexed census, not another inventory",
+      "supersedes_register": "governance/changes/zzzzzzzzzz-cora-minimal-absorption.json",
+      "supersedes_source_main": "405ef2c6c49ef61448455674404cd9dce75515dd"
+    },
+    {
+      "path": "tests/cora-reticular-hygiene.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Run full-checkout exact census, source-negative tests, deterministic 10k falsification and external-proof nonpromotions"
+    },
+    {
+      "path": "README.md",
+      "operation": "MODIFY",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "One entrypoint clarifying bounded repository standardization and executable reuse of V5-B, without replacing product owners"
+    }
+  ]
+}

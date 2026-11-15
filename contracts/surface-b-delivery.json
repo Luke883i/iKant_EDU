@@ -1,0 +1,9 @@
+{
+  "schema":"ikant-le-surface-b-delivery/v1",
+  "authority":0,
+  "scope":{"substantive_active_turns":true,"control_turns_exempt":true,"exactly_one_docx_per_substantive_turn":true},
+  "artifact":{"kind":"SURFACE_B_DOCX","format":"docx","media_type":"application/vnd.openxmlformats-officedocument.wordprocessingml.document","write_readback_required":true,"sha256_required":true,"structured_descriptor_required":true,"descriptor_fields":["kind","name","path","media_type","bytes","sha256","readback_verified","required_presentation","same_turn","authority"]},
+  "handoff":{"result_field":"artifacts","host_json_cli":"--host-json","same_turn_presentation_required":true,"host_must_present_before_surface_a_release":true,"filename_only_is_delivery":false,"filesystem_existence_is_delivery":false,"readback_is_presentation":false,"if_host_cannot_present":"HOST_INCOMPATIBLE_FOR_CONFORMING_RELEASE","runtime_can_observe_host_ui_presentation":false},
+  "environment_telemetry":{"definition":"complete over the declared bounded runtime-environment schema, not an exhaustive machine dump","required_categories":["constitutional_binding","admission","runtime_host","persistence","artifact_sink","dispatch","resources","self_world","release"],"explicit_unknowns_required":true,"completeness_target":1.0,"process_env_dump_forbidden":true,"secret_material_forbidden":true,"private_reasoning_forbidden":true},
+  "claim_boundary":{"docx_is_telemetry_not_independent_evidence":true,"descriptor_proves_local_artifact_not_ui_presentation":true,"host_presentation_is_host_obligation":true,"complete_environment_means_declared_schema_complete":true}
+}

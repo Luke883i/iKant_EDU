@@ -1,0 +1,77 @@
+{
+  "schema": "ikant-cora-minimal-absorption/v1",
+  "authority": 0,
+  "status": "ENGINEERING_CANDIDATE_NOT_PRODUCT_GO",
+  "intent": "Standardize and clean iKant_EDU repository, software and product using CORA as a source-assurance method; preserve original owners, minimize added machinery, and require independently observed outcomes.",
+  "cora_source": {
+    "repository": "Luke883i/cora",
+    "commit": "3fdf761167e62cc427b7339fc6c59343c1b0be8f",
+    "method_contract": "cora.method-atlas.json",
+    "adoption": "METHOD_REFERENCE_ONLY_NO_CORA_INSTALLATION_OR_RUNTIME_AUTHORITY"
+  },
+  "target_source": {
+    "repository": "Luke883i/iKant_EDU",
+    "baseline_main": "405ef2c6c49ef61448455674404cd9dce75515dd",
+    "baseline_is_not_current_head_forever": true
+  },
+  "existing_owners": {
+    "C72": "host/c72-public-mode-admission.mjs",
+    "C135": "host/c135-edu-v2-owner.mjs",
+    "C87": "host/c87-durable-ledger.mjs",
+    "C125_S03": "host/c125-output-port.mjs"
+  },
+  "guardrails": {
+    "new_runtime_owner": false,
+    "new_cognition_owner": false,
+    "new_ledger_writer": false,
+    "new_ci_workflow": false,
+    "automatic_delete_or_archive": false,
+    "automatic_workflow_retirement": false,
+    "automatic_merge_or_release": false,
+    "reuse_prior_consent_or_receipts": false,
+    "ci_or_git_proves_native_active": false,
+    "cora_is_ikant_owner": false
+  },
+  "domains": [
+    {
+      "id": "R",
+      "name": "REPOSITORY",
+      "methods": ["git-provenance", "artifact-semantics", "archaeology", "workflow-intelligence"],
+      "reuse": ["scripts/v5b-repository-governance-audit.mjs", "governance/v5b-change-register.json"],
+      "minimal_action": "Classify committed files and workflow roles with BASE/HEAD/TREE/blob; nominate one bounded redundancy only after literal, dynamic and external consumers are investigated.",
+      "falsifier": "Unregistered change, unresolved consumer or inferred workflow equivalence blocks removal; a renamed file is not evidence of a safe deletion.",
+      "done_requires": ["COMPLETE_GIT_SOURCE_CENSUS", "SOURCE_DEPENDENCIES_EXPLICIT", "REVIEWED_RETIREMENT_OR_RETAIN"],
+      "status": "OPEN"
+    },
+    {
+      "id": "S",
+      "name": "SOFTWARE",
+      "methods": ["product-ontology", "debt-forensics", "agent-assurance", "reticular-DoD", "development-gates"],
+      "reuse": ["contracts/project-review-readiness-v1.json", "scripts/project-review-callsites.mjs"],
+      "minimal_action": "Select the smallest reversible Node/OneShell call-path correction, keep original owner identity, run existing Node tests plus explicit negative physical readbacks, then invalidate changed witnesses.",
+      "falsifier": "A green synthetic model, source SHA or CI step cannot substitute for owner-bound runtime behavior or complete dynamic call-path coverage.",
+      "done_requires": ["ORIGINAL_OWNER_CALLPATH_PRESERVED", "TESTED_REVERSIBLE_SLICE", "EXACT_HEAD_REGRESSION_AND_READBACK"],
+      "status": "OPEN"
+    },
+    {
+      "id": "P",
+      "name": "PRODUCT",
+      "methods": ["documentation-assurance", "runtime-observation", "source-runtime-fusion", "release-verification", "process-catalog"],
+      "reuse": ["contracts/c72-product-value-promise.json", "contracts/project-oneshell-do-d.json"],
+      "minimal_action": "Evaluate a real new-session ORIENTATION to I ACCEPT to EDU to C135/C87/C125-S03 six-slot delivery, then independently measure task success and user comprehension.",
+      "falsifier": "Missing field receipt, installed-prompt readback, independent review or user holdout blocks PRODUCT_GO even with every repository and CI check green.",
+      "done_requires": ["FIELD_OWNER_AND_PROVIDER_READBACK", "INDEPENDENT_USER_HOLDOUT", "INDEPENDENT_HUMAN_GOVERNANCE"],
+      "status": "BLOCKED_EXTERNAL"
+    }
+  ],
+  "execution_order": ["PIN_BASE_AND_CORA_SOURCE", "CENSUS_AND_CLASSIFY", "SELECT_SINGLE_REVERSIBLE_SLICE", "FALSIFY_REAL_SOURCE_AND_NEGATIVE_CASES", "RUN_EXISTING_CI_AT_EXACT_HEAD", "REOPEN_GIT_AND_RUNTIME_EVIDENCE", "INDEPENDENT_REVIEW", "POSTMERGE_REVALIDATE"],
+  "acceptance": {
+    "source": "ALL_R_AND_S_OBLIGATIONS_WITH_ORIGINAL_EVIDENCE",
+    "product": "ALL_R_S_P_AND_EXTERNAL_OBLIGATIONS_WITH_ORIGINAL_EVIDENCE",
+    "aggregation": "AND_NON_COMPENSATORY",
+    "unobserved": "UNKNOWN_NOT_PASS",
+    "authorization": "NONE"
+  },
+  "evidence_boundary": ["GIT_SOURCE", "CHECKOUT_TEST", "OWNER_RUNTIME", "PROVIDER_DELIVERY", "INDEPENDENT_USER_VALUE", "HUMAN_GOVERNANCE"],
+  "current_result": "NO_RELEASE_CLAIM"
+}

@@ -1,0 +1,134 @@
+{
+  "schema": "ikant-le-c43-bootstrap-recovery-hardening/v1",
+  "slice": "C43.BOOTSTRAP_RECOVERY_HARDENING",
+  "authority": 0,
+  "objective": "Keep human ZIP/file handoff noncanonical and last-resort; make public bootstrap guidance action-exact and Session-Shell-owned; close exit, handoff binding, descriptor ownership and preaccept recovery without weakening ACTIVE or IKANT_OWNED.",
+  "source": {
+    "le_base": "ff7a5efb3b98711828ba0a5fb63d056701adf668",
+    "full_ikant_reference": "6cf83d114ef1ba89e2b3f83e2c3986480161b902",
+    "logical_patterns_only": true,
+    "source_shape_imported": false
+  },
+  "constitutional_lattice_unchanged": [
+    "HUMAN_GATE",
+    "SOURCE_SNAPSHOT",
+    "LOCAL_INGRESS",
+    "LOCAL_MATERIALIZATION",
+    "EXECUTED_RUNTIME_PROOF",
+    "ACTIVE_READBACK"
+  ],
+  "mechanisms": [
+    "M0_HUMAN_FILE_LAST_RESORT",
+    "M1_ACTION_FIRST_SESSION_SHELL_PUBLIC_LINE",
+    "M2_OWNER_DERIVED_TWO_STEP_EXIT",
+    "M3_DIRECT_HANDOFF_FULL_BINDING",
+    "M4_CANONICAL_RUNTIME_DESCRIPTOR_OWNER",
+    "M5_READ_ONLY_PREACCEPT_REMEDIATION",
+    "M6_HARD_BREACH_STAYS_TERMINAL",
+    "M7_WARM_DEPLOY_ONCE_MECHANICS_REUSED"
+  ],
+  "selection_contract": {
+    "mechanism_count": 8,
+    "architecture_lattice_size": 256,
+    "required_unique_minimum": true,
+    "required_minimum_mask": 255,
+    "required_minimum_cost": 8,
+    "required_all_deletion_mutants_killed": true,
+    "claim_boundary": "selection is repository engineering evidence, never physical-host proof"
+  },
+  "carrier_priority": {
+    "tiers": [
+      [
+        "WARM_CACHE_EXACT",
+        "GITHUB_API_BASE64",
+        "GITHUB_GIT_BLOB_API",
+        "PINNED_GITHUB_ZIP",
+        "PINNED_PERMALINK"
+      ],
+      [
+        "HOST_FILE_BRIDGE"
+      ]
+    ],
+    "law": "MACHINE_EXECUTE_THEN_MACHINE_PROBE_THEN_HUMAN_FILE_EXECUTE_THEN_HUMAN_FILE_PROBE",
+    "human_file_is_canonical": false,
+    "human_file_last_resort": true,
+    "unknown_file_means_probe": true
+  },
+  "ux": {
+    "owner": "src/session-shell.mjs",
+    "projection": "public_line",
+    "action_first": true,
+    "projection_only": true,
+    "persisted": false,
+    "max_chars": 32,
+    "secondary_readiness_state_machine": false
+  },
+  "exit": {
+    "human_alias": "chiudi iKant",
+    "owned_next": "RELEASE_TO_HOST",
+    "runtime_active_next": "EXIT IKANT",
+    "already_host_next": "EXIT_COMPLETE",
+    "one_next": true,
+    "new_owner": false
+  },
+  "handoff": {
+    "canonical_descriptor_owner": "src/runtime-root-verified.mjs#runtimeRootDescriptor",
+    "preaccept_handoff_digest_bound": true,
+    "execution_input_digest_bound": true,
+    "premature_acceptance_event_id_forbidden": true,
+    "active_claim": false
+  },
+  "breach": {
+    "recoverable": "READ_ONLY_PREACCEPT_OVERREAD",
+    "hard": "HARD_PREACCEPT_BREACH",
+    "history_preserved": true,
+    "retroactive_authorization": false,
+    "reacquisition_required": true,
+    "acceptance_blocked_until_reacquisition": true,
+    "remediation_one_shot_per_admission": true,
+    "continued_after_detection_escalates": true
+  },
+  "reuse": {
+    "le": [
+      "FASTBOOT_CHANNEL_LEDGER",
+      "SESSION_SHELL",
+      "WARM_CACHE_EXACT",
+      "C20_DEPLOY_ONCE_STORE_MECHANICS",
+      "CONTROL_PLANE_OWNERSHIP",
+      "RUNTIME_ROOT_MATERIALIZER"
+    ],
+    "full_ikant": [
+      "REMOTE_DEGRADED_REQUIRES_MACHINE_CARRIER_EXHAUSTION",
+      "CARRIER_LOCAL_RETRY_EPOCH",
+      "LEDGER_RECOMPUTED_PUBLIC_GUIDANCE",
+      "READ_ONLY_PREACCEPT_REMEDIATION",
+      "REPOSITORY_SELF_RECHECK"
+    ],
+    "rejected": [
+      "MANUAL_ZIP_OPTION_FIRST_FOR_HUMAN_COMPREHENSION"
+    ]
+  },
+  "qualification": {
+    "runtime_cases": 1000000,
+    "runtime_seed": "0xC43A11CE",
+    "family_count": 25,
+    "min_family_cases_required": 40000,
+    "candidate_oracle_mismatches_required": 0,
+    "file_selected_before_machine_exhaustion_required": 0,
+    "unsafe_active_required": 0,
+    "unsafe_ikant_owned_required": 0,
+    "read_only_overread_forced_fresh_chat_required": 0,
+    "premature_acceptance_event_identity_required": 0,
+    "runtime_root_exact_required": true,
+    "repository_check_required": true,
+    "focused_regression_required": true,
+    "exact_head_ci_required": true
+  },
+  "claim_boundary": {
+    "semantic_mutation_is_physical_host_proof": false,
+    "file_upload_is_materialization": false,
+    "remediation_is_retroactive_authorization": false,
+    "c20_mechanics_make_c20_canonical": false,
+    "full_ikant_pattern_import_is_identity_import": false
+  }
+}

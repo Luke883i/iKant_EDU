@@ -1,0 +1,50 @@
+{
+  "schema": "ikant-le-edu-host-outcomes/v1",
+  "authority": 0,
+  "baseline_main_after_pr118": "875d39081d20abe672e6a496ac593ef27be9a12d",
+  "original_source_head": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
+  "release_carrier_sha256": "d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d",
+  "release_commit": "cf213a2276802d73e844b706e6cd8431bc76bed6",
+  "reuse_pr118": [
+    "release/v8/ikant-c107-source-c734bf934e33.ikc.br",
+    "host/c107-carrier-consumer.mjs",
+    "scripts/c107-carrier-qualify.mjs",
+    "tests/c107-carrier-consumer.test.mjs",
+    "contracts/c107-carrier-outcomes-reticle.json"
+  ],
+  "outcomes": [
+    {
+      "id": "P01",
+      "criterion": "Pinned single carrier physically verified, staged, reopened; 43 exact original files",
+      "failed": "NO_VOICE + FIRST_EDGE"
+    },
+    {
+      "id": "P02",
+      "criterion": "Actual original C70 + C100 + sole C87 invoked on exact UTF-8 current input; independent ledger readback; source, nonce, output bound",
+      "failed": "NO_VOICE + FIRST_EDGE"
+    },
+    {
+      "id": "P03",
+      "criterion": "A=original exact voice_utf8 with origin ORIGINAL_DEMO, or separately authorized HOST_BOUND; otherwise NO_VOICE; B labels host",
+      "failed": "NO_VOICE + HOST only"
+    },
+    {
+      "id": "P04",
+      "criterion": "First attempt, max two further attempts ONLY on fresh evidence. Else give exact human-upload ZIP link, no fabricated download",
+      "failed": "MANUAL_SOURCE_HANDOFF"
+    }
+  ],
+  "consent": {
+    "acceptance_not_inferred": true,
+    "experimental_not_equivalent_to_cohost_optin": true,
+    "host_draft_requires_separate_authorization": true,
+    "fixtures_not_human_consent": true
+  },
+  "forbidden_promotions": [
+    "NATIVE_CHATGPT_EVENT",
+    "PROVIDER_VERIFIED",
+    "CANONICAL_ACTIVE",
+    "CROSS_CHAT_PERSISTENCE"
+  ],
+  "manual_full_source_url": "https://github.com/Luke883i/iKant_LE/archive/c734bf934e33703a6a1f91f0f4d5df96eec96945.zip"
+}

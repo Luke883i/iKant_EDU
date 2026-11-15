@@ -1,0 +1,28 @@
+name: edu-c125-exact-host-shell
+on:
+  pull_request:
+    paths:
+      - 'host/c125-*'
+      - 'host/edu-c125-shell-session.mjs'
+      - 'tests/edu-c125-ui-shell.test.mjs'
+      - 'scripts/c125-ui-falsify-10m.c'
+      - '.github/workflows/edu-c125-exact-host-shell.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shell-original-and-10m:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Original C107 guided owner + fixed shell tests
+        run: node --test tests/edu-c125-ui-shell.test.mjs
+      - name: Finite seeded C125 host-output faults, not native UI calls
+        run: |
+          cc -O3 -std=c11 -Wall -Wextra -Werror scripts/c125-ui-falsify-10m.c -o /tmp/ikant-c125-falsify
+          /tmp/ikant-c125-falsify 10000000 0x1252026101300001 > /tmp/c125-10m.json
+          node --input-type=module -e "import fs from 'node:fs'; const x=JSON.parse(fs.readFileSync('/tmp/c125-10m.json')); if(x.cases!==10000000||x.oracle_mismatches!==0||x.false_native_promotions!==0)process.exit(1); console.log(JSON.stringify(x))"

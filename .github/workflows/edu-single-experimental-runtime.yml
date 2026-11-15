@@ -1,0 +1,27 @@
+name: EDU single experimental product runtime (candidate)
+on:
+  pull_request:
+    paths:
+      - 'host/edu-experimental-product-boundary.mjs'
+      - 'host/project-oneshell-edu.mjs'
+      - 'contracts/edu-single-experimental-product.json'
+      - 'project/edu-oneshell/**'
+      - 'tests/edu-experimental-product-boundary*'
+      - '.github/workflows/edu-single-experimental-runtime.yml'
+  workflow_dispatch:
+jobs:
+  original-owner-regression:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Original owner plus new boundary tests
+        run: node --test tests/edu-experimental-product-boundary.test.mjs tests/project-oneshell-edu.test.mjs tests/s02-edu-v2-original-owner-e2e.test.mjs tests/c140-open-e2e.test.mjs tests/c135-cognitive-edu-owner.test.mjs
+      - name: Million finite policy mutants, not a model/pilot proof
+        run: node tests/edu-experimental-product-boundary-falsify.mjs

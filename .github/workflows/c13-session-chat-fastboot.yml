@@ -1,0 +1,39 @@
+name: C13 session-chat fastboot qualification
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'C13_SESSION_CHAT_FASTBOOT_CONTRACT.json'
+      - 'contracts/host-shell.json'
+      - 'contracts/ikant-le.json'
+      - 'src/runtime-root-verified.mjs'
+      - 'src/runtime-command.mjs'
+      - 'runtime-root/**'
+      - 'scripts/c13-session-chat-fastboot-falsify.mjs'
+      - 'tests/session-chat-fastboot.test.mjs'
+      - '.github/workflows/c13-session-chat-fastboot.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Six-domain semantic mutation audit
+        run: node scripts/c13-session-chat-fastboot-falsify.mjs --cases 1000000 --tail 100000 --output artifacts/qualification/c13-session-chat-fastboot.json
+      - name: Exact runtime-root and session-chat tests
+        run: node --test --test-concurrency=1 tests/fastboot.test.mjs tests/session-chat-fastboot.test.mjs
+      - name: Verify mutation receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c13-session-chat-fastboot.json','utf8'));
+          if(r.status!=='PASS'||r.total_semantic_mutations!==6000000||r.cases_per_scope!==1000000||r.scope_count!==6||r.tail_mismatches!==0||r.irreducible!==true) throw new Error('C13 qualification mismatch');
+          for(const [name,s] of Object.entries(r.scopes)) if(s.status!=='PASS'||s.mismatches!==0||s.deletion_false_greens<=0) throw new Error('C13 non-irreducible scope '+name);
+          console.log('IKANT_LE_C13_RECEIPT='+r.receipt_sha256);
+          NODE

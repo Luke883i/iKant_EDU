@@ -1,0 +1,837 @@
+{
+  "schema": "ikant-le-c59-pr-lineage-audit/v1",
+  "repository": "Luke883i/iKant_LE",
+  "scope": {
+    "first_pr": 1,
+    "last_pr": 68,
+    "merged_expected_exceptions": [
+      24,
+      27,
+      34,
+      36,
+      42,
+      43
+    ],
+    "current_open_pr": 68
+  },
+  "registry": [
+    {
+      "id": "MANUAL_PROBE_INITIALIZE",
+      "class": "DEPRECATED_RECOVERY_ONLY"
+    },
+    {
+      "id": "AUTO_PROBE_INITIALIZE",
+      "class": "ABSORBED_INTERNAL"
+    },
+    {
+      "id": "ORIENTATION_CAPSULE",
+      "class": "ABSORBED_INTERNAL"
+    },
+    {
+      "id": "FIRST_CONTACT_REPO_CONVERGENCE",
+      "class": "ABSORBED_INTERNAL"
+    },
+    {
+      "id": "GITHUB_API_ONLY",
+      "class": "ABSORBED_CANONICAL_SOURCE"
+    },
+    {
+      "id": "AUTHORIZED_RAW_WEB",
+      "class": "DEPRECATED_REMOVED"
+    },
+    {
+      "id": "GIT_CLONE",
+      "class": "DEPRECATED_REMOVED"
+    },
+    {
+      "id": "GH_CLI",
+      "class": "DEPRECATED_REMOVED"
+    },
+    {
+      "id": "CONTAINER_GITHUB_NETWORK",
+      "class": "EXCLUDED_NONDEPENDENCY"
+    },
+    {
+      "id": "ACTIVATE_FIRST",
+      "class": "ABSORBED_INTERNAL"
+    },
+    {
+      "id": "CONTENT_ADDRESSED_RUNTIME_ROOT",
+      "class": "ABSORBED_INTERNAL"
+    },
+    {
+      "id": "COLD_API",
+      "class": "LEGACY_ALIAS",
+      "normalizes_to": "GITHUB_API_BASE64"
+    },
+    {
+      "id": "GITHUB_API_BASE64",
+      "class": "ABSORBED_CANONICAL_CARRIER"
+    },
+    {
+      "id": "GITHUB_GIT_BLOB_API",
+      "class": "EXCLUDED_NONCANONICAL"
+    },
+    {
+      "id": "PINNED_GITHUB_ZIP",
+      "class": "EXCLUDED_NONCANONICAL"
+    },
+    {
+      "id": "PINNED_PERMALINK",
+      "class": "EXCLUDED_NONCANONICAL"
+    },
+    {
+      "id": "HOST_FILE_BRIDGE",
+      "class": "EXCLUDED_LAST_RESORT"
+    },
+    {
+      "id": "HUMAN_FILE_HANDOFF",
+      "class": "LEGACY_ALIAS",
+      "normalizes_to": "HOST_FILE_BRIDGE"
+    },
+    {
+      "id": "WARM_CACHE_EXACT",
+      "class": "EXCLUDED_REMEDIATION_OPTIMIZATION"
+    },
+    {
+      "id": "FASTBOOT_CHANNEL_LEDGER",
+      "class": "DEPRECATED_SELECTOR_STATE"
+    },
+    {
+      "id": "SESSION_CHAT_DEPLOYED",
+      "class": "EXCLUDED_LEGACY_PROFILE"
+    },
+    {
+      "id": "PLUGIN_MCP",
+      "class": "EXTERNAL_HOST_BINDING_ONLY"
+    },
+    {
+      "id": "SESSION_CHAT_LOCAL",
+      "class": "ABSORBED_CANONICAL_PROFILE"
+    },
+    {
+      "id": "HOST_ATTESTED",
+      "class": "ABSORBED_EVIDENCE"
+    },
+    {
+      "id": "LOCAL_EXECUTOR_V1",
+      "class": "ABSORBED_INTERNAL_EXECUTOR"
+    },
+    {
+      "id": "LOCAL_DIRECT",
+      "class": "EXCLUDED_NONCANONICAL"
+    },
+    {
+      "id": "LOCAL_HOST_META_PROMPT",
+      "class": "DEPRECATED_PROJECTION"
+    },
+    {
+      "id": "VERIFIED_OPAQUE_RELAY",
+      "class": "ABSORBED_CANONICAL_BYTE_PATH"
+    },
+    {
+      "id": "RUNTIME_BOUND_LIMITED",
+      "class": "EXCLUDED_AS_ACTIVATION_SUCCESS"
+    },
+    {
+      "id": "SESSION_SHELL",
+      "class": "POST_ACTIVATION_PRESENTATION"
+    },
+    {
+      "id": "PRE_RUNTIME_HOST_ADAPTER",
+      "class": "ABSORBED_INTERNAL"
+    },
+    {
+      "id": "AUTHENTICATED_PRE_RUNTIME_HANDOFF",
+      "class": "ABSORBED_INTERNAL"
+    },
+    {
+      "id": "FOR_AI_AGENT_FIRST_ENTRYPOINT",
+      "class": "INGRESS_ADAPTER_ALIAS",
+      "normalizes_to": "SESSION_CHAT_LOCAL_HOST_KERNEL"
+    },
+    {
+      "id": "EXECUTE_OBSERVE_REENTER",
+      "class": "DEPRECATED_OWNER_LOOP"
+    },
+    {
+      "id": "CARRIER_LOCAL_RETRY_EPOCH",
+      "class": "DEPRECATED_RETRY_MECHANISM"
+    },
+    {
+      "id": "BOOTSTRAP_INTENT_ADAPTER",
+      "class": "ABSORBED_INTERNAL"
+    },
+    {
+      "id": "METHODOLOGICAL_BOOTSTRAP_PROMPT",
+      "class": "DEPRECATED_PROJECTION"
+    },
+    {
+      "id": "COHOST_CONTEXT_ROOT",
+      "class": "ORTHOGONAL_POST_ACTIVATION"
+    },
+    {
+      "id": "COHOST_BIND_NUCLEUS",
+      "class": "ORTHOGONAL_POST_ACTIVATION"
+    },
+    {
+      "id": "COHOST_RUNTIME_HYDRATION",
+      "class": "ORTHOGONAL_POST_ACTIVATION"
+    },
+    {
+      "id": "COHOST_TIER_PROFILE",
+      "class": "ORTHOGONAL_POST_ACTIVATION"
+    },
+    {
+      "id": "NATIVE_TRANSCRIPT_ACTOR",
+      "class": "ORTHOGONAL_EXTERNAL_HOST_CAPABILITY"
+    },
+    {
+      "id": "HOST_BOOTSTRAP_BINDING",
+      "class": "ABSORBED_EVIDENCE"
+    },
+    {
+      "id": "HOST_SESSION_ROUTER",
+      "class": "ORTHOGONAL_RUNTIME_ROUTE"
+    },
+    {
+      "id": "PHYSICAL_RUNTIME_PROOF",
+      "class": "ABSORBED_PROOF"
+    },
+    {
+      "id": "HOST_CONSUMPTION_FRAME",
+      "class": "POST_ACTIVATION_PRESENTATION"
+    },
+    {
+      "id": "LOCAL_HOST_POST_META_PROMPT",
+      "class": "DEPRECATED_PROJECTION"
+    },
+    {
+      "id": "LOCAL_HOST_SESSION_META_PROMPT",
+      "class": "DEPRECATED_PROJECTION"
+    },
+    {
+      "id": "APP_BOUND_IKANT_LE_OPEN",
+      "class": "EXCLUDED_LEGACY_PROFILE"
+    },
+    {
+      "id": "ADAPTER_BOUND_ENTRYPOINT",
+      "class": "INGRESS_ADAPTER_ALIAS",
+      "normalizes_to": "SESSION_CHAT_LOCAL_HOST_KERNEL"
+    },
+    {
+      "id": "SESSION_CHAT_LOCAL_HOST_KERNEL",
+      "class": "ABSORBED_CANONICAL_INGRESS"
+    },
+    {
+      "id": "SINGLE_COMPOSITION_CHANNEL",
+      "class": "CANONICAL_OWNER"
+    }
+  ],
+  "prs": [
+    {
+      "pr": 1,
+      "state": "MERGED",
+      "title": "GENESIS.0 runtime seed",
+      "semantic_value": "Introduced manual TERMS/accept/probe/initialize lifecycle.",
+      "channel_atoms": [
+        "MANUAL_PROBE_INITIALIZE"
+      ]
+    },
+    {
+      "pr": 2,
+      "state": "MERGED",
+      "title": "C1 central thinking",
+      "semantic_value": "Cognitive runtime only; no new bootstrap pipe.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 3,
+      "state": "MERGED",
+      "title": "C2 automated host bootstrap",
+      "semantic_value": "Collapsed manual post-consent probe/init into automatic runtime bootstrap.",
+      "channel_atoms": [
+        "AUTO_PROBE_INITIALIZE"
+      ]
+    },
+    {
+      "pr": 4,
+      "state": "MERGED",
+      "title": "C3 orientation and Node gate",
+      "semantic_value": "Added bounded orientation/freeze and pending-intent resume.",
+      "channel_atoms": [
+        "ORIENTATION_CAPSULE"
+      ]
+    },
+    {
+      "pr": 5,
+      "state": "MERGED",
+      "title": "C4 functional psyche",
+      "semantic_value": "No new bootstrap pipe.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 6,
+      "state": "MERGED",
+      "title": "C5 recurrent self-world",
+      "semantic_value": "No new bootstrap pipe.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 7,
+      "state": "MERGED",
+      "title": "C5 first-contact convergence",
+      "semantic_value": "Forced arbitrary canonical-repo first contact into bounded pre-accept bootstrap.",
+      "channel_atoms": [
+        "FIRST_CONTACT_REPO_CONVERGENCE"
+      ]
+    },
+    {
+      "pr": 8,
+      "state": "MERGED",
+      "title": "C7 API-only bootstrap",
+      "semantic_value": "Made GitHub API the sole preaccept repository transport and removed raw-web/clone/gh fallbacks.",
+      "channel_atoms": [
+        "GITHUB_API_ONLY",
+        "AUTHORIZED_RAW_WEB",
+        "GIT_CLONE",
+        "GH_CLI",
+        "CONTAINER_GITHUB_NETWORK"
+      ]
+    },
+    {
+      "pr": 9,
+      "state": "MERGED",
+      "title": "C8 claim boundary",
+      "semantic_value": "No new bootstrap pipe.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 10,
+      "state": "MERGED",
+      "title": "C9 Surface B delivery",
+      "semantic_value": "No new bootstrap pipe.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 11,
+      "state": "MERGED",
+      "title": "C10 activate-first fastboot",
+      "semantic_value": "Introduced strict post-accept ACTIVATE_FIRST and bounded runtime acquisition.",
+      "channel_atoms": [
+        "ACTIVATE_FIRST"
+      ]
+    },
+    {
+      "pr": 12,
+      "state": "MERGED",
+      "title": "C11 causal qualification",
+      "semantic_value": "No new bootstrap pipe.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 13,
+      "state": "MERGED",
+      "title": "ROA programme header",
+      "semantic_value": "Documentation only; no new bootstrap pipe.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 14,
+      "state": "MERGED",
+      "title": "C12 irreducible bootstrap lattice",
+      "semantic_value": "Qualified content-addressed runtime root and warm-cache concept without changing runtime acquisition.",
+      "channel_atoms": [
+        "CONTENT_ADDRESSED_RUNTIME_ROOT",
+        "WARM_CACHE_EXACT"
+      ]
+    },
+    {
+      "pr": 15,
+      "state": "MERGED",
+      "title": "LIB0 embedded nuance",
+      "semantic_value": "Library extraction only; no bootstrap channel.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 16,
+      "state": "MERGED",
+      "title": "C13 SESSION_CHAT fastboot",
+      "semantic_value": "Materialized content-addressed SESSION_CHAT fastboot and cold API transfer semantics.",
+      "channel_atoms": [
+        "CONTENT_ADDRESSED_RUNTIME_ROOT",
+        "COLD_API"
+      ]
+    },
+    {
+      "pr": 17,
+      "state": "MERGED",
+      "title": "C14 source-bound ACTIVE evidence",
+      "semantic_value": "Bound activation evidence to exact source/runtime identity.",
+      "channel_atoms": [
+        "HOST_ATTESTED"
+      ]
+    },
+    {
+      "pr": 18,
+      "state": "MERGED",
+      "title": "C15 flexible transfer",
+      "semantic_value": "Introduced explicit multi-carrier transfer surface.",
+      "channel_atoms": [
+        "GITHUB_API_BASE64",
+        "GITHUB_GIT_BLOB_API",
+        "PINNED_PERMALINK",
+        "PINNED_GITHUB_ZIP",
+        "HOST_FILE_BRIDGE",
+        "WARM_CACHE_EXACT"
+      ]
+    },
+    {
+      "pr": 19,
+      "state": "MERGED",
+      "title": "C16 runtime availability",
+      "semantic_value": "Made connector/local-filesystem discontinuity explicit; no new transport.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 20,
+      "state": "MERGED",
+      "title": "C17 acceptance/deadline",
+      "semantic_value": "Single-shot acceptance and deadline integrity; no new carrier.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 21,
+      "state": "MERGED",
+      "title": "C18 same-epoch continuation",
+      "semantic_value": "Added continuation semantics after recoverable byte-bridge failure.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 22,
+      "state": "MERGED",
+      "title": "C19 host-observed convergence",
+      "semantic_value": "Introduced multi-carrier capability ledger/selection and retry memory.",
+      "channel_atoms": [
+        "FASTBOOT_CHANNEL_LEDGER"
+      ]
+    },
+    {
+      "pr": 23,
+      "state": "MERGED",
+      "title": "C20 dual-profile SESSION_CHAT",
+      "semantic_value": "Introduced deployed/plugin SESSION_CHAT profile and warm deployed store.",
+      "channel_atoms": [
+        "SESSION_CHAT_DEPLOYED",
+        "PLUGIN_MCP",
+        "WARM_CACHE_EXACT"
+      ]
+    },
+    {
+      "pr": 24,
+      "state": "CLOSED_UNMERGED",
+      "title": "C20 alternate dual-profile attempt",
+      "semantic_value": "Unmerged alternative deployed activation design.",
+      "channel_atoms": [
+        "SESSION_CHAT_DEPLOYED",
+        "PLUGIN_MCP"
+      ]
+    },
+    {
+      "pr": 25,
+      "state": "MERGED",
+      "title": "C21 local SESSION_CHAT convergence",
+      "semantic_value": "Promoted SESSION_CHAT_LOCAL as product modality and rejected hosted/plugin requirements for local activation.",
+      "channel_atoms": [
+        "SESSION_CHAT_LOCAL"
+      ]
+    },
+    {
+      "pr": 26,
+      "state": "MERGED",
+      "title": "C22 PR25 hardening",
+      "semantic_value": "Hardened local fastboot evidence; no new channel.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 27,
+      "state": "CLOSED_UNMERGED",
+      "title": "C22 causal fastboot attempt",
+      "semantic_value": "Unmerged hardening variant; no distinct surviving channel.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 28,
+      "state": "MERGED",
+      "title": "C23 ontology collapse",
+      "semantic_value": "Quarantined legacy C20 deployed ontology and clarified HOST_ATTESTED semantics.",
+      "channel_atoms": [
+        "SESSION_CHAT_DEPLOYED",
+        "HOST_ATTESTED"
+      ]
+    },
+    {
+      "pr": 29,
+      "state": "MERGED",
+      "title": "C24 canonical human boundary",
+      "semantic_value": "Closed human-to-iKant boundary over existing local path; no new carrier.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 30,
+      "state": "MERGED",
+      "title": "C25 executor data plane",
+      "semantic_value": "Moved canonical activation bytes to LOCAL_EXECUTOR_V1 and LOCAL_DIRECT, forbidding model byte transport.",
+      "channel_atoms": [
+        "LOCAL_EXECUTOR_V1",
+        "LOCAL_DIRECT"
+      ]
+    },
+    {
+      "pr": 31,
+      "state": "MERGED",
+      "title": "C26 local-host meta-prompt",
+      "semantic_value": "Added generated zero-authority local-host caller projection.",
+      "channel_atoms": [
+        "LOCAL_HOST_META_PROMPT"
+      ]
+    },
+    {
+      "pr": 32,
+      "state": "MERGED",
+      "title": "C27 verified opaque relay",
+      "semantic_value": "Added VERIFIED_OPAQUE_RELAY as second physically honest byte path.",
+      "channel_atoms": [
+        "VERIFIED_OPAQUE_RELAY"
+      ]
+    },
+    {
+      "pr": 33,
+      "state": "MERGED",
+      "title": "C28 semantic closure",
+      "semantic_value": "Absorbed full-iKant invariants while retaining LOCAL_DIRECT and VERIFIED_OPAQUE_RELAY.",
+      "channel_atoms": [
+        "LOCAL_DIRECT",
+        "VERIFIED_OPAQUE_RELAY"
+      ]
+    },
+    {
+      "pr": 34,
+      "state": "CLOSED_UNMERGED",
+      "title": "C28 alternate absorption attempt",
+      "semantic_value": "Unmerged C28 variant; no distinct surviving channel.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 35,
+      "state": "MERGED",
+      "title": "C29 ontological promise",
+      "semantic_value": "Made product promise measurable; no new bootstrap channel.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 36,
+      "state": "CLOSED_UNMERGED",
+      "title": "C30 activation experience attempt",
+      "semantic_value": "Unmerged activation-spectrum draft.",
+      "channel_atoms": [
+        "RUNTIME_BOUND_LIMITED"
+      ]
+    },
+    {
+      "pr": 37,
+      "state": "MERGED",
+      "title": "C30 activation service spectrum",
+      "semantic_value": "Introduced bounded RUNTIME_BOUND_LIMITED service without weakening ACTIVE.",
+      "channel_atoms": [
+        "RUNTIME_BOUND_LIMITED"
+      ]
+    },
+    {
+      "pr": 38,
+      "state": "MERGED",
+      "title": "C31 limited supply chain",
+      "semantic_value": "Closed limited-runtime supply chain; no new canonical bootstrap pipe.",
+      "channel_atoms": [
+        "RUNTIME_BOUND_LIMITED"
+      ]
+    },
+    {
+      "pr": 39,
+      "state": "MERGED",
+      "title": "C31 deterministic session shell",
+      "semantic_value": "Added one deterministic public shell over activation states.",
+      "channel_atoms": [
+        "SESSION_SHELL"
+      ]
+    },
+    {
+      "pr": 40,
+      "state": "MERGED",
+      "title": "C33 runtime ownership",
+      "semantic_value": "Introduced pre-runtime host adapter/session-local service ownership boundary.",
+      "channel_atoms": [
+        "PRE_RUNTIME_HOST_ADAPTER"
+      ]
+    },
+    {
+      "pr": 41,
+      "state": "MERGED",
+      "title": "C34 handoff authenticity",
+      "semantic_value": "Authenticated the pre-runtime handoff independently.",
+      "channel_atoms": [
+        "AUTHENTICATED_PRE_RUNTIME_HANDOFF"
+      ]
+    },
+    {
+      "pr": 42,
+      "state": "CLOSED_UNMERGED",
+      "title": "C35 control-plane attempt A",
+      "semantic_value": "Unmerged orthogonal control-plane ownership attempt.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 43,
+      "state": "CLOSED_UNMERGED",
+      "title": "C35 control-plane attempt B",
+      "semantic_value": "Unmerged superseding control-plane attempt.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 44,
+      "state": "MERGED",
+      "title": "C35 control-plane lattice",
+      "semantic_value": "Materialized orthogonal control-plane ownership; no bootstrap carrier.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 45,
+      "state": "MERGED",
+      "title": "C36 semantic morphogenesis",
+      "semantic_value": "No new bootstrap channel.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 46,
+      "state": "MERGED",
+      "title": "C37 causal evidence closure",
+      "semantic_value": "No new bootstrap channel.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 47,
+      "state": "MERGED",
+      "title": "C38 semantic-lossless control",
+      "semantic_value": "No new bootstrap channel.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 48,
+      "state": "MERGED",
+      "title": "C39 AI-agent first entrypoint",
+      "semantic_value": "Introduced for_ai_agent_first_entrypoint as caller-facing technical ingress.",
+      "channel_atoms": [
+        "FOR_AI_AGENT_FIRST_ENTRYPOINT"
+      ]
+    },
+    {
+      "pr": 49,
+      "state": "MERGED",
+      "title": "C40 re-entry loop",
+      "semantic_value": "Added execute-observe-reenter owner loop around the entrypoint.",
+      "channel_atoms": [
+        "EXECUTE_OBSERVE_REENTER"
+      ]
+    },
+    {
+      "pr": 50,
+      "state": "MERGED",
+      "title": "C41 retry epochs",
+      "semantic_value": "Added carrier-local retry epochs and bootstrap UX continuity.",
+      "channel_atoms": [
+        "CARRIER_LOCAL_RETRY_EPOCH",
+        "FASTBOOT_CHANNEL_LEDGER"
+      ]
+    },
+    {
+      "pr": 51,
+      "state": "MERGED",
+      "title": "C42 intent and handoff ontology",
+      "semantic_value": "Added intent adapter and pre-runtime handoff closure.",
+      "channel_atoms": [
+        "BOOTSTRAP_INTENT_ADAPTER",
+        "PRE_RUNTIME_HOST_ADAPTER"
+      ]
+    },
+    {
+      "pr": 52,
+      "state": "MERGED",
+      "title": "C43 recovery hardening",
+      "semantic_value": "Moved human file handoff to final recovery tier.",
+      "channel_atoms": [
+        "HUMAN_FILE_HANDOFF",
+        "HOST_FILE_BRIDGE"
+      ]
+    },
+    {
+      "pr": 53,
+      "state": "MERGED",
+      "title": "C44 methodological bootstrap",
+      "semantic_value": "Added methodological local-host prompt discipline.",
+      "channel_atoms": [
+        "METHODOLOGICAL_BOOTSTRAP_PROMPT",
+        "LOCAL_HOST_META_PROMPT"
+      ]
+    },
+    {
+      "pr": 54,
+      "state": "MERGED",
+      "title": "C45 cohost context root",
+      "semantic_value": "Added persistent cohost context after/around local runtime, not a transport.",
+      "channel_atoms": [
+        "COHOST_CONTEXT_ROOT"
+      ]
+    },
+    {
+      "pr": 55,
+      "state": "MERGED",
+      "title": "C46 cohost bind nucleus",
+      "semantic_value": "Added fast cohost relation bind nucleus, orthogonal to canonical transport.",
+      "channel_atoms": [
+        "COHOST_BIND_NUCLEUS"
+      ]
+    },
+    {
+      "pr": 56,
+      "state": "MERGED",
+      "title": "C47 cohost runtime closure",
+      "semantic_value": "Added persisted cohost hydration upgrade.",
+      "channel_atoms": [
+        "COHOST_RUNTIME_HYDRATION"
+      ]
+    },
+    {
+      "pr": 57,
+      "state": "MERGED",
+      "title": "C48 cohost gate coverage",
+      "semantic_value": "Qualification/gate hardening only.",
+      "channel_atoms": []
+    },
+    {
+      "pr": 58,
+      "state": "MERGED",
+      "title": "C49 tiered cohost profile",
+      "semantic_value": "Consolidated cohost relation/runtime/product tiers.",
+      "channel_atoms": [
+        "COHOST_TIER_PROFILE"
+      ]
+    },
+    {
+      "pr": 59,
+      "state": "MERGED",
+      "title": "C50 native transcript boundary",
+      "semantic_value": "Added external native transcript actor qualification.",
+      "channel_atoms": [
+        "NATIVE_TRANSCRIPT_ACTOR"
+      ]
+    },
+    {
+      "pr": 60,
+      "state": "MERGED",
+      "title": "C51 supersystem conformance",
+      "semantic_value": "Added host-bootstrap binding evidence and host session router overlay.",
+      "channel_atoms": [
+        "HOST_BOOTSTRAP_BINDING",
+        "HOST_SESSION_ROUTER"
+      ]
+    },
+    {
+      "pr": 61,
+      "state": "MERGED",
+      "title": "C52 physical runtime proof",
+      "semantic_value": "Added physical bootstrap/execution/cohost/route/native proof surface.",
+      "channel_atoms": [
+        "PHYSICAL_RUNTIME_PROOF"
+      ]
+    },
+    {
+      "pr": 62,
+      "state": "MERGED",
+      "title": "C53 physical hardening",
+      "semantic_value": "Cross-session/native hardening of physical proof; no new channel.",
+      "channel_atoms": [
+        "PHYSICAL_RUNTIME_PROOF"
+      ]
+    },
+    {
+      "pr": 63,
+      "state": "MERGED",
+      "title": "C54 host materialization",
+      "semantic_value": "Added host-consumption frame; presentation adapter only.",
+      "channel_atoms": [
+        "HOST_CONSUMPTION_FRAME",
+        "PLUGIN_MCP"
+      ]
+    },
+    {
+      "pr": 64,
+      "state": "MERGED",
+      "title": "C55 post-meta discipline",
+      "semantic_value": "Added post-meta caller projection.",
+      "channel_atoms": [
+        "LOCAL_HOST_POST_META_PROMPT"
+      ]
+    },
+    {
+      "pr": 65,
+      "state": "MERGED",
+      "title": "C56 session meta-prompt",
+      "semantic_value": "Converged whole-session local-host prompt projection.",
+      "channel_atoms": [
+        "LOCAL_HOST_SESSION_META_PROMPT"
+      ]
+    },
+    {
+      "pr": 66,
+      "state": "MERGED",
+      "title": "C57 actual host binding",
+      "semantic_value": "Introduced APP_BOUND ikant_le_open and ADAPTER_BOUND ingress modes as host bindings.",
+      "channel_atoms": [
+        "APP_BOUND_IKANT_LE_OPEN",
+        "ADAPTER_BOUND_ENTRYPOINT",
+        "FOR_AI_AGENT_FIRST_ENTRYPOINT",
+        "PLUGIN_MCP"
+      ]
+    },
+    {
+      "pr": 67,
+      "state": "MERGED",
+      "title": "C58 executable lifecycle gate",
+      "semantic_value": "Moved local-host lifecycle gating into executable kernel and host-route decline.",
+      "channel_atoms": [
+        "SESSION_CHAT_LOCAL_HOST_KERNEL"
+      ]
+    },
+    {
+      "pr": 68,
+      "state": "OPEN",
+      "title": "C59 single composition channel",
+      "semantic_value": "Collapses all caller-visible local bootstrap composition onto one canonical owner and terminal census.",
+      "channel_atoms": [
+        "SINGLE_COMPOSITION_CHANNEL",
+        "SESSION_CHAT_LOCAL_HOST_KERNEL",
+        "GITHUB_API_BASE64",
+        "VERIFIED_OPAQUE_RELAY",
+        "LOCAL_EXECUTOR_V1",
+        "SESSION_CHAT_LOCAL"
+      ]
+    }
+  ],
+  "invariants": {
+    "every_pr_1_through_68_present_once": true,
+    "every_channel_atom_registered": true,
+    "every_registry_class_terminal": true,
+    "closed_unmerged_attempts_retained_as_evidence": true,
+    "history_does_not_create_runtime_authority": true
+  }
+}

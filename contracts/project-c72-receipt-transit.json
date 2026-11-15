@@ -1,0 +1,38 @@
+{
+  "schema": "ikant-host-c72-original-transit-contract/v1",
+  "authority": 0,
+  "purpose": "C72_ORIGINAL_RECEIPTS_PHYSICAL_TRANSFER_BETWEEN_DISTINCT_PROJECT_TURNS",
+  "owner": "host/c72-public-mode-admission.mjs",
+  "carrier": "host/project-c72-receipt-transit.mjs",
+  "consumers": [
+    "host/project-c72-coldstart-seed.mjs",
+    "scripts/project-c72-cold-mode-cli.mjs",
+    "host/project-oneshell-continuous.mjs"
+  ],
+  "private_directory": "HOST_LOCAL_ABSOLUTE_0700",
+  "receipt_files": "EXCLUSIVE_WX_0600_FSYNC_REOPEN_NO_OVERWRITE",
+  "attempt_files": "BEFORE_ORIGINAL_OWNER_AND_NEVER_RETRY_ON_UNKNOWN",
+  "receipt_types": [
+    "ORIGINAL_C72_V2_ACCEPTED",
+    "ORIGINAL_C72_V2_ORIENTATION",
+    "ORIGINAL_C72_V2_EDU_SELECTION"
+  ],
+  "physical_reopen": "ORIGINAL_C72_VALIDATORS_AND_CROSS_DIGESTS_AND_EXACT_HEAD",
+  "chat_text_is_receipt": false,
+  "digest_only_is_receipt": false,
+  "historical_receipt_reconstruction": false,
+  "independent_event_identity_attested": false,
+  "native_delivery_attested": false,
+  "ui_persistence_attested": false,
+  "new_c72_owner": false,
+  "new_c135_writer": false,
+  "compatibility": "LEGACY_EIGHT_BLOB_SEED_REMAINS_UNCHANGED_WITHOUT_OPTIONAL_TRANSIT",
+  "source_after_edu": "PINNED_SOURCE_LOADER_WITH_EXISTING_ORIGINAL_C72_TRANSIT_NO_REPLAY",
+  "rich_host_logo": "VERIFIED_INLINE_SVG_ONLY_WHEN_HOST_RENDER_CAN_DISPLAY_HTML",
+  "rich_host_mount_guaranteed": false,
+  "field_release": "NOT_ATTESTED_UNTIL_REAL_HOST_DELIVERY_AND_2_TO_3_MINUTE_MEASUREMENT",
+  "project_edu_e16_source_pin": "SHA_VERIFIED_FIRST_TURN_BOOTSTRAP_BLOB_TO_PRIVATE_EXCLUSIVE_CARRIER_MARKER; REOPEN_BEFORE_EDU_OWNER",
+  "transit_git_sha1_source": "BOOTSTRAP.project_session.postaccept_original_c72_transit_pin",
+  "pin_marker": "PRIVATE_0700_WX_0600_FSYNC_READBACK_NO_OVERWRITE",
+  "native_source_attestation": false
+}

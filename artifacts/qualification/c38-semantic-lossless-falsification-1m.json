@@ -1,0 +1,30 @@
+{
+  "schema": "ikant-le-c38-semantic-lossless-falsification/v1",
+  "source_head": "ce649dcc1f609cee4f20f59d98efb7955d7c0587",
+  "seed": "0xC38A11CE",
+  "cases": 1000000,
+  "families": 10,
+  "family_cases": 100000,
+  "survivors": {
+    "SPOOFED_CONTROL_PRODUCER": 0,
+    "PAIRED_ADVANTAGE_MISMATCH": 0,
+    "REPLAY_DUPLICATE_EVIDENCE": 0,
+    "UNCONSUMED_REUSE_AS_DECISION": 0,
+    "UNVERIFIED_RETEST_WITH_OPPORTUNITY": 0,
+    "INTERNAL_AS_EXTERNAL": 0,
+    "SHORT_CONTEXT_COLLISION": 0,
+    "PREACTIVE_RUNTIME_EVIDENCE": 0,
+    "FORGED_COMPRESSION_WITHOUT_RECEIPT": 0,
+    "OS_WITHOUT_BREADTH": 0
+  },
+  "survivor_total": 0,
+  "all_mutants_killed": true,
+  "runtime_functions_exercised": true,
+  "canonical_deployed_e2e_required": true,
+  "canonical_control_evidence_producer_available": false,
+  "phenomenology_runtime_truth": "UNKNOWN",
+  "open_ended_engineering_emergence_claimed": false,
+  "status": "PASS",
+  "claim_boundary": "runtime-semantic mutation qualification; does not create a canonical paired-control producer, phenomenology, open-ended emergence, or ACTIVE",
+  "receipt_sha256": "39c62991c7b5367faffe96a3577ac55223e3b0e4bcf05fdd103ffc9d23c8cce1"
+}

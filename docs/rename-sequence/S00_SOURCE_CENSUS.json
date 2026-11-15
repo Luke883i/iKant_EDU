@@ -1,0 +1,28 @@
+{
+  "schema": "ikant-edu-rename-sequential-step/v1",
+  "id": "S00",
+  "candidate_path": "docs/rename-sequence/S00_SOURCE_CENSUS.json",
+  "baseline": {
+    "repo_id": 1371330383,
+    "head": "f5f42603294084d29cdb6d6e2106c0331d802536",
+    "tree": "00df0f3af4d4e4c7128f6443e304fc19ea54c943"
+  },
+  "state": "PLAN_ONLY_NO_EFFECT",
+  "goal": "Stabilire un inventario esaustivo dei consumer prima di modificare i binding.",
+  "pre": "GitHub main alla HEAD fissata; TREE completo non troncato; commit->TREE->path->blob confermati.",
+  "do": "Leggere l'intero TREE; classificare ogni riferimento al vecchio nome come operativo, test, storico o esterno. Per ciascun consumer operativo identificare owner, vecchio riferimento, effetto del rename e prova richiesta. Conservare gli URL e le ricevute storiche.",
+  "proof": [
+    "GIT: stesso repository ID, HEAD, TREE completo e blob critici.",
+    "LOCALE: inventario versionato, ogni file del TREE valutato e nessun consumer critico non classificato.",
+    "EXTERNAL: consumer fuori repository enumerati dagli owner; UNKNOWN espliciti."
+  ],
+  "falsify": [
+    "Nome/lookalike non coincide con repository ID.",
+    "Un consumer critico resta senza owner o prova.",
+    "TREE troncato, HEAD diversa o blob non coincidente."
+  ],
+  "pass": "Solo inventario completo; ZERO UNKNOWN critici. Nessun effetto di rename.",
+  "stop": "SOURCE_LOCK_STALE_OR_CONSUMER_CENSUS_INCOMPLETE",
+  "next": "S01",
+  "does_not_claim": "Nessuna certezza globale sui consumer esterni senza attestazioni indipendenti."
+}

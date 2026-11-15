@@ -1,0 +1,79 @@
+{
+  "schema": "ikant-le-c53-physical-closure-hardening/v1",
+  "slice": "C53.PHYSICAL_CLOSURE_HARDENING",
+  "parent_slice": "C52.PHYSICAL_RUNTIME_CLOSURE_PROOF_SURFACE",
+  "source_baseline": "fcc1d67cb26b96ddb0f33e1a2ec5532f3a95e2e5",
+  "authority": 0,
+  "ontology_change": false,
+  "preserves_entities": [
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6"
+  ],
+  "preserves_laws": [
+    "L0",
+    "L1",
+    "L2",
+    "L3",
+    "L4"
+  ],
+  "hardening_obligations": [
+    {
+      "id": "H0_BOOTSTRAP_SESSION_BINDING",
+      "absorbed_into": "L1",
+      "claim": "E0 binds the exact cohost session locator and cannot be replayed across conversations."
+    },
+    {
+      "id": "H1_PREEXEC_ROUTE_SESSION_BINDING",
+      "absorbed_into": "L1",
+      "claim": "The materialized runtime reads its local cohost context and rejects a wrong-session route before executing the turn."
+    },
+    {
+      "id": "H2_NATIVE_COMMON_CONTRACT_ANCHOR",
+      "absorbed_into": "L0+L3",
+      "claim": "E6 is the existing C50 ikant-native-delivery-receipt/v1 contract plus C52 grant/runtime bindings; no parallel native-delivery ontology remains."
+    },
+    {
+      "id": "H3_HOST_RUNTIME_TURN_SEAL",
+      "absorbed_into": "L1",
+      "claim": "The materialized runtime seals the host turn id, route receipt, limited runtime turn identity, input hash and output hash into one physical turn receipt before native delivery can close."
+    },
+    {
+      "id": "H4_DERIVED_PROOF_RECOMPUTATION",
+      "absorbed_into": "L0",
+      "claim": "Global DoD recomputes closure and persistence from underlying evidence and derives the complete E0-E6 plus persistence proof-ref lineage itself; caller-supplied derived status, witness or receipt-ref lists are never accepted as proof."
+    }
+  ],
+  "semantic_simplification": {
+    "native_delivery_duplicate_schema_removed": true,
+    "common_native_semantic_fingerprint": "0fe2ca72875f9782d474fadf022b746c253f755244bfa39cb2dd66d361a2cb56",
+    "new_truth_owner": false,
+    "new_lifecycle": false,
+    "new_turn_engine": false,
+    "physical_turn_receipt_is_supporting_evidence_not_new_top_level_entity": true,
+    "derived_closure_receipts_revalidated": false,
+    "derived_closure_and_persistence_owner_recomputed": true,
+    "global_bundle_derives_complete_proof_refs": true
+  },
+  "dod": [
+    "cross-session E0 replay is INTEGRATION_IMPEDIMENT",
+    "wrong-session E3 is rejected inside materialized runtime before processLimitedRuntimeTurn",
+    "E6 passes the existing C50 native delivery validator before C52-specific grant/runtime checks",
+    "host turn id and route are sealed to the exact executed runtime turn/input/output before E6 can close",
+    "global DoD recomputes closure and persistence from underlying evidence; forged derived objects are ignored and cannot produce PASS",
+    "C52 7+5 ontology and fail-closed state projection remain unchanged",
+    "10M pre-seeded hardening falsification has zero mismatch, unsafe promotion and false reject",
+    "combined 17-mechanism lattice has a unique minimum and all H0-H4 deletion mutants are killed",
+    "runtime root is regenerated and exact",
+    "focused runtime tests and repository check are green"
+  ],
+  "claim_boundary": {
+    "repository_hardening_is_live_host_proof": false,
+    "live_host_e0_e3_e4_e5_e6_still_required": true,
+    "live_persistence_witness_still_required": true
+  }
+}

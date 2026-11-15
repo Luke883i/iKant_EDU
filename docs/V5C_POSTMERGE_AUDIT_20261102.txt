@@ -1,0 +1,15 @@
+V5-C | Post-merge audit | engineering-only, authority=0 | 2026-11-02
+
+GitHub source: PR #202 merged=true, merge commit b3920c1bbfb856cead312e17b027e350ae2ec123; main HEAD on audit matched that commit, tree 017cdee4334f8e0510fbfa1f40218666a3b05d6c (complete, non-truncated). The GitHub check-runs endpoint for the merge commit returned 39 completed/success check-runs of 39 at the time of audit. This is CI-provider evidence only, not a verified human admission, native UI installation or an original owner-issued receipt.
+
+V5-C DoD graph in contracts/project-v5c-edu-minimum-dod.json: V5C-G -> I1-I6 -> L01-L20. It separates original C72, verified 8/8 and 9/9 transit/10/10 original identity, full manifest, C135/C87/C125/S03 owner effects, timing and recovery, and explicit provider nonpromotions. Global G remains NOT_ATTESTED until an eligible user and independent engineers provide original event receipts/readback and actual provider evidence.
+
+The script scripts/v5c-falsify-100k.mjs exercises deterministic typed policy faults (20 x 5,000) and positive controls. Its 100k result is not 100k LLM semantic paraphrases or original owner runtime attempts. The bootstrap profiler measures actual test process durations, not ChatGPT first-turn latency. A source hash, green CI and local report cannot establish actual native delivery or installed prompt equivalence.
+
+V5-B incremental-register issue identified by V5-D audit: the post-merge scanner rejected a second MODIFY of the same workflow, even when V5-C and V5-D were separate reviewed slices. The V5-D hardening allows only explicit named predecessor + predecessor source epoch + changed source epoch, while retaining source path checks and REVIEW_REQUIRED. This is a change-governance improvement, not C72 admission or release authority.
+
+Local completeness: graph and source paths auditable, original owner files remain unchanged in V5-D; postmerge owner event readback still missing.
+Intermedial: V5-C C125/S03 source-bound fixture gates are present; V5-D extends exact text/HTML/voice/frame equivalence.
+Global: actual native ChatGPT UI/delivery/persistence, installed prompt and independent V5-G review remain UNKNOWN; PRODUCT_NO_GO.
+
+No source repin for iKant admission, no original owner invocation, no replay, no automatic merge and no V5-G acceptance by CI.

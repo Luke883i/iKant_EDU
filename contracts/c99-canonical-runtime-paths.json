@@ -1,0 +1,144 @@
+{
+  "schema": "ikant-le-c99-canonical-runtime-paths/v1",
+  "authority": 0,
+  "source_epoch": "FROZEN_PER_CHAT_AND_REVALIDATED_PER_OWNER",
+  "scope": "SINGLE_INPUT_SOURCE_BOUND_HOST_INTEROP",
+  "no_new_truth_owner": true,
+  "no_new_writer": true,
+  "negative_capabilities": {
+    "chatgpt_session_node_github_dns_or_http": false,
+    "shell_git_curl_wget_or_clone": false,
+    "project_prompt_is_mandatory_dispatch": false,
+    "callback_shape_authenticates_host": false,
+    "model_text_authenticates_human_event": false,
+    "git_object_digest_authenticates_github_origin": false,
+    "historical_c77_archive_is_current_head": false,
+    "c97_frame_is_native_delivery": false,
+    "local_100k_tests_are_100k_native_sessions": false
+  },
+  "routes": {
+    "PREACCEPT": {
+      "owner": "host/c72-unified-mode-admission.mjs",
+      "allowed_repo_paths": [
+        "README.md",
+        "BOOTSTRAP.json",
+        "ADMISSION.json",
+        "AGENTS.md",
+        "TERMS.md"
+      ],
+      "stop_after_verbatim_terms": true
+    },
+    "EXPERIMENTAL": {
+      "owner": "host/c84-experimental-transport.mjs#executeC84ExperimentalTurn",
+      "entry": "host/c98-existing-c84-entry.mjs#executeC98ExistingC84",
+      "upstream": [
+        "C72",
+        "C77",
+        "C82",
+        "C81",
+        "C78",
+        "C79"
+      ],
+      "current_input_max_utf8_bytes": 600,
+      "required_before_owner": [
+        "REAL_C72_SELECTION",
+        "FROZEN_HEAD",
+        "ONE_HOST_CARRIER",
+        "C81_SOURCE_GIT_OBJECT_BYTES"
+      ],
+      "post_owner": [
+        "SAME_INPUT_DIGEST_READBACK",
+        "C97_AUTHORITY_ZERO_PRESENTATION"
+      ],
+      "never_attested_by_entry": [
+        "GITHUB_REF_ORIGIN",
+        "NATIVE_CHAT_DELIVERY",
+        "PERSISTENCE",
+        "CANONICAL_ACTIVE"
+      ],
+      "manual_uploaded_c77_evidence": {
+        "content_owner": "host/c94-zip-c77.mjs#validateC94C77Archive",
+        "non_promotional_classifier": "host/c99-manual-c77-evidence.mjs#inspectC99ManualC77Evidence",
+        "carrier": "USER_UPLOADED_HOST_MOUNTED_POSTCONSENT",
+        "requires": [
+          "FROZEN_SOURCE_HEAD",
+          "EXPECTED_ARTIFACT_SHA256",
+          "EXPECTED_MANIFEST_SHA256",
+          "ACTUAL_ZIP_BYTES_IN_NODE"
+        ],
+        "can_claim_c84_owner_executed": false,
+        "can_claim_automatic_host_transfer": false,
+        "next_gate": "C81_RAW_GIT_PROOF_AND_C84_EXISTING_OWNER",
+        "wired_inspection_entry": "host/c98-file-backed-c84-entry.mjs#inspectC98MountedC77"
+      },
+      "optional_non_owner_cohost_fallback": {
+        "policy": "EXPLICIT_ONLY_NOT_IMPLICIT_OWNER_REPLACEMENT",
+        "entry": "host/c100-cohost-experimental.mjs#prepareC100CohostDraft",
+        "contract": "contracts/c100-experimental-cohost-delegation.json",
+        "needs": [
+          "REAL_EXPERIMENTAL_C72_SELECTION",
+          "HUMAN_OPT_IN",
+          "CURRENT_INPUT_SHA256",
+          "VISIBLE_COHOST_LLM_DISCLOSURE"
+        ],
+        "not_required_for_draft": [
+          "C77_COMPLETE_CAPSULE",
+          "C81_GIT_TREE_BYTES",
+          "C84_OWNER_READBACK",
+          "L2_DURABLE_WRITER"
+        ],
+        "not_attested": [
+          "C84_OWNER_EXECUTED",
+          "GITHUB_ORIGIN",
+          "NATIVE_CHAT_EVENT",
+          "NATIVE_DELIVERY",
+          "PERSISTENCE",
+          "CANONICAL_ACTIVE",
+          "H95"
+        ],
+        "may_be_reported_as_verified_surface_a": false,
+        "no_new_writer": true,
+        "no_native_dispatch_installed": true
+      }
+    },
+    "CANONICAL": {
+      "owner": "C59_SINGLE_WRITER_C73_C32",
+      "required": [
+        "ORIGINAL_HUMAN_EVENT",
+        "OWNER_ACTIVE_READBACK",
+        "SAME_TURN_DOCX",
+        "NATIVE_DELIVERY_RECEIPT"
+      ],
+      "may_fallback_to_experimental": false
+    }
+  },
+  "source_evidence": {
+    "bridge_audit_file_crossing": "ONE_VERIFIED_TEXT_BLOB_NOT_INSTALLED_CARRIER",
+    "activation_audit_head": "8e103319bfe0e2a91c85fdfc4bd0d0734e0922d8",
+    "activation_audit_first_open_edge": "CURRENT_HEAD_C77_CAPSULE_AND_AUTHORIZED_HOST_TO_NODE_CARRIER",
+    "pr_103_104_105_status": "MERGED_SOFTWARE_NOT_CHATGPT_HOST_DEPLOYMENT",
+    "v6_manual_uploaded_c77": {
+      "observation_epoch": "8e103319bfe0e2a91c85fdfc4bd0d0734e0922d8",
+      "observed_artifact_sha256": "9d397719a9b0bc352c97c0b8475cbd8f40e1cc87bade55d8b48cc89476cb8d62",
+      "observed_manifest_sha256": "6a6c31f3a1ba1cfe35e5503f12cbccc39797dae25e04d0b328497b8a35cc3582",
+      "upload_was_manual": true,
+      "local_c77_first_turn_executed": true,
+      "c77_voice_source": "C70_REPOSITORY_FALLBACK",
+      "c84_executed": false,
+      "c81_raw_git_proof_verified": false,
+      "original_native_user_event_verified": false,
+      "automatic_callback_attested": false,
+      "not_a_general_current_head_assertion": true
+    }
+  },
+  "host_gates_independent": [
+    "ACTUAL_PINNED_GITHUB_REF",
+    "HOST_BYTES_IN_NODE",
+    "CURRENT_HUMAN_EVENT",
+    "C81_PROOF",
+    "OWNER_OUTPUT",
+    "HOST_RENDER_EVENT",
+    "FUTURE_STATE_READBACK",
+    "C72_H95_FIELD"
+  ]
+}

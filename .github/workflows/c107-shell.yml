@@ -1,0 +1,22 @@
+name: C107 original interactive LAB shell proof
+on:
+  pull_request:
+    paths:
+      - 'host/c107-*'
+      - 'scripts/c107-*'
+      - 'tests/c107-*'
+      - '.github/workflows/c107-shell.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shell-prototype:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Original local shell with source C72 and two bounded cognitive turns
+        run: node --test tests/c107-console.test.mjs

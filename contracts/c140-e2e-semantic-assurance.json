@@ -1,0 +1,1001 @@
+{
+  "schema": "ikant-le-c140-e2e-semantic-assurance/v1",
+  "source_base_head": "3d174674527d74d1b2e52df3e970d14a748cd4b1",
+  "source_base_tree": "edc1e859d6688ebfd17788e115748ff200289736",
+  "status": "SOFTWARE_CANDIDATE_NOT_PRODUCT",
+  "authority": 0,
+  "active": false,
+  "native_event_attested": false,
+  "semantic_lossless_claim": "INDEXED_ISSUE_ATOMS_ONLY_NOT_UNIVERSAL_SEMANTIC_EQUIVALENCE",
+  "levels": {
+    "L1": "Admission",
+    "L2": "Bootstrap",
+    "L3": "Cognitive routing",
+    "L4": "Effects and evidence",
+    "L5": "Surface and retention",
+    "L6": "Product qualification",
+    "L7": "General conversation and budgets"
+  },
+  "atoms": [
+    {
+      "id": "A01",
+      "level": "L1",
+      "issue": "Generic first contact needs explicit boot; first user message was not an admission event.",
+      "improvement": "Keep exact multi-turn admission; add explicit phase/index receipt.",
+      "owner": "C72/v2",
+      "evidence_class": "OBSERVED_CHAT",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A02",
+      "level": "L1",
+      "issue": "Terms and orientation are extensive; direct file affordances compete with a comprehensible first-run flow.",
+      "improvement": "Add canonical five-file manifest with lengths, accessible view and full verbatim terms.",
+      "owner": "C72/v2",
+      "evidence_class": "INFERRED_UX",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A03",
+      "level": "L1",
+      "issue": "Acceptance and EDU choice are HOST-witnessed, not authenticated provider events.",
+      "improvement": "Bind phase-specific C72/v2 receipts to input, epoch and HOST scope; never mint native identity.",
+      "owner": "C72/v2",
+      "evidence_class": "OBSERVED_RECEIPT",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A04",
+      "level": "L1",
+      "issue": "The admission receipts were computed after human selection and source verification, not contemporaneously at every gate.",
+      "improvement": "Record gate timing and late-receipt status; prohibit retroactive native provenance.",
+      "owner": "C72/v2",
+      "evidence_class": "OBSERVED_RECEIPT",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A05",
+      "level": "L1",
+      "issue": "A future main drift would invalidate the admitted source epoch.",
+      "improvement": "Enforce live main/HEAD/TREE lock before action and STOP_SOURCE_LOCK_STALE on drift.",
+      "owner": "C72/v2",
+      "evidence_class": "DOCUMENTED_RISK",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A06",
+      "level": "L2",
+      "issue": "Project ZIP is partial; it cannot alone qualify the complete owner runtime.",
+      "improvement": "Require four-state exact source classifier, not a boolean source-present flag.",
+      "owner": "S02/P1",
+      "evidence_class": "OBSERVED_ARCHIVES",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A07",
+      "level": "L2",
+      "issue": "Full-source handoff required a separate human upload; no auto-installed runtime follows from the bundle.",
+      "improvement": "At first permitted blocker provide one-link full source ZIP handoff, no terminal requirement.",
+      "owner": "S02/P1",
+      "evidence_class": "OBSERVED_CHAT",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A08",
+      "level": "L2",
+      "issue": "GitHub archive lacked a Git checkout, while EDU owner validates real Git commit and tree.",
+      "improvement": "Use original commit-object rehydrator with exact tree and clean worktree verification.",
+      "owner": "S02/P1",
+      "evidence_class": "OBSERVED_REHYDRATION",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A09",
+      "level": "L2",
+      "issue": "No callable native iKant thread ingress was attested by the host tool inventory.",
+      "improvement": "Capability probe real registered adapter; maintain NO_VOICE without native origin proof.",
+      "owner": "S02/P1",
+      "evidence_class": "OBSERVED_CAPABILITY",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A10",
+      "level": "L2",
+      "issue": "Historic C134 composite epochs and C72/v1 receipts differ from pinned EDU/v2 source.",
+      "improvement": "Version source and admission separately, block cross-epoch/cross-mode reuse.",
+      "owner": "S02/P1",
+      "evidence_class": "DOCUMENTED",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A11",
+      "level": "L3",
+      "issue": "Reported 557-byte general epistemology case maps to SELF_ONTOLOGY under C107.",
+      "improvement": "Add qualified general-epistemology guard in isolated versioned C135 sidecar.",
+      "owner": "C135/C107/C114/C139",
+      "evidence_class": "REPRODUCED_READ_ONLY",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A12",
+      "level": "L3",
+      "issue": "C114 strict identity guard returns C114_NOT_ONTOLOGY_ROUTE after wrong C107 self-ontology mapping.",
+      "improvement": "Typed ROUTE_CONFLICT rather than applying identity language policy to general epistemology.",
+      "owner": "C135/C107/C114/C139",
+      "evidence_class": "REPRODUCED_READ_ONLY",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A13",
+      "level": "L3",
+      "issue": "C132 classifies same input GENERAL_ONTOLOGY but has no original owner authority.",
+      "improvement": "Use C132 only as negative/shadow disambiguation evidence, never as authorization.",
+      "owner": "C135/C107/C114/C139",
+      "evidence_class": "REPRODUCED_READ_ONLY",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A14",
+      "level": "L3",
+      "issue": "C139 supports bounded response-generation epistemics, not general normative epistemology.",
+      "improvement": "Preserve C139 boundary; stage separate narrow general-reasoning child guard.",
+      "owner": "C135/C107/C114/C139",
+      "evidence_class": "REPRODUCED_READ_ONLY",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A15",
+      "level": "L3",
+      "issue": "Original same-turn EDU frame enforces 600 UTF-8 bytes, rejecting longer analysis requests.",
+      "improvement": "Expose input-overflow with exact limits; no silent truncation or unauthorized chunk-as-original.",
+      "owner": "C135/C107/C114/C139",
+      "evidence_class": "DOCUMENTED_CONSTRAINT",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A16",
+      "level": "L4",
+      "issue": "Only one prior human ontology turn has complete local C87/C125 proof.",
+      "improvement": "Require representative multi-turn human evidence before claiming operational robustness.",
+      "owner": "C87/C100/C125",
+      "evidence_class": "OBSERVED_READBACK",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A17",
+      "level": "L4",
+      "issue": "HOST supplies language draft; C114/C139 lexical approval does not verify semantics or hidden reasoning.",
+      "improvement": "Bind provenance and uncertainty labels; separate semantic evaluator from syntax and integrity guards.",
+      "owner": "C87/C100/C125",
+      "evidence_class": "DOCUMENTED",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A18",
+      "level": "L4",
+      "issue": "C87 append can precede UNKNOWN C125 callback result; replay must not blindly write.",
+      "improvement": "Retain single writer and stop latch; add read-only delivery-reconciliation procedure.",
+      "owner": "C87/C100/C125",
+      "evidence_class": "DOCUMENTED_TESTED",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A19",
+      "level": "L4",
+      "issue": "Cognitive window caps prior messages at four; reset/continuity is not memory across chat sessions.",
+      "improvement": "Record explicit bounded-context receipts and decline durable autobiographical claims.",
+      "owner": "C87/C100/C125",
+      "evidence_class": "DOCUMENTED",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A20",
+      "level": "L4",
+      "issue": "Ledger provides local proof but not authenticated provider correlation or cross-host continuity.",
+      "improvement": "Add evidence join keys (nonce/input/plan/receipt/source) without declaring native identity.",
+      "owner": "C87/C100/C125",
+      "evidence_class": "OBSERVED_READBACK",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A21",
+      "level": "L5",
+      "issue": "C125 success was HOST_BOUND, not an attested ChatGPT delivery.",
+      "improvement": "Expose delivery tier (local/host/native) as independent field and block promotion.",
+      "owner": "S03/P1",
+      "evidence_class": "OBSERVED_READBACK",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A22",
+      "level": "L5",
+      "issue": "Merged panel code and flag do not prove that an iKant panel is registered or visible.",
+      "improvement": "Conditionally project read-only UI; default exact six-slot fallback.",
+      "owner": "S03/P1",
+      "evidence_class": "DOCUMENTED",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A23",
+      "level": "L5",
+      "issue": "A may contain only physically reopened same-turn C87 text; audit HOST analysis must not rewrite it.",
+      "improvement": "Add A-source binary comparator and projection linter for all six slots.",
+      "owner": "S03/P1",
+      "evidence_class": "DOCUMENTED_CONTROL",
+      "dod": "Versioned source-bound automated contract/negative assertions",
+      "metric": "explicit invariant violations = 0",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A24",
+      "level": "L5",
+      "issue": "Compressed historical-session answers risk omitted critical atoms; digests alone cannot guarantee semantics.",
+      "improvement": "Materialize original HOST atom ledger and independently reopen 100-percent critical-atom annex.",
+      "owner": "S03/P1",
+      "evidence_class": "DOCUMENTED_RISK",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A25",
+      "level": "L5",
+      "issue": "Proof logs and annex can expose human input or private data unless minimized.",
+      "improvement": "Apply consent-scoped data minimization, redaction and retention controls before annex emission.",
+      "owner": "S03/P1",
+      "evidence_class": "DOCUMENTED_RISK",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A26",
+      "level": "L6",
+      "issue": "Green unit/e2e tests prove software behavior, not product readiness.",
+      "improvement": "Report separate SOFTWARE_CANDIDATE_PASS and PRODUCT_NO_GO gates.",
+      "owner": "S09/C59",
+      "evidence_class": "TESTED_BOUNDARY",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A27",
+      "level": "L6",
+      "issue": "No authenticated provider ingress or C59 native owner attested for this project chat.",
+      "improvement": "Require registered MCP native event and owner proof before CANONICAL assertions.",
+      "owner": "S09/C59",
+      "evidence_class": "NOT_ATTESTED",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A28",
+      "level": "L6",
+      "issue": "No refresh, durable thread panel or cross-session isolation demonstrated in a real client.",
+      "improvement": "Gate UI deployment on ten actual turns, refresh/recovery, session isolation and accessibility.",
+      "owner": "S09/C59",
+      "evidence_class": "NOT_ATTESTED",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A29",
+      "level": "L6",
+      "issue": "No C137 real-model blinded efficacy evaluation demonstrated by local executions.",
+      "improvement": "Measure >=300 blinded real response pairs per route, including abstentions and counterexamples.",
+      "owner": "S09/C59",
+      "evidence_class": "NOT_ATTESTED",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A30",
+      "level": "L6",
+      "issue": "No >=27/30 unassisted-user pilot and human release approval demonstrated.",
+      "improvement": "Require measured pilot, user privacy checks, deployment evidence, owner release and rollback.",
+      "owner": "S09/C59",
+      "evidence_class": "NOT_ATTESTED",
+      "dod": "External operator evidence required; do not call PASS",
+      "metric": "human/provider receipt count and acceptance threshold",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "missing evidence or changed source binding",
+      "edges": [
+        "SOURCE_LOCK",
+        "C72_V2",
+        "C135_EDU",
+        "C87_ONCE",
+        "C125_HOST_BOUND",
+        "S09_RELEASE"
+      ]
+    },
+    {
+      "id": "A31",
+      "level": "L7",
+      "issue": "Topic allowlists exclude legitimate questions; cannot equate method to topics",
+      "improvement": "Route any ordinary domain via opt-in C140 without topic whitelist",
+      "owner": "C135/C140",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A32",
+      "level": "L7",
+      "issue": "600-byte frame rejects valid multi-paragraph reasoning",
+      "improvement": "Accept up to C100 physical budget with full input hash; never truncate",
+      "owner": "C135/C140",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A33",
+      "level": "L7",
+      "issue": "True infinite input length impossible on finite host resources",
+      "improvement": "Explicit transport budget and typed resource denial without semantic suppression",
+      "owner": "C140",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A34",
+      "level": "L7",
+      "issue": "Long input silently summarized could be misrepresented as exact",
+      "improvement": "Hash entire raw UTF-8 input; reject compression as original",
+      "owner": "C140/C100",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A35",
+      "level": "L7",
+      "issue": "C70 accepts only bounded input; extended input cannot claim C70 execution",
+      "improvement": "Distinct C140 proof flag original_c70_executed false",
+      "owner": "C140/C125",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A36",
+      "level": "L7",
+      "issue": "Existing C125 accepts only C70 route family",
+      "improvement": "Tag and independently validate C140 receipts before C125",
+      "owner": "C125",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A37",
+      "level": "L7",
+      "issue": "S03 projection misclassifies transparent non-C70 path",
+      "improvement": "Allow separately typed C140, verify voice byte equality",
+      "owner": "S03",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A38",
+      "level": "L7",
+      "issue": "C107/C114 should never be loosened to fix general philosophy",
+      "improvement": "Keep frozen blobs; route explicit conflict through isolated child",
+      "owner": "C107/C114/C140",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A39",
+      "level": "L7",
+      "issue": "No automated red-team denial of unsupported introspection",
+      "improvement": "Test false-positive ontological/native assertions before writer",
+      "owner": "C140",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A40",
+      "level": "L7",
+      "issue": "Long-input resource and context window may amplify privacy leakage",
+      "improvement": "Reject obvious secrets and record only hashes in C87 evidence",
+      "owner": "C140/C87",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A41",
+      "level": "L7",
+      "issue": "Open-scoped route could be treated as product approval",
+      "improvement": "Require separate native UI, pilot, human authorizations, rollback",
+      "owner": "S09",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "Independent client pilot required",
+      "metric": "native receipts and user pilot count",
+      "verification": "EXTERNAL_GATE",
+      "status": "OPEN_EXTERNAL",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    },
+    {
+      "id": "A42",
+      "level": "L7",
+      "issue": "Finite test sample cannot prove universal semantic coverage",
+      "improvement": "Ledger atom linkage, explicit nonattested semantic completeness, counterexamples",
+      "owner": "HOST/S10",
+      "evidence_class": "ENGINEERING_INFERENCE",
+      "dod": "No unqualified promotion; tested invariant for this feature",
+      "metric": "blocked unsafe writes = 0, route tests PASS",
+      "verification": "CI_ASSERTION",
+      "status": "CANDIDATE_CI_CHECK",
+      "falsifier": "wrong route, lost byte, unsupported promotion, or counterexample",
+      "edges": [
+        "C72_V2",
+        "C135_EDU",
+        "C140_OPEN",
+        "C100_DRAFT",
+        "C87_ONCE",
+        "C125_HOST_BOUND"
+      ]
+    }
+  ],
+  "cross_edges": [
+    {
+      "from": "SOURCE_LOCK",
+      "to": "C72_V2",
+      "meaning": "no selection without frozen verified source"
+    },
+    {
+      "from": "C72_V2",
+      "to": "C135_EDU",
+      "meaning": "verified v2 selection, no native origin inferred"
+    },
+    {
+      "from": "C135_EDU",
+      "to": "C107_FROZEN",
+      "meaning": "legacy bounded route unchanged"
+    },
+    {
+      "from": "C135_EDU",
+      "to": "C139_NARROW",
+      "meaning": "response-process route unchanged"
+    },
+    {
+      "from": "C135_EDU",
+      "to": "C140_OPEN",
+      "meaning": "versioned opt-in or exact general conflict disambiguation"
+    },
+    {
+      "from": "C140_OPEN",
+      "to": "C100_DRAFT",
+      "meaning": "full input C100 binding no fake C70 execution"
+    },
+    {
+      "from": "C100_DRAFT",
+      "to": "C87_ONCE",
+      "meaning": "one original writer, atomic nonce guard"
+    },
+    {
+      "from": "C87_ONCE",
+      "to": "C125_HOST_BOUND",
+      "meaning": "independent physical readback before send"
+    },
+    {
+      "from": "C125_HOST_BOUND",
+      "to": "S03_HOST_PROJECTION",
+      "meaning": "same voice bytes no native origin"
+    },
+    {
+      "from": "S03_HOST_PROJECTION",
+      "to": "S09_RELEASE",
+      "meaning": "no product active without external pilot"
+    }
+  ],
+  "global_dod": {
+    "G1": "Every issue has unique ID, owner, improvement, negative check, status, source edges",
+    "G2": "Original C107/C114 frozen Git blobs; C139 scope unchanged",
+    "G3": "At most one original C87 append per nonce; independent inspect; C125 only after readback",
+    "G4": "No C70=true claim for open-input route; input is full UTF-8 no truncation",
+    "G5": "No ACTIVE/nativity/product pass without external provider pilot",
+    "G6": "Selected contract candidates=1000 with reproducible filtering and scores"
+  },
+  "intermediate_dod": {
+    "I1": "Admission+source lock",
+    "I2": "Route noncollision + unrestricted topics in opt-in",
+    "I3": "Long-input resource and privacy negatives",
+    "I4": "C100 full-input acknowledgment",
+    "I5": "C87 once and independent physical reopen",
+    "I6": "C125 unknown stop and S03 exact bytes",
+    "I7": "No-go product gate"
+  },
+  "local_dod": {
+    "P1": "557-byte general epistemology positive",
+    "P2": "self ontology native C114 unchanged",
+    "P3": "generation-process C139 unchanged",
+    "P4": "long-input SHA full",
+    "P5": "overclaim denial before write",
+    "P6": "bad nonce/replay/invalid epoch denied",
+    "P7": "C125 forged-C140 receipt denied",
+    "P8": "unknown delivery prevents retries",
+    "P9": "every atom reopens with stable id"
+  },
+  "metrics": {
+    "issue_count": 42,
+    "levels": 7,
+    "negative_false_writer_target": 0,
+    "unknown_retry_target": 0,
+    "candidate_count": 1000,
+    "human_client_trials_required": 30,
+    "human_client_trials_observed": 0,
+    "real_model_blinded_pairs_required_per_route": 300,
+    "real_model_blinded_pairs_observed": 0,
+    "provider_native_event_receipts_observed": 0
+  },
+  "release": {
+    "software_qualification": "REQUIRE_CI_PASS",
+    "product": "PRODUCT_NO_GO",
+    "native_installed": false,
+    "pilot_attested": false
+  }
+}

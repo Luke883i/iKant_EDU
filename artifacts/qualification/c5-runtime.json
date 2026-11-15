@@ -1,0 +1,212 @@
+{
+  "schema": "ikant-le-c5-runtime-qualification/v1",
+  "status": "PASS",
+  "cases": 1000000,
+  "categories": {
+    "ordinary": 500000,
+    "edge": 300000,
+    "stress": 200000
+  },
+  "survivors": 0,
+  "family_count": 40,
+  "families": {
+    "workspace_recurrence_removed": {
+      "cases": 27806,
+      "kills": 27806
+    },
+    "workspace_integrated_false": {
+      "cases": 27864,
+      "kills": 27864
+    },
+    "workspace_single_consumer": {
+      "cases": 27733,
+      "kills": 27733
+    },
+    "workspace_meta_missing": {
+      "cases": 27736,
+      "kills": 27736
+    },
+    "workspace_causal_missing": {
+      "cases": 27888,
+      "kills": 27888
+    },
+    "text_node_receipt_missing": {
+      "cases": 27689,
+      "kills": 27689
+    },
+    "single_modality_false_multimodal": {
+      "cases": 27796,
+      "kills": 27796
+    },
+    "real_multimodal_true": {
+      "cases": 27647,
+      "kills": 27647
+    },
+    "simulated_sensor_rejected": {
+      "cases": 27906,
+      "kills": 27906
+    },
+    "multimodal_claim_corrupted": {
+      "cases": 28166,
+      "kills": 28166
+    },
+    "meta_attention_unlinked": {
+      "cases": 27541,
+      "kills": 27541
+    },
+    "meta_phenomenal_claim": {
+      "cases": 27981,
+      "kills": 27981
+    },
+    "meta_authority_promoted": {
+      "cases": 27826,
+      "kills": 27826
+    },
+    "agency_parent_removed": {
+      "cases": 27733,
+      "kills": 27733
+    },
+    "agency_terminal_self": {
+      "cases": 27633,
+      "kills": 27633
+    },
+    "agency_permission_created": {
+      "cases": 27545,
+      "kills": 27545
+    },
+    "agency_execution_created": {
+      "cases": 27693,
+      "kills": 27693
+    },
+    "agency_self_preservation": {
+      "cases": 27817,
+      "kills": 27817
+    },
+    "body_virtual_real": {
+      "cases": 23508,
+      "kills": 23508
+    },
+    "body_fake_sensor_no_e2": {
+      "cases": 23247,
+      "kills": 23247
+    },
+    "body_real_sensor_e2": {
+      "cases": 23009,
+      "kills": 23009
+    },
+    "body_e3_false_without_closed_loop": {
+      "cases": 23224,
+      "kills": 23224
+    },
+    "causal_not_inspectable": {
+      "cases": 23108,
+      "kills": 23108
+    },
+    "causal_authority_promoted": {
+      "cases": 23084,
+      "kills": 23084
+    },
+    "prediction_error_removed": {
+      "cases": 22984,
+      "kills": 22984
+    },
+    "autobiography_hash_break": {
+      "cases": 23171,
+      "kills": 23171
+    },
+    "state_frame_overflow": {
+      "cases": 23066,
+      "kills": 23066
+    },
+    "state_episode_overflow": {
+      "cases": 23016,
+      "kills": 23016
+    },
+    "state_causal_node_overflow": {
+      "cases": 22998,
+      "kills": 22998
+    },
+    "memory_recall_real": {
+      "cases": 22644,
+      "kills": 22644
+    },
+    "memory_changes_meta_context": {
+      "cases": 22941,
+      "kills": 22941
+    },
+    "resource_gap_policy": {
+      "cases": 22153,
+      "kills": 22153
+    },
+    "telemetry_incomplete_rejected": {
+      "cases": 22403,
+      "kills": 22403
+    },
+    "telemetry_ratio_corrupt": {
+      "cases": 22244,
+      "kills": 22244
+    },
+    "turn_authority_promoted": {
+      "cases": 21968,
+      "kills": 21968
+    },
+    "state_authority_promoted": {
+      "cases": 22142,
+      "kills": 22142
+    },
+    "state_forbidden_consciousness_field": {
+      "cases": 22514,
+      "kills": 22514
+    },
+    "c4_reuse_required": {
+      "cases": 22144,
+      "kills": 22144
+    },
+    "node_gate_precedes_model": {
+      "cases": 22151,
+      "kills": 22151
+    },
+    "docx_readback_precedes_surface": {
+      "cases": 22281,
+      "kills": 22281
+    }
+  },
+  "family_violations": [],
+  "signature_count": 40,
+  "seed": 3238055001,
+  "source_binding": {
+    "digest": "6507d47570d3b21bf08abd633828c2ed8329a8ea095688a9cb0e5a70e09b161c",
+    "files": {
+      "TERMS.md": "bea9b5f5f39a9e8b5a22ba8b6286a2944a96092a495ec272ae995774e4b624a4",
+      "README.md": "9c38c9abd872cd2b568d63445ebb7ac9de9abd91dff52406935e3272280f1dee",
+      "contracts/ikant-le.json": "793bcc1b9a804bb9beb4b596f1520cf0df8641e8b2081c5b9667ab193e93bb66",
+      "contracts/host-shell.json": "65a956faa94d04b4e3ee2fed427d17e756f456f179aa286c893f6e13a8e6c304",
+      "contracts/self-world-kernel.json": "b9b754b5c6164f8a4766daaa9b07b16b083a49adba864a5a8296a319d4b95ffc",
+      "src/contract.mjs": "e235a03bd3bcd49a621285640bfd94cc3bf8f542e8b68c3a505fa2ff2374dbe4",
+      "src/state.mjs": "5fdf6f7c7105e77fa5efa41c1bdb6e8441857fbbca4989950bdac20ed90f97cb",
+      "src/self-world.mjs": "fcf09827c1f325367c775f03ae8cd455f5c8521eeac051f131f72f252cd9308a",
+      "src/self-world-core.mjs": "0c628933ddc57aef51ba5d7a7c123f1cad1123890b9218fb66dd61d7932cad72",
+      "src/self-world-state.mjs": "ce78ca4fd7683f7f732ec7ce3f659fd0626c195f817e7f1a71e2c9008dad1470",
+      "src/psyche-trace.mjs": "262470889f3a8bb3dcba4074726c94d7154212f5652c6f23753b11859281f6f5",
+      "src/runtime-command.mjs": "a250c410673be207f3022c34f9ab319c26172eec68f962147373e7b553f15f93",
+      "src/runtime-turn.mjs": "5275a4eb263d0ed14966e8449389e651317acc3be3d975c3df6717e87dfa63b9",
+      "src/backlog.mjs": "fd4b439de237a71a5b5ffcbe00dbc2ce7f06ce3cc3a95e6e7d6643acbb7e4350",
+      "tests/c5.test.mjs": "8c21315f256d0faff1425a08a16320d6e8d962d9fb22d675769bdc6d5e13fb14",
+      "tests/runtime.test.mjs": "37bbe6cd6b5875422b086063c7c0fdf41e9fc9c4c3b21056ae788eb68e67ba9c",
+      "scripts/check.mjs": "9738613c000f7f35606eb21e8e5eada43360102975700f9eeac264483393a3ff",
+      "scripts/c5-falsify.mjs": "1a249ea36e8e45847ebe850e2548b655679d799bc762ef02b0b86f44f749695e",
+      "docs/C5_DOD.md": "36e9cdc67c421520b5dc4fbfc51d9534dc67b63f00f9e7c4fee82dbb43d07f68",
+      "package.json": "93368d87e306de4c1f0eb866b6cbbfb23c2d6ece5b7ab50db0dc716e90989823",
+      ".github/workflows/ci.yml": "b0bdf7175cc01526377d4ed4f7bb80f6507f11fb39ec624d760aa2fa218e8713"
+    }
+  },
+  "claim_boundary": {
+    "consciousness_proof": false,
+    "biological_equivalence_proof": false,
+    "iit_phi_proof": false,
+    "arbitrary_host_proof": false,
+    "multimodal_claim_requires_real_modalities": true,
+    "sensorimotor_claim_requires_real_closed_loop": true
+  },
+  "receipt_sha256": "f62699c3dc00f7f5f80a5afc52bb67234ab92f1eac79bb54db9cb77166bc6aef"
+}

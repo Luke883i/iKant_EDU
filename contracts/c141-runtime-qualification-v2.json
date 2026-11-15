@@ -1,0 +1,139 @@
+{
+  "schema": "ikant-le-c141-runtime-qualification/v2",
+  "authority": 0,
+  "status": "SOFTWARE_CANDIDATE_PRODUCT_NO_GO",
+  "active": false,
+  "approved_source_epoch": {
+    "new_main_head": "463c8474afccb9b5e7906b90fcb50bd751fe9579",
+    "new_main_tree": "4055f4f2ed485ca134a0d417c154bc43b56f411c",
+    "authorization": "HUMAN_EXPLICIT_THIS_SESSION",
+    "legacy_epoch_receipts_upgraded": false,
+    "new_c72_admission_attested": false
+  },
+  "prepr_transplant": {
+    "original_head_local": "4e9392a9c74d9f5e8c0b7768bb200776bb6f64d8",
+    "original_tree": "df9ebdfbff67f0b9c2eb1046b3d5b07785eaf34f",
+    "file_count": 11,
+    "file_blobs_sha1": {
+      "contracts/c141-semantic-prepr-v1.json": "576310a29adf49eed1846c05a9442d00d9d77d34",
+      "host/c141-semantic-shadow.mjs": "96b519dec0a491345da043d4af53b37f618bccf7",
+      "proposals/c141/C141_1000_CANDIDATES.csv": "98d6b0240333be8e09a6d947a96a36d24839de8c",
+      "proposals/c141/C141_ISSUE_MATRIX.csv": "a0c1100a3c2bed7a7635793e3edb3fbc79f8677e",
+      "proposals/c141/C141_SELECTION_RESULT.json": "4ff69113c8145e3264a999c0c1d63bb573f2ad41",
+      "proposals/c141/FALSIFICATION_TRACE.md": "3369b016709fcda218867832f768a43a98755127",
+      "proposals/c141/PREPR_README.md": "5b64d9a52d08633553302a06daf8970c4e8d6db6",
+      "scripts/c141-build-contract.py": "fee2baa69acdfc1a201a3d963896d2f5dade5cb4",
+      "scripts/c141-design-1000.mjs": "9365515469b8aa9b4fa3ca6ac074a96df555099b",
+      "tests/c141-prepr-contract.test.mjs": "d11aa16a5e2cefc6f137a25cbf8f194117ae73fb",
+      "tests/c141-semantic-shadow.test.mjs": "2204cf74cc2a752931894a692f23c1a882ae6839"
+    },
+    "byte_identical": true
+  },
+  "runtime_path": {
+    "owner": "C135_EDU_V2",
+    "arbiter": "C141_CHILD_NOT_AUTHORITY",
+    "open": "C140_ORIGINAL_C100_C87_C125",
+    "identity_owner": "C114_UNMODIFIED",
+    "response_process_owner": "C139_UNMODIFIED",
+    "c107_frozen": true,
+    "at_most_one_c87": true,
+    "no_native_identity": true,
+    "no_cross_chat_persistence": true,
+    "input_budget_bytes": 12000,
+    "overflow": "TYPED_STOP_NO_TRUNCATION",
+    "semantic_truth_attested": false
+  },
+  "issue_coverage": {
+    "fixed_bounded_tested": [
+      "A12",
+      "A13",
+      "A43"
+    ],
+    "mitigated_not_closed": [
+      "A15",
+      "A17",
+      "A18",
+      "A19",
+      "A23",
+      "A24",
+      "A25",
+      "A31",
+      "A32",
+      "A39",
+      "A40",
+      "A42",
+      "A45",
+      "A48"
+    ],
+    "baseline_preserved_not_newly_fixed": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "A07",
+      "A08",
+      "A10",
+      "A11",
+      "A14",
+      "A33",
+      "A34",
+      "A35",
+      "A36",
+      "A37",
+      "A38"
+    ],
+    "requires_external_proof": [
+      "A09",
+      "A16",
+      "A20",
+      "A21",
+      "A22",
+      "A26",
+      "A27",
+      "A28",
+      "A29",
+      "A30",
+      "A41",
+      "A44",
+      "A46",
+      "A47"
+    ],
+    "provider_only_unavailable_to_host": [
+      "A09",
+      "A22",
+      "A27",
+      "A28",
+      "A44"
+    ]
+  },
+  "verification": {
+    "local_targeted_tests_expected": 45,
+    "existing_original_tests_included": true,
+    "no_ci_success_claim_until_remote_status": true,
+    "original_prepr_1000_designs": 1000,
+    "admissible": 36,
+    "chosen": "R3-B3-E3-P6",
+    "rank_is_empirical": false
+  },
+  "dod": {
+    "source_epoch": "LIVE_MAIN_HEAD_AND_TREE_MATCH",
+    "transplant": "EXACT_11_GIT_BLOBS_PLUS_TREE_MATCH",
+    "owner": "C135_SOURCE_PACKED_CHILD_WITH_C114_C139_PRECEDENCE",
+    "io": "ONE_C87_INDEPENDENT_REOPEN_AND_ONE_C125_ON_SUCCESS",
+    "input": "NO_TRUNCATION_AND_TYPED_BUDGET_STOP",
+    "epistemic": "HEURISTIC_ONLY_NOT_TRUTH",
+    "ci": "LOCAL_AND_REMOTE_FULL_CHECK_REQUIRED",
+    "product": "EXTERNAL_AUTHENTICATED_INGRESS_PILOT_EVALUATOR_AND_HUMAN_APPROVAL_MISSING"
+  },
+  "unfixable_in_this_host_reason": {
+    "A09": "ChatGPT native message hook is controlled by provider/app registration",
+    "A22": "A provider-registered UI cannot be installed by repository code in this chat",
+    "A27": "Authenticated provider event identity requires a registered platform integration",
+    "A28": "Cross-client persistent lifecycle depends on provider/runtime infrastructure not available here",
+    "A44": "Native cross-chat memory and permissions are platform features, not a Git source function"
+  },
+  "readiness": "DRAFT_NOT_MERGED",
+  "semantic_lossless_claim": "INDEXED_48_ISSUE_ATOMS_ONLY_NOT_ALL_HUMAN_MEANING"
+}

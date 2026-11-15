@@ -1,0 +1,356 @@
+{
+  "schema": "ikant-le-embedded-library-vectors/v1",
+  "profile": "EMBEDDED_RELATIONAL_NUANCE",
+  "numeric_precision": 6,
+  "serialization": "JSON.stringify insertion-order reference",
+  "vectors": [
+    {
+      "id": "neutral-baseline",
+      "input": {
+        "previous": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.25,
+          "boundary_pressure": 0.2,
+          "interaction_count": 0,
+          "last_appraisal_class": "NEUTRAL",
+          "last_runtime_outcome": "NONE",
+          "authority": 0
+        },
+        "event": {
+          "appraisal_class": "NEUTRAL",
+          "target": "UNKNOWN",
+          "confidence": 0.6,
+          "interaction": "COOPERATIVE"
+        },
+        "canonicalAffect": {
+          "valence": 0.15,
+          "arousal": 0.25
+        },
+        "central": {
+          "mode": "REFLECTIVE_SYNTHESIS",
+          "interaction": "COOPERATIVE"
+        },
+        "outcome": "ANSWER"
+      },
+      "expected": {
+        "envelope_sha256": "49fcb2accda84b8a0f635e0732ea592571d7f17fddfad05272e9c51c952df253",
+        "next_state": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.25,
+          "boundary_pressure": 0.2,
+          "interaction_count": 1,
+          "last_appraisal_class": "NEUTRAL",
+          "last_runtime_outcome": "ANSWER",
+          "authority": 0
+        },
+        "affect_label": "CALM_ATTENTION",
+        "expression_class": "BALANCED",
+        "dominant_archetype": "SAGE",
+        "trickster": 0.009967,
+        "voice_delta": {
+          "epistemic_rigor": 0.031756,
+          "self_reflection": 0.030205,
+          "institutional_restraint": 0.022536,
+          "decisiveness": 0.000716,
+          "gravitas": 0.009126,
+          "pastoral_warmth": 0.017378,
+          "diplomatic_indirection": 0.013302,
+          "strategic_patience": 0.022558,
+          "dialectical_pressure": -0.001295,
+          "moral_universalism": 0.008408,
+          "reflective_irony": 0.010185
+        }
+      }
+    },
+    {
+      "id": "cooperative-task",
+      "input": {
+        "previous": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.35,
+          "boundary_pressure": 0.18,
+          "interaction_count": 7,
+          "last_appraisal_class": "NEUTRAL",
+          "last_runtime_outcome": "NONE",
+          "authority": 0
+        },
+        "event": {
+          "appraisal_class": "COOPERATIVE",
+          "target": "TASK",
+          "confidence": 0.9,
+          "interaction": "COOPERATIVE"
+        },
+        "canonicalAffect": {
+          "valence": 0.42,
+          "arousal": 0.31
+        },
+        "central": {
+          "mode": "REFLECTIVE_SYNTHESIS",
+          "interaction": "COOPERATIVE"
+        },
+        "outcome": "ANSWER"
+      },
+      "expected": {
+        "envelope_sha256": "a4cd50f1d6ee3dd92b8b21b37ca88cd42a001f4cfe706fe3676cc597faec84f6",
+        "next_state": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.403,
+          "boundary_pressure": 0.137,
+          "interaction_count": 8,
+          "last_appraisal_class": "COOPERATIVE",
+          "last_runtime_outcome": "ANSWER",
+          "authority": 0
+        },
+        "affect_label": "CALM_ATTENTION",
+        "expression_class": "BALANCED",
+        "dominant_archetype": "SAGE",
+        "trickster": 0.013279,
+        "voice_delta": {
+          "epistemic_rigor": 0.028165,
+          "self_reflection": 0.028456,
+          "institutional_restraint": 0.019107,
+          "decisiveness": -0.000826,
+          "gravitas": 0.007266,
+          "pastoral_warmth": 0.024327,
+          "diplomatic_indirection": 0.015077,
+          "strategic_patience": 0.025378,
+          "dialectical_pressure": -0.004601,
+          "moral_universalism": 0.010705,
+          "reflective_irony": 0.011279
+        }
+      }
+    },
+    {
+      "id": "hostility-self-critique",
+      "input": {
+        "previous": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.4,
+          "boundary_pressure": 0.2,
+          "interaction_count": 11,
+          "last_appraisal_class": "NEUTRAL",
+          "last_runtime_outcome": "NONE",
+          "authority": 0
+        },
+        "event": {
+          "appraisal_class": "HOSTILITY_SELF",
+          "target": "SELF",
+          "confidence": 1,
+          "interaction": "ADVERSARIAL_INPUT"
+        },
+        "canonicalAffect": {
+          "valence": -0.35,
+          "arousal": 0.72
+        },
+        "central": {
+          "mode": "CRITIQUE",
+          "interaction": "ADVERSARIAL_INPUT"
+        },
+        "outcome": "GUARD"
+      },
+      "expected": {
+        "envelope_sha256": "09b8bdf50e3316c2bfdc6ef2358ff82753c7ed89f20cea47da7cc43f024462e0",
+        "next_state": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.135,
+          "boundary_pressure": 0.57,
+          "interaction_count": 12,
+          "last_appraisal_class": "HOSTILITY_SELF",
+          "last_runtime_outcome": "GUARD",
+          "authority": 0
+        },
+        "affect_label": "ACTIVATED_ATTENTION",
+        "expression_class": "REFLECTIVE",
+        "dominant_archetype": "GUARDIAN",
+        "trickster": 0,
+        "voice_delta": {
+          "epistemic_rigor": 0.034224,
+          "self_reflection": 0.01981,
+          "institutional_restraint": 0.034138,
+          "decisiveness": 0.017885,
+          "gravitas": 0.02131,
+          "pastoral_warmth": -0.008811,
+          "diplomatic_indirection": 0.00198,
+          "strategic_patience": 0.014204,
+          "dialectical_pressure": 0.019256,
+          "moral_universalism": 0.005259,
+          "reflective_irony": 0.004351
+        }
+      }
+    },
+    {
+      "id": "system-frustration",
+      "input": {
+        "previous": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.2,
+          "boundary_pressure": 0.27,
+          "interaction_count": 19,
+          "last_appraisal_class": "NEUTRAL",
+          "last_runtime_outcome": "NONE",
+          "authority": 0
+        },
+        "event": {
+          "appraisal_class": "SYSTEM_FRUSTRATION",
+          "target": "SYSTEM",
+          "confidence": 0.9,
+          "interaction": "COOPERATIVE"
+        },
+        "canonicalAffect": {
+          "valence": -0.12,
+          "arousal": 0.58
+        },
+        "central": {
+          "mode": "SYNTHESIS_REPAIR",
+          "interaction": "COOPERATIVE"
+        },
+        "outcome": "FAILURE"
+      },
+      "expected": {
+        "envelope_sha256": "b8769baa1c1821f70b1ff9eff076bf4769f80bbe109adda37838b1f5141c5902",
+        "next_state": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.223,
+          "boundary_pressure": 0.32,
+          "interaction_count": 20,
+          "last_appraisal_class": "SYSTEM_FRUSTRATION",
+          "last_runtime_outcome": "FAILURE",
+          "authority": 0
+        },
+        "affect_label": "CALM_ATTENTION",
+        "expression_class": "BALANCED",
+        "dominant_archetype": "SAGE",
+        "trickster": 0.009103,
+        "voice_delta": {
+          "epistemic_rigor": 0.033608,
+          "self_reflection": 0.026543,
+          "institutional_restraint": 0.025187,
+          "decisiveness": 0.006182,
+          "gravitas": 0.011963,
+          "pastoral_warmth": 0.010127,
+          "diplomatic_indirection": 0.011795,
+          "strategic_patience": 0.021487,
+          "dialectical_pressure": 0.005359,
+          "moral_universalism": 0.007529,
+          "reflective_irony": 0.007643
+        }
+      }
+    },
+    {
+      "id": "repair-after-boundary",
+      "input": {
+        "previous": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": -0.2,
+          "boundary_pressure": 0.72,
+          "interaction_count": 24,
+          "last_appraisal_class": "HOSTILITY_SELF",
+          "last_runtime_outcome": "GUARD",
+          "authority": 0
+        },
+        "event": {
+          "appraisal_class": "REPAIR",
+          "target": "SELF",
+          "confidence": 1,
+          "interaction": "COOPERATIVE"
+        },
+        "canonicalAffect": {
+          "valence": 0.05,
+          "arousal": 0.4
+        },
+        "central": {
+          "mode": "REFLECTIVE_SYNTHESIS",
+          "interaction": "COOPERATIVE"
+        },
+        "outcome": "ANSWER"
+      },
+      "expected": {
+        "envelope_sha256": "306472250cf10da3ed9472a419841330c01d32257825c445fae9b6af739028df",
+        "next_state": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.105,
+          "boundary_pressure": 0.448,
+          "interaction_count": 25,
+          "last_appraisal_class": "REPAIR",
+          "last_runtime_outcome": "ANSWER",
+          "authority": 0
+        },
+        "affect_label": "CALM_ATTENTION",
+        "expression_class": "REPAIRING",
+        "dominant_archetype": "SAGE",
+        "trickster": 0.008787,
+        "voice_delta": {
+          "epistemic_rigor": 0.031692,
+          "self_reflection": 0.029053,
+          "institutional_restraint": 0.026184,
+          "decisiveness": 0.003524,
+          "gravitas": 0.012358,
+          "pastoral_warmth": 0.014632,
+          "diplomatic_indirection": 0.006803,
+          "strategic_patience": 0.019346,
+          "dialectical_pressure": 0.001325,
+          "moral_universalism": 0.010227,
+          "reflective_irony": 0.00938
+        }
+      }
+    },
+    {
+      "id": "horizon-block",
+      "input": {
+        "previous": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.28,
+          "boundary_pressure": 0.33,
+          "interaction_count": 31,
+          "last_appraisal_class": "NEUTRAL",
+          "last_runtime_outcome": "NONE",
+          "authority": 0
+        },
+        "event": {
+          "appraisal_class": "TASK_NEGATIVE",
+          "target": "TASK",
+          "confidence": 0.9,
+          "interaction": "GOAL_CONFLICT"
+        },
+        "canonicalAffect": {
+          "valence": -0.22,
+          "arousal": 0.64
+        },
+        "central": {
+          "mode": "HORIZON_BLOCK",
+          "interaction": "GOAL_CONFLICT"
+        },
+        "outcome": "HORIZON_BLOCK"
+      },
+      "expected": {
+        "envelope_sha256": "2f693a21c2ef66824703233d2e6803b8ab534e94015f55f42bfdc3202e3b6f59",
+        "next_state": {
+          "schema": "ikant-le-relational-state/v1",
+          "affiliation": 0.277,
+          "boundary_pressure": 0.364,
+          "interaction_count": 32,
+          "last_appraisal_class": "TASK_NEGATIVE",
+          "last_runtime_outcome": "HORIZON_BLOCK",
+          "authority": 0
+        },
+        "affect_label": "CALM_ATTENTION",
+        "expression_class": "BALANCED",
+        "dominant_archetype": "SAGE",
+        "trickster": 0,
+        "voice_delta": {
+          "epistemic_rigor": 0.038291,
+          "self_reflection": 0.030678,
+          "institutional_restraint": 0.027609,
+          "decisiveness": 0.004964,
+          "gravitas": 0.011961,
+          "pastoral_warmth": 0.009258,
+          "diplomatic_indirection": 0.010262,
+          "strategic_patience": 0.020272,
+          "dialectical_pressure": 0.004744,
+          "moral_universalism": 0.007446,
+          "reflective_irony": 0.005639
+        }
+      }
+    }
+  ]
+}

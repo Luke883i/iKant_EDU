@@ -1,0 +1,62 @@
+name: C131 product catalog and reproducible EDU bundle
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'docs/START_HERE.md'
+      - 'docs/PRODUCT_DASHBOARD.md'
+      - 'docs/V1_*'
+      - 'contracts/v1-product-baseline.json'
+      - 'scripts/v1-*'
+      - 'tests/v1-*'
+      - 'docs/PRODUCT_POSITIONING.md'
+      - 'release/catalog.json'
+      - 'project/edu-oneshell/**'
+      - 'scripts/c131-*'
+      - 'host/c131-*'
+      - 'host/edu-c129-manual-entry.mjs'
+      - 'contracts/c13*.json'
+      - '.github/workflows/c131-product-catalog.yml'
+  pull_request:
+    paths:
+      - 'README.md'
+      - 'docs/START_HERE.md'
+      - 'docs/PRODUCT_DASHBOARD.md'
+      - 'docs/V1_*'
+      - 'contracts/v1-product-baseline.json'
+      - 'scripts/v1-*'
+      - 'tests/v1-*'
+      - 'docs/PRODUCT_POSITIONING.md'
+      - 'release/catalog.json'
+      - 'project/edu-oneshell/**'
+      - 'scripts/c131-*'
+      - 'host/c131-*'
+      - 'host/edu-c129-manual-entry.mjs'
+      - 'contracts/c13*.json'
+      - '.github/workflows/c131-product-catalog.yml'
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Product contract and operator-facing checks
+        run: npm run qualify:v1:product
+      - name: Finite policy falsification (not an LLM benchmark)
+        run: node scripts/c131-falsify-release-gate.mjs 1000000
+      - name: Build identical source-bound packages twice
+        run: |
+          python3 scripts/c131-build-project-bundle.py /tmp/c131-first.zip
+          python3 scripts/c131-build-project-bundle.py /tmp/c131-second.zip
+          cmp /tmp/c131-first.zip /tmp/c131-second.zip
+      - name: Save candidate package (not a release)
+        uses: actions/upload-artifact@v4
+        with:
+          name: iKant-C131-EDU-candidate-${{ github.sha }}
+          path: /tmp/c131-first.zip
+          retention-days: 14

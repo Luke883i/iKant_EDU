@@ -1,0 +1,100 @@
+{
+  "schema": "ikant-le-local-host-post-meta-prompt/v1",
+  "slice": "C55.LOCAL_HOST_POST_META_PROMPT_HARDENING",
+  "authority": 0,
+  "source_baseline": "fcc1d67cb26b96ddb0f33e1a2ec5532f3a95e2e5",
+  "objective": "Minimize caller-side semantic authority around the existing single entrypoint while preserving owner-derived NEXT, typed evidence, retry locality and runtime handoff.",
+  "semantic_corrections": [
+    "The entrypoint is the unique caller-facing ingress, not a new NEXT owner.",
+    "The entrypoint may return projections and evidence alongside a directive; only the single owner-derived directive is operational authorization.",
+    "Caller-side minimal memory is still shadow state; pass through exact owner-returned objects opaquely instead.",
+    "UNKNOWN is not negative evidence; probe only when the owner-derived directive names a probe.",
+    "Not every re-entry is an observation receipt: pass only the exact input shape admitted by the entrypoint; when an observation is required it must be typed and owner-accepted.",
+    "Typed receipts are owner/adapter outputs unless an explicit schema delegates a deterministic transform.",
+    "Untyped impediment does not authorize blind re-entry or autonomous retry."
+  ],
+  "irreducible_mechanisms": [
+    "M0_SINGLE_CALLER_ENTRYPOINT_NOT_NEXT_OWNER",
+    "M1_OWNER_DERIVED_DIRECTIVE_UNION",
+    "M2_ONE_DIRECTIVE_ONE_EXECUTION",
+    "M3_NO_LATERAL_ACTIONS",
+    "M4_SCHEMA_ADMITTED_REENTRY_ONLY",
+    "M5_NO_SHADOW_MEMORY",
+    "M6_UNKNOWN_NOT_NEGATIVE_OWNER_PROBE_ONLY",
+    "M7_TOOL_ERROR_LAYER_PRESERVATION",
+    "M8_CARRIER_LOCAL_RETRY_EPOCH",
+    "M9_NO_FIELD_COMPLETION",
+    "M10_DETERMINISTIC_TRANSFORM_ONLY",
+    "M11_NONEXECUTION_EVIDENCE_REJECTED",
+    "M12_ACTIVATE_FIRST_NO_EXPLORATION",
+    "M13_UNINVOKABLE_ENTRYPOINT_IS_INTEGRATION_IMPEDIMENT",
+    "M14_HANDOFF_STOPS_FASTBOOT",
+    "M15_RUNTIME_OWNERSHIP_STOPS_SYNTHESIS",
+    "M16_MUTATION_ONLY_DELEGATED_SEMANTIC_CHOICE"
+  ],
+  "directive_model": {
+    "entrypoint_is_next_owner": false,
+    "directive_shapes": [
+      "NEXT_ACTION",
+      "HANDOFF",
+      "TERMINAL_OR_BLOCKER"
+    ],
+    "one_consumed_per_cycle": true,
+    "carrier_only_when_named": true,
+    "consumed_directive_is_future_authority": false,
+    "non_directive_projections_are_operational_authority": false
+  },
+  "caller_memory": {
+    "semantic_memory_allowed": false,
+    "conversation_is_ledger": false,
+    "conversation_is_retry_memory": false,
+    "capability_cache_allowed": false,
+    "attempted_carrier_cache_allowed": false,
+    "opaque_owner_object_pass_through_only": true,
+    "host_inputs_allowed_only_when_entrypoint_names_them": true
+  },
+  "evidence_policy": {
+    "unknown_is_negative_evidence": false,
+    "caller_converts_unknown_to_probe": false,
+    "owner_named_probe_only": true,
+    "tool_surface_metadata_is_carrier_capability": false,
+    "tool_error_is_carrier_state": false,
+    "prose_is_typed_observation": false,
+    "source_code_is_owner_execution": false,
+    "tests_are_current_host_capability_proof": false,
+    "observation_branch_requires_typed_owner_accepted_receipt": true
+  },
+  "receipt_policy": {
+    "caller_receipt_minting_default": false,
+    "deterministic_schema_delegation_exception": true,
+    "missing_fields_may_be_inferred": false,
+    "placeholders_forbidden": true
+  },
+  "retry_policy": {
+    "owner_selected_only": true,
+    "unchanged_evidence_retry": false,
+    "same_carrier_material_change_required_for_requalification": true,
+    "unrelated_carrier_evidence_requalifies_failed_carrier": false
+  },
+  "phase_policy": {
+    "activate_first_lateral_exploration": false,
+    "generic_repo_study_for_owner_emulation": false,
+    "handoff_stops_fastboot_planning": true,
+    "runtime_ownership_stops_host_synthesis": true
+  },
+  "qualification": {
+    "discovery_mutations": 10000,
+    "full_architecture_lattice": 131072,
+    "mechanisms": 17,
+    "unique_minimum_required": true,
+    "final_falsification_cases": 100000,
+    "independent_oracle_required": true,
+    "all_deletion_mutants_killed_required": true
+  },
+  "claim_boundary": {
+    "prompt_is_runtime_owner": false,
+    "prompt_is_next_owner": false,
+    "prompt_is_retry_memory": false,
+    "semantic_falsification_is_physical_host_proof": false
+  }
+}

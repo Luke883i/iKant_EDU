@@ -1,0 +1,20 @@
+{
+  "schema":"ikant-le-p1p7-minimal-closure/v1",
+  "authority":0,
+  "source_of_truth":"GIT_MAIN_EXACT_SHA_TREE",
+  "released_assets":"PROMPT_PLUS_PROJECT_ZIP_SAME_SOURCE_COMMIT",
+  "bundle_is_installer":false,
+  "native_tool_claim_from_zip":false,
+  "mode_public":["EDU","CANONICAL"],
+  "admission_exact_human_turns":["avvia iKant","I ACCEPT","EDU_OR_CANONICAL"],
+  "shell_slots":["ESITO","A","B","PROVA","EDGE","NEXT"],
+  "p1":{"software":"SIX_SLIDES_ATOM_LEDGER_EXACT_ANNEX","check":"ATOM_SET_COVERAGE_AND_VERIFIED_BYTE_ATTACHMENT","native_ui_required":true},
+  "p2":{"software":"SOURCE_COMMIT_TREE_FIVE_BLOBS_PLUGIN_BYTES_DOUBLE_BUILD","check":"STALE_LOCK_TAMPER_REJECT","external":"PROJECT_UPLOAD_NOT_AUTOMATIC"},
+  "p3":{"software":"SIGNED_STUDY_AUDITOR_GATE","check":"NO_SYNTHETIC_HUMAN_CREDIT","external":"30_INDEPENDENT_REAL_USERS"},
+  "p4":{"software":"MCP_GATEWAY_REPLAY_AND_AUTHZ","check":"AUTHENTICATION_IS_NOT_NATIVE_IDENTITY","external":"REAL_TLS_AND_MULTIUSER_DEPLOYMENT"},
+  "p5":{"software":"PLUGIN_REGISTRATION_WITNESS_GATE","check":"SOURCE_IS_NOT_INSTALLATION","external":"THREE_REAL_CHATGPT_MCP_CALLS"},
+  "p6":{"software":"C59_ORIGINAL_OWNER_AND_DOCX_READBACK_GATE","check":"NO_NATIVE_ACTIVE_FROM_CALLER_JSON","external":"PROVIDER_EVENT_AND_DELIVERY_RECEIPT"},
+  "p7":{"software":"SEPARATE_EDU_CANONICAL_RELEASE_BARRIERS","check":"NO_RELEASE_FROM_LOCAL_CI_ALONE","external":"REAL_C137_AND_OWNER_APPROVAL"},
+  "external_gates_ready":false,
+  "release_claim":"SOFTWARE_CANDIDATE_ONLY"
+}

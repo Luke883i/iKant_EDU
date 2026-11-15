@@ -1,0 +1,15 @@
+{
+  "schema": "ikant-c133-shadow-language-port/v1",
+  "authority": 0,
+  "role": "SHADOW_ADVICE_IN_ACTUAL_C129_EDU_LANGUAGE_PORT",
+  "original_owner_source_pins_changed": false,
+  "original_c70_plan_modified": false,
+  "original_c114_policy_bypassed": false,
+  "c87_writer_added": false,
+  "advisory_may_be_used_by_host_language_model": true,
+  "native_hook_attested": false,
+  "causal_llm_quality_gain_attested": false,
+  "coverage": "C129_MANUAL_EDU_ENTRY_ONLY",
+  "next_required": "NEW_COGNITIVE_SOURCE_EPOCH_C82_C114_OWNER_MIGRATION",
+  "fail_closed_on_unbound_task": true
+}

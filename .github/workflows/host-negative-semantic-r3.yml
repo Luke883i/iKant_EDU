@@ -1,0 +1,88 @@
+name: R3 Host negative semantic admission and full repository
+on:
+  pull_request:
+    paths:
+      - 'host/project-host-negative-rail.mjs'
+      - 'host/project-c72-negative-entry.mjs'
+      - 'host/project-c72-physical-ingress.mjs'
+      - 'contracts/project-host-negative-rail.json'
+      - 'contracts/project-c72-negative-entry.json'
+      - 'tests/project-host-negative-rail.test.mjs'
+      - 'tests/project-c72-physical-ingress.test.mjs'
+      - 'scripts/project-host-negative-falsify.mjs'
+      - 'artifacts/qualification/negative-semantic-1m.json'
+      - 'contracts/project-session-source.json'
+      - 'scripts/project-source-manifest.mjs'
+      - '.github/workflows/host-negative-semantic-r3.yml'
+  workflow_dispatch:
+jobs:
+  diagnostic-physical-c72:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        pattern:
+          - 'three carrier paths'
+          - 'Host cannot infer'
+          - 'REST response path'
+          - 'Node request rejection'
+          - '10k preaccept'
+          - 'AUTO binds'
+          - '20k deterministic'
+          - 'R3 same-epoch'
+          - 'R3 rejects'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: One physical test in isolation
+        run: node --test --test-name-pattern="${{ matrix.pattern }}" tests/project-c72-physical-ingress.test.mjs
+  original-owners-and-1m:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Parse actual integrated Host and negative rail
+        run: |
+          node --check host/project-host-negative-rail.mjs
+          node --check host/project-c72-negative-entry.mjs
+          node --check host/project-c72-physical-ingress.mjs
+          node --check scripts/project-host-negative-falsify.mjs
+      - name: Original source closure verification
+        run: node scripts/project-source-manifest.mjs verify
+      - name: R3 negative unit
+        run: node --test tests/project-host-negative-rail.test.mjs
+      - name: Original physical C72
+        run: node --test tests/project-c72-physical-ingress.test.mjs
+      - name: Original portable C72
+        run: node --test tests/project-c72-portable-bridge.test.mjs
+      - name: Original onezip
+        run: node --test tests/project-edu-onezip-route.test.mjs
+      - name: Original E15/E16 receipt and later EDU preservation
+        run: node --test tests/project-oneshell-e15-sterile.test.mjs tests/project-oneshell-e16-hardening.test.mjs tests/project-c72-receipt-transit.test.mjs
+      - name: 1 million seeded negative semantic cases against independent oracle
+        run: |
+          node scripts/project-host-negative-falsify.mjs /tmp/r3-negative-1m.json
+          cmp /tmp/r3-negative-1m.json artifacts/qualification/negative-semantic-1m.json
+  full-repository:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Full existing test suite (owner and history regression)
+        run: npm test
+      - name: Repository checks
+        run: npm run check
+      - name: Runtime-root verify
+        run: npm run runtime-root:verify

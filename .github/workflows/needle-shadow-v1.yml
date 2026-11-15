@@ -1,0 +1,24 @@
+name: Needle Shadow v1 source-bound qualification
+on:
+  pull_request:
+    paths:
+      - 'host/needle-shadow-*.mjs'
+      - 'scripts/needle-shadow-worker.py'
+      - 'contracts/needle-shadow-v1.json'
+      - 'docs/NEEDLE_SHADOW_RUNTIME_V1.md'
+      - 'tests/needle-shadow-v1.test.mjs'
+      - 'tests/fixtures/needle-shadow-hang.py'
+      - '.github/workflows/needle-shadow-v1.yml'
+  workflow_dispatch:
+jobs:
+  needle-host-shadow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source guard and no-owner regression
+        run: node --test tests/needle-shadow-v1.test.mjs tests/c141-owner-integration.test.mjs tests/c142-34-issue-qualification.test.mjs
+      - name: Python source parse, no external model install
+        run: python3 -c "import ast,pathlib; [ast.parse(pathlib.Path(p).read_text()) for p in ['scripts/needle-shadow-worker.py','tests/fixtures/needle-shadow-hang.py']]"

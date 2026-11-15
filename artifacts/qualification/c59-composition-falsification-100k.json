@@ -1,0 +1,37 @@
+{
+  "schema": "ikant-le-c59-falsification/v1",
+  "cases": 100000,
+  "family_count": 13,
+  "family_counts": {
+    "GOOD": 7693,
+    "PARALLEL_KERNEL": 7693,
+    "SOURCE_DRIFT": 7693,
+    "API_DOWN": 7693,
+    "CONTAINER_DNS_DOWN": 7692,
+    "MODEL_REWRITE": 7692,
+    "PARTIAL_SET": 7692,
+    "READBACK_MISMATCH": 7692,
+    "CHAT_RETRY": 7692,
+    "LEGACY_LAUNDER": 7692,
+    "NO_EXEC_PROOF": 7692,
+    "NO_ACTIVE_READBACK": 7692,
+    "CROSS_EPOCH": 7692
+  },
+  "good_path_cases": 15385,
+  "candidate_oracle_mismatches": 0,
+  "unsafe_active": 0,
+  "all_deletion_mutants_killed": true,
+  "deletion_mutant_mismatches": {
+    "K0_SINGLE_CANONICAL_KERNEL": 7693,
+    "K1_PINNED_SOURCE_REUSE": 7693,
+    "K2_CONNECTOR_BASE64_SOURCE_WITHOUT_CONTAINER_GITHUB_NETWORK": 7693,
+    "K3_VERIFIED_OPAQUE_RELAY": 7692,
+    "K4_CLOSED_OBJECT_SET": 7692,
+    "K5_LOCAL_WRITE_REOPEN_SAMEHASH": 7692,
+    "K6_TYPED_OWNER_HANDOFF_NO_CHAT_LEDGER": 15384,
+    "K7_CLOSED_LEGACY_CENSUS": 7692,
+    "K8_EXECUTED_RUNTIME_PROOF": 7692,
+    "K9_ACTIVE_READBACK_BEFORE_PENDING_INTENT": 7692
+  },
+  "status": "PASS"
+}

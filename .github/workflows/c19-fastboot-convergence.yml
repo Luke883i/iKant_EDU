@@ -1,0 +1,30 @@
+name: c19-fastboot-convergence
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'contracts/bootstrap-transfer-flex.json'
+      - 'contracts/fastboot-convergence.json'
+      - 'contracts/host-shell.json'
+      - 'src/bootstrap-semantic.mjs'
+      - 'src/fastboot-convergence.mjs'
+      - 'src/runtime.mjs'
+      - 'runtime-root/**'
+      - 'tests/bootstrap-fixture.mjs'
+      - 'tests/c18-activation-continuation.test.mjs'
+      - 'tests/c19-fastboot-convergence.test.mjs'
+      - 'scripts/c19-fastboot-convergence-falsify.mjs'
+      - 'scripts/check.mjs'
+      - 'package.json'
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm run falsify:c15
+      - run: npm run falsify:c17
+      - run: npm run falsify:c18
+      - run: npm run falsify:c19

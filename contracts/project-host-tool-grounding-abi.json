@@ -1,0 +1,272 @@
+{
+  "schema": "ikant-host-tool-grounding-abi/v1",
+  "authority": 0,
+  "active": false,
+  "execution": "HOST_DRIVEN_ONLY",
+  "read_scope": "POST_ACCEPT_ONLY",
+  "source_of_truth": "BOOTSTRAP.project_session + original C72/H1/E16/K0/K1",
+  "purpose": "Eliminate unsupported assumptions about tool names, Node DNS and automatic cross-tool bridge; make Host execute observable source carrier before STOP.",
+  "immutable_boundaries": {
+    "first_turn": "ONLY_HEAD_AND_FIVE_PINNED_DOCUMENTS_NO_EXTRA_SOURCE_OR_CODE",
+    "consent": "DISTINCT_EXACT_I_ACCEPT_AFTER_TERMS",
+    "mode": "ANOTHER_DISTINCT_EXACT_EDU",
+    "original_owners": [
+      "host/project-c72-e16-unified-ingress.mjs#runC72ProjectE16Ingress",
+      "host/project-c72-coldstart-seed.mjs#executeC72Coldstart",
+      "host/c72-public-mode-admission.mjs",
+      "host/project-oneshell-edu.mjs#startOneShellEdu"
+    ],
+    "no_new_owner": true,
+    "no_auto_retry": true
+  },
+  "capabilities": [
+    {
+      "id": "GITHUB_SOURCE",
+      "role": "read HEAD + pinned original Git blobs",
+      "binding": "EXISTING_CALLABLE_GITHUB_CONNECTOR_OR_EQUIVALENT",
+      "witness": "TOOL_RESULT_OBSERVED_IN_THIS_CHAT",
+      "unknown": "STOP_TOOL_UNBOUND"
+    },
+    {
+      "id": "NODE_EXEC",
+      "role": "private file receiver + original Node owner",
+      "binding": "EXISTING_CALLABLE_NODE_OR_CONTAINER_TOOL",
+      "witness": "NODE_EXEC_RESULT_OBSERVED",
+      "unknown": "STOP_NODE_UNBOUND"
+    },
+    {
+      "id": "HOST_TOOL_ARGUMENT_COURIER",
+      "role": "model passes exact bytes from source tool output into target tool arguments",
+      "binding": "EXPLICIT_HOST_TOOL_CALL_ARGUMENT_CARRIES_BYTES",
+      "witness": "TARGET_PRIVATE_FILE_READBACK",
+      "unknown": "PROBE_REQUIRED_NOT_TRANSFER_FAILED"
+    }
+  ],
+  "carrier_priority": [
+    {
+      "id": "HOST_TOOL_ARG_RELAY",
+      "rank": 1,
+      "requires": [
+        "GITHUB_SOURCE",
+        "NODE_EXEC"
+      ],
+      "receiver": "scripts/project-c72-verified-staging.mjs",
+      "receive_ops": [
+        "init",
+        "put",
+        "put-local",
+        "verify"
+      ],
+      "physical_protocol": "GitHub fetch_file(ref=SOURCE_HEAD) -> literal tool argument -> Node stdin JSON or mode 0600 private file -> original put/put-local -> independently reopen SHA-1",
+      "no_claim": "TOOL_ARGUMENT_COURIER_NOT_NATIVE_PROVIDER_HOOK",
+      "on_unknown": "STOP_C72_SOURCE_BRIDGE_UNBOUND_AFTER_OBSERVED_PROBE"
+    },
+    {
+      "id": "SAME_NODE_CALLBACKS",
+      "rank": 2,
+      "requires": [
+        "NODE_EXEC"
+      ],
+      "receiver": "host/project-host-k1-preowner.mjs#runK1PreOwner",
+      "physical_protocol": "Only when real readMain/readCommit/readTree/readPinned same-machine callbacks are bound and independently tested",
+      "on_unknown": "STOP_K1_SOURCE_CALLBACKS_UNBOUND"
+    },
+    {
+      "id": "HOST_SOURCE_PACKET",
+      "rank": 3,
+      "requires": [
+        "GITHUB_SOURCE",
+        "NODE_EXEC"
+      ],
+      "receiver": "host/project-c72-e16-unified-ingress.mjs#runC72ProjectE16Ingress",
+      "physical_protocol": "Authenticated 8-blob packet + original transitSourcePacket + original seed from verified commit",
+      "on_unknown": "STOP_E16_CARRIER_NORMALIZATION_REQUIRED"
+    },
+    {
+      "id": "NODE_GITHUB_HTTPS",
+      "rank": 4,
+      "requires": [
+        "NODE_EXEC"
+      ],
+      "receiver": "host/project-c72-physical-ingress.mjs",
+      "physical_protocol": "Only after actual positive HTTPS probe; known Node DNS failure does not exclude HOST_TOOL_ARG_RELAY",
+      "on_unknown": "STOP_NODE_HTTPS_UNBOUND"
+    }
+  ],
+  "gold_first": [
+    {
+      "stage": "POST_ACCEPT",
+      "source": "scripts/project-c72-verified-staging.mjs",
+      "expect": "8 original C72 source files; canonical Git SHA-1; existing init put-local verify"
+    },
+    {
+      "stage": "POST_ACCEPT",
+      "source": "host/project-edu-h1-bound-port.mjs",
+      "expect": "H1_FILES 8, transit 1, seed 1, original TREE pins"
+    },
+    {
+      "stage": "POST_ACCEPT",
+      "source": "host/project-c72-e16-unified-ingress.mjs",
+      "expect": "original 8+1 packet normalization and only original cold seed effect"
+    },
+    {
+      "stage": "POST_ACCEPT",
+      "source": "host/project-host-k1-constitutional-audit.mjs",
+      "expect": "technical attempt not owner receipt; original C72/voice anti-forgery"
+    },
+    {
+      "stage": "POST_MODE",
+      "source": "host/project-oneshell-continuous.mjs",
+      "expect": "original C87 journal, no parallel writer"
+    }
+  ],
+  "stage_protocol": [
+    {
+      "seq": 1,
+      "id": "REOPEN_PIN",
+      "owner": "HOST",
+      "action": "READ_HEAD_COMMIT_TREE_PATH_SHA_FROM_ACTUAL_GITHUB_TOOL",
+      "proof": "LIVE_HEAD_EQUALS_FIRST_TURN_PIN_PLUS_SOURCE_PATHS",
+      "deny": [
+        "REPIN",
+        "GUESSED_SHA",
+        "PREACCEPT_READ"
+      ]
+    },
+    {
+      "seq": 2,
+      "id": "BOUND_TOOLS",
+      "owner": "HOST",
+      "action": "IDENTIFY_ACTUAL_GITHUB_AND_NODE_TOOL_CALLS",
+      "proof": "TWO_SEPARATE_TOOL_CALL_RESULTS",
+      "deny": [
+        "INVENTED_TOOL",
+        "TWO_TOOLS_AUTO_BRIDGE",
+        "DNS_ONLY_STOP"
+      ]
+    },
+    {
+      "seq": 3,
+      "id": "TRANSFER",
+      "owner": "HOST",
+      "action": "COPY_EXACT_SOURCE_BYTES_IN_TOOL_ARGUMENT_TO_TARGET",
+      "proof": "ORIGINAL_8_BLOBS_PLUS_TRANSIT_PLUS_SEED_COPIED_TO_PRIVATE_NODE",
+      "deny": [
+        "WEB_SEARCH_AS_CARRIER",
+        "UNVERIFIED_LZ77",
+        "SELF_REPORT_ONLY"
+      ]
+    },
+    {
+      "seq": 4,
+      "id": "STAGE8",
+      "owner": "EXISTING_VERIFIED_STAGER",
+      "action": "INIT_PUT_OR_PUT_LOCAL_VERIFY",
+      "proof": "8_OF_8_ORIGINAL_GIT_SHA_AND_NODE_READBACK",
+      "deny": [
+        "PARTIAL_AS_PASS",
+        "MISSING_SHA",
+        "PUBLIC_FILE"
+      ]
+    },
+    {
+      "seq": 5,
+      "id": "CLOSURE",
+      "owner": "EXISTING_H1_E16",
+      "action": "VERIFY_TRANSIT_SEED_AND_10_ORIGINAL_FILES",
+      "proof": "10_OF_10_AND_9_OF_9_STAGE_VERIFIED",
+      "deny": [
+        "FAKE_TRANSIT",
+        "GITHUB_SOURCE_ORIGIN_FROM_HASH_ALONE"
+      ]
+    },
+    {
+      "seq": 6,
+      "id": "ORIGINAL_OWNER",
+      "owner": "ORIGINAL_C72",
+      "action": "CALL_ONCE_ONLY_AFTER_ALL_GATE_PROOFS",
+      "proof": "ORIGINAL_ACCEPTED_RECEIPT_AND_FULL_INTRO_REOPENED",
+      "deny": [
+        "REPLAY",
+        "SYNTHETIC_OWNER_RECEIPT",
+        "C135_START_IN_ACCEPT_TURN"
+      ]
+    }
+  ],
+  "invalid_promotions": [
+    "CAPABILITY_NAME_TO_OBSERVED_EFFECT",
+    "TWO_TOOLS_TO_BRIDGE",
+    "SELF_CONSISTENT_HASH_TO_GITHUB_ORIGIN",
+    "CI_TO_DEPLOYMENT",
+    "HOST_ATTEMPT_TO_ORIGINAL_RECEIPT",
+    "E16_SOURCE_DISCOVERED_TO_SOURCE_MATERIALIZED",
+    "NODE_HTTPS_FAILED_TO_ALL_CARRIERS_UNAVAILABLE",
+    "NO_OWNER_RECEIPT_TO_ACTIVE"
+  ],
+  "truth": {
+    "plan": "NO_EXECUTION",
+    "local_stager": "LOCAL_BYTES_NOT_REMOTE_ORIGIN",
+    "original_owner": "ORIGINAL_RECEIPT_ONLY",
+    "provider": "UNKNOWN_UNLESS_PROVIDER_OBSERVED",
+    "product": "PRODUCT_NO_GO_UNTIL_EVIDENCE"
+  },
+  "forbidden": [
+    "READ_MACHINE_CONTRACT_PRE_ACCEPT",
+    "FETCH_TREE_PRE_ACCEPT",
+    "DOWNLOAD_GATEWAY_PRE_ACCEPT",
+    "BROWSE_WEB_FOR_ALTERNATIVE_CARRIER_WITHOUT_GOLD",
+    "CUSTOM_COMPRESSION_WITHOUT_LOSSLESS_CHECK",
+    "AUTO_OWNER_RETRY",
+    "FAKE_ORIGINAL_VOICE"
+  ],
+  "no_native_provider_installation_claim": true,
+  "no_attested_host_tool_binding_from_json": true,
+  "no_synthetic_consent": true,
+  "receiver_abi": {
+    "command": "node scripts/project-c72-verified-staging.mjs",
+    "transport": "ONE_UTF8_JSON_ON_STDIN_POST_ACCEPT_ONLY",
+    "original_stager": "scripts/project-c72-verified-staging.mjs",
+    "operations": {
+      "init": {
+        "op": "init",
+        "schema": "ikant-host-c72-verified-staging/v1",
+        "stageDirectory": "<fresh-private-absolute-path>",
+        "source_head": "<frozen-HEAD-SHA1>",
+        "expectedBlobShas": "<8-original-Git-tree-path-to-blob-SHA>",
+        "priorTurnEvidence": "<first-turn-witness>"
+      },
+      "put": {
+        "op": "put",
+        "schema": "ikant-host-c72-verified-put/v1",
+        "stageDirectory": "<private-stage>",
+        "path": "<one-of-original-8-paths>",
+        "contentBase64": "<canonical-base64-from-original-GitHub-source-tool-output>"
+      },
+      "put-local": {
+        "op": "put-local",
+        "schema": "ikant-host-c72-verified-put-local/v1",
+        "stageDirectory": "<private-stage>",
+        "path": "<one-of-original-8-paths>",
+        "sourceFile": "<real-0600-non-symlink-absolute-file-written-via-tool-argument>"
+      },
+      "verify": {
+        "op": "verify",
+        "schema": "ikant-host-c72-verified-verify/v1",
+        "stageDirectory": "<private-stage>"
+      }
+    },
+    "preflight": [
+      "POST_ACCEPT_ONLY",
+      "LIVE_HEAD_EQUALS_FIRST_HEAD",
+      "FIRST_FIVE_SHA_COVERED_BY_WITNESS",
+      "NO_UNOBSERVED_TOOL_CALL"
+    ],
+    "readback": [
+      "NATIVE_NODE_RESULT_READ",
+      "8_OF_8_ORIGINAL_GIT_BLOB_SHA",
+      "NO_ORIGINAL_OWNER_INVOKED"
+    ],
+    "post_stage": "HAND_OFF_TO_EXISTING_E16_FOR_TRANSIT_AND_SEED_ORIGINAL_OWNER_ONLY",
+    "no_new_receiver": true
+  }
+}

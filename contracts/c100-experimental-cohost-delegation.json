@@ -1,0 +1,19 @@
+{
+  "schema": "ikant-le-c100-experimental-cohost-delegation/v1",
+  "authority": 0,
+  "purpose": "Allow creative host-LLM language inside an explicitly unverified, human-opted-in EXPERIMENTAL co-host draft; never counterfeit a C84 owner Surface A.",
+  "priority": ["EXACT_C84_OWNER_IF_PHYSICALLY_AVAILABLE", "C100_COHOST_DRAFT_WITH_EXPLICIT_OPT_IN", "DIAGNOSTIC_ONLY"],
+  "selection": "REAL_C72_EXPERIMENTAL_NOT_CANONICAL",
+  "human_opt_in_required": true,
+  "mode": "EXPERIMENTAL",
+  "immutable_per_turn": ["FROZEN_SOURCE_HEAD", "CURRENT_INPUT_SHA256", "PLAN_SHA256"],
+  "relaxed": ["C77_BINARY_NOT_REQUIRED_FOR_COHOST_DRAFT", "C81_RAW_TREE_NOT_REQUIRED_FOR_COHOST_DRAFT", "C84_OWNER_RECEIPT_NOT_REQUIRED_FOR_COHOST_DRAFT", "INDEPENDENT_REVIEW_OPTIONAL", "ONE_COMPACT_TELEMETRY_NOT_PER_TURN_ARCHIVE"],
+  "never_relaxed": ["NO_FABRICATED_OWNER", "NO_CANONICAL_ACTIVE", "NO_NATIVE_EVENT_OR_DELIVERY_PROOF", "NO_PERSISTENCE_PROOF", "NO_UNAUTHORIZED_EXTERNAL_ACTION", "NO_UNDISCLOSED_MODEL_VOICE", "NO_AUTOMATIC_CANONICAL_FALLBACK", "NO_MIXING_DRAFT_INTO_C84_RECEIPTS"],
+  "route_owner": "host/c100-cohost-experimental.mjs#prepareC100CohostDraft",
+  "draft_kind": "IKANT_COHOST_LLM_DRAFT_NOT_C84_SURFACE_A",
+  "ui": {"layout": ["HEADER", "DISCLOSED_DRAFT", "STATUS", "EVIDENCE", "OPTIONAL_DETAILS"], "reference": "C97_SCaffold_PER_REPLY_NOT_NATIVE_OVERLAY", "no_fake_active_badge": true},
+  "evidence": {"local_hashes_prove_content_integrity_not_provider_origin": true, "model_text_is_not_iKant_owner_receipt": true, "manual_opt_in_is_not_native_event_identity": true, "synthetic_mutations_are_not_live_chat_trials": true},
+  "limits": {"max_input_utf8_bytes":12000, "max_output_utf8_bytes":16000, "language_quality_and_factuality": "REQUIRES_REAL_HUMAN_FIELD_EVALUATION", "credentials_classifier": "HEURISTIC_NOT_A_SECURITY_BOUNDARY"},
+  "dod": {"D0": "Frozen real C72 EXPERIMENTAL and per-turn opt-in", "D1": "Source-built plan, exact input digest", "D2": "Ordinary host LLM creates new task-relevant draft", "D3": "Draft and input digests bound; provenance flags false", "D4": "Accessible C97-inspired per-reply transparent presentation", "D5": "Negative tests and repeated independent ChatGPT Project trials", "D6": "Native host integration and optional owner C84 as independent upgrades"},
+  "nonclaims": ["INSTALLED_LLM_TOOL", "REAL_PROVIDER_RECEIPT", "NATIVE_CHAT_SESSION", "AUTO_DISPATCH", "H95", "CANONICAL_RUNTIME", "DURABLE_LEDGER"]
+}

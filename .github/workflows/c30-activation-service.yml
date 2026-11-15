@@ -1,0 +1,27 @@
+name: C30 activation service
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c30:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Select activation service contract
+        run: npm run select:c30
+      - name: Falsify activation service 10m
+        run: npm run falsify:c30
+      - name: C30 focused tests
+        run: node --test --test-concurrency=1 tests/c30-activation-service.test.mjs
+      - name: C28 regression
+        run: node --test --test-concurrency=1 tests/c28-semantic-closure.test.mjs
+      - name: C29 regression
+        run: node --test --test-concurrency=1 tests/c29-ontological-promise.test.mjs
+      - name: Verify runtime root
+        run: npm run runtime-root:verify

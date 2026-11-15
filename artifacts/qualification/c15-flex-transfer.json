@@ -1,0 +1,44 @@
+{
+  "schema": "ikant-le-c15-flex-transfer-qualification/v2",
+  "cases": 1000000,
+  "seed": 3244236838,
+  "status": "PASS",
+  "mismatches": 0,
+  "safe_newly_accepted": 49724,
+  "unsafe_newly_accepted": 0,
+  "oracle_positive": 107619,
+  "transport_coverage": {
+    "GITHUB_API_BASE64": 166595,
+    "GITHUB_GIT_BLOB_API": 167185,
+    "PINNED_PERMALINK": 166607,
+    "PINNED_GITHUB_ZIP": 166123,
+    "HOST_FILE_BRIDGE": 166881,
+    "WARM_CACHE_EXACT": 166609
+  },
+  "failure_family_count": 84,
+  "failure_coverage": 84,
+  "budgets": {
+    "max_remote_reads": 40,
+    "max_remote_rounds": 1
+  },
+  "irreducible": {
+    "minimum_cardinality": 8,
+    "zero_mismatch_subsets": 1,
+    "deletion_false_green": {
+      "TARGET_INTENT_ROOT": 67620,
+      "SOURCE_ORIENTATION_ROOT": 71906,
+      "CONSENT_ROOT": 69525,
+      "SOURCE_BOUND_TRANSFER": 322865,
+      "VERIFIED_LOCAL_ROOT": 90954,
+      "LIVE_HOST_PROBE": 81424,
+      "RECEIPT_GATED_ACTIVE_COMMIT": 81900,
+      "E2E_DEADLINE": 40473
+    }
+  },
+  "claim_boundary": {
+    "semantic_not_physical_transport_proof": true,
+    "archive_parser_requires_runtime_tests": true,
+    "network_reachability_not_assumed": true
+  },
+  "receipt_sha256": "72c1072dc407fadf47921afde8967b1fe8a6e3cd18a30b852347ad6b7aeb1efc"
+}

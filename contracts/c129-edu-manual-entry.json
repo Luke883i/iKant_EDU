@@ -1,0 +1,30 @@
+{
+  "schema": "ikant-le-c129-edu-manual-entry/v1",
+  "authority": 0,
+  "status": "COMPATIBLE_EDU_OPERATOR_PATH_NOT_CANONICAL",
+  "profile": "EXPERIMENTAL",
+  "post_gate": [
+    "TERMS_PRESENTED",
+    "I_ACCEPT",
+    "EXPERIMENTAL_SELECTED",
+    "COHOST_DRAFT_OPTIN_WHEN_APPLICABLE"
+  ],
+  "operator_entry": "host/edu-c129-manual-entry.mjs#createC129ManualEduSession",
+  "sole_edutransport": "MANUAL_EXACT_C127_CACHE_FILE",
+  "source_validator": "host/edu-c127-source-transport.mjs#loadC127SourceCache",
+  "single_inode_no_follow": true,
+  "double_independent_read": true,
+  "captured_bytes_only_to_stager": true,
+  "machine_transport_attempts": 0,
+  "machine_fallback": false,
+  "legacy_c125_compatibility_retained": true,
+  "source_epoch_unchanged": "6648e1f58157224cbd6440a04764d3df34aa0cfd",
+  "carrier_epoch_unchanged": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
+  "original_pr119_c87_c125_required": true,
+  "native_chat_hook_attested": false,
+  "inter_chat_persistence_attested": false,
+  "canonical_owner_unchanged": "C59_SESSION_CHAT_LOCAL",
+  "canonical_manual_fallback_after_N": "BACKLOG_NOT_INSTALLED",
+  "epistemic_guidance_efficacy_proven": false,
+  "c114_scoped_guard_fix": "BACKLOG_REQUIRES_NEW_SOURCE_EPOCH"
+}

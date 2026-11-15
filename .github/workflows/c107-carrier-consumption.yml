@@ -1,0 +1,41 @@
+name: C107 real carrier consumption and host outcome gates
+on:
+  push:
+    branches:
+      - main
+      - prepr/c107-single-carrier-v8
+  pull_request:
+    paths:
+      - 'host/c107-carrier-consumer.mjs'
+      - 'scripts/c107-carrier-qualify.mjs'
+      - 'tests/c107-carrier-consumer.test.mjs'
+      - 'release/v8/**'
+      - '.github/workflows/c107-carrier-consumption.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c107-carrier-consumer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check actual committed carrier is source-exact
+        run: |
+          test "$(stat -c%s release/v8/ikant-c107-source-c734bf934e33.ikc.br)" -eq 62448
+          echo "d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d  release/v8/ikant-c107-source-c734bf934e33.ikc.br" | sha256sum -c -
+      - name: Eight consumer tests including real C107 Node and adversarial mutants
+        run: node --test tests/c107-carrier-consumer.test.mjs
+      - name: Fresh standalone original C70 C100 C87 readback from carrier
+        run: node scripts/c107-carrier-qualify.mjs
+      - name: Independently qualify unchanged original packer and ontology/router
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/c107-frozen" c734bf934e33703a6a1f91f0f4d5df96eec96945
+          cd "$RUNNER_TEMP/c107-frozen"
+          test "$(git rev-parse HEAD)" = "c734bf934e33703a6a1f91f0f4d5df96eec96945"
+          test "$(git rev-parse HEAD^{tree})" = "7b1e8b87f43b5995b9c6d1079254918f22549e01"
+          node --test tests/c107-original.test.mjs tests/c114-ontology-language.test.mjs tests/c115-topic-routing.test.mjs

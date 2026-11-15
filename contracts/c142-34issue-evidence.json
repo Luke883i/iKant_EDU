@@ -1,0 +1,246 @@
+{
+  "schema": "ikant-le-c142-34issue-source-trace/v2",
+  "authority": 0,
+  "source_epoch": {
+    "head": "50ce33363545c88e1d2e95dbc564a3bca87d110b",
+    "tree": "4cfb9ad14faf568530e2fd1862852dc41b8bdf09",
+    "authorized_by_human": true,
+    "runtime_admission_carried_over": false
+  },
+  "original_atoms_file": "contracts/c141-semantic-prepr-v1.json",
+  "original_atoms_git_blob_sha1": "576310a29adf49eed1846c05a9442d00d9d77d34",
+  "original_c141_qualification_file": "contracts/c141-runtime-qualification-v2.json",
+  "evidence_refs": {
+    "A01": [
+      "tests/c72-public-mode-admission.test.mjs",
+      "S01 one precise I ACCEPT",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A02": [
+      "tests/c72-public-mode-admission.test.mjs",
+      "S01 v2 introduction deterministic",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A03": [
+      "tests/c72-public-mode-admission.test.mjs",
+      "never ACTIVE",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A04": [
+      "tests/c72-public-mode-admission.test.mjs",
+      "one precise I ACCEPT",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A05": [
+      "tests/c135-cognitive-edu-owner.test.mjs",
+      "invalid epoch",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A06": [
+      "tests/c141-owner-integration.test.mjs",
+      "C141 shadow is packaged",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A07": [
+      "tests/c135-cognitive-edu-owner.test.mjs",
+      "one C129 public manual entry",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A08": [
+      "tests/c135-cognitive-edu-owner.test.mjs",
+      "invalid epoch",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A10": [
+      "tests/c72-public-mode-admission.test.mjs",
+      "rejects legacy text",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A11": [
+      "tests/c140-open-e2e.test.mjs",
+      "557-byte general epistemology",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A12": [
+      "tests/c141-owner-integration.test.mjs",
+      "general epistemology C140",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A13": [
+      "tests/c141-semantic-shadow.test.mjs",
+      "shadow C132 alone",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A14": [
+      "tests/c140-open-e2e.test.mjs",
+      "does not hijack original C114",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A15": [
+      "tests/c141-owner-integration.test.mjs",
+      "typed resource stop",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A17": [
+      "tests/c141-owner-integration.test.mjs",
+      "independent semantic truth",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A18": [
+      "tests/c140-open-e2e.test.mjs",
+      "unknown C125 delivery",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A19": [
+      "tests/c141-owner-integration.test.mjs",
+      "independent semantic truth",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A23": [
+      "tests/c140-open-e2e.test.mjs",
+      "557-byte general epistemology",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A24": [
+      "tests/c141-runtime-qualification.test.mjs",
+      "all eleven pre-PR bytes",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A25": [
+      "tests/c140-open-e2e.test.mjs",
+      "privacy, unsupported introspection",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A31": [
+      "tests/c140-open-e2e.test.mjs",
+      "8KB arbitrary-topic",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A32": [
+      "tests/c140-open-e2e.test.mjs",
+      "8KB arbitrary-topic",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A33": [
+      "tests/c141-prepr-contract.test.mjs",
+      "full byte overflow",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A34": [
+      "tests/c140-open-e2e.test.mjs",
+      "8KB arbitrary-topic",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A35": [
+      "tests/c141-owner-integration.test.mjs",
+      "original_c70_executed",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A36": [
+      "tests/c140-open-e2e.test.mjs",
+      "refuses forged C140",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A37": [
+      "tests/c141-owner-integration.test.mjs",
+      "general epistemology C140",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A38": [
+      "tests/c139-epistemic-edu-v2.test.mjs",
+      "frozen owner blobs",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A39": [
+      "tests/c141-semantic-shadow.test.mjs",
+      "consciousness questions",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A40": [
+      "tests/c140-open-e2e.test.mjs",
+      "privacy, unsupported introspection",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A42": [
+      "tests/c141-semantic-shadow.test.mjs",
+      "epistemic shape checking",
+      "INDIRECT_BASELINE_OR_HOST_GUARD"
+    ],
+    "A43": [
+      "tests/c141-owner-integration.test.mjs",
+      "indirect long self-identity",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A45": [
+      "tests/c141-prepr-contract.test.mjs",
+      "input-join fuzzing",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ],
+    "A48": [
+      "tests/c140-open-e2e.test.mjs",
+      "unknown C125 delivery",
+      "EXPLICIT_NEGATIVE_OR_RUNTIME_PROBE"
+    ]
+  },
+  "fix_bounded": [
+    "A12",
+    "A13",
+    "A43"
+  ],
+  "mitigated_open": [
+    "A15",
+    "A17",
+    "A18",
+    "A19",
+    "A23",
+    "A24",
+    "A25",
+    "A31",
+    "A32",
+    "A39",
+    "A40",
+    "A42",
+    "A45",
+    "A48"
+  ],
+  "baseline_retained": [
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "A10",
+    "A11",
+    "A14",
+    "A33",
+    "A34",
+    "A35",
+    "A36",
+    "A37",
+    "A38"
+  ],
+  "excluded_external": [
+    "A09",
+    "A16",
+    "A20",
+    "A21",
+    "A22",
+    "A26",
+    "A27",
+    "A28",
+    "A29",
+    "A30",
+    "A41",
+    "A44",
+    "A46",
+    "A47"
+  ],
+  "status": "34_INDEXED_NOT_34_FIXED",
+  "semantic_lossless_claim": "PINNED_A01_A48_ATOMS_AND_EXPLICIT_TEST_ANCHORS_ONLY",
+  "product_go": false,
+  "native_chat_persistence": false,
+  "release_edge": "SOURCE_BOUND_AUTHOR_REVIEW_AND_INDEPENDENT_VALIDATION_OPEN"
+}

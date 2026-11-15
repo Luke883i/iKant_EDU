@@ -1,0 +1,16 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "405ef2c6c49ef61448455674404cd9dce75515dd",
+  "self_path": "governance/changes/zzzzzzzzzz-cora-minimal-absorption.json",
+  "scope": "HOST_ENGINEERING_CORA_METHOD_ADOPTION_NO_RUNTIME_EFFECT",
+  "original_owner_unchanged": true,
+  "active": false,
+  "human_review_completed": false,
+  "paths": [
+    {"path":"governance/changes/zzzzzzzzzz-cora-minimal-absorption.json","operation":"ADD","human_review":"REVIEW_REQUIRED","reason":"Declare the exact additive V5-B change surface without human review promotion"},
+    {"path":"contracts/cora-minimal-absorption-v1.json","operation":"ADD","human_review":"REVIEW_REQUIRED","reason":"Define one CORA-derived source-only standardization strategy spanning repository, software and product"},
+    {"path":"scripts/cora-minimal-absorption.mjs","operation":"ADD","human_review":"REVIEW_REQUIRED","reason":"Provide a bounded read-only contract and local source-path inspector, not an owner or automatic cleanup"},
+    {"path":"tests/cora-minimal-absorption.test.mjs","operation":"ADD","human_review":"REVIEW_REQUIRED","reason":"Falsify false-green, consent replay, owner substitution, unauthorized deletion and workflow retirement"}
+  ]
+}

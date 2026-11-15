@@ -1,0 +1,23 @@
+name: C29 ontological promise
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  c29:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Select promise definition and engineering needs
+        run: npm run select:c29
+      - name: Falsify promise semantics 10m
+        run: npm run falsify:c29
+      - name: Check real repository conformance
+        run: GITHUB_SHA=${{ github.event.pull_request.head.sha || github.sha }} npm run check:c29
+      - name: Focused C29 tests
+        run: node --test --test-concurrency=1 tests/c29-ontological-promise.test.mjs tests/c28-semantic-closure.test.mjs tests/c27-session-capability-lattice.test.mjs

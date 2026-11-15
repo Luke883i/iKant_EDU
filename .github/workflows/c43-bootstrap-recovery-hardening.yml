@@ -1,0 +1,72 @@
+name: C43 bootstrap recovery hardening
+
+on:
+  pull_request:
+    paths:
+      - 'BOOTSTRAP.json'
+      - 'ADMISSION.json'
+      - 'contracts/ikant-le.json'
+      - 'contracts/orientation-capsule.json'
+      - 'contracts/bootstrap-ontological-closure.json'
+      - 'contracts/bootstrap-recovery-hardening.json'
+      - 'src/fastboot-convergence.mjs'
+      - 'src/session-shell.mjs'
+      - 'src/admission.mjs'
+      - 'src/runtime-command.mjs'
+      - 'src/bootstrap-intent-adapter.mjs'
+      - 'src/local-host-meta-prompt.mjs'
+      - 'runtime-root/**'
+      - 'tests/c42-bootstrap-ontological-closure.test.mjs'
+      - 'tests/c43-bootstrap-recovery-hardening.test.mjs'
+      - 'scripts/c42-bootstrap-ontological-closure-falsify.mjs'
+      - 'scripts/c43-bootstrap-recovery-hardening-falsify.mjs'
+      - 'package.json'
+      - '.github/workflows/c43-bootstrap-recovery-hardening.yml'
+  push:
+    branches: ['c43/bootstrap-recovery-hardening']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  c42-regression:
+    name: c42-1m-regression
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: C42 strengthened regression (1M full, not smoke)
+        run: npm run falsify:c42 | tee /tmp/c42.json
+      - name: Upload C42 receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c43-c42-closure-1m
+          path: /tmp/c42.json
+          if-no-files-found: ignore
+  c43:
+    name: c43-1m-recovery
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Focused regression
+        run: node --test --test-concurrency=1 tests/first-contact.test.mjs tests/runtime.test.mjs tests/c40-bootstrap-reentry.test.mjs tests/c41-retry-epoch-ux.test.mjs tests/c42-bootstrap-ontological-closure.test.mjs tests/c43-bootstrap-recovery-hardening.test.mjs
+      - name: C43 seeded recovery falsification (1M full, not smoke)
+        run: npm run falsify:c43 | tee /tmp/c43.json
+      - name: Runtime root exactness
+        run: npm run runtime-root:verify
+      - name: Upload C43 receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: c43-bootstrap-recovery-hardening
+          path: /tmp/c43.json
+          if-no-files-found: ignore

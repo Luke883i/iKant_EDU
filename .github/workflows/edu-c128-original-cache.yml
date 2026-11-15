@@ -1,0 +1,33 @@
+name: edu-c128-original-cache-readback
+on:
+  pull_request:
+    paths:
+      - 'host/edu-c127-source-transport.mjs'
+      - 'tests/edu-c128-canonical-cache.test.mjs'
+      - 'scripts/c128-cache-falsify-1m.c'
+      - 'docs/EDU_C128_SOURCE_CACHE_DOD.md'
+      - '.github/workflows/edu-c128-original-cache.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-source-and-1m:
+    strategy:
+      matrix:
+        node: ['20','22']
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Cache canonical byte tests and complete original owner E2E
+        run: node --test tests/edu-c128-canonical-cache.test.mjs tests/edu-c127-cache-identity.test.mjs tests/edu-c127-transport-attempts.test.mjs
+      - name: Existing C124/PR119 and C125 source-original regressions
+        run: node --test tests/edu-c124-guided-source.test.mjs tests/edu-c125-ui-shell.test.mjs
+      - name: One million seeded finite threat policies, no actual LLM calls
+        run: |
+          cc -O3 -std=c11 -Wall -Wextra -Werror scripts/c128-cache-falsify-1m.c -o /tmp/ikant-c128-mutator
+          /tmp/ikant-c128-mutator 1000000 0xc128202610140001 > /tmp/c128-1m.json
+          node --input-type=module -e "import fs from 'node:fs';const x=JSON.parse(fs.readFileSync('/tmp/c128-1m.json'));if(x.cases!==1000000||x.oracle_mismatches!==0||x.llm_calls!==0)process.exit(1);console.log(JSON.stringify(x))"

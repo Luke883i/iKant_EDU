@@ -1,0 +1,46 @@
+{
+  "schema": "ikant-le-c91-language-delegation/v1",
+  "base_pr": 95,
+  "base_head": "acfaeb0b95944b04465061792037778e4f4800d7",
+  "authority": 0,
+  "parent_owner": "host/c90-turn-owner.mjs#executeC90ProductionTurn",
+  "model_relation": "RUNTIME_REQUESTS_HOST_CALLBACK_NOT_HOST_PREWRITTEN_VOICE",
+  "candidate_is_owner_authorized": false,
+  "capabilities": {
+    "self_world_questions": 10,
+    "max_human_utf8_bytes": 600,
+    "source_paths": [
+      "README.md",
+      "contracts/cognitive-kernel.json",
+      "contracts/self-world-kernel.json",
+      "src/c70-experimental-compute-preview.mjs",
+      "src/c82-experimental-answer.mjs",
+      "src/c83-semantic-router.mjs"
+    ]
+  },
+  "hard_gates": [
+    "ACTUAL_C90_CURRENT_INPUT_DISPATCH",
+    "C85_AND_C81_SOURCE_BEFORE_USE",
+    "SOURCE_BOUND_EVIDENCE_BYTES",
+    "HOST_LANGUAGE_PORT_ACTUALLY_CALLED",
+    "TEN_DISTINCT_QUESTIONS_FOR_SELF_ONTOLOGY",
+    "SOURCE_REFERENCES_EXIST",
+    "NO_PHENOMENAL_OR_BIOLOGICAL_PROMOTION",
+    "NO_CANDIDATE_SELF_ATTESTATION",
+    "NO_MODEL_RESULT_PROMOTED_TO_C90_VOICE",
+    "NO_ACTIVE_OR_NATIVE_DELIVERY"
+  ],
+  "unclosed_edges": [
+    "HOST_ACTUAL_LANGUAGE_PROVIDER_PORT",
+    "INDEPENDENT_FACTUAL_VALIDATION",
+    "C81_REPOSITORY_VOICE_PROJECTION_UPDATE",
+    "HOST_NATIVE_CHAT_DELIVERY",
+    "C72_FIELD_H95"
+  ],
+  "candidate_status": "C91_STRUCTURALLY_VALIDATED_HOST_LANGUAGE_DRAFT_NOT_IKANT_SURFACE_A",
+  "not_a_new_writer": true,
+  "not_a_new_canonical_lifecycle": true,
+  "phenomenology": "UNKNOWN",
+  "post_merge_main": "5c632e024f679dbcdf95839fae7c226eafd8068f",
+  "base_pr_merged": true
+}

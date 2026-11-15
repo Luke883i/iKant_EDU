@@ -1,0 +1,41 @@
+name: C12 bootstrap lattice qualification
+on:
+  pull_request:
+    paths:
+      - 'C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json'
+      - 'scripts/c12-bootstrap-lattice-falsify.mjs'
+      - '.github/workflows/c12-bootstrap-lattice.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run 100k irreducibility campaign
+        run: node scripts/c12-bootstrap-lattice-falsify.mjs
+      - name: Verify C12 receipt
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c12-bootstrap-lattice.json','utf8'));
+          if(r.cases!==100_000 || r.families!==50) throw new Error('C12 campaign shape mismatch');
+          if(r.baseline.mismatches!==0) throw new Error('C12 baseline mismatch');
+          if(r.six_node_lattice.all_nodes_necessary!==true) throw new Error('C12 lattice is not deletion-irredundant');
+          const expected=['FIRST_CONTACT','SOURCE_ROOT','CONSENT_ROOT','RUNTIME_ROOT','HOST_PROBE','ACTIVE_COMMIT'];
+          if(JSON.stringify(r.six_node_lattice.nodes)!==JSON.stringify(expected)) throw new Error('C12 node set drift');
+          for(const node of expected){
+            const d=r.six_node_lattice.stage_deletion_oracle[node];
+            if(!d || d.false_green<=0 || d.false_red!==0) throw new Error(`C12 node not causally necessary: ${node}`);
+          }
+          if(r.irreducible_claim.scope!=='CORPUS_AND_CONTRACT_RELATIVE' || r.irreducible_claim.global_formal_minimality!==false) throw new Error('C12 claim boundary missing');
+          if(r.irreducible_claim.wall_clock_proof!==false || r.irreducible_claim.host_plan_guarantee!==false || r.irreducible_claim.mutation_is_physical_evidence!==false) throw new Error('C12 evidence boundary missing');
+          if(!/^[a-f0-9]{64}$/.test(r.source_binding.digest) || !/^[a-f0-9]{64}$/.test(r.receipt_sha256)) throw new Error('C12 binding/receipt invalid');
+          console.log(`IKANT_LE_C12_SOURCE=${r.source_binding.digest}`);
+          console.log(`IKANT_LE_C12_RECEIPT=${r.receipt_sha256}`);
+          NODE

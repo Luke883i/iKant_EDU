@@ -1,0 +1,90 @@
+{
+  "schema": "ikant-le-edu-c125-ui-release/v2",
+  "authority": 0,
+  "source_main_baseline": "aff995cd6b15c8f6efa6fd9d9f1895ca64960543",
+  "original_c107_source_pin": "c734bf934e33703a6a1f91f0f4d5df96eec96945",
+  "excluded": [
+    "C124_COGNITIVE_WIRING",
+    "NEW_C70_SOURCE_EPOCH",
+    "NEW_C87_WRITER",
+    "CANONICAL_ACTIVATION"
+  ],
+  "host_scope": {
+    "entry": "host/edu-c125-shell-session.mjs#createC125ShellSession",
+    "original_owner": "host/edu-c70-method-v7.mjs#createGuidedCohostV7",
+    "independent_readback": "ORIGINAL_C107_C87_SECOND_NODE_PROCESS",
+    "projector": "host/c125-exclusive-shell.mjs#emitC125Shell",
+    "emitter": "host/c125-output-port.mjs#createC125HostOutputPort",
+    "emit_cardinality": "AT_MOST_ONE_ATTEMPT_PER_EVENT_ID_PER_PROCESS_INSTANCE",
+    "post_send_uncertainty": "NEVER_AUTO_RETRY",
+    "surface_a": "EXACT_UTF8_OFFSET_LENGTH_SHA256_OR_NO_VOICE",
+    "failure_progress": "SAME_EMITTER_ONLY",
+    "fixed_titles": [
+      "VOCE",
+      "MODE",
+      "STATO",
+      "TRACE",
+      "CONT",
+      "EDGE",
+      "NEXT",
+      "DOCX",
+      "HOST",
+      "FATTO",
+      "LETTURA",
+      "LIMITE"
+    ],
+    "docx": "NONE_WITHOUT_REAL_SOURCE_DOCX_WRITER_AND_READBACK",
+    "host_notes": "THREE_FIELDS_BOUNDED_REJECT_NO_SILENT_TRUNCATION"
+  },
+  "external_limits": {
+    "native_chatgpt_platform_exclusivity": "NOT_ATTESTED_NOT_ENFORCEABLE_IN_REPOSITORY",
+    "human_acceptance_origin": "HOST_WITNESSED_ONLY",
+    "provider_identity": "NOT_ATTESTED",
+    "cross_chat": "NOT_ATTESTED"
+  },
+  "dod": {
+    "L0_SOURCE": [
+      "ORIGINAL_C107_UNMODIFIED",
+      "NO_C124_CHANGES"
+    ],
+    "L1_RUNTIME": [
+      "PR119_GUIDED_OWNER",
+      "ORIGINAL_C87_SECOND_PROCESS_READBACK",
+      "SAME_NONCE_INPUT_DIGEST"
+    ],
+    "L2_UI_DATA": [
+      "EXACT_UTF8",
+      "CONSTANT_TITLES",
+      "HOST_NOTE_SEPARATE",
+      "NO_FICTITIOUS_DOCX"
+    ],
+    "L3_HOST_OUTPUT": [
+      "EXCLUSIVE_HOST_PORT",
+      "ONE_ATTEMPT_PER_EVENT",
+      "REJECT_GETTERS_PROXY",
+      "DENY_CONCURRENT_SEND",
+      "POST_SEND_NO_RETRY"
+    ],
+    "L4_NATIVE_PLATFORM": [
+      "AUTHORIZED_NATIVE_RENDERER",
+      "ALL_CHANNELS_CAPTURED",
+      "CLIENT_UI_BYTE_WITNESS"
+    ],
+    "L5_TEST": [
+      "NODE_ORIGINAL_PR119_INTEGRATION",
+      "TEN_MILLION_POLICY_STATES",
+      "REMOTE_CI_GREEN"
+    ]
+  },
+  "campaign": {
+    "seed": "0x1252026101300001",
+    "cases": 10000000,
+    "families": 32,
+    "second_fault_cases": 1381735,
+    "oracle": "GROUPED_NEGATIVE_FAULTS_VS_CONJUNCTION",
+    "real_llm_inferences": 0,
+    "real_ui_interceptions": 0
+  },
+  "promise": "ONLY_ASSISTANT_TEXT_PRODUCED_VIA_THIS_HOST_CONTROLLED_SINK",
+  "not_claimed": "ALL_MESSAGES_VISIBLE_IN_NATIVE_CHATGPT_UI"
+}

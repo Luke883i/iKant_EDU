@@ -1,0 +1,39 @@
+{
+  "schema": "ikant-le-c98-h95-prospective-field-protocol/v1",
+  "authority": 0,
+  "source_contracts": ["contracts/c72-product-value-promise.json", "contracts/c80-field-witness.json"],
+  "measurement_owner": "host/c80-field-witness.mjs#evaluateC80H95",
+  "design_helper_only": "host/c98-h95-design.mjs#planC98H95",
+  "current_observation": "NOT_MEASURED",
+  "target": {
+    "confidence": "FIVE_ONE_SIDED_WILSON_BONFERRONI_FAMILYWISE_95_PERCENT",
+    "weighted_lower_at_least": 0.95,
+    "each_dimension_lower_at_least": 0.90,
+    "independent_tasks_at_least": 500,
+    "real_host_sessions_at_least": 50,
+    "distinct_independent_participants_at_least": 20,
+    "safety_incidents": 0
+  },
+  "prospective_protocol": {
+    "freeze_before_first_holdout_result": ["versioned source HEAD and manifest SHA-256", "sampling frame and target population", "user eligibility and consent", "task randomization and holdout exclusion", "rubric and five dimension labels", "one predefined primary endpoint", "real-host origin and native event issuer", "analysis code and stopping rule", "missingness handling", "cluster and device stratification"],
+    "target_sessions": ["distinct cold starts", "first-turn and second-turn success", "state reentry after fresh session", "accessible UI desktop and mobile", "stable verified source across epochs", "provider availability", "manual ZIP not selected except explicit last resort"],
+    "minimum_external_evidence": ["native user ingress event ID per turn", "byte-exact owner input/output SHA256", "native displayed assistant event IDs", "GitHub origin witnessed independently of repository blob", "durable next-turn readback", "separate human or external reviewer adjudication", "issuer key trust anchored outside repository"],
+    "predefined_failure_treatment": "treat missing, timed-out, blocked, misdelivered or unknown outcomes as failures unless a source-pinned exclusion rule was registered prospectively",
+    "correlation_rule": "never treat two turns by same participant/session as independent successes merely because there are unique event IDs; report cluster-robust sensitivity and holdout subgroup breakdown",
+    "no_optional_stopping": true,
+    "candidate_sample_size_if_98pct_iid_assumption": 750,
+    "sample_size_is_not_host_success": true,
+    "independent_real_world_audit_required": true,
+    "observed_passing_metrics_are_not_future_performance_guarantee": true
+  },
+  "admission": {
+    "only_C80_can_score_cohort": true,
+    "C80_signed_claims_not_native_proof": true,
+    "no_self_reported_host_issuer": true,
+    "no_model_created_evaluation_samples": true,
+    "zero_incident_claim_requires_raw_events_and_independent_review": true,
+    "never_promote_ACTIVE_from_C98": true,
+    "never_claim_H95_FROM_C98_DESIGN": true
+  },
+  "release_gate": "REAL_HOST_H95_AUDITED_ONLY_WHEN_C80_NUMERIC_GATE_AND_INDEPENDENT_NATIVE_ISSUER_SAMPLING_AUDIT_BOTH_PASS"
+}

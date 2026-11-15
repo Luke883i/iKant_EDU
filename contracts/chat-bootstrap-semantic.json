@@ -1,0 +1,271 @@
+{
+  "schema": "ikant-le-chat-bootstrap-semantic/v4",
+  "slice": "C28.FULL_IKANT_SEMANTIC_ABSORPTION",
+  "authority": 0,
+  "intent": "Define canonical SESSION_CHAT activation as six repository-owned closure edges with one LOCAL_INGRESS owner, typed direct/opaque-relay transport, durable retry evidence, materialization/reopen, executed runtime proof and persisted ACTIVE readback; external platform facts remain separate.",
+  "nodes": [
+    {
+      "id": "TARGET_INTENT_ROOT",
+      "owns": [
+        "canonical target recognition",
+        "verbatim pending intent",
+        "pure-vs-substantive bootstrap intent distinction"
+      ],
+      "boundary": "recognition and intent binding precede repository acquisition"
+    },
+    {
+      "id": "SOURCE_ORIENTATION_ROOT",
+      "owns": [
+        "GitHub API-only source channel",
+        "immutable source head",
+        "bounded orientation capsule",
+        "single source-root binding"
+      ],
+      "boundary": "orientation bytes are not accepted without one immutable source root"
+    },
+    {
+      "id": "CONSENT_ROOT",
+      "owns": [
+        "Terms digest and presentation",
+        "freeze",
+        "later exact standalone I ACCEPT",
+        "fresh authority-zero preaccept handoff"
+      ],
+      "boundary": "runtime acquisition remains forbidden before exact human acceptance"
+    },
+    {
+      "id": "SOURCE_BOUND_TRANSFER",
+      "owns": [
+        "observed byte-delivery bridge",
+        "immutable source ref",
+        "complete exact fastboot object set",
+        "content-addressed loader/shard identity",
+        "bounded reads/rounds",
+        "transport authority zero",
+        "post-consent transport fan-in"
+      ],
+      "boundary": "carrier location is not source identity; every allowed delivery mode must converge on the same pinned loader/shard blob identities before materialization"
+    },
+    {
+      "id": "VERIFIED_LOCAL_ROOT",
+      "owns": [
+        "transfer-bound materialization receipt",
+        "Git blob identity",
+        "safe paths",
+        "private staging",
+        "atomic publish",
+        "reopen/readback"
+      ],
+      "boundary": "delivered bytes are not an executable runtime root until locally verified"
+    },
+    {
+      "id": "LIVE_HOST_PROBE",
+      "owns": [
+        "Node.js 20+",
+        "filesystem CRUD/append/readback/delete",
+        "SHA-256",
+        "clock",
+        "artifact sink",
+        "SESSION_CHAT capability closure",
+        "executed-code provenance bound to verified runtime root",
+        "exact descriptor member identity match for executed probe/runtime-command modules",
+        "runtime-owned non-injectable production probe"
+      ],
+      "boundary": "host-attested receipts and caller callbacks are not live execution evidence; the local runtime itself must run the probe and match exact descriptor member identities"
+    },
+    {
+      "id": "RECEIPT_GATED_ACTIVE_COMMIT",
+      "owns": [
+        "bootstrap evidence digest",
+        "source/root/transfer/materialization binding",
+        "single-writer persisted ACTIVE commit",
+        "exactly-once pending-intent terminal effect"
+      ],
+      "boundary": "probe success cannot promote ACTIVE without verified materialization evidence"
+    },
+    {
+      "id": "E2E_DEADLINE",
+      "owns": [
+        "monotonic origin at I ACCEPT",
+        "host elapsed before Node entry",
+        "local runtime elapsed",
+        "120000 ms fail-closed ceiling"
+      ],
+      "boundary": "deadline dominates transfer, local root, probe and ACTIVE commit"
+    }
+  ],
+  "folded_semantics": {
+    "PREACCEPT_HANDOFF": "CONSENT_ROOT",
+    "SESSION_CHAT_CLOSURE": "LIVE_HOST_PROBE",
+    "INIT_INTENT_FOLD": "RECEIPT_GATED_ACTIVE_COMMIT",
+    "RESUME_PENDING_INTENT": "RECEIPT_GATED_ACTIVE_COMMIT",
+    "SOURCE_HEAD_PIN": "SOURCE_ORIENTATION_ROOT + SOURCE_BOUND_TRANSFER",
+    "WARM_CACHE_EXACT": "SOURCE_BOUND_TRANSFER + VERIFIED_LOCAL_ROOT + RECEIPT_GATED_ACTIVE_COMMIT",
+    "RETRY_BUDGET": "SOURCE_BOUND_TRANSFER + E2E_DEADLINE",
+    "FIXED_SHARD_COUNT": "transport parameter, not semantic node",
+    "FLEXIBLE_TRANSPORT_FAN_IN": "SOURCE_BOUND_TRANSFER; transport plurality is folded beneath one content-addressed identity gate",
+    "SAME_EPOCH_ACTIVATION_CONTINUATION": "SOURCE_BOUND_TRANSFER + VERIFIED_LOCAL_ROOT + E2E_DEADLINE + RECEIPT_GATED_ACTIVE_COMMIT; preserves original CONSENT_ROOT"
+  },
+  "receipts": {
+    "transfer": "ikant-le-source-bound-transfer/v1",
+    "materialization": "ikant-le-runtime-root-materialization/v1",
+    "bootstrap_evidence": "ikant-le-chat-bootstrap-evidence/v1",
+    "bootstrap": "ikant-le-bootstrap-receipt/v2",
+    "transfer_v2": "ikant-le-source-bound-transfer/v2",
+    "preaccept_handoff_v2": "ikant-le-preaccept-handoff/v2",
+    "activation_executor": "ikant-le-activation-executor/v1",
+    "materialization_v2": "ikant-le-runtime-root-materialization/v2",
+    "bootstrap_evidence_v2": "ikant-le-chat-bootstrap-evidence/v2"
+  },
+  "deadline_ms": 120000,
+  "active_predicate": [
+    "C21 host-adapter ledger/step transcript validated",
+    "host-attested bridge transcript bound to transport identities; materializer verifies loader/shards and runtime reopens published loader plus every runtime member",
+    "accepted current Terms",
+    "source-bound transfer receipt valid",
+    "local materialization receipt valid and transfer-bound",
+    "live host probe passed",
+    "live probe includes valid executed-code provenance for the verified runtime root",
+    "bootstrap evidence source/root/receipt bindings valid",
+    "single-writer ACTIVE commit persisted/read back",
+    "single-shot acceptance_event_id consumed exactly once",
+    "acceptance-origin receipt validates current Terms + immutable source head + MONOTONIC I_ACCEPT observation",
+    "deadline_result is DEADLINE_PASS and no sticky deadline terminal exists"
+  ],
+  "qualification": {
+    "enduser_cases": 1000000,
+    "strata": {
+      "typical": 500000,
+      "edge": 300000,
+      "stress": 200000
+    },
+    "single_node_deletion_oracle_required": true,
+    "blocking_survivors_required": 0,
+    "every_retained_node_must_be_necessary": true,
+    "flex_transport_cases": 1000000,
+    "flex_transport_modes": 6,
+    "max_flex_remote_reads": 40,
+    "max_flex_remote_rounds": 1,
+    "runtime_availability_discovery_cases": 10000000,
+    "runtime_availability_qualification_cases": 1000000,
+    "runtime_availability_failure_families": 76,
+    "deadline_integrity_cases": 1000000,
+    "deadline_integrity_independent_oracle": true,
+    "deadline_integrity_multi_mutation_min": 500000,
+    "activation_continuation_cases": 1000000,
+    "activation_continuation_independent_oracle": true,
+    "local_session_fastboot_cases": 10000000,
+    "local_session_fastboot_campaigns": 10
+  },
+  "claim_boundary": {
+    "corpus_and_contract_relative_irreducibility": true,
+    "global_formal_minimality": false,
+    "semantic_mutation_is_physical_connector_proof": false,
+    "semantic_mutation_is_wall_clock_measurement": false,
+    "runtime_receipt_validation_does_not_create_host_capability": true,
+    "transport_locator_is_authority": false,
+    "flex_transport_does_not_weaken_active_predicate": true,
+    "degraded_is_active": false,
+    "deadline_unavailable_is_deadline_exceeded": false,
+    "retry_may_reset_deadline_origin": false,
+    "current_main_may_replace_session_source_head": false,
+    "same_epoch_recovery_may_complete_new_downstream_facts": true,
+    "same_epoch_recovery_may_reset_acceptance_or_remote_history": false,
+    "source_identity_is_executed_provenance": false,
+    "host_channel_receipt_is_physical_proof": false,
+    "bridge_receipt_without_runtime_reopen_is_physical_proof": false,
+    "caller_supplied_probe_is_live_probe": false,
+    "model_generated_capability_is_host_attested_evidence": false,
+    "model_context_is_data_plane": false,
+    "slo_breach_is_integrity_failure": false,
+    "pre_runtime_sha256_is_required_for_v2": false,
+    "pre_runtime_monotonic_clock_is_required_for_v2": false,
+    "diagnostic_stage_is_persisted_state": false,
+    "repository_closure_is_external_platform_observation": false,
+    "current_host_topology_is_constitutional_truth": false,
+    "first_unclosed_edge_may_be_skipped": false
+  },
+  "availability_state_contract": "contracts/runtime-availability-dod.json",
+  "availability_classifier": "src/runtime-availability.mjs",
+  "deadline_integrity_contract": "contracts/deadline-integrity.json",
+  "canonical_activation_model": "LOCAL_EXECUTOR_V1",
+  "canonical_nodes": [
+    {
+      "id": "HUMAN_GATE",
+      "owns": [
+        "current Terms presentation",
+        "later exact standalone I ACCEPT",
+        "single acceptance event"
+      ],
+      "boundary": "human acceptance is the only authority-bearing gate"
+    },
+    {
+      "id": "SOURCE_SNAPSHOT",
+      "owns": [
+        "immutable source_head",
+        "orientation Git object identities",
+        "runtime-root object identities"
+      ],
+      "boundary": "source identity is content-addressed and never inferred from carrier"
+    },
+    {
+      "id": "LOCAL_INGRESS",
+      "owns": [
+        "H0 local processor/source observation",
+        "host-attested capability ledger",
+        "one canonical NEXT",
+        "durable failed-decision memory",
+        "first-unclosed-edge",
+        "typed LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY byte path",
+        "source/arrival samehash"
+      ],
+      "boundary": "host attestation and transport are authority-zero; physical truth begins at local write/reopen and model relay may only be opaque exact transport"
+    },
+    {
+      "id": "LOCAL_MATERIALIZATION",
+      "owns": [
+        "orientation re-verification",
+        "loader/shard/member verification",
+        "atomic publish",
+        "reopen"
+      ],
+      "boundary": "receipt alone is not physical proof"
+    },
+    {
+      "id": "EXECUTED_RUNTIME_PROOF",
+      "owns": [
+        "runtime-owned Node probe",
+        "exact executed-code provenance",
+        "writer persistence"
+      ],
+      "boundary": "caller callbacks and CI are not live execution proof"
+    },
+    {
+      "id": "ACTIVE_READBACK",
+      "owns": [
+        "single-writer ACTIVE commit",
+        "persisted readback",
+        "pending-intent exactly-once terminal effect"
+      ],
+      "boundary": "only persisted runtime state owns ACTIVE truth"
+    }
+  ],
+  "canonical_active_predicate_v2": [
+    "later exact standalone I ACCEPT consumed once",
+    "immutable source head and orientation/runtime object identities match",
+    "LOCAL_INGRESS closes one typed byte path with durable ledger-owned retry memory and source/arrival samehash",
+    "materializer re-verifies orientation plus runtime objects, atomically publishes and reopens",
+    "runtime-owned probe matches exact executed provenance and binds the runtime",
+    "single writer persists and reads back ACTIVE"
+  ],
+  "deadline_integrity_applies_to_canonical_v2": false,
+  "activation_slo_ms": 120000,
+  "activation_slo_exceeded_is_terminal": false,
+  "legacy_v1_semantics": {
+    "canonical": false,
+    "nodes_field": "nodes",
+    "active_predicate_field": "active_predicate",
+    "deadline_ms_field": "deadline_ms"
+  },
+  "session_closure_projection": "ikant-le-session-closure-projection/v1"
+}

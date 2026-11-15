@@ -1,0 +1,227 @@
+{
+  "schema": "ikant-le-c53-physical-hardening-falsification-10m/v2",
+  "source_baseline": "fcc1d67cb26b96ddb0f33e1a2ec5532f3a95e2e5",
+  "seed": "0xC53A11D7",
+  "cases": 10000000,
+  "families": 64,
+  "semantic_worlds_observed": 2071,
+  "abstraction_levels": {
+    "PARENT_DELETE": 1875000,
+    "SESSION": 312500,
+    "NATIVE": 156250,
+    "TURN": 156250,
+    "DERIVED": 156250,
+    "COMPOSITE": 937500,
+    "SURROGATE": 156250,
+    "ORTHOGONAL": 312500,
+    "PAIR": 2968750,
+    "RANDOM": 2968750
+  },
+  "parent_c52_candidate": {
+    "mismatch": 3325941,
+    "unsafe": 3325941,
+    "false_reject": 0
+  },
+  "hardened_candidate": {
+    "mismatch": 0,
+    "unsafe": 0,
+    "false_reject": 0
+  },
+  "mechanisms": [
+    "E0",
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "L0",
+    "L1",
+    "L2",
+    "L3",
+    "L4",
+    "H0_BOOTSTRAP_SESSION_BINDING",
+    "H1_PREEXEC_ROUTE_SESSION_BINDING",
+    "H2_NATIVE_COMMON_CONTRACT_ANCHOR",
+    "H3_HOST_RUNTIME_TURN_SEAL",
+    "H4_DERIVED_PROOF_RECOMPUTATION"
+  ],
+  "hardening_obligations": [
+    "H0_BOOTSTRAP_SESSION_BINDING",
+    "H1_PREEXEC_ROUTE_SESSION_BINDING",
+    "H2_NATIVE_COMMON_CONTRACT_ANCHOR",
+    "H3_HOST_RUNTIME_TURN_SEAL",
+    "H4_DERIVED_PROOF_RECOMPUTATION"
+  ],
+  "deletion_mutants": {
+    "E0": {
+      "mismatch": 356512,
+      "unsafe": 356512,
+      "false_reject": 0
+    },
+    "E1": {
+      "mismatch": 355518,
+      "unsafe": 355518,
+      "false_reject": 0
+    },
+    "E2": {
+      "mismatch": 355559,
+      "unsafe": 355559,
+      "false_reject": 0
+    },
+    "E3": {
+      "mismatch": 197734,
+      "unsafe": 197734,
+      "false_reject": 0
+    },
+    "E4": {
+      "mismatch": 194623,
+      "unsafe": 194623,
+      "false_reject": 0
+    },
+    "E5": {
+      "mismatch": 194356,
+      "unsafe": 194356,
+      "false_reject": 0
+    },
+    "E6": {
+      "mismatch": 194574,
+      "unsafe": 194574,
+      "false_reject": 0
+    },
+    "L0": {
+      "mismatch": 356834,
+      "unsafe": 356834,
+      "false_reject": 0
+    },
+    "L1": {
+      "mismatch": 200955,
+      "unsafe": 200955,
+      "false_reject": 0
+    },
+    "L2": {
+      "mismatch": 3853046,
+      "unsafe": 3377872,
+      "false_reject": 475174
+    },
+    "L3": {
+      "mismatch": 192146,
+      "unsafe": 192146,
+      "false_reject": 0
+    },
+    "L4": {
+      "mismatch": 2739221,
+      "unsafe": 0,
+      "false_reject": 2739221
+    },
+    "H0_BOOTSTRAP_SESSION_BINDING": {
+      "mismatch": 1450410,
+      "unsafe": 1450410,
+      "false_reject": 0
+    },
+    "H1_PREEXEC_ROUTE_SESSION_BINDING": {
+      "mismatch": 822972,
+      "unsafe": 822972,
+      "false_reject": 0
+    },
+    "H2_NATIVE_COMMON_CONTRACT_ANCHOR": {
+      "mismatch": 350772,
+      "unsafe": 350772,
+      "false_reject": 0
+    },
+    "H3_HOST_RUNTIME_TURN_SEAL": {
+      "mismatch": 350967,
+      "unsafe": 350967,
+      "false_reject": 0
+    },
+    "H4_DERIVED_PROOF_RECOMPUTATION": {
+      "mismatch": 350205,
+      "unsafe": 350205,
+      "false_reject": 0
+    }
+  },
+  "all_deletion_mutants_killed": true,
+  "architecture_lattice": {
+    "total": 131072,
+    "witnesses": 42,
+    "valid_architectures": 1,
+    "minimum_cost": 17,
+    "minimum_count": 1,
+    "winner_masks": [
+      131071
+    ],
+    "unique_minimum": true
+  },
+  "family_counts": {
+    "DROP_E0": 156250,
+    "DROP_E1": 156250,
+    "DROP_E2": 156250,
+    "DROP_E3": 156250,
+    "DROP_E4": 156250,
+    "DROP_E5": 156250,
+    "DROP_E6": 156250,
+    "DROP_L0": 156250,
+    "DROP_L1": 156250,
+    "DROP_L2": 156250,
+    "DROP_L3": 156250,
+    "DROP_L4": 156250,
+    "BOOTSTRAP_CROSS_SESSION_REPLAY": 156250,
+    "ROUTE_WRONG_SESSION_PREEXEC": 156250,
+    "DELIVERY_NOT_COMMON_CONTRACT": 156250,
+    "HOST_RUNTIME_TURN_DRIFT": 156250,
+    "FORGED_DERIVED_STATUS_BYPASS": 156250,
+    "BOOT_SESSION_PLUS_NATIVE_OK": 156250,
+    "ROUTE_SESSION_PLUS_NATIVE_OK": 156250,
+    "NATIVE_ANCHOR_PLUS_STRONG": 156250,
+    "TURN_DRIFT_PLUS_DELIVERY": 156250,
+    "FORGED_DERIVED_BYPASS_PLUS_STRONG": 156250,
+    "ALL_HARDENING_GAPS": 156250,
+    "SURROGATE_WITH_NATIVE_GAP": 156250,
+    "VALID_MINIMAL": 156250,
+    "VALID_STRONG": 156250,
+    "PAIR_E0_BOOT_SESSION": 156250,
+    "PAIR_E1_BOOT_SESSION": 156250,
+    "PAIR_E2_BOOT_SESSION": 156250,
+    "PAIR_E3_BOOT_SESSION": 156250,
+    "PAIR_E4_BOOT_SESSION": 156250,
+    "PAIR_E5_BOOT_SESSION": 156250,
+    "PAIR_E6_BOOT_SESSION": 156250,
+    "PAIR_E0_ROUTE_SESSION": 156250,
+    "PAIR_E1_ROUTE_SESSION": 156250,
+    "PAIR_E2_ROUTE_SESSION": 156250,
+    "PAIR_E3_ROUTE_SESSION": 156250,
+    "PAIR_E4_ROUTE_SESSION": 156250,
+    "PAIR_E5_ROUTE_SESSION": 156250,
+    "PAIR_E6_ROUTE_SESSION": 156250,
+    "PAIR_E4_NATIVE_ANCHOR": 156250,
+    "PAIR_E5_NATIVE_ANCHOR": 156250,
+    "PAIR_E6_NATIVE_ANCHOR": 156250,
+    "PAIR_E6_TURN_BIND": 156250,
+    "PAIR_L0_DERIVED_SEAL": 156250,
+    "RANDOM_45": 156250,
+    "RANDOM_46": 156250,
+    "RANDOM_47": 156250,
+    "RANDOM_48": 156250,
+    "RANDOM_49": 156250,
+    "RANDOM_50": 156250,
+    "RANDOM_51": 156250,
+    "RANDOM_52": 156250,
+    "RANDOM_53": 156250,
+    "RANDOM_54": 156250,
+    "RANDOM_55": 156250,
+    "RANDOM_56": 156250,
+    "RANDOM_57": 156250,
+    "RANDOM_58": 156250,
+    "RANDOM_59": 156250,
+    "RANDOM_60": 156250,
+    "RANDOM_61": 156250,
+    "RANDOM_62": 156250,
+    "RANDOM_63": 156250
+  },
+  "claim_boundary": {
+    "semantic_falsification_is_live_host_proof": false,
+    "live_e0_e3_e4_e5_e6_still_required": true
+  },
+  "status": "PASS",
+  "receipt_sha256": "5aa321eb3bfa1664f434f885118b8f362887a62b70b097d5433cebbb71a93321"
+}

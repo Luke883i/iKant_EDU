@@ -1,0 +1,36 @@
+{
+  "schema": "ikant-pe-postrename-single-path/v1",
+  "authority": 0,
+  "repository_id": 1371330383,
+  "repository": "Luke883i/iKant_EDU",
+  "source_epoch": "FROZEN_MAIN_HEAD_AND_COMPLETE_TREE",
+  "original_owners": [
+    "C72",
+    "C135",
+    "C87",
+    "C125/S03"
+  ],
+  "human_events": [
+    "iniziamo",
+    "I ACCEPT",
+    "EDU"
+  ],
+  "technical_user_messages_target": 0,
+  "postaccept": "scripts/project-pe-original-bridge.mjs#preparePEC72Stage",
+  "postedu": "scripts/project-pe-original-bridge.mjs#preparePEPostEdu",
+  "owner_minting_forbidden": true,
+  "provider_installed_attested": false,
+  "product_active": false,
+  "proof_gates": [
+    "source_identity",
+    "orientation_terms",
+    "distinct_acceptance",
+    "original_C72",
+    "original_EDU",
+    "full_source_readback",
+    "original_C135",
+    "single_C87",
+    "original_C125_S03_ack",
+    "native_provider_delivery"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "ikant-v5b-change-extension/v1",
+  "authority": 0,
+  "source_main": "e7232477eea3b32681f5312b3d2ad0073982784a",
+  "self_path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-original-content-audit.json",
+  "scope": "R7_CURRENT_EPOCH_ORIGINAL_CONTENT_READBACK_AND_ANTI_PROMOTION",
+  "release": "NO_GO",
+  "human_review_completed": false,
+  "original_owner_unchanged": true,
+  "mcp_external_owner_unchanged": true,
+  "native_provider_attested": false,
+  "product_go": false,
+  "inherited_original_r7_zip_sha256": "9edf313341141564f29f796ce0c4d8144bbb22e262d7bd54f191ae3c375c1d8d",
+  "original_r7_source_head": "b2f550043d5fca89ab1d1efc2ee06a0c7c163f2c",
+  "all_file_semantics_proven": false,
+  "retirement_authorized": false,
+  "paths": [
+    {
+      "path": "scripts/r7-original-content-audit.py",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Original-content byte auditor using independent Git cat-file and archive witnesses, semantic status and no-promotion guards."
+    },
+    {
+      "path": "tests/r7-original-content-audit.test.mjs",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Actual full HEAD source audit, tampered source cards, false semantic promotion and adversarial source-epoch regression."
+    },
+    {
+      "path": "governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-r7-original-content-audit.json",
+      "operation": "ADD",
+      "human_review": "REVIEW_REQUIRED",
+      "reason": "Source-only R7 change register under original V5-B explicit source governance."
+    }
+  ],
+  "documentation": "PR description and append-only R7 archive remain the audit specification; no duplicate Markdown atlas entry."
+}

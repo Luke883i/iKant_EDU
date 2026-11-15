@@ -1,0 +1,1 @@
+Status: local structured protocol evidence only. 100,000 case cartesian product across 5 seeded axes; 150,000 adversarial mutations in 15 classes. Zero unexpected owner/ACTIVE promotions. No actual LLM provider calls, no independently witnessed ChatGPT-native human messages, no autonomous host connector, no semantic H95 proof.

@@ -1,0 +1,58 @@
+name: C52 physical runtime closure proof surface
+on:
+  pull_request:
+    paths:
+      - 'contracts/physical-runtime-closure-v1.json'
+      - 'src/physical-runtime-closure.mjs'
+      - 'src/supersystem-runtime-conformance.mjs'
+      - 'src/cohost-coldstart-qualification.mjs'
+      - 'src/native-transcript-participant.mjs'
+      - 'src/session-local-service.mjs'
+      - 'BOOTSTRAP.json'
+      - 'runtime-root/**'
+      - 'scripts/c52-*'
+      - 'tests/c52-physical-runtime-closure.test.mjs'
+      - 'artifacts/qualification/c52-*'
+      - '.github/workflows/c51-supersystem-runtime.yml'
+      - '.github/workflows/c52-physical-runtime-closure.yml'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install deterministic saturation dependency
+        run: python -m pip install --disable-pip-version-check --no-input numpy==2.1.2
+      - name: Runtime-root exactness
+        run: npm run runtime-root:verify
+      - name: Focused inherited and C52 tests
+        run: node --test --test-concurrency=1 tests/c33-post-187-closure.test.mjs tests/c34-pre-runtime-handoff.test.mjs tests/c46-coldstart-cohost-bind.test.mjs tests/c50-native-transcript-participant.test.mjs tests/c51-supersystem-runtime-conformance.test.mjs tests/c52-physical-runtime-closure.test.mjs
+      - name: Ten-million multi-abstraction physical-closure saturation
+        run: python scripts/c52-physical-closure-saturate.py
+      - name: Bundle coverage
+        run: node scripts/c52-bundle-coverage.mjs
+      - name: Granular runtime proof-surface DoD
+        run: node scripts/c52-build-dod.mjs
+      - name: Qualification artifacts are deterministic committed bytes
+        run: git diff --exit-code -- artifacts/qualification/c52-physical-closure-10m.json artifacts/qualification/c52-physical-closure-lattice.json artifacts/qualification/c52-bundle-coverage.json artifacts/qualification/c52-candidate-blob-manifest.json artifacts/qualification/c52-runtime-physical-closure-dod.json
+      - name: Claim boundary cannot be laundered by CI
+        run: |
+          node - <<'NODE'
+          const fs=require('fs');
+          const d=JSON.parse(fs.readFileSync('artifacts/qualification/c52-runtime-physical-closure-dod.json','utf8'));
+          if(d.status!=='PASS_RUNTIME_PROOF_SURFACE_READY_FOR_LIVE_HOST') throw new Error('C52 proof surface not closed');
+          if(d.claim_boundary.physical_host_closure_proven_by_ci!==false) throw new Error('CI laundering');
+          if(d.claim_boundary.synthetic_receipts_are_physical_proof!==false) throw new Error('synthetic laundering');
+          if(d.claim_boundary.live_e0_e3_e4_e5_e6_required!==true||d.claim_boundary.live_persistence_witness_required!==true) throw new Error('live proof boundary missing');
+          if(d.claim_boundary.global_physical_claim_authorized!==false) throw new Error('physical claim must remain external until live receipts');
+          NODE

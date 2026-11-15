@@ -1,0 +1,21 @@
+name: C139 EDU epistemic route
+on:
+  pull_request:
+    paths:
+      - 'host/c125-exclusive-shell.mjs'
+      - 'host/c135-edu-v2-owner.mjs'
+      - 'host/c139-*.mjs'
+      - 'scripts/c107-pack.mjs'
+      - 'tests/c139-epistemic-edu-v2.test.mjs'
+      - '.github/workflows/c139-epistemic-edu.yml'
+  workflow_dispatch:
+jobs:
+  epistemic_route:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: C139 regression and falsification
+        run: node --test tests/c139-epistemic-edu-v2.test.mjs tests/s02-edu-v2-original-owner-e2e.test.mjs tests/c114-ontology-language.test.mjs

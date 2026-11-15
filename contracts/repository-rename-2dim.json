@@ -1,0 +1,325 @@
+{
+  "schema": "ikant-edu-2dim-repository-rename/v1",
+  "authority": 0,
+  "repo_name_from": "Luke883i/iKant_LE",
+  "repo_name_to": "Luke883i/iKant_EDU",
+  "repo_id": 1371330383,
+  "source_baseline_main": "1de5b51a2578e31547e4ef98e7d35d55926d05a3",
+  "source_baseline_tree": "b5bcce4efcaca9209217002ad4900f2f72950a77",
+  "main_branch": "main",
+  "method": "2DIM=TECHNICAL_IDENTITY_X_EVIDENCE_CONTINUITY",
+  "owner_effects_forbidden": true,
+  "automatic_rename_forbidden": true,
+  "prompt_installation_claim": false,
+  "original_receipt_transfer": false,
+  "product_release": "PRODUCT_NO_GO",
+  "global": {
+    "id": "RG",
+    "what": "Same GitHub repository remains one source-of-truth and original iKant owner proofs are not forged, bypassed or transferred through a rename; third-party consumers and project prompt requalified",
+    "requires": [
+      "I1",
+      "I2",
+      "I3",
+      "I4",
+      "I5",
+      "I6"
+    ],
+    "status": "OPEN_REQUIRED_HUMAN_ADMIN_ACTION"
+  },
+  "intermediate": [
+    {
+      "id": "I1",
+      "what": "Identity/source provenance",
+      "requires": [
+        "L01",
+        "L02",
+        "L03",
+        "L04"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "I2",
+      "what": "Original bootstrap and runtime",
+      "requires": [
+        "L05",
+        "L06",
+        "L07",
+        "L08",
+        "L09"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "I3",
+      "what": "Repository, CI and external consumers",
+      "requires": [
+        "L10",
+        "L11",
+        "L12",
+        "L13",
+        "L14",
+        "L15",
+        "L16"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "I4",
+      "what": "Falsification and review",
+      "requires": [
+        "L17",
+        "L18",
+        "L19",
+        "L20"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "I5",
+      "what": "Administrative cutover",
+      "requires": [
+        "L21",
+        "L22"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "I6",
+      "what": "Consumption, continuity and recovery",
+      "requires": [
+        "L23",
+        "L24",
+        "L25",
+        "L26"
+      ],
+      "status": "OPEN"
+    }
+  ],
+  "local": [
+    {
+      "id": "L01",
+      "what": "Pinned commit + full TREE + critical blob identities observed from GitHub",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L02",
+      "what": "Stable repository numeric ID 1371330383 verified independently on old and new names",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L03",
+      "what": "Exactly one canonical repository name per phase; aliases cannot authorize owners",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L04",
+      "what": "Potential name collisions, lookalikes and forks rejected by ID and owner",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L05",
+      "what": "BOOTSTRAP/ADMISSION/orientation/first-contact exact bindings migrated",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L06",
+      "what": "C72 Terms link builder, validator, transit and cold seed keep one epoch/one original owner",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L07",
+      "what": "All original acceptance and mode receipts remain epoch-bound; no replay or reinterpretation",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L08",
+      "what": "C135/C87/C125/S03 and OneShell original writer/readback remain unchanged",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L09",
+      "what": "Project prompt canonical route, 7x3 guard, builder and source-manifest tested",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L10",
+      "what": "151+ indexed hits triaged as active, historical or external, no unclassified critical consumer",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L11",
+      "what": "Action/reusable workflow old-name caller census incl external owners; unresolved => BLOCK",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L12",
+      "what": "GitHub Pages, packages, releases, webhooks, secrets, rulesets, branch protections inspected or UNKNOWN",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L13",
+      "what": "Registered ChatGPT Project prompt equivalence to new canonical source independently read back",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "PROVIDER"
+    },
+    {
+      "id": "L14",
+      "what": "Plugin/MCP links, app callbacks, OAuth, deployment environment and GitHub connector verified",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L15",
+      "what": "Source/blob/witness/archive links and generated docs updated without rewriting historic evidence",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L16",
+      "what": "Single central identity config and explicit old->new phase switch, no implicit alias promotion",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L17",
+      "what": "Owner negative tests pass under old and new phase and under swapped name, tree, Terms and ID",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L18",
+      "what": "10k seeded deterministic adversarial mutation cases fail-closed with positive controls",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L19",
+      "what": "Same tests and report identical twice, immutable Git blobs and CI readback on PR HEAD",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L20",
+      "what": "Two independent engineering reviewers and human rename authorization attested; V5-G separate",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "HUMAN"
+    },
+    {
+      "id": "L21",
+      "what": "Immediately before click: record old full_name, id, branch main, HEAD, TREE and checks",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "GITHUB_ADMIN"
+    },
+    {
+      "id": "L22",
+      "what": "After click: new name resolves same repository ID, main, HEAD, TREE, paths/blobs",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "GITHUB_ADMIN"
+    },
+    {
+      "id": "L23",
+      "what": "After click: connector/action external integration checks + Terms + Project prompt checks green",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "PROVIDER"
+    },
+    {
+      "id": "L24",
+      "what": "Post-rename fresh C72 acceptance for any new ChatGPT session; prior receipts not moved",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L25",
+      "what": "No second owner/writer/active claim; delivery/provider status only from independent evidence",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    },
+    {
+      "id": "L26",
+      "what": "Rollback is explicit migration back if feasible, with collision/redirect caveat; never replay",
+      "status": "OPEN_UNTIL_EVIDENCE",
+      "evidence_type": "SOURCE_CI_ORIGINAL_AS_APPLICABLE"
+    }
+  ],
+  "strategy_comparison": [
+    {
+      "name": "RENAME_NOW",
+      "security": 1,
+      "availability": 1,
+      "reversibility": 2,
+      "complexity": 5,
+      "eligible": false,
+      "reason": "Original source and C72 literal binding would break"
+    },
+    {
+      "name": "DUAL_CANONICAL_FOREVER",
+      "security": 1,
+      "availability": 3,
+      "reversibility": 2,
+      "complexity": 2,
+      "eligible": false,
+      "reason": "Two independent canonical identities violate one-owner/source lock"
+    },
+    {
+      "name": "PROBE_PREPARE_ADMIN_VERIFY",
+      "security": 4,
+      "availability": 4,
+      "reversibility": 3,
+      "complexity": 3,
+      "eligible": true,
+      "reason": "Same ID and commit through administrative rename, explicit human gate and post-rename fresh proof"
+    }
+  ],
+  "phases": [
+    "AUDIT_BASELINE",
+    "PREPARE_CODE_DRAFT",
+    "PREPARE_MERGE_GREEN",
+    "EXTERNAL_DEPENDENCIES_REVIEW",
+    "ADMIN_RENAME_ONE_TIME",
+    "POST_RENAME_VERIFY",
+    "NEW_SESSION_C72_REQUALIFY",
+    "CLOSE_AND_MONITOR"
+  ],
+  "hard_stops": [
+    "SOURCE_LOCK_STALE",
+    "REPOSITORY_ID_MISMATCH",
+    "MULTIPLE_CANONICAL_NAMES",
+    "TERMS_SOURCE_DRIFT",
+    "C72_OWNER_AMBIGUOUS",
+    "HUMAN_ADMIN_GATE_MISSING",
+    "EXTERNAL_ACTION_CONSUMER_UNKNOWN",
+    "REQUIRED_CHECKS_UNKNOWN",
+    "PROVIDER_INSTALLATION_UNKNOWN_WHERE_REQUIRED"
+  ],
+  "nonclaims": [
+    "CI_IS_NATIVE_RECEIPT",
+    "REDIRECT_PROVES_CONTRACT_COMPATIBILITY",
+    "RENAME_IS_ACTIVE",
+    "OLD_ACCEPTANCE_IS_NEW_ACCEPTANCE",
+    "NEW_PROJECT_PROMPT_INSTALLED",
+    "ALL_EXTERNAL_ACTION_CALLERS_DISCOVERED"
+  ],
+  "explicit_external_blockers": [
+    "ChatGPT Project installed instructions",
+    "GitHub connector authorization/scopes after rename",
+    "remote workflow/action consumers",
+    "GitHub Pages or package registries",
+    "webhook and OAuth callbacks",
+    "deployment environments and endpoints"
+  ],
+  "historical_policy": "Preserve history and old PR permalinks; do not mass-rewrite evidence",
+  "status": "PREPARE_ONLY_NOT_READY"
+}

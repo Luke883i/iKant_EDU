@@ -2,7 +2,7 @@
 """CORA-METHOD L1: bounded, fail-closed seven-root migration audit.
 Neither a CORA-ENGINE invocation nor independent Project/MCP runtime proof.
 """
-import pathlib,subprocess,json,re,sys,posixpath,hashlib,stat
+import pathlib,subprocess,json,re,sys,posixpath,hashlib,stat,collections
 R=pathlib.Path(__file__).resolve().parent.parent
 SPEC=json.loads((R/'contracts/r7-v11-seven-root-contract.json').read_text())
 def git(*args):
@@ -62,6 +62,15 @@ def inspect_links(pre,post):
   if dest not in post:continue
   now=(R/dest).read_text(errors='replace')
   o=LINKS.findall(before);n=LINKS.findall(now)
+  if original=='docs/IKANT_DOCUMENT_ATLAS.md':
+   # The generated atlas grows as the current epoch adds documentation. Historical
+   # links must remain a multiset subset; extra links must resolve to Git files.
+   old_targets=collections.Counter(mv(target(original,a)) for a in o if not a.startswith(('#','http:','https:','mailto:','data:','//','javascript:','/')) and target(original,a) in pre)
+   now_targets=collections.Counter(target(dest,b) for b in n if not b.startswith(('#','http:','https:','mailto:','data:','//','javascript:','/')))
+   if old_targets-now_targets or any(t not in post for t in now_targets):
+    bad.append({'path':original,'error':'ATLAS_HISTORIC_LINK_LOST_OR_UNTRACKED_EXTRA'})
+   else:checked+=sum(old_targets.values())
+   continue
   if len(o)!=len(n):
    bad.append({'path':original,'error':'LINK_CARDINALITY','old':len(o),'new':len(n)});continue
   for a,b in zip(o,n):

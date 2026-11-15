@@ -1,6 +1,10 @@
 <!-- programme-header:v2 -->
 > **ROA Research Programme · A-OSP ecosystem** — [Author & programme hub](https://github.com/Luke883i/academics) · [ROA theory](https://github.com/Luke883i/ROA) · [CORA assurance](https://github.com/Luke883i/cora). Every repository is independently readable. Membership does not imply formal derivation, shared runtime, scientific validation, certification, or production readiness. Repository-local code, evidence, and governance remain authoritative.
 
+
+<!-- r7-v11-seven-roots:source-candidate -->
+**Seven-root R7 V11 migration (SOURCE CANDIDATE, not release).** The proposed seven canonical roots and the nine retained root files are described in [R7 V11 migration](project/docs/R7_V11_SEVEN_ROOTS.md). The strict semantic source check is `npm run contraction:source-verify`; `npm run maintain:verify` is a fail-closed global admission gate. The full native suite, external consumers, CORA-ENGINE and independent owner review must still pass on the same HEAD; a topological cut is not equivalence.
+
 # iKant — risposte guidate, infrastruttura cognitiva verificabile
 
 **Manutenzione V10 (source-only):** [guida minima per mantenere il repository](project/docs/REPOSITORY_HEALTH_V10.md) e `npm run maintain:verify`. Il target a sette root non e un requisito di salute: preservare prima i due prodotti e le verifiche originali.

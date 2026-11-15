@@ -10,7 +10,7 @@
     "./embedded/relational-nuance": "./src/embedded/relational-nuance.mjs"
   },
   "scripts": {
-    "maintain:verify": "node scripts/repository-health-v10.mjs --run-native",
+    "maintain:verify": "python3 scripts/r7-v11-seven-root-gate.py --require-global",
     "test": "node --test --test-concurrency=1",
     "check": "node scripts/check.mjs && node scripts/check-c11.mjs",
     "falsify:c83": "node scripts/c83-falsify-1m.mjs",
@@ -74,6 +74,9 @@
     "bundle:edu": "python3 scripts/c131-build-project-bundle.py dist/iKant_OneShell_EDU_C131_CANDIDATE.zip",
     "falsify:c131": "node scripts/c131-falsify-release-gate.mjs 1000000",
     "qualify:v1:product": "node --test tests/v1-workflow-retention.test.mjs tests/v1-product-contract.test.mjs tests/c131-product-release.test.mjs tests/c130-architecture.test.mjs tests/edu-c129-manual-entry.test.mjs && node scripts/v1-product-audit.mjs",
-    "qualify:project-session": "node --test tests/project-session-capsule.test.mjs tests/project-repo-loader.test.mjs tests/project-linked-admission.test.mjs tests/project-session-e2e.test.mjs tests/c72-public-mode-admission.test.mjs tests/c32-session-shell.test.mjs && node scripts/project-source-manifest.mjs verify && node scripts/runtime-root.mjs verify && node scripts/project-session-select.mjs"
+    "qualify:project-session": "node --test tests/project-session-capsule.test.mjs tests/project-repo-loader.test.mjs tests/project-linked-admission.test.mjs tests/project-session-e2e.test.mjs tests/c72-public-mode-admission.test.mjs tests/c32-session-shell.test.mjs && node scripts/project-source-manifest.mjs verify && node scripts/runtime-root.mjs verify && node scripts/project-session-select.mjs",
+    "contraction:source-verify": "python3 scripts/r7-v11-seven-root-gate.py",
+    "contraction:global-gate": "python3 scripts/r7-v11-seven-root-gate.py --require-global",
+    "maintain:legacy:v10": "node scripts/repository-health-v10.mjs --run-native"
   }
 }

@@ -36,7 +36,7 @@ export function classifyCandidate(row,{dynamicPaths=new Set()}={}){
   if(row.workflow.flags.length||row.workflow.events.length===0)signals.push('WORKFLOW_HAZARD');
   else signals.push('WORKFLOW_REVIEW');
  }
- if(pathName.startsWith('docs/')&&HISTORICAL.test(pathName))signals.push('DOCUMENT_VIGENCY');
+ if((pathName.startsWith('docs/')||pathName.startsWith('project/docs/'))&&HISTORICAL.test(pathName))signals.push('DOCUMENT_VIGENCY');
  if(/^(?:host|src|scripts)\//.test(pathName)&&!row.literal_importers.length)
   signals.push('NO_LITERAL_IMPORTER');
  if(!signals.length)signals.push('UNCLASSIFIED_RETAIN');

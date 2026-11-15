@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {chooseEDUSourceTransport,chooseC72HostTransport,C72_TRANSPORT_ORDER}
  from '../host/project-c72-transport-frontier.mjs';
 import {validateFContract} from './cora-pr-f-qualification.mjs';
-import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {qualifyR7OwnerSourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {validateStreamProfile} from './cora-three-streams-audit.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const BASE='e719ebfdb8dfa2f1a0382f56ab95fbbdc0f3e005';
@@ -133,7 +133,7 @@ export function observeS3Source(){
   const all={},observations=[];
   for(const [f,sha] of pinned){
    const b=get(head,f),observed=git('rev-parse',head+':'+f);
-   const epoch=qualifyRegisteredC72SourceEpoch({
+   const epoch=qualifyR7OwnerSourceEpoch({
     path:f,historicalBlobSha1:sha,observedBlobSha1:observed});
    if(epoch.ok!==true||gitHash(b)!==observed)
     return denied('S3_CRITICAL_BLOB_DRIFT:'+f);

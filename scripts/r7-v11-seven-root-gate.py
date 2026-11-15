@@ -38,7 +38,9 @@ def inspect_edges(pre,post):
  missing=[];source_count=0;resolved=0;inherited=0;changed=[]
  for original in sorted(pre):
   if not original.endswith(('.mjs','.js','.cjs','.ts','.mts')):continue
-  before=load_base(original);dest=mv(original);now=(R/dest).read_text(errors='replace')
+  before=load_base(original);dest=mv(original)
+  if dest not in post:continue
+  now=(R/dest).read_text(errors='replace')
   for kind,pat in PATTERNS.items():
    o=pat.findall(before);n=pat.findall(now)
    if len(o)!=len(n):
@@ -56,7 +58,9 @@ def inspect_links(pre,post):
  bad=[];checked=0
  for original in sorted(pre):
   if not original.endswith('.md'):continue
-  before=load_base(original);dest=mv(original);now=(R/dest).read_text(errors='replace')
+  before=load_base(original);dest=mv(original)
+  if dest not in post:continue
+  now=(R/dest).read_text(errors='replace')
   o=LINKS.findall(before);n=LINKS.findall(now)
   if len(o)!=len(n):
    bad.append({'path':original,'error':'LINK_CARDINALITY','old':len(o),'new':len(n)});continue

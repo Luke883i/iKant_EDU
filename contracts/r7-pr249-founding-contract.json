@@ -172,7 +172,7 @@
     "addition_pins": {
       "project/docs/R7_PR249_FOUNDING_GUIDE.md": "94e6308a537dbe15a52b5853ab6c32a0d181f725",
       "scripts/r7-pr249-falsify.mjs": "ac26311df031be8e42120ecea96dff6388e240b4",
-      "scripts/r7-pr249-physical-gate.py": "82dcf4a4fb371a66cdd3d99c113303f4a5c4e1cd",
+      "scripts/r7-pr249-physical-gate.py": "1b3f3ce7742392bc0a6ec30761d6a446b18b5423",
       "tests/r7-pr249-founding-contract.test.mjs": "a6e9e1d959bf79ba20c6e919a88fcec92d3d9eb7",
       "tests/r7-pr249-physical-gate.test.mjs": "22b3c626b808685199b7543900e5fddd1471d93e"
     },
@@ -205,7 +205,27 @@
       {
         "path": "scripts/v5b-repository-governance-audit.mjs",
         "original_sha": "5fc3835ef529c86ef1d8fa8e0cff1e5e92415355",
-        "prospective_sha": "b823bf2140cb7061f7c6f65a16d83eed1724a4d3"
+        "prospective_sha": "649a0313f7394e9e56bad98963e82ec43f57fbd3"
+      },
+      {
+        "path": "tests/artifacts/qualification/c51-candidate-blob-manifest.json",
+        "original_sha": "75ace6bb84ee5ba6ef5c42f5444a1be761adf480",
+        "prospective_sha": "3d8f2ec2eddc251e982682e89b2b4bb05ef92edb"
+      },
+      {
+        "path": "tests/artifacts/qualification/c51-supersystem-dod.json",
+        "original_sha": "73325b2abda89575844b658dfa6df36ffda780ee",
+        "prospective_sha": "baac60285955ddd5bd11710901f6299f021fb970"
+      },
+      {
+        "path": "tests/artifacts/qualification/c52-candidate-blob-manifest.json",
+        "original_sha": "8fac298dfa2c19ef2809e72116858e95b00e09c8",
+        "prospective_sha": "2b9875bcba9689051bad7a8c4dd3b907333fd0d9"
+      },
+      {
+        "path": "tests/artifacts/qualification/c52-runtime-physical-closure-dod.json",
+        "original_sha": "9eb2b7d734c0ef7609ab439eb252a2482ac64d45",
+        "prospective_sha": "2cf5bd35788cc116a3f75a7919af20263b2b47cc"
       }
     ]
   }

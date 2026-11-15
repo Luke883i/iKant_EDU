@@ -95,7 +95,11 @@ def assess(repo, fixture=False):
                       'scripts/cora-minimal-absorption.mjs',
                       'project/docs/IKANT_DOCUMENT_ATLAS.md',
                       'project/docs/START_HERE.md',
-                      'scripts/v5b-repository-governance-audit.mjs'}
+                      'scripts/v5b-repository-governance-audit.mjs',
+                      'tests/artifacts/qualification/c51-candidate-blob-manifest.json',
+                      'tests/artifacts/qualification/c51-supersystem-dod.json',
+                      'tests/artifacts/qualification/c52-candidate-blob-manifest.json',
+                      'tests/artifacts/qualification/c52-runtime-physical-closure-dod.json'}
         if set(approved_mods) != exact_mods:
             issues.append('PR249_MODIFICATION_REGISTER_DRIFT')
         if sorted(epoch.get('additions', [])) != sorted(ALLOWED_ADDITIONS):

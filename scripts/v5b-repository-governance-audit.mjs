@@ -339,7 +339,11 @@ export function qualifyPr249SourceEpoch(){
    '.github/workflows/project-session-repo-first.yml',
    'scripts/cora-minimal-absorption.mjs',
    'project/docs/IKANT_DOCUMENT_ATLAS.md',
-   'project/docs/START_HERE.md','scripts/v5b-repository-governance-audit.mjs'].sort();
+   'project/docs/START_HERE.md','scripts/v5b-repository-governance-audit.mjs',
+   'tests/artifacts/qualification/c51-candidate-blob-manifest.json',
+   'tests/artifacts/qualification/c51-supersystem-dod.json',
+   'tests/artifacts/qualification/c52-candidate-blob-manifest.json',
+   'tests/artifacts/qualification/c52-runtime-physical-closure-dod.json'].sort();
   if(JSON.stringify(added)!==JSON.stringify(fixedAdd)||
      JSON.stringify(modified)!==JSON.stringify(fixedMod)||
      JSON.stringify(e.additions)!==JSON.stringify(fixedAdd)||

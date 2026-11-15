@@ -1,5 +1,5 @@
 import test from 'node:test';
-import {qualifyRegisteredC72SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
+import {qualifyR7OwnerSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
@@ -149,16 +149,16 @@ test('real Git checkout preserves historical owner pin ledger and qualifies only
  const expected=cora.reuse.owner_blob_pins;
  let unchanged=0,amended=0;
  for(const [file,sha] of Object.entries(expected)){
-  const x=qualifyRegisteredC72SourceEpoch({path:file,historicalBlobSha1:sha,
+  const x=qualifyR7OwnerSourceEpoch({path:file,historicalBlobSha1:sha,
    observedBlobSha1:git('rev-parse','HEAD:'+file)});
   assert.equal(x.ok,true,file+':'+x.edge);
   assert.equal(x.owner_invoked,false);
-  if(x.amended){amended++;assert.equal(file,'host/c72-public-mode-admission.mjs');
+  if(x.amended){amended++;assert(['host/c72-public-mode-admission.mjs','host/c135-edu-v2-owner.mjs'].includes(file));
    assert.equal(x.historical_receipt_reusable,false);
    assert.equal(x.review_attested,false);
   }else unchanged++;
  }
- assert.equal(unchanged,3);assert.equal(amended,1);
+ assert.equal(unchanged,2);assert.equal(amended,2);
  const originalPRF=JSON.parse(fs.readFileSync(new URL(
   '../contracts/cora-pr-f-integrated-qualification-v1.json',import.meta.url),'utf8'));
  const historic=verifyFrozenWorkflowTree(originalPRF);

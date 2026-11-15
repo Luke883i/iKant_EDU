@@ -6,7 +6,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {observeReticularCensusWithAudit,reopenW1WorkflowEpoch} from './cora-minimal-absorption.mjs';
-import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {qualifyR7OwnerSourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {derivePrABacklog} from './cora-pr-a-backlog.mjs';
 import {qualifyDocumentSet} from './cora-pr-b-docs.mjs';
 import {qualifyPrCCISource} from './cora-pr-c-ci.mjs';
@@ -200,7 +200,7 @@ export function observePrFSource(){
  const workflowHistory=verifyFrozenWorkflowTree(c);
  const ownerRows=Object.entries(base.reuse.owner_blob_pins).map(([p,sha])=>{
   const observed=git('rev-parse','HEAD:'+p);
-  const epoch=qualifyRegisteredC72SourceEpoch({path:p,
+  const epoch=qualifyR7OwnerSourceEpoch({path:p,
    historicalBlobSha1:sha,observedBlobSha1:observed});
   return {path:p,match:epoch.ok===true,original_pin_unchanged:observed===sha,
    source_epoch_status:epoch.status||epoch.edge,

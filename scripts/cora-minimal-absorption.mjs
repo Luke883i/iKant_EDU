@@ -95,7 +95,7 @@ export function sourcePathsPresent(c,root=ROOT){
  * All owner/accountability and external-delivery columns remain UNKNOWN.
  */
 import {execFileSync} from 'node:child_process';
-import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch,qualifyR7OwnerSourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {reopenR7SourceEpoch} from './r7-v13-epoch-bridge.mjs';
 const reticularPath='contracts/cora-reticular-hygiene-v1.json';
 const reticularIds=[
@@ -402,7 +402,7 @@ export function observeReticularCensusWithAudit(){
  const index=parseStagedGitEntries(execFileSync('git',['ls-files','--stage','-z'],{cwd:ROOT}).toString('utf8'))
   .map(x=>({path:x.path,sha:x.sha}));
  const ownerPaths=c.reuse.owners;
- const ownerEpochReadback=ownerPaths.map(p=>qualifyRegisteredC72SourceEpoch({
+ const ownerEpochReadback=ownerPaths.map(p=>qualifyR7OwnerSourceEpoch({
   path:p,historicalBlobSha1:c.reuse.owner_blob_pins[p],
   observedBlobSha1:git('rev-parse','--verify','HEAD:'+p)
  }));

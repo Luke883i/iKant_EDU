@@ -74,6 +74,31 @@ export function qualifyRegisteredC72SourceEpoch({path,historicalBlobSha1,observe
    authority:0});
 }
 
+/** Separate C135 historical source rebind from C72's original consent contract.
+ * Exact one-line allowlist expansion, source-only and REVIEW_REQUIRED; never an
+ * original owner approval or a new C72 authorization. */
+export function qualifyR7OwnerSourceEpoch({path,historicalBlobSha1,observedBlobSha1}={}){
+ if(path!=='host/c135-edu-v2-owner.mjs')
+  return qualifyRegisteredC72SourceEpoch({path,historicalBlobSha1,observedBlobSha1});
+ const denied=edge=>Object.freeze({ok:false,edge,authority:0,owner_invoked:false,native_event_attested:false});
+ const before='e8bbe5741375e5d51f1caa02fdba2ecc5f6c049d';
+ const after='7eacaba74aa4984b1b40fb7c996fd25c7c30986f';
+ if(historicalBlobSha1!==before||observedBlobSha1!==after)return denied('C135_REBIND_SHA_NOT_EXACT');
+ try{
+  const source=git('show','c9a1179283958a7ffb30d1ad8c08af69d34fff0c:'+path);
+  const current=git('show','HEAD:'+path);
+  const oldString="!/^artifacts\\/qualification\\/[A-Za-z0-9_.-]+\\.json$/.test(p)";
+  const newString="! /^(?:artifacts|tests\\/artifacts)\\/qualification\\/[A-Za-z0-9_.-]+\\.json$/.test(p)".replace('! ','!');
+  if(source.split(oldString).length!==2||source.replace(oldString,newString)!==current||
+     git('rev-parse','c9a1179283958a7ffb30d1ad8c08af69d34fff0c:'+path)!==before||
+     git('rev-parse','7fa91861f6bd4a9760ad4ab69c0cdd048d9cab7c:'+path)!==after)
+   return denied('C135_REBIND_NOT_SINGLE_EXACT_PATH_CHANGE');
+  return Object.freeze({ok:true,status:'PROSPECTIVE_C135_SOURCE_REBIND_REVIEW_REQUIRED',
+   old_sha1:before,observed_sha1:after,path,amended:true,
+   source_only:true,historical_receipt_reusable:false,review_attested:false,
+   owner_invoked:false,native_event_attested:false,provider_attested:false,authority:0});
+ }catch{return denied('C135_SOURCE_PROVENANCE_UNREADABLE');}
+}
 const isPath=p=>typeof p==='string'&&p.length>0&&!p.startsWith('/')&&!p.includes('\\')&&!p.split('/').some(s=>s===''||s==='.'||s==='..');
 export function provisionalRole(p){
  return p.startsWith('.github/workflows/')?'CI_WORKFLOW':p.startsWith('tests/')||p.startsWith('test/')?'TEST_SOURCE':

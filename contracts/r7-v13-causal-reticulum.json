@@ -36,7 +36,15 @@
       "scripts/cora-pr-a-backlog.mjs",
       "scripts/cora-s3-convergence.mjs",
       "tests/v5b-root-archive.test.mjs",
-      "tests/cora-s3-convergence.test.mjs"
+      "tests/cora-s3-convergence.test.mjs",
+      "scripts/c12-bootstrap-lattice-falsify.mjs",
+      "scripts/c14-chat-bootstrap-falsify.mjs",
+      "scripts/c15-flex-transfer-falsify.mjs",
+      "scripts/c16-runtime-availability-falsify.mjs",
+      "scripts/c19-fastboot-convergence-falsify.mjs",
+      "scripts/c31-runtime-limited-supply-chain-falsify.mjs",
+      "scripts/c6-enduser-falsify.mjs",
+      "scripts/project-session-select.mjs"
     ],
     "preexisting_v10_unregistered": [
       "contracts/repository-health-v10.json",

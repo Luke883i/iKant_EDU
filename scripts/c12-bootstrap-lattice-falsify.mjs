@@ -125,6 +125,6 @@ const sourceHash=crypto.createHash('sha256');
 for(const [name,url] of [['contracts/C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json',contractPath],['scripts/c12-bootstrap-lattice-falsify.mjs',selfPath]]){sourceHash.update(name);sourceHash.update('\0');sourceHash.update(fs.readFileSync(url));sourceHash.update('\0');}
 result.source_binding={algorithm:'sha256(path\\0bytes)',paths:['contracts/C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json','scripts/c12-bootstrap-lattice-falsify.mjs'],digest:sourceHash.digest('hex')};
 const raw=JSON.stringify(result);result.receipt_sha256=crypto.createHash('sha256').update(raw).digest('hex');
-const out=process.argv[2]||new URL('../artifacts/qualification/c12-bootstrap-lattice.json',import.meta.url);
-fs.mkdirSync(new URL('../artifacts/qualification/',import.meta.url),{recursive:true});fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n');
+const out=process.argv[2]||new URL('../tests/artifacts/qualification/c12-bootstrap-lattice.json',import.meta.url);
+fs.mkdirSync(new URL('../tests/artifacts/qualification/',import.meta.url),{recursive:true});fs.writeFileSync(out,JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify({status:baselineMismatch===0&&result.six_node_lattice.all_nodes_necessary?'PASS':'FAIL',cases:CASES,families:FAMILIES.length,baselineMismatch,good,allNodesNecessary:result.six_node_lattice.all_nodes_necessary,deletion:Object.fromEntries(STAGES.map(k=>[k,deletion[k].false_green])),receipt:result.receipt_sha256,out},null,2));

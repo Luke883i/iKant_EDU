@@ -34,7 +34,7 @@ const relative=(source,rel)=>path.posix.normalize(path.posix.join(path.posix.dir
 const importRe=/\b(?:from\s*|import\s*)['"](\.[^'"]+)['"]/g;
 function validateSources(){
  for(const p of allPaths){
-  if(!/^(?:README\.md|(?:host|src|contracts|assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(p)||p.includes('..'))
+  if(!/^(?:README\.md|(?:host|src|contracts|project\/assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(p)||p.includes('..'))
    throw Error('INVALID_BUNDLE_PATH:'+p);
   const b=read(p);
   const source=git('rev-parse','HEAD:'+p);

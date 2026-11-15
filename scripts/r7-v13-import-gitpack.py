@@ -48,7 +48,12 @@ def require(condition, label):
 def git(*args, input_bytes=None):
     p = subprocess.run(["git", *args], input=input_bytes, capture_output=True)
     if p.returncode:
-        raise RuntimeError("GIT_" + "_".join(args[:3]) + ":" + p.stderr.decode("utf-8", "replace")[:400])
+        full = (p.stdout + b"\n" + p.stderr).decode("utf-8", "replace")
+        lines = [x.strip() for x in full.splitlines() if x.strip()]
+        critical = [x for x in lines if any(key in x.lower() for key in
+                    ("rejected", "denied", "permission", "protected", "ruleset", "workflows", "not allowed"))]
+        reason = (critical[-1] if critical else (lines[-1] if lines else "GIT_ERROR_NO_STDOUT"))
+        raise RuntimeError("GIT_" + "_".join(args[:3]) + ":" + reason[:500])
     return p.stdout.decode("utf-8", "replace").strip()
 
 

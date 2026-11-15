@@ -172,7 +172,7 @@
     "addition_pins": {
       "project/docs/R7_PR249_FOUNDING_GUIDE.md": "94e6308a537dbe15a52b5853ab6c32a0d181f725",
       "scripts/r7-pr249-falsify.mjs": "ac26311df031be8e42120ecea96dff6388e240b4",
-      "scripts/r7-pr249-physical-gate.py": "deb65e411e104f84445803c4a1fe6e4f55fb1585",
+      "scripts/r7-pr249-physical-gate.py": "82dcf4a4fb371a66cdd3d99c113303f4a5c4e1cd",
       "tests/r7-pr249-founding-contract.test.mjs": "a6e9e1d959bf79ba20c6e919a88fcec92d3d9eb7",
       "tests/r7-pr249-physical-gate.test.mjs": "22b3c626b808685199b7543900e5fddd1471d93e"
     },
@@ -181,6 +181,11 @@
         "path": ".github/workflows/c53-physical-closure-hardening.yml",
         "original_sha": "e1881ad5f14dfd1de36fe1789754ca5f7d743a89",
         "prospective_sha": "f3ff7d7a7e5bdcbdb7baee75773fb8049e5acaf3"
+      },
+      {
+        "path": ".github/workflows/project-session-repo-first.yml",
+        "original_sha": "dce84ac2e76e38c4101e89b073860298190035a5",
+        "prospective_sha": "b5e79950bbf70b1725e1664740b7276376683e02"
       },
       {
         "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
@@ -195,12 +200,12 @@
       {
         "path": "scripts/cora-minimal-absorption.mjs",
         "original_sha": "ecb71877d6a5bafda7b4930dd642b94bbf65a31a",
-        "prospective_sha": "527f57ce5230a17bc3c9fb481e5fc82486e67a58"
+        "prospective_sha": "b00fcbee64be63a0272da70da1ec9d944caaad77"
       },
       {
         "path": "scripts/v5b-repository-governance-audit.mjs",
         "original_sha": "5fc3835ef529c86ef1d8fa8e0cff1e5e92415355",
-        "prospective_sha": "1819f93329c859018b3fe6c47c06f3a1abc3d544"
+        "prospective_sha": "b823bf2140cb7061f7c6f65a16d83eed1724a4d3"
       }
     ]
   }

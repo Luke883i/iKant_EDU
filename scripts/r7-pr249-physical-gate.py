@@ -91,6 +91,7 @@ def assess(repo, fixture=False):
         approved_mods = {r['path']:r for r in epoch.get('modified_originals', [])
                          if isinstance(r, dict) and isinstance(r.get('path'), str)}
         exact_mods = {'.github/workflows/c53-physical-closure-hardening.yml',
+                      '.github/workflows/project-session-repo-first.yml',
                       'scripts/cora-minimal-absorption.mjs',
                       'project/docs/IKANT_DOCUMENT_ATLAS.md',
                       'project/docs/START_HERE.md',

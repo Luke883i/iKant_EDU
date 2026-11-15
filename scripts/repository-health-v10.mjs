@@ -19,6 +19,15 @@ const patterns=Object.freeze([
  ['require',/\brequire\s*\(\s*['"]([.]{1,2}\/[^'"]+)['"]\s*\)/gu],
  ['url',/\bnew\s+URL\s*\(\s*['"]([.]{1,2}\/[^'"]+)['"]\s*,\s*import\.meta\.url\s*\)/gu]
 ]);
+const TRUSTED_BASELINE_TREE='4cff62ed12f79390a059784bcbf9770788a3a4d1';
+const LEGACY_LEDGER_SHA256='e78fc3a665ee926b69abcfb9d97301fa294e5ae3a6f75b876729a80caad27c28';
+const REQUIRED_OWNER_PATHS=Object.freeze([
+ 'host/c72-public-mode-admission.mjs','host/c135-edu-v2-owner.mjs',
+ 'host/c87-durable-ledger.mjs','host/c125-output-port.mjs',
+ 'src/session-shell.mjs','plugins/ikant-le-session-chat/server/server.mjs',
+ 'plugins/ikant-le-session-chat/plugin.json','project/session-chat/PROMPT.txt',
+ 'BOOTSTRAP.json'
+]);
 const h40=/^[a-f0-9]{40}$/u;
 const digest=b=>createHash('sha256').update(b).digest('hex');
 const blobSha=b=>createHash('sha1').update(Buffer.from(`blob ${b.length}\0`)).update(b).digest('hex');
@@ -90,10 +99,30 @@ export function newUnresolved(edges,baseline){
  }
  return unexpected;
 }
-function ownerCheck(rows){
+export function validateSourceContract(c){
+ const ownerKeys=Object.keys(c?.protected_owner_blobs||{});
+ return c?.schema==='ikant-v10-repository-health-minimal/v1'&&
+  c?.baseline_tree===TRUSTED_BASELINE_TREE&&
+  c?.baseline_main==='8cb80d2230919220ac4b7a1cfcd80950d8467848'&&
+  c?.normative_scope==='SOURCE_MAINTENANCE_ONLY_NOT_PRODUCT_GO'&&
+  c?.authority===0&&c?.product_go===false&&
+  c?.baseline_tracked_files===1626&&c?.existing_roots===15&&
+  c?.inherited_unresolved_count===32&&
+  Array.isArray(c?.inherited_unresolved_lexical_edges)&&
+  c.inherited_unresolved_lexical_edges.length===32&&
+  digest(JSON.stringify(c.inherited_unresolved_lexical_edges))===LEGACY_LEDGER_SHA256&&
+  JSON.stringify(ownerKeys)===JSON.stringify(REQUIRED_OWNER_PATHS)&&
+  REQUIRED_OWNER_PATHS.every(p=>h40.test(c.protected_owner_blobs[p]));
+}
+function ownerCheck(rows,rollback){
  const indexed=new Map(rows.map(x=>[x.path,x.sha]));
- const changed=Object.entries(SPEC.protected_owner_blobs).filter(([p,sha])=>indexed.get(p)!==sha).map(([p])=>p);
- return {ok:changed.length===0,protected_count:Object.keys(SPEC.protected_owner_blobs).length,changed};
+ const changed=[];
+ for(const p of REQUIRED_OWNER_PATHS){
+  let expected=null;
+  if(rollback.ancestor_commit)try{expected=git('rev-parse',rollback.ancestor_commit+':'+p).toString('utf8').trim();}catch{}
+  if(!h40.test(expected)||indexed.get(p)!==expected||SPEC.protected_owner_blobs[p]!==expected)changed.push(p);
+ }
+ return {ok:changed.length===0,protected_count:REQUIRED_OWNER_PATHS.length,changed};
 }
 function legibility(){
  const read=p=>fs.readFileSync(path.join(ROOT,p),'utf8');
@@ -148,14 +177,14 @@ export function proofOfMinimum(){
 }
 export function auditV10({runNative=false}={}){
  const rows=tracked(),gitBefore=inspectGitContent(rows),ids=rows.map(x=>x.path);
- const edges=scanLiteralRelative(ROOT,ids),unresolved=edges.filter(x=>!x.valid),fresh=newUnresolved(edges,SPEC.inherited_unresolved_lexical_edges),owner=ownerCheck(rows),docs=legibility(),rollback=rollbackCheck();
+ const edges=scanLiteralRelative(ROOT,ids),unresolved=edges.filter(x=>!x.valid),fresh=newUnresolved(edges,SPEC.inherited_unresolved_lexical_edges),rollback=rollbackCheck(),manifest_valid=validateSourceContract(SPEC),owner=ownerCheck(rows,rollback),docs=legibility();
  const native=scopedNative(runNative),gitAfter=inspectGitContent(tracked());
  const sameHeadAndTree=gitBefore.head===gitAfter.head&&gitBefore.tree===gitAfter.tree;
  const census=censusRepo(ROOT);
  const result=evaluateMinimalDoD({
   P:gitBefore.ok&&gitAfter.ok&&sameHeadAndTree,
-  I:fresh.length===0,
-  O:owner.ok,
+  I:manifest_valid&&fresh.length===0,
+  O:manifest_valid&&owner.ok,
   Q:runNative?native.ok:undefined,
   L:docs.ok,
   R:rollback.ok
@@ -167,7 +196,7 @@ export function auditV10({runNative=false}={}){
   original_commit_history_recovered:false,source_reconstruction_tree_verified:true,
   gate_results:result.gates,source_git:{...gitAfter},legacy_unresolved:unresolved.length,
   new_unresolved:fresh.map(x=>({source:x.source,kind:x.kind,specifier:x.specifier})),
-  import_lexical_edges:edges.length,owner,directories:15,docs,rollback,
+  import_lexical_edges:edges.length,contract_integrity:manifest_valid,owner,directories:15,docs,rollback,
   dynamic_census:{js_files_parsed:census.js_files_parsed,callsite_count:census.callsite_count,
    unknown_target_count:census.unknown_target_count,
    epistemic_status:census.epistemic_status},

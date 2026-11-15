@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {auditV10,evaluateMinimalDoD,proofOfMinimum,scanLiteralRelative,newUnresolved} from '../scripts/repository-health-v10.mjs';
+import {auditV10,evaluateMinimalDoD,proofOfMinimum,scanLiteralRelative,newUnresolved,validateSourceContract} from '../scripts/repository-health-v10.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const spec=JSON.parse(fs.readFileSync(path.join(root,'contracts/repository-health-v10.json'),'utf8'));
@@ -83,4 +83,17 @@ test('V10 kept source topology avoids demonstrated V9 host-import break',()=>{
  assert.equal(fs.existsSync(original),true);
  const moved=path.resolve(root,'src/host','../src/host-consumption-frame.mjs');
  assert.equal(fs.existsSync(moved),false);
+});
+
+test('V10 adversary: forged authority, owner pin or legacy exception cannot upgrade source health',()=>{
+ assert.equal(validateSourceContract(spec),true);
+ assert.equal(validateSourceContract({...spec,authority:1}),false);
+ assert.equal(validateSourceContract({...spec,product_go:true}),false);
+ assert.equal(validateSourceContract({...spec,baseline_tree:'f'.repeat(40)}),false);
+ assert.equal(validateSourceContract({...spec,protected_owner_blobs:{...spec.protected_owner_blobs,'BOOTSTRAP.json':'a'.repeat(40)}}),true);
+ // Source-contract shape alone cannot authenticate an owner: readback compares
+ // every owner pin with the independently reachable baseline Git tree.
+ const corrupted=JSON.parse(JSON.stringify(spec));
+ corrupted.inherited_unresolved_lexical_edges[0].specifier='./new-claimed-legacy.mjs';
+ assert.equal(validateSourceContract(corrupted),false);
 });

@@ -1,0 +1,247 @@
+{
+  "schema": "ikant-v10-repository-health-minimal/v1",
+  "normative_scope": "SOURCE_MAINTENANCE_ONLY_NOT_PRODUCT_GO",
+  "baseline_repository": "Luke883i/iKant_EDU",
+  "baseline_main": "8cb80d2230919220ac4b7a1cfcd80950d8467848",
+  "baseline_tree": "4cff62ed12f79390a059784bcbf9770788a3a4d1",
+  "external_consumers": "UNKNOWN_REVIEW_REQUIRED",
+  "provider_runtime": "NOT_ATTESTED",
+  "original_commit_history_from_zip": false,
+  "source_directory_optimization_not_required": true,
+  "existing_roots": 15,
+  "baseline_tracked_files": 1626,
+  "protected_owner_blobs": {
+    "host/c72-public-mode-admission.mjs": "f8f3713115137732fde380f02bfc0ec6874214f5",
+    "host/c135-edu-v2-owner.mjs": "e8bbe5741375e5d51f1caa02fdba2ecc5f6c049d",
+    "host/c87-durable-ledger.mjs": "9d4fd4038bd7e109bdbc5e0441f9e9acf497c846",
+    "host/c125-output-port.mjs": "14760e40051b2bbe0c3a2ebc9347e125fdd7d65a",
+    "src/session-shell.mjs": "4716ae32f867b0e5738a076fc452df62cce8e620",
+    "plugins/ikant-le-session-chat/server/server.mjs": "11b213451c39b4a317eef7201fdc22b11c9ef371",
+    "plugins/ikant-le-session-chat/plugin.json": "0e0defbc26616c3ddb01863700827ff92ce63c1b",
+    "project/session-chat/PROMPT.txt": "4c828707c1d3dff3bee91282ccaa83f1a2c4b286",
+    "BOOTSTRAP.json": "10cdd15c890b1d8ca071796babc4e5cc2d35efb8"
+  },
+  "inherited_unresolved_lexical_edges": [
+    {
+      "source": "host/c77-qualified-census.mjs",
+      "source_blob": "c5f6497f0f4a8a4529a82791cb30fb252f318fb7",
+      "kind": "url",
+      "specifier": "../contracts/c77-cx-build-proof.json"
+    },
+    {
+      "source": "scripts/c12-bootstrap-lattice-falsify.mjs",
+      "source_blob": "d08e7b7daf6c8acfd6a74157d3fef1a66485da2b",
+      "kind": "url",
+      "specifier": "../artifacts/qualification/c12-bootstrap-lattice.json"
+    },
+    {
+      "source": "scripts/c51-build-dod.mjs",
+      "source_blob": "4c037bbc5439d798ff95fed2ba1bec4725a6cca6",
+      "kind": "from",
+      "specifier": "./local-host-meta-prompt.mjs"
+    },
+    {
+      "source": "scripts/check.mjs",
+      "source_blob": "094b45fdc98f2201bd995aca82225b412952a1d9",
+      "kind": "from",
+      "specifier": "./state.mjs"
+    },
+    {
+      "source": "scripts/cora-s3-convergence.mjs",
+      "source_blob": "eb8ca2a6a3a77c51b9ddb18bdfdf41474bafa945",
+      "kind": "from",
+      "specifier": "./project-oneshell-edu.mjs"
+    },
+    {
+      "source": "scripts/cora-s3-convergence.mjs",
+      "source_blob": "eb8ca2a6a3a77c51b9ddb18bdfdf41474bafa945",
+      "kind": "from",
+      "specifier": "./c72-public-mode-admission.mjs"
+    },
+    {
+      "source": "scripts/cora-three-streams-audit.mjs",
+      "source_blob": "ccb3be891d72ff83c5473b00872d23219cfd7d9c",
+      "kind": "from",
+      "specifier": "./project-oneshell-edu.mjs"
+    },
+    {
+      "source": "scripts/cora-three-streams-audit.mjs",
+      "source_blob": "ccb3be891d72ff83c5473b00872d23219cfd7d9c",
+      "kind": "from",
+      "specifier": "./c72-public-mode-admission.mjs"
+    },
+    {
+      "source": "scripts/rename-internal-shadow.mjs",
+      "source_blob": "7ae0dab9bcd6a3b59fadb70c8b93e76bb4ec0aaa",
+      "kind": "from",
+      "specifier": "./src/first-contact.mjs"
+    },
+    {
+      "source": "tests/c141-prepr-contract.test.mjs",
+      "source_blob": "80d0a9a5289e28f563f1d528fd780acf97b07396",
+      "kind": "url",
+      "specifier": "../proposals/"
+    },
+    {
+      "source": "tests/c30-activation-service.test.mjs",
+      "source_blob": "e7eb7e2c3837224dc7b4b1f94c94355715aad602",
+      "kind": "from",
+      "specifier": "./state.mjs"
+    },
+    {
+      "source": "tests/cora-s3-convergence.test.mjs",
+      "source_blob": "1916ae7c3a0d16f3fa030aee314bd50121d5205b",
+      "kind": "from",
+      "specifier": "./project-oneshell-edu.mjs"
+    },
+    {
+      "source": "tests/cora-s3-convergence.test.mjs",
+      "source_blob": "1916ae7c3a0d16f3fa030aee314bd50121d5205b",
+      "kind": "from",
+      "specifier": "./c72-public-mode-admission.mjs"
+    },
+    {
+      "source": "tests/cora-three-streams-audit.test.mjs",
+      "source_blob": "56da3711b3270dc54d23a43834d57eefcfb7f8cf",
+      "kind": "from",
+      "specifier": "./project-oneshell-edu.mjs"
+    },
+    {
+      "source": "tests/cora-three-streams-audit.test.mjs",
+      "source_blob": "56da3711b3270dc54d23a43834d57eefcfb7f8cf",
+      "kind": "from",
+      "specifier": "./c72-public-mode-admission.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "source_blob": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "kind": "from",
+      "specifier": "./c72-unified-mode-admission.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "source_blob": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "kind": "from",
+      "specifier": "./c69-capability-first-preview.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "source_blob": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "kind": "from",
+      "specifier": "../src/c70-experimental-compute-preview.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "source_blob": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "kind": "from",
+      "specifier": "../src/c124-channel-bridge.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "source_blob": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "kind": "from",
+      "specifier": "./c100-cohost-experimental.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "source_blob": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "kind": "from",
+      "specifier": "./c87-durable-ledger.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "source_blob": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "kind": "url",
+      "specifier": "../README.md"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/c107-experimental-turn.mjs",
+      "source_blob": "76cd806dfd06fd4327cbc9c7dd4a92b80ce1e5f6",
+      "kind": "url",
+      "specifier": "../README.md"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "source_blob": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "kind": "from",
+      "specifier": "./edu-cohost-outcome.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "source_blob": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "kind": "from",
+      "specifier": "./c117-semantic-guidance.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "source_blob": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "kind": "from",
+      "specifier": "./c107-carrier-consumer.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "source_blob": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "kind": "from",
+      "specifier": "./c124-source-overlay.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "source_blob": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "kind": "from",
+      "specifier": "./edu-c126-channel-qualifier.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "source_blob": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "kind": "from",
+      "specifier": "./edu-v10-terminal-shell.mjs"
+    },
+    {
+      "source": "tests/fixtures/epochs/c134-epoch/overlays/host/edu-c70-method-v7.mjs",
+      "source_blob": "0a9bd9c4058effac611a49b898be6f06fd4beb94",
+      "kind": "from",
+      "specifier": "./edu-v8-release-policy.mjs"
+    },
+    {
+      "source": "tests/project-review-readiness.test.mjs",
+      "source_blob": "5fed0918552b17cf9d1f5c77b9463f8c59ce8399",
+      "kind": "dynamic",
+      "specifier": "./ok.mjs"
+    },
+    {
+      "source": "tests/r7-original-content-audit.test.mjs",
+      "source_blob": "a8d10d37297fc11f2c4c91b84668641ed2531c22",
+      "kind": "from",
+      "specifier": "./b.mjs"
+    }
+  ],
+  "inherited_unresolved_count": 32,
+  "census_methods": {
+    "relative_imports": "STATIC_LEXICAL_NOT_COMPLETE_DYNAMIC_GRAPH",
+    "dynamic_callsites": "EXISTING_PROJECT_REVIEW_CALLSITES_REUSED"
+  },
+  "six_minimal_gates": {
+    "P": "Git tree provenance and tracked content bytes",
+    "I": "No new unresolved literal relative import or file-url edge",
+    "O": "Original product owners and MCP plugin authority preserved",
+    "Q": "Actual native scoped smoke executed on candidate HEAD",
+    "L": "Canonical maintainer entrypoint and limitations documented",
+    "R": "Original source tree remains reachable as a rollback ancestor"
+  },
+  "not_required": [
+    "seven_root_topology",
+    "delete_mcp_or_host_owners",
+    "global_native_provider_runtime_equivalence",
+    "external_consumer_certification",
+    "all_257_original_R7_gates",
+    "independent_release_approval"
+  ],
+  "smoke_commands": [
+    "npm run runtime-root:verify",
+    "npm run check:mcp",
+    "npm run check",
+    "node --test tests/repository-health-v10.test.mjs"
+  ],
+  "authority": 0,
+  "product_go": false
+}

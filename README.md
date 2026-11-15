@@ -3,6 +3,8 @@
 
 # iKant — risposte guidate, infrastruttura cognitiva verificabile
 
+**Manutenzione V10 (source-only):** [guida minima per mantenere il repository](docs/REPOSITORY_HEALTH_V10.md) e `npm run maintain:verify`. Il target a sette root non e un requisito di salute: preservare prima i due prodotti e le verifiche originali.
+
 ## Inizia dal prodotto corretto
 
 **iKant_EDU** e un meta-controller sperimentale su LLM sostituibile. Il repository contiene **due superfici di prodotto separate** che riusano alcune primitive, senza condividere automaticamente consenso, sessione o autorita.

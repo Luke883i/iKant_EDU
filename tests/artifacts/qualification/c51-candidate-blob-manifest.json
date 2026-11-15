@@ -4,8 +4,8 @@
   "entries": [
     {
       "path": "contracts/supersystem-runtime-conformance-v1_1.json",
-      "bytes": 9781,
-      "sha256": "dfa84ad41d3dfc8cfc9d2cb87d36a8577b77623a9cf94972592feb66d0d4bff0"
+      "bytes": 9799,
+      "sha256": "bd9e2fdeed0f5d8bf1efa699dc6b89c4ea4d8bc98359093d37e684535b9c9013"
     },
     {
       "path": "src/supersystem-runtime-conformance.mjs",
@@ -24,18 +24,18 @@
     },
     {
       "path": "scripts/c51-supersystem-select-10m.mjs",
-      "bytes": 11728,
-      "sha256": "e48d6a2e89bb5dfb52365379372d61c7045b70389541348453a9e6858cd81fa0"
+      "bytes": 11734,
+      "sha256": "4d5e92670c0fb48861a68a16ef7699f4c10fe046de10cbfa580203149fc0bb63"
     },
     {
       "path": "scripts/c51-supersystem-falsify-1m.mjs",
-      "bytes": 12384,
-      "sha256": "468abc0e5bccf89f46d365475d229a41a10b95f7cb33aa510d8ae4eed065b20d"
+      "bytes": 12396,
+      "sha256": "5fae7239297baa2643f1775c9191b32423afda55ae8c42bced21eac4eb044991"
     },
     {
       "path": "scripts/c51-build-dod.mjs",
-      "bytes": 8287,
-      "sha256": "62e86751a4c044b784a5cecd735aca95f17ac6a0f93e559daec767b8f4c42b35"
+      "bytes": 8311,
+      "sha256": "386a6e7a457b1d093bf7313471cce3682122122e7b289250163ce590812aa284"
     },
     {
       "path": "tests/c51-supersystem-runtime-conformance.test.mjs",
@@ -44,12 +44,12 @@
     },
     {
       "path": ".github/workflows/c51-supersystem-runtime.yml",
-      "bytes": 1665,
-      "sha256": "4a45904415a20c3f78a5cb1080922611fd892e02d80046931b41c9c305da10d5"
+      "bytes": 1689,
+      "sha256": "a810ac9e3102d306d1872043e9d9a02f12979ac0d13886903af7a40b9372c457"
     }
   ],
   "content_addressed": true,
   "manifest_excludes_self": true,
   "authority": 0,
-  "receipt_sha256": "ff0f3ada22ced3997d7bffb26c90ad29eb5fd05699be322eb56ab9c7f64f1db5"
+  "receipt_sha256": "0092a928b853bc4f3879b8d72002248ccf626d598744e95a11469fe686908504"
 }

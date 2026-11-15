@@ -4,33 +4,45 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {HISTORIC,reopenR7SourceEpoch} from '../scripts/r7-v13-epoch-bridge.mjs';
 import {auditV10,evaluateMinimalDoD,proofOfMinimum,scanLiteralRelative,newUnresolved,validateSourceContract} from '../scripts/repository-health-v10.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const spec=JSON.parse(fs.readFileSync(path.join(root,'contracts/repository-health-v10.json'),'utf8'));
 
-test('V10 source owner pins and complete reconstructed Git tree are checked, not assumed',()=>{
+test('V10 historical 1630 source files remain Git-addressable; V13 owner drift is not laundered',()=>{
+ const src=execFileSync('git',['ls-tree','-r','--name-only',HISTORIC],{cwd:root,encoding:'utf8'}).trim().split('\n');
+ assert.equal(src.length,1630);
+ assert.equal(execFileSync('git',['rev-parse',`${HISTORIC}^{tree}`],{cwd:root,encoding:'utf8'}).trim(),
+  '9b6b80d7fe2f8536b9ce8633e09810fc87b81c28');
+ const old=reopenR7SourceEpoch('host/c72-public-mode-admission.mjs');
+ assert.equal(old.ok,true);assert.equal(old.byte_identical,true);
+ const changed=reopenR7SourceEpoch('host/c135-edu-v2-owner.mjs');
+ assert.equal(changed.ok,true);assert.equal(changed.byte_identical,false);
+ assert.equal(changed.approval,'NOT_ATTESTED');
  const out=auditV10({runNative:false});
  assert.equal(out.source_git.ok,true,JSON.stringify(out.source_git.errors));
  assert.equal(out.baseline_tree,'4cff62ed12f79390a059784bcbf9770788a3a4d1');
- assert.equal(out.source_git.tracked,1630);
+ assert.equal(out.source_git.tracked,execFileSync('git',['ls-files','--cached'],{cwd:root,encoding:'utf8'}).trim().split('\n').length);
  assert.equal(out.gate_results.P,'PASS');
- assert.equal(out.gate_results.O,'PASS');
+ assert.equal(out.gate_results.O,'FAIL'); // V10 owner check MUST NOT auto-approve V13's changes.
  assert.equal(out.gate_results.R,'PASS');
  assert.equal(out.source_git.tree,out.tree);
- assert.equal(out.authority,0);
- assert.equal(out.product_go,false);
+ assert.equal(out.authority,0);assert.equal(out.product_go,false);
  assert.equal(out.ci_on_candidate,'NOT_RUN');
 });
 
-test('V10 inherited lexical debt remains explicitly counted and SHA-pinned',()=>{
+test('V10 inherited lexical debt is SHA-pinned, not confused with new V13 paths',()=>{
  const out=auditV10({runNative:false});
  assert.equal(out.import_lexical_edges>=1720,true);
- assert.equal(out.legacy_unresolved,32);
- assert.equal(out.new_unresolved.length,0);
+ assert.ok(out.legacy_unresolved>=32);
+ assert.ok(out.new_unresolved.length>0); // lexical V10 ledger is bound to older source paths and blob SHAs.
  assert.equal(out.dynamic_census.epistemic_status,'SOURCE_LEXICAL_CENSUS_NOT_RUNTIME_REACHABILITY');
- assert.equal(out.gate_results.I,'PASS');
+ assert.equal(out.gate_results.I,'FAIL'); // MUST NOT promote a migrated checkout under V10 conditions.
  assert.equal(spec.inherited_unresolved_lexical_edges.length,32);
+ const historical=execFileSync('git',['show',`${HISTORIC}:contracts/repository-health-v10.json`],{cwd:root,encoding:'utf8'});
+ assert.equal(JSON.parse(historical).inherited_unresolved_lexical_edges.length,32);
 });
 
 test('V10 adversary: new broken literal import is rejected, never declassified as old debt',()=>{

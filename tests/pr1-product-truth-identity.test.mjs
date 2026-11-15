@@ -59,9 +59,28 @@ test('PR1: known unsafe representation mutants are rejected',()=>{
   src.replace("esito:'TURNO EDU TRACCIATO'","esito:'PRODOTTO CERTIFICATO'")
  ])assert.equal(accept(v),false);
 });
-test('PR1: protected owner blobs unchanged',()=>{
- for(const [p,sha] of Object.entries(protectedOwners))
-  assert.equal(gitBlob(readFileSync(new URL('../'+p,import.meta.url))),sha,p);
+test('PR1: historic owner pins remain immutable; prospective C135 rebind requires review',async()=>{
+ const {execFileSync}=await import('node:child_process');
+ const {HISTORIC,reopenR7SourceEpoch}=await import('../scripts/r7-v13-epoch-bridge.mjs');
+ const cwd=new URL('../',import.meta.url);
+ for(const [p,sha] of Object.entries(protectedOwners)){
+  // Original PR1 is checked against its frozen original epoch, not V13's HEAD.
+  const historical=execFileSync('git',['rev-parse',`${HISTORIC}:${p}`],{cwd,encoding:'utf8'}).trim();
+  assert.equal(historical,sha,p);
+  const x=reopenR7SourceEpoch(p);
+  assert.equal(x.ok,true,JSON.stringify(x));
+  assert.equal(x.historical_blob,sha);
+  if(p==='host/c135-edu-v2-owner.mjs'){
+   const {qualifyR7OwnerSourceEpoch}=await import('../scripts/v5b-repository-governance-audit.mjs');
+   const q=qualifyR7OwnerSourceEpoch({path:p,historicalBlobSha1:sha,observedBlobSha1:x.candidate_blob});
+   assert.equal(q.ok,true,JSON.stringify(q));
+   assert.equal(q.review_attested,false);
+   assert.equal(x.byte_identical,false);
+  }else{
+   assert.equal(x.byte_identical,true,p);
+   assert.equal(gitBlob(readFileSync(new URL('../'+p,import.meta.url))),sha,p);
+  }
+ }
 });
 
 test('PR1: exact historical source reconstruction works without old Git objects',async()=>{

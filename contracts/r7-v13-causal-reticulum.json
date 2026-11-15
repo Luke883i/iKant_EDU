@@ -29,7 +29,10 @@
       "scripts/cora-minimal-absorption.mjs",
       "scripts/cora-m2-owner-provider-metrics.mjs",
       "tests/cora-pr-f-qualification.test.mjs",
-      "tests/cora-pr-g-evidence-readback.test.mjs"
+      "tests/cora-pr-g-evidence-readback.test.mjs",
+      "tests/pr1-product-truth-identity.test.mjs",
+      "tests/pr3-root-audit.test.mjs",
+      "tests/repository-health-v10.test.mjs"
     ],
     "preexisting_v10_unregistered": [
       "contracts/repository-health-v10.json",

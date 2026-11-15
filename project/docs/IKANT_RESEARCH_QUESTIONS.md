@@ -51,4 +51,4 @@ Le sigle dei moduli citati più avanti (`C70`, `C114`, `C87`) sono [spiegate con
 2. **Tracciabilità:** stessa coppia input/modello con iKant e senza, registro di operazioni esterno, fallimenti di invio simulati e riapertura indipendente.
 3. **Utilità:** un pilot umano con misure predefinite; ampliare solo dopo verifica di campionamento, accuratezza dello scoring e limiti della privacy.
 
-**Decisione:** RQ1 qualifica la *prova tecnica*; RQ2 il *beneficio per l'essere umano*; RQ3 la *disciplina delle pretese ontologiche*. Nessuna delle tre, da sola, fonda uno status personale o un prodotto CANONICAL ACTIVE. [Torna al README](../README.md).
+**Decisione:** RQ1 qualifica la *prova tecnica*; RQ2 il *beneficio per l'essere umano*; RQ3 la *disciplina delle pretese ontologiche*. Nessuna delle tre, da sola, fonda uno status personale o un prodotto CANONICAL ACTIVE. [Torna al README](../../README.md).

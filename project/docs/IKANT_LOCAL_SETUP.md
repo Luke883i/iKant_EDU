@@ -35,7 +35,7 @@ npm run runtime-root:verify
 
 **Prima di eseguire** verifica che HEAD coincida con il commit intenzionalmente scelto e che non vi siano modifiche locali inattese; confronta eventuali manifest e blob Git. Se stai lavorando su un commit preciso, esegui un `git checkout` di quel commit prima dei test e riconosci che non sarà necessariamente il `main` attuale. Gli esiti riportano sempre il commit effettivamente eseguito.
 
-I test controllano il *repository*, non provano un LLM online, i benefici su utenti o una chiamata nativa ChatGPT. Per il collegamento EDU documentato: [`host/c135-edu-v2-owner.mjs`](../host/c135-edu-v2-owner.mjs), [`host/s02-edu-versioned-consumer.mjs`](../host/s02-edu-versioned-consumer.mjs), [specifica C135](C135_EDU_COGNITIVE_OWNER.md).
+I test controllano il *repository*, non provano un LLM online, i benefici su utenti o una chiamata nativa ChatGPT. Per il collegamento EDU documentato: [`host/c135-edu-v2-owner.mjs`](../../host/c135-edu-v2-owner.mjs), [`host/s02-edu-versioned-consumer.mjs`](../../host/s02-edu-versioned-consumer.mjs), [specifica C135](C135_EDU_COGNITIVE_OWNER.md).
 
 ## Percorso C — App MCP esterna, indipendente dal Project EDU
 

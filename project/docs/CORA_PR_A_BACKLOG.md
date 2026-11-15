@@ -89,6 +89,6 @@ participation in that game's runtime or product certification.
 
 [Common CORA candidate method](https://github.com/Luke883i/cora/blob/docs/readme-product-multichannel-pr47/docs/CONTINUOUS_DEVELOPMENT.md)
 does not supersede [iKant governance](GOVERNANCE.md) or
-[the original reticulum](../contracts/cora-reticular-hygiene-v1.json).
+[the original reticulum](../../contracts/cora-reticular-hygiene-v1.json).
 No existing workflow, original contract, host owner or code
 path is changed by this document-only slice.

@@ -18,7 +18,7 @@ Il denominatore rimane **64 DoD**, partizionati senza duplicazioni tra Setup (5)
 Project (sei obbligazioni), MCP (sei), qualità software e runtime (sette). Ogni dominio richiede prove distinte: test di owner Node non sono attestazioni provider; policy OAuth locale non è server SDK avviato; hash dei log non è autenticazione indipendente.
 
 ## DoD locale e politica di evidenza
-Il contratto [pr2-runtime-dod-of-dod](../contracts/pr2-runtime-dod-of-dod.v1.json) indirizza tutti i 19 DoD al test, owner e falsificatore. Le verifiche locali avranno:
+Il contratto [pr2-runtime-dod-of-dod](../../contracts/pr2-runtime-dod-of-dod.v1.json) indirizza tutti i 19 DoD al test, owner e falsificatore. Le verifiche locali avranno:
 1. `git rev-parse HEAD` e `HEAD^{tree}` letti dal checkout, nessuna etichetta autore dichiarata.
 2. Esecuzione di test Node degli owner originali con exit code, numeratore e denominatore TAP, stdout/stderr conservati e SHA-256 calcolati.
 3. Rilettura da file distinto del medesimo output, controllo digest e divieto di record mancanti o manomessi.

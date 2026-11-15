@@ -6,7 +6,7 @@
 Una risposta, prima di essere presentata, deve essere attribuibile alla fonte, all'autorizzazione, al percorso effettivamente eseguito e ai suoi limiti. Il fatto che sia registrata non significa che sia fattualmente vera.
 
 ## Globale
-I 64 DoD normalizzati hanno esattamente una responsabilità ciascuno, in cinque PR e un setup. Copertura di tracciabilità non equivale a chiusura; con 64 requisiti >=99% significa 64/64 PASS. Gli oracoli originali completi rimangono nel corpus R1; il [registro PR1](../contracts/pr1-64-coverage.v1.json) conserva denominatore, responsabilità, dipendenze e uno schema operativo di prova, non stati PASS. `PRODUCT_GO=false`.
+I 64 DoD normalizzati hanno esattamente una responsabilità ciascuno, in cinque PR e un setup. Copertura di tracciabilità non equivale a chiusura; con 64 requisiti >=99% significa 64/64 PASS. Gli oracoli originali completi rimangono nel corpus R1; il [registro PR1](../../contracts/pr1-64-coverage.v1.json) conserva denominatore, responsabilità, dipendenze e uno schema operativo di prova, non stati PASS. `PRODUCT_GO=false`.
 
 ## Intermedio: due superfici, una sola voce per turno
 - Project: bootstrap `ORIENTATION` → `I ACCEPT` → `EDU`, solo con consenso e owner realmente invocati.

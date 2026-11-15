@@ -25,7 +25,7 @@ Non si devono sommare **righe di codice, parametri del modello e sinapsi** come 
 | 4. Registrazione | Un solo writer originale C87, rilettura indipendente | Evento e digest coerenti, conteggio singolo, readback | Persistenza fra chat o runtime sempre attivo |
 | 5. Consegna | C125/owner e HOST; CANONICAL richiede anche C59 e identità nativa | Ricevuta originale nello scope reale della consegna | Che una consegna locale sia nativa ChatGPT |
 
-Ogni passaggio deve arrestarsi quando manca una precondizione. Il protocollo **non** autorizza writer paralleli, retry ciechi dopo un invio incerto, replay di ricevute storiche o falsi stati `ACTIVE`. Per la composizione canonica vedere [C59](C59_SINGLE_COMPOSITION_CHANNEL.md), per EDU [C135](C135_EDU_COGNITIVE_OWNER.md), per l'ammissione il file originale [`host/c72-public-mode-admission.mjs`](../host/c72-public-mode-admission.mjs).
+Ogni passaggio deve arrestarsi quando manca una precondizione. Il protocollo **non** autorizza writer paralleli, retry ciechi dopo un invio incerto, replay di ricevute storiche o falsi stati `ACTIVE`. Per la composizione canonica vedere [C59](C59_SINGLE_COMPOSITION_CHANNEL.md), per EDU [C135](C135_EDU_COGNITIVE_OWNER.md), per l'ammissione il file originale [`host/c72-public-mode-admission.mjs`](../../host/c72-public-mode-admission.mjs).
 
 ## I tre tipi da non confondere
 

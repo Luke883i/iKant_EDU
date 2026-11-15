@@ -45,7 +45,7 @@ C124/C126 -> PR119 -> original C87 -> C125 HOST shell; C127 is transport only.
 
 *Functional psyche*, *attention*, *workspace*, *self-world* and *memory* describe computational variables, recurrence and causal tests; they are not biological neuronal tissue, neurotransmission, living embodiment, first-person memory or moral personality. Any neuroscience analogy must name a measured function, the human/LLM/iKant comparison, a negative control and a falsifier. No software receipt decides the phenomenal-consciousness question.
 
-[Top-level overview](../README.md) · [Research questions](IKANT_RESEARCH_QUESTIONS.md).
+[Top-level overview](../../README.md) · [Research questions](IKANT_RESEARCH_QUESTIONS.md).
 
 ## Modello cognitivo *deterministico*: quale parte lo è?
 

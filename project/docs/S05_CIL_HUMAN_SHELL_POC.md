@@ -57,4 +57,4 @@ La CLI mostra sei intestazioni con glifi accessibili e `NO_VOICE`, perché non h
 
 **Ambito prossimo:** prima di estendere la UI, la riflessione 2/3 selezionerà 10.000 perturbazioni distribuite fra voce originale, eventuale doppio writer, tipo di ricezione, evidenze, routing dei sei slot, leggibilità, injection e assenza delle feature CIL; confronterà i falsi positivi con un oracolo indipendente. Non sostituire questi casi sintetici con test reali di persone.
 
-[Canone originario a sei slide](../project/oneshell-v7/03_SLIDES.md) · [Slide EDU storica](../project/edu-oneshell/SLIDE.md) · [Contratto S03](../contracts/s03-host-slides.json).
+[Canone originario a sei slide](../oneshell-v7/03_SLIDES.md) · [Slide EDU storica](../edu-oneshell/SLIDE.md) · [Contratto S03](../../contracts/s03-host-slides.json).

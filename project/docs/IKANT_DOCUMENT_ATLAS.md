@@ -6,7 +6,7 @@
 
 ## L0 — Ingresso
 
-- [README.md](../README.md): Orientamento. Stato di review: **da verificare**.
+- [README.md](../../README.md): Orientamento. Stato di review: **da verificare**.
 
 ## L1 — Guide
 
@@ -17,8 +17,8 @@
 
 ## L2 — Modelli e regole
 
-- [AGENTS.md](../AGENTS.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
-- [TERMS.md](../TERMS.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
+- [AGENTS.md](../../AGENTS.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
+- [TERMS.md](../../TERMS.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
 - [project/docs/ARCHITECTURE.md](ARCHITECTURE.md): Modelli e prove. Stato di review: **da verificare**.
 - [project/docs/GOVERNANCE.md](GOVERNANCE.md): Modelli e prove. Stato di review: **da verificare**.
 - [project/docs/IKANT_COGNITIVE_SUBSTRATE.md](IKANT_COGNITIVE_SUBSTRATE.md): Modelli e prove. Stato di review: **da verificare**.
@@ -31,8 +31,8 @@
 - [project/docs/IKANT_RESEARCH_QUESTIONS.md](IKANT_RESEARCH_QUESTIONS.md): Modelli e prove. Stato di review: **da verificare**.
 - [project/docs/IKANT_RUNTIME_AND_EVIDENCE.md](IKANT_RUNTIME_AND_EVIDENCE.md): Modelli e prove. Stato di review: **da verificare**.
 - [project/docs/IKANT_SEMANTIC_RETICULUM.md](IKANT_SEMANTIC_RETICULUM.md): Modelli e prove. Stato di review: **da verificare**.
-- [project/docs/iKant_UI_shell.md](../iKant_UI_shell.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
-- [project/docs/stile_comunicativo.md](../stile_comunicativo.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
+- [project/docs/iKant_UI_shell.md](iKant_UI_shell.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
+- [project/docs/stile_comunicativo.md](stile_comunicativo.md): Regole e descrizioni di radice. Stato di review: **da verificare**.
 
 ## L3 — Approfondimenti e prove
 
@@ -210,28 +210,28 @@
 
 ## L4 — Storico e integrazioni
 
-- [project/docs/BOOTSTRAP.md](../BOOTSTRAP.md): Storico. Stato di review: **da verificare**.
+- [project/docs/BOOTSTRAP.md](BOOTSTRAP.md): Storico. Stato di review: **da verificare**.
 - [project/docs/archive/prepr/README_C94_PREPR.md](archive/prepr/README_C94_PREPR.md): Storico. Stato di review: **da verificare**.
 - [project/docs/archive/prepr/README_C96_PREPR.md](archive/prepr/README_C96_PREPR.md): Storico. Stato di review: **da verificare**.
 - [project/docs/archive/prepr/README_C98_PREPR.md](archive/prepr/README_C98_PREPR.md): Storico. Stato di review: **da verificare**.
 - [project/plugins/ikant-le-session-chat/README.md](../plugins/ikant-le-session-chat/README.md): Integrazione e plugin. Stato di review: **da verificare**.
-- [project/baseline/INSTALL_EASY.md](../project-baseline/INSTALL_EASY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/baseline/PROJECT_FILES/iKant_ENGINE.md](../project-baseline/PROJECT_FILES/iKant_ENGINE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/baseline/PROJECT_FILES/iKant_GATE.md](../project-baseline/PROJECT_FILES/iKant_GATE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/baseline/PROJECT_FILES/iKant_UI_shell.md](../project-baseline/PROJECT_FILES/iKant_UI_shell.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/EDU_HOST_PROJECT_DELTA_V19.md](../project/EDU_HOST_PROJECT_DELTA_V19.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/edu-oneshell/00_HOST_CONTRACT.md](../project/edu-oneshell/00_HOST_CONTRACT.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/edu-oneshell/DOD.md](../project/edu-oneshell/DOD.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/edu-oneshell/SLIDE.md](../project/edu-oneshell/SLIDE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/00_README.md](../project/oneshell-v7/00_README.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/01_PHASES.md](../project/oneshell-v7/01_PHASES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/02_PROOFS.md](../project/oneshell-v7/02_PROOFS.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/03_SLIDES.md](../project/oneshell-v7/03_SLIDES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/04_FILLER.md](../project/oneshell-v7/04_FILLER.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/05_ANNEX.md](../project/oneshell-v7/05_ANNEX.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/06_PLUGIN.md](../project/oneshell-v7/06_PLUGIN.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/07_ROADMAP.md](../project/oneshell-v7/07_ROADMAP.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/08_RELEASE_BOUNDARY.md](../project/oneshell-v7/08_RELEASE_BOUNDARY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/09_ADAPTER_RECIPES.md](../project/oneshell-v7/09_ADAPTER_RECIPES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
-- [project/oneshell-v7/10_MVP_DO_D.md](../project/oneshell-v7/10_MVP_DO_D.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/baseline/INSTALL_EASY.md](../baseline/INSTALL_EASY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/baseline/PROJECT_FILES/iKant_ENGINE.md](../baseline/PROJECT_FILES/iKant_ENGINE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/baseline/PROJECT_FILES/iKant_GATE.md](../baseline/PROJECT_FILES/iKant_GATE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/baseline/PROJECT_FILES/iKant_UI_shell.md](../baseline/PROJECT_FILES/iKant_UI_shell.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/EDU_HOST_PROJECT_DELTA_V19.md](../EDU_HOST_PROJECT_DELTA_V19.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/edu-oneshell/00_HOST_CONTRACT.md](../edu-oneshell/00_HOST_CONTRACT.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/edu-oneshell/DOD.md](../edu-oneshell/DOD.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/edu-oneshell/SLIDE.md](../edu-oneshell/SLIDE.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/00_README.md](../oneshell-v7/00_README.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/01_PHASES.md](../oneshell-v7/01_PHASES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/02_PROOFS.md](../oneshell-v7/02_PROOFS.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/03_SLIDES.md](../oneshell-v7/03_SLIDES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/04_FILLER.md](../oneshell-v7/04_FILLER.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/05_ANNEX.md](../oneshell-v7/05_ANNEX.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/06_PLUGIN.md](../oneshell-v7/06_PLUGIN.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/07_ROADMAP.md](../oneshell-v7/07_ROADMAP.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/08_RELEASE_BOUNDARY.md](../oneshell-v7/08_RELEASE_BOUNDARY.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/09_ADAPTER_RECIPES.md](../oneshell-v7/09_ADAPTER_RECIPES.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
+- [project/oneshell-v7/10_MVP_DO_D.md](../oneshell-v7/10_MVP_DO_D.md): Materiale Project e compatibilità. Stato di review: **da verificare**.
 

@@ -4,7 +4,7 @@
 
 ## Starting point: an understandable standalone README
 
-The root [README](../README.md) answers **1) nature, 2) ratio, 3) objectives, 4) methods/instruments** without requiring another file. It introduces the human, the LLM, iKant as procedural cognitive infrastructure, and the HOST as a distinct executor/presenter. It explains C4 functional appraisal, C5 recurrent self/world, C8/C11 epistemic limits, C72 admission, C87 single writer, C125 delivery and C59 native identity. Neuroscience terms are analogies of *functions*, never claims of neuronal homology, biological equivalence or first-person experience.
+The root [README](../../README.md) answers **1) nature, 2) ratio, 3) objectives, 4) methods/instruments** without requiring another file. It introduces the human, the LLM, iKant as procedural cognitive infrastructure, and the HOST as a distinct executor/presenter. It explains C4 functional appraisal, C5 recurrent self/world, C8/C11 epistemic limits, C72 admission, C87 single writer, C125 delivery and C59 native identity. Neuroscience terms are analogies of *functions*, never claims of neuronal homology, biological equivalence or first-person experience.
 
 For the scientific-humanistic bridge across human cognition, the private parent design and the bounded LE implementation, use [neuroscience, diagrams and falsifiers](IKANT_NEUROCOGNITIVE_BRIDGE.md). The parent repository is access-restricted; its conceptual lineage cannot be promoted to LE runtime evidence.
 

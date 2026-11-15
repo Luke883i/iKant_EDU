@@ -91,4 +91,4 @@ La letteratura sostiene la disciplina del confronto, **non** l'assimilazione: la
 
 > **iKant non è un cervello digitale: è un tentativo di rendere più controllabile il lavoro di un'intelligenza linguistica.** Il modello formula una risposta; il software può controllare in che modo venga preparata, autorizzata, registrata e consegnata. Il valore sta nelle prove e nei limiti dichiarati, non nell'attribuirgli una coscienza o un'identità umana.
 
-Prossime letture: [README](../README.md) → [storia e distillazione](IKANT_DEVELOPMENT_HISTORY.md) → [substrato LE](IKANT_COGNITIVE_SUBSTRATE.md) → [RQ e confutazione](IKANT_RESEARCH_QUESTIONS.md).
+Prossime letture: [README](../../README.md) → [storia e distillazione](IKANT_DEVELOPMENT_HISTORY.md) → [substrato LE](IKANT_COGNITIVE_SUBSTRATE.md) → [RQ e confutazione](IKANT_RESEARCH_QUESTIONS.md).

@@ -1,0 +1,48 @@
+name: R7 PR249 seven-root source and native assurance
+on:
+  pull_request:
+  push:
+    branches:
+      - refactor/r7-v13-semantic-transplant-gated-20261115
+permissions:
+  contents: read
+jobs:
+  source-and-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout complete original and V13 Git history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exact first-parent, 7 root, 9 files and source preservation
+        run: |
+          python3 scripts/r7-pr249-physical-gate.py --output "$RUNNER_TEMP/r7-source-gate.json"
+      - name: Founder contract and adversarial unit checks
+        run: |
+          node --test tests/r7-pr249-founding-contract.test.mjs tests/r7-pr249-physical-gate.test.mjs
+      - name: One million deterministic bounded semantic mutants
+        run: |
+          node scripts/r7-pr249-falsify.mjs --cases 1000000 --seed 249202611 --output "$RUNNER_TEMP/r7-seeded-million.json"
+      - name: Original Project EDU and MCP smoke and contracts
+        run: |
+          npm run runtime-root:verify
+          npm run check:mcp
+          npm run check
+          npm run qualify:project-session
+          npm run qualify:v1:product
+      - name: Complete native regression suite on this same HEAD
+        run: npm test
+      - name: Preserve source and mutation receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: r7-pr249-evidence-${{ github.sha }}
+          path: |
+            ${{ runner.temp }}/r7-source-gate.json
+            ${{ runner.temp }}/r7-seeded-million.json
+          if-no-files-found: ignore

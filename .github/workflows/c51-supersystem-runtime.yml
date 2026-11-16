@@ -26,7 +26,18 @@ jobs:
       - name: Rebuild granular DoD and content-addressed candidate manifest
         run: node scripts/c51-build-dod.mjs
       - name: Qualification artifacts are exact committed bytes
+        id: c51_receipts
+        shell: bash
         run: |
-          git diff --exit-code -- tests/artifacts/qualification/c51-supersystem-selection-10m.json tests/artifacts/qualification/c51-supersystem-falsification-1m.json tests/artifacts/qualification/c51-supersystem-dod.json tests/artifacts/qualification/c51-candidate-blob-manifest.json
+          set +e
+          git diff --exit-code -- tests/artifacts/qualification/c51-supersystem-selection-10m.json tests/artifacts/qualification/c51-supersystem-falsification-1m.json tests/artifacts/qualification/c51-supersystem-dod.json tests/artifacts/qualification/c51-candidate-blob-manifest.json > "$RUNNER_TEMP/c51-receipts.diff"
+          status=$?
+          cat "$RUNNER_TEMP/c51-receipts.diff" | head -n 100
+          changed=$(git diff --name-only -- tests/artifacts/qualification/c51-supersystem-selection-10m.json tests/artifacts/qualification/c51-supersystem-falsification-1m.json tests/artifacts/qualification/c51-supersystem-dod.json tests/artifacts/qualification/c51-candidate-blob-manifest.json | sed 's#tests/artifacts/qualification/##g' | paste -sd ',' - | cut -c 1-160)
+          echo "changed=${changed:-NONE}" >> "$GITHUB_OUTPUT"
+          exit "$status"
+      - name: "C51 generated-byte drift: ${{ steps.c51_receipts.outputs.changed }}"
+        if: ${{ failure() }}
+        run: exit 1
       - name: Syntax
         run: node --check src/supersystem-runtime-conformance.mjs && node --check scripts/c51-supersystem-select-10m.mjs && node --check scripts/c51-supersystem-falsify-1m.mjs && node --check scripts/c51-build-dod.mjs

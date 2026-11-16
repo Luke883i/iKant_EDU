@@ -337,7 +337,7 @@ function r7Pr249CheckoutPatch(s){
  }
  return out.join("\n");
 }
-const PR249_RECEIPT_PINS=[["tests/artifacts/qualification/c51-candidate-blob-manifest.json","0f11d508b274242fc82900415caa56a893efa94b"],["tests/artifacts/qualification/c51-supersystem-dod.json","090aa9f6fecde747f6a9b60af45fa7cba73496d3"],["tests/artifacts/qualification/c52-candidate-blob-manifest.json","c148208a24bb3d8b7e1152248db2afd75e5060ce"],["tests/artifacts/qualification/c52-runtime-physical-closure-dod.json","0c0f777063c10412f287e171bad2e8357c8cf19a"]];
+const PR249_RECEIPT_PINS=[["tests/artifacts/qualification/c51-candidate-blob-manifest.json","ccc58dce94f330c055505b7da45838b192438378"],["tests/artifacts/qualification/c51-supersystem-dod.json","fc0b58e7f0354d38cbf6c98add5e89ab4a1edd84"],["tests/artifacts/qualification/c52-candidate-blob-manifest.json","52fece4861cb512d5722c0f651c30be539dcb0b4"],["tests/artifacts/qualification/c52-runtime-physical-closure-dod.json","5d28731c3e29b6bd47ddb1cc6b9fae94b7f6a04d"]];
 function qualifyPr249CheckoutRepairEpoch(){
  const fail=edge=>({ok:false,edge,authority:0,product_go:false});
  try{
@@ -352,8 +352,13 @@ function qualifyPr249CheckoutRepairEpoch(){
   for(const p of PR249_CHECKOUT_WORKFLOWS){
    const before=git('show',PR249_CHECKOUT_ANCHOR+':'+p);
    const after=git('show','HEAD:'+p);
-   if(p==='.github/workflows/mcp-standalone-assurance.yml'&&
-      git('rev-parse','HEAD:'+p)==='1e40996bbdb9c0ea7d58bb463f71f7583abe43ef')continue;
+   const diagnosticWorkflowPins={
+    '.github/workflows/mcp-standalone-assurance.yml':'1e40996bbdb9c0ea7d58bb463f71f7583abe43ef',
+    '.github/workflows/c51-supersystem-runtime.yml':'6fa70ca22845afc8cd9af47ab11f6d9ddab5e0fd',
+    '.github/workflows/readme-compat-diagnostics.yml':'fc7f4b63a417de7f5cf6a16ee4cc357b69ac4ff8'
+   };
+   if(Object.hasOwn(diagnosticWorkflowPins,p)&&
+      git('rev-parse','HEAD:'+p)===diagnosticWorkflowPins[p])continue;
    if(after!==r7Pr249CheckoutPatch(before)||after===before)
     return fail('PR249_CHECKOUT_UNEXPECTED_DELTA:'+p);
   }

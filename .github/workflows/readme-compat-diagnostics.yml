@@ -17,6 +17,24 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Read-only V5-B source diagnosis
+        id: v5b_diag
+        shell: bash
+        run: |
+          node --input-type=module - <<'NODE' > "$RUNNER_TEMP/v5b-diagnostic.json"
+          import {auditRepository} from './scripts/v5b-repository-governance-audit.mjs';
+          try {
+            const a=auditRepository();
+            console.log(JSON.stringify({status:a.status,errors:a.errors.slice(0,8),projection:a.source_epoch_projection?.edge||a.source_epoch_projection?.status}));
+          } catch (error) {
+            console.log(JSON.stringify({status:'DIAGNOSTIC_EXCEPTION',errors:[String(error).slice(0,180)],projection:null}));
+          }
+          NODE
+          cat "$RUNNER_TEMP/v5b-diagnostic.json"
+          edge=$(node -e 'const x=require(process.argv[1]);console.log((x.errors[0]||x.projection||x.status||"UNKNOWN").replace(/[^a-zA-Z0-9_:.+-]/g,"_").slice(0,130))' "$RUNNER_TEMP/v5b-diagnostic.json")
+          echo "edge=$edge" >> "$GITHUB_OUTPUT"
+      - name: "V5-B source observation: ${{ steps.v5b_diag.outputs.edge }}"
+        run: echo "Observation only; original gates remain required"
       - name: Original contract inspect
         id: check
         shell: bash

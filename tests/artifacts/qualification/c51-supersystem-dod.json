@@ -109,12 +109,12 @@
       "id": "D18",
       "claim": "candidate implementation/test surface is content-addressed",
       "status": "PASS_REPOSITORY",
-      "evidence": "e14540a6b8884d9531513bfa18907eb50f36f3fdbe34f3531a3983baa3018aa2"
+      "evidence": "16c598d3d693cc6e133394f198c118c414b589a73561c6214fbc2c977d71368a"
     }
   ],
   "selection_receipt_sha256": "dc1995526ccefb48b8eb17959cc35686bc3af77f3a723d03aa02aa19f21ad8ab",
   "falsification_receipt_sha256": "bda1979a1b7b1f80715ef2e5221a0fd8dbf55f5e9df25c038e1362262561a370",
-  "candidate_manifest_receipt_sha256": "e14540a6b8884d9531513bfa18907eb50f36f3fdbe34f3531a3983baa3018aa2",
+  "candidate_manifest_receipt_sha256": "16c598d3d693cc6e133394f198c118c414b589a73561c6214fbc2c977d71368a",
   "claim_boundary": {
     "repository_runtime_conformance_closed": true,
     "physical_host_bootstrap_binding_proven": false,
@@ -125,5 +125,5 @@
     "post_merge_main_ci_required": true
   },
   "authority": 0,
-  "receipt_sha256": "c777007e571c13ccfd2cde4019ff431f50453e6554007252c8cd85b695c19f49"
+  "receipt_sha256": "bf0473e82c885b4275e1218c569791b3a2a437c5f2de53dd3a57a3fc4e3eddb1"
 }

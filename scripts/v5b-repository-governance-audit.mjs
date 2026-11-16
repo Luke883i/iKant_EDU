@@ -337,7 +337,7 @@ function r7Pr249CheckoutPatch(s){
  }
  return out.join("\n");
 }
-const PR249_RECEIPT_PINS=[["tests/artifacts/qualification/c51-candidate-blob-manifest.json","ccc58dce94f330c055505b7da45838b192438378"],["tests/artifacts/qualification/c51-supersystem-dod.json","fc0b58e7f0354d38cbf6c98add5e89ab4a1edd84"],["tests/artifacts/qualification/c52-candidate-blob-manifest.json","52fece4861cb512d5722c0f651c30be539dcb0b4"],["tests/artifacts/qualification/c52-runtime-physical-closure-dod.json","5d28731c3e29b6bd47ddb1cc6b9fae94b7f6a04d"]];
+const PR249_RECEIPT_PINS=[["tests/artifacts/qualification/c51-candidate-blob-manifest.json","67702467555310924c24dc61b23ed2c9c740ecfe"],["tests/artifacts/qualification/c51-supersystem-dod.json","9b213327f3640c506bd2a87718f0c21dee05fa2f"],["tests/artifacts/qualification/c52-candidate-blob-manifest.json","a0f7a5a05d424684bf0e6837e4528a072cdfe959"],["tests/artifacts/qualification/c52-runtime-physical-closure-dod.json","29a0e9a9c8dd4fde853a490a3dae77f6c644291d"]];
 function qualifyPr249CheckoutRepairEpoch(){
  const fail=edge=>({ok:false,edge,authority:0,product_go:false});
  try{
@@ -354,7 +354,7 @@ function qualifyPr249CheckoutRepairEpoch(){
    const after=git('show','HEAD:'+p);
    const diagnosticWorkflowPins={
     '.github/workflows/mcp-standalone-assurance.yml':'1e40996bbdb9c0ea7d58bb463f71f7583abe43ef',
-    '.github/workflows/c51-supersystem-runtime.yml':'6fa70ca22845afc8cd9af47ab11f6d9ddab5e0fd',
+    '.github/workflows/c51-supersystem-runtime.yml':'95f1a26ea21d279e71db3677534828d6dd3c9594',
     '.github/workflows/readme-compat-diagnostics.yml':'fc7f4b63a417de7f5cf6a16ee4cc357b69ac4ff8'
    };
    if(Object.hasOwn(diagnosticWorkflowPins,p)&&

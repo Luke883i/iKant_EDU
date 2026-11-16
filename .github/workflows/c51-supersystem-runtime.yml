@@ -35,9 +35,61 @@ jobs:
           cat "$RUNNER_TEMP/c51-receipts.diff" | head -n 100
           changed=$(git diff --name-only -- tests/artifacts/qualification/c51-supersystem-selection-10m.json tests/artifacts/qualification/c51-supersystem-falsification-1m.json tests/artifacts/qualification/c51-supersystem-dod.json tests/artifacts/qualification/c51-candidate-blob-manifest.json | sed 's#tests/artifacts/qualification/##g' | paste -sd ',' - | cut -c 1-160)
           echo "changed=${changed:-NONE}" >> "$GITHUB_OUTPUT"
+          node --input-type=module - <<'NODE' >> "$GITHUB_OUTPUT"
+          import fs from 'node:fs';
+          import {execFileSync} from 'node:child_process';
+          import {deflateRawSync} from 'node:zlib';
+          const items={
+            selection:'tests/artifacts/qualification/c51-supersystem-selection-10m.json',
+            falsification:'tests/artifacts/qualification/c51-supersystem-falsification-1m.json',
+            dod:'tests/artifacts/qualification/c51-supersystem-dod.json'
+          };
+          const delta={};
+          for(const [name,p] of Object.entries(items)){
+            const old=JSON.parse(execFileSync('git',['show','HEAD:'+p],{encoding:'utf8'}));
+            const current=JSON.parse(fs.readFileSync(p,'utf8'));
+            delta[name]=Object.fromEntries([...new Set([...Object.keys(old),...Object.keys(current)])].filter(k=>JSON.stringify(old[k])!==JSON.stringify(current[k])).map(k=>[k,current[k]]));
+          }
+          const encoded=deflateRawSync(Buffer.from(JSON.stringify(delta))).toString('base64url');
+          console.log('total='+encoded.length);
+          for(let i=0;i<10;i++)console.log('fragment_'+i+'='+encoded.slice(i*190,(i+1)*190));
+          NODE
           exit "$status"
       - name: "C51 generated-byte drift: ${{ steps.c51_receipts.outputs.changed }}"
         if: ${{ failure() }}
         run: exit 1
+      - name: "C51 delta encoding size: ${{ steps.c51_receipts.outputs.total }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 0: ${{ steps.c51_receipts.outputs.fragment_0 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 1: ${{ steps.c51_receipts.outputs.fragment_1 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 2: ${{ steps.c51_receipts.outputs.fragment_2 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 3: ${{ steps.c51_receipts.outputs.fragment_3 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 4: ${{ steps.c51_receipts.outputs.fragment_4 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 5: ${{ steps.c51_receipts.outputs.fragment_5 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 6: ${{ steps.c51_receipts.outputs.fragment_6 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 7: ${{ steps.c51_receipts.outputs.fragment_7 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 8: ${{ steps.c51_receipts.outputs.fragment_8 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
+      - name: "C51 delta fragment 9: ${{ steps.c51_receipts.outputs.fragment_9 }}"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only"
       - name: Syntax
         run: node --check src/supersystem-runtime-conformance.mjs && node --check scripts/c51-supersystem-select-10m.mjs && node --check scripts/c51-supersystem-falsify-1m.mjs && node --check scripts/c51-build-dod.mjs

@@ -66,7 +66,7 @@ function sourceVerified(sourceRoot,selection,sourceBinding=null){
   // sources and may change in CI between select/falsify steps and npm test.
   // Other tracked modifications still fail closed before package materialization.
   const changed=g(['diff','--name-only','-z','HEAD']).split('\0').filter(Boolean);
-  if(changed.some(p=>!/^artifacts\/qualification\/[A-Za-z0-9_.-]+\.json$/.test(p)))return null;
+  if(changed.some(p=>!/^(?:artifacts|tests\/artifacts)\/qualification\/[A-Za-z0-9_.-]+\.json$/.test(p)))return null;
   return {head,tree};
  }catch{return null}
 }

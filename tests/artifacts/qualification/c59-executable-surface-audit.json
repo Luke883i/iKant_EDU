@@ -1,0 +1,43 @@
+{
+  "schema": "ikant-le-c59-executable-surface-audit/v1",
+  "production_files": 57,
+  "activation_related_files": 25,
+  "activation_related_file_set": [
+    "ikant.mjs",
+    "project/plugins/ikant-le-session-chat/server/server.mjs",
+    "scripts/session-chat-runtime-cli.mjs",
+    "src/bootstrap-intent-adapter.mjs",
+    "src/bootstrap-semantic.mjs",
+    "src/c136-canonical-recovery.mjs",
+    "src/cohost-context-root.mjs",
+    "src/contract.mjs",
+    "src/control-plane-ownership.mjs",
+    "src/fastboot-convergence.mjs",
+    "src/first-contact.mjs",
+    "src/host-consumption-frame.mjs",
+    "src/local-host-meta-prompt.mjs",
+    "src/runtime-availability.mjs",
+    "src/runtime-command.mjs",
+    "src/runtime-core.mjs",
+    "src/runtime-limited-capability.mjs",
+    "src/runtime-limited-turn.mjs",
+    "src/runtime-root-verified.mjs",
+    "src/semantic-morphogenesis.mjs",
+    "src/session-chat-composition.mjs",
+    "src/session-chat-deployment.mjs",
+    "src/session-chat-local-prompt.mjs",
+    "src/session-local-service.mjs",
+    "src/session-shell.mjs"
+  ],
+  "canonical_active_issuer_count": 1,
+  "canonical_active_issuer": "src/runtime-command.mjs#runCanonicalSessionChat",
+  "runtime_root_enforcement_members": [
+    "src/bootstrap-semantic.mjs",
+    "src/runtime-command.mjs",
+    "src/runtime.mjs",
+    "src/state.mjs"
+  ],
+  "errors": [],
+  "status": "PASS",
+  "receipt_sha256": "781a172692b163ab40e67d41e5ef282f15e8fb70d53fc9c1f01fa789566d03ad"
+}

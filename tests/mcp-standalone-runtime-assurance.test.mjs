@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import {mkdtempSync,writeFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-import {validateStandaloneProfile,evaluateRequestEnvelope,MAX_INPUT_BYTES} from '../plugins/ikant-le-session-chat/server/mcp-standalone-policy.mjs';
-import {invokeRuntime} from '../plugins/ikant-le-session-chat/server/runtime-limits.mjs';
+import {validateStandaloneProfile,evaluateRequestEnvelope,MAX_INPUT_BYTES} from '../project/plugins/ikant-le-session-chat/server/mcp-standalone-policy.mjs';
+import {invokeRuntime} from '../project/plugins/ikant-le-session-chat/server/runtime-limits.mjs';
 import {semanticMatrix} from '../scripts/mcp-standalone-semantic-10k.mjs';
 const good={IKANT_MCP_DEPLOYMENT_PROFILE:'standalone',IKANT_MCP_AUTH_MODE:'oauth',
  IKANT_MCP_OAUTH_RESOURCE:'https://example.org/mcp',IKANT_MCP_OAUTH_ISSUER:'https://issuer.example/',

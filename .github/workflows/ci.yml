@@ -12,6 +12,9 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -67,7 +70,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c5-runtime.json','utf8'));
+          const r=JSON.parse(fs.readFileSync('tests/artifacts/qualification/c5-runtime.json','utf8'));
           if(r.status!=='PASS') throw new Error('C5 qualification not PASS');
           if(r.cases!==1_000_000 || r.survivors!==0) throw new Error('1M mismatch');
           if(r.categories.ordinary!==500_000 || r.categories.edge!==300_000 || r.categories.stress!==200_000) throw new Error('strata mismatch');
@@ -82,7 +85,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c6-enduser.json','utf8'));
+          const r=JSON.parse(fs.readFileSync('tests/artifacts/qualification/c6-enduser.json','utf8'));
           if(r.status!=='PASS') throw new Error('C6 qualification not PASS');
           if(r.cases!==1_000_000) throw new Error('C6 case count mismatch');
           if(r.categories.typical!==500_000 || r.categories.edge!==300_000 || r.categories.stress!==200_000) throw new Error('C6 strata mismatch');
@@ -97,7 +100,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c7-doc-api.json','utf8'));
+          const r=JSON.parse(fs.readFileSync('tests/artifacts/qualification/c7-doc-api.json','utf8'));
           if(r.status!=='PASS') throw new Error('C7 qualification not PASS');
           if(r.cases!==1_000_000 || r.survivors!==0) throw new Error('C7 1M mismatch');
           if(r.categories.typical!==500_000 || r.categories.edge!==300_000 || r.categories.stress!==200_000) throw new Error('C7 strata mismatch');
@@ -117,7 +120,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c8-emergence.json','utf8'));
+          const r=JSON.parse(fs.readFileSync('tests/artifacts/qualification/c8-emergence.json','utf8'));
           if(r.status!=='PASS') throw new Error('C8 qualification not PASS');
           if(r.engineering.cases!==100 || r.engineering.draft_killed!==65 || r.engineering.draft_false_green_survivors!==35 || r.engineering.revised_claim_boundary_survivors!==0) throw new Error('C8 engineering mutation mismatch');
           if(r.ontology.cases!==1000 || r.ontology.draft_accepts!==800 || r.ontology.draft_false_green_if_claim_open_emergence!==760 || r.ontology.draft_false_green_if_claim_strong_emergence!==800 || r.ontology.draft_false_green_if_claim_phenomenology!==800 || r.ontology.revised_claim_boundary_survivors!==0) throw new Error('C8 ontology mutation mismatch');
@@ -131,7 +134,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c9-surface-b.json','utf8'));
+          const r=JSON.parse(fs.readFileSync('tests/artifacts/qualification/c9-surface-b.json','utf8'));
           if(r.status!=='PASS') throw new Error('C9 qualification not PASS');
           if(r.cases!==1_000_000 || r.survivors!==0) throw new Error('C9 1M mismatch');
           if(r.categories.typical!==500_000 || r.categories.edge!==300_000 || r.categories.stress!==200_000) throw new Error('C9 strata mismatch');

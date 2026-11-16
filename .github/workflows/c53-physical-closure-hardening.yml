@@ -7,14 +7,14 @@ on:
       - 'src/session-local-service.mjs'
       - 'tests/c52-physical-runtime-closure.test.mjs'
       - 'scripts/c53-physical-hardening-falsify.py'
-      - 'artifacts/qualification/c53-*'
+      - 'tests/artifacts/qualification/c53-*'
       - 'BOOTSTRAP.json'
       - 'runtime-root/**'
       - '.github/workflows/c53-physical-closure-hardening.yml'
   push:
     branches: [main]
 permissions:
-  contents: write
+  contents: read
 jobs:
   harden:
     runs-on: ubuntu-latest
@@ -41,23 +41,28 @@ jobs:
         run: |
           node scripts/c52-bundle-coverage.mjs
           node scripts/c52-build-dod.mjs
-      - name: Materialize deterministic qualification bytes
-        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+      - name: Preserve rebuilt qualification receipts without self-mutating PR HEAD
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: c53-prospective-qualification-${{ github.sha }}
+          path: |
+            tests/artifacts/qualification/c53-physical-hardening-10m.json
+            tests/artifacts/qualification/c52-bundle-coverage.json
+            tests/artifacts/qualification/c52-candidate-blob-manifest.json
+            tests/artifacts/qualification/c52-runtime-physical-closure-dod.json
+          if-no-files-found: error
+      - name: Falsify undeclared changes to tracked C52 qualification receipts
+        if: github.event_name == 'pull_request'
         run: |
-          git add BOOTSTRAP.json runtime-root/shard-003.json artifacts/qualification/c53-physical-hardening-10m.json artifacts/qualification/c52-bundle-coverage.json artifacts/qualification/c52-candidate-blob-manifest.json artifacts/qualification/c52-runtime-physical-closure-dod.json
-          if ! git diff --cached --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "C53: materialize inherited exact qualification receipts"
-            git push origin HEAD:${{ github.head_ref }}
-          fi
+          git diff --exit-code -- tests/artifacts/qualification/c52-candidate-blob-manifest.json tests/artifacts/qualification/c52-runtime-physical-closure-dod.json
       - name: Exact runtime-root verification
         run: npm run runtime-root:verify
       - name: Claim boundary remains external
         run: |
           python - <<'PY'
           import json
-          x=json.load(open('artifacts/qualification/c53-physical-hardening-10m.json'))
+          x=json.load(open('tests/artifacts/qualification/c53-physical-hardening-10m.json'))
           assert x['status']=='PASS'
           assert x['claim_boundary']['semantic_falsification_is_live_host_proof'] is False
           assert x['claim_boundary']['live_e0_e3_e4_e5_e6_still_required'] is True

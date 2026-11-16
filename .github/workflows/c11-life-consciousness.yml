@@ -9,7 +9,7 @@ on:
       - 'src/contract.mjs'
       - 'scripts/c11-*'
       - 'tests/c11-*'
-      - 'artifacts/qualification/c11-*'
+      - 'tests/artifacts/qualification/c11-*'
       - 'package.json'
       - '.github/workflows/c11-life-consciousness.yml'
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c11-life-consciousness.json','utf8'));
+          const r=JSON.parse(fs.readFileSync('tests/artifacts/qualification/c11-life-consciousness.json','utf8'));
           if(r.status!=='PASS'||r.cases!==1_000_000||r.survivors!==0||r.unexercised_families.length!==0)throw new Error('C11 qualification mismatch');
           if(r.categories.typical!==500_000||r.categories.edge!==300_000||r.categories.stress!==200_000)throw new Error('C11 strata mismatch');
           if(r.family_count!==80)throw new Error('C11 family mismatch');

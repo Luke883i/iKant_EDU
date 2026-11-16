@@ -3,7 +3,7 @@ import crypto from 'node:crypto';
 import path from 'node:path';
 import { ROOT } from '../src/contract.mjs';
 
-const [mainRel='artifacts/qualification/main-10m.json', tailRel='artifacts/qualification/tail-1m.json', outRel='artifacts/qualification/seed-v1.json'] = process.argv.slice(2);
+const [mainRel='tests/artifacts/qualification/main-10m.json', tailRel='tests/artifacts/qualification/tail-1m.json', outRel='tests/artifacts/qualification/seed-v1.json'] = process.argv.slice(2);
 const read = rel => JSON.parse(fs.readFileSync(path.join(ROOT,rel),'utf8'));
 const main = read(mainRel), tail = read(tailRel);
 if (main.main_cases !== 10_000_000 || main.tail_cases !== 0 || main.status !== 'PASS' || main.survivor_count !== 0) throw new Error('main receipt invalid');

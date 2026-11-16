@@ -16,6 +16,8 @@ on:
       - 'scripts/c24-canonical-ci.mjs'
       - 'tests/c24-canonical-ci.test.mjs'
       - '.github/workflows/c24-canonical-boundary.yml'
+env:
+  IKANT_C24_EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
 jobs:
   canonical-shard:
     name: canonical-${{ matrix.shard }}
@@ -34,6 +36,9 @@ jobs:
     timeout-minutes: ${{ matrix.minutes }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
       - name: Validate original canonical coverage
@@ -56,6 +61,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
       - uses: actions/download-artifact@v4

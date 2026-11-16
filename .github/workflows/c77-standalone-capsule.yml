@@ -5,7 +5,7 @@ on:
       - 'host/c77-*'
       - 'scripts/c77-*'
       - 'tests/c77-*'
-      - 'docs/C77_*'
+      - 'project/docs/C77_*'
       - '.github/workflows/c77-standalone-capsule.yml'
   push:
     branches: [main]

@@ -12,7 +12,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const seed0=0x2026c119;let seed=seed0;
 const rnd=()=>{seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return seed>>>0};
 const H=s=>crypto.createHash('sha256').update(Buffer.from(s,'utf8')).digest('hex');
-const carrier=fs.readFileSync(path.join(root,'release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
+const carrier=fs.readFileSync(path.join(root,'project/release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
 const parent=fs.mkdtempSync(path.join(os.tmpdir(),'ikant-v7-semantic-'));
 const a=await createLocalCohostAdapter({carrierBytes:carrier,privateParent:parent});
 if(!a.ok)throw Error('PR119_PINNED_CARRIER_STAGE_FAIL');

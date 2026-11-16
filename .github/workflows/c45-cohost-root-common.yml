@@ -7,7 +7,7 @@ on:
       - 'src/cohost-root-qualification.mjs'
       - 'tests/c45-cohost-root-common.test.mjs'
       - 'scripts/c45-cohost-root-common-falsify.mjs'
-      - 'artifacts/qualification/c45-cohost-root-cross-repo-prepr.json'
+      - 'tests/artifacts/qualification/c45-cohost-root-cross-repo-prepr.json'
   workflow_dispatch:
 
 permissions:

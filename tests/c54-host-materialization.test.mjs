@@ -102,8 +102,8 @@ test('C54 reference deployed baseline returns a host-consumable shell before acc
 });
 
 test('C54 host app consumes frame/payload directly and verifies bytes before rendering',()=>{
- const server=fs.readFileSync(path.join(ROOT,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
- const app=fs.readFileSync(path.join(ROOT,'plugins/ikant-le-session-chat/server/public/ikant-le-app.html'),'utf8');
+ const server=fs.readFileSync(path.join(ROOT,'project/plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
+ const app=fs.readFileSync(path.join(ROOT,'project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html'),'utf8');
  assert.match(server,/ikant-le-host-app-payload\/v1/);
  assert.match(server,/data_base64/);
  assert.match(server,/frame_receipt_sha256/);

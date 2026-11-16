@@ -10,7 +10,7 @@ on:
       - 'tests/project-host-negative-rail.test.mjs'
       - 'tests/project-c72-physical-ingress.test.mjs'
       - 'scripts/project-host-negative-falsify.mjs'
-      - 'artifacts/qualification/negative-semantic-1m.json'
+      - 'tests/artifacts/qualification/negative-semantic-1m.json'
       - 'contracts/project-session-source.json'
       - 'scripts/project-source-manifest.mjs'
       - '.github/workflows/host-negative-semantic-r3.yml'
@@ -33,6 +33,9 @@ jobs:
           - 'R3 rejects'
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -47,6 +50,9 @@ jobs:
         node: [20, 22]
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
@@ -71,12 +77,15 @@ jobs:
       - name: 1 million seeded negative semantic cases against independent oracle
         run: |
           node scripts/project-host-negative-falsify.mjs /tmp/r3-negative-1m.json
-          cmp /tmp/r3-negative-1m.json artifacts/qualification/negative-semantic-1m.json
+          cmp /tmp/r3-negative-1m.json tests/artifacts/qualification/negative-semantic-1m.json
   full-repository:
     runs-on: ubuntu-latest
     timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'

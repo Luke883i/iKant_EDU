@@ -71,8 +71,8 @@
     "entry": "README.md",
     "agent_contract": "AGENTS.md",
     "terms": "TERMS.md",
-    "architecture": "docs/ARCHITECTURE.md",
-    "governance": "docs/GOVERNANCE.md",
+    "architecture": "project/docs/ARCHITECTURE.md",
+    "governance": "project/docs/GOVERNANCE.md",
     "historical_markdown_is_non_normative": true
   },
   "identity": {
@@ -944,7 +944,7 @@
         "domain": "GOVERNANCE_QUALIFICATION",
         "weight_bps": 200,
         "intent": "Machine contracts/runtime/tests precede narrative projections; host prompt is authority-zero and guard-only after ACTIVE.",
-        "owner": "governance/generated adapter",
+        "owner": "contracts/governance/generated adapter",
         "observable": "document precedence and prompt projection law",
         "negative_test": "prompt/prose becomes runtime SOT",
         "recovery": "regenerate from machine semantics"

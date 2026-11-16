@@ -78,7 +78,7 @@ export function makeOneShellChatPresentation({frame,humanInput=null,focusApp=nul
   const plan=Object.freeze({
    schema:'ikant-oneshell-inchat-presentation/v1',
    order:[...ORDER],focus:'A',voice_weight:3,host_weight:1,
-   brand:Object.freeze({source:'assets/brand/ikant-light.svg',verified:brand,sha256:brand?visual.brand.asset_sha256:null,
+   brand:Object.freeze({source:'project/assets/brand/ikant-light.svg',verified:brand,sha256:brand?visual.brand.asset_sha256:null,
     inline_svg:'HOST_HTML_ONLY_WITH_VERIFIED_BYTES',
     in_chat:'VERIFIED_HOST_ASSET_IF_CLIENT_SUPPORTS_ELSE_TEXT',native_avatar_attested:false}),
    compression:Object.freeze({A:'NEVER',B:compact?'LITERAL_EXCERPT_WITH_READBACK':'NONE',

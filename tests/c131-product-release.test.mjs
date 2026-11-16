@@ -8,7 +8,7 @@ import {inspectC130PublicCopy} from '../host/c130-public-language.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 test('source catalog gives exactly one public product root and leaves release authority external',()=>{
- const x=JSON.parse(read('release/catalog.json'));
+ const x=JSON.parse(read('project/release/catalog.json'));
  assert.equal(x.source_of_truth.branch,'main');assert.equal(x.source_of_truth.pr_is_release_source,false);
  assert.equal(x.packaging.bundle_is_runtime_installation,false);
  assert.equal(x.publication.candidate_is_official,false);
@@ -51,7 +51,7 @@ test('bundle recipe points to existing exact source files and isolates the histo
  assert.match(f,/CANDIDATE_NOT_RUNTIME_INSTALLATION/);
  const c=read('scripts/c131-build-source-cache.mjs');
  assert.match(c,/loadC127SourceCache/);
- assert.equal(JSON.parse(read('release/catalog.json')).source_of_truth.sources_after_merge_only,true);
+ assert.equal(JSON.parse(read('project/release/catalog.json')).source_of_truth.sources_after_merge_only,true);
 });
 
 import {qualifyC131ReleaseCandidate} from '../host/c131-product-release-gate.mjs';

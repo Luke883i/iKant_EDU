@@ -6,8 +6,8 @@ on:
       - 'host/p1-public-language-guard.mjs'
       - 'scripts/project-edu-v1-experimental-*'
       - 'tests/project-edu-v1-experimental-release.test.mjs'
-      - 'docs/PROJECT_EDU_V1_EXPERIMENTAL_RELEASE.md'
-      - 'docs/IKANT_DOCUMENT_ATLAS.md'
+      - 'project/docs/PROJECT_EDU_V1_EXPERIMENTAL_RELEASE.md'
+      - 'project/docs/IKANT_DOCUMENT_ATLAS.md'
       - '.github/workflows/project-edu-v1-experimental.yml'
   workflow_dispatch:
 permissions:

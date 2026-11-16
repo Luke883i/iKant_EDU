@@ -152,7 +152,7 @@
     ],
     "canonical_only": [
       "contracts/session-chat-local-host-kernel.json",
-      "docs/SESSION_CHAT_LOCAL_PROMPT.md",
+      "project/docs/SESSION_CHAT_LOCAL_PROMPT.md",
       "contracts/session-chat-composition-channel.json"
     ],
     "experimental_only": [
@@ -164,13 +164,13 @@
     ],
     "descriptive": [
       "README.md",
-      "docs/ARCHITECTURE.md",
-      "docs/GOVERNANCE.md"
+      "project/docs/ARCHITECTURE.md",
+      "project/docs/GOVERNANCE.md"
     ],
     "historical_non_nominative": [
-      "docs/C59_PR1_68_LINEAGE_AUDIT.md",
-      "docs/C69_CAPABILITY_FIRST_EXPERIMENTAL.md",
-      "docs/C82_EXPERIMENTAL_SEMANTIC_RELEASE.md"
+      "project/docs/C59_PR1_68_LINEAGE_AUDIT.md",
+      "project/docs/C69_CAPABILITY_FIRST_EXPERIMENTAL.md",
+      "project/docs/C82_EXPERIMENTAL_SEMANTIC_RELEASE.md"
     ]
   },
   "metrics_definition": {

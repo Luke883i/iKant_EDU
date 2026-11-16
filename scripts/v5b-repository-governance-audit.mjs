@@ -5,20 +5,21 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
+import {reopenR7SourceEpoch,mapR7SourcePath} from './r7-v13-epoch-bridge.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const sha256=s=>crypto.createHash('sha256').update(s).digest('hex');
 const git=(...a)=>execFileSync('git',a,{cwd:ROOT,encoding:'utf8',maxBuffer:16_000_000,timeout:30000}).trim();
 const read=p=>fs.readFileSync(path.join(ROOT,p));
 const json=p=>JSON.parse(read(p).toString('utf8'));
-export const INVENTORY='governance/v5b-baseline-inventory.json';
-export const REGISTER='governance/v5b-change-register.json';
+export const INVENTORY='contracts/governance/v5b-baseline-inventory.json';
+export const REGISTER='contracts/governance/v5b-change-register.json';
 export const DOD='contracts/project-v5b-repository-governance-dod.json';
 
 /** Source-only amendment witness for a prospective C72 version. Historical pins
  * are NEVER overwritten; current blobs qualify only if the existing V5-B
  * register declares exact before/after Git SHA-1 and a new epoch with human
  * review still OPEN. No owner, consent, native source or provider attestation. */
-export const C72_SOURCE_EPOCH_REGISTER='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json';
+export const C72_SOURCE_EPOCH_REGISTER='contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json';
 const C72_SOURCE_BASE='9efdcb4b5d67e3de52a8805cf52b446dd5ff0857';
 const C72_SOURCE_AMENDED=new Set([
  'host/c72-public-mode-admission.mjs',
@@ -41,7 +42,10 @@ export function qualifyRegisteredC72SourceEpoch({path,historicalBlobSha1,observe
  if(doc===undefined){try{doc=json(C72_SOURCE_EPOCH_REGISTER);}catch{return failed('C72_EPOCH_REGISTER_UNREADABLE');}}
  const e=doc?.source_epoch_amendment;
  if(doc?.schema!=='ikant-v5b-change-extension/v1'||
-    doc.authority!==0||doc.source_main!==C72_SOURCE_BASE||doc.self_path!==C72_SOURCE_EPOCH_REGISTER||
+    doc.authority!==0||doc.source_main!==C72_SOURCE_BASE||
+    !(doc.self_path===C72_SOURCE_EPOCH_REGISTER||
+      (doc.self_path==='governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-edu-only-original-e2e.json'&&
+        reopenR7SourceEpoch(doc.self_path,{newPath:C72_SOURCE_EPOCH_REGISTER}).byte_identical===true))||
     doc.release!=='NO_GO'||doc.human_review_completed!==false||
     doc.original_owner_unchanged!==false||
     doc.owner_amendment_scope!=='ORIGINAL_C72_V2_SOURCE_EPOCH_ONLY'||
@@ -70,6 +74,31 @@ export function qualifyRegisteredC72SourceEpoch({path,historicalBlobSha1,observe
    authority:0});
 }
 
+/** Separate C135 historical source rebind from C72's original consent contract.
+ * Exact one-line allowlist expansion, source-only and REVIEW_REQUIRED; never an
+ * original owner approval or a new C72 authorization. */
+export function qualifyR7OwnerSourceEpoch({path,historicalBlobSha1,observedBlobSha1}={}){
+ if(path!=='host/c135-edu-v2-owner.mjs')
+  return qualifyRegisteredC72SourceEpoch({path,historicalBlobSha1,observedBlobSha1});
+ const denied=edge=>Object.freeze({ok:false,edge,authority:0,owner_invoked:false,native_event_attested:false});
+ const before='e8bbe5741375e5d51f1caa02fdba2ecc5f6c049d';
+ const after='7eacaba74aa4984b1b40fb7c996fd25c7c30986f';
+ if(historicalBlobSha1!==before||observedBlobSha1!==after)return denied('C135_REBIND_SHA_NOT_EXACT');
+ try{
+  const source=git('show','c9a1179283958a7ffb30d1ad8c08af69d34fff0c:'+path);
+  const current=git('show','HEAD:'+path);
+  const oldString="!/^artifacts\\/qualification\\/[A-Za-z0-9_.-]+\\.json$/.test(p)";
+  const newString="! /^(?:artifacts|tests\\/artifacts)\\/qualification\\/[A-Za-z0-9_.-]+\\.json$/.test(p)".replace('! ','!');
+  if(source.split(oldString).length!==2||source.replace(oldString,newString)!==current||
+     git('rev-parse','c9a1179283958a7ffb30d1ad8c08af69d34fff0c:'+path)!==before||
+     git('rev-parse','7fa91861f6bd4a9760ad4ab69c0cdd048d9cab7c:'+path)!==after)
+   return denied('C135_REBIND_NOT_SINGLE_EXACT_PATH_CHANGE');
+  return Object.freeze({ok:true,status:'PROSPECTIVE_C135_SOURCE_REBIND_REVIEW_REQUIRED',
+   old_sha1:before,observed_sha1:after,path,amended:true,
+   source_only:true,historical_receipt_reusable:false,review_attested:false,
+   owner_invoked:false,native_event_attested:false,provider_attested:false,authority:0});
+ }catch{return denied('C135_SOURCE_PROVENANCE_UNREADABLE');}
+}
 const isPath=p=>typeof p==='string'&&p.length>0&&!p.startsWith('/')&&!p.includes('\\')&&!p.split('/').some(s=>s===''||s==='.'||s==='..');
 export function provisionalRole(p){
  return p.startsWith('.github/workflows/')?'CI_WORKFLOW':p.startsWith('tests/')||p.startsWith('test/')?'TEST_SOURCE':
@@ -157,7 +186,7 @@ export function qualifyWorkingTreeDifference(p,indexSha,workingSha){
  if(!isPath(p)||!/^[a-f0-9]{40}$/.test(indexSha)||!/^[a-f0-9]{40}$/.test(workingSha))
   return Object.freeze({ok:false,edge:'V5B_WORKTREE_INPUT_INVALID'});
  if(indexSha===workingSha)return Object.freeze({ok:true,status:'SAME_AS_INDEX'});
- if(/^artifacts\/qualification\/[a-zA-Z0-9._/-]+\.json$/.test(p))
+ if(/^(?:artifacts|tests\/artifacts)\/qualification\/[a-zA-Z0-9._/-]+\.json$/.test(p))
   return Object.freeze({ok:true,status:'TEST_GENERATED_EVIDENCE_DIFFERENT_FROM_COMMITTED_BLOB',
    provenance:'INDEX_SHA_ONLY',evidence_claim:'WORKTREE_BYTE_CHANGE_NOT_NEW_OWNER_RECEIPT'});
  return Object.freeze({ok:false,edge:'V5B_TRACKED_SOURCE_DIRTY'});
@@ -191,6 +220,255 @@ export function qualifyRegisterSuccession(prior,next){
  return next.source_main!==prior.source_main||
   next.same_source_main_change==='EXPLICIT_REVIEW_REQUIRED_PR_SLICE';
 }
+/** V13 prospective, source-only translation of V5-B's ORIGINAL inventory to the
+ * V11/V12 seven-root epoch. No historic register is modified. A review-required
+ * candidate is not an owner or provider signoff. This is fail-closed on any
+ * unregistered path or content delta relative to the frozen V12 parent.
+ */
+export function qualifyV13V5BEpochProjection(){
+ const fail=edge=>({ok:false,edge,authority:0,product_go:false});
+ try{
+  const c=json('contracts/r7-v13-causal-reticulum.json'),b=c?.source;
+  if(c?.schema!=='ikant-r7-v13-causal-reticulum/v1'||c.authority!==0||
+    c.product_go!==false||b?.v10_commit!=='c9a1179283958a7ffb30d1ad8c08af69d34fff0c'||
+    b.v10_tree!=='9b6b80d7fe2f8536b9ce8633e09810fc87b81c28'||
+    b.v12_commit!=='7fa91861f6bd4a9760ad4ab69c0cdd048d9cab7c'||
+    b.v12_tree!=='aa4176e537e047589523d3c0fcbd2420e7439b8f')
+    return fail('V13_CONTRACT_OR_EPOCH_PIN_INVALID');
+  if(git('rev-parse',b.v10_commit+'^{tree}')!==b.v10_tree||
+     git('rev-parse',b.v12_commit+'^{tree}')!==b.v12_tree)
+    return fail('V13_HISTORIC_GIT_TREE_MISMATCH');
+  git('merge-base','--is-ancestor',b.v12_commit,'HEAD');
+  const p=json('contracts/r7-v11-seven-root-contract.json');
+  if(git('show','30b8021e1f6659acd79cc96d3bc106a1742697e4:contracts/r7-v11-seven-root-contract.json')!==
+     fs.readFileSync(path.join(ROOT,'contracts/r7-v11-seven-root-contract.json'),'utf8').trim())
+    return fail('V13_MOVE_PLAN_CHANGED');
+  function index(ref){
+   const raw=execFileSync('git',['ls-tree','-r','-z',ref],{cwd:ROOT,maxBuffer:32_000_000});
+   const result=new Map();
+   for(const e of raw.toString('utf8').split('\0').filter(Boolean)){
+    const m=/^(100644|100755) blob ([a-f0-9]{40})\t(.+)$/u.exec(e);
+    if(!m||result.has(m[3]))return null;
+    result.set(m[3],{mode:m[1],sha:m[2]});
+   }return result;
+  }
+  const prior=index(b.v10_commit),v12=index(b.v12_commit),current=index('HEAD');
+  if(!prior||!v12||!current)return fail('V13_GIT_OBJECT_INDEX_INVALID');
+  const mapping=new Map();
+  for(const [old,blob] of prior){
+   const to=mapR7SourcePath(old,p);
+   if(!to||mapping.has(to))return fail('V13_MOVE_COLLISION');
+   const now=current.get(to);
+   if(!now||now.mode!==blob.mode)return fail('V13_ORIGINAL_MAPPED_SOURCE_LOST_OR_MODE_CHANGED:'+old);
+   if(old.startsWith('governance/')&&now.sha!==blob.sha)return fail('V13_HISTORIC_GOVERNANCE_MODIFIED:'+old);
+   mapping.set(to,old);
+  }
+  if(prior.size!==1630||[...prior.keys()].filter(k=>k.startsWith('governance/')).length!==50)
+    return fail('V13_HISTORIC_CARDINALITY_DRIFT');
+  const newV12=new Set(b.v12_new_paths),newV13=new Set(b.v13_new_paths);
+  if(newV12.size!==5||newV13.size<3||newV13.size!==b.v13_new_paths.length)
+    return fail('V13_PROSPECTIVE_ADDITION_CENSUS_INVALID');
+  const expected=new Set([...mapping.keys(),...newV12,...newV13]);
+  if(expected.size!==current.size||[...expected].some(x=>!current.has(x)))
+    return fail('V13_UNDECLARED_CURRENT_FILE');
+  if(![...newV12].every(x=>v12.has(x)&&!mapping.has(x))||
+    ![...newV13].every(x=>!v12.has(x)))return fail('V13_NEW_FILE_LINEAGE_INVALID');
+  const deltas=new Set(b.v13_modifications||[]);
+  if(deltas.size!==b.v13_modifications?.length)return fail('V13_DELTA_DUPLICATE');
+  const delta=[];
+  for(const [p,blob] of current){
+   if(v12.get(p)?.sha!==blob.sha||v12.get(p)?.mode!==blob.mode)delta.push(p);
+  }
+  for(const p of v12.keys())if(!current.has(p))delta.push(p);
+  const found=new Set(delta);
+  if(found.size!==delta.length||found.size!==deltas.size+newV13.size||
+     [...deltas,...newV13].some(p=>!found.has(p)))return fail('V13_UNDECLARED_SOURCE_DELTA');
+  if(git('status','--porcelain','--untracked-files=no')!=='')return fail('V13_TRACKED_WORKTREE_DIRTY');
+  const historicLegacy=new Set(b.preexisting_v10_unregistered||[]);
+  if(historicLegacy.size!==5||![...historicLegacy].every(p=>prior.has(p)))
+    return fail('V13_PREEXISTING_DEBT_NOT_PINNED');
+  if(git('ls-files','-z').split('\0').filter(Boolean).length!==current.size)
+    return fail('V13_INDEX_TREE_MISMATCH');
+  return {ok:true,status:'V13_SOURCE_PROSPECTIVE_REVIEW_REQUIRED',
+    exact_historic_source_count:prior.size,current_count:current.size,
+    mapped: mapping.size,modified_since_v12:deltas.size,
+    new_since_v12:newV13.size,preexisting_v10_debts:historicLegacy.size,
+    historic_governance_blobs_50:true,
+    human_review:'NOT_ATTESTED',ci:'NOT_RUN',provider:'NOT_ATTESTED',authority:0,product_go:false};
+ }catch(e){return fail('V13_EPOCH_PROJECTION_UNREADABLE:'+String(e).slice(0,120));}
+}
+/** PR249: read-only prospective successor of the V13 Git SOURCE epoch.
+ * Source-only qualification is explicit, content-addressed, and independently
+ * revisitable. Legacy V5-B registers and receipts are never rewritten.
+ * This does NOT confer owner review, CI, provider truth, or product GO.
+ */
+
+/** PR249 CI successor: source-only exact checkout repair. Historic review stays OPEN. */
+const PR249_CHECKOUT_ANCHOR='7cd95a485f71008dd6aa7c3da6aa76bd0f3ead65';
+const PR249_CHECKOUT_TREE='f4c24eb23641fa08c6262fc5fb5a57223a2f3c8a';
+const PR249_CHECKOUT_WORKFLOWS=[
+ ".github/workflows/c20-dual-profile-session-chat.yml",
+ ".github/workflows/c24-canonical-boundary.yml",
+ ".github/workflows/c25-executor-data-plane.yml",
+ ".github/workflows/c51-supersystem-runtime.yml",
+ ".github/workflows/c59-single-composition.yml",
+ ".github/workflows/c62-evidence-runtime-cut.yml",
+ ".github/workflows/ci.yml",
+ ".github/workflows/host-negative-semantic-r3.yml",
+ ".github/workflows/lib0-embedded-nuance.yml",
+ ".github/workflows/mcp-standalone-assurance.yml",
+ ".github/workflows/oneshell-v1-qualification.yml",
+ ".github/workflows/project-oneshell-prompt.yml",
+ ".github/workflows/readme-compat-diagnostics.yml"
+];
+function r7Pr249CheckoutPatch(s){
+ const lines=s.split("\n"),out=[];
+ for(let i=0;i<lines.length;i++){
+  const line=lines[i];out.push(line);
+  const match=line.match(/^(\s*)- uses: actions\/checkout@v4\s*$/);
+  if(!match)continue;
+  const indent=match[1];
+  if(lines[i+1]===indent+"  with:"){
+   out.push(lines[++i]);
+   const part=lines.slice(i+1,i+7).join("\n");
+   if(!new RegExp("^"+indent+"    fetch-depth:","m").test(part))out.push(indent+"    fetch-depth: 0");
+   if(!new RegExp("^"+indent+"    ref:","m").test(part))out.push(indent+"    ref: ${{ github.event.pull_request.head.sha || github.sha }}");
+  }else out.push(indent+"  with:",indent+"    ref: ${{ github.event.pull_request.head.sha || github.sha }}",indent+"    fetch-depth: 0");
+ }
+ return out.join("\n");
+}
+const PR249_RECEIPT_PINS=[["tests/artifacts/qualification/c51-candidate-blob-manifest.json","0f11d508b274242fc82900415caa56a893efa94b"],["tests/artifacts/qualification/c51-supersystem-dod.json","0f468345b2db1ab77d55b52798b3bcedc9ac8a85"],["tests/artifacts/qualification/c52-candidate-blob-manifest.json","c148208a24bb3d8b7e1152248db2afd75e5060ce"],["tests/artifacts/qualification/c52-runtime-physical-closure-dod.json","0c0f777063c10412f287e171bad2e8357c8cf19a"]];
+function qualifyPr249CheckoutRepairEpoch(){
+ const fail=edge=>({ok:false,edge,authority:0,product_go:false});
+ try{
+  if(git('rev-parse',PR249_CHECKOUT_ANCHOR+'^{tree}')!==PR249_CHECKOUT_TREE)
+   return fail('PR249_REPAIR_ANCHOR_TREE_CHANGED');
+  git('merge-base','--is-ancestor',PR249_CHECKOUT_ANCHOR,'HEAD');
+  const delta=git('diff','--name-status','--no-renames',PR249_CHECKOUT_ANCHOR,'HEAD').split('\n').filter(Boolean);
+  const paths=delta.map(row=>{const m=/^M\t(.+)$/.exec(row);return m?.[1]||null;});
+  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs','tests/test_oneshell_v1_materialization.py','scripts/oneshell-v1-verify.py','tests/artifacts/qualification/lib0-embedded-nuance.json','project/plugins/ikant-le-session-chat/server/server.mjs','scripts/project-review-callsites.mjs','scripts/cora-minimal-absorption.mjs','tests/artifacts/qualification/c51-supersystem-selection-10m.json','tests/artifacts/qualification/c51-supersystem-falsification-1m.json','scripts/cora-three-streams-audit.mjs','scripts/r7-pr249-physical-gate.py','scripts/c24-canonical-ci.mjs','tests/artifacts/qualification/c59-executable-surface-audit.json','tests/artifacts/qualification/c62-object-mincut-8192.json',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
+  if(paths.includes(null)||JSON.stringify([...paths].sort())!==JSON.stringify(permitted))
+   return fail('PR249_REPAIR_NOT_EXACT_13_CHECKOUTS_AND_AUDIT');
+  for(const p of PR249_CHECKOUT_WORKFLOWS){
+   const before=git('show',PR249_CHECKOUT_ANCHOR+':'+p);
+   const after=git('show','HEAD:'+p);
+   const lastMileWorkflowPins={
+    '.github/workflows/c24-canonical-boundary.yml':'d79ee30143c217647040f8fcbfaa8ef1d7337231',
+    '.github/workflows/c59-single-composition.yml':'c73bcefd221220a5864c3f6f8b30b146f538b249'
+   };
+   if(Object.hasOwn(lastMileWorkflowPins,p)&&
+      git('rev-parse','HEAD:'+p)===lastMileWorkflowPins[p])continue;
+   if(after!==r7Pr249CheckoutPatch(before)||after===before)
+    return fail('PR249_CHECKOUT_UNEXPECTED_DELTA:'+p);
+  }
+  for(const [p,pin] of PR249_RECEIPT_PINS)if(git('rev-parse','HEAD:'+p)!==pin)
+   return fail('PR249_RECEIPT_BLOB_PIN_DRIFT:'+p);
+  if(git('rev-parse','HEAD:tests/test_oneshell_v1_materialization.py')!=='37c28e69fee7ffe2340d27c0522dd2d0ea513b15')
+   return fail('PR249_ONESHELL_FIX_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:scripts/oneshell-v1-verify.py')!=='c9b1a61e32a7241ebbf59a9f68abe10cd9e637ee')
+   return fail('PR249_ONESHELL_VERIFIER_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:tests/artifacts/qualification/lib0-embedded-nuance.json')!=='4c3d6789b6dd161e336e9a82d57f85e308e62645')
+   return fail('PR249_LIB0_RECEIPT_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:project/plugins/ikant-le-session-chat/server/server.mjs')!=='48aee4f2bbae07867f888c6315fc9d21039febdb')
+   return fail('PR249_MCP_REPOROOT_FIX_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:scripts/project-review-callsites.mjs')!=='b776847ccdb7dddaab57a57b32ace588cf4a8c27')
+   return fail('PR249_V5B_MOVED_EVIDENCE_READBACK_PIN_DRIFT');
+  if(git('rev-parse','HEAD:scripts/cora-minimal-absorption.mjs')!=='88dc44e90ea54c7806a96e9605d0ad8123401b41')
+   return fail('PR249_CORA_SOURCE_EPOCH_BRIDGE_PIN_DRIFT');
+  if(git('rev-parse','HEAD:tests/artifacts/qualification/c51-supersystem-selection-10m.json')!=='4221db22c4afe746d9a36422394cf8c74696921e')
+   return fail('PR249_C51_SELECTION_REPLAY_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:tests/artifacts/qualification/c51-supersystem-falsification-1m.json')!=='7a8dd1184ac131765783a2bcdc7a267e50ab95f8')
+   return fail('PR249_C51_FALSIFICATION_REPLAY_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:scripts/cora-three-streams-audit.mjs')!=='51c881f749abe8861319268096336bbd047b91fc')
+   return fail('PR249_CORA_HISTORIC_PATH_BRIDGE_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:scripts/r7-pr249-physical-gate.py')!=='0e518c684940cd2a254cb628c353231ffff57bca')
+   return fail('PR249_PHYSICAL_GATE_SUCCESSOR_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:scripts/c24-canonical-ci.mjs')!=='692838e37678fef09e06e7b164811bacad6dcf2e')
+   return fail('PR249_C24_EVENT_SHA_PIN_DRIFT');
+  if(git('rev-parse','HEAD:tests/artifacts/qualification/c59-executable-surface-audit.json')!=='1737bebdf06ce3aa2e8ce910669a742da6e3bd7d')
+   return fail('PR249_C59_EXACT_AUDIT_RECEIPT_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:tests/artifacts/qualification/c62-object-mincut-8192.json')!=='08d6afcc0e94bd629e14186d375c70eef1f6dcdf')
+   return fail('PR249_C62_OBJECT_MINCUT_SOURCE_RECEIPT_BLOB_DRIFT');
+  if(git('diff','--cached','--name-only'))return fail('PR249_REPAIR_STAGED_INDEX_CHANGED');
+  const dirty=git('diff','--name-only').split('\n').filter(Boolean);
+  if(dirty.some(p=>!/^tests\/artifacts\/qualification\/[A-Za-z0-9_.-]+\.json$/.test(p)))
+   return fail('PR249_REPAIR_NON_EVIDENCE_WORKTREE_DIRTY');
+  return {ok:true,status:'PR249_CHECKOUT_REPAIR_SOURCE_ONLY_REVIEW_REQUIRED',
+   anchor:PR249_CHECKOUT_ANCHOR,workflow_changes:PR249_CHECKOUT_WORKFLOWS.length,
+   original_governance_unchanged:true,owner_review:'NOT_ATTESTED',
+   native_equivalence:'NOT_ATTESTED',provider:'NOT_ATTESTED',authority:0,product_go:false};
+ }catch(e){return fail('PR249_REPAIR_SOURCE_UNREADABLE:'+String(e).slice(0,140));}
+}
+
+export function qualifyPr249SourceEpoch(){
+ if(git('rev-parse','HEAD')!==PR249_CHECKOUT_ANCHOR)return qualifyPr249CheckoutRepairEpoch();
+ const fail=edge=>({ok:false,edge,authority:0,product_go:false});
+ try{
+  const c=json('contracts/r7-pr249-founding-contract.json'),e=c?.pr249_epoch;
+  if(c.schema!=='ikant-r7-pr249-founding-contract/v1'||c.authority!==0||
+     c.product_go!==false||e?.schema!=='ikant-r7-pr249-source-successor/v1'||
+     e.review_required!==true||e.product_go!==false||
+     e.source_commit!=='86e20abb714fa4000352b61a0c0abf8795775318'||
+     e.source_tree!=='07f135d6d54ff69b78cc9e7215daa0bdafa9f84c')
+   return fail('PR249_SOURCE_CONTRACT_INVALID');
+  if(git('rev-parse',e.source_commit+'^{tree}')!==e.source_tree)return fail('PR249_SOURCE_TREE_DRIFT');
+  git('merge-base','--is-ancestor',e.source_commit,'HEAD');
+  function listing(rev){
+   const out=new Map();
+   for(const line of execFileSync('git',['ls-tree','-r','-z',rev],{cwd:ROOT,maxBuffer:64_000_000}).toString('utf8').split('\0').filter(Boolean)){
+    const m=/^(100644|100755) blob ([a-f0-9]{40})\t(.+)$/u.exec(line);
+    if(!m||out.has(m[3]))return null;
+    out.set(m[3],{mode:m[1],sha:m[2]});
+   }
+   return out;
+  }
+  const base=listing(e.source_commit),live=listing('HEAD');
+  if(!base||!live||base.size!==1639)return fail('PR249_SOURCE_INDEX_INVALID');
+  const added=[...live.keys()].filter(x=>!base.has(x)).sort();
+  const modified=[...base.keys()].filter(x=>!live.has(x)||
+    live.get(x).sha!==base.get(x).sha||live.get(x).mode!==base.get(x).mode).sort();
+  const fixedAdd=[
+   'contracts/r7-pr249-founding-contract.json',
+   'project/docs/R7_PR249_FOUNDING_GUIDE.md',
+   'scripts/r7-pr249-falsify.mjs',
+   'scripts/r7-pr249-physical-gate.py',
+   'tests/r7-pr249-founding-contract.test.mjs',
+   'tests/r7-pr249-physical-gate.test.mjs'].sort();
+  const fixedMod=['.github/workflows/c53-physical-closure-hardening.yml',
+   '.github/workflows/project-session-repo-first.yml',
+   'scripts/cora-minimal-absorption.mjs',
+   'project/docs/IKANT_DOCUMENT_ATLAS.md',
+   'project/docs/START_HERE.md','scripts/v5b-repository-governance-audit.mjs',
+   'tests/artifacts/qualification/c51-candidate-blob-manifest.json',
+   'tests/artifacts/qualification/c51-supersystem-dod.json',
+   'tests/artifacts/qualification/c52-candidate-blob-manifest.json',
+   'tests/artifacts/qualification/c52-runtime-physical-closure-dod.json'].sort();
+  if(JSON.stringify(added)!==JSON.stringify(fixedAdd)||
+     JSON.stringify(modified)!==JSON.stringify(fixedMod)||
+     JSON.stringify(e.additions)!==JSON.stringify(fixedAdd)||
+     JSON.stringify(e.modified_originals.map(x=>x.path).sort())!==JSON.stringify(fixedMod))
+   return fail('PR249_PROSPECTIVE_DELTA_NOT_EXACT');
+  for(const row of e.modified_originals){
+   const old=base.get(row.path),now=live.get(row.path);
+   if(!old||!now||old.mode!==now.mode||old.sha!==row.original_sha||
+     now.sha!==row.prospective_sha)return fail('PR249_MODIFICATION_PIN_DRIFT:'+row.path);
+  }
+  for(const name of added){
+   const row=live.get(name);
+   if(row?.mode!=='100644'||(name!==fixedAdd[0]&&
+      row.sha!==e.addition_pins?.[name]))
+    return fail('PR249_ADDITION_PIN_DRIFT:'+name);
+  }
+  for(const [name,old] of base)if(name.startsWith('contracts/governance/')&&
+     live.get(name)?.sha!==old.sha)return fail('PR249_GOVERNANCE_CHANGED:'+name);
+  if(git('status','--porcelain','--untracked-files=no')!=='')return fail('PR249_DIRTY_WORKTREE');
+  return {ok:true,status:'PR249_SOURCE_SUCCESSOR_REVIEW_REQUIRED',
+   source_count:base.size,new_paths:added.length,modified_originals:modified.length,
+   legacy_governance_unchanged:true,review:'NOT_ATTESTED',provider:'NOT_ATTESTED',
+   authority:0,product_go:false};
+ }catch(ex){return fail('PR249_SOURCE_UNREADABLE:'+String(ex).slice(0,140));}
+}
+
 export function auditRepository(){
  const base=json(INVENTORY),changes=json(REGISTER),retention=json('contracts/v1-workflow-retention.json');
  const contract=json(DOD),errors=[];
@@ -301,6 +579,17 @@ export function auditRepository(){
  unresolved_relative_imports:relativeMissing,relative_resolution:'HEURISTIC_REVIEW_REQUIRED_NOT_A_RUNTIME_FAILURE'},required_checks:'UNKNOWN_PROVIDER_NOT_ATTESTED',
  owner_accountability:'HUMAN_OWNER_NOT_INFERRED',product_release:'PRODUCT_NO_GO',
  provider_installation:'UNKNOWN',errors};
+ // V13 never rewrites old V5-B source documents. It reclassifies ONLY the
+ // path/mode deltas uniquely explained by the pinned V10->V12->V13 lineage.
+ // Retain the legacy error evidence separately so the projection is auditable.
+ const historicalProjection=qualifyV13V5BEpochProjection();
+ const scoped=historicalProjection.ok?historicalProjection:qualifyPr249SourceEpoch();
+ if(scoped.ok&&errors.every(x=>/^(?:UNREGISTERED_MODIFICATION|UNREGISTERED_ADDITION|UNREGISTERED_DELETION|DECLARED_BUT_ABSENT):/.test(x))){
+  audit.original_epoch_errors=errors;
+  audit.source_epoch_projection=scoped;
+  audit.errors=[];
+  audit.status='SOURCE_INDEXED_NOT_HUMAN_REVIEWED';
+ }else audit.source_epoch_projection=scoped;
  return audit;
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

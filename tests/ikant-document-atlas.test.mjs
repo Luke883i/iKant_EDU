@@ -15,13 +15,13 @@ test('all Markdown files appear exactly once in five ontological/navigation tier
 });
 test('README -> beginner guide -> full atlas and ontological DoD, including historical pages',()=>{
  assert.match(read('README.md'),/docs\/START_HERE\.md/);
- assert.match(read('docs/START_HERE.md'),/IKANT_DOCUMENT_ATLAS\.md/);
- assert.match(read('docs/START_HERE.md'),/IKANT_DOCUMENT_ONTOLOGY_DOD\.md/);
+ assert.match(read('project/docs/START_HERE.md'),/IKANT_DOCUMENT_ATLAS\.md/);
+ assert.match(read('project/docs/START_HERE.md'),/IKANT_DOCUMENT_ONTOLOGY_DOD\.md/);
  const a=audit();assert.equal(a.debt.unreachable_before_atlas.length,0);
  assert.ok(a.rows.some(r=>r.path.includes('PREPR')));
 });
 test('DoD explains human/LLM/iKant, neuroscience analogy, epistemic uncertainty and 3 levels of efficacy',()=>{
- const s=read('docs/IKANT_DOCUMENT_ONTOLOGY_DOD.md');
+ const s=read('project/docs/IKANT_DOCUMENT_ONTOLOGY_DOD.md');
  for(const word of ['LLM','sinapsi','fenomenologia','UNKNOWN','L0','L1','L2','L3','L4','Globale','Intermedia','Locale','NON ATTESTATO','Confutazione','checklist'])assert.ok(s.toLowerCase().includes(word.toLowerCase()),word);
  assert.match(s,/non.*dimostra|non.*equivale/i);
 });

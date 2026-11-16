@@ -9,7 +9,7 @@ const H40=/^[0-9a-f]{40}$/,H64=/^[0-9a-f]{64}$/;
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const gitBlob=b=>crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex');
 const pathAllowed=p=>typeof p==='string'&&p.length<180&&!p.includes('..')&&
- /^(README\.md|(?:host|src|contracts|assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(p);
+ /^(README\.md|(?:host|src|contracts|project\/assets\/brand)\/[a-zA-Z0-9_.\/-]+)$/.test(p);
 function decode64(data){
  if(typeof data!=='string'||data.length%4||data.length>3_000_000||
    !/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(data))
@@ -37,7 +37,7 @@ function validateManifest(manifest,sourceHead){
  for(const p of ['host/c77-first-turn.mjs','host/c77-qualified-census.mjs',
   'contracts/c77-cx-build-proof.json','contracts/c71-cx-execution-census.json',
   'src/c70-experimental-compute-preview.mjs','src/c71-experimental-host-draft.mjs',
-  'assets/brand/ikant-light.svg','assets/brand/ikant-dark.svg']){
+  'project/assets/brand/ikant-light.svg','project/assets/brand/ikant-dark.svg']){
   if(!allowed.has(p))throw Error('C78_REQUIRED_ENTRY_MISSING:'+p);
  }
  return allowed;

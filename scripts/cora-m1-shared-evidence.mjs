@@ -18,7 +18,7 @@ const CRITICAL=[
  'BOOTSTRAP.json','contracts/project-host-tool-grounding-abi.json',
  'host/project-c72-transport-frontier.mjs','host/project-oneshell-continuous.mjs',
  'project/session-chat/PROMPT.txt','project/edu-oneshell/PROMPT_INNESCO.txt',
- 'project-baseline/PROJECT_PROMPT.txt','project/oneshell-v7/PROMPT_TEMPLATE.txt',
+ 'project/baseline/PROJECT_PROMPT.txt','project/oneshell-v7/PROMPT_TEMPLATE.txt',
  'scripts/project-review-callsites.mjs','scripts/cora-pr-f-qualification.mjs',
  'scripts/cora-pr-g-evidence-readback.mjs','scripts/cora-s3-convergence.mjs'
 ];

@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {chooseEDUSourceTransport,chooseC72HostTransport,C72_TRANSPORT_ORDER}
  from '../host/project-c72-transport-frontier.mjs';
 import {validateFContract} from './cora-pr-f-qualification.mjs';
-import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {qualifyR7OwnerSourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {validateStreamProfile} from './cora-three-streams-audit.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const BASE='e719ebfdb8dfa2f1a0382f56ab95fbbdc0f3e005';
@@ -15,7 +15,7 @@ const BASE_TREE='9fe5a7d8d757b180aa55df0db86119f446872e03';
 const NEW_FRONTIER='88bb9955cea54a98c4c47fe7dec6f385a8e7edf2';
 const OLD_FRONTIER='7b16982373779bdd7ff7b8c0535f515731fc5867';
 const OWNERS={"host/c72-public-mode-admission.mjs":"eec28e35a1066802edc905c7d61c1ecbcef0082d","host/c135-edu-v2-owner.mjs":"e8bbe5741375e5d51f1caa02fdba2ecc5f6c049d","host/c87-durable-ledger.mjs":"9d4fd4038bd7e109bdbc5e0441f9e9acf497c846","host/c125-output-port.mjs":"14760e40051b2bbe0c3a2ebc9347e125fdd7d65a"};
-const STABLE={"BOOTSTRAP.json":"36c7d5beedb54c453fd4d38e551aa123a92c92f1","contracts/project-host-tool-grounding-abi.json":"5d882060167f12d76cb2250fca87bd3e808d241a","project/session-chat/PROMPT.txt":"277b1a5b7a8b9e5fe09702b6cf854b8682791db4","project/edu-oneshell/PROMPT_INNESCO.txt":"dd7a3cb190a7a731ef68701b4e11b68fb71708c2","project-baseline/PROJECT_PROMPT.txt":"9eb7725430f99f24129e2bb8daeb93da67187fc6","project/oneshell-v7/PROMPT_TEMPLATE.txt":"47d83b4fa2cc68699f9fc63ffa107410a970e24f","host/project-oneshell-continuous.mjs":"0355428b71ec4d6aa13ec4b81323ee1c9336b102","contracts/c72-public-mode-admission-v2.json":"0bdb99589d907072917ba31f2938c9b600f39a05"};
+const STABLE={"BOOTSTRAP.json":"36c7d5beedb54c453fd4d38e551aa123a92c92f1","contracts/project-host-tool-grounding-abi.json":"5d882060167f12d76cb2250fca87bd3e808d241a","project/session-chat/PROMPT.txt":"277b1a5b7a8b9e5fe09702b6cf854b8682791db4","project/edu-oneshell/PROMPT_INNESCO.txt":"dd7a3cb190a7a731ef68701b4e11b68fb71708c2","project/baseline/PROJECT_PROMPT.txt":"9eb7725430f99f24129e2bb8daeb93da67187fc6","project/oneshell-v7/PROMPT_TEMPLATE.txt":"47d83b4fa2cc68699f9fc63ffa107410a970e24f","host/project-oneshell-continuous.mjs":"0355428b71ec4d6aa13ec4b81323ee1c9336b102","contracts/c72-public-mode-admission-v2.json":"0bdb99589d907072917ba31f2938c9b600f39a05"};
 const BLUEPRINT=[["S3R1","SOURCE",[]],["S3R2","SOURCE",["S3R1"]],["S3R3","SOURCE",["S3R1"]],["S3R4","SOURCE",["S3R1"]],["S3R5","SOURCE",["S3R1"]],["S3R6","SOURCE",["S3R1"]],["S3R7","SOURCE",["S3R2","S3R3","S3R4","S3R5","S3R6"]],["I_S3_SOURCE","INTERMEDIATE",["S3R1","S3R2","S3R3","S3R4","S3R5","S3R6","S3R7"]],["S3E1","EXTERNAL",["I_S3_SOURCE"]],["S3E2","EXTERNAL",["I_S3_SOURCE"]],["S3E3","EXTERNAL",["S3E2"]],["S3E4","EXTERNAL",["I_S3_SOURCE"]],["I_S3_COMPLETE","INTERMEDIATE",["I_S3_SOURCE","S3E1","S3E2","S3E3","S3E4"]]];
 const SHA=/^[a-f0-9]{40}$/u;
 const denied=edge=>({ok:false,first_edge:edge,authority:0,active:false,s3_complete:false,
@@ -133,7 +133,7 @@ export function observeS3Source(){
   const all={},observations=[];
   for(const [f,sha] of pinned){
    const b=get(head,f),observed=git('rev-parse',head+':'+f);
-   const epoch=qualifyRegisteredC72SourceEpoch({
+   const epoch=qualifyR7OwnerSourceEpoch({
     path:f,historicalBlobSha1:sha,observedBlobSha1:observed});
    if(epoch.ok!==true||gitHash(b)!==observed)
     return denied('S3_CRITICAL_BLOB_DRIFT:'+f);
@@ -146,7 +146,7 @@ export function observeS3Source(){
    bootstrap:all['BOOTSTRAP.json'],abi:all['contracts/project-host-tool-grounding-abi.json'],
    frontier:all['host/project-c72-transport-frontier.mjs'],
    prompt:all['project/session-chat/PROMPT.txt'],derived:all['project/edu-oneshell/PROMPT_INNESCO.txt'],
-   legacy:all['project-baseline/PROJECT_PROMPT.txt'],v7:all['project/oneshell-v7/PROMPT_TEMPLATE.txt'],
+   legacy:all['project/baseline/PROJECT_PROMPT.txt'],v7:all['project/oneshell-v7/PROMPT_TEMPLATE.txt'],
    continuous:all['host/project-oneshell-continuous.mjs'],
    c72:get(head,'contracts/c72-public-mode-admission-v2.json').toString('utf8')
   });

@@ -18,7 +18,7 @@ function walk(dir){
  }
  return out;
 }
-const production=[...walk(path.join(ROOT,'src')),'ikant.mjs','scripts/session-chat-runtime-cli.mjs','plugins/ikant-le-session-chat/server/server.mjs'].sort();
+const production=[...walk(path.join(ROOT,'src')),'ikant.mjs','scripts/session-chat-runtime-cli.mjs','project/plugins/ikant-le-session-chat/server/server.mjs'].sort();
 const errors=[];
 const experimental=R.discovery?.excluded_experimental_non_activation_files||[];
 const exceptions=new Set(experimental);

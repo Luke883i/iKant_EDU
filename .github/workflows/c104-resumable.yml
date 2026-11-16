@@ -6,7 +6,7 @@ on:
       - 'scripts/c104-*'
       - 'tests/c104-materialization.test.mjs'
       - 'contracts/c104-materialization-dod.json'
-      - 'docs/C104_MATERIALIZATION_AND_ADAPTER.md'
+      - 'project/docs/C104_MATERIALIZATION_AND_ADAPTER.md'
       - '.github/workflows/c104-resumable.yml'
   workflow_dispatch:
 permissions:

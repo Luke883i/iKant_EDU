@@ -115,8 +115,8 @@
     "runtime_execution_receipt_runtime_owned": true,
     "host_receipts_external_observation_required": true
   },
-  "mutation_ref": "artifacts/qualification/c52-physical-closure-10m.json",
-  "lattice_ref": "artifacts/qualification/c52-physical-closure-lattice.json",
+  "mutation_ref": "tests/artifacts/qualification/c52-physical-closure-10m.json",
+  "lattice_ref": "tests/artifacts/qualification/c52-physical-closure-lattice.json",
   "claim_boundary": {
     "repository_or_ci_can_create_host_bootstrap_binding": false,
     "repository_or_ci_can_create_host_route_interposition": false,
@@ -126,7 +126,7 @@
     "live_e0_e3_e4_e5_e6_required_for_physical_claim": true,
     "pr_closes_runtime_proof_surface_not_external_host_capability": true
   },
-  "dod_profile_ref": "artifacts/qualification/c52-runtime-physical-closure-dod.json",
-  "bundle_coverage_ref": "artifacts/qualification/c52-bundle-coverage.json",
+  "dod_profile_ref": "tests/artifacts/qualification/c52-runtime-physical-closure-dod.json",
+  "bundle_coverage_ref": "tests/artifacts/qualification/c52-bundle-coverage.json",
   "receipt_sha256": "9cebdfbb812316ce2a279adf63f975ed87c77e27a4227895c47c1cdba0f4d5e7"
 }

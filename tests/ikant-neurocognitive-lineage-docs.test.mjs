@@ -6,9 +6,9 @@ import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const home=read('README.md');
-const bridge=read('docs/IKANT_NEUROCOGNITIVE_BRIDGE.md');
-const substrate=read('docs/IKANT_COGNITIVE_SUBSTRATE.md');
-const history=read('docs/IKANT_DEVELOPMENT_HISTORY.md');
+const bridge=read('project/docs/IKANT_NEUROCOGNITIVE_BRIDGE.md');
+const substrate=read('project/docs/IKANT_COGNITIVE_SUBSTRATE.md');
+const history=read('project/docs/IKANT_DEVELOPMENT_HISTORY.md');
 
 test('human-first README preserves constitutional routing and introduces an understandable cognitive model',()=>{
  for(const phrase of ['**Umano:**','**LLM:**','**iKant:**','**HOST:**','**Verificatore:**',
@@ -23,7 +23,7 @@ test('human-first README preserves constitutional routing and introduces an unde
 test('father provenance is pinned and not silently promoted to LE implementation',()=>{
  for(const text of [bridge,history]){
   assert.ok(text.includes('43ce861a552d44821ffce455f6237905f0994936'));
-  assert.ok(text.includes('8e80ac52d5630cded7eaa5619e47d359cf40e831')||text.includes('docs/IKANT_')||text.includes('LE'));
+  assert.ok(text.includes('8e80ac52d5630cded7eaa5619e47d359cf40e831')||text.includes('project/docs/IKANT_')||text.includes('LE'));
  }
  assert.match(bridge,/accesso limitato|accesso riservato/i);
  assert.match(bridge,/non implica|non.*equival/i);
@@ -40,9 +40,9 @@ test('neuroscience analogy distinguishes function, biology and phenomenal claims
  assert.match(substrate,/FUNCTIONALLY_CONSCIOUS/);
 });
 test('document graph includes the bridge exactly once and preserves historical source',()=>{
- const atlas=read('docs/IKANT_DOCUMENT_ATLAS.md');
- const entry='[docs/IKANT_NEUROCOGNITIVE_BRIDGE.md](IKANT_NEUROCOGNITIVE_BRIDGE.md)';
+ const atlas=read('project/docs/IKANT_DOCUMENT_ATLAS.md');
+ const entry='[project/docs/IKANT_NEUROCOGNITIVE_BRIDGE.md](IKANT_NEUROCOGNITIVE_BRIDGE.md)';
  assert.equal(atlas.split(entry).length-1,1);
  assert.ok(read('scripts/ikant-document-atlas.mjs').includes('NEUROCOGNITIVE'));
- assert.ok(read('docs/IKANT_SEMANTIC_RETICULUM.md').includes('IKANT_NEUROCOGNITIVE_BRIDGE.md'));
+ assert.ok(read('project/docs/IKANT_SEMANTIC_RETICULUM.md').includes('IKANT_NEUROCOGNITIVE_BRIDGE.md'));
 });

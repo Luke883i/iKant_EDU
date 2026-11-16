@@ -1,0 +1,60 @@
+{
+  "schema": "ikant-r7-v11-seven-root-contract/v1",
+  "original_main": "8cb80d2230919220ac4b7a1cfcd80950d8467848",
+  "original_tree": "4cff62ed12f79390a059784bcbf9770788a3a4d1",
+  "v10_parent": "c9a1179283958a7ffb30d1ad8c08af69d34fff0c",
+  "v10_tree": "9b6b80d7fe2f8536b9ce8633e09810fc87b81c28",
+  "root_dirs": [
+    ".github",
+    "contracts",
+    "host",
+    "project",
+    "scripts",
+    "src",
+    "tests"
+  ],
+  "root_files": [
+    ".gitignore",
+    "ADMISSION.json",
+    "AGENTS.md",
+    "BOOTSTRAP.json",
+    "LICENSE",
+    "README.md",
+    "TERMS.md",
+    "ikant.mjs",
+    "package.json"
+  ],
+  "moved_roots": {
+    "artifacts": "tests/artifacts",
+    "assets": "project/assets",
+    "docs": "project/docs",
+    "governance": "contracts/governance",
+    "plugins": "project/plugins",
+    "project-baseline": "project/baseline",
+    "release": "project/release",
+    "runtime-root": "src/runtime-root"
+  },
+  "moved_root_files": {
+    "BOOTSTRAP.md": "project/docs/BOOTSTRAP.md",
+    "C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json": "contracts/C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json",
+    "C13_SESSION_CHAT_FASTBOOT_CONTRACT.json": "contracts/C13_SESSION_CHAT_FASTBOOT_CONTRACT.json",
+    "iKant_UI_shell.md": "project/docs/iKant_UI_shell.md",
+    "render.mcp-standalone.candidate.yaml": "project/release/render.mcp-standalone.candidate.yaml",
+    "stile_comunicativo.md": "project/docs/stile_comunicativo.md"
+  },
+  "never_declassify_without_review": [
+    "project/session-chat/PROMPT.txt",
+    "host/c72-public-mode-admission.mjs",
+    "host/c135-edu-v2-owner.mjs",
+    "host/c87-durable-ledger.mjs",
+    "host/c125-output-port.mjs",
+    "src/session-shell.mjs",
+    "project/plugins/ikant-le-session-chat/server/server.mjs",
+    "project/plugins/ikant-le-session-chat/plugin.json",
+    "BOOTSTRAP.json"
+  ],
+  "full_native_suite": "REQUIRED_FOR_PRODUCT_DO_D",
+  "CORA_engine": "REQUIRES_REAL_PROCESS_RUN_AND_REPORT",
+  "external_owners": "REVIEW_REQUIRED",
+  "product_go": false
+}

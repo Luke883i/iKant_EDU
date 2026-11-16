@@ -32,7 +32,7 @@ const METHODS=Object.freeze({
  P:['documentation-assurance','runtime-observation','source-runtime-fusion','release-verification','process-catalog']
 });
 const DOMAIN_REFS=Object.freeze({
- R:['scripts/v5b-repository-governance-audit.mjs','governance/v5b-change-register.json'],
+ R:['scripts/v5b-repository-governance-audit.mjs','contracts/governance/v5b-change-register.json'],
  S:['contracts/project-review-readiness-v1.json','scripts/project-review-callsites.mjs'],
  P:['contracts/c72-product-value-promise.json','contracts/project-oneshell-do-d.json']
 });
@@ -95,7 +95,8 @@ export function sourcePathsPresent(c,root=ROOT){
  * All owner/accountability and external-delivery columns remain UNKNOWN.
  */
 import {execFileSync} from 'node:child_process';
-import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch,qualifyR7OwnerSourceEpoch,qualifyPr249SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {reopenR7SourceEpoch} from './r7-v13-epoch-bridge.mjs';
 const reticularPath='contracts/cora-reticular-hygiene-v1.json';
 const reticularIds=[
  'S01','S02','S03','S04','S05','S06','S07','S08','S09',
@@ -188,10 +189,14 @@ export function reopenW1WorkflowEpoch({entries,observedTree,previousTree,registe
  const file='.github/workflows/s03-s09-mvp1-candidate.yml';
  const original='eea411a6fd465ee3b1f35d0c2fa8fd615c116750';
  const amended='ff86094e725bf876f09ac0587fe2ce6d3218c065';
- const regPath='governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json';
+ const regPath='contracts/governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json';
  if(!Array.isArray(entries)||!isHash(observedTree)||!isHash(previousTree)||
     !Array.isArray(register?.paths)||register.schema!=='ikant-v5b-change-extension/v1'||
-    register.authority!==0||register.self_path!==regPath||register.source_main!==source||
+    register.authority!==0||
+    !(register.self_path===regPath||
+       (register.self_path==='governance/changes/'+ 'z'.repeat(40)+'-r7-pilot-root-contraction.json'&&
+        reopenR7SourceEpoch(register.self_path,{newPath:regPath}).byte_identical===true))||
+    register.source_main!==source||
     register.automatic_approval!==false||register.human_signoffs!==0||
     register.paths.filter(x=>x.path===file&&x.operation==='MODIFY'&&
       x.human_review==='REVIEW_REQUIRED').length!==1||
@@ -341,6 +346,94 @@ export function qualifyReticularCensus(c,{audit,index,tree,head,treeSha,ownersSt
   unresolved_dynamic_candidates:audit.dependency_probe?.dynamic_site_candidates??null,
   rows};
 }
+/** Reopen the ORIGINAL W1/S07 history at the pinned V10 tree before interpreting
+ * the 75 V11 workflow content rebinds. Source readback, not effective CI/review. */
+export function reopenV13WorkflowEpoch(c){
+ const deny=edge=>({ok:false,edge,authority:0,product_go:false,review_attested:false});
+ try{
+  const v10='c9a1179283958a7ffb30d1ad8c08af69d34fff0c';
+  const v12='7fa91861f6bd4a9760ad4ab69c0cdd048d9cab7c';
+  const oldTree='0e9081a37ebc47c3cb3bc1417d26a3a9361f9e0b';
+  const newTree='e3543d25e996d0a3c13b89c220e82d719c77f75f';
+  // Reopen the immutable original PR249 workflow epoch only when the entire
+  // current successor is independently source-pinned by V5-B. This is not CI,
+  // owner review, provider evidence, or permission to release.
+  const successor=qualifyPr249SourceEpoch();
+  const projectionRef=successor.ok===true?'7cd95a485f71008dd6aa7c3da6aa76bd0f3ead65':'HEAD';
+  const currentWorkflowTree=git('rev-parse',projectionRef+':.github/workflows');
+  if(git('rev-parse',v10+':.github/workflows')!==oldTree||
+     git('rev-parse',v12+':.github/workflows')!==newTree)
+    return deny('V13_WORKFLOW_SOURCE_TREES_NOT_PINNED');
+  // V13 is immutable. Only two prospective PR249 workflow improvements are
+  // admitted: suppress autonomous C53 commits and fetch full Project history.
+  // Both are original-byte-pinned, review-required and NON-authoritative.
+  const fixedWorkflowChanges=[
+   '.github/workflows/c53-physical-closure-hardening.yml',
+   '.github/workflows/project-session-repo-first.yml'];
+  let prospectiveWorkflowChanges=0;
+  if(currentWorkflowTree!==newTree){
+   const f=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/r7-pr249-founding-contract.json'),'utf8'));
+   const e=f?.pr249_epoch,mods=e?.modified_originals||[];
+   const patch=new Map(mods.filter(r=>fixedWorkflowChanges.includes(r.path)).map(r=>[r.path,r]));
+   if(f.schema!=='ikant-r7-pr249-founding-contract/v1'||f.authority!==0||
+      f.product_go!==false||e?.review_required!==true||
+      e?.source_commit!=='86e20abb714fa4000352b61a0c0abf8795775318'||
+      git('rev-parse','86e20abb714fa4000352b61a0c0abf8795775318:.github/workflows')!==newTree||
+      patch.size!==fixedWorkflowChanges.length)
+      return deny('PR249_WORKFLOW_EPOCH_REGISTER_INVALID');
+   const parse=ref=>execFileSync('git',['ls-tree','-z',ref+':.github/workflows'],
+     {cwd:ROOT,maxBuffer:2_000_000}).toString('utf8').split('\0').filter(Boolean)
+     .map(row=>{const m=/^(100644|100755) blob ([a-f0-9]{40})\t([^/\t]+)$/.exec(row);
+       if(!m)throw Error('PR249_WORKFLOW_ENTRY_INVALID');
+       return{mode:m[1],sha:m[2],name:m[3]};});
+   const baseline=parse('86e20abb714fa4000352b61a0c0abf8795775318'),current=parse(projectionRef);
+   if(baseline.length!==116||current.length!==116)return deny('PR249_WORKFLOW_COUNT_DRIFT');
+   const old=new Map(baseline.map(r=>[r.name,r]));let changed=0;
+   for(const row of current){const original=old.get(row.name),name='.github/workflows/'+row.name;
+     if(!original||original.mode!==row.mode)return deny('PR249_WORKFLOW_PATH_OR_MODE_CHANGED');
+     const pin=patch.get(name);
+     if(pin){
+       if(original.sha!==pin.original_sha||row.sha!==pin.prospective_sha)
+        return deny('PR249_WORKFLOW_PIN_DRIFT:'+row.name);
+     }else if(row.sha!==original.sha)return deny('PR249_UNREGISTERED_WORKFLOW_CHANGE:'+row.name);
+     if(original.sha!==row.sha)changed++;
+   }
+   if(old.size!==116||changed!==2)return deny('PR249_WORKFLOW_DELTA_NOT_EXACT');
+   prospectiveWorkflowChanges=2;
+  }
+  const read=(rev)=>execFileSync('git',['ls-tree','-z',rev+':.github/workflows'],{cwd:ROOT}).toString('utf8').split('\0').filter(Boolean).map(x=>{
+   const m=/^(100644|100755) blob ([a-f0-9]{40})\t([a-zA-Z0-9_.-]+\.ya?ml)$/u.exec(x);
+   if(!m)throw Error('V13_WORKFLOW_OBJECT_INVALID');
+   return {mode:m[1],sha:m[2],name:m[3]};
+  });
+  const historical=read(v10),current=read(projectionRef);
+  if(historical.length!==116||current.length!==116)return deny('V13_WORKFLOW_COUNT_DRIFT');
+  const earlier=new Map(historical.map(x=>[x.name,x]));
+  if(earlier.size!==116)return deny('V13_WORKFLOW_HISTORIC_DUPLICATE');
+  let changed=0;
+  for(const row of current){
+   const old=earlier.get(row.name);
+   if(!old||old.mode!==row.mode)return deny('V13_WORKFLOW_PATH_OR_MODE_CHANGED');
+   if(old.sha!==row.sha)changed++;
+  }
+  if(changed!==75+(prospectiveWorkflowChanges===2?1:0))return deny('V13_WORKFLOW_DELTA_NOT_EXACT');
+  const reg=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/governance/changes/'+
+    'z'.repeat(40)+'-r7-pilot-root-contraction.json'),'utf8'));
+  const w1=reopenW1WorkflowEpoch({entries:historical,observedTree:oldTree,
+   previousTree:'3eba2af5e3371645fb9573c357948f6466c259ae',register:reg,
+   historyBlob:'eea411a6fd465ee3b1f35d0c2fa8fd615c116750',
+   liveBlob:git('rev-parse',v10+':.github/workflows/s03-s09-mvp1-candidate.yml')});
+  if(!w1.ok)return deny('V13_W1_HISTORIC_SOURCE_NOT_VERIFIED:'+w1.edge);
+  const earlierEvolution=qualifyWorkflowTreeEvolution(c.reuse.workflow_evolution,
+   {entries:w1.entries,observedTree:w1.previous_tree});
+  if(!earlierEvolution.ok)return deny('V13_WORKFLOW_PRIOR_EVOLUTION_INVALID:'+earlierEvolution.edge);
+  return {ok:true,status:'SOURCE_EPOCH_WORKFLOW_PROJECTION_REVIEW_REQUIRED',
+   original_w1_reopened:true,original_evolution_reopened:true,
+   before:oldTree,current:currentWorkflowTree,changed_workflow_sources:75,
+   prospective_pr249_workflow_changes:prospectiveWorkflowChanges,
+   authority:0,review_attested:false,provider_attested:false,product_go:false};
+ }catch(e){return deny('V13_WORKFLOW_HISTORICAL_SOURCE_UNREADABLE:'+String(e).slice(0,100));}
+}
 /** One original V5-B audit and its CORA-qualified projection from the same observation.\n * The audit is created internally; callers cannot inject an unqualified substitute. */
 export function observeReticularCensusWithAudit(){
  const c=JSON.parse(fs.readFileSync(path.join(ROOT,reticularPath),'utf8'));
@@ -352,7 +445,7 @@ export function observeReticularCensusWithAudit(){
  const index=parseStagedGitEntries(execFileSync('git',['ls-files','--stage','-z'],{cwd:ROOT}).toString('utf8'))
   .map(x=>({path:x.path,sha:x.sha}));
  const ownerPaths=c.reuse.owners;
- const ownerEpochReadback=ownerPaths.map(p=>qualifyRegisteredC72SourceEpoch({
+ const ownerEpochReadback=ownerPaths.map(p=>qualifyR7OwnerSourceEpoch({
   path:p,historicalBlobSha1:c.reuse.owner_blob_pins[p],
   observedBlobSha1:git('rev-parse','--verify','HEAD:'+p)
  }));
@@ -366,7 +459,7 @@ export function observeReticularCensusWithAudit(){
   if(!m||m[3].charCodeAt(0)!==9)throw Error('CORA_WORKFLOW_NON_BLOB_ENTRY');
   return {mode:m[1],sha:m[2],name:m[4]};
  });
- const w1register=JSON.parse(fs.readFileSync(path.join(ROOT,'governance/changes/'+
+ const w1register=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/governance/changes/'+
   'z'.repeat(40)+'-r7-pilot-root-contraction.json'),'utf8'));
  const w1=reopenW1WorkflowEpoch({entries,observedTree:workflowTree,
   previousTree:'3eba2af5e3371645fb9573c357948f6466c259ae',
@@ -375,7 +468,8 @@ export function observeReticularCensusWithAudit(){
   liveBlob:git('rev-parse','--verify','HEAD:.github/workflows/s03-s09-mvp1-candidate.yml')});
  const delta=w1.ok?qualifyWorkflowTreeEvolution(c.reuse.workflow_evolution,
   {entries:w1.entries,observedTree:w1.previous_tree}):w1;
- const deltaSafe=delta.ok===true;
+ const projected=delta.ok===true?null:reopenV13WorkflowEpoch(c);
+ const deltaSafe=delta.ok===true||projected?.ok===true;
  const audit=auditRepository();
  const census={...qualifyReticularCensus(c,{audit,index,tree:parseTree,head,treeSha,
   ownersStable,deltaSafe,readme:fs.readFileSync(path.join(ROOT,'README.md'),'utf8')}),

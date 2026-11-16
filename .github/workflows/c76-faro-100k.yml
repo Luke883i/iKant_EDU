@@ -4,7 +4,7 @@ on:
     paths:
       - 'scripts/c76-faro-100k-actual-retries.mjs'
       - 'contracts/c76-faro-method.json'
-      - 'docs/C76_FARO_METHOD.md'
+      - 'project/docs/C76_FARO_METHOD.md'
       - '.github/workflows/c76-faro-100k.yml'
   push:
     branches: [main]

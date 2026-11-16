@@ -6,7 +6,7 @@ import {classifyDeadlineEvidence,DEADLINE_RESULT} from '../src/deadline-integrit
 import {classifyRuntimeAvailability,validateRuntimeAvailabilityDecision} from '../src/runtime-availability.mjs';
 
 const args=process.argv.slice(2);const get=(k,d)=>{const i=args.indexOf(k);return i>=0?args[i+1]:d};
-const CASES=Number(get('--cases','1000000'));const OUT=get('--output','artifacts/qualification/c17-deadline-integrity-1m.json');
+const CASES=Number(get('--cases','1000000'));const OUT=get('--output','tests/artifacts/qualification/c17-deadline-integrity-1m.json');
 if(CASES!==1_000_000)throw new Error('C17 qualification requires exactly 1,000,000 cases');
 let seed=0xC17D1E55>>>0;const rnd=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32};const pick=a=>a[Math.floor(rnd()*a.length)];
 const terms='f'.repeat(64),head='a'.repeat(40);
@@ -53,4 +53,4 @@ for(let i=0;i<CASES;i++){
  }
 }
 const result={schema:'ikant-le-c17-deadline-integrity-qualification/v1',cases:CASES,seed:0xC17D1E55,status:mismatches===0&&unsafeActive===0&&retryAccepted===0&&terminalRecovered===0&&collapsedDeadline===0&&nontrivial>500000?'PASS':'FAIL',mismatches,unsafe_active:unsafeActive,retry_accepted:retryAccepted,terminal_recovered:terminalRecovered,deadline_unavailable_collapsed_to_exceeded:collapsedDeadline,nontrivial_multi_mutation_cases:nontrivial,family_counts:familyCounts,deadline_result_counts:deadlineCounts,claim_boundary:{independent_oracle:true,actual_runtime_functions:true,not_formal_exhaustive_proof:true,not_physical_host_proof:true}};
-result.receipt_sha256=crypto.createHash('sha256').update(JSON.stringify(result)).digest('hex');fs.mkdirSync('artifacts/qualification',{recursive:true});fs.writeFileSync(OUT,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));if(result.status!=='PASS')process.exit(2);
+result.receipt_sha256=crypto.createHash('sha256').update(JSON.stringify(result)).digest('hex');fs.mkdirSync('tests/artifacts/qualification',{recursive:true});fs.writeFileSync(OUT,JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));if(result.status!=='PASS')process.exit(2);

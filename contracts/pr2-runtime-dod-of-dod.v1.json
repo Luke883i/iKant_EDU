@@ -142,7 +142,7 @@
     {
       "id": "M08",
       "domain": "MCP",
-      "path": "plugins/ikant-le-session-chat/server/server.mjs",
+      "path": "project/plugins/ikant-le-session-chat/server/server.mjs",
       "predicate": "PERSISTENCE_ACROSS_SERVER_RESTART",
       "requiredTier": "RESTART_NOT_COVERED",
       "declaredPass": false,

@@ -24,7 +24,7 @@ on:
       - 'host/project-oneshell-irred-e15.mjs'
       - 'scripts/project-oneshell-e15-falsify-1m.mjs'
       - 'contracts/project-oneshell-irred-e15.json'
-      - 'artifacts/qualification/e15-irred-1m.json'
+      - 'tests/artifacts/qualification/e15-irred-1m.json'
       - 'host/project-c72-receipt-transit.mjs'
       - 'scripts/project-c72-receipt-reopen-cli.mjs'
       - 'contracts/project-c72-receipt-transit.json'
@@ -92,7 +92,7 @@ jobs:
       - name: E15 one-million deterministic semantic mutations and pinned trace
         run: |
           node scripts/project-oneshell-e15-falsify-1m.mjs > /tmp/e15-1m.json
-          cmp /tmp/e15-1m.json artifacts/qualification/e15-irred-1m.json
+          cmp /tmp/e15-1m.json tests/artifacts/qualification/e15-irred-1m.json
       - name: Verify physical cross-process C72 transit with replay/tamper rejection
         run: node --test tests/project-c72-receipt-transit.test.mjs
       - name: Verify E13 in-chat six-slot packet, original voice and lossless evidence (Node20/22)

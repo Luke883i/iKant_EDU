@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {
  readOAuthResourceConfig, protectedResourceMetadata, bearerChallenge,
  createPinnedJwksResolver,verifyOAuthAccessToken,hasOAuthScope,scopeBoundSession
-} from '../plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs';
+} from '../project/plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs';
 
 const repo=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const config=readOAuthResourceConfig({IKANT_MCP_OAUTH_RESOURCE:'https://ikant.example/mcp',
@@ -99,7 +99,7 @@ test('INTERMEDIATE: pinned JWKS resolution rejects duplicates, network redirects
  await assert.rejects(streaming('kid-1',{now}),/JWKS_SIZE/);
 });
 test('INTERMEDIATE: SDK integration is an isolated add-on, no bootstrap mutation',()=>{
- const src=fs.readFileSync(path.join(repo,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
+ const src=fs.readFileSync(path.join(repo,'project/plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
  assert.match(src,/IKANT_MCP_AUTH_MODE/);
  assert.match(src,/verifyOAuthAccessToken/);
  assert.match(src,/scopeBoundSession/);

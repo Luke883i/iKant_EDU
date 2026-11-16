@@ -6,7 +6,7 @@ on:
       - 'scripts/c98-*'
       - 'tests/c98-*'
       - 'contracts/c98-*'
-      - 'docs/C98_*'
+      - 'project/docs/C98_*'
       - 'project-baseline/**'
       - '.github/workflows/c98-host-bound-prepr.yml'
   workflow_dispatch:

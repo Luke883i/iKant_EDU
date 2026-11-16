@@ -6,7 +6,7 @@ on:
       - 'src/embedded-*'
       - 'scripts/lib0-*'
       - 'tests/lib0-*'
-      - 'artifacts/qualification/lib0-*'
+      - 'tests/artifacts/qualification/lib0-*'
       - 'package.json'
       - '.github/workflows/lib0-embedded-nuance.yml'
   workflow_dispatch:
@@ -18,6 +18,9 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -29,12 +32,12 @@ jobs:
       - name: LIB0 one-hundred-thousand semantic mutations
         run: |
           npm run falsify:lib0
-          git diff --exit-code -- artifacts/qualification/lib0-embedded-nuance.json
+          git diff --exit-code -- tests/artifacts/qualification/lib0-embedded-nuance.json
       - name: Verify LIB0 receipt
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('artifacts/qualification/lib0-embedded-nuance.json','utf8'));
+          const r=JSON.parse(fs.readFileSync('tests/artifacts/qualification/lib0-embedded-nuance.json','utf8'));
           if(r.status!=='PASS'||r.cases!==100_000||r.survivors!==0)throw new Error('LIB0 qualification mismatch');
           if(r.strata.typical!==50_000||r.strata.edge!==30_000||r.strata.stress!==20_000)throw new Error('LIB0 strata mismatch');
           if(r.families!==33||r.unexercised_families.length!==0||r.tail_new_signatures!==0||r.no_novelty_tail!==1_000)throw new Error('LIB0 saturation mismatch');

@@ -3,11 +3,11 @@ on:
   pull_request:
     paths:
       - 'README.md'
-      - 'docs/IKANT_COGNITIVE_SUBSTRATE.md'
-      - 'docs/IKANT_DEVELOPMENT_HISTORY.md'
-      - 'docs/IKANT_NEUROCOGNITIVE_BRIDGE.md'
-      - 'docs/IKANT_DOCUMENT_ATLAS.md'
-      - 'docs/IKANT_SEMANTIC_RETICULUM.md'
+      - 'project/docs/IKANT_COGNITIVE_SUBSTRATE.md'
+      - 'project/docs/IKANT_DEVELOPMENT_HISTORY.md'
+      - 'project/docs/IKANT_NEUROCOGNITIVE_BRIDGE.md'
+      - 'project/docs/IKANT_DOCUMENT_ATLAS.md'
+      - 'project/docs/IKANT_SEMANTIC_RETICULUM.md'
       - 'scripts/ikant-document-atlas.mjs'
       - 'tests/ikant-neurocognitive-lineage-docs.test.mjs'
       - '.github/workflows/docs-neurocognitive-review.yml'

@@ -6,16 +6,16 @@ on:
       - 'src/host-consumption-frame.mjs'
       - 'src/session-chat-deployment.mjs'
       - 'ikant.mjs'
-      - 'plugins/ikant-le-session-chat/server/server.mjs'
-      - 'plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
+      - 'project/plugins/ikant-le-session-chat/server/server.mjs'
+      - 'project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
       - 'tests/c54-host-materialization.test.mjs'
       - 'scripts/c54-host-materialization-select-100k.mjs'
       - 'scripts/c54-host-materialization-falsify-1m.mjs'
       - 'scripts/c54-build-dod.mjs'
-      - 'docs/C54_HOST_MATERIALIZATION.md'
+      - 'project/docs/C54_HOST_MATERIALIZATION.md'
       - 'AGENTS.md'
-      - 'docs/ARCHITECTURE.md'
-      - 'docs/GOVERNANCE.md'
+      - 'project/docs/ARCHITECTURE.md'
+      - 'project/docs/GOVERNANCE.md'
       - '.github/workflows/c54-host-materialization.yml'
   push:
     branches: [main]
@@ -38,7 +38,7 @@ jobs:
           node --check src/host-consumption-frame.mjs
           node --check src/session-chat-deployment.mjs
           node --check ikant.mjs
-          node --check plugins/ikant-le-session-chat/server/server.mjs
+          node --check project/plugins/ikant-le-session-chat/server/server.mjs
           node --check scripts/c54-host-materialization-select-100k.mjs
           node --check scripts/c54-host-materialization-falsify-1m.mjs
           node --check scripts/c54-build-dod.mjs

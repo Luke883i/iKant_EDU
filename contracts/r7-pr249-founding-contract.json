@@ -1,0 +1,232 @@
+{
+  "schema": "ikant-r7-pr249-founding-contract/v1",
+  "issued_for": "Luke883i/iKant_EDU PR #249",
+  "purpose": "Contraction of physical repository layout without loss of source, owner boundaries or tested behavior. This does not authorize product release.",
+  "authority": 0,
+  "product_go": false,
+  "baseline": {
+    "main_commit": "8cb80d2230919220ac4b7a1cfcd80950d8467848",
+    "main_tree": "4cff62ed12f79390a059784bcbf9770788a3a4d1",
+    "v13_source_commit": "86e20abb714fa4000352b61a0c0abf8795775318",
+    "v13_source_tree": "07f135d6d54ff69b78cc9e7215daa0bdafa9f84c",
+    "synthetic_source_root": "27194bb153ff0ab8500bb75277d4d5f7ebb60d45",
+    "historical_source_is_not_github_main_history": true
+  },
+  "target": {
+    "directory_roots": [
+      ".github",
+      "contracts",
+      "host",
+      "project",
+      "scripts",
+      "src",
+      "tests"
+    ],
+    "root_files": [
+      ".gitignore",
+      "ADMISSION.json",
+      "AGENTS.md",
+      "BOOTSTRAP.json",
+      "LICENSE",
+      "README.md",
+      "TERMS.md",
+      "ikant.mjs",
+      "package.json"
+    ],
+    "root_directories_before": 15,
+    "root_directories_after": 7,
+    "root_files_before": 15,
+    "root_files_after": 9,
+    "v10_source_files_mapped": 1630,
+    "v13_source_files": 1639,
+    "original_governance_sources_preserved": 50,
+    "manual_review_required_for_sensitive_owner_changes": 4
+  },
+  "abstract_dod": "A0 = P AND S AND L AND I AND O AND Q AND R. No metric or evidence type compensates for another.",
+  "reticulum": [
+    {
+      "id": "P",
+      "depends_on": [],
+      "acceptance": "Real main and synthetic V13 are both identifiable, all 35 original semantic commits present, historical governance preserved, recoverable source and rollback.",
+      "falsifiers": [
+        "FAKE_MAIN_ANCESTRY",
+        "MISSING_GIT_OBJECT",
+        "GOVERNANCE_DRIFT",
+        "ROOT_PARENT_MISLABEL"
+      ]
+    },
+    {
+      "id": "S",
+      "depends_on": [
+        "P"
+      ],
+      "acceptance": "Exactly 7 named root directories and 9 named root files on actual GitHub PR HEAD; not just a local candidate.",
+      "falsifiers": [
+        "EIGHTH_ROOT",
+        "SHADOW_ROOT_FILE",
+        "ROOT_FILE_ABSENT"
+      ]
+    },
+    {
+      "id": "L",
+      "depends_on": [
+        "P",
+        "S"
+      ],
+      "acceptance": "Every v10 file has a single mapped destination, byte drift explicit, modes preserved; no deletion hidden by a directory move.",
+      "falsifiers": [
+        "LOSS_OF_SOURCE",
+        "DUPLICATE_MAPPING",
+        "SYMLINK_DRIFT",
+        "MODE_DRIFT"
+      ]
+    },
+    {
+      "id": "I",
+      "depends_on": [
+        "L"
+      ],
+      "acceptance": "No new broken static imports, links or workflow and manifest targets; dynamic/external consumers are UNKNOWN until independently qualified.",
+      "falsifiers": [
+        "BROKEN_ESM",
+        "BROKEN_LINK",
+        "STALE_WORKFLOW",
+        "UNKNOWN_AS_PASS"
+      ]
+    },
+    {
+      "id": "O",
+      "depends_on": [
+        "P",
+        "I"
+      ],
+      "acceptance": "Original EDU and MCP owner boundaries preserved; four sensitive changes are independently reviewed, not self-certified.",
+      "falsifiers": [
+        "OWNER_PROMOTION",
+        "CROSS_PRODUCT_AUTHORITY",
+        "REVIEW_FORGERY"
+      ]
+    },
+    {
+      "id": "Q",
+      "depends_on": [
+        "P",
+        "I",
+        "O"
+      ],
+      "acceptance": "Native complete suite and two product smokes PASS on exact PR HEAD; no hidden skips or stale status receipts.",
+      "falsifiers": [
+        "STALE_HEAD_CI",
+        "NATIVE_FAIL",
+        "HIDDEN_SKIP",
+        "PROVIDER_NOT_EXECUTED"
+      ]
+    },
+    {
+      "id": "R",
+      "depends_on": [
+        "Q"
+      ],
+      "acceptance": "CORA ENGINE run and verify evidence exist for the same HEAD, with truthful BLOCKED vs PASS; independent validation required before global promotion.",
+      "falsifiers": [
+        "MISSING_CORA_REPORT",
+        "CODE_ZERO_FAKE_PASS",
+        "UNTRUSTED_REPLAY"
+      ]
+    }
+  ],
+  "claim_status_rules": {
+    "SOURCE_ONLY_PASS": "Git and bounded static checks may be PASS without claiming native product equivalence.",
+    "DEBT_BLOCKED": "Unqualified consumers, failed original tests, an unreadable object or a missing CORA report must hold A0 open.",
+    "GLOBAL_PASS": "Requires all nodes P,S,L,I,O,Q,R independently attested on the identical PR HEAD, including native and reviewer gates.",
+    "PRODUCT_GO": "Remains false; repository health does not authorize model or provider release."
+  },
+  "mutation_design": {
+    "algorithm": "xorshift32 with fixed seed and 32 semantic negative classes",
+    "fixed_cases": 1000000,
+    "saturation_window": 10000,
+    "domain": "bounded synthetic evidence/graph mutations, not one million physical Git changes",
+    "physical_mutants_required_separately": true,
+    "success_metric": "all seeded negative claims rejected by independent expected-family oracle, with coverage and no unclassified survivors",
+    "stop_condition": "All DoD nodes supported AND bounded saturation; neither condition alone is sufficient"
+  },
+  "legacy": {
+    "existing_source_reticulum": "contracts/r7-v13-causal-reticulum.json",
+    "historical_evidence_not_rewritten": true,
+    "changes_to_existing_owner_files_prohibited_by_this_contract": true
+  },
+  "pr249_epoch": {
+    "schema": "ikant-r7-pr249-source-successor/v1",
+    "source_commit": "86e20abb714fa4000352b61a0c0abf8795775318",
+    "source_tree": "07f135d6d54ff69b78cc9e7215daa0bdafa9f84c",
+    "review_required": true,
+    "product_go": false,
+    "additions": [
+      "contracts/r7-pr249-founding-contract.json",
+      "project/docs/R7_PR249_FOUNDING_GUIDE.md",
+      "scripts/r7-pr249-falsify.mjs",
+      "scripts/r7-pr249-physical-gate.py",
+      "tests/r7-pr249-founding-contract.test.mjs",
+      "tests/r7-pr249-physical-gate.test.mjs"
+    ],
+    "addition_pins": {
+      "project/docs/R7_PR249_FOUNDING_GUIDE.md": "94e6308a537dbe15a52b5853ab6c32a0d181f725",
+      "scripts/r7-pr249-falsify.mjs": "ac26311df031be8e42120ecea96dff6388e240b4",
+      "scripts/r7-pr249-physical-gate.py": "1b3f3ce7742392bc0a6ec30761d6a446b18b5423",
+      "tests/r7-pr249-founding-contract.test.mjs": "a6e9e1d959bf79ba20c6e919a88fcec92d3d9eb7",
+      "tests/r7-pr249-physical-gate.test.mjs": "22b3c626b808685199b7543900e5fddd1471d93e"
+    },
+    "modified_originals": [
+      {
+        "path": ".github/workflows/c53-physical-closure-hardening.yml",
+        "original_sha": "e1881ad5f14dfd1de36fe1789754ca5f7d743a89",
+        "prospective_sha": "f3ff7d7a7e5bdcbdb7baee75773fb8049e5acaf3"
+      },
+      {
+        "path": ".github/workflows/project-session-repo-first.yml",
+        "original_sha": "dce84ac2e76e38c4101e89b073860298190035a5",
+        "prospective_sha": "558c98a0eda9ada1975ce4525b04cf9e580923c2"
+      },
+      {
+        "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
+        "original_sha": "a9547c0221326ec16c64727503fd06b469ecd6dd",
+        "prospective_sha": "d5651a62a37b788fd6a0f4a1219aa2118c3ed804"
+      },
+      {
+        "path": "project/docs/START_HERE.md",
+        "original_sha": "b4e925134f72f6e1bdf81e47de45fb81c0f42587",
+        "prospective_sha": "97ecaeefae2ae27781d633a1d2867956a9556b40"
+      },
+      {
+        "path": "scripts/cora-minimal-absorption.mjs",
+        "original_sha": "ecb71877d6a5bafda7b4930dd642b94bbf65a31a",
+        "prospective_sha": "b00fcbee64be63a0272da70da1ec9d944caaad77"
+      },
+      {
+        "path": "scripts/v5b-repository-governance-audit.mjs",
+        "original_sha": "5fc3835ef529c86ef1d8fa8e0cff1e5e92415355",
+        "prospective_sha": "649a0313f7394e9e56bad98963e82ec43f57fbd3"
+      },
+      {
+        "path": "tests/artifacts/qualification/c51-candidate-blob-manifest.json",
+        "original_sha": "75ace6bb84ee5ba6ef5c42f5444a1be761adf480",
+        "prospective_sha": "3d8f2ec2eddc251e982682e89b2b4bb05ef92edb"
+      },
+      {
+        "path": "tests/artifacts/qualification/c51-supersystem-dod.json",
+        "original_sha": "73325b2abda89575844b658dfa6df36ffda780ee",
+        "prospective_sha": "baac60285955ddd5bd11710901f6299f021fb970"
+      },
+      {
+        "path": "tests/artifacts/qualification/c52-candidate-blob-manifest.json",
+        "original_sha": "8fac298dfa2c19ef2809e72116858e95b00e09c8",
+        "prospective_sha": "2b9875bcba9689051bad7a8c4dd3b907333fd0d9"
+      },
+      {
+        "path": "tests/artifacts/qualification/c52-runtime-physical-closure-dod.json",
+        "original_sha": "9eb2b7d734c0ef7609ab439eb252a2482ac64d45",
+        "prospective_sha": "2cf5bd35788cc116a3f75a7919af20263b2b47cc"
+      }
+    ]
+  }
+}

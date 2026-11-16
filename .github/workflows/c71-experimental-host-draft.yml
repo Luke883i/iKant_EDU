@@ -5,7 +5,7 @@ on:
       - 'src/c71-experimental-host-draft.mjs'
       - 'tests/c71-experimental-host-draft.test.mjs'
       - 'contracts/c71-cx-execution-census.json'
-      - 'docs/C71_*'
+      - 'project/docs/C71_*'
       - '.github/workflows/c71-experimental-host-draft.yml'
   push:
     branches: [main]

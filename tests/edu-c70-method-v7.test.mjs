@@ -7,7 +7,7 @@ import crypto from 'node:crypto';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 import {createGuidedCohostV7} from '../host/edu-c70-method-v7.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const carrier=fs.readFileSync(path.join(root,'release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
+const carrier=fs.readFileSync(path.join(root,'project/release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
 const SHA='c734bf934e33703a6a1f91f0f4d5df96eec96945';
 const H=s=>crypto.createHash('sha256').update(s).digest('hex');
 const auth={human_mode_selected:true,opt_in_confirmed:true,provenance:'LOCAL_TEST_FIXTURE',separate_cohost_draft_authorized:true};

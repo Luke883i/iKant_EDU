@@ -29,4 +29,4 @@ L'output ordinario **dopo i gate** contiene esattamente sei slot in ordine stabi
 
 ## Vista business opzionale S05 (non normativa) — riflessione 1/3
 
-[Contratto, prova CIL e PoC](../../docs/S05_CIL_HUMAN_SHELL_POC.md): `Risultato` (ESITO, `target`), `La risposta di iKant` (A, `message-square-text`), `Controlli operativi` (B, `settings-2`), `Evidenze` (PROVA, `file-check-2`), `Punto aperto` (EDGE, `shield-alert`), `Prossima azione` (NEXT, `arrow-right`). I sei ID, l'ordine, le prove e l'esclusivita' di A restano invariati. `IUI.TEXT` + `co_present` (CIL v1) esprime solo un piano visuale; nessun rendering nativo attestato.
+[Contratto, prova CIL e PoC](../docs/S05_CIL_HUMAN_SHELL_POC.md): `Risultato` (ESITO, `target`), `La risposta di iKant` (A, `message-square-text`), `Controlli operativi` (B, `settings-2`), `Evidenze` (PROVA, `file-check-2`), `Punto aperto` (EDGE, `shield-alert`), `Prossima azione` (NEXT, `arrow-right`). I sei ID, l'ordine, le prove e l'esclusivita' di A restano invariati. `IUI.TEXT` + `co_present` (CIL v1) esprime solo un piano visuale; nessun rendering nativo attestato.

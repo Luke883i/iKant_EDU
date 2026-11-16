@@ -23,7 +23,7 @@ x=>x.ownerTurn=null,
 ];
 test('qualified original voice adds HOST brand only without mutation',()=>{const x=projectBrandedEduHostTurn({ownerTurn:original(),originalC125Text:c125});assert.equal(x.ok,true,JSON.stringify(x));assert.equal(x.original_voice_utf8,voice);assert.equal(x.slots.A,'HOST_BOUND');assert.equal(x.slot_order.join('|'),'ESITO|A|B|PROVA|EDGE|NEXT');assert.equal(x.native_avatar_attested,false);assert.equal(x.active,false);});
 test('720 realistic negative variants do not show a branded voice',()=>{for(let i=0;i<720;i++){const a={ownerTurn:original(),originalC125Text:c125};cases[i%cases.length](a);const x=projectBrandedEduHostTurn(a);assert.equal(x.ok,false,String(i));assert.equal(x.voice,'NO_VOICE');}});
-test('A visual badge is fail closed and never changes A bytes',()=>{const s=readFileSync(new URL('../plugins/ikant-le-session-chat/server/public/ikant-le-app.html',import.meta.url),'utf8');assert.match(s,/id="ikant-voice-brand" class="hidden"/);assert.match(s,/setVoiceBrandVerified\(true\)/);assert.match(s,/function failClosed\(error\)\{setVoiceBrandVerified\(false\)/);assert.match(s,/v\.voice_sha256/);});
+test('A visual badge is fail closed and never changes A bytes',()=>{const s=readFileSync(new URL('../project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html',import.meta.url),'utf8');assert.match(s,/id="ikant-voice-brand" class="hidden"/);assert.match(s,/setVoiceBrandVerified\(true\)/);assert.match(s,/function failClosed\(error\)\{setVoiceBrandVerified\(false\)/);assert.match(s,/v\.voice_sha256/);});
 
 test('brand source epoch follows ORIGINAL owner head, never a historical PR/asset commit',()=>{
  const head='a'.repeat(40);

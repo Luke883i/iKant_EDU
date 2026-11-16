@@ -5,8 +5,8 @@ on:
       - 'host/c73-project-capsule.mjs'
       - 'tests/c73-project-capsule.test.mjs'
       - 'contracts/c73-project-capsule.json'
-      - 'assets/brand/**'
-      - 'docs/C73_*'
+      - 'project/assets/brand/**'
+      - 'project/docs/C73_*'
       - '.github/workflows/c73-branded-project-capsule.yml'
   push:
     branches: [main]

@@ -44,7 +44,7 @@ test('human experience: exact consent, automatic diagnosis and no fake owner rec
  assert.equal(planC72HostRecovery({...good,catalog:'EMPTY',node:'UNKNOWN'}).action,'VERIFY_NODE_20');
 });
 test('1000 executed adversarial E2E combinations: recovery + canonical glyph + trace readback',()=>{
- const svg=readFileSync(new URL('../assets/brand/ikant-light.svg',import.meta.url));
+ const svg=readFileSync(new URL('../project/assets/brand/ikant-light.svg',import.meta.url));
  assert.equal(createHash('sha256').update(svg).digest('hex'),H);
  let successes=0,notYet=0,denials=0;const seen=new Set(),traces=[];
  for(let i=0;i<1000;i++){

@@ -6,7 +6,7 @@ on:
       - 'scripts/c105-*'
       - 'tests/c105-*'
       - 'contracts/c105-*'
-      - 'docs/C105_*'
+      - 'project/docs/C105_*'
       - '.github/workflows/c105-nerva.yml'
   workflow_dispatch:
 permissions:

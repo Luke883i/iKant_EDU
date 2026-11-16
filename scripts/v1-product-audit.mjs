@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 const root=path.dirname(fileURLToPath(new URL('../package.json',import.meta.url)));
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const load=p=>JSON.parse(read(p));
-const catalog=load('release/catalog.json'),v1=load('contracts/v1-product-baseline.json'),pkg=load('package.json');
+const catalog=load('project/release/catalog.json'),v1=load('contracts/v1-product-baseline.json'),pkg=load('package.json');
 const failures=[];
 const assert=(cond,description)=>{if(!cond)failures.push(description)};
 assert(pkg.version===catalog.product_version&&pkg.version===v1.product_version,'product version mismatch');
@@ -21,9 +21,9 @@ for(const p of ['README.md',...Object.values(catalog.public_entrypoints),v1.publ
 const prompt=read('project/edu-oneshell/PROMPT_INNESCO.txt');
 assert(prompt.includes(pkg.version),'prompt and product version drift');
 const readme=read('README.md');
-for(const word of ['# iKant','Cosa ottieni oggi','C72/v1','CANONICAL','GitHub API only','README.md -> BOOTSTRAP.json','docs/START_HERE.md','docs/V1_E2E_TRACEABILITY.md','release/catalog.json'])
+for(const word of ['# iKant','Cosa ottieni oggi','C72/v1','CANONICAL','GitHub API only','README.md -> BOOTSTRAP.json','project/docs/START_HERE.md','project/docs/V1_E2E_TRACEABILITY.md','project/release/catalog.json'])
  assert(readme.includes(word),'missing beginner-level README invariant: '+word);
-const m=read('docs/V1_E2E_TRACEABILITY.md');
+const m=read('project/docs/V1_E2E_TRACEABILITY.md');
 for(let i=1;i<=13;i++)assert(m.includes('V1-'+String(i).padStart(2,'0')),'missing DoD edge '+i);
 const tests=fs.readdirSync(path.join(root,'tests')).filter(x=>x.endsWith('.test.mjs'));
 assert(tests.length>=90,'unexpected missing regression coverage');

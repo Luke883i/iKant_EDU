@@ -5,8 +5,9 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-import {observeReticularCensusWithAudit,reopenW1WorkflowEpoch} from './cora-minimal-absorption.mjs';
-import {qualifyRegisteredC72SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {observeReticularCensusWithAudit,reopenW1WorkflowEpoch,reopenV13WorkflowEpoch} from './cora-minimal-absorption.mjs';
+import {qualifyR7OwnerSourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {HISTORIC,reopenR7SourceEpoch} from './r7-v13-epoch-bridge.mjs';
 import {derivePrABacklog} from './cora-pr-a-backlog.mjs';
 import {qualifyDocumentSet} from './cora-pr-b-docs.mjs';
 import {qualifyPrCCISource} from './cora-pr-c-ci.mjs';
@@ -28,6 +29,11 @@ const load=p=>JSON.parse(fs.readFileSync(path.join(ROOT,p),'utf8'));
  */
 export function verifyFrozenWorkflowTree(contract){
  const frozen=contract?.metrics?.find(x=>x.id==='M05')?.target;
+ // V13: verify the entire current V12 workflow epoch, then replay the original
+ // PR-F W1/5-blobs against the historical V10 Git source. Never substitute the
+ // current source tree for the original historical source tree.
+ const sourceEpoch=reopenV13WorkflowEpoch(load('contracts/cora-reticular-hygiene-v1.json'));
+ const sourceRef=sourceEpoch.ok?HISTORIC:'HEAD';
  let current;
  try{current=git('rev-parse','HEAD:.github/workflows');}
  catch{return {ok:false,edge:'F_WORKFLOW_CURRENT_TREE_UNKNOWN'};}
@@ -37,7 +43,7 @@ export function verifyFrozenWorkflowTree(contract){
  if(current===frozen)return {ok:true,historic_tree:frozen,current_tree:current,
   migration_count:0,source_only:true,provider_attested:false,review_attested:false};
  try{
-  const register=load('governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json');
+  const register=load('contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzz-cora-layout-epochs.json');
   const m=register.workflow_migration;
   if(register.schema!=='ikant-v5b-change-extension/v1'||
    register.authority!==0||m?.authority!==0||
@@ -59,7 +65,7 @@ export function verifyFrozenWorkflowTree(contract){
    if(changes.has(name))return deny('F_WORKFLOW_MIGRATION_DUPLICATE');
    changes.set(name,change);
   }
-  const bytes=execFileSync('git',['ls-tree','-z','HEAD:.github/workflows'],
+  const bytes=execFileSync('git',['ls-tree','-z',sourceRef+':.github/workflows'],
    {cwd:ROOT,timeout:20000,maxBuffer:2000000});
   const rows=bytes.toString('utf8').split('\0').filter(Boolean).map(item=>{
    const match=/^(100644|100755) blob ([a-f0-9]{40})\t([^\t/]+)$/u.exec(item);
@@ -68,11 +74,11 @@ export function verifyFrozenWorkflowTree(contract){
   });
   if(rows.length!==116||new Set(rows.map(x=>x.name)).size!==116)
    return deny('F_WORKFLOW_TREE_CARDINALITY_INVALID');
-  const w1Register=load('governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json');
-  const w1=reopenW1WorkflowEpoch({entries:rows,observedTree:current,
+  const w1Register=load('contracts/governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json');
+  const w1=reopenW1WorkflowEpoch({entries:rows,observedTree:git('rev-parse',sourceRef+':.github/workflows'),
    previousTree:m.current_tree,register:w1Register,
    historyBlob:'eea411a6fd465ee3b1f35d0c2fa8fd615c116750',
-   liveBlob:git('rev-parse','HEAD:.github/workflows/s03-s09-mvp1-candidate.yml')});
+   liveBlob:git('rev-parse',sourceRef+':.github/workflows/s03-s09-mvp1-candidate.yml')});
   if(!w1.ok)return deny('F_WORKFLOW_W1_SOURCE_NOT_QUALIFIED:'+w1.edge);
   const seen=new Set();
   const restored=[];
@@ -92,7 +98,7 @@ export function verifyFrozenWorkflowTree(contract){
    .update(tree).digest('hex');
   if(reconstructed!==frozen)return deny('F_FROZEN_WORKFLOW_TREE_NOT_RECONSTRUCTED');
   return {ok:true,historic_tree:reconstructed,current_tree:current,
-   migration_count:5,source_only:true,provider_attested:false,review_attested:false};
+   migration_count:5,prospective_v13_rebind_count:sourceEpoch.ok?75:0,source_only:true,provider_attested:false,review_attested:false};
  }catch{return deny('F_WORKFLOW_SOURCE_RECONSTRUCTION_UNKNOWN');}
 }
 
@@ -141,7 +147,8 @@ export function validateFContract(c){
  for(const x of c.restored_source_blobs){
   if(!x||!SHA.test(x.blob||'')||typeof x.path!=='string'||
    pathSet.has(x.path)||!(x.path.startsWith('project-baseline/')||
-     x.path.startsWith('proposals/c141/')||x.path==='stile_comunicativo.md'))
+     x.path.startsWith('project/baseline/')||
+     x.path.startsWith('proposals/c141/')||x.path==='project/docs/stile_comunicativo.md'))
    return fails('F_RESTORATION_PIN_INVALID');
   pathSet.add(x.path);
  }
@@ -199,7 +206,7 @@ export function observePrFSource(){
  const workflowHistory=verifyFrozenWorkflowTree(c);
  const ownerRows=Object.entries(base.reuse.owner_blob_pins).map(([p,sha])=>{
   const observed=git('rev-parse','HEAD:'+p);
-  const epoch=qualifyRegisteredC72SourceEpoch({path:p,
+  const epoch=qualifyR7OwnerSourceEpoch({path:p,
    historicalBlobSha1:sha,observedBlobSha1:observed});
   return {path:p,match:epoch.ok===true,original_pin_unchanged:observed===sha,
    source_epoch_status:epoch.status||epoch.edge,
@@ -210,16 +217,24 @@ export function observePrFSource(){
  const historicFiles=new Map(capsule.files.map(x=>[x.path,x]));
  const gitHash=bytes=>createHash('sha1').update(Buffer.from('blob '+bytes.length+String.fromCharCode(0))).update(bytes).digest('hex');
  const restoreRows=c.restored_source_blobs.map(x=>{
-  const current=objectOrNull('HEAD:'+x.path);
-  const origin=objectOrNull(c.source.before_tree+':'+x.path);
-  const cached=historicFiles.get(x.path);
+  // The contract's current path is not the provenance path of the historic
+  // object; the file may have been moved AND undergone an explicit rebind.
+  const historicPath=x.path.startsWith('project/baseline/')?
+   'project-baseline/'+x.path.slice('project/baseline/'.length):
+   x.path==='project/docs/stile_comunicativo.md'?'stile_comunicativo.md':x.path;
+  const current=objectOrNull('HEAD:'+historicPath);
+  const origin=objectOrNull(c.source.before_tree+':'+historicPath);
+  const v10=objectOrNull(HISTORIC+':'+historicPath);
+  const cached=historicFiles.get(historicPath);
   const fromCapsule=cached&&capsule.origin.original_before_tree===c.source.before_tree&&
    cached.git_blob_sha1===x.blob&&Buffer.byteLength(cached.utf8,'utf8')===cached.bytes&&
    gitHash(Buffer.from(cached.utf8,'utf8'))===x.blob?x.blob:null;
-  const historical=origin||((current===x.blob)?current:fromCapsule);
-  return {path:x.path,...qualifyRestoredSource({pinned:x.blob,historical,current}),
+  const historical=origin||((v10===x.blob)?v10:fromCapsule);
+  const modern=historicPath!==x.path?objectOrNull('HEAD:'+x.path):null;
+  return {path:x.path,historic_path:historicPath,...qualifyRestoredSource({pinned:x.blob,historical,current}),
+   prospective_current_blob:modern,prospective_current_not_historic_receipt:modern!==null&&modern!==x.blob,
    evidence_origin:origin===x.blob?'HISTORICAL_GIT_TREE_REOPENED':
-     current===x.blob?'CURRENT_BLOB_MATCHES_ORIGINAL_PIN':
+     v10===x.blob?'EXACT_PINNED_V10_GIT_SOURCE':
      fromCapsule===x.blob?'PINNED_OFFLINE_CAPSULE_BYTES':'SOURCE_UNAVAILABLE'};
  });
  const ar=derivePrABacklog(census,audit,load('contracts/cora-pr-a-backlog-v1.json'));

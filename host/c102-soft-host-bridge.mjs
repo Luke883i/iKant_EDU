@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {executeC101LocalCohostMachine,verifyC101Readback} from '../host/c101-local-cohost-machine.mjs';
-import {appendC87Turn,reopenC87Ledger} from '../host/c87-durable-ledger.mjs';
+import {executeC101LocalCohostMachine,verifyC101Readback} from './c101-local-cohost-machine.mjs';
+import {appendC87Turn,reopenC87Ledger} from './c87-durable-ledger.mjs';
 
 const H40=/^[a-f0-9]{40}$/;
 const NONCE=/^[A-Za-z0-9_-]{12,96}$/;

@@ -55,7 +55,7 @@ test('source classifier separates actual declared conflict from proof of active 
   'contracts/project-host-tool-grounding-abi.json':'HOST_TOOL_ARG_RELAY, SAME_NODE_CALLBACKS',
   'host/project-c72-transport-frontier.mjs':"['CALLBACKS','NODE_HTTPS','HOST_PACKET','HOST_FILE']; Luke883i/iKant_LE/archive/",
   'project/session-chat/PROMPT.txt':'iKant EDU'+'X'.repeat(250),
-  'project-baseline/PROJECT_PROMPT.txt':'iKant_LE historical',
+  'project/baseline/PROJECT_PROMPT.txt':'iKant_LE historical',
   'project/oneshell-v7/PROMPT_TEMPLATE.txt':'iKant_LE historical',
   'host/project-oneshell-continuous.mjs':"from './project-oneshell-edu.mjs'; from './c72-public-mode-admission.mjs'"
  };

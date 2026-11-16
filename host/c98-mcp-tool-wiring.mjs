@@ -1,7 +1,7 @@
 import {isC98PlainDataRecord} from './c98-c82-connector-port.mjs';
 import {executeC98RegisteredAppTurn} from './c98-app-host-ingress.mjs';
 
-// Deployment seam for the existing plugins/ikant-le-session-chat server.
+// Deployment seam for the existing project/plugins/ikant-le-session-chat server.
 // The backend MUST own readCurrentTurnEnvelope(ctx) and authentic source bytes.
 // MCP tool arguments are NOT the authenticated original human message.
 const fail=edge=>Object.freeze({schema:'ikant-le-c98-mcp-registration/v1',

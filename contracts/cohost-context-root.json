@@ -52,7 +52,7 @@
       {
         "id": "U9",
         "weight_bps": 700,
-        "intent": "Surface B artifacts/backlog remain owned and read back by the canonical runtime rooted in the same context"
+        "intent": "Surface B tests/artifacts/backlog remain owned and read back by the canonical runtime rooted in the same context"
       },
       {
         "id": "U10",

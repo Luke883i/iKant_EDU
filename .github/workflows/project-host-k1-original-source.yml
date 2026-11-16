@@ -7,14 +7,14 @@ on:
       - 'scripts/project-host-k1-install-cli.mjs'
       - 'tests/project-host-k1-install.test.mjs'
       - '.github/workflows/project-host-k1-original-source.yml'
-      - 'docs/PROJECT_HOST_K1_INTEGRATED_DOD.md'
+      - 'project/docs/PROJECT_HOST_K1_INTEGRATED_DOD.md'
   push:
     branches: [main]
     paths:
       - 'host/project-host-k1-preowner.mjs'
       - 'tests/project-host-k1-real-source.test.mjs'
       - '.github/workflows/project-host-k1-original-source.yml'
-      - 'docs/PROJECT_HOST_K1_INTEGRATED_DOD.md'
+      - 'project/docs/PROJECT_HOST_K1_INTEGRATED_DOD.md'
   workflow_dispatch:
 permissions:
   contents: read

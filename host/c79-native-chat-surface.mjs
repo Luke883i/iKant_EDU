@@ -70,7 +70,7 @@ export function prepareC79ChatSurface({
   child_process_executed:true,actual_runtime_claim_requires_external_witness:true,
   runtime_stages:['C70','C71','C73'],
   brand:{title:'iKant',subtitle:'Sistema conversazionale costituzionale - stato attestato',
-   light:'assets/brand/ikant-light.svg',dark:'assets/brand/ikant-dark.svg',
+   light:'project/assets/brand/ikant-light.svg',dark:'project/assets/brand/ikant-dark.svg',
    symbol_is_not_active_receipt:true},
   surface_a_chat:{kind:'HOST_OWNED_UNSEALED_DRAFT',text:relayReadback.surface_a_chat.text,
    voice_source:relayReadback.surface_a_chat.source,

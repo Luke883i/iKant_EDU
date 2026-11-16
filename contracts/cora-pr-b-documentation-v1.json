@@ -21,12 +21,12 @@
         "repository",
         "software",
         "prodotto",
-        "docs/ARCHITECTURE.md",
-        "docs/PRODUCT_POSITIONING.md"
+        "project/docs/ARCHITECTURE.md",
+        "project/docs/PRODUCT_POSITIONING.md"
       ]
     },
     {
-      "path": "docs/START_HERE.md",
+      "path": "project/docs/START_HERE.md",
       "role": "PUBLIC_GUIDE",
       "marker": "<!-- cora-pr-b-docs:v1 -->",
       "required": [
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "path": "docs/PRODUCT_POSITIONING.md",
+      "path": "project/docs/PRODUCT_POSITIONING.md",
       "role": "PRODUCT_BOUNDARY",
       "marker": "<!-- cora-pr-b-docs:v1 -->",
       "required": [
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "path": "docs/ARCHITECTURE.md",
+      "path": "project/docs/ARCHITECTURE.md",
       "role": "SOFTWARE_BOUNDARY",
       "marker": "<!-- cora-pr-b-docs:v1 -->",
       "required": [
@@ -64,7 +64,7 @@
       ]
     },
     {
-      "path": "docs/IKANT_LOCAL_SETUP.md",
+      "path": "project/docs/IKANT_LOCAL_SETUP.md",
       "role": "EXECUTION_RUNBOOK",
       "marker": "<!-- cora-pr-b-docs:v1 -->",
       "required": [
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "path": "docs/GOVERNANCE.md",
+      "path": "project/docs/GOVERNANCE.md",
       "role": "AUTHORITY_BOUNDARY",
       "marker": "<!-- cora-pr-b-docs:v1 -->",
       "required": [
@@ -89,7 +89,7 @@
       ]
     },
     {
-      "path": "docs/IKANT_DEVELOPMENT_HISTORY.md",
+      "path": "project/docs/IKANT_DEVELOPMENT_HISTORY.md",
       "role": "HISTORICAL_LINEAGE",
       "marker": "<!-- cora-pr-b-docs:v1 -->",
       "required": [
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "path": "docs/IKANT_RUNTIME_AND_EVIDENCE.md",
+      "path": "project/docs/IKANT_RUNTIME_AND_EVIDENCE.md",
       "role": "EVIDENCE_BOUNDARY",
       "marker": "<!-- cora-pr-b-docs:v1 -->",
       "required": [

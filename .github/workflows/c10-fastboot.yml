@@ -9,7 +9,7 @@ on:
       - 'src/bootstrap-intent-adapter.mjs'
       - 'scripts/c10-*'
       - 'tests/c10-*'
-      - 'artifacts/qualification/c10-*'
+      - 'tests/artifacts/qualification/c10-*'
       - 'package.json'
       - '.github/workflows/c10-fastboot.yml'
   workflow_dispatch:
@@ -31,7 +31,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c10-fastboot.json','utf8'));
+          const r=JSON.parse(fs.readFileSync('tests/artifacts/qualification/c10-fastboot.json','utf8'));
           if(r.status!=='PASS' || r.cases!==1_000_000 || r.survivors!==0) throw new Error('C10 qualification mismatch');
           if(r.categories.typical!==500_000 || r.categories.edge!==300_000 || r.categories.stress!==200_000) throw new Error('C10 strata mismatch');
           if(r.family_count!==40 || r.positive_control_failures!==0 || r.novel_signatures_in_tail!==0) throw new Error('C10 family/no-novelty mismatch');

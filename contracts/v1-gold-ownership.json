@@ -179,12 +179,12 @@
       "decision": "PACKAGE_FROM_MAIN"
     },
     {
-      "path": "release/catalog.json",
+      "path": "project/release/catalog.json",
       "role": "single source catalog",
       "decision": "PACKAGE_FROM_MAIN"
     },
     {
-      "path": "docs/V1_E2E_TRACEABILITY.md",
+      "path": "project/docs/V1_E2E_TRACEABILITY.md",
       "role": "capability evidence",
       "decision": "VERIFY_ONLY"
     },

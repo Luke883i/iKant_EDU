@@ -250,7 +250,7 @@ test('W1 trigger move preserves original source-tree proof and refuses forgery',
   {name:'s03-s09-mvp1-candidate.yml',mode:'100644',sha:original}];
  const after=before.map(x=>x.name==='s03-s09-mvp1-candidate.yml'?{...x,sha:amended}:x);
  const register={schema:'ikant-v5b-change-extension/v1',authority:0,
-  self_path:'governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json',
+  self_path:'contracts/governance/changes/'+'z'.repeat(40)+'-r7-pilot-root-contraction.json',
   source_main:'b2f550043d5fca89ab1d1efc2ee06a0c7c163f2c',
   automatic_approval:false,human_signoffs:0,
   paths:[{path:'.github/workflows/s03-s09-mvp1-candidate.yml',

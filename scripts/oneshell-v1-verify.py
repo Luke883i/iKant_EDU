@@ -14,9 +14,9 @@ TREE = "f559a31fab659bb9f07aea42c798361070d4b07e"
 BASELINE_SHA256 = "7bac4cf89cb67b4fa007235f9b4f830fa9848219611e89366d146e72e0b43596"
 SOURCE_PREFIXES = ("repo_original/","adapter_source/","plugin_source/","orientation/")
 REQUIRED = (
-    "repo_original/docs/IKANT_DOCUMENT_ATLAS.md",
+    "repo_original/project/docs/IKANT_DOCUMENT_ATLAS.md",
     "plugin_source/plugins/ikant-le-session-chat/server/server.mjs",
-    "repo_original/plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs",
+    "repo_original/project/plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs",
     "repo_original/host/c135-edu-v2-owner.mjs",
     "repo_original/host/c139-edu-v2-turn.mjs",
     "repo_original/host/c140-open-edu-turn.mjs",

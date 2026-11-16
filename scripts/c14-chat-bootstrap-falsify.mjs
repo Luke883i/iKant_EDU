@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import crypto from 'node:crypto';
 
 const args=process.argv.slice(2),get=(k,d)=>{const i=args.indexOf(k);return i>=0?args[i+1]:d};
-const CASES=Number(get('--cases','1000000')),OUT=get('--output','artifacts/qualification/c14-chat-bootstrap-enduser.json');
+const CASES=Number(get('--cases','1000000')),OUT=get('--output','tests/artifacts/qualification/c14-chat-bootstrap-enduser.json');
 if(CASES!==1_000_000)throw new Error('C14 requires exactly 1,000,000 end-user mutations');
 const NODES=['TARGET_INTENT_ROOT','SOURCE_ORIENTATION_ROOT','CONSENT_ROOT','SOURCE_BOUND_TRANSFER','VERIFIED_LOCAL_ROOT','LIVE_HOST_PROBE','RECEIPT_GATED_ACTIVE_COMMIT','E2E_DEADLINE'];
 const G={
@@ -52,6 +52,6 @@ const unexercised=Object.entries(coverage).filter(([,n])=>n===0).map(([k])=>k);
 const result={schema:'ikant-le-c14-chat-bootstrap-enduser-qualification/v1',status:candidate.mismatches===0&&min===8&&minsets.length===1&&unexercised.length===0?'PASS':'FAIL',cases:CASES,seed:0xC14E2026,strata,family_count:families.length,families_exercised:families.length-unexercised.length,unexercised_families:unexercised,semantic_signatures:signatures.size,prompt_surface_counts:promptKinds,current_baseline:current,candidate,irreducible:{nodes:NODES,minimum_cardinality:min,minimum_lattices:minsets,zero_mismatch_subsets:zero.length,deletion},source_binding:{paths:['contracts/chat-bootstrap-semantic.json','scripts/c14-chat-bootstrap-falsify.mjs'],algorithm:'sha256(path\\0bytes)'},claim_boundary:{corpus_and_contract_relative:true,global_formal_minimality:false,physical_connector_proof:false,wall_clock_measurement:false,production_reliability_proof:false}};
 const sh=crypto.createHash('sha256');for(const p of result.source_binding.paths){sh.update(p);sh.update('\0');sh.update(fs.readFileSync(new URL('../'+p,import.meta.url)));sh.update('\0');}result.source_binding.digest=sh.digest('hex');
 result.receipt_sha256=crypto.createHash('sha256').update(JSON.stringify(result)).digest('hex');
-fs.mkdirSync(new URL('../artifacts/qualification/',import.meta.url),{recursive:true});fs.writeFileSync(new URL('../'+OUT,import.meta.url),JSON.stringify(result,null,2)+'\n');
+fs.mkdirSync(new URL('../tests/artifacts/qualification/',import.meta.url),{recursive:true});fs.writeFileSync(new URL('../'+OUT,import.meta.url),JSON.stringify(result,null,2)+'\n');
 console.log(JSON.stringify({status:result.status,cases:CASES,families:families.length,current_false_green:current.false_green,candidate_mismatches:candidate.mismatches,minimum_cardinality:min,zero_mismatch_subsets:zero.length,deletion:Object.fromEntries(NODES.map(n=>[n,deletion[n].false_green])),receipt_sha256:result.receipt_sha256}));
 if(result.status!=='PASS')process.exit(2);

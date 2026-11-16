@@ -6,8 +6,8 @@ import {ROOT} from '../src/contract.mjs';
 import {renderLocalHostMetaPrompt,localHostMetaPromptReceipt} from '../src/local-host-meta-prompt.mjs';
 
 const contract=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/local-host-binding-aware-meta-prompt.json'),'utf8'));
-const server=fs.readFileSync(path.join(ROOT,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
-const readme=fs.readFileSync(path.join(ROOT,'plugins/ikant-le-session-chat/README.md'),'utf8');
+const server=fs.readFileSync(path.join(ROOT,'project/plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
+const readme=fs.readFileSync(path.join(ROOT,'project/plugins/ikant-le-session-chat/README.md'),'utf8');
 
 test('C57 is a four-mechanism scope/binding closure, not a global chat planner',()=>{
  const p=renderLocalHostMetaPrompt(),r=localHostMetaPromptReceipt();

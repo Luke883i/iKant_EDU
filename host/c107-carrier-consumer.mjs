@@ -8,7 +8,7 @@ export const PIN=Object.freeze({
  head:'c734bf934e33703a6a1f91f0f4d5df96eec96945',
  tree:'7b1e8b87f43b5995b9c6d1079254918f22549e01',
  release:'cf213a2276802d73e844b706e6cd8431bc76bed6',
- name:'release/v8/ikant-c107-source-c734bf934e33.ikc.br',
+ name:'project/release/v8/ikant-c107-source-c734bf934e33.ikc.br',
  carrier_sha256:'d17195881d6567524f1cdf358c991be5ff0d68e92aea2ba14273f0ea2cf74c6d',
  frame_sha256:'b3c06c1ca553daa18f7815cc91e7900275526a1cfcd3ecb5dc707ffa4e965ad0',
  package_sha256:'65f8a39574786afdfa20e521927004b1709f973b3a1c572daed32586e2cb77b1',

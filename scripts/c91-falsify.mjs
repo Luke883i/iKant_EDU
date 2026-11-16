@@ -64,6 +64,6 @@ const out={schema:'ikant-le-c91-mutation-campaign/v1',seed:'0x0c911a55',
  unique_attack_classes:mutations.length,survivors,unexpected_accepts:Object.values(survivors).reduce((a,b)=>a+b,0),
  rejected:successes.length,first_survivors:failureExamples,
  scope:'BOUNDED_STRUCTURAL_NEGATIVE_PREDICATES_NOT_LLM_QUALITY_OR_REAL_HOST_FIELD_EVIDENCE'};
-fs.writeFileSync(process.argv[3]||'artifacts/c91-mutations.json',JSON.stringify(out,null,2)+'\n');
+fs.writeFileSync(process.argv[3]||'tests/artifacts/c91-mutations.json',JSON.stringify(out,null,2)+'\n');
 console.log(JSON.stringify({executed:out.executed,rejected:out.rejected,survivors:out.survivors}));
 if(out.unexpected_accepts)process.exitCode=2;

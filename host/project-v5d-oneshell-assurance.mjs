@@ -106,7 +106,7 @@ export function assessV5DProjection({frame,projection}={}){
     plan.rich_ui_requested!==true||projection.required_host_action!=='RENDER_SUPPORTED_RICH_HOST_UI_OR_TEXT'||
     plan.brand.verified!==true||projection.verified_host_brand_sha256!==plan.brand.sha256)
    return fail('V5D_HTML_UNBOUND_OR_INTERACTIVE');
- if(plan.brand.source!=='assets/brand/ikant-light.svg'||
+ if(plan.brand.source!=='project/assets/brand/ikant-light.svg'||
     plan.brand.inline_svg!=='HOST_HTML_ONLY_WITH_VERIFIED_BYTES'||
     plan.brand.in_chat!=='VERIFIED_HOST_ASSET_IF_CLIENT_SUPPORTS_ELSE_TEXT')
   return fail('V5D_BRAND_NATIVE_PROMOTION');
@@ -135,7 +135,7 @@ export function v5dFixture({html=false,large=false}={}){
  const plan={order:[...ORDER],focus:'A',voice_weight:3,host_weight:1,authority:0,active:false,
   native_ui_attested:false,persistent_ui_attested:false,rich_ui_delivery_attested:false,
   rich_ui_requested:html,compression:{A:'NEVER',B:'NONE',PROVA:'NONE',EDGE:'NEVER',NEXT:'NEVER'},
-  brand:{source:'assets/brand/ikant-light.svg',verified:html,sha256:html?'a'.repeat(64):null,
+  brand:{source:'project/assets/brand/ikant-light.svg',verified:html,sha256:html?'a'.repeat(64):null,
    inline_svg:'HOST_HTML_ONLY_WITH_VERIFIED_BYTES',in_chat:'VERIFIED_HOST_ASSET_IF_CLIENT_SUPPORTS_ELSE_TEXT',native_avatar_attested:false}};
  const projection={ok:true,schema:'ikant-oneshell-inchat-presentation/v1',slots:{...slots},view:{...slots},
   slot_sha256,voice_origin:'NO_VOICE',original_voice_sha256:null,

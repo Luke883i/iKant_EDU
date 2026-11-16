@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {initialRelationalState,projectRelationalNuance,settleRelationalNuance,validateRelationalState,validateNuanceEnvelope,embeddedLibraryContract} from '../src/embedded/relational-nuance.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const argv=process.argv.slice(2);const get=(k,d)=>{const i=argv.indexOf(k);return i>=0?argv[i+1]:d};
-const cases=Number(get('--cases','100000'));const output=get('--output','artifacts/qualification/lib0-embedded-nuance.json');const seed=Number(get('--seed','20260921'))>>>0;
+const cases=Number(get('--cases','100000'));const output=get('--output','tests/artifacts/qualification/lib0-embedded-nuance.json');const seed=Number(get('--seed','20260921'))>>>0;
 if(!Number.isInteger(cases)||cases<1)throw new Error('invalid cases');
 let s=seed||1;const rnd=()=>{s^=s<<13;s^=s>>>17;s^=s<<5;return(s>>>0)/4294967296};const pick=a=>a[Math.floor(rnd()*a.length)];const r=(lo,hi)=>lo+rnd()*(hi-lo);const clone=x=>structuredClone(x);
 const A=['NEUTRAL','COOPERATIVE','PRAISE_SELF','REPAIR','HOSTILITY_SELF','HOSTILITY_UNKNOWN','TASK_NEGATIVE','SYSTEM_FRUSTRATION'];

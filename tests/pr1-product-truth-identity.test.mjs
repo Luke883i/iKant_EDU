@@ -43,10 +43,10 @@ test('PR1: source never labels a published EDU turn factual verification',()=>{
 test('PR1: Project and MCP entrypoints are not fused',()=>{
  assert.match(read('README.md'),/Inizia dal prodotto corretto/);
  assert.match(read('README.md'),/PRODUCT_GO=false/);
- assert.match(read('docs/IKANT_LOCAL_SETUP.md'),/App MCP esterna, indipendente dal Project EDU/);
- assert.doesNotMatch(read('docs/IKANT_LOCAL_SETUP.md'),/## Percorso C — CANONICAL con integrazione MCP reale/);
- assert.match(read('plugins/ikant-le-session-chat/README.md'),/standalone OAuth/);
- assert.match(read('docs/ARCHITECTURE.md'),/public EDU-only selection/);
+ assert.match(read('project/docs/IKANT_LOCAL_SETUP.md'),/App MCP esterna, indipendente dal Project EDU/);
+ assert.doesNotMatch(read('project/docs/IKANT_LOCAL_SETUP.md'),/## Percorso C — CANONICAL con integrazione MCP reale/);
+ assert.match(read('project/plugins/ikant-le-session-chat/README.md'),/standalone OAuth/);
+ assert.match(read('project/docs/ARCHITECTURE.md'),/public EDU-only selection/);
 });
 test('PR1: known unsafe representation mutants are rejected',()=>{
  const src=read('host/project-oneshell-edu.mjs');
@@ -59,15 +59,34 @@ test('PR1: known unsafe representation mutants are rejected',()=>{
   src.replace("esito:'TURNO EDU TRACCIATO'","esito:'PRODOTTO CERTIFICATO'")
  ])assert.equal(accept(v),false);
 });
-test('PR1: protected owner blobs unchanged',()=>{
- for(const [p,sha] of Object.entries(protectedOwners))
-  assert.equal(gitBlob(readFileSync(new URL('../'+p,import.meta.url))),sha,p);
+test('PR1: historic owner pins remain immutable; prospective C135 rebind requires review',async()=>{
+ const {execFileSync}=await import('node:child_process');
+ const {HISTORIC,reopenR7SourceEpoch}=await import('../scripts/r7-v13-epoch-bridge.mjs');
+ const cwd=new URL('../',import.meta.url);
+ for(const [p,sha] of Object.entries(protectedOwners)){
+  // Original PR1 is checked against its frozen original epoch, not V13's HEAD.
+  const historical=execFileSync('git',['rev-parse',`${HISTORIC}:${p}`],{cwd,encoding:'utf8'}).trim();
+  assert.equal(historical,sha,p);
+  const x=reopenR7SourceEpoch(p);
+  assert.equal(x.ok,true,JSON.stringify(x));
+  assert.equal(x.historical_blob,sha);
+  if(p==='host/c135-edu-v2-owner.mjs'){
+   const {qualifyR7OwnerSourceEpoch}=await import('../scripts/v5b-repository-governance-audit.mjs');
+   const q=qualifyR7OwnerSourceEpoch({path:p,historicalBlobSha1:sha,observedBlobSha1:x.candidate_blob});
+   assert.equal(q.ok,true,JSON.stringify(q));
+   assert.equal(q.review_attested,false);
+   assert.equal(x.byte_identical,false);
+  }else{
+   assert.equal(x.byte_identical,true,p);
+   assert.equal(gitBlob(readFileSync(new URL('../'+p,import.meta.url))),sha,p);
+  }
+ }
 });
 
 test('PR1: exact historical source reconstruction works without old Git objects',async()=>{
  const {qualifyPr1OneShellPresentation}=await import('../scripts/cora-m2-owner-provider-metrics.mjs');
  const bytes=readFileSync(new URL('../host/project-oneshell-edu.mjs',import.meta.url));
- const registry=JSON.parse(read('governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json'));
+ const registry=JSON.parse(read('contracts/governance/changes/zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz-pr1-product-truth.json'));
  const pinned=registry.paths.find(x=>x.path==='host/project-oneshell-edu.mjs').historical_git_blob_sha1;
  const value=qualifyPr1OneShellPresentation({historicalBlobSha1:pinned,observedBytes:bytes,observedSha1:gitBlob(bytes),registration:registry});
  assert.equal(value.ok,true);assert.equal(value.provider_attested,false);assert.equal(value.review_attested,false);

@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - 'src/local-host-meta-prompt.mjs'
-      - 'docs/LOCAL_HOST_META_PROMPT.md'
+      - 'project/docs/LOCAL_HOST_META_PROMPT.md'
       - 'contracts/local-host-post-meta-prompt.json'
       - 'tests/local-host-meta-prompt.test.mjs'
       - 'tests/c44-methodological-bootstrap.test.mjs'

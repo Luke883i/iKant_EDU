@@ -24,7 +24,7 @@
     "contracts/project-host-tool-grounding-abi.json": "5d882060167f12d76cb2250fca87bd3e808d241a",
     "project/session-chat/PROMPT.txt": "277b1a5b7a8b9e5fe09702b6cf854b8682791db4",
     "project/edu-oneshell/PROMPT_INNESCO.txt": "dd7a3cb190a7a731ef68701b4e11b68fb71708c2",
-    "project-baseline/PROJECT_PROMPT.txt": "9eb7725430f99f24129e2bb8daeb93da67187fc6",
+    "project/baseline/PROJECT_PROMPT.txt": "9eb7725430f99f24129e2bb8daeb93da67187fc6",
     "project/oneshell-v7/PROMPT_TEMPLATE.txt": "47d83b4fa2cc68699f9fc63ffa107410a970e24f",
     "host/project-oneshell-continuous.mjs": "0355428b71ec4d6aa13ec4b81323ee1c9336b102",
     "contracts/c72-public-mode-admission-v2.json": "0bdb99589d907072917ba31f2938c9b600f39a05"

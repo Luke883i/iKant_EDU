@@ -36,7 +36,7 @@ const experimentalResult=()=>({schema:'ikant-le-c71-experimental-host-draft/v1',
  routed_turns:[{index:1,input_sha256:'d'.repeat(64),output_sha256:'e'.repeat(64),
   text:'Bozza utile, ma prodotta dalla modalità sperimentale e non sigillata.',authority:0,action_executed:false}]});
 test('C73 branded shell uses both user-derived logo assets and never acts as the owner',()=>{
- for(const p of ['assets/brand/ikant-light.svg','assets/brand/ikant-dark.svg']){
+ for(const p of ['project/assets/brand/ikant-light.svg','project/assets/brand/ikant-dark.svg']){
   const s=fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
   assert.match(s,/aria-label="iKant logo"/);
   assert.match(s,/<svg /);

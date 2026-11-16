@@ -7,7 +7,7 @@ test('S00 categories preserve original, operational and historical boundaries',(
  assert.equal(classify('host/c72-public-mode-admission.mjs'),'ORIGINAL_OR_ENTRY_CRITICAL');
  assert.equal(classify('scripts/build-project-oneshell-prompt.mjs'),'ACTIVE_CODE_REVIEW');
  assert.equal(classify('tests/project-first-contact.test.mjs'),'TEST_REGRESSION');
- assert.equal(classify('docs/archive/prepr/legacy.md'),'HISTORICAL_PRESERVE');
+ assert.equal(classify('project/docs/archive/prepr/legacy.md'),'HISTORICAL_PRESERVE');
  assert.equal(classify('random-other-file.txt'),'UNCLASSIFIED_REVIEW');
 });
 test('S00 scans tracked Git files and cannot promote local census to administrative GO',()=>{

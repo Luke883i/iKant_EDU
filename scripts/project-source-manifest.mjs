@@ -3,7 +3,7 @@ import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} fro
 import {C107_FILES} from './c107-pack.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const boot=JSON.parse(fs.readFileSync(path.join(root,'BOOTSTRAP.json'),'utf8'));
-const roots=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md','stile_comunicativo.md',
+const roots=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md','project/docs/stile_comunicativo.md',
  'host/c72-public-mode-admission.mjs','contracts/c72-public-mode-admission-v2.json',
  'host/project-host-negative-rail.mjs','host/project-c72-negative-entry.mjs',
  'contracts/project-host-negative-rail.json','contracts/project-c72-negative-entry.json',
@@ -12,8 +12,8 @@ const roots=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md
  'host/p1-postmode-source-handoff.mjs','scripts/project-manual-source.py',
  'scripts/project-session.mjs','scripts/project-repo-loader.mjs','scripts/project-c72-portable-cli.mjs','scripts/project-c72-staged-ingress-cli.mjs',
  'contracts/project-session-capsule.json','contracts/project-c72-receipt-transit.json','contracts/project-oneshell-irred-e15.json','contracts/project-host-followthrough.json','contracts/project-host-capability-port.json','contracts/project-oneshell-compact-continuity.json','contracts/project-oneshell-visual-v2.json','contracts/project-oneshell-do-d.json','contracts/project-oneshell-focus-app.json','contracts/project-oneshell-inchat-presentation.json','contracts/project-c72-preaccept-gate.json','contracts/project-oneshell-host-scope.json','contracts/project-oneshell-semantic-slides.json',
- 'docs/PROJECT_EDU_E16_UNIFIED_INGRESS.md','docs/PROJECT_SESSION_REPO_FIRST.md','docs/ONESHELL_POSTACCEPT_RAIL_AUDIT_E9.md','docs/ONESHELL_E12_FOCUS_APP_POST182.md',
- 'host/project-oneshell-postaccept-rail.mjs','contracts/project-oneshell-cx-humanist.json','docs/EDU_ONEZIP_POSTACCEPT_FIELD_ROUTE.md','contracts/project-edu-onezip-field-route.json',
+ 'project/docs/PROJECT_EDU_E16_UNIFIED_INGRESS.md','project/docs/PROJECT_SESSION_REPO_FIRST.md','project/docs/ONESHELL_POSTACCEPT_RAIL_AUDIT_E9.md','project/docs/ONESHELL_E12_FOCUS_APP_POST182.md',
+ 'host/project-oneshell-postaccept-rail.mjs','contracts/project-oneshell-cx-humanist.json','project/docs/EDU_ONEZIP_POSTACCEPT_FIELD_ROUTE.md','contracts/project-edu-onezip-field-route.json',
  'scripts/project-edu-zip-tree.py','scripts/project-edu-onezip-admission.mjs',
  'scripts/project-edu-language-stdio.mjs','scripts/project-edu-onezip-session.mjs','scripts/project-oneshell-continuous-cli.mjs',
  boot.post_accept_fastboot.runtime_root.loader.path,...boot.post_accept_fastboot.remote_paths,

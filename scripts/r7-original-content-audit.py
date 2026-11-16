@@ -27,7 +27,7 @@ DYNAMIC = re.compile(r"\b(?:import|require)\s*\(\s*(?!['\"])|(?:path\.join|path\
 TEMPORAL = re.compile(r"\b(?:historical|legacy|archive|prepr|candidate|current|deprecated|experimental|canonical)\b", re.I)
 ENTRY = {"README.md", "AGENTS.md", "ADMISSION.json", "BOOTSTRAP.json",
          "TERMS.md", "ikant.mjs", "project/session-chat/PROMPT.txt",
-         "plugins/ikant-le-session-chat/server/server.mjs", "release/catalog.json"}
+         "project/plugins/ikant-le-session-chat/server/server.mjs", "project/release/catalog.json"}
 
 def git(root, *args, binary=True):
     raw = subprocess.check_output(["git", "-C", str(root), *args], stderr=subprocess.PIPE)

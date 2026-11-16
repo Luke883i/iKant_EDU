@@ -62,7 +62,7 @@ export function verifyReceipts(dir,sha,plan=canonicalPlan()) {
 }
 function checkedSha(){
  const sha=execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim();
- if(!/^[a-f0-9]{40}$/.test(sha)||(process.env.GITHUB_SHA&&sha!==process.env.GITHUB_SHA))
+ if(!/^[a-f0-9]{40}$/.test(sha)||((process.env.IKANT_C24_EXPECTED_SHA||process.env.GITHUB_SHA)&&sha!==(process.env.IKANT_C24_EXPECTED_SHA||process.env.GITHUB_SHA)))
   throw Error('Git checkout does not match event SHA');
  return sha;
 }

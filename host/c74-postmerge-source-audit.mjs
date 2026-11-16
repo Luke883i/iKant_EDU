@@ -8,9 +8,9 @@ const read=x=>JSON.parse(fs.readFileSync(new URL('../'+x,import.meta.url),'utf8'
 const sha256=b=>crypto.createHash('sha256').update(b).digest('hex');
 const requiredC73=[
  '.github/workflows/c73-branded-project-capsule.yml',
- 'assets/brand/ikant-dark.svg','assets/brand/ikant-light.svg',
- 'contracts/c73-project-capsule.json','docs/C73_BRANDED_SHELL_CAPSULE.md',
- 'docs/C73_PROJECT_CHATGPT_ADAPTER.txt','host/c73-project-capsule.mjs',
+ 'project/assets/brand/ikant-dark.svg','project/assets/brand/ikant-light.svg',
+ 'contracts/c73-project-capsule.json','project/docs/C73_BRANDED_SHELL_CAPSULE.md',
+ 'project/docs/C73_PROJECT_CHATGPT_ADAPTER.txt','host/c73-project-capsule.mjs',
  'tests/c73-project-capsule.test.mjs'
 ];
 /**

@@ -5,7 +5,7 @@ on:
       - 'host/project-c72-e16-unified-ingress.mjs'
       - 'tests/project-c72-e16-unified-*.test.mjs'
       - 'scripts/project-c72-e16-unified-falsify.mjs'
-      - 'docs/PROJECT_EDU_E16_UNIFIED_INGRESS.md'
+      - 'project/docs/PROJECT_EDU_E16_UNIFIED_INGRESS.md'
       - 'BOOTSTRAP.json'
       - 'project/session-chat/PROMPT.txt'
       - 'scripts/project-source-manifest.mjs'

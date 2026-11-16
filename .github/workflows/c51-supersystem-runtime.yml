@@ -12,6 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
@@ -26,6 +27,6 @@ jobs:
         run: node scripts/c51-build-dod.mjs
       - name: Qualification artifacts are exact committed bytes
         run: |
-          git diff --exit-code -- artifacts/qualification/c51-supersystem-selection-10m.json artifacts/qualification/c51-supersystem-falsification-1m.json artifacts/qualification/c51-supersystem-dod.json artifacts/qualification/c51-candidate-blob-manifest.json
+          git diff --exit-code -- tests/artifacts/qualification/c51-supersystem-selection-10m.json tests/artifacts/qualification/c51-supersystem-falsification-1m.json tests/artifacts/qualification/c51-supersystem-dod.json tests/artifacts/qualification/c51-candidate-blob-manifest.json
       - name: Syntax
         run: node --check src/supersystem-runtime-conformance.mjs && node --check scripts/c51-supersystem-select-10m.mjs && node --check scripts/c51-supersystem-falsify-1m.mjs && node --check scripts/c51-build-dod.mjs

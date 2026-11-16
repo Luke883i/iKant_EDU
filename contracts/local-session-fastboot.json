@@ -150,7 +150,7 @@
       "scripts/c20-dual-profile-falsify.c",
       ".github/workflows/c20-dual-profile-session-chat.yml",
       "scripts/session-chat-runtime-cli.mjs",
-      "plugins/ikant-le-session-chat/**"
+      "project/plugins/ikant-le-session-chat/**"
     ],
     "translation_boundary": "BEFORE_CANONICAL_RUNTIME",
     "canonical_runtime_may_recognize_legacy_aliases": false

@@ -6,7 +6,7 @@ on:
       - 'contracts/project-host-what-how-effect-v2.json'
       - 'tests/project-host-effect-decision.test.mjs'
       - 'scripts/project-host-effect-falsify-1m.mjs'
-      - 'docs/PROJECT_HOST_K0_WHAT_HOW_R4.md'
+      - 'project/docs/PROJECT_HOST_K0_WHAT_HOW_R4.md'
       - '.github/workflows/project-host-k0-what-how.yml'
   push:
     branches: [main]
@@ -15,7 +15,7 @@ on:
       - 'contracts/project-host-what-how-effect-v2.json'
       - 'tests/project-host-effect-decision.test.mjs'
       - 'scripts/project-host-effect-falsify-1m.mjs'
-      - 'docs/PROJECT_HOST_K0_WHAT_HOW_R4.md'
+      - 'project/docs/PROJECT_HOST_K0_WHAT_HOW_R4.md'
       - '.github/workflows/project-host-k0-what-how.yml'
   workflow_dispatch:
 permissions:

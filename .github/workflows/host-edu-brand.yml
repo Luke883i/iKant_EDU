@@ -2,9 +2,9 @@ name: iKant EDU visual brand source qualification
 on:
   pull_request:
     paths:
-      - 'plugins/ikant-le-session-chat/plugin.json'
-      - 'plugins/ikant-le-session-chat/assets/**'
-      - 'plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
+      - 'project/plugins/ikant-le-session-chat/plugin.json'
+      - 'project/plugins/ikant-le-session-chat/assets/**'
+      - 'project/plugins/ikant-le-session-chat/server/public/ikant-le-app.html'
       - 'host/ikant-*brand*.mjs'
       - 'host/ikant-edu-branded-host.mjs'
       - 'contracts/host-ikant-brand-projection-v1.json'

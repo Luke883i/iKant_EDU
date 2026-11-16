@@ -8,8 +8,8 @@
     "label": "iKant",
     "kind": "BRAND_MARK_NOT_STATUS_RECEIPT",
     "assets": {
-      "light": "assets/brand/ikant-light.svg",
-      "dark": "assets/brand/ikant-dark.svg"
+      "light": "project/assets/brand/ikant-light.svg",
+      "dark": "project/assets/brand/ikant-dark.svg"
     },
     "alt": "iKant — rete funzionale stilizzata",
     "host_theme_may_be_unknown": true,

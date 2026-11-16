@@ -7,7 +7,7 @@ import crypto from 'node:crypto';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 import {createLocalCohostAdapter,denyHostTurn} from '../host/edu-cohost-outcome.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const raw=()=>fs.readFileSync(path.join(root,'release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
+const raw=()=>fs.readFileSync(path.join(root,'project/release/v8/ikant-c107-source-c734bf934e33.ikc.br'));
 const sha=s=>crypto.createHash('sha256').update(s).digest('hex');
 const auth=Object.freeze({human_mode_selected:true,opt_in_confirmed:true,provenance:'LOCAL_TEST_FIXTURE',separate_cohost_draft_authorized:false});
 async function make(){

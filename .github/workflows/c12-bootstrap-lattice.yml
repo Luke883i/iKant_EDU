@@ -2,7 +2,7 @@ name: C12 bootstrap lattice qualification
 on:
   pull_request:
     paths:
-      - 'C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json'
+      - 'contracts/C12_BOOTSTRAP_IRREDUCIBLE_LATTICE_CONTRACT.json'
       - 'scripts/c12-bootstrap-lattice-falsify.mjs'
       - '.github/workflows/c12-bootstrap-lattice.yml'
   workflow_dispatch:
@@ -23,7 +23,7 @@ jobs:
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const r=JSON.parse(fs.readFileSync('artifacts/qualification/c12-bootstrap-lattice.json','utf8'));
+          const r=JSON.parse(fs.readFileSync('tests/artifacts/qualification/c12-bootstrap-lattice.json','utf8'));
           if(r.cases!==100_000 || r.families!==50) throw new Error('C12 campaign shape mismatch');
           if(r.baseline.mismatches!==0) throw new Error('C12 baseline mismatch');
           if(r.six_node_lattice.all_nodes_necessary!==true) throw new Error('C12 lattice is not deletion-irredundant');

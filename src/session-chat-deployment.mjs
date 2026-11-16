@@ -13,7 +13,7 @@ const WORKSPACE=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const ORIENTATION=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md'];
 const HOST_PROJECTION=['contracts/ikant-le.json'];
 const C72_SOURCE=['contracts/c72-public-mode-admission-v2.json'];
-const REMOTE=['src/runtime-root-verified.mjs','runtime-root/shard-000.json','runtime-root/shard-001.json','runtime-root/shard-002.json','runtime-root/shard-003.json','runtime-root/shard-004.json','runtime-root/shard-005.json','runtime-root/shard-006.json'];
+const REMOTE=['src/runtime-root-verified.mjs','src/runtime-root/shard-000.json','src/runtime-root/shard-001.json','src/runtime-root/shard-002.json','src/runtime-root/shard-003.json','src/runtime-root/shard-004.json','src/runtime-root/shard-005.json','src/runtime-root/shard-006.json'];
 const HEX40=/^[a-f0-9]{40}$/;const HEX64=/^[a-f0-9]{64}$/;
 const sha256=b=>crypto.createHash('sha256').update(Buffer.isBuffer(b)?b:Buffer.from(String(b))).digest('hex');
 function gitBlobSha1(bytes){const b=Buffer.isBuffer(bytes)?bytes:Buffer.from(bytes);return crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');}

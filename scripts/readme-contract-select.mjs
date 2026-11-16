@@ -48,7 +48,7 @@ export const requiredFragments=Object.freeze([
 export function verifyReadme(readme,root=ROOT){
   const errors=[];
   for(const frag of requiredFragments)if(!readme.includes(frag))errors.push('missing:'+frag);
-  for(const m of readme.matchAll(/\]\((docs\/[^)#\s]+\.md)\)/g))
+  for(const m of readme.matchAll(/\]\(((?:project\/)?docs\/[^)#\s]+\.md)\)/g))
     if(!fs.existsSync(path.join(root,m[1])))errors.push('broken:'+m[1]);
   if(readme.includes('MCP connesso implica ACTIVE')||readme.includes('è una coscienza dimostrata'))
     errors.push('false_product_claim');

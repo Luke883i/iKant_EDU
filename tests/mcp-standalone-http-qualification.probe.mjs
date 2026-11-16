@@ -48,7 +48,7 @@ test('SDK HTTP: discovery, 401, initialize, tools/list and write-scope challenge
    IKANT_MCP_OAUTH_JWKS_URL:mock.issuer+'jwks',IKANT_MCP_ALLOWED_ORIGIN:'https://chatgpt.com',
    IKANT_MCP_PERSISTENCE_ROOT:tmp,IKANT_LE_DEPLOYMENT_ROOT:join(tmp,'deployment'),
    IKANT_ONESHELL_THREAD_PANEL:'0',NODE_EXTRA_CA_CERTS:join(tmp,'cert.pem')};
-  child=spawn(process.execPath,['plugins/ikant-le-session-chat/server/server.mjs'],{cwd:ROOT,env,stdio:['ignore','pipe','pipe']});
+  child=spawn(process.execPath,['project/plugins/ikant-le-session-chat/server/server.mjs'],{cwd:ROOT,env,stdio:['ignore','pipe','pipe']});
   let stderr='';child.stderr.on('data',b=>{stderr=(stderr+b.toString()).slice(-20000);});child.stdout.resume();
   const base='http://127.0.0.1:'+port;
   await eventuallyHealthy(base,child,()=>stderr);

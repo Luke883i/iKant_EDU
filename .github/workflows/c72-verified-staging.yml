@@ -8,7 +8,7 @@ on:
       - 'tests/project-c72-host-assisted-local-file.test.mjs'
       - 'tests/project-c72-transport-frontier-10k.test.mjs'
       - 'host/project-c72-transport-frontier.mjs'
-      - 'docs/C72_HOST_TOOL_TO_NODE_RELAY.md'
+      - 'project/docs/C72_HOST_TOOL_TO_NODE_RELAY.md'
       - 'project/session-chat/PROMPT.txt'
       - 'BOOTSTRAP.json'
       - '.github/workflows/c72-verified-staging.yml'

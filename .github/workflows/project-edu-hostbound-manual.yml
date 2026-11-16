@@ -11,7 +11,7 @@ on:
       - 'tests/project-edu-host-closure-3x10k.test.mjs'
       - 'contracts/project-host-followthrough.json'
       - 'contracts/project-host-capability-port.json'
-      - 'docs/EDU_HOST_WHAT_HOW_V2.md'
+      - 'project/docs/EDU_HOST_WHAT_HOW_V2.md'
       - 'scripts/project-edu-what-how-falsify.mjs'
       - 'contracts/project-edu-host-what-how-v2.json'
       - 'project/session-chat/PROMPT.txt'

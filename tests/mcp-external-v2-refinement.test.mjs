@@ -7,7 +7,7 @@ import {fileURLToPath} from 'node:url';
 import {
  readOAuthResourceConfig,bearerChallenge,createPinnedJwksResolver,
  verifyOAuthAccessToken,oauthWriteScopeFailure,scopeBoundSession
-} from '../plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs';
+} from '../project/plugins/ikant-le-session-chat/server/oauth-resource-boundary.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const config=readOAuthResourceConfig({IKANT_MCP_OAUTH_RESOURCE:'https://app.example/mcp',
  IKANT_MCP_OAUTH_ISSUER:'https://login.example/tenant/v2.0',
@@ -27,11 +27,11 @@ const verify=token=>verifyOAuthAccessToken({authorization:'Bearer '+token,config
 test('G: two chat modes remain independent of the third external MCP distribution',()=>{
  const orig=JSON.parse(fs.readFileSync(path.join(root,'contracts/c72-public-mode-admission-v2.json'),'utf8'));
  assert.deepEqual(orig.mode_choices,['EDU']);
- const server=fs.readFileSync(path.join(root,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
+ const server=fs.readFileSync(path.join(root,'project/plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
  assert.match(server,/IKANT_MCP_AUTH_MODE/);
  assert.match(server,/LEGACY.*compatibility/i);
  assert.doesNotMatch(server,/selectC72V2Mode\(/);
- const c59=fs.readFileSync(path.join(root,'docs/C59_SINGLE_COMPOSITION_CHANNEL.md'),'utf8');
+ const c59=fs.readFileSync(path.join(root,'project/docs/C59_SINGLE_COMPOSITION_CHANNEL.md'),'utf8');
  assert.match(c59,/excluded/i);
 });
 test('I: issuer with path is accepted and compared EXACTLY as configured',async()=>{
@@ -55,7 +55,7 @@ test('I: write requires scoped token and returns challenge in ChatGPT MCP tool r
  const write=await verify(sign({...claims,scope:'ikant:connect ikant:write'}));
  assert.equal(oauthWriteScopeFailure(write,config),null);
  assert.throws(()=>bearerChallenge(config,{errorDescription:'bad\r\nInjected: true'}),/UNSAFE_CHALLENGE/);
- const server=fs.readFileSync(path.join(root,'plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
+ const server=fs.readFileSync(path.join(root,'project/plugins/ikant-le-session-chat/server/server.mjs'),'utf8');
  assert.equal((server.match(/withWriteScope\(async/g)||[]).length,5);
  assert.match(server,/if\(denied\)return denied/);
 });

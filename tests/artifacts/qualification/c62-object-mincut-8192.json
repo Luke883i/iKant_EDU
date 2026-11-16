@@ -1,0 +1,26 @@
+{
+  "schema": "ikant-le-c62-transport-object-mincut/v1",
+  "analysis_class": "STRUCTURAL_REPOSITORY_PROOF_NOT_HOST_EXECUTION",
+  "runtime_root_sha256": "dd08e7a06249c0048e535f3ae92c1b178d2d30a51deb0d46b1d34557c43183d9",
+  "enumerated_subsets": 8192,
+  "orientation_source_objects": 5,
+  "runtime_transfer_objects": 8,
+  "runtime_installed_members": 52,
+  "runtime_transport_bytes": 632142,
+  "valid_supersets": 32,
+  "minimum_cardinality": 8,
+  "minimum_solutions": 1,
+  "runtime_deletion_mutants_killed": 8,
+  "tests": {
+    "disjoint_sets": true,
+    "exact_frozen_runtime_paths": true,
+    "exactly_five_orientation": true,
+    "exactly_eight_runtime": true,
+    "every_shard_has_runtime_members": true,
+    "unique_minimum": true,
+    "all_runtime_deletions_killed": true,
+    "source_descriptor_bound": true,
+    "runtime_does_not_require_orientation_source_paths": true
+  },
+  "status": "PASS"
+}

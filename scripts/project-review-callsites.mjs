@@ -32,7 +32,7 @@ function verifyGitSource(repo){
   if(!st.isFile()||st.isSymbolicLink())throw Error('GIT_SOURCE_UNSAFE_FILE:'+x.path);
   const data=fs.readFileSync(filename),sha=createHash('sha1').update(Buffer.from('blob '+data.length+'\0')).update(data).digest('hex');
   if(sha!==x.sha){
-   if(/^artifacts\/qualification\/[a-zA-Z0-9._/-]+\.json$/u.test(x.path))generated_drift++;
+   if(/^(?:artifacts|tests\/artifacts)\/qualification\/[a-zA-Z0-9._/-]+\.json$/u.test(x.path))generated_drift++;
    else throw Error('GIT_SOURCE_WORKTREE_DRIFT:'+x.path);
   }
   encoded.update(x.mode+' '+x.sha+' '+x.path+'\n');

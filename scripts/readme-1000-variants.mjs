@@ -51,7 +51,7 @@ export function safe(s){
   !s.includes('è una coscienza dimostrata')&&
   s.indexOf('## Stato e autorità')>s.indexOf('## Cosa ottieni oggi')&&
   s.includes(String.fromCharCode(96,96,96)+'mermaid')&&
-  s.includes('docs/IKANT_DOCUMENT_ATLAS.md');
+  s.includes('project/docs/IKANT_DOCUMENT_ATLAS.md');
 }
 function compose(base,reader,scenario,swapIndex){
  const {intro,parts}=splitSections(base);

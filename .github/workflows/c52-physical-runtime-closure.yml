@@ -12,7 +12,7 @@ on:
       - 'runtime-root/**'
       - 'scripts/c52-*'
       - 'tests/c52-physical-runtime-closure.test.mjs'
-      - 'artifacts/qualification/c52-*'
+      - 'tests/artifacts/qualification/c52-*'
       - '.github/workflows/c51-supersystem-runtime.yml'
       - '.github/workflows/c52-physical-runtime-closure.yml'
   push:
@@ -44,12 +44,12 @@ jobs:
       - name: Granular runtime proof-surface DoD
         run: node scripts/c52-build-dod.mjs
       - name: Qualification artifacts are deterministic committed bytes
-        run: git diff --exit-code -- artifacts/qualification/c52-physical-closure-10m.json artifacts/qualification/c52-physical-closure-lattice.json artifacts/qualification/c52-bundle-coverage.json artifacts/qualification/c52-candidate-blob-manifest.json artifacts/qualification/c52-runtime-physical-closure-dod.json
+        run: git diff --exit-code -- tests/artifacts/qualification/c52-physical-closure-10m.json tests/artifacts/qualification/c52-physical-closure-lattice.json tests/artifacts/qualification/c52-bundle-coverage.json tests/artifacts/qualification/c52-candidate-blob-manifest.json tests/artifacts/qualification/c52-runtime-physical-closure-dod.json
       - name: Claim boundary cannot be laundered by CI
         run: |
           node - <<'NODE'
           const fs=require('fs');
-          const d=JSON.parse(fs.readFileSync('artifacts/qualification/c52-runtime-physical-closure-dod.json','utf8'));
+          const d=JSON.parse(fs.readFileSync('tests/artifacts/qualification/c52-runtime-physical-closure-dod.json','utf8'));
           if(d.status!=='PASS_RUNTIME_PROOF_SURFACE_READY_FOR_LIVE_HOST') throw new Error('C52 proof surface not closed');
           if(d.claim_boundary.physical_host_closure_proven_by_ci!==false) throw new Error('CI laundering');
           if(d.claim_boundary.synthetic_receipts_are_physical_proof!==false) throw new Error('synthetic laundering');

@@ -5,7 +5,7 @@ import {selectFastbootCarrier,validateFastbootConvergence,FASTBOOT_CAPABILITY_FI
 import {validateTransferRemoteHistory} from '../src/bootstrap-semantic.mjs';
 
 const args=process.argv.slice(2),arg=(k,d)=>{const i=args.indexOf(k);return i>=0?args[i+1]:d};
-const CASES=Number(arg('--cases','10000000')),SEED=Number(arg('--seed','3248435238'))>>>0,OUT=arg('--output','artifacts/qualification/c19-fastboot-convergence-10m.json');
+const CASES=Number(arg('--cases','10000000')),SEED=Number(arg('--seed','3248435238'))>>>0,OUT=arg('--output','tests/artifacts/qualification/c19-fastboot-convergence-10m.json');
 if(CASES!==10_000_000)throw new Error('C19 qualification requires exactly 10,000,000 cases');
 const D=runtimeRootDescriptor(),HEAD='a'.repeat(40),EVENT='accept-c19-00000001';
 const hash=x=>crypto.createHash('sha256').update(JSON.stringify(x)).digest('hex');
@@ -68,4 +68,4 @@ for(let i=0;i<CASES;i++){
 }
 const score=1-mismatches/CASES,convergenceRate=validCases?validAccepted/validCases:0,minCoverage=Math.min(...Object.values(counts)),status=score>=0.99&&mismatches===0&&unsafe===0&&convergenceRate>=0.99&&minCoverage>0&&Object.values(witness).every(x=>x>0)?'PASS':'FAIL';
 const result={schema:'ikant-le-c19-fastboot-convergence-qualification/v1',cases:CASES,seed:SEED,status,qualification_score:score,recoverable_convergence_rate:convergenceRate,mismatches,unsafe_active:unsafe,unitary_semantic_mutations:CASES,variant_count:variants.length,weighted_realistic_profiles:true,profile_counts:families,variant_coverage:counts,min_variant_coverage:minCoverage,deletion_false_green:witness,thresholds:{qualification_score_min:0.99,recoverable_convergence_rate_min:0.99,mismatches:0,unsafe_active:0},real_code_functions:['selectFastbootCarrier','validateFastbootConvergence','validateTransferRemoteHistory'],claim_boundary:{seeded_pseudorandom:true,semantic_not_physical_bridge_proof:true,corpus_relative:true,host_capability_not_fabricated:true}};
-result.receipt_sha256=hash(result);fs.mkdirSync(new URL('../artifacts/qualification/',import.meta.url),{recursive:true});fs.writeFileSync(new URL('../'+OUT,import.meta.url),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));if(status!=='PASS')process.exit(2);
+result.receipt_sha256=hash(result);fs.mkdirSync(new URL('../tests/artifacts/qualification/',import.meta.url),{recursive:true});fs.writeFileSync(new URL('../'+OUT,import.meta.url),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));if(status!=='PASS')process.exit(2);

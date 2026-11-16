@@ -110,21 +110,21 @@
     "evidence_runtime_cut_runtime_objects": 8,
     "evidence_runtime_cut_orientation_runtime_files": 0
   },
-  "host_witness": "artifacts/qualification/c59-host-connector-container-witness.json",
+  "host_witness": "tests/artifacts/qualification/c59-host-connector-container-witness.json",
   "history_lineage": "contracts/bootstrap-channel-lineage.json",
   "cartesian_space": "contracts/bootstrap-composition-space.json",
   "closure_proofs": {
-    "pr_history": "artifacts/qualification/c59-pr1-68-history-audit.json",
-    "cartesian": "artifacts/qualification/c59-cartesian-closure.json",
-    "host_primitive": "artifacts/qualification/c59-host-connector-container-witness.json",
-    "semantic_lattice": "artifacts/qualification/c59-semantic-lattice-selection-4k.json",
-    "adversarial": "artifacts/qualification/c59-composition-falsification-100k.json",
-    "canonical_authority": "artifacts/qualification/c59-canonical-authority-falsification-100k.json",
-    "runtime_closure": "artifacts/qualification/c59-runtime-closure-falsification-100k.json",
-    "executable_surface": "artifacts/qualification/c59-executable-surface-audit.json",
-    "project_host_rom_adversarial": "artifacts/qualification/c59-project-rom-adversarial-100.json",
-    "cold_producer": "artifacts/qualification/c61-cold-producer-1m.json",
-    "evidence_runtime_cut": "artifacts/qualification/c62-evidence-runtime-cut-10k.json"
+    "pr_history": "tests/artifacts/qualification/c59-pr1-68-history-audit.json",
+    "cartesian": "tests/artifacts/qualification/c59-cartesian-closure.json",
+    "host_primitive": "tests/artifacts/qualification/c59-host-connector-container-witness.json",
+    "semantic_lattice": "tests/artifacts/qualification/c59-semantic-lattice-selection-4k.json",
+    "adversarial": "tests/artifacts/qualification/c59-composition-falsification-100k.json",
+    "canonical_authority": "tests/artifacts/qualification/c59-canonical-authority-falsification-100k.json",
+    "runtime_closure": "tests/artifacts/qualification/c59-runtime-closure-falsification-100k.json",
+    "executable_surface": "tests/artifacts/qualification/c59-executable-surface-audit.json",
+    "project_host_rom_adversarial": "tests/artifacts/qualification/c59-project-rom-adversarial-100.json",
+    "cold_producer": "tests/artifacts/qualification/c61-cold-producer-1m.json",
+    "evidence_runtime_cut": "tests/artifacts/qualification/c62-evidence-runtime-cut-10k.json"
   },
   "authority_gate": {
     "owner_module": "src/runtime-root-verified.mjs#executeCanonicalColdBootstrap",

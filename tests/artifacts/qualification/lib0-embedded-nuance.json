@@ -49,7 +49,7 @@
   "semantic_signatures": 5280,
   "no_novelty_tail": 1000,
   "tail_new_signatures": 0,
-  "source_sha256": "6ee4c4c0b942029227eaecba83ef31dd70f574bc6b0a32212f8d9e2c30c569e3",
+  "source_sha256": "8b53ad6b67721f62a3daa83b362e7308b55726cba157e394b422c9f112d2180c",
   "claim_boundary": {
     "standalone_runtime_equivalence_from_this_campaign": false,
     "external_host_correctness_proven": false,
@@ -58,5 +58,5 @@
     "semantic_mutation_is_formal_proof": false
   },
   "first_survivor": null,
-  "receipt_sha256": "11c85d2ccbdd8064753a67ac0c840ecae355c42d7a14be9913b3959968a8479d"
+  "receipt_sha256": "240f713738355728cda7643ce213faa56f8ddabf4fc624bb8a48654ce93870f6"
 }

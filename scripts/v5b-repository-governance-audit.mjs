@@ -337,6 +337,7 @@ function r7Pr249CheckoutPatch(s){
  }
  return out.join("\n");
 }
+const PR249_RECEIPT_PINS=[["tests/artifacts/qualification/c51-candidate-blob-manifest.json","0f11d508b274242fc82900415caa56a893efa94b"],["tests/artifacts/qualification/c51-supersystem-dod.json","090aa9f6fecde747f6a9b60af45fa7cba73496d3"],["tests/artifacts/qualification/c52-candidate-blob-manifest.json","c148208a24bb3d8b7e1152248db2afd75e5060ce"],["tests/artifacts/qualification/c52-runtime-physical-closure-dod.json","0c0f777063c10412f287e171bad2e8357c8cf19a"]];
 function qualifyPr249CheckoutRepairEpoch(){
  const fail=edge=>({ok:false,edge,authority:0,product_go:false});
  try{
@@ -345,7 +346,7 @@ function qualifyPr249CheckoutRepairEpoch(){
   git('merge-base','--is-ancestor',PR249_CHECKOUT_ANCHOR,'HEAD');
   const delta=git('diff','--name-status','--no-renames',PR249_CHECKOUT_ANCHOR,'HEAD').split('\n').filter(Boolean);
   const paths=delta.map(row=>{const m=/^M\t(.+)$/.exec(row);return m?.[1]||null;});
-  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs'].sort();
+  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
   if(paths.includes(null)||JSON.stringify([...paths].sort())!==JSON.stringify(permitted))
    return fail('PR249_REPAIR_NOT_EXACT_13_CHECKOUTS_AND_AUDIT');
   for(const p of PR249_CHECKOUT_WORKFLOWS){
@@ -354,6 +355,8 @@ function qualifyPr249CheckoutRepairEpoch(){
    if(after!==r7Pr249CheckoutPatch(before)||after===before)
     return fail('PR249_CHECKOUT_UNEXPECTED_DELTA:'+p);
   }
+  for(const [p,pin] of PR249_RECEIPT_PINS)if(git('rev-parse','HEAD:'+p)!==pin)
+   return fail('PR249_RECEIPT_BLOB_PIN_DRIFT:'+p);
   if(git('diff','--cached','--name-only'))return fail('PR249_REPAIR_STAGED_INDEX_CHANGED');
   const dirty=git('diff','--name-only').split('\n').filter(Boolean);
   if(dirty.some(p=>!/^tests\/artifacts\/qualification\/[A-Za-z0-9_.-]+\.json$/.test(p)))

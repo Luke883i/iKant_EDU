@@ -91,13 +91,13 @@
       "id": "D15",
       "claim": "10M saturation plus complete 2^13 lattice selects unique minimum and kills deletion mutants",
       "status": "PASS_REPOSITORY",
-      "evidence": "dc1995526ccefb48b8eb17959cc35686bc3af77f3a723d03aa02aa19f21ad8ab"
+      "evidence": "a256ef47b13505ab4c6ffdb78d52ae8d451a0b15db4b8398405186276bc16b7e"
     },
     {
       "id": "D16",
       "claim": "fresh 1M runtime falsification has zero mismatch/unsafe/false-reject",
       "status": "PASS_REPOSITORY",
-      "evidence": "bda1979a1b7b1f80715ef2e5221a0fd8dbf55f5e9df25c038e1362262561a370"
+      "evidence": "1751169b854079ade4cb6d86276ba8cec2a480ab0610882bd63daf8e1d114b4b"
     },
     {
       "id": "D17",
@@ -109,12 +109,12 @@
       "id": "D18",
       "claim": "candidate implementation/test surface is content-addressed",
       "status": "PASS_REPOSITORY",
-      "evidence": "16c598d3d693cc6e133394f198c118c414b589a73561c6214fbc2c977d71368a"
+      "evidence": "9cf8a79cb03613dc0db871c2162315475bc369d4b8f49b0fa04a7dcae4d34e45"
     }
   ],
-  "selection_receipt_sha256": "dc1995526ccefb48b8eb17959cc35686bc3af77f3a723d03aa02aa19f21ad8ab",
-  "falsification_receipt_sha256": "bda1979a1b7b1f80715ef2e5221a0fd8dbf55f5e9df25c038e1362262561a370",
-  "candidate_manifest_receipt_sha256": "16c598d3d693cc6e133394f198c118c414b589a73561c6214fbc2c977d71368a",
+  "selection_receipt_sha256": "a256ef47b13505ab4c6ffdb78d52ae8d451a0b15db4b8398405186276bc16b7e",
+  "falsification_receipt_sha256": "1751169b854079ade4cb6d86276ba8cec2a480ab0610882bd63daf8e1d114b4b",
+  "candidate_manifest_receipt_sha256": "9cf8a79cb03613dc0db871c2162315475bc369d4b8f49b0fa04a7dcae4d34e45",
   "claim_boundary": {
     "repository_runtime_conformance_closed": true,
     "physical_host_bootstrap_binding_proven": false,
@@ -125,5 +125,5 @@
     "post_merge_main_ci_required": true
   },
   "authority": 0,
-  "receipt_sha256": "bf0473e82c885b4275e1218c569791b3a2a437c5f2de53dd3a57a3fc4e3eddb1"
+  "receipt_sha256": "29877275928dbfa3f8be8b3d2a63c6ac551fd57a005957d96953ba57ddc191c7"
 }

@@ -35,20 +35,7 @@ jobs:
       - name: Install exact declared direct MCP SDK dependencies (not a lockfile claim)
         run: npm install --ignore-scripts --no-audit --no-fund --prefix project/plugins/ikant-le-session-chat/server
       - name: Real SDK HTTP transport with SYNTHETIC local OAuth server
-        id: http_diag
-        shell: bash
-        run: |
-          set +e
-          node --test tests/mcp-standalone-http-qualification.probe.mjs > "$RUNNER_TEMP/mcp-http.log" 2>&1
-          status=$?
-          cat "$RUNNER_TEMP/mcp-http.log"
-          edge=$(grep -E '^[[:space:]]*(error|code|expected|actual|operator):' "$RUNNER_TEMP/mcp-http.log" | head -n 4 | tr '\n' ' ' | tr -cd 'A-Za-z0-9_ .:/,=-' | cut -c 1-170)
-          if [ -z "$edge" ]; then edge="NO_STRUCTURED_ERROR"; fi
-          echo "edge=$edge" >> "$GITHUB_OUTPUT"
-          exit "$status"
-      - name: "MCP HTTP failure witness: ${{ steps.http_diag.outputs.edge }}"
-        if: ${{ failure() }}
-        run: exit 1
+        run: node --test tests/mcp-standalone-http-qualification.probe.mjs
       - name: Materialize ten thousand scenario questions
         run: node scripts/mcp-standalone-semantic-10k.mjs mcp-standalone-10k.jsonl > mcp-standalone-10k-evidence.json
       - uses: actions/upload-artifact@v4

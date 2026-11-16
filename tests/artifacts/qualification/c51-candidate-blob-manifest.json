@@ -44,12 +44,12 @@
     },
     {
       "path": ".github/workflows/c51-supersystem-runtime.yml",
-      "bytes": 5318,
-      "sha256": "13425ef496b4fe03c2b4fbc8508f95fd7a6d782e9e008b7704306aa170fce19f"
+      "bytes": 1714,
+      "sha256": "83bc07ebe521037059f90f94a3a089125808614900ab25029c949eb7e5dc8bec"
     }
   ],
   "content_addressed": true,
   "manifest_excludes_self": true,
   "authority": 0,
-  "receipt_sha256": "16c598d3d693cc6e133394f198c118c414b589a73561c6214fbc2c977d71368a"
+  "receipt_sha256": "9cf8a79cb03613dc0db871c2162315475bc369d4b8f49b0fa04a7dcae4d34e45"
 }

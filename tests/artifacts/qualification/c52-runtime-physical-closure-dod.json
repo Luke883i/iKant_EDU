@@ -219,7 +219,7 @@
   "campaign_receipt_sha256": "b379b281a3024bc8af76d8295f56a803ed9f41fe9ad8fac309c9b411120944c5",
   "lattice_receipt_sha256": "7c99e4641c14e8162f853ac53e2757f312b13b8bf5efdd0c8af655f12ccf547d",
   "coverage_receipt_sha256": "7ce46d93d6ce77edca00eb9cdc30aa23b50dc76b04403b5164e0901976864736",
-  "candidate_manifest_receipt_sha256": "bbf0a2a10aa91b7b6de9a7cff537253387cb158d9218ce55fa81aa726e4aa193",
+  "candidate_manifest_receipt_sha256": "b851e9574cd07ac1a72e5bf900a8bec2a83aca821c5fc0cff2144567070447c4",
   "claim_boundary": {
     "repository_runtime_proof_surface_closed": true,
     "physical_host_closure_proven_by_ci": false,
@@ -229,5 +229,5 @@
     "global_physical_claim_authorized": false
   },
   "authority": 0,
-  "receipt_sha256": "455618b36547007dccdb4e82958cfbe35caea1e23d004f26f855988ade19313a"
+  "receipt_sha256": "1c88965655356c59b11187c3074517077d5ef01c1af2346616189bee8075ff1a"
 }

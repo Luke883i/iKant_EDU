@@ -337,7 +337,7 @@ function r7Pr249CheckoutPatch(s){
  }
  return out.join("\n");
 }
-const PR249_RECEIPT_PINS=[["tests/artifacts/qualification/c51-candidate-blob-manifest.json","67702467555310924c24dc61b23ed2c9c740ecfe"],["tests/artifacts/qualification/c51-supersystem-dod.json","9b213327f3640c506bd2a87718f0c21dee05fa2f"],["tests/artifacts/qualification/c52-candidate-blob-manifest.json","a0f7a5a05d424684bf0e6837e4528a072cdfe959"],["tests/artifacts/qualification/c52-runtime-physical-closure-dod.json","29a0e9a9c8dd4fde853a490a3dae77f6c644291d"]];
+const PR249_RECEIPT_PINS=[["tests/artifacts/qualification/c51-candidate-blob-manifest.json","0f11d508b274242fc82900415caa56a893efa94b"],["tests/artifacts/qualification/c51-supersystem-dod.json","0f468345b2db1ab77d55b52798b3bcedc9ac8a85"],["tests/artifacts/qualification/c52-candidate-blob-manifest.json","c148208a24bb3d8b7e1152248db2afd75e5060ce"],["tests/artifacts/qualification/c52-runtime-physical-closure-dod.json","0c0f777063c10412f287e171bad2e8357c8cf19a"]];
 function qualifyPr249CheckoutRepairEpoch(){
  const fail=edge=>({ok:false,edge,authority:0,product_go:false});
  try{
@@ -346,19 +346,12 @@ function qualifyPr249CheckoutRepairEpoch(){
   git('merge-base','--is-ancestor',PR249_CHECKOUT_ANCHOR,'HEAD');
   const delta=git('diff','--name-status','--no-renames',PR249_CHECKOUT_ANCHOR,'HEAD').split('\n').filter(Boolean);
   const paths=delta.map(row=>{const m=/^M\t(.+)$/.exec(row);return m?.[1]||null;});
-  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs','tests/test_oneshell_v1_materialization.py','scripts/oneshell-v1-verify.py','tests/artifacts/qualification/lib0-embedded-nuance.json','project/plugins/ikant-le-session-chat/server/server.mjs','scripts/project-review-callsites.mjs','scripts/cora-minimal-absorption.mjs',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
+  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs','tests/test_oneshell_v1_materialization.py','scripts/oneshell-v1-verify.py','tests/artifacts/qualification/lib0-embedded-nuance.json','project/plugins/ikant-le-session-chat/server/server.mjs','scripts/project-review-callsites.mjs','scripts/cora-minimal-absorption.mjs','tests/artifacts/qualification/c51-supersystem-selection-10m.json','tests/artifacts/qualification/c51-supersystem-falsification-1m.json',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
   if(paths.includes(null)||JSON.stringify([...paths].sort())!==JSON.stringify(permitted))
    return fail('PR249_REPAIR_NOT_EXACT_13_CHECKOUTS_AND_AUDIT');
   for(const p of PR249_CHECKOUT_WORKFLOWS){
    const before=git('show',PR249_CHECKOUT_ANCHOR+':'+p);
    const after=git('show','HEAD:'+p);
-   const diagnosticWorkflowPins={
-    '.github/workflows/mcp-standalone-assurance.yml':'1e40996bbdb9c0ea7d58bb463f71f7583abe43ef',
-    '.github/workflows/c51-supersystem-runtime.yml':'95f1a26ea21d279e71db3677534828d6dd3c9594',
-    '.github/workflows/readme-compat-diagnostics.yml':'fc7f4b63a417de7f5cf6a16ee4cc357b69ac4ff8'
-   };
-   if(Object.hasOwn(diagnosticWorkflowPins,p)&&
-      git('rev-parse','HEAD:'+p)===diagnosticWorkflowPins[p])continue;
    if(after!==r7Pr249CheckoutPatch(before)||after===before)
     return fail('PR249_CHECKOUT_UNEXPECTED_DELTA:'+p);
   }
@@ -376,6 +369,10 @@ function qualifyPr249CheckoutRepairEpoch(){
    return fail('PR249_V5B_MOVED_EVIDENCE_READBACK_PIN_DRIFT');
   if(git('rev-parse','HEAD:scripts/cora-minimal-absorption.mjs')!=='88dc44e90ea54c7806a96e9605d0ad8123401b41')
    return fail('PR249_CORA_SOURCE_EPOCH_BRIDGE_PIN_DRIFT');
+  if(git('rev-parse','HEAD:tests/artifacts/qualification/c51-supersystem-selection-10m.json')!=='4221db22c4afe746d9a36422394cf8c74696921e')
+   return fail('PR249_C51_SELECTION_REPLAY_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:tests/artifacts/qualification/c51-supersystem-falsification-1m.json')!=='7a8dd1184ac131765783a2bcdc7a267e50ab95f8')
+   return fail('PR249_C51_FALSIFICATION_REPLAY_BLOB_DRIFT');
   if(git('diff','--cached','--name-only'))return fail('PR249_REPAIR_STAGED_INDEX_CHANGED');
   const dirty=git('diff','--name-only').split('\n').filter(Boolean);
   if(dirty.some(p=>!/^tests\/artifacts\/qualification\/[A-Za-z0-9_.-]+\.json$/.test(p)))

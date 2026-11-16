@@ -54,8 +54,8 @@
     },
     {
       "path": ".github/workflows/c51-supersystem-runtime.yml",
-      "bytes": 5318,
-      "sha256": "13425ef496b4fe03c2b4fbc8508f95fd7a6d782e9e008b7704306aa170fce19f"
+      "bytes": 1714,
+      "sha256": "83bc07ebe521037059f90f94a3a089125808614900ab25029c949eb7e5dc8bec"
     },
     {
       "path": ".github/workflows/c52-physical-runtime-closure.yml",
@@ -66,5 +66,5 @@
   "content_addressed": true,
   "manifest_excludes_self": true,
   "authority": 0,
-  "receipt_sha256": "bbf0a2a10aa91b7b6de9a7cff537253387cb158d9218ce55fa81aa726e4aa193"
+  "receipt_sha256": "b851e9574cd07ac1a72e5bf900a8bec2a83aca821c5fc0cff2144567070447c4"
 }

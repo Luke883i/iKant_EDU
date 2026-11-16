@@ -302,7 +302,71 @@ export function qualifyV13V5BEpochProjection(){
  * revisitable. Legacy V5-B registers and receipts are never rewritten.
  * This does NOT confer owner review, CI, provider truth, or product GO.
  */
+
+/** PR249 CI successor: source-only exact checkout repair. Historic review stays OPEN. */
+const PR249_CHECKOUT_ANCHOR='7cd95a485f71008dd6aa7c3da6aa76bd0f3ead65';
+const PR249_CHECKOUT_TREE='f4c24eb23641fa08c6262fc5fb5a57223a2f3c8a';
+const PR249_CHECKOUT_WORKFLOWS=[
+ ".github/workflows/c20-dual-profile-session-chat.yml",
+ ".github/workflows/c24-canonical-boundary.yml",
+ ".github/workflows/c25-executor-data-plane.yml",
+ ".github/workflows/c51-supersystem-runtime.yml",
+ ".github/workflows/c59-single-composition.yml",
+ ".github/workflows/c62-evidence-runtime-cut.yml",
+ ".github/workflows/ci.yml",
+ ".github/workflows/host-negative-semantic-r3.yml",
+ ".github/workflows/lib0-embedded-nuance.yml",
+ ".github/workflows/mcp-standalone-assurance.yml",
+ ".github/workflows/oneshell-v1-qualification.yml",
+ ".github/workflows/project-oneshell-prompt.yml",
+ ".github/workflows/readme-compat-diagnostics.yml"
+];
+function r7Pr249CheckoutPatch(s){
+ const lines=s.split("\n"),out=[];
+ for(let i=0;i<lines.length;i++){
+  const line=lines[i];out.push(line);
+  const match=line.match(/^(\s*)- uses: actions\/checkout@v4\s*$/);
+  if(!match)continue;
+  const indent=match[1];
+  if(lines[i+1]===indent+"  with:"){
+   out.push(lines[++i]);
+   const part=lines.slice(i+1,i+7).join("\n");
+   if(!new RegExp("^"+indent+"    fetch-depth:","m").test(part))out.push(indent+"    fetch-depth: 0");
+   if(!new RegExp("^"+indent+"    ref:","m").test(part))out.push(indent+"    ref: ${{ github.event.pull_request.head.sha || github.sha }}");
+  }else out.push(indent+"  with:",indent+"    ref: ${{ github.event.pull_request.head.sha || github.sha }}",indent+"    fetch-depth: 0");
+ }
+ return out.join("\n");
+}
+function qualifyPr249CheckoutRepairEpoch(){
+ const fail=edge=>({ok:false,edge,authority:0,product_go:false});
+ try{
+  if(git('rev-parse',PR249_CHECKOUT_ANCHOR+'^{tree}')!==PR249_CHECKOUT_TREE)
+   return fail('PR249_REPAIR_ANCHOR_TREE_CHANGED');
+  git('merge-base','--is-ancestor',PR249_CHECKOUT_ANCHOR,'HEAD');
+  const delta=git('diff','--name-status','--no-renames',PR249_CHECKOUT_ANCHOR,'HEAD').split('\n').filter(Boolean);
+  const paths=delta.map(row=>{const m=/^M\t(.+)$/.exec(row);return m?.[1]||null;});
+  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs'].sort();
+  if(paths.includes(null)||JSON.stringify([...paths].sort())!==JSON.stringify(permitted))
+   return fail('PR249_REPAIR_NOT_EXACT_13_CHECKOUTS_AND_AUDIT');
+  for(const p of PR249_CHECKOUT_WORKFLOWS){
+   const before=git('show',PR249_CHECKOUT_ANCHOR+':'+p);
+   const after=git('show','HEAD:'+p);
+   if(after!==r7Pr249CheckoutPatch(before)||after===before)
+    return fail('PR249_CHECKOUT_UNEXPECTED_DELTA:'+p);
+  }
+  if(git('diff','--cached','--name-only'))return fail('PR249_REPAIR_STAGED_INDEX_CHANGED');
+  const dirty=git('diff','--name-only').split('\n').filter(Boolean);
+  if(dirty.some(p=>!/^tests\/artifacts\/qualification\/[A-Za-z0-9_.-]+\.json$/.test(p)))
+   return fail('PR249_REPAIR_NON_EVIDENCE_WORKTREE_DIRTY');
+  return {ok:true,status:'PR249_CHECKOUT_REPAIR_SOURCE_ONLY_REVIEW_REQUIRED',
+   anchor:PR249_CHECKOUT_ANCHOR,workflow_changes:PR249_CHECKOUT_WORKFLOWS.length,
+   original_governance_unchanged:true,owner_review:'NOT_ATTESTED',
+   native_equivalence:'NOT_ATTESTED',provider:'NOT_ATTESTED',authority:0,product_go:false};
+ }catch(e){return fail('PR249_REPAIR_SOURCE_UNREADABLE:'+String(e).slice(0,140));}
+}
+
 export function qualifyPr249SourceEpoch(){
+ if(git('rev-parse','HEAD')!==PR249_CHECKOUT_ANCHOR)return qualifyPr249CheckoutRepairEpoch();
  const fail=edge=>({ok:false,edge,authority:0,product_go:false});
  try{
   const c=json('contracts/r7-pr249-founding-contract.json'),e=c?.pr249_epoch;

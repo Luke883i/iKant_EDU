@@ -66,8 +66,8 @@ class SourceMaterialization(unittest.TestCase):
     p=self.repo/src
     p.parent.mkdir(exist_ok=True,parents=True)
     p.write_bytes(("new source at "+src+"\n").encode())
-  (self.repo/"docs"/"ONESHELL_V1_MATERIALIZATION.txt").write_bytes(
-      (ROOT/"docs"/"ONESHELL_V1_MATERIALIZATION.txt").read_bytes())
+  (self.repo/"project/docs"/"ONESHELL_V1_MATERIALIZATION.txt").write_bytes(
+      (ROOT/"project/docs"/"ONESHELL_V1_MATERIALIZATION.txt").read_bytes())
   git(self.repo,"add",".")
   git(self.repo,"commit","-m","synthetic deterministic source")
   self.head=git(self.repo,"rev-parse","HEAD")

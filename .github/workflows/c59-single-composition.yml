@@ -121,9 +121,23 @@ jobs:
           node scripts/c59-canonical-authority-falsify.mjs > /tmp/c59-authority.json
           diff -u tests/artifacts/qualification/c59-canonical-authority-falsification-100k.json /tmp/c59-authority.json
       - name: C59 closed executable surface audit
+        id: executable
+        shell: bash
         run: |
-          node scripts/c59-executable-surface-audit.mjs > /tmp/c59-executable.json
-          diff -u tests/artifacts/qualification/c59-executable-surface-audit.json /tmp/c59-executable.json
+          set +e
+          node scripts/c59-executable-surface-audit.mjs > /tmp/c59-executable.json 2> /tmp/c59-executable.err
+          node_status=$?
+          diff -u tests/artifacts/qualification/c59-executable-surface-audit.json /tmp/c59-executable.json > /tmp/c59-executable.diff
+          diff_status=$?
+          cat /tmp/c59-executable.err
+          head -n 55 /tmp/c59-executable.diff
+          edge=$(node -e 'const fs=require("fs");let a={};try{a=JSON.parse(fs.readFileSync("/tmp/c59-executable.json","utf8"))}catch{};console.log((a.errors?.join(",")||fs.readFileSync("/tmp/c59-executable.err","utf8").slice(0,110)||"GENERATED_BYTES_DRIFT").replace(/[^A-Za-z0-9_,:.-]/g,"_").slice(0,130))')
+          echo "edge=$edge" >> "$GITHUB_OUTPUT"
+          echo "node_status=$node_status diff_status=$diff_status"
+          test "$node_status" -eq 0 && test "$diff_status" -eq 0
+      - name: "C59 diagnostic: ${{ steps.executable.outputs.edge }}"
+        if: ${{ failure() }}
+        run: exit 1
       - name: C59 minimum 2^12 semantic lattice
         run: |
           node scripts/c59-semantic-lattice-select.mjs > /tmp/c59-lattice.json

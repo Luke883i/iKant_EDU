@@ -346,12 +346,18 @@ function qualifyPr249CheckoutRepairEpoch(){
   git('merge-base','--is-ancestor',PR249_CHECKOUT_ANCHOR,'HEAD');
   const delta=git('diff','--name-status','--no-renames',PR249_CHECKOUT_ANCHOR,'HEAD').split('\n').filter(Boolean);
   const paths=delta.map(row=>{const m=/^M\t(.+)$/.exec(row);return m?.[1]||null;});
-  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs','tests/test_oneshell_v1_materialization.py','scripts/oneshell-v1-verify.py','tests/artifacts/qualification/lib0-embedded-nuance.json','project/plugins/ikant-le-session-chat/server/server.mjs','scripts/project-review-callsites.mjs','scripts/cora-minimal-absorption.mjs','tests/artifacts/qualification/c51-supersystem-selection-10m.json','tests/artifacts/qualification/c51-supersystem-falsification-1m.json','scripts/cora-three-streams-audit.mjs','scripts/r7-pr249-physical-gate.py',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
+  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs','tests/test_oneshell_v1_materialization.py','scripts/oneshell-v1-verify.py','tests/artifacts/qualification/lib0-embedded-nuance.json','project/plugins/ikant-le-session-chat/server/server.mjs','scripts/project-review-callsites.mjs','scripts/cora-minimal-absorption.mjs','tests/artifacts/qualification/c51-supersystem-selection-10m.json','tests/artifacts/qualification/c51-supersystem-falsification-1m.json','scripts/cora-three-streams-audit.mjs','scripts/r7-pr249-physical-gate.py','scripts/c24-canonical-ci.mjs',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
   if(paths.includes(null)||JSON.stringify([...paths].sort())!==JSON.stringify(permitted))
    return fail('PR249_REPAIR_NOT_EXACT_13_CHECKOUTS_AND_AUDIT');
   for(const p of PR249_CHECKOUT_WORKFLOWS){
    const before=git('show',PR249_CHECKOUT_ANCHOR+':'+p);
    const after=git('show','HEAD:'+p);
+   const lastMileWorkflowPins={
+    '.github/workflows/c24-canonical-boundary.yml':'d79ee30143c217647040f8fcbfaa8ef1d7337231',
+    '.github/workflows/c59-single-composition.yml':'c73bcefd221220a5864c3f6f8b30b146f538b249'
+   };
+   if(Object.hasOwn(lastMileWorkflowPins,p)&&
+      git('rev-parse','HEAD:'+p)===lastMileWorkflowPins[p])continue;
    if(after!==r7Pr249CheckoutPatch(before)||after===before)
     return fail('PR249_CHECKOUT_UNEXPECTED_DELTA:'+p);
   }
@@ -377,6 +383,8 @@ function qualifyPr249CheckoutRepairEpoch(){
    return fail('PR249_CORA_HISTORIC_PATH_BRIDGE_BLOB_DRIFT');
   if(git('rev-parse','HEAD:scripts/r7-pr249-physical-gate.py')!=='0e518c684940cd2a254cb628c353231ffff57bca')
    return fail('PR249_PHYSICAL_GATE_SUCCESSOR_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:scripts/c24-canonical-ci.mjs')!=='692838e37678fef09e06e7b164811bacad6dcf2e')
+   return fail('PR249_C24_EVENT_SHA_PIN_DRIFT');
   if(git('diff','--cached','--name-only'))return fail('PR249_REPAIR_STAGED_INDEX_CHANGED');
   const dirty=git('diff','--name-only').split('\n').filter(Boolean);
   if(dirty.some(p=>!/^tests\/artifacts\/qualification\/[A-Za-z0-9_.-]+\.json$/.test(p)))

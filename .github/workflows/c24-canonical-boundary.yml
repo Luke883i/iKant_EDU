@@ -16,6 +16,8 @@ on:
       - 'scripts/c24-canonical-ci.mjs'
       - 'tests/c24-canonical-ci.test.mjs'
       - '.github/workflows/c24-canonical-boundary.yml'
+env:
+  IKANT_C24_EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
 jobs:
   canonical-shard:
     name: canonical-${{ matrix.shard }}

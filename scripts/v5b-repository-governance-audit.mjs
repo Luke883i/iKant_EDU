@@ -346,7 +346,7 @@ function qualifyPr249CheckoutRepairEpoch(){
   git('merge-base','--is-ancestor',PR249_CHECKOUT_ANCHOR,'HEAD');
   const delta=git('diff','--name-status','--no-renames',PR249_CHECKOUT_ANCHOR,'HEAD').split('\n').filter(Boolean);
   const paths=delta.map(row=>{const m=/^M\t(.+)$/.exec(row);return m?.[1]||null;});
-  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs','tests/test_oneshell_v1_materialization.py','scripts/oneshell-v1-verify.py','tests/artifacts/qualification/lib0-embedded-nuance.json','project/plugins/ikant-le-session-chat/server/server.mjs','scripts/project-review-callsites.mjs','scripts/cora-minimal-absorption.mjs','tests/artifacts/qualification/c51-supersystem-selection-10m.json','tests/artifacts/qualification/c51-supersystem-falsification-1m.json',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
+  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs','tests/test_oneshell_v1_materialization.py','scripts/oneshell-v1-verify.py','tests/artifacts/qualification/lib0-embedded-nuance.json','project/plugins/ikant-le-session-chat/server/server.mjs','scripts/project-review-callsites.mjs','scripts/cora-minimal-absorption.mjs','tests/artifacts/qualification/c51-supersystem-selection-10m.json','tests/artifacts/qualification/c51-supersystem-falsification-1m.json','scripts/cora-three-streams-audit.mjs','scripts/r7-pr249-physical-gate.py',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
   if(paths.includes(null)||JSON.stringify([...paths].sort())!==JSON.stringify(permitted))
    return fail('PR249_REPAIR_NOT_EXACT_13_CHECKOUTS_AND_AUDIT');
   for(const p of PR249_CHECKOUT_WORKFLOWS){
@@ -373,6 +373,10 @@ function qualifyPr249CheckoutRepairEpoch(){
    return fail('PR249_C51_SELECTION_REPLAY_BLOB_DRIFT');
   if(git('rev-parse','HEAD:tests/artifacts/qualification/c51-supersystem-falsification-1m.json')!=='7a8dd1184ac131765783a2bcdc7a267e50ab95f8')
    return fail('PR249_C51_FALSIFICATION_REPLAY_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:scripts/cora-three-streams-audit.mjs')!=='51c881f749abe8861319268096336bbd047b91fc')
+   return fail('PR249_CORA_HISTORIC_PATH_BRIDGE_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:scripts/r7-pr249-physical-gate.py')!=='0e518c684940cd2a254cb628c353231ffff57bca')
+   return fail('PR249_PHYSICAL_GATE_SUCCESSOR_BLOB_DRIFT');
   if(git('diff','--cached','--name-only'))return fail('PR249_REPAIR_STAGED_INDEX_CHANGED');
   const dirty=git('diff','--name-only').split('\n').filter(Boolean);
   if(dirty.some(p=>!/^tests\/artifacts\/qualification\/[A-Za-z0-9_.-]+\.json$/.test(p)))

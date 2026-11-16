@@ -14,6 +14,7 @@ MAIN = "8cb80d2230919220ac4b7a1cfcd80950d8467848"
 MAIN_TREE = "4cff62ed12f79390a059784bcbf9770788a3a4d1"
 V13 = "86e20abb714fa4000352b61a0c0abf8795775318"
 V13_TREE = "07f135d6d54ff69b78cc9e7215daa0bdafa9f84c"
+FOUNDING = "7cd95a485f71008dd6aa7c3da6aa76bd0f3ead65"
 ROOTS = [".github", "contracts", "host", "project", "scripts", "src", "tests"]
 ROOT_FILES = [".gitignore", "ADMISSION.json", "AGENTS.md", "BOOTSTRAP.json", "LICENSE", "README.md", "TERMS.md", "ikant.mjs", "package.json"]
 ALLOWED_ADDITIONS = {
@@ -68,9 +69,34 @@ def assess(repo, fixture=False):
             if cmd(repo, "rev-parse", "27194bb153ff0ab8500bb75277d4d5f7ebb60d45^{tree}").decode().strip() != MAIN_TREE:
                 issues.append("FIXTURE_MAIN_TREE_DRIFT")
         source = listing(repo, V13)
-        current = listing(repo, "HEAD")
-        roots = sorted({p.split("/", 1)[0] for p in current if "/" in p})
-        root_files = sorted(p for p in current if "/" not in p)
+        observed = listing(repo, "HEAD")
+        # Review the ORIGINAL PR249 baseline independently, then qualify every
+        # later successor against its exact full-HEAD V5-B source policy.
+        # A newer HEAD can never silently rewrite a founding source receipt.
+        if head != FOUNDING:
+            if subprocess.run(["git", "-C", str(repo), "merge-base",
+                               "--is-ancestor", FOUNDING, "HEAD"],
+                              capture_output=True).returncode != 0:
+                issues.append("PR249_FOUNDING_NOT_ANCESTOR")
+            probe = subprocess.run([
+                "node", "--input-type=module", "-e",
+                "import {qualifyPr249SourceEpoch} from './scripts/v5b-repository-governance-audit.mjs';"
+                "process.stdout.write(JSON.stringify(qualifyPr249SourceEpoch()));"
+            ], cwd=repo, capture_output=True, text=True, timeout=45)
+            if probe.returncode != 0:
+                issues.append("PR249_SUCCESSOR_CHECK_UNEXECUTABLE")
+            else:
+                qualification = json.loads(probe.stdout)
+                if (qualification.get("ok") is not True
+                        or qualification.get("status") != "PR249_CHECKOUT_REPAIR_SOURCE_ONLY_REVIEW_REQUIRED"
+                        or qualification.get("authority") != 0
+                        or qualification.get("product_go") is not False
+                        or qualification.get("owner_review") != "NOT_ATTESTED"):
+                    issues.append("PR249_SUCCESSOR_SOURCE_UNQUALIFIED:" +
+                                  str(qualification.get("edge", "UNKNOWN"))[:100])
+        current = listing(repo, FOUNDING)
+        roots = sorted({p.split("/", 1)[0] for p in observed if "/" in p})
+        root_files = sorted(p for p in observed if "/" not in p)
         if roots != ROOTS:
             issues.append("ROOT_SET_DRIFT")
         if root_files != sorted(ROOT_FILES):
@@ -131,7 +157,7 @@ def assess(repo, fixture=False):
             result = "SOURCE_ONLY_REFUTED"
         return {"schema":"r7-pr249-physical-gate/v1", "status":result, "head":head,
                 "head_tree":observed_tree,"v13_source":V13, "source_files":len(source),
-                "observed_files":len(current), "new_additions":len(extras),"roots":roots,
+                "observed_files":len(observed), "new_additions":len(extras),"roots":roots,
                 "root_files":root_files,"issues":issues[:90],"issue_count":len(issues),
                 "scope":"SOURCE_ONLY_NOT_OWNER_OR_RUNTIME_EVIDENCE", "global_dod":"HOLD", "product_go":False}
     except Exception as exc:

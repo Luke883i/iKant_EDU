@@ -95,7 +95,11 @@ export function observeThreeStreamSource(){
    return {ok:false,edge:'STREAM_ORIGINAL_F_CONTRACT_INVALID',authority:0,standardized:false};
   const sources={},observations=[];
   for(const [p,expected] of Object.entries(FIXED_PINS)){
-   const b=data('show',baseline+':'+p),sha=git('rev-parse',baseline+':'+p);
+   // c422 precedes the V13 seven-root move. Preserve its ORIGINAL Git path
+   // while classifying its exact bytes under the successor canonical key.
+   const historicPath=p==='project/baseline/PROJECT_PROMPT.txt'
+    ?'project-baseline/PROJECT_PROMPT.txt':p;
+   const b=data('show',baseline+':'+historicPath),sha=git('rev-parse',baseline+':'+historicPath);
    if(sha!==expected||blobHash(b)!==sha)
     return {ok:false,edge:'STREAM_SOURCE_PIN_DRIFT:'+p,authority:0,standardized:false};
    sources[p]=b.toString('utf8');observations.push({path:p,sha1:sha,bytes:b.length});

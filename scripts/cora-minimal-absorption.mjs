@@ -95,7 +95,7 @@ export function sourcePathsPresent(c,root=ROOT){
  * All owner/accountability and external-delivery columns remain UNKNOWN.
  */
 import {execFileSync} from 'node:child_process';
-import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch,qualifyR7OwnerSourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch,qualifyR7OwnerSourceEpoch,qualifyPr249SourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {reopenR7SourceEpoch} from './r7-v13-epoch-bridge.mjs';
 const reticularPath='contracts/cora-reticular-hygiene-v1.json';
 const reticularIds=[
@@ -355,7 +355,12 @@ export function reopenV13WorkflowEpoch(c){
   const v12='7fa91861f6bd4a9760ad4ab69c0cdd048d9cab7c';
   const oldTree='0e9081a37ebc47c3cb3bc1417d26a3a9361f9e0b';
   const newTree='e3543d25e996d0a3c13b89c220e82d719c77f75f';
-  const currentWorkflowTree=git('rev-parse','HEAD:.github/workflows');
+  // Reopen the immutable original PR249 workflow epoch only when the entire
+  // current successor is independently source-pinned by V5-B. This is not CI,
+  // owner review, provider evidence, or permission to release.
+  const successor=qualifyPr249SourceEpoch();
+  const projectionRef=successor.ok===true?'7cd95a485f71008dd6aa7c3da6aa76bd0f3ead65':'HEAD';
+  const currentWorkflowTree=git('rev-parse',projectionRef+':.github/workflows');
   if(git('rev-parse',v10+':.github/workflows')!==oldTree||
      git('rev-parse',v12+':.github/workflows')!==newTree)
     return deny('V13_WORKFLOW_SOURCE_TREES_NOT_PINNED');
@@ -381,7 +386,7 @@ export function reopenV13WorkflowEpoch(c){
      .map(row=>{const m=/^(100644|100755) blob ([a-f0-9]{40})\t([^/\t]+)$/.exec(row);
        if(!m)throw Error('PR249_WORKFLOW_ENTRY_INVALID');
        return{mode:m[1],sha:m[2],name:m[3]};});
-   const baseline=parse('86e20abb714fa4000352b61a0c0abf8795775318'),current=parse('HEAD');
+   const baseline=parse('86e20abb714fa4000352b61a0c0abf8795775318'),current=parse(projectionRef);
    if(baseline.length!==116||current.length!==116)return deny('PR249_WORKFLOW_COUNT_DRIFT');
    const old=new Map(baseline.map(r=>[r.name,r]));let changed=0;
    for(const row of current){const original=old.get(row.name),name='.github/workflows/'+row.name;
@@ -401,7 +406,7 @@ export function reopenV13WorkflowEpoch(c){
    if(!m)throw Error('V13_WORKFLOW_OBJECT_INVALID');
    return {mode:m[1],sha:m[2],name:m[3]};
   });
-  const historical=read(v10),current=read('HEAD');
+  const historical=read(v10),current=read(projectionRef);
   if(historical.length!==116||current.length!==116)return deny('V13_WORKFLOW_COUNT_DRIFT');
   const earlier=new Map(historical.map(x=>[x.name,x]));
   if(earlier.size!==116)return deny('V13_WORKFLOW_HISTORIC_DUPLICATE');

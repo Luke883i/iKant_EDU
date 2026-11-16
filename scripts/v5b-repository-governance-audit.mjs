@@ -346,7 +346,7 @@ function qualifyPr249CheckoutRepairEpoch(){
   git('merge-base','--is-ancestor',PR249_CHECKOUT_ANCHOR,'HEAD');
   const delta=git('diff','--name-status','--no-renames',PR249_CHECKOUT_ANCHOR,'HEAD').split('\n').filter(Boolean);
   const paths=delta.map(row=>{const m=/^M\t(.+)$/.exec(row);return m?.[1]||null;});
-  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs','tests/test_oneshell_v1_materialization.py','scripts/oneshell-v1-verify.py','tests/artifacts/qualification/lib0-embedded-nuance.json',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
+  const permitted=[...PR249_CHECKOUT_WORKFLOWS,'scripts/v5b-repository-governance-audit.mjs','tests/test_oneshell_v1_materialization.py','scripts/oneshell-v1-verify.py','tests/artifacts/qualification/lib0-embedded-nuance.json','project/plugins/ikant-le-session-chat/server/server.mjs',...PR249_RECEIPT_PINS.map(x=>x[0])].sort();
   if(paths.includes(null)||JSON.stringify([...paths].sort())!==JSON.stringify(permitted))
    return fail('PR249_REPAIR_NOT_EXACT_13_CHECKOUTS_AND_AUDIT');
   for(const p of PR249_CHECKOUT_WORKFLOWS){
@@ -365,6 +365,8 @@ function qualifyPr249CheckoutRepairEpoch(){
    return fail('PR249_ONESHELL_VERIFIER_BLOB_DRIFT');
   if(git('rev-parse','HEAD:tests/artifacts/qualification/lib0-embedded-nuance.json')!=='4c3d6789b6dd161e336e9a82d57f85e308e62645')
    return fail('PR249_LIB0_RECEIPT_BLOB_DRIFT');
+  if(git('rev-parse','HEAD:project/plugins/ikant-le-session-chat/server/server.mjs')!=='48aee4f2bbae07867f888c6315fc9d21039febdb')
+   return fail('PR249_MCP_REPOROOT_FIX_BLOB_DRIFT');
   if(git('diff','--cached','--name-only'))return fail('PR249_REPAIR_STAGED_INDEX_CHANGED');
   const dirty=git('diff','--name-only').split('\n').filter(Boolean);
   if(dirty.some(p=>!/^tests\/artifacts\/qualification\/[A-Za-z0-9_.-]+\.json$/.test(p)))

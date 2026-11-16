@@ -24,7 +24,7 @@ if(!['gateway','oauth'].includes(AUTH_MODE))throw Error('MCP_AUTH_MODE_INVALID')
 const oauthConfig=AUTH_MODE==='oauth'?readOAuthResourceConfig():null;
 const resolveOAuthKey=oauthConfig?createPinnedJwksResolver(oauthConfig):null;
 import {ensureSessionChatDeployment,readSessionChatDeployment} from '../../../../src/session-chat-deployment.mjs';
-const here=dirname(fileURLToPath(import.meta.url)),repoRoot=resolve(process.env.IKANT_LE_REPO_ROOT||resolve(here,'../../..')),deploymentRoot=resolve(process.env.IKANT_LE_DEPLOYMENT_ROOT||resolve(repoRoot,'.ikant-le-deployed')),cli=resolve(repoRoot,'scripts/session-chat-runtime-cli.mjs'),widget=readFileSync(resolve(here,'public/ikant-le-app.html'),'utf8'),URI='ui://ikant-le/session-chat/v1.html';
+const here=dirname(fileURLToPath(import.meta.url)),repoRoot=resolve(process.env.IKANT_LE_REPO_ROOT||resolve(here,'../../../..')),deploymentRoot=resolve(process.env.IKANT_LE_DEPLOYMENT_ROOT||resolve(repoRoot,'.ikant-le-deployed')),cli=resolve(repoRoot,'scripts/session-chat-runtime-cli.mjs'),widget=readFileSync(resolve(here,'public/ikant-le-app.html'),'utf8'),URI='ui://ikant-le/session-chat/v1.html';
 const requireCurrentSourceHead=ensureSessionChatDeployment({workspace:repoRoot,deploymentRoot}).deployment.source_head;
 function session(ctx={},scope='ikant:connect'){
  const id=String(ctx?._meta?.['openai/session']||'');if(!id)throw new Error('ChatGPT session metadata unavailable');

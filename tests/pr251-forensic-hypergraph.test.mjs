@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {validateDod,deriveHypergraph,exactBoundedCut,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
+import {validateDod,deriveHypergraph,exactBoundedCut,historicRetentionCut,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const c=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json')));
 test('PR251 retrograde 35 DoD nodes, 10 typed AND gates, no authority',()=>{
@@ -32,6 +32,8 @@ test('bounded mincut enumerates all 8 subsets, blocks live consumer and keeps a 
  const result=exactBoundedCut(graph,['a','b','c'],[['a','b']]);
  assert.equal(result.enumerated,8);assert.deepEqual(result.selected,['a']);
  assert.equal(result.bounded_static_bytes,11);assert.equal(result.global_minimum_certified,false);
+ const locked=exactBoundedCut({...graph,locked_paths:['a','b','c']},['a','b','c']);
+ assert.deepEqual(locked.selected,[]);assert.equal(locked.bounded_static_bytes,0);
  assert.throws(()=>exactBoundedCut(graph,Array.from({length:17},(_,i)=>'n'+i)),/BOUND_16/);
 });
 test('original V5-B/CORA source witness remains source-only; PR251 exact epoch is required',()=>{
@@ -40,4 +42,15 @@ test('original V5-B/CORA source witness remains source-only; PR251 exact epoch i
  assert.equal(r.retired_paths,25);assert.equal(r.obligations,35);
  assert.equal(r.global_dod,'HOLD');assert.equal(r.product_go,false);
  assert.equal(r.external_consumers,'UNKNOWN');
+});
+
+test('supergraph hard-retention edge refuses any current deletion of original V10 sources',()=>{
+ const audit={consumer_index:[{path:'a'},{path:'b'}]};
+ // Synthetic paths do not map against a fabricated policy; real Git V10 is the oracle.
+ const current=observe();
+ assert.equal(current.source_lock.required,1630);
+ assert.equal(current.source_lock.under_original_contract_minimum_files,1630);
+ assert.equal(current.source_lock.blocked,true);
+ assert.equal(current.source_lock.live_absent.length,25);
+ assert.equal(current.product_go,false);
 });

@@ -5,6 +5,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {HISTORIC,mapR7SourcePath} from './r7-v13-epoch-bridge.mjs';
 import {observeReticularCensusWithAudit} from './cora-minimal-absorption.mjs';
 import {qualifyPr251SourceEpoch} from './v5b-repository-governance-audit.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -48,12 +50,41 @@ export function deriveHypergraph(c,audit){
   roots:['ikant.mjs','package.json'],external_consumers:'UNKNOWN',
   product_go:false,global_minimum_certified:false};
 }
+/** Original V10 live-source retention is a HARD hyperedge, not a soft score.
+ * This is a historical source constraint. A future independently approved
+ * successor could replace it; the PR251 source register alone cannot.
+ */
+export function historicRetentionCut(c,audit,originalPaths){
+ if(!validateDod(c)||!Array.isArray(audit?.consumer_index)||!Array.isArray(originalPaths))
+  throw Error('INVALID_HISTORICAL_SUPERGRAPH');
+ const plan=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/r7-v11-seven-root-contract.json'),'utf8'));
+ const present=new Set(audit.consumer_index.map(x=>x.path));
+ const required=new Set();
+ for(const old of originalPaths){
+  const mapped=mapR7SourcePath(old,plan);
+  if(!mapped||required.has(mapped))throw Error('HISTORIC_SOURCE_MAP_NOT_BIJECTIVE');
+  required.add(mapped);
+ }
+ const missing=[...required].filter(p=>!present.has(p)).sort();
+ return {historical_required:required.size,live_absent:missing,
+  minimum_file_lower_bound_under_original_retention:required.size,
+  blocked_current_cut:missing.length>0,locked_paths:required,
+  exact_owner_and_external_equivalence:'NOT_ATTESTED',
+  eligible_for_source_only_retirement:false};
+}
+function historicalGitPaths(){
+ const tree=execFileSync('git',['rev-parse',HISTORIC+'^{tree}'],{cwd:ROOT,encoding:'utf8'}).trim();
+ if(tree!=='9b6b80d7fe2f8536b9ce8633e09810fc87b81c28')
+  throw Error('V10_GIT_TREE_MISMATCH');
+ const data=execFileSync('git',['ls-tree','-r','-z','--name-only',HISTORIC],{cwd:ROOT,maxBuffer:8*1024*1024});
+ return data.toString('utf8').split('\0').filter(Boolean);
+}
 /** Exact exhaustive search over at most 16 candidate files; no runtime claims.
  * To delete a provider, every modeled consumer must also be deleted. */
 export function exactBoundedCut(graph,candidates,keepOne=[]){
  const names=[...new Set(candidates)].sort(),ids=new Map(names.map((p,i)=>[p,i]));
  if(names.length>16)throw Error('CUT_EXCEEDS_BOUND_16');
- const blocked=new Set(graph.roots||[]),required=names.map(()=>0);
+ const blocked=new Set([...(graph.roots||[]),...(graph.locked_paths||[])]),required=names.map(()=>0);
  for(const e of graph.edges||[]){
   const target=ids.get(e.to);if(target===undefined)continue;
   const consumer=ids.get(e.from);
@@ -80,18 +111,21 @@ export function observe(){
  const c=JSON.parse(fs.readFileSync(path.join(ROOT,DOD),'utf8'));
  const {audit,census}=observeReticularCensusWithAudit(),epoch=qualifyPr251SourceEpoch();
  const graph=deriveHypergraph(c,audit),registry=JSON.parse(fs.readFileSync(path.join(ROOT,c.source_delta),'utf8'));
+ const retention=historicRetentionCut(c,audit,historicalGitPaths());
  const imported=new Set(graph.edges.map(x=>x.to));
  const possible=audit.consumer_index.filter(x=>x.path.startsWith('scripts/')&&
   /\.(?:mjs|js|sh|py)$/.test(x.path)&&!imported.has(x.path));
  const frontier=possible.slice(0,16).map(x=>x.path);
  const sizes=Object.fromEntries(frontier.map(p=>[p,fs.statSync(path.join(ROOT,p)).size]));
- const cut=exactBoundedCut({...graph,sizes},frontier);
+ const cut=exactBoundedCut({...graph,sizes,locked_paths:[...retention.locked_paths]},frontier);
  return {schema:'ikant-pr251-typed-census/v2',source_status:audit.status,
   census_observed:census.ok===true,exact_source_epoch:epoch.ok===true,
   source_files:audit.checked_files,obligations:graph.nodes.length,
   hyperedges:graph.hyperedges.length,static_edges:graph.edges.length,
   dynamic_sites:graph.dynamic_sites,retired_paths:registry.paths.filter(x=>x.operation==='REMOVE').length,
-  frontier_candidates:possible.length,cut,global_dod:'HOLD',product_go:false,
+  frontier_candidates:possible.length,cut,source_lock:{required:retention.historical_required,
+  live_absent:retention.live_absent,under_original_contract_minimum_files:retention.minimum_file_lower_bound_under_original_retention,
+  blocked:retention.blocked_current_cut},global_dod:'HOLD',product_go:false,
   external_consumers:'UNKNOWN'};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

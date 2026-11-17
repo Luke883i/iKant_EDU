@@ -73,7 +73,6 @@
     "host/c142-semantic-owner-guard.mjs",
     "host/c143-edu-v2-turn.mjs",
     "host/c143-guarded-nonidentity-policy.mjs",
-    "host/versioned-edu-turn-core.mjs",
     "host/c69-capability-first-preview.mjs",
     "host/c69-edu-v2-preview.mjs",
     "host/c72-public-mode-admission.mjs",

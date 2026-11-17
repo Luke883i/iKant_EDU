@@ -15,7 +15,7 @@ export const C107_FILES=Object.freeze([
  'host/c87-durable-ledger.mjs','host/c107-experimental-turn.mjs','host/c107-edu-v2-turn.mjs','host/c107-host-language-port.mjs',
  'host/c114-ontology-language-policy.mjs',
  'host/c132-reasoning-candidate.mjs','host/c141-semantic-shadow.mjs','host/c142-semantic-owner-guard.mjs','host/c140-open-edu-turn.mjs','host/c139-epistemic-policy.mjs','host/c139-edu-v2-turn.mjs',
- 'host/c143-guarded-nonidentity-policy.mjs','host/c143-edu-v2-turn.mjs','host/versioned-edu-turn-core.mjs',
+ 'host/c143-guarded-nonidentity-policy.mjs','host/c143-edu-v2-turn.mjs',
  'host/c108-host-matrix.mjs','host/c108-stdio-relay.mjs',
  'host/c92-live-provider.mjs','scripts/c108-live-turn.mjs',
  'contracts/c108-machine-matrix.json',

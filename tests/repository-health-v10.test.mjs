@@ -40,7 +40,7 @@ test('V10 historic lexical debt is immutable; CURRENT lexical obligations use cu
  assert.deepEqual(spec.inherited_unresolved_lexical_edges,original.inherited_unresolved_lexical_edges);
  const out=auditV10({runNative:false});
  const paths=execFileSync('git',['ls-files','--cached','-z'],{cwd:root}).toString('utf8').split(String.fromCharCode(0)).filter(Boolean);
- const observed=scanLiteralRelative(path.resolve(root),paths);
+ const observed=scanLiteralRelative(root,paths);
  const pending=newUnresolved(observed,spec.inherited_unresolved_lexical_edges);
  assert.equal(out.import_lexical_edges,observed.length);
  assert.equal(out.legacy_unresolved,observed.filter(x=>!x.valid).length);
@@ -62,6 +62,22 @@ test('V10 adversary: new broken literal import is rejected, never declassified a
   assert.equal(edges[0].valid,false);
   assert.equal(newUnresolved(edges,spec.inherited_unresolved_lexical_edges).length,1);
   assert.equal(newUnresolved(edges,[{...edges[0],source_blob:'0'.repeat(40)}]).length,1);
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+
+test('V10 lexical root normalization is metamorphic and preserves traversal denial',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'v10-root-meta-'));
+ try{
+  fs.mkdirSync(path.join(dir,'host'));fs.mkdirSync(path.join(dir,'src'));
+  fs.writeFileSync(path.join(dir,'src','ok.mjs'),'export const ok=1;');
+  fs.writeFileSync(path.join(dir,'host','a.mjs'),"import {ok} from '../src/ok.mjs';");
+  const clean=scanLiteralRelative(dir,['host/a.mjs']);
+  const trailing=scanLiteralRelative(dir+path.sep,['host/a.mjs']);
+  assert.deepEqual(trailing,clean);
+  assert.equal(clean.length,1);assert.equal(clean[0].valid,true);
+  fs.writeFileSync(path.join(dir,'host','a.mjs'),"import {x} from '../../escape.mjs';");
+  const escaped=scanLiteralRelative(dir+path.sep,['host/a.mjs']);
+  assert.equal(escaped[0].valid,false);
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
 

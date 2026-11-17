@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "Prospective source-only manifest. All preimage/postimage SHA-1/mode/path deltas are exact except the self-manifest after_sha, which is deliberately null to avoid unprovable self-hashing. Every unknown consumer, provider check and owner gate remains OPEN. No historical V5-B receipt is reissued.",
+  "notes": "Source-only exact successor, refreshed after W2, no owner/provider/external attestation; self SHA intentionally null to avoid circular hash.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -117,7 +117,7 @@
       "path": "contracts/pr251-forensic-hypergraph-dod.json",
       "operation": "ADD",
       "before_sha": null,
-      "after_sha": "57f3fe9f81832103d085695383728bf296af02ed",
+      "after_sha": "759a8fc65584bfda34ff10ab88cc891fd87747e3",
       "before_mode": null,
       "after_mode": "100644"
     },
@@ -136,6 +136,86 @@
       "after_sha": "8dae03c9ba55ae417d6de5648ebcc3d268c8877d",
       "before_mode": "100644",
       "after_mode": "100644"
+    },
+    {
+      "path": "scripts/c1-combine.mjs",
+      "operation": "REMOVE",
+      "before_sha": "0ea01b536d3adb045f1a23804429c4e17940ee28",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c1-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "355db474c4f2c9bc0725c28e364a39cdc8ed0d46",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c2-combine.mjs",
+      "operation": "REMOVE",
+      "before_sha": "965eabfbc4285f7df5b53223d8ac7e9f6b230040",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c2-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "ff842d58bb5e074b6957e9f389264bb02ddf4db8",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c2-run.mjs",
+      "operation": "REMOVE",
+      "before_sha": "434fab0ea628e0a893d2c603cc19122d077e0cdc",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c3-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "3d68ded721f5c83f33405a390efb02715c7d164e",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c4-combine.mjs",
+      "operation": "REMOVE",
+      "before_sha": "b585159bdf1bde5dfc3d58324b73f50870e7bab7",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c4-run.mjs",
+      "operation": "REMOVE",
+      "before_sha": "8599e83c5f833cd97658c931ac267fff7f07e7c6",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c4-runtime-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "766c389037973f1bc804f0c5a2788c978c0186b7",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c4-session-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "87682c5f61748e849f68b7b6ea1ed703ce1be8d1",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
     },
     {
       "path": "scripts/c59-composition-falsify.mjs",
@@ -181,6 +261,38 @@
       "path": "scripts/c94-auto-cold-cli.mjs",
       "operation": "REMOVE",
       "before_sha": "06c807e8bb5fc67504d5749cf36d469c12fd2c0e",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c94-derivative-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "11d85d9a3194b8b4db7734851baa9ab33e782e83",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c94-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "8a46c8dc0943c3094c8bb18ca17542e1b4c973b9",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c94-qualify.sh",
+      "operation": "REMOVE",
+      "before_sha": "62a1f5eba6c140f65fad89a93e1800ea1cb2e1e9",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c94-targeted-attack.mjs",
+      "operation": "REMOVE",
+      "before_sha": "3177e31ef8350b7dacfa0b62f1ec3dcca3be2d11",
       "after_sha": null,
       "before_mode": "100644",
       "after_mode": null
@@ -253,7 +365,7 @@
       "path": "tests/pr251-forensic-hypergraph.test.mjs",
       "operation": "ADD",
       "before_sha": null,
-      "after_sha": "7c9a3e6ddec240842cd5b94cfb008922c1698a79",
+      "after_sha": "0f937abba0ccb635fff328c1cc774572d5aa8d5a",
       "before_mode": null,
       "after_mode": "100644"
     },

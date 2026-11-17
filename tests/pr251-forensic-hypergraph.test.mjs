@@ -125,3 +125,17 @@ function spawnGit(args){
  const result=spawnSync('git',args,{cwd:root,encoding:'utf8',timeout:4000});
  return result.status===0?result.stdout.trim():null;
 }
+
+test('W2: second independent physical cut retains 14 historical Git preimages, not release',t=>{
+ const removed=contract.retirement_pool.filter(x=>x.status==='STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2');
+ assert.equal(removed.length,14);
+ for(const item of removed){
+  assert.equal(fs.existsSync(path.join(root,item.path)),false,item.path);
+  assert.match(item.preimage_sha,/^[a-f0-9]{40}$/);
+  const original=spawnGit(['rev-parse',contract.source_main+':'+item.path]);
+  if(original!==null)assert.equal(original,item.preimage_sha,'original history drift: '+item.path);
+  else t.diagnostic('historical SHA not available in this checkout: '+item.path);
+ }
+ assert.equal(contract.staged_cut_w2.external_unknown,true);
+ assert.equal(contract.staged_cut_w2.full_native_equivalence,false);
+});

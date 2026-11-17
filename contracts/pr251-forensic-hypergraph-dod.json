@@ -468,63 +468,93 @@
   "retirement_pool": [
     {
       "path": "scripts/c1-combine.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "0ea01b536d3adb045f1a23804429c4e17940ee28",
+      "preimage_bytes": 3687,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c1-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "355db474c4f2c9bc0725c28e364a39cdc8ed0d46",
+      "preimage_bytes": 12880,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c2-combine.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "965eabfbc4285f7df5b53223d8ac7e9f6b230040",
+      "preimage_bytes": 2368,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c2-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "ff842d58bb5e074b6957e9f389264bb02ddf4db8",
+      "preimage_bytes": 12373,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c2-run.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "434fab0ea628e0a893d2c603cc19122d077e0cdc",
+      "preimage_bytes": 839,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c3-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "3d68ded721f5c83f33405a390efb02715c7d164e",
+      "preimage_bytes": 8669,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c4-combine.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "b585159bdf1bde5dfc3d58324b73f50870e7bab7",
+      "preimage_bytes": 5699,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c4-run.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "8599e83c5f833cd97658c931ac267fff7f07e7c6",
+      "preimage_bytes": 1169,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c4-runtime-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "766c389037973f1bc804f0c5a2788c978c0186b7",
+      "preimage_bytes": 9551,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c4-session-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "87682c5f61748e849f68b7b6ea1ed703ce1be8d1",
+      "preimage_bytes": 4652,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c59-composition-falsify.mjs",
@@ -582,27 +612,39 @@
     },
     {
       "path": "scripts/c94-derivative-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "11d85d9a3194b8b4db7734851baa9ab33e782e83",
+      "preimage_bytes": 1692,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c94-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "8a46c8dc0943c3094c8bb18ca17542e1b4c973b9",
+      "preimage_bytes": 2886,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c94-qualify.sh",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "62a1f5eba6c140f65fad89a93e1800ea1cb2e1e9",
+      "preimage_bytes": 258,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c94-targeted-attack.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "3177e31ef8350b7dacfa0b62f1ec3dcca3be2d11",
+      "preimage_bytes": 1913,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c95-falsify.mjs",
@@ -673,6 +715,16 @@
     "retired_file_count": 11,
     "original_blob_bytes": 18163,
     "scope": "11 historical local CLIs; no authorized new writer",
+    "status": "CANDIDATE_NOT_RELEASE",
+    "external_unknown": true,
+    "full_native_equivalence": false
+  },
+  "staged_cut_w2": {
+    "id": "W2",
+    "source_pr": 250,
+    "source_commit": "553d8c3e9e0ce80a8e18ff93151a4204bab079d8",
+    "removed_file_count": 14,
+    "original_bytes": 68636,
     "status": "CANDIDATE_NOT_RELEASE",
     "external_unknown": true,
     "full_native_equivalence": false

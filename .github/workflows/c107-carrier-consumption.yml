@@ -8,7 +8,7 @@ on:
     paths:
       - 'host/c107-carrier-consumer.mjs'
       - 'scripts/c107-carrier-qualify.mjs'
-      - 'host/versioned-edu-turn-core.mjs'
+      - 'host/c139-edu-v2-turn.mjs'
       - 'host/c107-edu-v2-turn.mjs'
       - 'tests/c107-carrier-consumer.test.mjs'
       - 'project/release/v8/**'

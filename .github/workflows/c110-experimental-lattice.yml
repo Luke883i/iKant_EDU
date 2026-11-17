@@ -9,7 +9,7 @@ on:
       - 'contracts/c110-*'
       - 'tests/c110-*'
       - 'scripts/c107-pack.mjs'
-      - 'host/versioned-edu-turn-core.mjs'
+      - 'host/c139-edu-v2-turn.mjs'
       - 'host/c107-edu-v2-turn.mjs'
       - '.github/workflows/c110-experimental-lattice.yml'
   workflow_dispatch:

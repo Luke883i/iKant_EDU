@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - 'host/c143-*'
-      - 'host/versioned-edu-turn-core.mjs'
+      - 'host/c139-edu-v2-turn.mjs'
       - 'host/c107-edu-v2-turn.mjs'
       - 'host/c135-edu-v2-owner.mjs'
       - 'host/c125-exclusive-shell.mjs'
@@ -15,7 +15,7 @@ on:
   push:
     paths:
       - 'host/c143-*'
-      - 'host/versioned-edu-turn-core.mjs'
+      - 'host/c139-edu-v2-turn.mjs'
       - 'host/c107-edu-v2-turn.mjs'
       - 'host/c135-edu-v2-owner.mjs'
       - 'host/c125-exclusive-shell.mjs'

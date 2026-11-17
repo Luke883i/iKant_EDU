@@ -253,6 +253,74 @@ jobs:
       - name: "Radical candidate ${{ steps.candidate.outputs.cut_count }} files / ${{ steps.candidate.outputs.cut_bytes }} bytes [${{ steps.native.outputs.verdict }}]"
         if: ${{ always() }}
         run: echo "Source graph and isolated native results are NOT product or external equivalence proof."
+      - name: Adaptive semantic strata against original native and contract gates
+        id: adaptive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import collections,json,os,pathlib,re,subprocess
+          temp=pathlib.Path(os.environ['RUNNER_TEMP'])
+          source=json.loads((temp/'pr251-graph.json').read_text())
+          rows=source['total_source_supergraph']['product_first_solution']['outside_paths']
+          groups=collections.defaultdict(list)
+          for row in rows:
+            p=row['path']
+            kind=('docs' if p.startswith('project/docs/') else
+                  'project' if p.startswith('project/') else
+                  'scripts' if p.startswith('scripts/') else
+                  'contracts' if p.startswith('contracts/') else
+                  'runtime' if p.startswith(('src/','host/')) else 'other')
+            groups[kind].append(row)
+          order=['docs','project','other','scripts','contracts','runtime']
+          def trial(key,targets):
+            wd=temp/('pr251-trial-'+key)
+            subprocess.run(['git','worktree','add','--detach',str(wd),'HEAD'],check=True,stdout=subprocess.DEVNULL)
+            try:
+              for row in targets:
+                file=(wd/row['path']).resolve()
+                if not file.is_relative_to(wd.resolve()):raise RuntimeError('CUT_PATH_ESCAPE')
+                file.unlink(missing_ok=True)
+              outputs={}
+              for gate,args in [('native',['npm','test']),('contract',['npm','run','check'])]:
+                p=temp/('pr251-stratum-'+key+'-'+gate+'.log')
+                with p.open('wb') as f:
+                  try:r=subprocess.run(args,cwd=wd,stdout=f,stderr=subprocess.STDOUT,timeout=300)
+                  except subprocess.TimeoutExpired:r=None
+                txt=p.read_text(errors='replace')
+                first=next((x.strip() for x in txt.splitlines() if re.match(r'^not ok [0-9]+ - ',x)),'NONE')
+                outputs[gate]={'exit_code':r.returncode if r else 'TIMEOUT','first_tap':first[:180]}
+              return {'key':key,'removed':len(targets),'bytes':sum(v['bytes'] for v in targets),
+                      'gates':outputs,'pass':all(v['exit_code']==0 for v in outputs.values())}
+            finally:
+              subprocess.run(['git','worktree','remove','--force',str(wd)],check=True,stdout=subprocess.DEVNULL)
+          baseline=trial('baseline',[])
+          accepted=[];results=[]
+          if baseline['pass']:
+            for group in order:
+              if not groups[group]:continue
+              candidate=accepted+groups[group]
+              outcome=trial(group,candidate)
+              outcome['group_files']=len(groups[group])
+              results.append(outcome)
+              if outcome['pass']:accepted=candidate
+          report={'schema':'ikant-pr251-adaptive-counterfactual/v1',
+                  'head':source['head'],'tree':source['tree'],
+                  'candidate_total':len(rows),'baseline':baseline,
+                  'strata':results,'accepted':accepted,
+                  'accepted_files':len(accepted),
+                  'accepted_bytes':sum(x['bytes'] for x in accepted),
+                  'external_unknown':True,'product_go':False,
+                  'global_equivalence':'NOT_ATTESTED'}
+          (temp/'pr251-adaptive.json').write_text(json.dumps(report,indent=2)+'\n')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+            f.write('baseline='+('PASS' if baseline['pass'] else 'FAIL')+'\n')
+            f.write('accepted_files='+str(len(accepted))+'\n')
+            f.write('accepted_bytes='+str(report['accepted_bytes'])+'\n')
+          PY
+      - name: "Adaptive solution baseline=${{ steps.adaptive.outputs.baseline }} files=${{ steps.adaptive.outputs.accepted_files }} bytes=${{ steps.adaptive.outputs.accepted_bytes }}"
+        if: ${{ always() }}
+        run: echo "Passing bounded native regression is necessary but external owner/provider review is still required."
       - name: Preserve isolated cut and original native evidence
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
@@ -264,6 +332,8 @@ jobs:
             ${{ runner.temp }}/pr251-cut-native.log
             ${{ runner.temp }}/pr251-cut-contract.log
             ${{ runner.temp }}/pr251-cut-verdict.txt
+            ${{ runner.temp }}/pr251-adaptive.json
+            ${{ runner.temp }}/pr251-stratum-*.log
           if-no-files-found: warn
           retention-days: 14
 

@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "Supergraph V10 hard-lock: 1630 historical source paths are required under unmodified V12 policy. 25 retired V10 paths are BLOCKED until an independently approved successor. No product GO.",
+  "notes": "V12 historical Git snapshot audited against authentic main; current HEAD remains source-only REFUTED for 25 retired original V10 paths. No waiver of original V12 live retention. Prospectively registered PR251 source delta only; release HOLD.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -354,6 +354,14 @@
       "after_mode": "100644"
     },
     {
+      "path": "scripts/r7-v12-epoch-audit.py",
+      "operation": "MODIFY",
+      "before_sha": "fd2c31f8b1c26f0ca57acc66a0fbdca5896001de",
+      "after_sha": "aa350205f5820399564285f19650f63e1e4dc7f6",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
       "path": "scripts/s02-bridge-falsify.mjs",
       "operation": "REMOVE",
       "before_sha": "76b30a0e5d145ff2a5f1f3d4e21365bf4638d4da",
@@ -383,6 +391,14 @@
       "before_sha": null,
       "after_sha": "d8749ce3892e05b2791908a12b7d2ed5a50fa3b9",
       "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/r7-v12-epoch-audit.test.mjs",
+      "operation": "MODIFY",
+      "before_sha": "1a808ffbdfb913d0f22d20e65b1106677fa812c4",
+      "after_sha": "2096b2e82239669707e3f23593c7e9b56c9fcc0e",
+      "before_mode": "100644",
       "after_mode": "100644"
     },
     {

@@ -1,0 +1,635 @@
+{
+  "schema": "ikant-pr251-forensic-hypergraph-dod/v1",
+  "as_of": "2026-11-17",
+  "authority": 0,
+  "product_go": false,
+  "release": "HOLD",
+  "evidence_class": "SOURCE_PLAN_NOT_RUNTIME_PROOF",
+  "source_main": "e270c6e2cc772f960126eecea9f50501339e3656",
+  "prior_pr": {
+    "number": 250,
+    "closed_unmerged": true,
+    "original_head": "29086d467273f1c325e6ead0f1097d166e32a438",
+    "selected_cherry_picks": [
+      "8181195023e798fa53275d477e079f379e4ee6d8",
+      "8bd7276a26e38c1627c97f4c12401fcace4f88bf",
+      "94321943b0d923e554176e69a7d839a376e272be",
+      "a77167f90753f392e6432261e73b0573451ce3be",
+      "9c647a7d4cf32e538143fad02f06edad4aa89222",
+      "f112e3d8c125bc2063005d8114ac3c9aa91741d1"
+    ]
+  },
+  "abstract_dod": "Find a smallest maintainable iKant_EDU repository satisfying every necessary behavioral, authority, evidence, provenance, consumer and product obligation. Count reduction alone cannot prove equivalence or global minimality.",
+  "optimization": {
+    "model": "evidence-constrained multiobjective hypergraph cut",
+    "objective_terms": [
+      "tracked_file_count",
+      "maintained_source_bytes",
+      "duplicate_effect_owners",
+      "transitive_change_surface",
+      "operational_build_cost"
+    ],
+    "uncertain_weights": true,
+    "claim": "No certified global optimum without complete consumer and dynamic/provider evidence",
+    "external_unknown_is_blocking": true
+  },
+  "nodes": [
+    {
+      "id": "A0",
+      "level": "abstract",
+      "kind": "AND",
+      "requires": [
+        "G0"
+      ],
+      "assertion": "minimal admissible software/repository with preserved product, reversible provenance and independently measured behavior",
+      "status": "OPEN"
+    },
+    {
+      "id": "G0",
+      "level": "global",
+      "kind": "AND",
+      "requires": [
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7",
+        "G8"
+      ],
+      "assertion": "non-compensatory global engineering equivalence and net-negative maintenance cost",
+      "status": "OPEN"
+    },
+    {
+      "id": "G1",
+      "level": "intermediate",
+      "kind": "AND",
+      "assertion": "Product boundaries",
+      "requires": [
+        "L01",
+        "L02",
+        "L03",
+        "L04"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "G2",
+      "level": "intermediate",
+      "kind": "AND",
+      "assertion": "Execution equivalence",
+      "requires": [
+        "L05",
+        "L06",
+        "L07",
+        "L08"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "G3",
+      "level": "intermediate",
+      "kind": "AND",
+      "assertion": "Git provenance and recoverability",
+      "requires": [
+        "L09",
+        "L10",
+        "L11"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "G4",
+      "level": "intermediate",
+      "kind": "AND",
+      "assertion": "Consumer closure",
+      "requires": [
+        "L12",
+        "L13",
+        "L14",
+        "L15"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "G5",
+      "level": "intermediate",
+      "kind": "AND",
+      "assertion": "Contract and authority separation",
+      "requires": [
+        "L16",
+        "L17"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "G6",
+      "level": "intermediate",
+      "kind": "AND",
+      "assertion": "Native differential and CI",
+      "requires": [
+        "L18",
+        "L19",
+        "L20"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "G7",
+      "level": "intermediate",
+      "kind": "AND",
+      "assertion": "Adversarial counterfactual cuts",
+      "requires": [
+        "L21",
+        "L22",
+        "L23"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "G8",
+      "level": "intermediate",
+      "kind": "AND",
+      "assertion": "External independent gates",
+      "requires": [
+        "L24",
+        "L25"
+      ],
+      "status": "OPEN"
+    },
+    {
+      "id": "L01",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Project EDU first turn, consent and v2 mode selection remain exclusive and testable",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L02",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Project EDU Node C135/C107/C87/C125 observable path preserved",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L03",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "MCP server OAuth/gateway/transport and distinct session authority preserved",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L04",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "No product-go, native-provider or factual-truth claim derived from source checks",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L05",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Original C139 and C143 policy divergence retained around common execution",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L06",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Exactly one responsible C87 ledger writer and no unauthorized effect",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L07",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Runtime root descriptor and C107 original source closure remain valid",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L08",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "C70/C100/C124 same-input and channel-bind invariants retained",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L09",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "All modifications descend from authentic pinned main",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L10",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Historical source blob readback and preimage recoverability exact",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L11",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Each removed file and mode recorded without rewriting historical V5-B attestations",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L12",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Static ESM import and export dependency graph total for tracked source",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L13",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Package commands and workflow trigger/dispatch consumers mapped",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L14",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Dynamic filesystem, undocumented and external consumers remain UNKNOWN until independently tested",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L15",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "No source path deletion while a live known consumer remains unresolved",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L16",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Cross-file semantic owner mapped; no policy-specific module silently becomes new authority",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L17",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "No source graph or tests can set PRODUCT_GO or user consent",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L18",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Same-runner main vs candidate native test identity differential report",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L19",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "CI required checks passing on exact candidate SHA, not other commits",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L20",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Project/MCP E2E real host/provider checks and CORA-ENGINE replay distinguished",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L21",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Falsifying mutations on graph identity, scope, edge deletion, missing files and release forgery",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L22",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Counterfactual cut certificate covers all source consumer arcs and unknowns",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L23",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Measurable physical and operational net-negative reduction with no counterfeit archival shift",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L24",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Independent owner review approves ownership and external consumer impact",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    },
+    {
+      "id": "L25",
+      "level": "local",
+      "kind": "EVIDENCE",
+      "assertion": "Deployment/provenance/authorization outside source independently evidenced",
+      "requires": [],
+      "status": "NOT_ATTESTED"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "ABSTRACT_AND",
+      "type": "requires_all",
+      "head": "A0",
+      "tails": [
+        "G0"
+      ]
+    },
+    {
+      "id": "GLOBAL_AND",
+      "type": "requires_all",
+      "head": "G0",
+      "tails": [
+        "G1",
+        "G2",
+        "G3",
+        "G4",
+        "G5",
+        "G6",
+        "G7",
+        "G8"
+      ]
+    },
+    {
+      "id": "AND_G1",
+      "type": "requires_all",
+      "head": "G1",
+      "tails": [
+        "L01",
+        "L02",
+        "L03",
+        "L04"
+      ]
+    },
+    {
+      "id": "AND_G2",
+      "type": "requires_all",
+      "head": "G2",
+      "tails": [
+        "L05",
+        "L06",
+        "L07",
+        "L08"
+      ]
+    },
+    {
+      "id": "AND_G3",
+      "type": "requires_all",
+      "head": "G3",
+      "tails": [
+        "L09",
+        "L10",
+        "L11"
+      ]
+    },
+    {
+      "id": "AND_G4",
+      "type": "requires_all",
+      "head": "G4",
+      "tails": [
+        "L12",
+        "L13",
+        "L14",
+        "L15"
+      ]
+    },
+    {
+      "id": "AND_G5",
+      "type": "requires_all",
+      "head": "G5",
+      "tails": [
+        "L16",
+        "L17"
+      ]
+    },
+    {
+      "id": "AND_G6",
+      "type": "requires_all",
+      "head": "G6",
+      "tails": [
+        "L18",
+        "L19",
+        "L20"
+      ]
+    },
+    {
+      "id": "AND_G7",
+      "type": "requires_all",
+      "head": "G7",
+      "tails": [
+        "L21",
+        "L22",
+        "L23"
+      ]
+    },
+    {
+      "id": "AND_G8",
+      "type": "requires_all",
+      "head": "G8",
+      "tails": [
+        "L24",
+        "L25"
+      ]
+    }
+  ],
+  "retirement_pool": [
+    {
+      "path": "scripts/c1-combine.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c1-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c2-combine.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c2-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c2-run.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c3-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c4-combine.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c4-run.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c4-runtime-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c4-session-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c59-composition-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c59-composition-select.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c90-host-release-cli.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c91-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c92-live-cli.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c94-auto-cold-cli.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c94-derivative-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c94-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c94-qualify.sh",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c94-targeted-attack.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c95-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c98-evidence-audit.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/c98-host-gap-census.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/combine-receipts.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    },
+    {
+      "path": "scripts/s02-bridge-falsify.mjs",
+      "status": "CANDIDATE_NOT_APPROVED",
+      "external_consumer": "UNKNOWN",
+      "source_pr": 250
+    }
+  ],
+  "non_promotions": [
+    "source-closed-world is not external-closed-world",
+    "no test count, hash or workflow list authorizes product release",
+    "fixture mutation is not E2E proof",
+    "future provider checks cannot be imputed from historical PR",
+    "semantically similar functions may have distinct authorities"
+  ],
+  "artifact_contract": {
+    "report": "machine-produced typed graph and candidate-cut report",
+    "source_binding": "HEAD/tree/blob git sha1 byte checks",
+    "minimum_certificate": "explicit static cut with unknown external blockers",
+    "falsification": "seeded adversarial mutations with negative controls",
+    "proof_rules": "only exact SHA independently replayed"
+  },
+  "status": "WIP_SOURCE_ONLY"
+}

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {parseGitTree,checkBlob,validateDod,importSpecifiers,resolveRelative,buildGraph,
   counterfactualCut,graphFingerprint,verifyGraphReconstruction,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
@@ -105,3 +106,22 @@ test('Native repository source witness has a real Git HEAD and no release promot
  assert.match(report.receipt_sha256,/^[a-f0-9]{64}$/);
  assert.ok(report.candidate_cuts.every(c=>c.external_consumers==='UNKNOWN'));
 });
+
+test('W1 retired Git paths remain absent; original 11 blob identities retained as source pins',t=>{
+ const staged=contract.retirement_pool.filter(x=>x.status==='STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN');
+ assert.equal(staged.length,11);
+ assert.equal(staged.reduce((n,x)=>n+x.preimage_bytes,0),18163);
+ for(const item of staged){
+  assert.equal(fs.existsSync(path.join(root,item.path)),false,item.path+' unexpectedly resurrected');
+  assert.match(item.preimage_sha,/^[a-f0-9]{40}$/);
+  const check=spawnGit(['rev-parse',contract.source_main+':'+item.path]);
+  if(check!==null)assert.equal(check,item.preimage_sha,'original Git preimage mismatch: '+item.path);
+  else t.diagnostic('Git history unavailable for independent preimage readback: '+item.path);
+ }
+ assert.equal(contract.staged_cut.full_native_equivalence,false);
+ assert.equal(contract.staged_cut.external_unknown,true);
+});
+function spawnGit(args){
+ const result=spawnSync('git',args,{cwd:root,encoding:'utf8',timeout:4000});
+ return result.status===0?result.stdout.trim():null;
+}

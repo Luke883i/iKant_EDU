@@ -528,39 +528,57 @@
     },
     {
       "path": "scripts/c59-composition-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "36bf0d7d95ff0ae90a3326c18be7dc5c48e06e53",
+      "preimage_bytes": 2496,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c59-composition-select.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "8893b9ce71f988ede3bae1b655fc3f63a4aa102b",
+      "preimage_bytes": 887,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c90-host-release-cli.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "e20b7af7bacb814fb4581965b0d3437c1114a10b",
+      "preimage_bytes": 1148,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c91-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "7cc170a05249b9bbd910cb3ddf0cf47a97da5d57",
+      "preimage_bytes": 4517,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c92-live-cli.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "4c195691815c69e48ddb1df2048b8b70af09360f",
+      "preimage_bytes": 816,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c94-auto-cold-cli.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "06c807e8bb5fc67504d5749cf36d469c12fd2c0e",
+      "preimage_bytes": 1127,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c94-derivative-falsify.mjs",
@@ -588,33 +606,48 @@
     },
     {
       "path": "scripts/c95-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "7778775faf8a2fbcc5708e29f8a1a6a27fabb90f",
+      "preimage_bytes": 1403,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c98-evidence-audit.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "a9d357f61ed93ef875897ff01ec465b49a3d149f",
+      "preimage_bytes": 996,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/c98-host-gap-census.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "4e31ff78c25b6e85ce71c687cf24b28dfa78649a",
+      "preimage_bytes": 1357,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/combine-receipts.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "de268498030e2b73aac898d66a5868a205383a7c",
+      "preimage_bytes": 2095,
+      "preimage_mode": "100644"
     },
     {
       "path": "scripts/s02-bridge-falsify.mjs",
-      "status": "CANDIDATE_NOT_APPROVED",
+      "status": "STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN",
       "external_consumer": "UNKNOWN",
-      "source_pr": 250
+      "source_pr": 250,
+      "preimage_sha": "76b30a0e5d145ff2a5f1f3d4e21365bf4638d4da",
+      "preimage_bytes": 1321,
+      "preimage_mode": "100644"
     }
   ],
   "non_promotions": [
@@ -631,5 +664,17 @@
     "falsification": "seeded adversarial mutations with negative controls",
     "proof_rules": "only exact SHA independently replayed"
   },
-  "status": "WIP_SOURCE_ONLY"
+  "status": "WIP_SOURCE_ONLY",
+  "staged_cut": {
+    "id": "W1",
+    "source_pr": 250,
+    "source_commit": "9211f1bf679089db257154149a80eb5819a1a0d9",
+    "baseline_commit": "e270c6e2cc772f960126eecea9f50501339e3656",
+    "retired_file_count": 11,
+    "original_blob_bytes": 18163,
+    "scope": "11 historical local CLIs; no authorized new writer",
+    "status": "CANDIDATE_NOT_RELEASE",
+    "external_unknown": true,
+    "full_native_equivalence": false
+  }
 }

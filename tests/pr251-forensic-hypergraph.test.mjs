@@ -4,7 +4,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
-import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
+import crypto from 'node:crypto';
+import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,buildTotalSupergraph,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const c=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json')));
 test('PR251 retrograde 35 DoD nodes, 10 typed AND gates, no authority',()=>{
@@ -66,3 +67,20 @@ test('V10 historical archive is NOT a runtime file floor; missing retirement pro
  assert.ok(probe.retirement_candidates[0].proof_obligations.includes('same_head_native_regression'));
  assert.equal(probe.historic_source_is_not_runtime_minimum,true);
 });
+
+
+test('complete typed source census hashes every blob and does not promote unknown consumers',()=>{
+ const r=buildTotalSupergraph({consumer_index:[{path:'src/a.mjs',literal_dependencies:['src/b.mjs']}]},{
+  treeText:'100644 blob '+gitBlob('import "./b.mjs";')+' 17\tsrc/a.mjs\0'
+   +'100644 blob '+gitBlob('export const b=1;')+' 17\tsrc/b.mjs\0',
+  read:p=>Buffer.from(p==='src/a.mjs'?'import "./b.mjs";':'export const b=1;')
+ });
+ assert.equal(r.files,2);assert.equal(r.git_sha_errors,0);
+ assert.equal(r.relation_count,1);assert.equal(r.product_go,false);
+ assert.equal(r.global_minimum_certified,false);
+ assert.equal(r.semantic_inventory.length,2);
+});
+function gitBlob(text){
+ const b=Buffer.from(text);
+ return crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
+}

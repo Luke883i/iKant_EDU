@@ -3,6 +3,7 @@
  * This module derives typed DoD and bounded cuts; it does NOT reindex Git.
  * External and dynamic consumers are unknown, never proven unused. */
 import fs from 'node:fs';
+import crypto from 'node:crypto';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
@@ -126,6 +127,110 @@ export function exactBoundedCut(graph,candidates,keepOne=[]){
   bounded_static_bytes:best,global_minimum_certified:false,
   external_consumers:'UNKNOWN',product_go:false};
 }
+
+/** FULL-HEAD readback. The entire 1,624-file tree is inspected, including bytes
+ * and binary artifacts. Lexical code and path consumers are only a lower bound.
+ * A cold documentary path is a RETIREMENT HYPOTHESIS, not safe-to-delete proof.
+ */
+export function buildTotalSupergraph(audit,{root=ROOT,treeText=null,read=null}={}){
+ const records=treeText??execFileSync('git',['ls-tree','-r','-l','-z','HEAD'],{cwd:root,maxBuffer:32e6}).toString('utf8');
+ const rows=records.split('\0').filter(Boolean).map(row=>{
+  const m=/^(100644|100755|120000) blob ([a-f0-9]{40}) ([0-9]+)\t(.+)$/.exec(row);
+  if(!m)throw Error('INVALID_FULL_GIT_TREE_ENTRY');
+  return {path:m[4],mode:m[1],sha:m[2],bytes:Number(m[3])};
+ }).sort((a,b)=>a.path.localeCompare(b.path,'en'));
+ const paths=new Map(rows.map(x=>[x.path,x]));if(paths.size!==rows.length)throw Error('DUPLICATE_FULL_TREE_PATH');
+ const refs=new Map(rows.map(x=>[x.path,[]])),incoming=new Map(rows.map(x=>[x.path,[]]));
+ const readBytes=read??(p=>fs.readFileSync(path.join(root,p)));
+ const textExt=/\.(?:mjs|cjs|js|ts|mts|py|sh|c|md|txt|json|yml|yaml|html|css|csv|tsv|svg)$/i;
+ const docs=p=>p.startsWith('project/docs/');
+ const essential=new Set(['README.md','AGENTS.md','TERMS.md','ADMISSION.json','BOOTSTRAP.json',
+  'ikant.mjs','package.json','project/session-chat/PROMPT.txt',
+  'project/plugins/ikant-le-session-chat/server/server.mjs',
+  'host/c72-public-mode-admission.mjs','host/c135-edu-v2-owner.mjs',
+  'host/c87-durable-ledger.mjs','host/c125-output-port.mjs',
+  'project/docs/IKANT_DOCUMENT_ATLAS.md','project/docs/START_HERE.md',
+  'project/docs/IKANT_LOCAL_SETUP.md','project/docs/ARCHITECTURE.md',
+  'project/docs/GOVERNANCE.md','project/docs/REPOSITORY_HEALTH_V10.md']);
+ for(const x of rows)if(x.path.startsWith('.github/workflows/')||x.path.startsWith('src/runtime-root/'))
+  essential.add(x.path);
+ const strings=new Map(),shaErrors=[],effects=[],unknownSites=[],binary=[];
+ for(const entry of rows){
+  const buf=readBytes(entry.path);
+  const sha=crypto.createHash('sha1').update(Buffer.from('blob '+buf.length+'\0')).update(buf).digest('hex');
+  if(entry.bytes!==buf.length||entry.sha!==sha)shaErrors.push(entry.path);
+  if(!textExt.test(entry.path)){binary.push(entry.path);continue;}
+  const src=buf.toString('utf8');strings.set(entry.path,src);
+  if(/\b(?:writeFile|appendFile|rename|unlink|rm|mkdir|execFile|spawn|fetch)\s*\(/.test(src)&&
+     /\.(?:mjs|js|py)$/.test(entry.path))
+   effects.push({path:entry.path,kind:'SIDE_EFFECT_SITE_NOT_EXECUTION_PROOF'});
+  if(/\b(?:import\s*\(\s*(?!['"])|require\s*\(\s*(?!['"])|readFile\s*\(\s*(?!['"])|readdir\s*\()/.test(src))
+   unknownSites.push(entry.path);
+ }
+ if(shaErrors.length)throw Error('HEAD_BLOB_READBACK_MISMATCH:'+shaErrors.slice(0,10).join(','));
+ const edgeIds=new Set(),edges=[];
+ function edge(from,to,type){
+  if(!paths.has(from)||!paths.has(to)||from===to)return;
+  const id=from+'\t'+to+'\t'+type;if(edgeIds.has(id))return;edgeIds.add(id);
+  const e={from,to,type};edges.push(e);refs.get(from).push(e);incoming.get(to).push(e);
+ }
+ for(const row of audit.consumer_index||[])for(const dep of row.literal_dependencies||[])edge(row.path,dep,'STATIC_IMPORT');
+ const literal=/(?:\.\.\/|\.\/)?[A-Za-z0-9_@.-]+(?:\/[A-Za-z0-9_@.-]+)*\.(?:mjs|cjs|js|json|md|txt|yml|yaml|sh|py|ts|html|svg|br|zip|csv)/g;
+ for(const [from,src] of strings){
+  const matches=new Set(src.match(literal)||[]);
+  for(const token of matches){
+   let target=token;
+   if(!paths.has(target))target=path.posix.normalize(path.posix.join(path.posix.dirname(from),token));
+   if(!paths.has(target))continue;
+   const type=from.startsWith('.github/workflows/')?'WORKFLOW_LITERAL':
+    from==='package.json'?'PACKAGE_LITERAL':
+    from.startsWith('tests/')?'TEST_LITERAL':
+    docs(from)?'DOCUMENT_LINK':'SOURCE_LITERAL';
+   edge(from,target,type);
+  }
+ }
+ const directConsumers=rows.filter(r=>essential.has(r.path)||r.path.startsWith('tests/')||
+  r.path.startsWith('.github/workflows/')||r.path.startsWith('src/')||
+  r.path.startsWith('host/')||r.path.startsWith('scripts/')).map(x=>x.path);
+ const activeDocRefs=new Set();
+ for(const source of directConsumers)for(const e of refs.get(source)||[])if(docs(e.to))activeDocRefs.add(e.to);
+ const publicDocs=new Set([...essential].filter(docs));
+ for(const source of ['README.md','AGENTS.md','BOOTSTRAP.json','ADMISSION.json','package.json',
+  'project/session-chat/PROMPT.txt'])for(const e of refs.get(source)||[])if(docs(e.to))publicDocs.add(e.to);
+ const coldDocs=rows.filter(x=>docs(x.path)&&!publicDocs.has(x.path)&&!activeDocRefs.has(x.path));
+ const directLinks=rows.filter(x=>docs(x.path)&&activeDocRefs.has(x.path));
+ const docPotentialBytes=coldDocs.reduce((n,x)=>n+x.bytes,0);
+ const report=rows.map(x=>{
+  const inEdges=incoming.get(x.path)||[],outEdges=refs.get(x.path)||[];
+  const tier=essential.has(x.path)?'FOUNDATION_ROOT':
+    x.path.startsWith('tests/')?'ASSURANCE':
+    x.path.startsWith('.github/workflows/')?'CI_OWNER':
+    x.path.startsWith('src/')||x.path.startsWith('host/')?'RUNTIME_OR_OWNER':
+    docs(x.path)?(coldDocs.some(r=>r.path===x.path)?'DOCUMENTARY_ARCHIVE_HYPOTHESIS':'LIVE_DOCUMENT_REFERENCE'):
+    x.path.startsWith('contracts/')?'CONTRACT_OR_PROVENANCE':
+    x.path.startsWith('scripts/')?'TOOL_OR_LEGACY':'OTHER';
+  return {...x,tier,incoming:inEdges.map(e=>[e.from,e.type]),
+   outgoing:outEdges.map(e=>[e.to,e.type]),effect_site:effects.some(e=>e.path===x.path),
+   dynamic_site:unknownSites.includes(x.path),
+   consumer_complete:false,retirement_authorized:false};
+ });
+ return {schema:'ikant-pr251-total-source-supergraph/v1',
+  analysis:'EXHAUSTIVE_TRACKED_BLOB_READBACK_HEURISTIC_CONSUMERS_NOT_CLOSED_WORLD',
+  files:rows.length,tracked_bytes:rows.reduce((n,x)=>n+x.bytes,0),
+  bytes_verified:rows.reduce((n,x)=>n+x.bytes,0),
+  git_sha_errors:shaErrors.length,all_paths_classified:true,relation_count:edges.length,
+  relation_types:Object.fromEntries([...new Set(edges.map(x=>x.type))].map(t=>[t,edges.filter(e=>e.type===t).length])),
+  dynamic_sites:unknownSites,side_effect_sites:effects,binary_files:binary,
+  cold_documentary_candidates:coldDocs.map(x=>({path:x.path,sha:x.sha,bytes:x.bytes,
+    state:'HYPOTHESIS_NOT_APPROVED',rewrite_required:true})),
+  cold_documentary_bytes:docPotentialBytes,cold_documentary_count:coldDocs.length,
+  doc_product_references:directLinks.length,essential_root_count:essential.size,
+  semantic_inventory:report,relations:edges,
+  archive_policy:'NO_CHANGE_TO_CURRENT_TREE_WITHOUT_LINK_REWRITE_AND_NATIVE_PROOF',
+  runtime_equivalence:'NOT_ATTESTED',external_consumers:'UNKNOWN',global_minimum_certified:false,
+  product_go:false};
+}
+
 export function observe(){
  const c=JSON.parse(fs.readFileSync(path.join(ROOT,DOD),'utf8'));
  const {audit,census}=observeReticularCensusWithAudit(),epoch=qualifyPr251SourceEpoch();
@@ -154,6 +259,11 @@ export function observe(){
   external_consumers:'UNKNOWN'};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- const r=observe();console.log(JSON.stringify(r,null,2));
+ const r=observe();
+ if(process.argv.includes('--deep')){
+  const {audit}=observeReticularCensusWithAudit();
+  r.total_source_supergraph=buildTotalSupergraph(audit);
+ }
+ console.log(JSON.stringify(r,null,2));
  if(!r.exact_source_epoch)process.exitCode=1;
 }

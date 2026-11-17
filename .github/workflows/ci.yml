@@ -197,26 +197,46 @@ jobs:
           export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
           python3 -m cora.cli snapshot . --revision HEAD --output "$RUNNER_TEMP/cora-source-ledger.json"
           python3 -m cora.cli verify-ledger "$RUNNER_TEMP/cora-source-ledger.json" --repo . > "$RUNNER_TEMP/cora-source-verify.json"
-      - name: CORA independent One-Run source scope
+      - name: Derive HEAD-exact portable CORA owner profile (no invented witnesses)
+        if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, pathlib, subprocess
+          head = subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          owners = [
+            {'id':'edu-owner','path':'host/c135-edu-v2-owner.mjs'},
+            {'id':'mcp-server','path':'project/plugins/ikant-le-session-chat/server/server.mjs'},
+            {'id':'ledger-writer','path':'host/c87-durable-ledger.mjs'}]
+          for row in owners:
+            subprocess.check_call(['git','cat-file','-e','HEAD:'+row['path']])
+          profile = {'schema':'cora-portable-target/1','target_repo':'Luke883i/iKant_EDU',
+            'revision':head,'owners':owners,'witnesses':[],'method_links':[]}
+          path = pathlib.Path(os.environ['RUNNER_TEMP'])/'cora-target-profile.json'
+          path.write_text(json.dumps(profile,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: CORA independent portable One-Run source scope
         if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
           export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
-          python3 -m cora.cli process-run . --revision HEAD --change-base e270c6e2cc772f960126eecea9f50501339e3656 --process full --one-run --profile comprehensive --output "$RUNNER_TEMP/cora-one-run.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html"
-      - name: CORA independently verify exact One-Run and HTML
+          python3 -m cora.cli process-run . --revision HEAD --one-run --portable-profile "$RUNNER_TEMP/cora-target-profile.json" --output "$RUNNER_TEMP/cora-one-run.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html"
+      - name: CORA independently verify portable source replay
         if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
           export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
-          python3 -m cora.cli verify-process "$RUNNER_TEMP/cora-one-run.json" --repo . --one-run --atlas-html "$RUNNER_TEMP/cora-one-run.html" > "$RUNNER_TEMP/cora-one-run-replay.json"
+          python3 -m cora.cli verify-process "$RUNNER_TEMP/cora-one-run.json" --repo . --one-run --portable-profile "$RUNNER_TEMP/cora-target-profile.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html" > "$RUNNER_TEMP/cora-one-run-replay.json"
       - name: Preserve independent CORA source replay and open gates
         if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' }}
         uses: actions/upload-artifact@v4
         with:
           name: pr251-cora-engine-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
+            ${{ runner.temp }}/cora-target-profile.json
             ${{ runner.temp }}/cora-source-ledger.json
             ${{ runner.temp }}/cora-source-verify.json
             ${{ runner.temp }}/cora-one-run.json

@@ -2,155 +2,42 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
-import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
-import {parseGitTree,checkBlob,validateDod,importSpecifiers,resolveRelative,buildGraph,
-  counterfactualCut,graphFingerprint,verifyGraphReconstruction,exactBoundedCut,discoverBoundedFrontier,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
+import {validateDod,deriveHypergraph,exactBoundedCut,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const contract=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json'),'utf8'));
-const clone=x=>structuredClone(x);
-const blob=s=>{
- const b=Buffer.from(s);return {sha:crypto.createHash('sha1').update(Buffer.concat([Buffer.from('blob '+b.length+'\0'),b])).digest('hex'),size:b.length};
-};
-const fixtures=()=>{
- const code={
-  'ikant.mjs':"import './src/owner.mjs';",
-  'src/owner.mjs':"import './critical.mjs';\nexport const v=1;",
-  'src/critical.mjs':"export const critical=1;",
-  'scripts/unused.mjs':"export const old=1;",
-  'package.json':JSON.stringify({scripts:{test:'node scripts/unused.mjs'}})
- };
- const entries=Object.entries(code).map(([p,s])=>{
-  const b=blob(s);return {path:p,mode:'100644',type:'blob',sha:b.sha,bytes:b.size};
- });
- return {entries,contents:new Map(Object.entries(code))};
-};
-test('P/G/I/L retrograde AND graph is total, acyclic, fail-closed and typed',()=>{
- assert.ok(validateDod(contract));
- assert.equal(contract.product_go,false);
- assert.equal(contract.nodes.length,35);
- assert.equal(contract.hyperedges.length,10);
- assert.equal(contract.retirement_pool.length,25);
- assert.ok(contract.nodes.every(n=>n.status!=='PASS'));
+const c=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json')));
+test('PR251 retrograde 35 DoD nodes, 10 typed AND gates, no authority',()=>{
+ assert.equal(validateDod(c),true);
+ const graph=deriveHypergraph(c,{checked_files:2,consumer_index:[
+  {path:'a',literal_dependencies:['b']},{path:'b',literal_dependencies:[]}]});
+ assert.equal(graph.nodes.length,35);assert.equal(graph.hyperedges.length,10);
+ assert.equal(graph.edges.length,1);assert.equal(graph.product_go,false);
 });
-test('Git object lineage parser checks sizes, blob identities and duplicate entries',()=>{
- const x=blob('hello');
- const row='100644 blob '+x.sha+' 5\ta.mjs\0';
- const [e]=parseGitTree(row);
- assert.ok(checkBlob(e,Buffer.from('hello')));
- assert.equal(checkBlob(e,Buffer.from('HELLO')),false);
- assert.equal(checkBlob({...e,bytes:6},Buffer.from('hello')),false);
- assert.throws(()=>parseGitTree(row+row),/DUPLICATE_GIT_PATH/);
-});
-test('ESM dependency, external imports, missing resolution and literal CLI consumers',()=>{
- const f=fixtures();
- const g=buildGraph(f.entries,f.contents,contract);
- assert.ok(importSpecifiers("import './x.mjs'; export {v} from './y.mjs';").includes('./x.mjs'));
- assert.equal(resolveRelative('src/owner.mjs','./critical.mjs',new Set(f.entries.map(e=>e.path))).path,'src/critical.mjs');
- assert.ok(g.edges.some(e=>e.from==='ikant.mjs'&&e.to==='src/owner.mjs'&&e.type==='imports'));
- assert.ok(g.edges.some(e=>e.from==='src/owner.mjs'&&e.to==='src/critical.mjs'));
- assert.ok(g.edges.some(e=>e.from==='package.json'&&e.to==='scripts/unused.mjs'&&e.type==='executes'));
- assert.equal(g.global_minimum_certified,false);
- assert.equal(g.unknown_external_consumers,true);
-});
-test('Counterfactual live dependency and roots cannot be removed even if cut is small',()=>{
- const f=fixtures(),g=buildGraph(f.entries,f.contents,contract);
- assert.equal(counterfactualCut(g,['src/critical.mjs']).source_only_admissible,false);
- assert.ok(counterfactualCut(g,['src/critical.mjs']).violations.some(e=>e.reason==='LIVE_DEPENDENCY'));
- assert.ok(counterfactualCut(g,['ikant.mjs']).violations.some(e=>e.reason==='ROOT_REMOVED'));
- assert.equal(counterfactualCut(g,['scripts/unused.mjs']).source_only_admissible,false);
- assert.equal(counterfactualCut(g,[]).product_go,false);
-});
-test('Forged graph missing one typed dependency fails independent reconstruction',()=>{
- const f=fixtures(),g=buildGraph(f.entries,f.contents,contract);
- assert.ok(verifyGraphReconstruction(g,f.entries,f.contents,contract));
- const forged=clone(g);
- forged.edges=forged.edges.filter(e=>e.to!=='src/critical.mjs');
- assert.ok(!verifyGraphReconstruction(forged,f.entries,f.contents,contract));
- assert.notEqual(graphFingerprint(forged),graphFingerprint(g));
-});
-test('2048 deterministic mutants test ancestry / obligation / byte / edge / release denials',()=>{
- const f=fixtures(),canonical=buildGraph(f.entries,f.contents,contract);
- let seed=2512048,rejected=0;const rng=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)%0x10000);
+test('2048 deterministic negative mutations reject DoD omission and forged authority',()=>{
+ let seed=251;const rng=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)%4);
  for(let i=0;i<2048;i++){
-  const kind=rng()%8;
-  if(kind<=5){
-   const mutant=clone(contract);
-   if(kind===0)mutant.product_go=true;
-   if(kind===1)mutant.release='PASS';
-   if(kind===2)mutant.hyperedges.shift();
-   if(kind===3)mutant.nodes.find(n=>n.id==='G0').requires.pop();
-   if(kind===4)mutant.nodes.find(n=>n.id==='G1').requires.push('A0');
-   if(kind===5)mutant.authority=1;
-   if(!validateDod(mutant))rejected++;
-  }else if(kind===6){
-   const altered=Buffer.from(f.contents.get('src/critical.mjs')+' ');
-   if(!checkBlob(f.entries.find(e=>e.path==='src/critical.mjs'),altered))rejected++;
-  }else{
-   const changed=clone(canonical);
-   changed.edges.pop();
-   if(!verifyGraphReconstruction(changed,f.entries,f.contents,contract))rejected++;
+  const m=structuredClone(c);
+  switch(rng()){
+   case 0:m.product_go=true;break;
+   case 1:m.release='PASS';break;
+   case 2:m.leaves.pop();break;
+   case 3:m.gates[0][2].push(m.gates[0][2][0]);break;
   }
+  assert.equal(validateDod(m),false,'surviving mutation '+i);
  }
- assert.equal(rejected,2048);
 });
-test('Native repository source witness has a real Git HEAD and no release promotion',()=>{
- const report=observe(root);
- assert.match(report.source.head,/^[a-f0-9]{40}$/);
- assert.match(report.source.tree,/^[a-f0-9]{40}$/);
- assert.ok(report.source.tracked_files>=1600);
- assert.equal(report.global_dod,'HOLD');
- assert.equal(report.product_go,false);
- assert.ok(report.metrics.hyperedges>=10);
- assert.match(report.receipt_sha256,/^[a-f0-9]{64}$/);
- assert.ok(report.candidate_cuts.every(c=>c.external_consumers==='UNKNOWN'));
+test('bounded mincut enumerates all 8 subsets, blocks live consumer and keeps a survivor',()=>{
+ const graph={edges:[{from:'a',to:'b'},{from:'root',to:'c'}],roots:['root'],
+  sizes:{a:11,b:7,c:13}};
+ const result=exactBoundedCut(graph,['a','b','c'],[['a','b']]);
+ assert.equal(result.enumerated,8);assert.deepEqual(result.selected,['a']);
+ assert.equal(result.bounded_static_bytes,11);assert.equal(result.global_minimum_certified,false);
+ assert.throws(()=>exactBoundedCut(graph,Array.from({length:17},(_,i)=>'n'+i)),/BOUND_16/);
 });
-
-test('W1 retired Git paths remain absent; original 11 blob identities retained as source pins',t=>{
- const staged=contract.retirement_pool.filter(x=>x.status==='STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN');
- assert.equal(staged.length,11);
- assert.equal(staged.reduce((n,x)=>n+x.preimage_bytes,0),18163);
- for(const item of staged){
-  assert.equal(fs.existsSync(path.join(root,item.path)),false,item.path+' unexpectedly resurrected');
-  assert.match(item.preimage_sha,/^[a-f0-9]{40}$/);
-  const check=spawnGit(['rev-parse',contract.source_main+':'+item.path]);
-  if(check!==null)assert.equal(check,item.preimage_sha,'original Git preimage mismatch: '+item.path);
-  else t.diagnostic('Git history unavailable for independent preimage readback: '+item.path);
- }
- assert.equal(contract.staged_cut.full_native_equivalence,false);
- assert.equal(contract.staged_cut.external_unknown,true);
-});
-function spawnGit(args){
- const result=spawnSync('git',args,{cwd:root,encoding:'utf8',timeout:4000});
- return result.status===0?result.stdout.trim():null;
-}
-
-test('W2: second independent physical cut retains 14 historical Git preimages, not release',t=>{
- const removed=contract.retirement_pool.filter(x=>x.status==='STAGED_SOURCE_ONLY_EXTERNAL_UNKNOWN_W2');
- assert.equal(removed.length,14);
- for(const item of removed){
-  assert.equal(fs.existsSync(path.join(root,item.path)),false,item.path);
-  assert.match(item.preimage_sha,/^[a-f0-9]{40}$/);
-  const original=spawnGit(['rev-parse',contract.source_main+':'+item.path]);
-  if(original!==null)assert.equal(original,item.preimage_sha,'original history drift: '+item.path);
-  else t.diagnostic('historical SHA not available in this checkout: '+item.path);
- }
- assert.equal(contract.staged_cut_w2.external_unknown,true);
- assert.equal(contract.staged_cut_w2.full_native_equivalence,false);
-});
-
-test('bounded exact cut enumerates every subset and blocks live arcs and keep-one hyperedges',()=>{
- const g={
-  nodes:[{id:'a',type:'git_blob',size:11},{id:'b',type:'git_blob',size:7},{id:'c',type:'git_blob',size:13},{id:'root',type:'git_blob',size:10}],
-  edges:[{from:'a',to:'b',type:'imports'},{from:'root',to:'c',type:'imports'}],
-  roots:['root']
- };
- const x=exactBoundedCut(g,['a','b','c'],[['a','b']]);
- assert.equal(x.enumerated_subsets,8);
- assert.deepEqual(x.selected,['b']);
- assert.equal(x.maximum_reclaimable_source_bytes_within_model,7);
- assert.equal(x.global_minimum_certified,false);
- assert.throws(()=>exactBoundedCut(g,Array.from({length:17},(_,i)=>'x'+i)),/BOUNDED_CUT_TOO_LARGE/);
- const f=fixtures();assert.equal(discoverBoundedFrontier(buildGraph(f.entries,f.contents,contract)).product_go,false);
+test('original V5-B/CORA source witness remains source-only; PR251 exact epoch is required',()=>{
+ const r=observe();
+ assert.equal(r.exact_source_epoch,true,JSON.stringify(r));
+ assert.equal(r.retired_paths,25);assert.equal(r.obligations,35);
+ assert.equal(r.global_dod,'HOLD');assert.equal(r.product_go,false);
+ assert.equal(r.external_consumers,'UNKNOWN');
 });

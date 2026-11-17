@@ -1,0 +1,287 @@
+{
+  "schema": "ikant-pr250-source-epoch/v1",
+  "self_path": "contracts/governance/changes/pr250-source-successor.json",
+  "source_main": "e270c6e2cc772f960126eecea9f50501339e3656",
+  "source_tree": "c4a0ce6315696107482198b03cbdc489968287f6",
+  "authority": 0,
+  "product_go": false,
+  "review_required": true,
+  "human_review_attested": false,
+  "provider_checks_attested": false,
+  "external_consumers_resolved": false,
+  "legacy_v5b_pins_immutable": true,
+  "release": "HOLD",
+  "notes": "Historic V5-B errors remain in original_epoch_errors. This manifest is a candidate source-epoch proposal only; it cannot confer owner sign-off or release.",
+  "paths": [
+    {
+      "path": ".github/workflows/c107-carrier-consumption.yml",
+      "operation": "MODIFY",
+      "before_sha": "4e7169ef1f4e4d38bdb5e8f56a1e4dda9b8eab84",
+      "before_mode": "100644",
+      "after_sha": "c8de8970a32aab680f82b6c316a39a902e79a349",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c107-experimental.yml",
+      "operation": "MODIFY",
+      "before_sha": "c6d2e4bbfe1c5fab88315d405258f5b051370b3c",
+      "before_mode": "100644",
+      "after_sha": "23bfdfc7bcd6715d5e747a5e1a5de62518514009",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c107-host-language.yml",
+      "operation": "MODIFY",
+      "before_sha": "1eb4a545fe7798b0a40618dce0fc774590a6310b",
+      "before_mode": "100644",
+      "after_sha": "e9c7b974869b9be3ead8e9b4256d78601a8f42bf",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c107-shell.yml",
+      "operation": "MODIFY",
+      "before_sha": "49ae95b328e42dde030aaa40d051cf51997fb96a",
+      "before_mode": "100644",
+      "after_sha": "0d8f5cd0fce3df5fef7d2244a1026f7a99a8cc09",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c108-equivalence.yml",
+      "operation": "MODIFY",
+      "before_sha": "f0dcbde5525cbc7403c310230a0d8e3c6ea871c8",
+      "before_mode": "100644",
+      "after_sha": "477bc463088b1dc33a3b04879e10b4ac47b2f7eb",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c109-chat-shell.yml",
+      "operation": "MODIFY",
+      "before_sha": "d32643585102d4c43e473a0ac6779a426d97be16",
+      "before_mode": "100644",
+      "after_sha": "a1435f0736450c6489df3d0e83ac4920ca0addeb",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c110-experimental-lattice.yml",
+      "operation": "MODIFY",
+      "before_sha": "5d691c573ea1100cd8101605da73195c33d78c5c",
+      "before_mode": "100644",
+      "after_sha": "a671f17384b3088e98d9a7a0e820ebc77d49891b",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c111-host-edge.yml",
+      "operation": "MODIFY",
+      "before_sha": "8f59ea7ca6a95563da2a810d513f8bacbb7fd918",
+      "before_mode": "100644",
+      "after_sha": "863ae51a3f82854d33bc75f5bcce1e96e6499724",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c139-epistemic-edu.yml",
+      "operation": "MODIFY",
+      "before_sha": "7e3c1fd24a59a4d9d8aa774904d3eb31a6346a25",
+      "before_mode": "100644",
+      "after_sha": "e25902a5b8e7fba1083d8da448a4a9c643aec29b",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/c143-cp11-prepr.yml",
+      "operation": "MODIFY",
+      "before_sha": "625622d3c30b3fbfd005e986f986c07a32db62ae",
+      "before_mode": "100644",
+      "after_sha": "3e7bf54719f14c9f818b13098daca83479eba325",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": ".github/workflows/oneshell-v1-qualification.yml",
+      "operation": "MODIFY",
+      "before_sha": "3963a7a6bbf23389d856380b4490c6b853011b31",
+      "before_mode": "100644",
+      "after_sha": "72f0f1fb0279588fdf1a369bb178bb04611e4611",
+      "after_mode": "100644",
+      "reason": "Preserve current technical CI check and transitive trigger path in the single shared EDU engine.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "contracts/governance/changes/pr250-source-successor.json",
+      "operation": "ADD",
+      "before_sha": null,
+      "before_mode": null,
+      "after_sha": null,
+      "after_mode": "100644",
+      "reason": "Self-identifying, review-required source-only register for this candidate epoch; no owner authorization.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "host/c139-edu-v2-turn.mjs",
+      "operation": "MODIFY",
+      "before_sha": "4041c731ed43e92c7628dc2c21c0c17347e4cda4",
+      "before_mode": "100644",
+      "after_sha": "ee039e978c40025f187bae8ef0e8cd5bfd131744",
+      "after_mode": "100644",
+      "reason": "Deduplicate C139/C143 bounded turn execution and preserve the distinct per-route policy owners.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "host/c143-edu-v2-turn.mjs",
+      "operation": "MODIFY",
+      "before_sha": "f596bfd3946fe55e3974a491b0de5055a19870d4",
+      "before_mode": "100644",
+      "after_sha": "8dae03c9ba55ae417d6de5648ebcc3d268c8877d",
+      "after_mode": "100644",
+      "reason": "Deduplicate C139/C143 bounded turn execution and preserve the distinct per-route policy owners.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c59-composition-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "36bf0d7d95ff0ae90a3326c18be7dc5c48e06e53",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c59-composition-select.mjs",
+      "operation": "REMOVE",
+      "before_sha": "8893b9ce71f988ede3bae1b655fc3f63a4aa102b",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c90-host-release-cli.mjs",
+      "operation": "REMOVE",
+      "before_sha": "e20b7af7bacb814fb4581965b0d3437c1114a10b",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c91-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "7cc170a05249b9bbd910cb3ddf0cf47a97da5d57",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c92-live-cli.mjs",
+      "operation": "REMOVE",
+      "before_sha": "4c195691815c69e48ddb1df2048b8b70af09360f",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c94-auto-cold-cli.mjs",
+      "operation": "REMOVE",
+      "before_sha": "06c807e8bb5fc67504d5749cf36d469c12fd2c0e",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c95-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "7778775faf8a2fbcc5708e29f8a1a6a27fabb90f",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c98-evidence-audit.mjs",
+      "operation": "REMOVE",
+      "before_sha": "a9d357f61ed93ef875897ff01ec465b49a3d149f",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c98-host-gap-census.mjs",
+      "operation": "REMOVE",
+      "before_sha": "4e31ff78c25b6e85ce71c687cf24b28dfa78649a",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/combine-receipts.mjs",
+      "operation": "REMOVE",
+      "before_sha": "de268498030e2b73aac898d66a5868a205383a7c",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/s02-bridge-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "76b30a0e5d145ff2a5f1f3d4e21365bf4638d4da",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "No tracked runtime, tests, CI, package or docs consumers found; external consumers unknown; removal pending human review.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "operation": "MODIFY",
+      "before_sha": "62fed4fe253843f2a9ebbdc789a32a73c1d3de76",
+      "before_mode": "100644",
+      "after_sha": "9b17894b5f0c93f3a1f134859084ab59d3a91013",
+      "after_mode": "100644",
+      "reason": "Preserve repository packaging closure and source-indexed candidate successor audit as technical evidence.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/c139-epistemic-edu-v2.test.mjs",
+      "operation": "MODIFY",
+      "before_sha": "030cd7cd84b055b73145ba7fb8b820861d542ba1",
+      "before_mode": "100644",
+      "after_sha": "51b6bf90a5b4de0c49f7e10b065bb93ed5c72271",
+      "after_mode": "100644",
+      "reason": "Exercise exact first-unclosed-edge and zero-write negative controls for bounded EDU routes.",
+      "human_review": "REVIEW_REQUIRED"
+    }
+  ]
+}

@@ -40,7 +40,7 @@ test('V10 historic lexical debt is immutable; CURRENT lexical obligations use cu
  assert.deepEqual(spec.inherited_unresolved_lexical_edges,original.inherited_unresolved_lexical_edges);
  const out=auditV10({runNative:false});
  const paths=execFileSync('git',['ls-files','--cached','-z'],{cwd:root}).toString('utf8').split(String.fromCharCode(0)).filter(Boolean);
- const observed=scanLiteralRelative(root,paths);
+ const observed=scanLiteralRelative(path.resolve(root),paths);
  const pending=newUnresolved(observed,spec.inherited_unresolved_lexical_edges);
  assert.equal(out.import_lexical_edges,observed.length);
  assert.equal(out.legacy_unresolved,observed.filter(x=>!x.valid).length);

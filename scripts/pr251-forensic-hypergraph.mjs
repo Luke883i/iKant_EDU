@@ -164,6 +164,7 @@ export function deriveProductSolution(inventory,relations){
   verification_observed_closure:{files:q.size,bytes:score(q)},
   combined_observed_closure:{files:pq.size,bytes:score(pq)},
   outside_observed_closure:{files:excluded.length,bytes:score(excluded.map(x=>x.path))},
+  outside_paths:excluded.map(x=>({path:x.path,sha:x.sha,bytes:x.bytes,tier:x.tier})),
   documentary_retirement_hypothesis:{files:docs.length,bytes:score(docs.map(x=>x.path)),
     boundary_edges:boundary.length,consumer_rewrites:[...new Set(boundary.map(x=>x.from))].sort()},
   dynamic_paths_inside_observed_closure:dynamic.length,

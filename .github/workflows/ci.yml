@@ -193,6 +193,80 @@ jobs:
       - name: C38 one-million semantic-lossless runtime falsification
         run: npm run falsify:c38
 
+
+  radical_counterfactual:
+    name: pr251-radical-counterfactual-native
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Materialize 425-file candidate in disposable worktree
+        id: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-graph.json"
+          git worktree add --detach "$RUNNER_TEMP/pr251-counterfactual" HEAD > /dev/null
+          node - "$RUNNER_TEMP/pr251-graph.json" "$RUNNER_TEMP/pr251-counterfactual" "$GITHUB_OUTPUT" <<'NODE'
+          const fs=require('node:fs'),path=require('node:path');
+          const [report,dir,output]=process.argv.slice(2);
+          const r=JSON.parse(fs.readFileSync(report,'utf8'));
+          const g=r.total_source_supergraph;
+          const rows=g.product_first_solution.outside_paths;
+          if(rows.length<100||g.files!==g.semantic_inventory.length||
+            g.product_go!==false||r.product_go!==false)throw Error('INVALID_COUNTERFACTUAL');
+          let removedBytes=0;
+          for(const row of rows){
+            const target=path.resolve(dir,row.path);
+            if(!target.startsWith(path.resolve(dir)+path.sep))throw Error('CUT_ESCAPE');
+            fs.rmSync(target,{force:true});
+            removedBytes+=row.bytes;
+          }
+          fs.appendFileSync(output,'cut_count='+rows.length+'\ncut_bytes='+removedBytes+'\n');
+          fs.writeFileSync(path.join(process.env.RUNNER_TEMP,'pr251-counterfactual-cut.json'),
+            JSON.stringify({head:r.head,tree:r.tree,removed:rows,removed_bytes:removedBytes,
+              source_only:true,external_consumers:'UNKNOWN',product_go:false},null,2)+'\n');
+          NODE
+      - name: Replay original native and contract gates on isolated candidate
+        id: native
+        shell: bash
+        run: |
+          set +e
+          cd "$RUNNER_TEMP/pr251-counterfactual"
+          npm test > "$RUNNER_TEMP/pr251-cut-native.log" 2>&1
+          native=$?
+          npm run check > "$RUNNER_TEMP/pr251-cut-contract.log" 2>&1
+          contract=$?
+          if [ "$native" -eq 0 ] && [ "$contract" -eq 0 ]; then verdict=NATIVE_PASS_EXTERNAL_UNKNOWN; else verdict=REJECTED_BY_NATIVE_OR_CONTRACT; fi
+          printf 'native_exit=%s\ncontract_exit=%s\nverdict=%s\n' "$native" "$contract" "$verdict" >> "$GITHUB_OUTPUT"
+          echo "$verdict" > "$RUNNER_TEMP/pr251-cut-verdict.txt"
+          exit 0
+      - name: "Radical candidate ${{ steps.candidate.outputs.cut_count }} files / ${{ steps.candidate.outputs.cut_bytes }} bytes [${{ steps.native.outputs.verdict }}]"
+        if: ${{ always() }}
+        run: echo "Source graph and isolated native results are NOT product or external equivalence proof."
+      - name: Preserve isolated cut and original native evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr251-radical-counterfactual-${{ github.event.pull_request.head.sha }}
+          path: |
+            ${{ runner.temp }}/pr251-graph.json
+            ${{ runner.temp }}/pr251-counterfactual-cut.json
+            ${{ runner.temp }}/pr251-cut-native.log
+            ${{ runner.temp }}/pr251-cut-contract.log
+            ${{ runner.temp }}/pr251-cut-verdict.txt
+          if-no-files-found: warn
+          retention-days: 14
+
   cora_source_replay:
     name: cora-independent-source
     if: ${{ github.event_name == 'pull_request' }}

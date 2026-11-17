@@ -23,10 +23,25 @@ jobs:
         if: ${{ !cancelled() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         shell: bash
         run: |
-          set -o pipefail
-          node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-source-hypergraph.json"
+          set +e
+          node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-source-hypergraph.json" 2>"$RUNNER_TEMP/pr251-graph-stderr.log"
+          code=$?
+          python3 - <<'PY'
+          import os,pathlib,re
+          p=pathlib.Path(os.environ["RUNNER_TEMP"])/"pr251-graph-stderr.log"
+          lines=p.read_text(errors="replace").splitlines() if p.exists() else []
+          matches=[z.strip() for z in lines if re.search(r"(Error|ERR_|invalid|failed|ENOENT|EISDIR|SyntaxError)",z)]
+          msg=matches[0] if matches else "NONE"
+          msg=re.sub(r"[^A-Za-z0-9_.: -]","_",msg)[:130]
+          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf8") as f:
+            f.write("source_error="+msg+"\\n")
+          PY
+          if [ "$code" -ne 0 ]; then exit "$code"; fi
           node -e 'const r=require(process.argv[1]).total_source_supergraph;for(const [k,v] of Object.entries({files:r.files,relations:r.relation_count,cold_docs:r.cold_documentary_count,cold_bytes:r.cold_documentary_bytes,product:r.product_first_solution.product_observed_closure.files,union:r.product_first_solution.combined_observed_closure.files}))console.log(k+"="+v)' "$RUNNER_TEMP/pr251-source-hypergraph.json" >> "$GITHUB_OUTPUT"
           node -e "const r=require(process.argv[1]);if(r.global_dod!=='HOLD'||r.product_go!==false||!r.head||!r.tree)process.exit(1)" "$RUNNER_TEMP/pr251-source-hypergraph.json"
+      - name: "PR251 source error [${{ steps.sg.outputs.source_error }}]"
+        if: ${{ always() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        run: echo "Diagnostic only; original graph generation exit status retained"
       - name: "PR251 source solve [${{ steps.sg.outputs.files }} total, ${{ steps.sg.outputs.relations }} edges, P=${{ steps.sg.outputs.product }}, P+Q=${{ steps.sg.outputs.union }}, cold=${{ steps.sg.outputs.cold_docs }} docs]"
         if: ${{ !cancelled() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         run: echo "Source-level candidate budget only, no deletion is authorized"
@@ -35,7 +50,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pr251-hypergraph-${{ github.event.pull_request.head.sha || github.sha }}
-          path: ${{ runner.temp }}/pr251-source-hypergraph.json
+          path: |
+            ${{ runner.temp }}/pr251-source-hypergraph.json
+            ${{ runner.temp }}/pr251-graph-stderr.log
           if-no-files-found: error
           retention-days: 14
       - name: Deterministic tests

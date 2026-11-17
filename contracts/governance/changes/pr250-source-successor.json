@@ -268,7 +268,7 @@
       "operation": "MODIFY",
       "before_sha": "62fed4fe253843f2a9ebbdc789a32a73c1d3de76",
       "before_mode": "100644",
-      "after_sha": "9b17894b5f0c93f3a1f134859084ab59d3a91013",
+      "after_sha": "97fae57b230f9f54f0e1c6aceebd0247da5c5bb0",
       "after_mode": "100644",
       "reason": "Preserve repository packaging closure and source-indexed candidate successor audit as technical evidence.",
       "human_review": "REVIEW_REQUIRED"

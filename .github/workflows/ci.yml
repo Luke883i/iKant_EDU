@@ -276,3 +276,73 @@ jobs:
             ${{ runner.temp }}/cora-one-run-replay.json
           if-no-files-found: warn
           retention-days: 14
+
+  differential_edu_mcp:
+    name: edu-mcp-same-runner-differential
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Same-host main and candidate native product tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE_SHA=e270c6e2cc772f960126eecea9f50501339e3656
+          test "$(git rev-parse "$BASE_SHA^{commit}")" = "$BASE_SHA"
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          git worktree add --detach "$RUNNER_TEMP/ikant-main" "$BASE_SHA"
+          files=(tests/project-edu-complete-chain.test.mjs tests/mcp-standalone-runtime-assurance.test.mjs tests/project-session-e2e.test.mjs)
+          (cd "$RUNNER_TEMP/ikant-main" && CI=true node --test --test-concurrency=1 "${files[@]}" > "$RUNNER_TEMP/ikant-main.tap" 2>&1)
+          CI=true node --test --test-concurrency=1 "${files[@]}" > "$RUNNER_TEMP/ikant-head.tap" 2>&1
+      - name: Refute lost cases, changed PASS and claimed host release
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import collections,json,os,pathlib,re,subprocess
+          tmp=pathlib.Path(os.environ['RUNNER_TEMP'])
+          def parse(path):
+            text=path.read_text(encoding='utf8')
+            lines=re.findall(r'^\s*(ok|not ok)\s+\d+\s+-\s+(.+)$',text,re.M)
+            passed=collections.Counter()
+            failed=[];skipped=[]
+            for state,name in lines:
+              name=name.split(' # ',1)[0].strip()
+              if '# SKIP' in text: pass
+              if state=='not ok':failed.append(name)
+              else:passed[name]+=1
+            return passed,failed,len(lines)
+          a,af,ac=parse(tmp/'ikant-main.tap')
+          b,bf,bc=parse(tmp/'ikant-head.tap')
+          missing=list((a-b).elements())
+          if ac==0 or bc==0:raise SystemExit('NO_NATIVE_TEST_IDENTITIES')
+          receipt={'schema':'ikant-pr251-native-differential/v1',
+            'source_base':'e270c6e2cc772f960126eecea9f50501339e3656',
+            'candidate_head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+            'environment':'SAME_GITHUB_RUNNER_NODE20',
+            'main_test_lines':ac,'candidate_test_lines':bc,
+            'missing_baseline_pass_identities':missing,'main_failures':af,
+            'candidate_failures':bf,'candidate_extra_identified':sum((b-a).values()),
+            'external_host_acceptance':'NOT_ATTESTED','product_go':False,
+            'source_native_equivalence':not (missing or af or bf)}
+          (tmp/'pr251-native-differential.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf8')
+          if missing or af or bf:raise SystemExit('NATIVE_PRODUCT_REGRESSION')
+          PY
+      - name: Preserve bounded main-to-HEAD differential
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr251-native-differential-${{ github.event.pull_request.head.sha }}
+          path: |
+            ${{ runner.temp }}/ikant-main.tap
+            ${{ runner.temp }}/ikant-head.tap
+            ${{ runner.temp }}/pr251-native-differential.json
+          if-no-files-found: warn
+          retention-days: 14

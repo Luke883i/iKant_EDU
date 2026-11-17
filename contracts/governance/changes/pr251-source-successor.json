@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "Source-only exact successor, refreshed after W2, no owner/provider/external attestation; self SHA intentionally null to avoid circular hash.",
+  "notes": "Updated exact source epoch after bounded exhaustive static cut solver; no dynamic/provider/owner proof.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -333,7 +333,7 @@
       "path": "scripts/pr251-forensic-hypergraph.mjs",
       "operation": "ADD",
       "before_sha": null,
-      "after_sha": "a1af8077d8b8efca6771b6ff2943cfb43f62a9af",
+      "after_sha": "1b9774067f2e240ae1c2c8e42377ab722d26e15d",
       "before_mode": null,
       "after_mode": "100644"
     },
@@ -365,7 +365,7 @@
       "path": "tests/pr251-forensic-hypergraph.test.mjs",
       "operation": "ADD",
       "before_sha": null,
-      "after_sha": "0f937abba0ccb635fff328c1cc774572d5aa8d5a",
+      "after_sha": "68bf3b0df73cb750396a717390256d0f22cf1c4e",
       "before_mode": null,
       "after_mode": "100644"
     },

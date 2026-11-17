@@ -6,7 +6,7 @@ import crypto from 'node:crypto';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {parseGitTree,checkBlob,validateDod,importSpecifiers,resolveRelative,buildGraph,
-  counterfactualCut,graphFingerprint,verifyGraphReconstruction,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
+  counterfactualCut,graphFingerprint,verifyGraphReconstruction,exactBoundedCut,discoverBoundedFrontier,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const contract=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json'),'utf8'));
 const clone=x=>structuredClone(x);
@@ -138,4 +138,19 @@ test('W2: second independent physical cut retains 14 historical Git preimages, n
  }
  assert.equal(contract.staged_cut_w2.external_unknown,true);
  assert.equal(contract.staged_cut_w2.full_native_equivalence,false);
+});
+
+test('bounded exact cut enumerates every subset and blocks live arcs and keep-one hyperedges',()=>{
+ const g={
+  nodes:[{id:'a',type:'git_blob',size:11},{id:'b',type:'git_blob',size:7},{id:'c',type:'git_blob',size:13},{id:'root',type:'git_blob',size:10}],
+  edges:[{from:'a',to:'b',type:'imports'},{from:'root',to:'c',type:'imports'}],
+  roots:['root']
+ };
+ const x=exactBoundedCut(g,['a','b','c'],[['a','b']]);
+ assert.equal(x.enumerated_subsets,8);
+ assert.deepEqual(x.selected,['b']);
+ assert.equal(x.maximum_reclaimable_source_bytes_within_model,7);
+ assert.equal(x.global_minimum_certified,false);
+ assert.throws(()=>exactBoundedCut(g,Array.from({length:17},(_,i)=>'x'+i)),/BOUNDED_CUT_TOO_LARGE/);
+ const f=fixtures();assert.equal(discoverBoundedFrontier(buildGraph(f.entries,f.contents,contract)).product_go,false);
 });

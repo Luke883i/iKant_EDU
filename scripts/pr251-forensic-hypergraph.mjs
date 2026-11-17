@@ -160,6 +160,57 @@ export function counterfactualCut(graph,remove){
   violations,external:'UNKNOWN',release:'HOLD',product_go:false,
   global_equivalence:false};
 }
+
+/** Exact exhaustive search on <=16 file candidates, NOT global minimality.
+ * x[target] <= x[consumer] for known dependency arcs: a deleted provider
+ * cannot retain a live consumer. Additional keep-one hyperedges are enforced.
+ */
+export function exactBoundedCut(graph,candidates,keepOneGroups=[]){
+ const list=[...new Set(candidates)].sort();
+ if(list.length>16)throw Error('BOUNDED_CUT_TOO_LARGE');
+ const ids=new Map(list.map((p,i)=>[p,i]));
+ const nodes=new Map(graph.nodes.filter(n=>n.type==='git_blob').map(n=>[n.id,n]));
+ if(list.some(p=>!nodes.has(p)))throw Error('CUT_MISSING_SOURCE');
+ const blocked=new Set(graph.roots||[]),need=new Array(list.length).fill(0);
+ for(const e of graph.edges){
+  const i=ids.get(e.to);if(i===undefined)continue;
+  const prereq=ids.get(e.from);
+  if(prereq===undefined)blocked.add(e.to);else need[i]|=(1<<prereq);
+ }
+ const keep=keepOneGroups.map(group=>{
+  if(!Array.isArray(group)||!group.length||group.some(p=>!nodes.has(p)))throw Error('BAD_KEEP_ONE_HYPEREDGE');
+  return group.reduce((mask,p)=>mask|(ids.has(p)?1<<ids.get(p):0),0);
+ }).filter(mask=>mask!==0);
+ const weight=list.map(p=>nodes.get(p).size||0);
+ let inspected=0,bestMask=0,bestWeight=0;
+ const n=1<<list.length;
+ for(let mask=0;mask<n;mask++){
+  inspected++;let valid=true,score=0;
+  for(let i=0;i<list.length;i++)if(mask&(1<<i)){
+   if(blocked.has(list[i])||(need[i]&mask)!==need[i]){valid=false;break;}
+   score+=weight[i];
+  }
+  if(!valid||keep.some(group=>(mask&group)===group))continue;
+  if(score>bestWeight){bestWeight=score;bestMask=mask;}
+ }
+ return {schema:'ikant-pr251-exact-bounded-static-cut/v1',candidate_count:list.length,
+  enumerated_subsets:inspected,selected:list.filter((p,i)=>bestMask&(1<<i)),
+  maximum_reclaimable_source_bytes_within_model:bestWeight,
+  exact_for_declared_static_subgraph:true,global_minimum_certified:false,
+  external_and_dynamic_consumers:'UNKNOWN',release:'HOLD',product_go:false};
+}
+/** Candidate discovery is deliberately hypothesis-generating, never authority. */
+export function discoverBoundedFrontier(graph,limit=16){
+ const inbound=new Set(graph.edges.map(e=>e.to));
+ const candidates=graph.nodes.filter(n=>n.type==='git_blob'&&
+  n.id.startsWith('scripts/')&&/\.(?:mjs|js|py|sh)$/.test(n.id)&&
+  !inbound.has(n.id)&&!graph.roots.includes(n.id)&&
+  !n.id.includes('pr251-forensic-hypergraph')).sort((a,b)=>b.size-a.size||a.id.localeCompare(b.id,'en'));
+ return {observed_unreferenced_scripts:candidates.length,
+  candidate_status:'SOURCE_GRAPH_ONLY_NOT_EXTERNAL_UNUSED',
+  ...exactBoundedCut(graph,candidates.slice(0,limit).map(n=>n.id))};
+}
+
 export function readCheckout(root=ROOT){
  const head=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
  const tree=execFileSync('git',['rev-parse','HEAD^{tree}'],{cwd:root,encoding:'utf8'}).trim();
@@ -182,6 +233,7 @@ export function observe(root=ROOT){
  const graph=buildGraph(source.entries,source.content,contract);
  const candidateSubset=graph.cut_candidates.filter(c=>c.tracked&&!c.live_or_unknown_references.length&&!graph.roots.includes(c.path)).map(c=>c.path);
  const certificate=counterfactualCut(graph,candidateSubset);
+ const boundedFrontier=discoverBoundedFrontier(graph);
  const payload={schema:'ikant-pr251-source-hypergraph-report/v1',source:{head:source.head,tree:source.tree,
     tracked_files:source.entries.length,tracked_bytes:source.entries.reduce((n,e)=>n+(e.bytes||0),0),
     verified_blobs:source.entries.length-source.drift.length-source.readErrors.length,
@@ -190,7 +242,7 @@ export function observe(root=ROOT){
     reachable:graph.reachable,missing_static_imports:graph.missing.length,
     dynamic_path_observations:graph.dynamic.length,external_specifiers:graph.external.length,
     exact_duplicate_groups:graph.duplicate_clusters.length},candidate_cuts:graph.cut_candidates,
-   bounded_cut:certificate,unresolved_imports:graph.missing.slice(0,100),duplicate_clusters:graph.duplicate_clusters,
+   bounded_cut:certificate,bounded_frontier:boundedFrontier,unresolved_imports:graph.missing.slice(0,100),duplicate_clusters:graph.duplicate_clusters,
    global_dod:'HOLD',product_go:false,external_consumer_coverage:'UNKNOWN',
    limits:['lexical graph is incomplete','no runtime or provider observation','a static cut is not safe for external consumers',
    'cost optimum cannot be asserted','source drift blocks exact-readback proof']};

@@ -182,17 +182,34 @@ jobs:
           else
             echo "enabled=false" >> "$GITHUB_OUTPUT"
           fi
-      - name: Independent pinned CORA ENGINE source replay
+      - name: Pin CORA engine to reviewed source SHA
         if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
           git clone --quiet --depth 1 --branch main https://github.com/Luke883i/cora.git "$RUNNER_TEMP/cora-engine"
           test "$(git -C "$RUNNER_TEMP/cora-engine" rev-parse HEAD)" = "96bb3a91e5f6e38c90eec40b9705da38f2226fc5"
+      - name: CORA independent Git source ledger and SHA revalidation
+        if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
           export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
           python3 -m cora.cli snapshot . --revision HEAD --output "$RUNNER_TEMP/cora-source-ledger.json"
           python3 -m cora.cli verify-ledger "$RUNNER_TEMP/cora-source-ledger.json" --repo . > "$RUNNER_TEMP/cora-source-verify.json"
+      - name: CORA independent One-Run source scope
+        if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
           python3 -m cora.cli process-run . --revision HEAD --change-base e270c6e2cc772f960126eecea9f50501339e3656 --process full --one-run --profile comprehensive --output "$RUNNER_TEMP/cora-one-run.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html"
+      - name: CORA independently verify exact One-Run and HTML
+        if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
           python3 -m cora.cli verify-process "$RUNNER_TEMP/cora-one-run.json" --repo . --one-run --atlas-html "$RUNNER_TEMP/cora-one-run.html" > "$RUNNER_TEMP/cora-one-run-replay.json"
       - name: Preserve independent CORA source replay and open gates
         if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' }}

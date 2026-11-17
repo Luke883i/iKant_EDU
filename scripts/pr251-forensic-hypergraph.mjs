@@ -137,6 +137,14 @@ export function buildGraph(entries,contents,contract){
   cut_candidates:references,unknown_external_consumers:true,global_minimum_certified:false,
   release:'HOLD',product_go:false};
 }
+export function graphFingerprint(graph){
+ const minimal={nodes:graph.nodes,edges:graph.edges,hyperedges:graph.hyperedges,roots:graph.roots,
+  cut_candidates:graph.cut_candidates,missing:graph.missing,dynamic:graph.dynamic};
+ return SHA256(Buffer.from(JSON.stringify(minimal)));
+}
+export function verifyGraphReconstruction(candidate,entries,contents,contract){
+ return graphFingerprint(candidate)===graphFingerprint(buildGraph(entries,contents,contract));
+}
 export function counterfactualCut(graph,remove){
  const removed=new Set(remove),violations=[];
  const known=new Set(graph.nodes.filter(n=>n.type==='git_blob').map(n=>n.id));

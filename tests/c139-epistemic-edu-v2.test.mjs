@@ -143,3 +143,39 @@ test('C135 EDU/v2: C139 selected with original C87 plus C125 once, no native cla
   assert.equal(replay.ok,false);assert.equal(sent.length,1);
  }finally{session?.close?.();fs.rmSync(x.dir,{recursive:true,force:true})}
 });
+
+test('C139 fail-closed first-edge proof: preflight, route, language, and opt-in never reach C87',()=>{
+ const x=tempLedger();
+ try{
+  const p=preview();
+  const base={ledgerFile:x.ledger,nonce:'c139-first-edge-proof-0001',
+   request:{...request(),modelCandidate:{input_sha256:H(input),text:answer}},
+   resetContext:true,requireHostLanguage:true,expectedC70OutputSha256:p.c70_output_sha256,
+   expectedC124ChannelSha256:p.c124_language_channel_sha256};
+  const badNonce=executeC139EpistemicTurn({...base,nonce:'bad'});
+  assert.equal(badNonce.status,'C107_STOP');
+  assert.equal(badNonce.first_unclosed_edge,'SOURCE_NONCE_OR_INPUT');
+  assert.equal(inspectC107Ledger(x.ledger).count,0);
+
+  const weather='Qual e il meteo domani?';
+  const weatherRequest={...request(),humanInput:weather};
+  const weatherPlan=previewC107CognitivePlan({request:weatherRequest,resetContext:true});
+  const badRoute=executeC139EpistemicTurn({...base,request:weatherRequest,
+   expectedC70OutputSha256:weatherPlan.c70_output_sha256,
+   expectedC124ChannelSha256:weatherPlan.c124_language_channel_sha256});
+  assert.equal(badRoute.status,'C107_STOP');
+  assert.equal(badRoute.first_unclosed_edge,'C139_ONTOLOGY_RESERVED_FOR_C114');
+  assert.equal(inspectC107Ledger(x.ledger).count,0);
+
+  const badLanguage=executeC139EpistemicTurn({...base,
+   request:{...base.request,modelCandidate:{...base.request.modelCandidate,text:answer.replace('Osservabile: ','Fatti: ')}}});
+  assert.equal(badLanguage.status,'C107_STOP');
+  assert.equal(badLanguage.first_unclosed_edge,'C139_EPISTEMIC_DISCLOSURE_REQUIRED');
+  assert.equal(inspectC107Ledger(x.ledger).count,0);
+
+  const noConsent=executeC139EpistemicTurn({...base,request:{...base.request,optIn:false}});
+  assert.equal(noConsent.status,'C107_STOP');
+  assert.equal(noConsent.first_unclosed_edge,'C139_C72_V2_EDU_AND_OPTIN_REQUIRED');
+  assert.equal(inspectC107Ledger(x.ledger).count,0);
+ }finally{fs.rmSync(x.dir,{recursive:true,force:true});}
+});

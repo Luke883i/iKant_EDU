@@ -11,7 +11,7 @@
   "external_consumers_resolved": false,
   "historical_pins_modified": false,
   "source_pr_250": {"merged":false,"retired":true,"selected_commits":6},
-  "notes": "Exact SHA-pinned retrospective and live source delta; CI failure diagnostics now expose actual AND expected while preserving original failure. Product, owner, external still HOLD.",
+  "notes": "Registered 25 retired historical paths verified against authentic preimages; negative fixture explicitly rejects unregistered but historically known source. Source-only review required.",
   "paths": [
     {"path":".github/workflows/c107-carrier-consumption.yml","operation":"MODIFY","before_sha":"4e7169ef1f4e4d38bdb5e8f56a1e4dda9b8eab84","after_sha":"c8de8970a32aab680f82b6c316a39a902e79a349","before_mode":"100644","after_mode":"100644"},
     {"path":".github/workflows/c107-experimental.yml","operation":"MODIFY","before_sha":"c6d2e4bbfe1c5fab88315d405258f5b051370b3c","after_sha":"23bfdfc7bcd6715d5e747a5e1a5de62518514009","before_mode":"100644","after_mode":"100644"},
@@ -61,7 +61,7 @@
     {"path":"scripts/v5b-repository-governance-audit.mjs","operation":"MODIFY","before_sha":"62fed4fe253843f2a9ebbdc789a32a73c1d3de76","after_sha":"01e0277cd9cac22f4a16e8851fdef14dce1a3b4a","before_mode":"100644","after_mode":"100644"},
     {"path":"tests/c139-epistemic-edu-v2.test.mjs","operation":"MODIFY","before_sha":"030cd7cd84b055b73145ba7fb8b820861d542ba1","after_sha":"51b6bf90a5b4de0c49f7e10b065bb93ed5c72271","before_mode":"100644","after_mode":"100644"},
     {"path":"tests/ci-failure-annotations.test.mjs","operation":"MODIFY","before_sha":"bd2aa260da5cb752868a5ebee3776d8f08b0bb08","after_sha":"92345a3774b786dfc29bab253ce628121d3486df","before_mode":"100644","after_mode":"100644"},
-    {"path":"tests/pr251-forensic-hypergraph.test.mjs","operation":"ADD","before_sha":null,"after_sha":"374e59b21ae3337cd8a0963a013101f34afba7c8","before_mode":null,"after_mode":"100644"},
+    {"path":"tests/pr251-forensic-hypergraph.test.mjs","operation":"ADD","before_sha":null,"after_sha":"32d0feecbceb731974a0db1f1cb31ca80b069ed5","before_mode":null,"after_mode":"100644"},
     {"path":"tests/r7-v12-epoch-audit.test.mjs","operation":"MODIFY","before_sha":"1a808ffbdfb913d0f22d20e65b1106677fa812c4","after_sha":"2096b2e82239669707e3f23593c7e9b56c9fcc0e","before_mode":"100644","after_mode":"100644"},
     {"path":"tests/repository-health-v10.test.mjs","operation":"MODIFY","before_sha":"67c6230d8ba74b4aff7fd642803c09467b3b819c","after_sha":"7a797d9386a989a6253c45640fc6b7e309318638","before_mode":"100644","after_mode":"100644"},
     {"path":"tests/v5b-repository-governance.test.mjs","operation":"MODIFY","before_sha":"85d40a1fbfb7f8135d2d115e8d7d99ad9cd3760c","after_sha":"69bb9528bdef46f2d25b40e6c9b069fb9c91a396","before_mode":"100644","after_mode":"100644"}

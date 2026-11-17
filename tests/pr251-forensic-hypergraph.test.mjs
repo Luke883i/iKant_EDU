@@ -55,7 +55,8 @@ test('V10 historical archive is NOT a runtime file floor; missing retirement pro
  assert.equal(now.source_retirement.proof_blocked,true);
  assert.equal(now.source_retirement.behavioral_equivalence,'NOT_ATTESTED');
  assert.equal(now.product_go,false);
- const probe=assessHistoricalRetirements(c,{consumer_index:[]},['scripts/c1-run.mjs']);
+ const probe=assessHistoricalRetirements(c,{consumer_index:[]},['scripts/c1-combine.mjs']);
+ assert.throws(()=>assessHistoricalRetirements(c,{consumer_index:[]},['scripts/c1-run.mjs']),/UNREGISTERED_HISTORIC_RETIREMENT/);
  assert.equal(probe.retirement_candidates.length,1);
  assert.equal(probe.retirement_candidates[0].preimage_proof,'GIT_OBJECT_PIN_VERIFIED');
  assert.ok(['EVIDENCE_BLOCKED','KNOWN_CONSUMER_BLOCKED'].includes(probe.retirement_candidates[0].status));

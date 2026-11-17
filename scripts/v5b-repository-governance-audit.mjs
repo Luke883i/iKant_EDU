@@ -469,6 +469,89 @@ export function qualifyPr249SourceEpoch(){
  }catch(ex){return fail('PR249_SOURCE_UNREADABLE:'+String(ex).slice(0,140));}
 }
 
+/** PR250 candidate source-epoch readback, NOT V5-B owner approval.
+ * The original V5-B inventory remains immutable. Exactly one Git parent main,
+ * one exhaustively blob-pinned delta register and one current HEAD are compared.
+ * Authorization and product release MUST remain independent/false.
+ */
+const PR250_SOURCE_BASE='e270c6e2cc772f960126eecea9f50501339e3656';
+const PR250_SOURCE_TREE='c4a0ce6315696107482198b03cbdc489968287f6';
+const PR250_REGISTER='contracts/governance/changes/pr250-source-successor.json';
+export function qualifyPr250SourceEpoch(){
+ const fail=edge=>Object.freeze({ok:false,edge,authority:0,product_go:false});
+ try{
+  const m=json(PR250_REGISTER);
+  if(m.schema!=='ikant-pr250-source-epoch/v1'||m.self_path!==PR250_REGISTER||
+    m.source_main!==PR250_SOURCE_BASE||m.source_tree!==PR250_SOURCE_TREE||
+    m.authority!==0||m.product_go!==false||m.review_required!==true||
+    m.human_review_attested!==false||m.provider_checks_attested!==false||
+    m.external_consumers_resolved!==false||m.legacy_v5b_pins_immutable!==true||
+    m.release!=='HOLD'||!Array.isArray(m.paths))return fail('PR250_MANIFEST_BOUNDARY');
+  if(git('rev-parse',PR250_SOURCE_BASE+'^{tree}')!==PR250_SOURCE_TREE)
+   return fail('PR250_ORIGINAL_MAIN_TREE');
+  git('merge-base','--is-ancestor',PR250_SOURCE_BASE,'HEAD');
+  const tree=ref=>{
+   const raw=execFileSync('git',['ls-tree','-r','-z',ref],{cwd:ROOT,maxBuffer:32_000_000}).toString('utf8');
+   const out=new Map();
+   for(const line of raw.split('\0').filter(Boolean)){
+    const x=/^(100644|100755) blob ([a-f0-9]{40})\t(.+)$/u.exec(line);
+    if(!x||out.has(x[3]))return null;
+    out.set(x[3],{mode:x[1],sha:x[2]});
+   }return out;
+  };
+  const before=tree(PR250_SOURCE_BASE),after=tree('HEAD');
+  if(!before||!after||before.size!==1645||after.size!==1635)
+   return fail('PR250_SOURCE_DENOMINATOR');
+  const delta=new Map();
+  for(const [path,row] of before){
+   const now=after.get(path);
+   if(!now)delta.set(path,{operation:'REMOVE',before:row,after:null});
+   else if(now.sha!==row.sha||now.mode!==row.mode)
+    delta.set(path,{operation:'MODIFY',before:row,after:now});
+  }
+  for(const [path,row] of after)if(!before.has(path))delta.set(path,{operation:'ADD',before:null,after:row});
+  if(m.paths.length!==delta.size||!delta.has(PR250_REGISTER))return fail('PR250_DELTA_CENSUS');
+  const seen=new Set();let deletes=0;
+  for(const row of m.paths){
+   const path=row?.path;
+   if(typeof path!=='string'||!isPath(path)||seen.has(path)||
+     typeof row.reason!=='string'||row.reason.length<24||
+     row.human_review!=='REVIEW_REQUIRED')return fail('PR250_BAD_DELTA_ROW');
+   seen.add(path);
+   const actual=delta.get(path);
+   if(!actual||actual.operation!==row.operation)return fail('PR250_UNREGISTERED_PATH:'+path);
+   const original=actual.before,now=actual.after;
+   if(row.before_sha!==(original?.sha||null)||row.before_mode!==(original?.mode||null)||
+      row.after_mode!==(now?.mode||null))return fail('PR250_DELTA_PREIMAGE:'+path);
+   // Self-referential Git blob pins are impossible; the new manifest is pinned
+   // by HEAD tree and schema instead. All other candidate blobs are exact.
+   if(path!==PR250_REGISTER&&row.after_sha!==(now?.sha||null))
+    return fail('PR250_DELTA_POSTIMAGE:'+path);
+   if(path===PR250_REGISTER&&
+      (row.operation!=='ADD'||row.after_sha!==null||now?.mode!=='100644'))
+    return fail('PR250_MANIFEST_SELF_REFERENCE');
+   if(row.operation==='REMOVE')deletes++;
+  }
+  if(deletes!==11||seen.size!==delta.size)return fail('PR250_DELETION_SET');
+  for(const protectedPath of [
+   'host/c72-public-mode-admission.mjs','host/c87-durable-ledger.mjs',
+   'host/c107-edu-v2-turn.mjs','host/c139-epistemic-policy.mjs',
+   'host/c143-guarded-nonidentity-policy.mjs','BOOTSTRAP.json']){
+   if(!before.has(protectedPath)||before.get(protectedPath).sha!==after.get(protectedPath)?.sha)
+    return fail('PR250_FROZEN_OWNER_DRIFT:'+protectedPath);
+  }
+  if([...delta.keys()].some(p=>p.startsWith('runtime-root/')||p.startsWith('project/plugins/')))
+   return fail('PR250_RUNTIME_OR_MCP_BOUNDARY_CHANGED');
+  if(git('diff','--cached','--name-only')!==''||
+     git('diff','--name-only')!==''||git('ls-files','-z').split('\0').filter(Boolean).length!==after.size)
+   return fail('PR250_DIRTY_OR_DIFFERENT_INDEX');
+  return Object.freeze({ok:true,status:'PR250_SOURCE_ONLY_REVIEW_REQUIRED',
+   original_main:PR250_SOURCE_BASE,source_count:after.size,delta_count:delta.size,
+   removed_scripts:deletes,authorization:false,external_consumer_proof:false,
+   owner_review:'NOT_ATTESTED',provider_checks:'NOT_ATTESTED',authority:0,product_go:false});
+ }catch(e){return fail('PR250_SOURCE_PROJECTION_UNREADABLE:'+String(e).slice(0,120));}
+}
+
 export function auditRepository(){
  const base=json(INVENTORY),changes=json(REGISTER),retention=json('contracts/v1-workflow-retention.json');
  const contract=json(DOD),errors=[];
@@ -583,7 +666,8 @@ export function auditRepository(){
  // path/mode deltas uniquely explained by the pinned V10->V12->V13 lineage.
  // Retain the legacy error evidence separately so the projection is auditable.
  const historicalProjection=qualifyV13V5BEpochProjection();
- const scoped=historicalProjection.ok?historicalProjection:qualifyPr249SourceEpoch();
+ const currentProposal=qualifyPr250SourceEpoch();
+ const scoped=currentProposal.ok?currentProposal:(historicalProjection.ok?historicalProjection:qualifyPr249SourceEpoch());
  if(scoped.ok&&errors.every(x=>/^(?:UNREGISTERED_MODIFICATION|UNREGISTERED_ADDITION|UNREGISTERED_DELETION|DECLARED_BUT_ABSENT):/.test(x))){
   audit.original_epoch_errors=errors;
   audit.source_epoch_projection=scoped;

@@ -5,7 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import crypto from 'node:crypto';
-import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,buildTotalSupergraph,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
+import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,buildTotalSupergraph,deriveProductSolution,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const c=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json')));
 test('PR251 retrograde 35 DoD nodes, 10 typed AND gates, no authority',()=>{
@@ -85,3 +85,20 @@ function gitBlob(text){
  const b=Buffer.from(text);
  return crypto.createHash('sha1').update(Buffer.from('blob '+b.length+'\0')).update(b).digest('hex');
 }
+
+
+test('backward product slice is distinct from assurance and an archive hypothesis is not release',()=>{
+ const files=[
+  {path:'ikant.mjs',bytes:20,dynamic_site:false},
+  {path:'src/needed.mjs',bytes:80,dynamic_site:true},
+  {path:'tests/qualification.test.mjs',bytes:14,dynamic_site:false},
+  {path:'project/docs/old.md',bytes:120,dynamic_site:false}];
+ const a=deriveProductSolution(files,[{from:'ikant.mjs',to:'src/needed.mjs',type:'STATIC_IMPORT'}]);
+ assert.deepEqual(a.product_observed_closure,{files:2,bytes:100});
+ assert.deepEqual(a.verification_observed_closure,{files:1,bytes:14});
+ assert.equal(a.outside_observed_closure.files,1);
+ assert.equal(a.documentary_retirement_hypothesis.bytes,120);
+ assert.equal(a.dynamic_paths_inside_observed_closure,1);
+ assert.equal(a.full_consumer_closure,false);
+ assert.equal(a.product_go,false);
+});

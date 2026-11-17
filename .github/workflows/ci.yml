@@ -30,9 +30,9 @@ jobs:
         run: |
           set -o pipefail
           node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-source-hypergraph.json"
-          node -e 'const r=require(process.argv[1]).total_source_supergraph;for(const [k,v] of Object.entries({files:r.files,relations:r.relation_count,cold_docs:r.cold_documentary_count,cold_bytes:r.cold_documentary_bytes}))console.log(k+"="+v)' "$RUNNER_TEMP/pr251-source-hypergraph.json" >> "$GITHUB_OUTPUT"
+          node -e 'const r=require(process.argv[1]).total_source_supergraph;for(const [k,v] of Object.entries({files:r.files,relations:r.relation_count,cold_docs:r.cold_documentary_count,cold_bytes:r.cold_documentary_bytes,product:r.product_first_solution.product_observed_closure.files,union:r.product_first_solution.combined_observed_closure.files}))console.log(k+"="+v)' "$RUNNER_TEMP/pr251-source-hypergraph.json" >> "$GITHUB_OUTPUT"
           node -e "const r=require(process.argv[1]);if(r.global_dod!=='HOLD'||r.product_go!==false||!r.head||!r.tree)process.exit(1)" "$RUNNER_TEMP/pr251-source-hypergraph.json"
-      - name: "PR251 total source graph [${{ steps.sg.outputs.files }} files, ${{ steps.sg.outputs.relations }} edges, ${{ steps.sg.outputs.cold_docs }} cold docs, ${{ steps.sg.outputs.cold_bytes }} bytes]"
+      - name: "PR251 source solve [${{ steps.sg.outputs.files }} total, ${{ steps.sg.outputs.relations }} edges, P=${{ steps.sg.outputs.product }}, P+Q=${{ steps.sg.outputs.union }}, cold=${{ steps.sg.outputs.cold_docs }} docs]"
         if: ${{ !cancelled() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         run: echo "Source-level candidate budget only, no deletion is authorized"
       - name: Preserve HEAD-bound PR251 source witness

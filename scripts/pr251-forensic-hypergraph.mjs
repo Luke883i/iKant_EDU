@@ -128,6 +128,50 @@ export function exactBoundedCut(graph,candidates,keepOne=[]){
   external_consumers:'UNKNOWN',product_go:false};
 }
 
+
+/** Backward product and assurance slices on the observed typed multigraph.
+ * Conditional lexical closure, not proof of full-system equivalence. */
+export function deriveProductSolution(inventory,relations){
+ const paths=new Map(inventory.map(x=>[x.path,x])),bySource=new Map(inventory.map(x=>[x.path,[]]));
+ for(const e of relations)if(bySource.has(e.from)&&paths.has(e.to))bySource.get(e.from).push(e);
+ const product=['ikant.mjs','package.json','README.md','AGENTS.md','TERMS.md','ADMISSION.json',
+  'BOOTSTRAP.json','project/session-chat/PROMPT.txt',
+  'project/plugins/ikant-le-session-chat/server/server.mjs',
+  'host/c72-public-mode-admission.mjs','host/c135-edu-v2-owner.mjs',
+  'host/c87-durable-ledger.mjs','host/c125-output-port.mjs'].filter(x=>paths.has(x));
+ const verify=inventory.filter(x=>x.path.startsWith('tests/')||
+  x.path.startsWith('.github/workflows/')).map(x=>x.path);
+ const allowed=new Set(['STATIC_IMPORT','SOURCE_LITERAL','PACKAGE_LITERAL',
+  'WORKFLOW_LITERAL','TEST_LITERAL']);
+ function visit(roots){
+  const found=new Set(roots),queue=[...roots];
+  for(let i=0;i<queue.length;i++)for(const e of bySource.get(queue[i])||[]){
+   if(!allowed.has(e.type)||found.has(e.to))continue;
+   found.add(e.to);queue.push(e.to);
+  }
+  return found;
+ }
+ const p=visit(product),q=visit(verify),pq=new Set([...p,...q]);
+ const score=x=>[...x].reduce((n,k)=>n+(paths.get(k)?.bytes||0),0);
+ const excluded=inventory.filter(x=>!pq.has(x.path));
+ const docs=excluded.filter(x=>x.path.startsWith('project/docs/'));
+ const candidates=new Set(docs.map(x=>x.path));
+ const boundary=relations.filter(e=>candidates.has(e.to)&&!candidates.has(e.from));
+ const dynamic=[...pq].filter(x=>paths.get(x)?.dynamic_site);
+ return {schema:'ikant-pr251-product-first-cut/v1',
+  product_roots:product,verification_roots:verify.length,
+  product_observed_closure:{files:p.size,bytes:score(p)},
+  verification_observed_closure:{files:q.size,bytes:score(q)},
+  combined_observed_closure:{files:pq.size,bytes:score(pq)},
+  outside_observed_closure:{files:excluded.length,bytes:score(excluded.map(x=>x.path))},
+  documentary_retirement_hypothesis:{files:docs.length,bytes:score(docs.map(x=>x.path)),
+    boundary_edges:boundary.length,consumer_rewrites:[...new Set(boundary.map(x=>x.from))].sort()},
+  dynamic_paths_inside_observed_closure:dynamic.length,
+  dynamic_paths:dynamic,
+  complete_runtime_coverage:false,independent_owner_acceptance:false,
+  full_consumer_closure:false,global_optimum_proved:false,product_go:false};
+}
+
 /** FULL-HEAD readback. The entire 1,624-file tree is inspected, including bytes
  * and binary artifacts. Lexical code and path consumers are only a lower bound.
  * A cold documentary path is a RETIREMENT HYPOTHESIS, not safe-to-delete proof.
@@ -226,6 +270,7 @@ export function buildTotalSupergraph(audit,{root=ROOT,treeText=null,read=null}={
   cold_documentary_bytes:docPotentialBytes,cold_documentary_count:coldDocs.length,
   doc_product_references:directLinks.length,essential_root_count:essential.size,
   semantic_inventory:report,relations:edges,
+  product_first_solution:deriveProductSolution(report,edges),
   archive_policy:'NO_CHANGE_TO_CURRENT_TREE_WITHOUT_LINK_REWRITE_AND_NATIVE_PROOF',
   runtime_equivalence:'NOT_ATTESTED',external_consumers:'UNKNOWN',global_minimum_certified:false,
   product_go:false};

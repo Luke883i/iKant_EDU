@@ -21,7 +21,7 @@ SLIDES = tuple("slides/%02d_%s.md" % (i, v) for i,v in enumerate(
 MANDATORY = (
     "project/docs/IKANT_DOCUMENT_ATLAS.md",
     "host/c125-exclusive-shell.mjs", "host/c135-edu-v2-owner.mjs",
-    "host/c139-edu-v2-turn.mjs", "host/versioned-edu-turn-core.mjs", "host/c140-open-edu-turn.mjs",
+    "host/c139-edu-v2-turn.mjs", "host/c140-open-edu-turn.mjs",
     "host/c141-semantic-shadow.mjs", "host/c142-semantic-owner-guard.mjs",
     "host/s02-edu-versioned-consumer.mjs",
     "host/s03-owner-bound-presentation.mjs",

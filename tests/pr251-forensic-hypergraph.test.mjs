@@ -71,7 +71,7 @@ test('V10 historical archive is NOT a runtime file floor; missing retirement pro
 
 test('complete typed source census hashes every blob and does not promote unknown consumers',()=>{
  const r=buildTotalSupergraph({consumer_index:[{path:'src/a.mjs',literal_dependencies:['src/b.mjs']}]},{
-  treeText:'100644 blob '+gitBlob('import "./b.mjs";')+' 17\tsrc/a.mjs\0'
+  treeText:'100644 blob '+gitBlob('import "./b.mjs";')+'       17\tsrc/a.mjs\0'
    +'100644 blob '+gitBlob('export const b=1;')+' 17\tsrc/b.mjs\0',
   read:p=>Buffer.from(p==='src/a.mjs'?'import "./b.mjs";':'export const b=1;')
  });

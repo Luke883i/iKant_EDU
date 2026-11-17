@@ -179,7 +179,7 @@ export function deriveProductSolution(inventory,relations){
 export function buildTotalSupergraph(audit,{root=ROOT,treeText=null,read=null}={}){
  const records=treeText??execFileSync('git',['ls-tree','-r','-l','-z','HEAD'],{cwd:root,maxBuffer:32e6}).toString('utf8');
  const rows=records.split('\0').filter(Boolean).map(row=>{
-  const m=/^(100644|100755|120000) blob ([a-f0-9]{40}) ([0-9]+)\t(.+)$/.exec(row);
+  const m=/^(100644|100755|120000) +blob +([a-f0-9]{40}) +([0-9]+)\t(.+)$/.exec(row);
   if(!m)throw Error('INVALID_FULL_GIT_TREE_ENTRY');
   return {path:m[4],mode:m[1],sha:m[2],bytes:Number(m[3])};
  }).sort((a,b)=>a.path.localeCompare(b.path,'en'));

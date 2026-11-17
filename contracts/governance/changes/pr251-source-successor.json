@@ -11,7 +11,7 @@
   "external_consumers_resolved": false,
   "historical_pins_modified": false,
   "source_pr_250": {"merged":false,"retired":true,"selected_commits":6},
-  "notes": "Full Graph new source gate emits specific first error as GitHub named diagnostic without turning failure into pass. Product and external closure remain unverified.",
+  "notes": "Total Git ls-tree blob parser accepts Git's space-padded size field. HEAD object verification remains exact, no runtime authorization.",
   "paths": [
     {"path":".github/workflows/c107-carrier-consumption.yml","operation":"MODIFY","before_sha":"4e7169ef1f4e4d38bdb5e8f56a1e4dda9b8eab84","after_sha":"c8de8970a32aab680f82b6c316a39a902e79a349","before_mode":"100644","after_mode":"100644"},
     {"path":".github/workflows/c107-experimental.yml","operation":"MODIFY","before_sha":"c6d2e4bbfe1c5fab88315d405258f5b051370b3c","after_sha":"23bfdfc7bcd6715d5e747a5e1a5de62518514009","before_mode":"100644","after_mode":"100644"},
@@ -55,7 +55,7 @@
     {"path":"scripts/ci-failure-annotations.mjs","operation":"MODIFY","before_sha":"8385232370cf80ba4ab44aa0d0ca1ff6e2b84f34","after_sha":"695c48e70284f42a57e26d382ad8721306398f1b","before_mode":"100644","after_mode":"100644"},
     {"path":"scripts/combine-receipts.mjs","operation":"REMOVE","before_sha":"de268498030e2b73aac898d66a5868a205383a7c","after_sha":null,"before_mode":"100644","after_mode":null},
     {"path":"scripts/cora-minimal-absorption.mjs","operation":"MODIFY","before_sha":"88dc44e90ea54c7806a96e9605d0ad8123401b41","after_sha":"e0a3b3289673935d35a9d342b5b8c0477d179b50","before_mode":"100644","after_mode":"100644"},
-    {"path":"scripts/pr251-forensic-hypergraph.mjs","operation":"ADD","before_sha":null,"after_sha":"afccedd17f50ca5a44d33f1493c2b75c44f30571","before_mode":null,"after_mode":"100644"},
+    {"path":"scripts/pr251-forensic-hypergraph.mjs","operation":"ADD","before_sha":null,"after_sha":"b865b5a9715be349e3718f804bebbb8f0c9a51a8","before_mode":null,"after_mode":"100644"},
     {"path":"scripts/r7-pr249-physical-gate.py","operation":"MODIFY","before_sha":"0e518c684940cd2a254cb628c353231ffff57bca","after_sha":"4c5407665a7ebfa18a1e38320e1cc8b1986b29e5","before_mode":"100644","after_mode":"100644"},
     {"path":"scripts/r7-v12-epoch-audit.py","operation":"MODIFY","before_sha":"fd2c31f8b1c26f0ca57acc66a0fbdca5896001de","after_sha":"aa350205f5820399564285f19650f63e1e4dc7f6","before_mode":"100644","after_mode":"100644"},
     {"path":"scripts/repository-health-v10.mjs","operation":"MODIFY","before_sha":"a3ac1c3ffac2b400b9b7d66ef991ff957ee6672f","after_sha":"94d229b7d19e6a560223717f1721a680b8eb3097","before_mode":"100644","after_mode":"100644"},
@@ -63,7 +63,7 @@
     {"path":"scripts/v5b-repository-governance-audit.mjs","operation":"MODIFY","before_sha":"62fed4fe253843f2a9ebbdc789a32a73c1d3de76","after_sha":"01e0277cd9cac22f4a16e8851fdef14dce1a3b4a","before_mode":"100644","after_mode":"100644"},
     {"path":"tests/c139-epistemic-edu-v2.test.mjs","operation":"MODIFY","before_sha":"030cd7cd84b055b73145ba7fb8b820861d542ba1","after_sha":"51b6bf90a5b4de0c49f7e10b065bb93ed5c72271","before_mode":"100644","after_mode":"100644"},
     {"path":"tests/ci-failure-annotations.test.mjs","operation":"MODIFY","before_sha":"bd2aa260da5cb752868a5ebee3776d8f08b0bb08","after_sha":"92345a3774b786dfc29bab253ce628121d3486df","before_mode":"100644","after_mode":"100644"},
-    {"path":"tests/pr251-forensic-hypergraph.test.mjs","operation":"ADD","before_sha":null,"after_sha":"1d7aeb2e0949e700792263b29415a0aa1a6746fd","before_mode":null,"after_mode":"100644"},
+    {"path":"tests/pr251-forensic-hypergraph.test.mjs","operation":"ADD","before_sha":null,"after_sha":"fc5961258228b6e76978ad0a6a6b0f8173f8cefc","before_mode":null,"after_mode":"100644"},
     {"path":"tests/r7-v12-epoch-audit.test.mjs","operation":"MODIFY","before_sha":"1a808ffbdfb913d0f22d20e65b1106677fa812c4","after_sha":"2096b2e82239669707e3f23593c7e9b56c9fcc0e","before_mode":"100644","after_mode":"100644"},
     {"path":"tests/repository-health-v10.test.mjs","operation":"MODIFY","before_sha":"67c6230d8ba74b4aff7fd642803c09467b3b819c","after_sha":"a41287dd4c71fab11e3a37dc5bd4a1916c0c2faf","before_mode":"100644","after_mode":"100644"},
     {"path":"tests/v5b-repository-governance.test.mjs","operation":"MODIFY","before_sha":"85d40a1fbfb7f8135d2d115e8d7d99ad9cd3760c","after_sha":"69bb9528bdef46f2d25b40e6c9b069fb9c91a396","before_mode":"100644","after_mode":"100644"}

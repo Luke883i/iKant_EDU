@@ -237,13 +237,19 @@ jobs:
             x=json.loads(p.read_text(encoding='utf8'))
             src=x.get('source_status','UNKNOWN')
             suite=x.get('source_process',{}).get('status','UNKNOWN')
+            blocked=[r.get('method','?') for r in x.get('source_process',{}).get('results',[])
+                     if r.get('status')=='DEBT_BLOCKED']
           else:
-            src,suite='REPORT_NOT_WRITTEN','UNKNOWN'
+            src,suite,blocked='REPORT_NOT_WRITTEN','UNKNOWN',['REPORT_NOT_WRITTEN']
           with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf8') as f:
             f.write('source_status='+str(src)+'\n')
             f.write('source_process='+str(suite)+'\n')
+            f.write('blocked_methods='+','.join(blocked)[:140]+'\n')
           PY
           exit "$result"
+      - name: "CORA blocked methods [${{ steps.cora_portable.outputs.blocked_methods }}]"
+        if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' }}
+        run: echo "Source-only debt diagnostic, does not change the failing result"
       - name: "CORA observed status [${{ steps.cora_portable.outputs.source_status }}] process [${{ steps.cora_portable.outputs.source_process }}]"
         if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' }}
         run: echo "Diagnostic only; original independent source result is unchanged"

@@ -50,27 +50,30 @@ export function deriveHypergraph(c,audit){
   roots:['ikant.mjs','package.json'],external_consumers:'UNKNOWN',
   product_go:false,global_minimum_certified:false};
 }
-/** Original V10 live-source retention is a HARD hyperedge, not a soft score.
- * This is a historical source constraint. A future independently approved
- * successor could replace it; the PR251 source register alone cannot.
+/** Legacy V12 demanded physical retention. It is NOT a functional lower bound.
+ * Keep original SHA history and fail closed on missing consumer/behavior evidence.
+ * This routine never grants deletion or product authority.
  */
-export function historicRetentionCut(c,audit,originalPaths){
+export function assessHistoricalRetirements(c,audit,originalPaths){
  if(!validateDod(c)||!Array.isArray(audit?.consumer_index)||!Array.isArray(originalPaths))
   throw Error('INVALID_HISTORICAL_SUPERGRAPH');
  const plan=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/r7-v11-seven-root-contract.json'),'utf8'));
- const present=new Set(audit.consumer_index.map(x=>x.path));
- const required=new Set();
+ const present=new Set(audit.consumer_index.map(x=>x.path)),required=new Set(),missing=[];
  for(const old of originalPaths){
   const mapped=mapR7SourcePath(old,plan);
   if(!mapped||required.has(mapped))throw Error('HISTORIC_SOURCE_MAP_NOT_BIJECTIVE');
   required.add(mapped);
+  if(!present.has(mapped))missing.push({source:old,path:mapped,
+   status:'EVIDENCE_BLOCKED',proof_obligations:['recoverable_preimage','live_consumer_closure',
+    'dynamic_and_external_consumer_closure','effects_and_authority_equivalence',
+    'same_head_native_regression','independent_owner_review']});
  }
- const missing=[...required].filter(p=>!present.has(p)).sort();
- return {historical_required:required.size,live_absent:missing,
-  minimum_file_lower_bound_under_original_retention:required.size,
-  blocked_current_cut:missing.length>0,locked_paths:required,
-  exact_owner_and_external_equivalence:'NOT_ATTESTED',
-  eligible_for_source_only_retirement:false};
+ missing.sort((a,b)=>a.path.localeCompare(b.path,'en'));
+ return {historic_source_paths:required.size,retirement_candidates:missing,
+  legacy_v12_physical_retention:missing.length?'REFUTED':'SATISFIED',
+  historic_source_is_not_runtime_minimum:true,
+  missing_proof_blocks_retirement:true,
+  product_go:false,behavioral_equivalence:'NOT_ATTESTED'};
 }
 function historicalGitPaths(){
  const tree=execFileSync('git',['rev-parse',HISTORIC+'^{tree}'],{cwd:ROOT,encoding:'utf8'}).trim();
@@ -111,21 +114,25 @@ export function observe(){
  const c=JSON.parse(fs.readFileSync(path.join(ROOT,DOD),'utf8'));
  const {audit,census}=observeReticularCensusWithAudit(),epoch=qualifyPr251SourceEpoch();
  const graph=deriveHypergraph(c,audit),registry=JSON.parse(fs.readFileSync(path.join(ROOT,c.source_delta),'utf8'));
- const retention=historicRetentionCut(c,audit,historicalGitPaths());
+ const retention=assessHistoricalRetirements(c,audit,historicalGitPaths());
  const imported=new Set(graph.edges.map(x=>x.to));
  const possible=audit.consumer_index.filter(x=>x.path.startsWith('scripts/')&&
   /\.(?:mjs|js|sh|py)$/.test(x.path)&&!imported.has(x.path));
  const frontier=possible.slice(0,16).map(x=>x.path);
  const sizes=Object.fromEntries(frontier.map(p=>[p,fs.statSync(path.join(ROOT,p)).size]));
- const cut=exactBoundedCut({...graph,sizes,locked_paths:[...retention.locked_paths]},frontier);
+ // Source-only optimization is hypothesis generation; no original file is auto-approved.
+ const cut=exactBoundedCut({...graph,sizes,locked_paths:[
+  'host/c72-public-mode-admission.mjs','host/c135-edu-v2-owner.mjs',
+  'host/c87-durable-ledger.mjs','host/c125-output-port.mjs']},frontier);
  return {schema:'ikant-pr251-typed-census/v2',source_status:audit.status,
   census_observed:census.ok===true,exact_source_epoch:epoch.ok===true,
   source_files:audit.checked_files,obligations:graph.nodes.length,
   hyperedges:graph.hyperedges.length,static_edges:graph.edges.length,
   dynamic_sites:graph.dynamic_sites,retired_paths:registry.paths.filter(x=>x.operation==='REMOVE').length,
-  frontier_candidates:possible.length,cut,source_lock:{required:retention.historical_required,
-  live_absent:retention.live_absent,under_original_contract_minimum_files:retention.minimum_file_lower_bound_under_original_retention,
-  blocked:retention.blocked_current_cut},global_dod:'HOLD',product_go:false,
+  frontier_candidates:possible.length,cut,source_retirement:{historical_paths:retention.historic_source_paths,
+  missing:retention.retirement_candidates,legacy_v12:retention.legacy_v12_physical_retention,
+  behavioral_equivalence:retention.behavioral_equivalence,
+  proof_blocked:retention.missing_proof_blocks_retirement},global_dod:'HOLD',product_go:false,
   external_consumers:'UNKNOWN'};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){

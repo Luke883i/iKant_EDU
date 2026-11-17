@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {validateDod,deriveHypergraph,exactBoundedCut,historicRetentionCut,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
+import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const c=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json')));
 test('PR251 retrograde 35 DoD nodes, 10 typed AND gates, no authority',()=>{
@@ -44,13 +44,17 @@ test('original V5-B/CORA source witness remains source-only; PR251 exact epoch i
  assert.equal(r.external_consumers,'UNKNOWN');
 });
 
-test('supergraph hard-retention edge refuses any current deletion of original V10 sources',()=>{
- const audit={consumer_index:[{path:'a'},{path:'b'}]};
- // Synthetic paths do not map against a fabricated policy; real Git V10 is the oracle.
- const current=observe();
- assert.equal(current.source_lock.required,1630);
- assert.equal(current.source_lock.under_original_contract_minimum_files,1630);
- assert.equal(current.source_lock.blocked,true);
- assert.equal(current.source_lock.live_absent.length,25);
- assert.equal(current.product_go,false);
+test('V10 historical archive is NOT a runtime file floor; missing retirement proofs stay blocked',()=>{
+ const now=observe();
+ assert.equal(now.source_retirement.historical_paths,1630);
+ assert.equal(now.source_retirement.missing.length,25);
+ assert.equal(now.source_retirement.legacy_v12,'REFUTED');
+ assert.equal(now.source_retirement.proof_blocked,true);
+ assert.equal(now.source_retirement.behavioral_equivalence,'NOT_ATTESTED');
+ assert.equal(now.product_go,false);
+ const probe=assessHistoricalRetirements(c,{consumer_index:[]},['scripts/c1-run.mjs']);
+ assert.equal(probe.retirement_candidates.length,1);
+ assert.equal(probe.retirement_candidates[0].status,'EVIDENCE_BLOCKED');
+ assert.ok(probe.retirement_candidates[0].proof_obligations.includes('same_head_native_regression'));
+ assert.equal(probe.historic_source_is_not_runtime_minimum,true);
 });

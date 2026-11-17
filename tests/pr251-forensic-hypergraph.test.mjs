@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
 import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const c=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json')));
@@ -40,6 +41,8 @@ test('original V5-B/CORA source witness remains source-only; PR251 exact epoch i
  const r=observe();
  assert.equal(r.exact_source_epoch,true,JSON.stringify(r));
  assert.equal(r.retired_paths,25);assert.equal(r.obligations,35);
+ assert.equal(r.head,execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim());
+ assert.equal(r.tree,execFileSync('git',['rev-parse','HEAD^{tree}'],{cwd:root,encoding:'utf8'}).trim());
  assert.equal(r.global_dod,'HOLD');assert.equal(r.product_go,false);
  assert.equal(r.external_consumers,'UNKNOWN');
 });

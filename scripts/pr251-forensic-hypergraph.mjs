@@ -140,7 +140,9 @@ export function observe(){
  const cut=exactBoundedCut({...graph,sizes,locked_paths:[
   'host/c72-public-mode-admission.mjs','host/c135-edu-v2-owner.mjs',
   'host/c87-durable-ledger.mjs','host/c125-output-port.mjs']},frontier);
- return {schema:'ikant-pr251-typed-census/v2',source_status:audit.status,
+ const exactHead=execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim();
+ const exactTree=execFileSync('git',['rev-parse','HEAD^{tree}'],{cwd:ROOT,encoding:'utf8'}).trim();
+ return {schema:'ikant-pr251-typed-census/v2',head:exactHead,tree:exactTree,source_status:audit.status,
   census_observed:census.ok===true,exact_source_epoch:epoch.ok===true,
   source_files:audit.checked_files,obligations:graph.nodes.length,
   hyperedges:graph.hyperedges.length,static_edges:graph.edges.length,

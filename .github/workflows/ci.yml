@@ -23,6 +23,21 @@ jobs:
         run: |
           set -o pipefail
           npm test 2>&1 | tee "$RUNNER_TEMP/ikant-ci-tests.log"
+      - name: PR251 typed hypergraph witness (source only, not release)
+        if: ${{ !cancelled() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        shell: bash
+        run: |
+          set -o pipefail
+          node scripts/pr251-forensic-hypergraph.mjs > "$RUNNER_TEMP/pr251-source-hypergraph.json"
+          node -e "const r=require(process.argv[1]);if(r.global_dod!=='HOLD'||r.product_go!==false||!r.head||!r.tree)process.exit(1)" "$RUNNER_TEMP/pr251-source-hypergraph.json"
+      - name: Preserve HEAD-bound PR251 source witness
+        if: ${{ always() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr251-hypergraph-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/pr251-source-hypergraph.json
+          if-no-files-found: error
+          retention-days: 14
       - name: Contract and lifecycle check
         if: ${{ !cancelled() }}
         shell: bash

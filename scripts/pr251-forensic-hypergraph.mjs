@@ -59,20 +59,36 @@ export function assessHistoricalRetirements(c,audit,originalPaths){
   throw Error('INVALID_HISTORICAL_SUPERGRAPH');
  const plan=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/r7-v11-seven-root-contract.json'),'utf8'));
  const present=new Set(audit.consumer_index.map(x=>x.path)),required=new Set(),missing=[];
+ const registry=JSON.parse(fs.readFileSync(path.join(ROOT,c.source_delta),'utf8'));
+ const retirements=new Map(registry.paths.filter(x=>x.operation==='REMOVE').map(x=>[x.path,x]));
+ const unresolved=audit.dependency_probe?.unresolved_relative_imports||[];
  for(const old of originalPaths){
   const mapped=mapR7SourcePath(old,plan);
   if(!mapped||required.has(mapped))throw Error('HISTORIC_SOURCE_MAP_NOT_BIJECTIVE');
   required.add(mapped);
-  if(!present.has(mapped))missing.push({source:old,path:mapped,
-   status:'EVIDENCE_BLOCKED',proof_obligations:['recoverable_preimage','live_consumer_closure',
-    'dynamic_and_external_consumer_closure','effects_and_authority_equivalence',
-    'same_head_native_regression','independent_owner_review']});
+  if(!present.has(mapped)){
+   const row=retirements.get(mapped);
+   if(!row||!(/^[a-f0-9]{40}$/).test(row.before_sha||'')||
+      row.after_sha!==null||!['100644','100755'].includes(row.before_mode))
+     throw Error('UNREGISTERED_HISTORIC_RETIREMENT:'+mapped);
+   const expected=execFileSync('git',['rev-parse',c.source_main+':'+mapped],
+    {cwd:ROOT,encoding:'utf8'}).trim();
+   if(expected!==row.before_sha||
+      execFileSync('git',['cat-file','-t',expected],{cwd:ROOT,encoding:'utf8'}).trim()!=='blob')
+     throw Error('RETIRED_PREIMAGE_SHA_INVALID:'+mapped);
+   const known=unresolved.filter(e=>e.target===mapped).map(e=>e.from).sort();
+   missing.push({source:old,path:mapped,preimage_sha:expected,
+    preimage_proof:'GIT_OBJECT_PIN_VERIFIED',known_unresolved_static_consumers:known,
+    status:known.length?'KNOWN_CONSUMER_BLOCKED':'EVIDENCE_BLOCKED',
+    proof_obligations:['live_consumer_closure','dynamic_and_external_consumer_closure',
+     'effects_and_authority_equivalence','same_head_native_regression','independent_owner_review']});
+  }
  }
  missing.sort((a,b)=>a.path.localeCompare(b.path,'en'));
  return {historic_source_paths:required.size,retirement_candidates:missing,
   legacy_v12_physical_retention:missing.length?'REFUTED':'SATISFIED',
   historic_source_is_not_runtime_minimum:true,
-  missing_proof_blocks_retirement:true,
+  missing_proof_blocks_retirement:missing.length>0,
   product_go:false,behavioral_equivalence:'NOT_ATTESTED'};
 }
 function historicalGitPaths(){

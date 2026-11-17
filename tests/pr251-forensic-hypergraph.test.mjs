@@ -48,13 +48,17 @@ test('V10 historical archive is NOT a runtime file floor; missing retirement pro
  const now=observe();
  assert.equal(now.source_retirement.historical_paths,1630);
  assert.equal(now.source_retirement.missing.length,25);
+ assert.ok(now.source_retirement.missing.every(r=>r.preimage_proof==='GIT_OBJECT_PIN_VERIFIED'));
+ assert.ok(now.source_retirement.missing.every(r=>r.status==='EVIDENCE_BLOCKED'||r.status==='KNOWN_CONSUMER_BLOCKED'));
+ assert.equal(new Set(now.source_retirement.missing.map(r=>r.preimage_sha)).size,25);
  assert.equal(now.source_retirement.legacy_v12,'REFUTED');
  assert.equal(now.source_retirement.proof_blocked,true);
  assert.equal(now.source_retirement.behavioral_equivalence,'NOT_ATTESTED');
  assert.equal(now.product_go,false);
  const probe=assessHistoricalRetirements(c,{consumer_index:[]},['scripts/c1-run.mjs']);
  assert.equal(probe.retirement_candidates.length,1);
- assert.equal(probe.retirement_candidates[0].status,'EVIDENCE_BLOCKED');
+ assert.equal(probe.retirement_candidates[0].preimage_proof,'GIT_OBJECT_PIN_VERIFIED');
+ assert.ok(['EVIDENCE_BLOCKED','KNOWN_CONSUMER_BLOCKED'].includes(probe.retirement_candidates[0].status));
  assert.ok(probe.retirement_candidates[0].proof_obligations.includes('same_head_native_regression'));
  assert.equal(probe.historic_source_is_not_runtime_minimum,true);
 });

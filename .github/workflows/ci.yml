@@ -39,7 +39,7 @@ jobs:
           msg=matches[0] if matches else "NONE"
           msg=re.sub(r"[^A-Za-z0-9_.: -]","_",msg)[:130]
           with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf8") as f:
-            f.write("source_error="+msg+"\\n")
+            f.write("source_error="+msg+"\n")
           PY
           if [ "$code" -ne 0 ]; then exit "$code"; fi
           node -e 'const r=require(process.argv[1]).total_source_supergraph;for(const [k,v] of Object.entries({files:r.files,relations:r.relation_count,cold_docs:r.cold_documentary_count,cold_bytes:r.cold_documentary_bytes,product:r.product_first_solution.product_observed_closure.files,union:r.product_first_solution.combined_observed_closure.files}))console.log(k+"="+v)' "$RUNNER_TEMP/pr251-source-hypergraph.json" >> "$GITHUB_OUTPUT"

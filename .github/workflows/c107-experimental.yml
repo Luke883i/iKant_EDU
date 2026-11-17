@@ -4,6 +4,8 @@ on:
     paths:
       - 'host/c107-*'
       - 'scripts/c107-*'
+      - 'host/versioned-edu-turn-core.mjs'
+      - 'host/c107-edu-v2-turn.mjs'
       - 'tests/c107-*'
       - 'contracts/c107-*'
       - '.github/workflows/c107-experimental.yml'

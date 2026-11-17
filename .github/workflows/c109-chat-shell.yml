@@ -7,6 +7,8 @@ on:
       - 'contracts/c109-*'
       - 'tests/c109-*'
       - 'scripts/c107-pack.mjs'
+      - 'host/versioned-edu-turn-core.mjs'
+      - 'host/c107-edu-v2-turn.mjs'
       - '.github/workflows/c109-chat-shell.yml'
   workflow_dispatch:
 permissions:

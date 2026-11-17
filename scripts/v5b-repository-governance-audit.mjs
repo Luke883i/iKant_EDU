@@ -469,6 +469,61 @@ export function qualifyPr249SourceEpoch(){
  }catch(ex){return fail('PR249_SOURCE_UNREADABLE:'+String(ex).slice(0,140));}
 }
 
+
+/** PR251: non-compensatory, HEAD-exact post-PR250 source epoch.
+ * This does not edit historic V5-B receipts or promote owner/provider proof.
+ * Circular SHA problem: self manifest is constrained by path+schema+exact delta,
+ * while its own Git SHA is intentionally not claimed inside the same blob.
+ */
+export function qualifyPr251SourceEpoch(){
+ const fail=edge=>({ok:false,edge,authority:0,product_go:false,review:'NOT_ATTESTED'});
+ const self='contracts/governance/changes/pr251-source-successor.json';
+ try{
+  const doc=json(self);
+  const base='e270c6e2cc772f960126eecea9f50501339e3656';
+  if(doc?.schema!=='ikant-pr251-git-source-successor/v1'||doc.self_path!==self||
+     doc.source_main!==base||doc.source_tree!=='c4a0ce6315696107482198b03cbdc489968287f6'||
+     doc.authority!==0||doc.product_go!==false||doc.release!=='HOLD'||
+     doc.human_review_attested!==false||doc.provider_attested!==false||
+     doc.external_consumers_resolved!==false||doc.historical_pins_modified!==false||
+     !Array.isArray(doc.paths))return fail('PR251_SOURCE_MANIFEST_AUTHORITY_OR_BASE');
+  if(git('rev-parse',base+'^{tree}')!==doc.source_tree)return fail('PR251_BASE_TREE_MISMATCH');
+  git('merge-base','--is-ancestor',base,'HEAD');
+  function listing(rev){
+   const entries=execFileSync('git',['ls-tree','-r','-z',rev],{cwd:ROOT,maxBuffer:64_000_000}).toString('utf8').split('\0').filter(Boolean);
+   const result=new Map();
+   for(const row of entries){
+    const m=/^(100644|100755) blob ([a-f0-9]{40})\t(.+)$/u.exec(row);
+    if(!m||result.has(m[3]))return null;
+    result.set(m[3],{mode:m[1],sha:m[2]});
+   }
+   return result;
+  }
+  const prior=listing(base),current=listing('HEAD');
+  if(!prior||!current||prior.size!==1645)return fail('PR251_BASE_INDEX_INCOMPLETE');
+  const delta=[];
+  for(const name of [...new Set([...prior.keys(),...current.keys()])].sort()){
+   const before=prior.get(name)||null,after=current.get(name)||null;
+   if(before?.sha===after?.sha&&before?.mode===after?.mode)continue;
+   delta.push({path:name,operation:!before?'ADD':!after?'REMOVE':'MODIFY',
+    before_sha:before?.sha||null,after_sha:name===self?null:after?.sha||null,
+    before_mode:before?.mode||null,after_mode:after?.mode||null});
+  }
+  if(delta.length!==doc.paths.length||JSON.stringify(doc.paths)!==JSON.stringify(delta))
+    return fail('PR251_SOURCE_DELTA_NOT_EXACT');
+  if(delta.filter(x=>x.path===self&&x.operation==='ADD').length!==1)
+    return fail('PR251_MANIFEST_SELF_INCORRECT');
+  for(const name of prior.keys())if(name.startsWith('contracts/governance/')&&
+    name!==self&&current.get(name)?.sha!==prior.get(name)?.sha)
+    return fail('PR251_HISTORICAL_GOVERNANCE_DRIFT:'+name);
+  return {ok:true,status:'PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED',
+   source_main:base,source_count:prior.size,current_count:current.size,
+   exact_changed_paths:delta.length,retired_files:delta.filter(x=>x.operation==='REMOVE').length,
+   source_sha_verified:true,review:'NOT_ATTESTED',provider:'NOT_ATTESTED',
+   external:'UNKNOWN',authority:0,product_go:false};
+ }catch(e){return fail('PR251_EPOCH_UNREADABLE:'+String(e).slice(0,120));}
+}
+
 export function auditRepository(){
  const base=json(INVENTORY),changes=json(REGISTER),retention=json('contracts/v1-workflow-retention.json');
  const contract=json(DOD),errors=[];
@@ -583,7 +638,9 @@ export function auditRepository(){
  // path/mode deltas uniquely explained by the pinned V10->V12->V13 lineage.
  // Retain the legacy error evidence separately so the projection is auditable.
  const historicalProjection=qualifyV13V5BEpochProjection();
- const scoped=historicalProjection.ok?historicalProjection:qualifyPr249SourceEpoch();
+ const pr251ManifestPresent=fs.existsSync(path.join(ROOT,'contracts/governance/changes/pr251-source-successor.json'));
+ const scoped=pr251ManifestPresent?qualifyPr251SourceEpoch():
+  (historicalProjection.ok?historicalProjection:qualifyPr249SourceEpoch());
  if(scoped.ok&&errors.every(x=>/^(?:UNREGISTERED_MODIFICATION|UNREGISTERED_ADDITION|UNREGISTERED_DELETION|DECLARED_BUT_ABSENT):/.test(x))){
   audit.original_epoch_errors=errors;
   audit.source_epoch_projection=scoped;

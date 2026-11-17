@@ -500,7 +500,7 @@ export function qualifyPr250SourceEpoch(){
    }return out;
   };
   const before=tree(PR250_SOURCE_BASE),after=tree('HEAD');
-  if(!before||!after||before.size!==1645||after.size!==1635)
+  if(!before||!after||before.size!==1645||after.size!==1621)
    return fail('PR250_SOURCE_DENOMINATOR');
   const delta=new Map();
   for(const [path,row] of before){
@@ -530,9 +530,13 @@ export function qualifyPr250SourceEpoch(){
    if(path===PR250_REGISTER&&
       (row.operation!=='ADD'||row.after_sha!==null||now?.mode!=='100644'))
     return fail('PR250_MANIFEST_SELF_REFERENCE');
-   if(row.operation==='REMOVE')deletes++;
+   if(row.operation==='REMOVE'){
+    // A retired source cannot silently reappear as an untracked executable.
+    if(fs.existsSync(ROOT+"/"+path))return fail('PR250_RETIRED_FILE_RESURRECTED:'+path);
+    deletes++;
+   }
   }
-  if(deletes!==11||seen.size!==delta.size)return fail('PR250_DELETION_SET');
+  if(deletes!==25||seen.size!==delta.size)return fail('PR250_DELETION_SET');
   for(const protectedPath of [
    'host/c72-public-mode-admission.mjs','host/c87-durable-ledger.mjs',
    'host/c107-edu-v2-turn.mjs','host/c139-epistemic-policy.mjs',

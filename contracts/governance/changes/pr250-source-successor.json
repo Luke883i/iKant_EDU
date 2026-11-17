@@ -11,7 +11,7 @@
   "external_consumers_resolved": false,
   "legacy_v5b_pins_immutable": true,
   "release": "HOLD",
-  "notes": "Historic V5-B errors remain in original_epoch_errors. This manifest is a candidate source-epoch proposal only; it cannot confer owner sign-off or release.",
+  "notes": "Historic V5-B errors remain in original_epoch_errors. This manifest is a candidate source-epoch proposal only; it cannot confer owner sign-off or release. 2026-11-17 next local closed-world slice: 14 historical-only island scripts retired; 14 originals remain in the genuine main Git history. External/manual consumers are NOT attested absent. Retired path physical-absence and source-only non-authorization tests added for the 25 deletions.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -154,6 +154,106 @@
       "human_review": "REVIEW_REQUIRED"
     },
     {
+      "path": "scripts/c1-combine.mjs",
+      "operation": "REMOVE",
+      "before_sha": "0ea01b536d3adb045f1a23804429c4e17940ee28",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c1-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "355db474c4f2c9bc0725c28e364a39cdc8ed0d46",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c2-combine.mjs",
+      "operation": "REMOVE",
+      "before_sha": "965eabfbc4285f7df5b53223d8ac7e9f6b230040",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c2-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "ff842d58bb5e074b6957e9f389264bb02ddf4db8",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c2-run.mjs",
+      "operation": "REMOVE",
+      "before_sha": "434fab0ea628e0a893d2c603cc19122d077e0cdc",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c3-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "3d68ded721f5c83f33405a390efb02715c7d164e",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c4-combine.mjs",
+      "operation": "REMOVE",
+      "before_sha": "b585159bdf1bde5dfc3d58324b73f50870e7bab7",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c4-run.mjs",
+      "operation": "REMOVE",
+      "before_sha": "8599e83c5f833cd97658c931ac267fff7f07e7c6",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c4-runtime-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "766c389037973f1bc804f0c5a2788c978c0186b7",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c4-session-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "87682c5f61748e849f68b7b6ea1ed703ce1be8d1",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
       "path": "scripts/c59-composition-falsify.mjs",
       "operation": "REMOVE",
       "before_sha": "36bf0d7d95ff0ae90a3326c18be7dc5c48e06e53",
@@ -214,6 +314,46 @@
       "human_review": "REVIEW_REQUIRED"
     },
     {
+      "path": "scripts/c94-derivative-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "11d85d9a3194b8b4db7734851baa9ab33e782e83",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c94-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "8a46c8dc0943c3094c8bb18ca17542e1b4c973b9",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c94-qualify.sh",
+      "operation": "REMOVE",
+      "before_sha": "62a1f5eba6c140f65fad89a93e1800ea1cb2e1e9",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "scripts/c94-targeted-attack.mjs",
+      "operation": "REMOVE",
+      "before_sha": "3177e31ef8350b7dacfa0b62f1ec3dcca3be2d11",
+      "before_mode": "100644",
+      "after_sha": null,
+      "after_mode": null,
+      "reason": "Retire historical closed-world qualification-island CLI with zero identified active literal consumer; original Git blob remains preserved. External/manual consumers not established; owner review required.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
       "path": "scripts/c95-falsify.mjs",
       "operation": "REMOVE",
       "before_sha": "7778775faf8a2fbcc5708e29f8a1a6a27fabb90f",
@@ -268,7 +408,7 @@
       "operation": "MODIFY",
       "before_sha": "62fed4fe253843f2a9ebbdc789a32a73c1d3de76",
       "before_mode": "100644",
-      "after_sha": "97fae57b230f9f54f0e1c6aceebd0247da5c5bb0",
+      "after_sha": "ae104ce2338aa0f9fa3a5643946009b04e43f7fd",
       "after_mode": "100644",
       "reason": "Preserve repository packaging closure and source-indexed candidate successor audit as technical evidence.",
       "human_review": "REVIEW_REQUIRED"
@@ -281,6 +421,16 @@
       "after_sha": "51b6bf90a5b4de0c49f7e10b065bb93ed5c72271",
       "after_mode": "100644",
       "reason": "Exercise exact first-unclosed-edge and zero-write negative controls for bounded EDU routes.",
+      "human_review": "REVIEW_REQUIRED"
+    },
+    {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "operation": "MODIFY",
+      "before_sha": "85d40a1fbfb7f8135d2d115e8d7d99ad9cd3760c",
+      "before_mode": "100644",
+      "after_sha": "47ebb0896b8c1a22aa56e83b7ca89f10ff3a71a5",
+      "after_mode": "100644",
+      "reason": "Add no-authority source-successor and physical retired-path checks without weakening original historical test oracles.",
       "human_review": "REVIEW_REQUIRED"
     }
   ]

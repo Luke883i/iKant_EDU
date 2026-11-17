@@ -3,7 +3,7 @@ import crypto from 'node:crypto';
 const requireIndependentSha=bytes=>crypto.createHash('sha1').update('blob '+bytes.length+String.fromCharCode(0)).update(bytes).digest('hex');
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession,gitBlobSha1,qualifyRegisteredC72SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
+import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession,gitBlobSha1,qualifyRegisteredC72SourceEpoch,qualifyPr250SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 
 test('canonical Git hash helper is byte-accurate for UTF-8 and binary, reject object coercion',()=>{
  const cryptoSha=bytes=>{
@@ -177,4 +177,18 @@ test('prospective C72 source-epoch register is exact, cannot upgrade prior recei
  assert.equal(run(base,current,'f'.repeat(40)).ok,false);
  assert.equal(qualifyRegisteredC72SourceEpoch({path:'host/c135-edu-v2-owner.mjs',historicalBlobSha1:old,observedBlobSha1:current,registration:base}).ok,false);
  const unchanged=run(base,old);assert.equal(unchanged.ok,true);assert.equal(unchanged.amended,false);
+});
+
+// Qualification is about exact source topology, not review, consent or release.
+test('PR250 source successor preserves all 25 retired paths and denies authority',{skip:process.env.V5B_SKIP_LIVE==='1'},()=>{
+ const r=qualifyPr250SourceEpoch();
+ assert.equal(r.ok,true,JSON.stringify(r));
+ assert.equal(r.source_count,1621);
+ assert.equal(r.delta_count,42);
+ assert.equal(r.removed_scripts,25);
+ assert.equal(r.authority,0);
+ assert.equal(r.product_go,false);
+ assert.equal(r.external_consumer_proof,false);
+ assert.equal(r.owner_review,'NOT_ATTESTED');
+ assert.equal(r.provider_checks,'NOT_ATTESTED');
 });

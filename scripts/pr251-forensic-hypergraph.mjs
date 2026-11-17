@@ -141,7 +141,7 @@ export function buildTotalSupergraph(audit,{root=ROOT,treeText=null,read=null}={
  }).sort((a,b)=>a.path.localeCompare(b.path,'en'));
  const paths=new Map(rows.map(x=>[x.path,x]));if(paths.size!==rows.length)throw Error('DUPLICATE_FULL_TREE_PATH');
  const refs=new Map(rows.map(x=>[x.path,[]])),incoming=new Map(rows.map(x=>[x.path,[]]));
- const readBytes=read??(p=>fs.readFileSync(path.join(root,p)));
+ const readBytes=read??(p=>execFileSync('git',['cat-file','blob',paths.get(p).sha],{cwd:root,maxBuffer:Math.max(1024*1024,paths.get(p).bytes+1024)}));
  const textExt=/\.(?:mjs|cjs|js|ts|mts|py|sh|c|md|txt|json|yml|yaml|html|css|csv|tsv|svg)$/i;
  const docs=p=>p.startsWith('project/docs/');
  const essential=new Set(['README.md','AGENTS.md','TERMS.md','ADMISSION.json','BOOTSTRAP.json',

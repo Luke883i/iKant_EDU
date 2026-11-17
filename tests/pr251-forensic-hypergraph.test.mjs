@@ -76,7 +76,8 @@ test('complete typed source census hashes every blob and does not promote unknow
   read:p=>Buffer.from(p==='src/a.mjs'?'import "./b.mjs";':'export const b=1;')
  });
  assert.equal(r.files,2);assert.equal(r.git_sha_errors,0);
- assert.equal(r.relation_count,1);assert.equal(r.product_go,false);
+ assert.equal(r.relation_count,2);assert.equal(r.product_go,false);
+ assert.deepEqual(new Set(r.relations.map(x=>x.type)),new Set(['STATIC_IMPORT','SOURCE_LITERAL']));
  assert.equal(r.global_minimum_certified,false);
  assert.equal(r.semantic_inventory.length,2);
 });

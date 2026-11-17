@@ -217,17 +217,37 @@ jobs:
           path.write_text(json.dumps(profile,sort_keys=True,indent=2)+'\n',encoding='utf-8')
           PY
       - name: CORA independent portable One-Run source scope
+        id: cora_portable
         if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
         shell: bash
         run: |
-          set -euo pipefail
+          set +e
           export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
-          python3 -m cora.cli process-run . --revision HEAD --one-run --portable-profile "$RUNNER_TEMP/cora-target-profile.json" --output "$RUNNER_TEMP/cora-one-run.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html"
+          python3 -m cora.cli process-run . --revision HEAD --one-run --portable-profile "$RUNNER_TEMP/cora-target-profile.json" --output "$RUNNER_TEMP/cora-one-run.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html" > "$RUNNER_TEMP/cora-portable-stdout.log" 2>&1
+          result=$?
+          python3 - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'cora-one-run.json'
+          if p.is_file():
+            x=json.loads(p.read_text(encoding='utf8'))
+            src=x.get('source_status','UNKNOWN')
+            suite=x.get('source_process',{}).get('status','UNKNOWN')
+          else:
+            src,suite='REPORT_NOT_WRITTEN','UNKNOWN'
+          with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf8') as f:
+            f.write('source_status='+str(src)+'\n')
+            f.write('source_process='+str(suite)+'\n')
+          PY
+          exit "$result"
+      - name: "CORA observed status [${{ steps.cora_portable.outputs.source_status }}] process [${{ steps.cora_portable.outputs.source_process }}]"
+        if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' }}
+        run: echo "Diagnostic only; original independent source result is unchanged"
       - name: CORA independently verify portable source replay
-        if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
+        if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         shell: bash
         run: |
           set -euo pipefail
+          if [ ! -f "$RUNNER_TEMP/cora-one-run.json" ]; then exit 1; fi
           export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
           python3 -m cora.cli verify-process "$RUNNER_TEMP/cora-one-run.json" --repo . --one-run --portable-profile "$RUNNER_TEMP/cora-target-profile.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html" > "$RUNNER_TEMP/cora-one-run-replay.json"
       - name: Preserve independent CORA source replay and open gates
@@ -239,6 +259,7 @@ jobs:
             ${{ runner.temp }}/cora-target-profile.json
             ${{ runner.temp }}/cora-source-ledger.json
             ${{ runner.temp }}/cora-source-verify.json
+            ${{ runner.temp }}/cora-portable-stdout.log
             ${{ runner.temp }}/cora-one-run.json
             ${{ runner.temp }}/cora-one-run.html
             ${{ runner.temp }}/cora-one-run-replay.json

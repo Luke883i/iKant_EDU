@@ -542,8 +542,15 @@ export function qualifyPr250SourceEpoch(){
   }
   if([...delta.keys()].some(p=>p.startsWith('runtime-root/')||p.startsWith('project/plugins/')))
    return fail('PR250_RUNTIME_OR_MCP_BOUNDARY_CHANGED');
-  if(git('diff','--cached','--name-only')!==''||
-     git('diff','--name-only')!==''||git('ls-files','-z').split('\0').filter(Boolean).length!==after.size)
+  const dirty=git('diff','--name-only').split('\n').filter(Boolean);
+  const nonEvidenceDirty=dirty.filter(p=>{
+   try{
+    const prior=git('rev-parse','HEAD:'+p);
+    return !qualifyWorkingTreeDifference(p,prior,gitBlobSha1(read(p))).ok;
+   }catch{return true;}
+  });
+  if(git('diff','--cached','--name-only')!==''||nonEvidenceDirty.length||
+     git('ls-files','-z').split('\0').filter(Boolean).length!==after.size)
    return fail('PR250_DIRTY_OR_DIFFERENT_INDEX');
   return Object.freeze({ok:true,status:'PR250_SOURCE_ONLY_REVIEW_REQUIRED',
    original_main:PR250_SOURCE_BASE,source_count:after.size,delta_count:delta.size,

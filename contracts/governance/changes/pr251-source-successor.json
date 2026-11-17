@@ -11,7 +11,7 @@
   "external_consumers_resolved": false,
   "historical_pins_modified": false,
   "source_pr_250": {"merged":false,"retired":true,"selected_commits":6},
-  "notes": "Full source graph failure on exact HEAD is reported with raw stderr and first machine-readable failure label. Preserve nonzero GraphGate, native product status, CORA independent debt and release HOLD.",
+  "notes": "Full Graph new source gate emits specific first error as GitHub named diagnostic without turning failure into pass. Product and external closure remain unverified.",
   "paths": [
     {"path":".github/workflows/c107-carrier-consumption.yml","operation":"MODIFY","before_sha":"4e7169ef1f4e4d38bdb5e8f56a1e4dda9b8eab84","after_sha":"c8de8970a32aab680f82b6c316a39a902e79a349","before_mode":"100644","after_mode":"100644"},
     {"path":".github/workflows/c107-experimental.yml","operation":"MODIFY","before_sha":"c6d2e4bbfe1c5fab88315d405258f5b051370b3c","after_sha":"23bfdfc7bcd6715d5e747a5e1a5de62518514009","before_mode":"100644","after_mode":"100644"},
@@ -23,7 +23,7 @@
     {"path":".github/workflows/c111-host-edge.yml","operation":"MODIFY","before_sha":"8f59ea7ca6a95563da2a810d513f8bacbb7fd918","after_sha":"863ae51a3f82854d33bc75f5bcce1e96e6499724","before_mode":"100644","after_mode":"100644"},
     {"path":".github/workflows/c139-epistemic-edu.yml","operation":"MODIFY","before_sha":"7e3c1fd24a59a4d9d8aa774904d3eb31a6346a25","after_sha":"e25902a5b8e7fba1083d8da448a4a9c643aec29b","before_mode":"100644","after_mode":"100644"},
     {"path":".github/workflows/c143-cp11-prepr.yml","operation":"MODIFY","before_sha":"625622d3c30b3fbfd005e986f986c07a32db62ae","after_sha":"3e7bf54719f14c9f818b13098daca83479eba325","before_mode":"100644","after_mode":"100644"},
-    {"path":".github/workflows/ci.yml","operation":"MODIFY","before_sha":"035aad3df89b20a91a1b9641379127eaee13292f","after_sha":"d808010899349391cc08ceeb98c1b496bd17748e","before_mode":"100644","after_mode":"100644"},
+    {"path":".github/workflows/ci.yml","operation":"MODIFY","before_sha":"035aad3df89b20a91a1b9641379127eaee13292f","after_sha":"871b7a0d68a1df9c16a77052e816fdb0ecd878e0","before_mode":"100644","after_mode":"100644"},
     {"path":".github/workflows/oneshell-v1-qualification.yml","operation":"MODIFY","before_sha":"3963a7a6bbf23389d856380b4490c6b853011b31","after_sha":"72f0f1fb0279588fdf1a369bb178bb04611e4611","before_mode":"100644","after_mode":"100644"},
     {"path":"contracts/governance/changes/pr251-source-successor.json","operation":"ADD","before_sha":null,"after_sha":null,"before_mode":null,"after_mode":"100644"},
     {"path":"contracts/pr251-forensic-hypergraph-dod.json","operation":"ADD","before_sha":null,"after_sha":"4dbd904fda2a795bd02faaf094555416e5801233","before_mode":null,"after_mode":"100644"},

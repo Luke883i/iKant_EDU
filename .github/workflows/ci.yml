@@ -24,7 +24,12 @@ jobs:
         shell: bash
         run: |
           set +e
-          node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-source-hypergraph.json" 2>"$RUNNER_TEMP/pr251-graph-stderr.log"
+          if ! node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-source-hypergraph.json" 2> "$RUNNER_TEMP/pr251-source-hypergraph.stderr"; then
+            diagnosis=$(grep -m1 -E 'Error|ERR_|SyntaxError|ReferenceError|TypeError' "$RUNNER_TEMP/pr251-source-hypergraph.stderr" | tr -cd 'A-Za-z0-9_: .-' | cut -c 1-140 || true)
+            echo "source_error=${diagnosis:-CENSUS_FAILED_NO_DETAIL}" >> "$GITHUB_OUTPUT"
+            cat "$RUNNER_TEMP/pr251-source-hypergraph.stderr"
+            exit 1
+          fi 2>"$RUNNER_TEMP/pr251-graph-stderr.log"
           code=$?
           python3 - <<'PY'
           import os,pathlib,re
@@ -45,6 +50,9 @@ jobs:
       - name: "PR251 source solve [${{ steps.sg.outputs.files }} total, ${{ steps.sg.outputs.relations }} edges, P=${{ steps.sg.outputs.product }}, P+Q=${{ steps.sg.outputs.union }}, cold=${{ steps.sg.outputs.cold_docs }} docs]"
         if: ${{ !cancelled() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         run: echo "Source-level candidate budget only, no deletion is authorized"
+      - name: "PR251 census exception [${{ steps.sg.outputs.source_error }}]"
+        if: ${{ always() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        run: echo "Source-only failure retained"
       - name: Preserve HEAD-bound PR251 source witness
         if: ${{ always() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         uses: actions/upload-artifact@v4

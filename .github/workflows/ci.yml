@@ -18,11 +18,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Deterministic tests
-        shell: bash
-        run: |
-          set -o pipefail
-          npm test 2>&1 | tee "$RUNNER_TEMP/ikant-ci-tests.log"
       - name: PR251 typed hypergraph witness (source only, not release)
         id: sg
         if: ${{ !cancelled() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
@@ -43,6 +38,11 @@ jobs:
           path: ${{ runner.temp }}/pr251-source-hypergraph.json
           if-no-files-found: error
           retention-days: 14
+      - name: Deterministic tests
+        shell: bash
+        run: |
+          set -o pipefail
+          npm test 2>&1 | tee "$RUNNER_TEMP/ikant-ci-tests.log"
       - name: Contract and lifecycle check
         if: ${{ !cancelled() }}
         shell: bash

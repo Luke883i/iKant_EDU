@@ -85,16 +85,13 @@ export function executeVersionedEduTurn(mode,{ledgerFile,nonce,request,priorMess
   if(expectedC124ChannelSha256!==t.language_channel_sha256)
    return deny('C124_PREWRITE_CHANNEL_DRIFT');
   const sourceRoot=fileURLToPath(new URL('..',import.meta.url));
-  // Candidate policy includes its original route check; a missing draft still
-  // receives the original route-specific denial before HOST_LANGUAGE_REQUIRED.
-  const policy=c143?{plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot}:
-   {episode:t,humanInput:x.humanInput};
-  const hasDraft=!!x.modelCandidate;
+  // Candidate verification already invokes the original route policy.
+  const policy=c143?{plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot}:{episode:t,humanInput:x.humanInput};
   const review=c143?
-   (hasDraft?qualifyC143Candidate({...policy,text:x.modelCandidate.text}):qualifyC143RestrictedRoute(policy)):
-   (hasDraft?qualifyC139EpistemicCandidate({...policy,text:x.modelCandidate.text}):qualifyC139EpistemicRoute(policy));
+   (x.modelCandidate?qualifyC143Candidate({...policy,text:x.modelCandidate.text}):qualifyC143RestrictedRoute(policy)):
+   (x.modelCandidate?qualifyC139EpistemicCandidate({...policy,text:x.modelCandidate.text}):qualifyC139EpistemicRoute(policy));
   if(!review.allowed)return deny(review.reason);
-  if(!hasDraft)return deny(prefix+'_HOST_LANGUAGE_REQUIRED');
+  if(!x.modelCandidate)return deny(prefix+'_HOST_LANGUAGE_REQUIRED');
   const voice=x.modelCandidate.text;
   const plan=prepareC100CohostDraft({sourceHead:head,selection:x.selection,humanInput:x.humanInput,optIn:true});
   const bound=finalizeC100CohostDraft({plan,planSha256:plan.plan_sha256,modelText:voice});

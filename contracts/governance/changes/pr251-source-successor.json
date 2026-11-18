@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "PR252 strict exact Git source successor. CORA portable v3 source manifest adapter is a separate unmerged source PR #81; source-qualifying paths under contracts do not imply product authority. 85 exact deltas; G0 HOLD until original suite/independent CI+owner/provider.",
+  "notes": "PR252 anchored to CORA PR81 exact source Git revision 900399; tests moved into native PR50 suite after CORA finite-module CI falsifier, no new CORA test module. 85 exact target Git deltas. Both source methods must execute, replay and preserve external BLOCKED/none authority. G0 HOLD until all evidence.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -101,7 +101,7 @@
       "path": ".github/workflows/ci.yml",
       "operation": "MODIFY",
       "before_sha": "035aad3df89b20a91a1b9641379127eaee13292f",
-      "after_sha": "f708c6a9137518f5dffeab0332201e49ae24b195",
+      "after_sha": "eb905c345a02b548111469bf14cda663519e9bfd",
       "before_mode": "100644",
       "after_mode": "100644"
     },
@@ -709,7 +709,7 @@
   "cora_portable_source": {
     "engine_repo": "Luke883i/cora",
     "source_pr": 81,
-    "source_revision": "80dae4fd104bc633e5ca18b359e5b307f34d5fa9",
+    "source_revision": "900399b5b5b6e7074e37c206f6c566ddf72b9dc6",
     "profile": "cora-portable-target/3",
     "manifest_paths": [
       "contracts/cora-source-ontology.json",

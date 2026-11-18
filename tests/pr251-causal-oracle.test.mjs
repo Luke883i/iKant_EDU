@@ -85,3 +85,32 @@ test('invalid oracle answer and duplicate candidate names are rejected',async()=
   await assert.rejects(()=>minimizeFailure(['x','x'],async()=> 'FAIL'),/INVALID_DDMIN_ARGUMENTS/);
   await assert.rejects(()=>minimizeFailure(['x'],async()=> 'SUCCESS'),/INVALID_ORACLE_OUTCOME/);
 });
+
+test('HEAD-bound graph rebuilds full stratum sequence and exact accepted path/SHA',()=>{
+  const d={path:'project/docs/old.md',sha:'c'.repeat(40),bytes:11,tier:'DOCUMENTARY_ARCHIVE_HYPOTHESIS'};
+  const s={path:'scripts/old.mjs',sha:'d'.repeat(40),bytes:14,tier:'TOOL_OR_LEGACY'};
+  const g={head:A,tree:B,exact_source_epoch:true,product_go:false,
+    total_source_supergraph:{schema:'ikant-pr251-total-source-supergraph/v1',
+      product_go:false,external_consumers:'UNKNOWN',
+      product_first_solution:{outside_paths:[d,s]}}};
+  const r=sample({accepted:[s]});
+  r.candidate_total=2;
+  r.strata=[
+    {key:'docs',group_files:1,removed:1,bytes:11,pass:false,
+      gates:{native:{exit_code:1},contract:{exit_code:0}}},
+    {key:'scripts',group_files:1,removed:1,bytes:14,pass:true,
+      gates:{native:{exit_code:0},contract:{exit_code:0}}}
+  ];
+  const certified=certifyCounterfactual(r,'REJECTED_BY_NATIVE_OR_CONTRACT',g);
+  assert.equal(certified.source_graph_bound,true);
+  assert.equal(certified.accepted_files,1);
+  assert.equal(certified.global_dod,'HOLD');
+  r.accepted[0]={...s,path:'scripts/forged.mjs'};
+  assert.throws(()=>certifyCounterfactual(r,'REJECTED_BY_NATIVE_OR_CONTRACT',g),/ACCEPTED_IDENTITY_NOT_FROM_HEAD/);
+  r.accepted[0]=s;
+  r.strata[1].bytes=15;
+  assert.throws(()=>certifyCounterfactual(r,'REJECTED_BY_NATIVE_OR_CONTRACT',g),/STRATUM_NOT_RECONSTRUCTIBLE/);
+  r.strata[1].bytes=14;
+  g.tree='e'.repeat(40);
+  assert.throws(()=>certifyCounterfactual(r,'REJECTED_BY_NATIVE_OR_CONTRACT',g),/UNTRUSTED_SOURCE_GRAPH/);
+});

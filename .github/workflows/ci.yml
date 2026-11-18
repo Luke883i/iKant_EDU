@@ -368,7 +368,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git clone --quiet --depth 1 --branch main https://github.com/Luke883i/cora.git "$RUNNER_TEMP/cora-engine"
+          # An immutable reviewed SHA must not be confused with moving origin/main.
+          git clone --quiet https://github.com/Luke883i/cora.git "$RUNNER_TEMP/cora-engine"
+          git -C "$RUNNER_TEMP/cora-engine" cat-file -e "96bb3a91e5f6e38c90eec40b9705da38f2226fc5^{commit}"
+          git -C "$RUNNER_TEMP/cora-engine" checkout --quiet --detach 96bb3a91e5f6e38c90eec40b9705da38f2226fc5
           test "$(git -C "$RUNNER_TEMP/cora-engine" rev-parse HEAD)" = "96bb3a91e5f6e38c90eec40b9705da38f2226fc5"
       - name: CORA independent Git source ledger and SHA revalidation
         if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}

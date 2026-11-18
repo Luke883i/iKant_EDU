@@ -633,7 +633,7 @@ jobs:
           test "$(git rev-parse "$BASE_SHA^{commit}")" = "$BASE_SHA"
           test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
           git worktree add --detach "$RUNNER_TEMP/ikant-main" "$BASE_SHA"
-          files=(tests/project-edu-complete-chain.test.mjs tests/mcp-standalone-runtime-assurance.test.mjs tests/project-session-e2e.test.mjs)
+          files=(tests/project-edu-complete-chain.test.mjs tests/mcp-standalone-runtime-assurance.test.mjs tests/project-session-e2e.test.mjs tests/c139-epistemic-edu-v2.test.mjs tests/cp11-guarded-prepr.test.mjs)
           (cd "$RUNNER_TEMP/ikant-main" && CI=true node --test --test-concurrency=1 "${files[@]}" > "$RUNNER_TEMP/ikant-main.tap" 2>&1)
           CI=true node --test --test-concurrency=1 "${files[@]}" > "$RUNNER_TEMP/ikant-head.tap" 2>&1
       - name: Refute lost cases, changed PASS and claimed host release

@@ -29,11 +29,12 @@ export function firstFailureDetail(text,kind){
  const stop=remainder.findIndex(x=>/^(?:ok|not ok) [0-9]+ - /.test(x));
  const block=stop<0?remainder:remainder.slice(0,stop);
  const actual=block.find(x=>/^\s+actual:\s*\S/.test(x));
+ const expected=block.find(x=>/^\s+expected:\s*\S/.test(x));
  const diff=block.find(x=>/^\s+\+\s+(?!actual\b)\S/.test(x));
  const errorIndex=block.findIndex(x=>/^\s+error:\s*/.test(x));
  const inline=errorIndex>=0?block[errorIndex].trim().replace(/^error:\s*/,''):'';
  const next=errorIndex>=0?block.slice(errorIndex+1).find(x=>x.trim()&&!/^\s+(?:code|operator|stack):/.test(x)):'';
- const detail=actual||diff||((inline&&!/^\|[-+]?\s*$/.test(inline))?inline:next)||'ERROR_DETAIL_NOT_CAPTURED';
+ const detail=(actual&&expected?[actual.trim(),expected.trim()].join(' '):actual)||diff||((inline&&!/^\|[-+]?\s*$/.test(inline))?inline:next)||'ERROR_DETAIL_NOT_CAPTURED';
  return String(detail).trim().replace(/[^A-Za-z0-9_.: -]/g,'_').replace(/ +/g,'_').slice(0,150);
 }
 if(process.argv[1]&&fileURLToPath(import.meta.url)===fileURLToPath('file://'+process.argv[1])){

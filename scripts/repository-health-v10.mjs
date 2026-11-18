@@ -71,17 +71,17 @@ export function inspectGitContent(rows=tracked()){
    tree:git('rev-parse','HEAD^{tree}').toString('utf8').trim()};
 }
 export function scanLiteralRelative(root,paths){
- const edges=[];
+ const base=path.resolve(root),edges=[];
  for(const p of paths){
   if(!/\.(?:mjs|cjs|js|ts|mts)$/u.test(p))continue;
-  const source=fs.readFileSync(path.join(root,p));
+  const source=fs.readFileSync(path.join(base,p));
   const text=source.toString('utf8'),source_blob=blobSha(source);
   for(const [kind,rx] of patterns){
    rx.lastIndex=0;
    for(const m of text.matchAll(rx)){
     const specifier=m[1];
-    const target=path.resolve(root,path.dirname(p),specifier.split('?')[0].split('#')[0]);
-    const inside=target.startsWith(root+path.sep)||target===root;
+    const target=path.resolve(base,path.dirname(p),specifier.split('?')[0].split('#')[0]);
+    const inside=target.startsWith(base+path.sep)||target===base;
     const valid=inside&&fs.existsSync(target);
     edges.push({source:p,source_blob,kind,specifier,valid});
    }

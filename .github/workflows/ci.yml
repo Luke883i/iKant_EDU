@@ -18,6 +18,51 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: PR251 typed hypergraph witness (source only, not release)
+        id: sg
+        if: ${{ !cancelled() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        shell: bash
+        run: |
+          set +e
+          if ! node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-source-hypergraph.json" 2> "$RUNNER_TEMP/pr251-source-hypergraph.stderr"; then
+            diagnosis=$(grep -m1 -E 'Error|ERR_|SyntaxError|ReferenceError|TypeError' "$RUNNER_TEMP/pr251-source-hypergraph.stderr" | tr -cd 'A-Za-z0-9_: .-' | cut -c 1-140 || true)
+            echo "source_error=${diagnosis:-CENSUS_FAILED_NO_DETAIL}" >> "$GITHUB_OUTPUT"
+            cat "$RUNNER_TEMP/pr251-source-hypergraph.stderr"
+            exit 1
+          fi 2>"$RUNNER_TEMP/pr251-graph-stderr.log"
+          code=$?
+          python3 - <<'PY'
+          import os,pathlib,re
+          p=pathlib.Path(os.environ["RUNNER_TEMP"])/"pr251-graph-stderr.log"
+          lines=p.read_text(errors="replace").splitlines() if p.exists() else []
+          matches=[z.strip() for z in lines if re.search(r"(Error|ERR_|invalid|failed|ENOENT|EISDIR|SyntaxError)",z)]
+          msg=matches[0] if matches else "NONE"
+          msg=re.sub(r"[^A-Za-z0-9_.: -]","_",msg)[:130]
+          with open(os.environ["GITHUB_OUTPUT"],"a",encoding="utf8") as f:
+            f.write("source_error="+msg+"\n")
+          PY
+          if [ "$code" -ne 0 ]; then exit "$code"; fi
+          node -e 'const r=require(process.argv[1]).total_source_supergraph;for(const [k,v] of Object.entries({files:r.files,relations:r.relation_count,cold_docs:r.cold_documentary_count,cold_bytes:r.cold_documentary_bytes,product:r.product_first_solution.product_observed_closure.files,union:r.product_first_solution.combined_observed_closure.files}))console.log(k+"="+v)' "$RUNNER_TEMP/pr251-source-hypergraph.json" >> "$GITHUB_OUTPUT"
+          node -e "const r=require(process.argv[1]);if(r.global_dod!=='HOLD'||r.product_go!==false||!r.head||!r.tree)process.exit(1)" "$RUNNER_TEMP/pr251-source-hypergraph.json"
+      - name: "PR251 source error [${{ steps.sg.outputs.source_error }}]"
+        if: ${{ always() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        run: echo "Diagnostic only; original graph generation exit status retained"
+      - name: "PR251 source solve [${{ steps.sg.outputs.files }} total, ${{ steps.sg.outputs.relations }} edges, P=${{ steps.sg.outputs.product }}, P+Q=${{ steps.sg.outputs.union }}, cold=${{ steps.sg.outputs.cold_docs }} docs]"
+        if: ${{ !cancelled() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        run: echo "Source-level candidate budget only, no deletion is authorized"
+      - name: "PR251 census exception [${{ steps.sg.outputs.source_error }}]"
+        if: ${{ always() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        run: echo "Source-only failure retained"
+      - name: Preserve HEAD-bound PR251 source witness
+        if: ${{ always() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr251-hypergraph-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/pr251-source-hypergraph.json
+            ${{ runner.temp }}/pr251-graph-stderr.log
+          if-no-files-found: error
+          retention-days: 14
       - name: Deterministic tests
         shell: bash
         run: |
@@ -147,3 +192,326 @@ jobs:
           NODE
       - name: C38 one-million semantic-lossless runtime falsification
         run: npm run falsify:c38
+
+
+  radical_counterfactual:
+    name: pr251-radical-counterfactual-native
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Materialize 425-file candidate in disposable worktree
+        id: candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-graph.json"
+          git worktree add --detach "$RUNNER_TEMP/pr251-counterfactual" HEAD > /dev/null
+          node - "$RUNNER_TEMP/pr251-graph.json" "$RUNNER_TEMP/pr251-counterfactual" "$GITHUB_OUTPUT" <<'NODE'
+          const fs=require('node:fs'),path=require('node:path');
+          const [report,dir,output]=process.argv.slice(2);
+          const r=JSON.parse(fs.readFileSync(report,'utf8'));
+          const g=r.total_source_supergraph;
+          const rows=g.product_first_solution.outside_paths;
+          if(rows.length<100||g.files!==g.semantic_inventory.length||
+            g.product_go!==false||r.product_go!==false)throw Error('INVALID_COUNTERFACTUAL');
+          let removedBytes=0;
+          for(const row of rows){
+            const target=path.resolve(dir,row.path);
+            if(!target.startsWith(path.resolve(dir)+path.sep))throw Error('CUT_ESCAPE');
+            fs.rmSync(target,{force:true});
+            removedBytes+=row.bytes;
+          }
+          fs.appendFileSync(output,'cut_count='+rows.length+'\ncut_bytes='+removedBytes+'\n');
+          fs.writeFileSync(path.join(process.env.RUNNER_TEMP,'pr251-counterfactual-cut.json'),
+            JSON.stringify({head:r.head,tree:r.tree,removed:rows,removed_bytes:removedBytes,
+              source_only:true,external_consumers:'UNKNOWN',product_go:false},null,2)+'\n');
+          NODE
+      - name: Replay original native and contract gates on isolated candidate
+        id: native
+        shell: bash
+        run: |
+          set +e
+          cd "$RUNNER_TEMP/pr251-counterfactual"
+          npm test > "$RUNNER_TEMP/pr251-cut-native.log" 2>&1
+          native=$?
+          npm run check > "$RUNNER_TEMP/pr251-cut-contract.log" 2>&1
+          contract=$?
+          if [ "$native" -eq 0 ] && [ "$contract" -eq 0 ]; then verdict=NATIVE_PASS_EXTERNAL_UNKNOWN; else verdict=REJECTED_BY_NATIVE_OR_CONTRACT; fi
+          printf 'native_exit=%s\ncontract_exit=%s\nverdict=%s\n' "$native" "$contract" "$verdict" >> "$GITHUB_OUTPUT"
+          echo "$verdict" > "$RUNNER_TEMP/pr251-cut-verdict.txt"
+          exit 0
+      - name: "Radical candidate ${{ steps.candidate.outputs.cut_count }} files / ${{ steps.candidate.outputs.cut_bytes }} bytes [${{ steps.native.outputs.verdict }}]"
+        if: ${{ always() }}
+        run: echo "Source graph and isolated native results are NOT product or external equivalence proof."
+      - name: Adaptive semantic strata against original native and contract gates
+        id: adaptive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import collections,json,os,pathlib,re,subprocess
+          temp=pathlib.Path(os.environ['RUNNER_TEMP'])
+          source=json.loads((temp/'pr251-graph.json').read_text())
+          rows=source['total_source_supergraph']['product_first_solution']['outside_paths']
+          groups=collections.defaultdict(list)
+          for row in rows:
+            p=row['path']
+            kind=('docs' if p.startswith('project/docs/') else
+                  'project' if p.startswith('project/') else
+                  'scripts' if p.startswith('scripts/') else
+                  'contracts' if p.startswith('contracts/') else
+                  'runtime' if p.startswith(('src/','host/')) else 'other')
+            groups[kind].append(row)
+          order=['docs','project','other','scripts','contracts','runtime']
+          def trial(key,targets):
+            wd=temp/('pr251-trial-'+key)
+            subprocess.run(['git','worktree','add','--detach',str(wd),'HEAD'],check=True,stdout=subprocess.DEVNULL)
+            try:
+              for row in targets:
+                file=(wd/row['path']).resolve()
+                if not file.is_relative_to(wd.resolve()):raise RuntimeError('CUT_PATH_ESCAPE')
+                file.unlink(missing_ok=True)
+              outputs={}
+              for gate,args in [('native',['npm','test']),('contract',['npm','run','check'])]:
+                p=temp/('pr251-stratum-'+key+'-'+gate+'.log')
+                with p.open('wb') as f:
+                  try:r=subprocess.run(args,cwd=wd,stdout=f,stderr=subprocess.STDOUT,timeout=300)
+                  except subprocess.TimeoutExpired:r=None
+                txt=p.read_text(errors='replace')
+                first=next((x.strip() for x in txt.splitlines() if re.match(r'^not ok [0-9]+ - ',x)),'NONE')
+                outputs[gate]={'exit_code':r.returncode if r else 'TIMEOUT','first_tap':first[:180]}
+              return {'key':key,'removed':len(targets),'bytes':sum(v['bytes'] for v in targets),
+                      'gates':outputs,'pass':all(v['exit_code']==0 for v in outputs.values())}
+            finally:
+              subprocess.run(['git','worktree','remove','--force',str(wd)],check=True,stdout=subprocess.DEVNULL)
+          baseline=trial('baseline',[])
+          accepted=[];results=[]
+          if baseline['pass']:
+            for group in order:
+              if not groups[group]:continue
+              candidate=accepted+groups[group]
+              outcome=trial(group,candidate)
+              outcome['group_files']=len(groups[group])
+              results.append(outcome)
+              if outcome['pass']:accepted=candidate
+          report={'schema':'ikant-pr251-adaptive-counterfactual/v1',
+                  'head':source['head'],'tree':source['tree'],
+                  'candidate_total':len(rows),'baseline':baseline,
+                  'strata':results,'accepted':accepted,
+                  'accepted_files':len(accepted),
+                  'accepted_bytes':sum(x['bytes'] for x in accepted),
+                  'external_unknown':True,'product_go':False,
+                  'global_equivalence':'NOT_ATTESTED'}
+          (temp/'pr251-adaptive.json').write_text(json.dumps(report,indent=2)+'\n')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:
+            f.write('baseline='+('PASS' if baseline['pass'] else 'FAIL')+'\n')
+            f.write('accepted_files='+str(len(accepted))+'\n')
+            f.write('accepted_bytes='+str(report['accepted_bytes'])+'\n')
+          PY
+      - name: "Adaptive solution baseline=${{ steps.adaptive.outputs.baseline }} files=${{ steps.adaptive.outputs.accepted_files }} bytes=${{ steps.adaptive.outputs.accepted_bytes }}"
+        if: ${{ always() }}
+        run: echo "Passing bounded native regression is necessary but external owner/provider review is still required."
+      - name: Preserve isolated cut and original native evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr251-radical-counterfactual-${{ github.event.pull_request.head.sha }}
+          path: |
+            ${{ runner.temp }}/pr251-graph.json
+            ${{ runner.temp }}/pr251-counterfactual-cut.json
+            ${{ runner.temp }}/pr251-cut-native.log
+            ${{ runner.temp }}/pr251-cut-contract.log
+            ${{ runner.temp }}/pr251-cut-verdict.txt
+            ${{ runner.temp }}/pr251-adaptive.json
+            ${{ runner.temp }}/pr251-stratum-*.log
+          if-no-files-found: warn
+          retention-days: 14
+
+  cora_source_replay:
+    name: cora-independent-source
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Check PR251 source epoch scope
+        id: pr251_scope
+        shell: bash
+        run: |
+          if [ -f contracts/pr251-forensic-hypergraph-dod.json ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Pin CORA engine to reviewed source SHA
+        if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch main https://github.com/Luke883i/cora.git "$RUNNER_TEMP/cora-engine"
+          test "$(git -C "$RUNNER_TEMP/cora-engine" rev-parse HEAD)" = "96bb3a91e5f6e38c90eec40b9705da38f2226fc5"
+      - name: CORA independent Git source ledger and SHA revalidation
+        if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
+          python3 -m cora.cli snapshot . --revision HEAD --output "$RUNNER_TEMP/cora-source-ledger.json"
+          python3 -m cora.cli verify-ledger "$RUNNER_TEMP/cora-source-ledger.json" --repo . > "$RUNNER_TEMP/cora-source-verify.json"
+      - name: Derive HEAD-exact portable CORA owner profile (no invented witnesses)
+        if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, pathlib, subprocess
+          head = subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          owners = [
+            {'id':'edu-owner','path':'host/c135-edu-v2-owner.mjs'},
+            {'id':'mcp-server','path':'project/plugins/ikant-le-session-chat/server/server.mjs'},
+            {'id':'ledger-writer','path':'host/c87-durable-ledger.mjs'}]
+          for row in owners:
+            subprocess.check_call(['git','cat-file','-e','HEAD:'+row['path']])
+          profile = {'schema':'cora-portable-target/1','target_repo':'Luke883i/iKant_EDU',
+            'revision':head,'owners':owners,'witnesses':[],'method_links':[]}
+          path = pathlib.Path(os.environ['RUNNER_TEMP'])/'cora-target-profile.json'
+          path.write_text(json.dumps(profile,sort_keys=True,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: CORA independent portable One-Run source scope
+        id: cora_portable
+        if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
+        shell: bash
+        run: |
+          set +e
+          export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
+          python3 -m cora.cli process-run . --revision HEAD --one-run --portable-profile "$RUNNER_TEMP/cora-target-profile.json" --output "$RUNNER_TEMP/cora-one-run.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html" > "$RUNNER_TEMP/cora-portable-stdout.log" 2>&1
+          result=$?
+          python3 - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'cora-one-run.json'
+          if p.is_file():
+            x=json.loads(p.read_text(encoding='utf8'))
+            src=x.get('source_status','UNKNOWN')
+            suite=x.get('source_process',{}).get('status','UNKNOWN')
+            blocked=[r.get('method','?') for r in x.get('source_process',{}).get('results',[])
+                     if r.get('status')=='DEBT_BLOCKED']
+          else:
+            src,suite,blocked='REPORT_NOT_WRITTEN','UNKNOWN',['REPORT_NOT_WRITTEN']
+          with open(os.environ['GITHUB_OUTPUT'],'a',encoding='utf8') as f:
+            f.write('source_status='+str(src)+'\n')
+            f.write('source_process='+str(suite)+'\n')
+            f.write('blocked_methods='+','.join(blocked)[:140]+'\n')
+          PY
+          exit "$result"
+      - name: "CORA blocked methods [${{ steps.cora_portable.outputs.blocked_methods }}]"
+        if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' }}
+        run: echo "Source-only debt diagnostic, does not change the failing result"
+      - name: "CORA observed status [${{ steps.cora_portable.outputs.source_status }}] process [${{ steps.cora_portable.outputs.source_process }}]"
+        if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' }}
+        run: echo "Diagnostic only; original independent source result is unchanged"
+      - name: CORA independently verify portable source replay
+        if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f "$RUNNER_TEMP/cora-one-run.json" ]; then exit 1; fi
+          export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
+          python3 -m cora.cli verify-process "$RUNNER_TEMP/cora-one-run.json" --repo . --one-run --portable-profile "$RUNNER_TEMP/cora-target-profile.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html" > "$RUNNER_TEMP/cora-one-run-replay.json"
+      - name: Preserve independent CORA source replay and open gates
+        if: ${{ always() && steps.pr251_scope.outputs.enabled == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr251-cora-engine-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            ${{ runner.temp }}/cora-target-profile.json
+            ${{ runner.temp }}/cora-source-ledger.json
+            ${{ runner.temp }}/cora-source-verify.json
+            ${{ runner.temp }}/cora-portable-stdout.log
+            ${{ runner.temp }}/cora-one-run.json
+            ${{ runner.temp }}/cora-one-run.html
+            ${{ runner.temp }}/cora-one-run-replay.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  differential_edu_mcp:
+    name: edu-mcp-same-runner-differential
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Same-host main and candidate native product tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE_SHA=e270c6e2cc772f960126eecea9f50501339e3656
+          test "$(git rev-parse "$BASE_SHA^{commit}")" = "$BASE_SHA"
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          git worktree add --detach "$RUNNER_TEMP/ikant-main" "$BASE_SHA"
+          files=(tests/project-edu-complete-chain.test.mjs tests/mcp-standalone-runtime-assurance.test.mjs tests/project-session-e2e.test.mjs)
+          (cd "$RUNNER_TEMP/ikant-main" && CI=true node --test --test-concurrency=1 "${files[@]}" > "$RUNNER_TEMP/ikant-main.tap" 2>&1)
+          CI=true node --test --test-concurrency=1 "${files[@]}" > "$RUNNER_TEMP/ikant-head.tap" 2>&1
+      - name: Refute lost cases, changed PASS and claimed host release
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import collections,json,os,pathlib,re,subprocess
+          tmp=pathlib.Path(os.environ['RUNNER_TEMP'])
+          def parse(path):
+            text=path.read_text(encoding='utf8')
+            lines=re.findall(r'^\s*(ok|not ok)\s+\d+\s+-\s+(.+)$',text,re.M)
+            passed=collections.Counter()
+            failed=[];skipped=[]
+            for state,name in lines:
+              name=name.split(' # ',1)[0].strip()
+              if '# SKIP' in text: pass
+              if state=='not ok':failed.append(name)
+              else:passed[name]+=1
+            return passed,failed,len(lines)
+          a,af,ac=parse(tmp/'ikant-main.tap')
+          b,bf,bc=parse(tmp/'ikant-head.tap')
+          missing=list((a-b).elements())
+          if ac==0 or bc==0:raise SystemExit('NO_NATIVE_TEST_IDENTITIES')
+          receipt={'schema':'ikant-pr251-native-differential/v1',
+            'source_base':'e270c6e2cc772f960126eecea9f50501339e3656',
+            'candidate_head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+            'environment':'SAME_GITHUB_RUNNER_NODE20',
+            'main_test_lines':ac,'candidate_test_lines':bc,
+            'missing_baseline_pass_identities':missing,'main_failures':af,
+            'candidate_failures':bf,'candidate_extra_identified':sum((b-a).values()),
+            'external_host_acceptance':'NOT_ATTESTED','product_go':False,
+            'source_native_equivalence':not (missing or af or bf)}
+          (tmp/'pr251-native-differential.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n',encoding='utf8')
+          if missing or af or bf:raise SystemExit('NATIVE_PRODUCT_REGRESSION')
+          PY
+      - name: Preserve bounded main-to-HEAD differential
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr251-native-differential-${{ github.event.pull_request.head.sha }}
+          path: |
+            ${{ runner.temp }}/ikant-main.tap
+            ${{ runner.temp }}/ikant-head.tap
+            ${{ runner.temp }}/pr251-native-differential.json
+          if-no-files-found: warn
+          retention-days: 14

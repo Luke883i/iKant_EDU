@@ -65,6 +65,22 @@ test('V10 adversary: new broken literal import is rejected, never declassified a
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
 
+test('V10 lexical root normalization is metamorphic and preserves traversal denial',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'v10-root-meta-'));
+ try{
+  fs.mkdirSync(path.join(dir,'host'));fs.mkdirSync(path.join(dir,'src'));
+  fs.writeFileSync(path.join(dir,'src','ok.mjs'),'export const ok=1;');
+  fs.writeFileSync(path.join(dir,'host','a.mjs'),"import {ok} from '../src/ok.mjs';");
+  const clean=scanLiteralRelative(dir,['host/a.mjs']);
+  const trailing=scanLiteralRelative(dir+path.sep,['host/a.mjs']);
+  assert.deepEqual(trailing,clean);
+  assert.equal(clean.length,1);assert.equal(clean[0].valid,true);
+  fs.writeFileSync(path.join(dir,'host','a.mjs'),"import {x} from '../../escape.mjs';");
+  const escaped=scanLiteralRelative(dir+path.sep,['host/a.mjs']);
+  assert.equal(escaped[0].valid,false);
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+
 test('V10 adversary: no false success from skipped smoke, wrong owner or absent rollback',()=>{
  const good=Object.fromEntries(['P','I','O','Q','L','R'].map(x=>[x,true]));
  assert.equal(evaluateMinimalDoD(good).passed,true);

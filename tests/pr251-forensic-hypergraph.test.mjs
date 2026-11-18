@@ -102,3 +102,17 @@ test('backward product slice is distinct from assurance and an archive hypothesi
  assert.equal(a.full_consumer_closure,false);
  assert.equal(a.product_go,false);
 });
+
+test('physical atlas counterexample becomes typed assurance dependency without laundering it into runtime',()=>{
+ const r=observe({deep:true}),g=r.total_source_supergraph,
+  doc='project/docs/BOOTSTRAP_DECOUPLING_D0.md',
+  solution=g.product_first_solution;
+ assert.equal(g.relations.filter(e=>e.from==='scripts/ikant-document-atlas.mjs'&&
+  e.to===doc&&e.type==='GENERATED_ATLAS_MEMBERSHIP').length,1);
+ assert.ok(solution.outside_paths.some(x=>x.path===doc));
+ assert.ok(solution.generated_document_assurance_closure.new_files>0);
+ assert.ok(solution.generated_document_assurance_closure.files>solution.combined_observed_closure.files);
+ assert.equal(solution.generated_document_assurance_closure.not_runtime_equivalence,true);
+ assert.equal(g.external_consumers,'UNKNOWN');
+ assert.equal(g.product_go,false);
+});

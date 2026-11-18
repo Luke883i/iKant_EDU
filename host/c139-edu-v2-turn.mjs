@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import crypto from 'node:crypto';
-import {preflightC107Shape} from './c107-edu-v2-turn.mjs';
+import {preflightC107Shape,inspectC107Ledger as inspectOriginalC107Ledger} from './c107-edu-v2-turn.mjs';
 export {preflightC107Shape};
 import {validateC72V2ModeSelection} from './c72-public-mode-admission.mjs';
 import {issueC69ExperimentalOffer} from './c69-edu-v2-preview.mjs';
@@ -35,12 +35,8 @@ function ledgerOk(f){
 }
 export function inspectVersionedEduLedger(file,mode){
  const schema=SCHEMAS[mode];if(!schema)throw Error('UNSUPPORTED_EDU_ROUTE');
- if(!ledgerOk(file))return stop(schema,'HOST_PRIVATE_LEDGER_PATH');
- try{const r=reopenC87Ledger(file);return r.status==='C87_LEDGER_CHAIN_VALID'?
-  {schema,status:'C107_LEDGER_REOPENED',count:r.count,last_hash:r.last_hash,latest_state:r.latest_state,...denials}:
-  stop(schema,'C87_LEDGER_INVALID');}catch{return stop(schema,'C87_LEDGER_TAMPER_OR_IO');}
+ return {...inspectOriginalC107Ledger(file),schema};
 }
-
 export function executeVersionedEduTurn(mode,{ledgerFile,nonce,request,priorMessages=[],resetContext=false,requireHostLanguage=false,expectedC70OutputSha256=null,expectedC124ChannelSha256=null}={}){
  const schema=SCHEMAS[mode];if(!schema)throw Error('UNSUPPORTED_EDU_ROUTE');
  const c143=mode==='C143';const prefix=mode;const deny=e=>stop(schema,e);
@@ -85,12 +81,13 @@ export function executeVersionedEduTurn(mode,{ledgerFile,nonce,request,priorMess
   if(expectedC124ChannelSha256!==t.language_channel_sha256)
    return deny('C124_PREWRITE_CHANNEL_DRIFT');
   const sourceRoot=fileURLToPath(new URL('..',import.meta.url));
-  const route=c143?qualifyC143RestrictedRoute({plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot}):
-   qualifyC139EpistemicRoute({episode:t,humanInput:x.humanInput});
-  if(!route.allowed)return deny(route.reason);
-  const review=x.modelCandidate?(c143?qualifyC143Candidate({plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot,text:x.modelCandidate.text}):
-   qualifyC139EpistemicCandidate({episode:t,humanInput:x.humanInput,text:x.modelCandidate.text})):null;
-  if(review?.allowed!==true)return deny(review?.reason||prefix+'_HOST_LANGUAGE_REQUIRED');
+  // Candidate verification already invokes the original route policy.
+  const policy=c143?{plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot}:{episode:t,humanInput:x.humanInput};
+  const review=c143?
+   (x.modelCandidate?qualifyC143Candidate({...policy,text:x.modelCandidate.text}):qualifyC143RestrictedRoute(policy)):
+   (x.modelCandidate?qualifyC139EpistemicCandidate({...policy,text:x.modelCandidate.text}):qualifyC139EpistemicRoute(policy));
+  if(!review.allowed)return deny(review.reason);
+  if(!x.modelCandidate)return deny(prefix+'_HOST_LANGUAGE_REQUIRED');
   const voice=x.modelCandidate.text;
   const plan=prepareC100CohostDraft({sourceHead:head,selection:x.selection,humanInput:x.humanInput,optIn:true});
   const bound=finalizeC100CohostDraft({plan,planSha256:plan.plan_sha256,modelText:voice});

@@ -9,7 +9,8 @@ import {createC129PublicEduV2Session} from '../host/edu-c129-manual-entry.mjs';
 import {issueC72V2TermsOffer,acceptC72V2Terms,presentC72V2Introduction,selectC72V2Mode} from '../host/c72-public-mode-admission.mjs';
 import {makeC135AcknowledgedDraft} from '../host/project-oneshell-language-ack.mjs';
 import {C143_GRAMMAR,qualifyC143RestrictedRoute,qualifyC143Candidate} from '../host/c143-guarded-nonidentity-policy.mjs';
-import {previewC107CognitivePlan} from '../host/c107-edu-v2-turn.mjs';
+import {previewC107CognitivePlan,inspectC107Ledger as inspectOriginalC107Ledger} from '../host/c107-edu-v2-turn.mjs';
+import {executeC143GuardedTurn,inspectC107Ledger} from '../host/c143-edu-v2-turn.mjs';
 const root=path.resolve(new URL('../',import.meta.url).pathname);
 const H=x=>crypto.createHash('sha256').update(x).digest('hex');
 const head=()=>execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
@@ -104,4 +105,46 @@ test('CP11 malformed model ACK or candidate is stopped before C87 write and send
    const state=session.readSessionState();assert.equal(state.original_c87_readback.count,0);assert.equal(sendCount,0);
   }finally{session?.close();fs.rmSync(tmp,{recursive:true,force:true})}
  }
+});
+
+test('CP11 C143 source policy is evaluated exactly once per direct candidate turn',()=>{
+ const input=C143_GRAMMAR[0],sl=selection();
+ const req={sourceHead:head(),selection:sl,humanInput:input,optIn:true};
+ const plan=previewC107CognitivePlan({request:req,priorMessages:[],resetContext:true});
+ assert.equal(plan.status,'C107_C70_PLAN_COMPUTED_NOT_LEDGERED');
+ const route=qualifyC143RestrictedRoute({humanInput:input,plan,sourceRoot:root});
+ assert.equal(route.allowed,true);
+ const language=candidate({c143_source_evidence:route.evidence});
+ const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'cp11-single-owner-'));
+ try{
+  const privateDir=path.join(tmp,'.ikant-host');fs.mkdirSync(privateDir);
+  const ledger=path.join(privateDir,'c107-observations.jsonl');
+  const args={ledgerFile:ledger,nonce:'cp11-single-owner-0001',
+   request:{...req,modelCandidate:{input_sha256:H(input),text:language}},
+   priorMessages:[],resetContext:true,requireHostLanguage:true,
+   expectedC70OutputSha256:plan.c70_output_sha256,
+   expectedC124ChannelSha256:plan.c124_language_channel_sha256};
+  const noDraft=executeC143GuardedTurn({...args,request:req});
+  assert.equal(noDraft.status,'C107_STOP');
+  assert.equal(noDraft.first_unclosed_edge,'C143_HOST_LANGUAGE_REQUIRED');
+  assert.equal(inspectC107Ledger(ledger).count,0);
+  const original=fs.readFileSync,target=path.join(root,'contracts/cognitive-kernel.json');
+  let reads=0,out;
+  try{
+   fs.readFileSync=function(file,...rest){
+    if(file===target)reads++;
+    return original.call(this,file,...rest);
+   };
+   out=executeC143GuardedTurn(args);
+  }finally{fs.readFileSync=original;}
+  assert.equal(out.status,'C143_ORIGINAL_C70_C100_C87_LOCAL_READBACK',JSON.stringify(out));
+  assert.equal(reads,1,'one original C143 source read in executor, not two');
+  assert.equal(inspectC107Ledger(ledger).count,1,'one and only one C87 append');
+  const originalInspect=inspectOriginalC107Ledger(ledger),versioned=inspectC107Ledger(ledger);
+  assert.deepStrictEqual({...versioned,schema:originalInspect.schema},originalInspect,'C143 inspector must reproduce frozen C107 except schema');
+  const malformed=path.join(tmp,'wrong-ledger.jsonl');
+  const rejectedOriginal=inspectOriginalC107Ledger(malformed),rejectedVersioned=inspectC107Ledger(malformed);
+  assert.deepStrictEqual({...rejectedVersioned,schema:rejectedOriginal.schema},rejectedOriginal,'even original first denial is preserved');
+  assert.equal(out.authority,0);assert.equal(out.native_event_attested,false);
+ }finally{fs.rmSync(tmp,{recursive:true,force:true});}
 });

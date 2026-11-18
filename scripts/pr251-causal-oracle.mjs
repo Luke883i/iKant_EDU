@@ -33,7 +33,7 @@ function validSourcePath(p){
     !p.startsWith('/')&&!p.split('/').some(x=>x==='..'||x==='.'||x==='');
 }
 /** Input is the exact GitHub-hosted adaptive JSON; this function does not trust workflow success. */
-export function certifyCounterfactual(report, radicalVerdict) {
+export function certifyCounterfactual(report, radicalVerdict, sourceGraph=null) {
   if(!report||report.schema!=='ikant-pr251-adaptive-counterfactual/v1'||
     !HEX40.test(report.head||'')||!HEX40.test(report.tree||'')||
     report.external_unknown!==true||report.product_go!==false||
@@ -68,8 +68,53 @@ export function certifyCounterfactual(report, radicalVerdict) {
   if(report.strata.length===0&&report.accepted_files!==0)fail('UNTESTED_ACCEPTANCE');
   if(report.accepted_files>0&&!report.strata.some(x=>x.pass===true))
     fail('ACCEPTED_WITHOUT_POSITIVE_STRATUM');
+  // An accepted cut must be rebuilt from the original HEAD-bound source graph,
+  // not trusted from the same candidate's self-reported count or a passing job.
+  if(sourceGraph!==null){
+    const g=sourceGraph?.total_source_supergraph;
+    if(sourceGraph.head!==report.head||sourceGraph.tree!==report.tree||
+       sourceGraph.exact_source_epoch!==true||sourceGraph.product_go!==false||
+       g?.schema!=='ikant-pr251-total-source-supergraph/v1'||
+       g.product_go!==false||g.external_consumers!=='UNKNOWN'||
+       !Array.isArray(g.product_first_solution?.outside_paths))
+      fail('UNTRUSTED_SOURCE_GRAPH');
+    const outside=g.product_first_solution.outside_paths,seen=new Set();
+    if(outside.length!==report.candidate_total)fail('CANDIDATE_GRAPH_COUNT_MISMATCH');
+    for(const row of outside){
+      if(!validSourcePath(row.path)||!HEX40.test(row.sha||'')||
+         !Number.isInteger(row.bytes)||row.bytes<0||seen.has(row.path))
+        fail('INVALID_GRAPH_ROW');
+      seen.add(row.path);
+    }
+    const category=p=>p.startsWith('project/docs/')?'docs':
+      p.startsWith('project/')?'project':p.startsWith('scripts/')?'scripts':
+      p.startsWith('contracts/')?'contracts':
+      p.startsWith('host/')||p.startsWith('src/')?'runtime':'other';
+    const order=['docs','project','other','scripts','contracts','runtime'];
+    let selected=[],at=0;
+    for(const key of order){
+      const subset=outside.filter(row=>category(row.path)===key);
+      if(!subset.length)continue;
+      const row=report.strata[at++];
+      const proposed=[...selected,...subset];
+      const bytes=proposed.reduce((n,item)=>n+item.bytes,0);
+      if(!row||row.key!==key||row.group_files!==subset.length||
+         row.removed!==proposed.length||row.bytes!==bytes)
+        fail('STRATUM_NOT_RECONSTRUCTIBLE:'+key);
+      if(row.pass)selected=proposed;
+    }
+    if(at!==report.strata.length||selected.length!==report.accepted.length)
+      fail('ADAPTIVE_GROUP_HISTORY_INCOMPLETE');
+    for(let i=0;i<selected.length;i++){
+      if(selected[i].path!==report.accepted[i].path||
+        selected[i].sha!==report.accepted[i].sha||
+        selected[i].bytes!==report.accepted[i].bytes)
+        fail('ACCEPTED_IDENTITY_NOT_FROM_HEAD');
+    }
+  }
   return {schema:'ikant-pr251-causal-counterfactual-certificate/v1',
     head:report.head,tree:report.tree,baseline:'PASS_NATIVE_AND_CONTRACT',
+    source_graph_bound:sourceGraph!==null,
     radical_cut:radicalVerdict,adaptive_strata:classified,
     accepted_files:report.accepted_files,accepted_bytes:report.accepted_bytes,
     accepted_status:report.accepted_files>0?'BOUNDED_NATIVE_ONLY':'NO_POSITIVE_CUT',
@@ -152,14 +197,15 @@ export async function minimizeFailure(items, oracle, {maxProbes=64}={}) {
 const invoked=process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url);
 if(invoked){
   try {
-    if(process.argv.length!==5)fail('USAGE_REPORT_VERDICT_OUTPUT');
-    const [, ,reportPath,verdictPath,outPath]=process.argv;
+    if(process.argv.length!==6)fail('USAGE_REPORT_VERDICT_GRAPH_OUTPUT');
+    const [, ,reportPath,verdictPath,graphPath,outPath]=process.argv;
     const report=JSON.parse(fs.readFileSync(reportPath,'utf8'));
     const verdict=fs.readFileSync(verdictPath,'utf8').trim();
     const liveHead=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
     const liveTree=execFileSync('git',['rev-parse','HEAD^{tree}'],{encoding:'utf8'}).trim();
     if(report.head!==liveHead||report.tree!==liveTree)fail('STALE_CANDIDATE_SHA');
-    const cert=certifyCounterfactual(report,verdict);
+    const sourceGraph=JSON.parse(fs.readFileSync(graphPath,'utf8'));
+    const cert=certifyCounterfactual(report,verdict,sourceGraph);
     fs.writeFileSync(outPath,JSON.stringify(cert,null,2)+'\n');
     const sentence='PR251 counterfactual: radical='+cert.radical_cut+
       ', adaptive='+cert.accepted_status+', accepted='+cert.accepted_files+

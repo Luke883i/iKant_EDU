@@ -86,6 +86,13 @@ test('C139 denies missing channel/plan, missing owner language and C72/v1 withou
    assert.equal(o.status,'C107_STOP',JSON.stringify(o));
    assert.equal(inspectC107Ledger(x.ledger).count,0);
   }
+  // RegExp.test() calls ToString; a coercible object must preserve the
+  // original C124 denial identity, not become a valid host-language ACK.
+  const forgedDigest={toString:()=>p.c124_language_channel_sha256};
+  const forged=executeC139EpistemicTurn({...args,expectedC124ChannelSha256:forgedDigest});
+  assert.equal(forged.status,'C107_STOP');
+  assert.equal(forged.first_unclosed_edge,'C124_CHANNEL_ACK_REQUIRED');
+  assert.equal(inspectC107Ledger(x.ledger).count,0);
   const termsDigest=H(fs.readFileSync(path.join(root,'TERMS.md')));
   const offer=issueC72TermsOffer({sourceHead:head,termsDigest});
   const accepted=acceptC72Terms({offer,humanMessage:'I ACCEPT',termsPresented:true});

@@ -73,17 +73,17 @@ export function executeVersionedEduTurn(mode,{ledgerFile,nonce,request,priorMess
   if(t.input_sha256!==sha(Buffer.from(x.humanInput,'utf8'))||
    t.output_sha256!==sha(Buffer.from(t.demonstration_surface,'utf8'))||t.node_dispatch_input_bound!==true)
    return deny('ORIGINAL_C70_SAME_INPUT_BINDING');
-  if(expectedC70OutputSha256!==null&&
-   (typeof expectedC70OutputSha256!=='string'||expectedC70OutputSha256!==t.output_sha256))
+  // Regex preflight accepts 64-hex representations but may coerce non-strings.
+  // C139 and C143 always require C124; frozen C107 retains its legacy epoch.
+  if(expectedC70OutputSha256!==t.output_sha256)
    return deny('C107_COMPUTE_FIRST_C70_PLAN_DRIFT');
-  // Both successors mandate C124; frozen C107 remains unchanged.
-  const sourceEpochC124=expectedC124ChannelSha256!==null;
-  if(sourceEpochC124){
-   if(!verifyC124LanguageChannels(t.c124_language_channels,t.input_sha256))return deny('C124_SOURCE_CHANNEL_INVALID');
-   if(x.modelCandidate&&typeof expectedC124ChannelSha256!=='string')return deny('C124_CHANNEL_ACK_REQUIRED');
-   if(expectedC124ChannelSha256!==null&&expectedC124ChannelSha256!==t.language_channel_sha256)
-    return deny('C124_PREWRITE_CHANNEL_DRIFT');
-  }
+  if(!verifyC124LanguageChannels(t.c124_language_channels,t.input_sha256))
+   return deny('C124_SOURCE_CHANNEL_INVALID');
+  // RegExp.test coerces objects: retain this original denial edge for forged digest objects.
+  if(x.modelCandidate&&typeof expectedC124ChannelSha256!=='string')
+   return deny('C124_CHANNEL_ACK_REQUIRED');
+  if(expectedC124ChannelSha256!==t.language_channel_sha256)
+   return deny('C124_PREWRITE_CHANNEL_DRIFT');
   const sourceRoot=fileURLToPath(new URL('..',import.meta.url));
   const route=c143?qualifyC143RestrictedRoute({plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot}):
    qualifyC139EpistemicRoute({episode:t,humanInput:x.humanInput});
@@ -91,7 +91,6 @@ export function executeVersionedEduTurn(mode,{ledgerFile,nonce,request,priorMess
   const review=x.modelCandidate?(c143?qualifyC143Candidate({plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot,text:x.modelCandidate.text}):
    qualifyC139EpistemicCandidate({episode:t,humanInput:x.humanInput,text:x.modelCandidate.text})):null;
   if(review?.allowed!==true)return deny(review?.reason||prefix+'_HOST_LANGUAGE_REQUIRED');
-  const hostLanguage=true;
   const voice=x.modelCandidate.text;
   const plan=prepareC100CohostDraft({sourceHead:head,selection:x.selection,humanInput:x.humanInput,optIn:true});
   const bound=finalizeC100CohostDraft({plan,planSha256:plan.plan_sha256,modelText:voice});
@@ -105,8 +104,8 @@ export function executeVersionedEduTurn(mode,{ledgerFile,nonce,request,priorMess
    cognitive_window_length:priorMessages.length+1,source_c70_sha256:t.output_sha256,
    ...(validateC72V2ModeSelection(x.selection,{mode:'EDU',sourceHead:head})?
     {admission_schema:'ikant-le-c72-public-selection/v2',public_selection_receipt_sha256:x.selection.receipt_sha256}:{}),
-   ...(sourceEpochC124?{c124_language_channel_sha256:t.language_channel_sha256}:{}),
-   visible_voice_sha256:sha(Buffer.from(voice,'utf8')),host_language_used:hostLanguage,
+   c124_language_channel_sha256:t.language_channel_sha256,
+   visible_voice_sha256:sha(Buffer.from(voice,'utf8')),host_language_used:true,
    c114_limited_ontology_policy:false,...(c143?{c139_epistemic_guard:false,c143_guarded_nonidentity:true}:{c139_epistemic_guard:true}),
    independent_semantic_review_attested:false,
    active:false,cognitive_persistence_attested:false};
@@ -119,7 +118,7 @@ export function executeVersionedEduTurn(mode,{ledgerFile,nonce,request,priorMess
    after.latest_state?.nonce!==nonce)return deny('C87_POSTWRITE_REOPEN');
   return {schema,status:prefix+'_ORIGINAL_C70_C100_C87_LOCAL_READBACK',voice_utf8:voice,
    input_sha256:t.input_sha256,output_sha256:state.visible_voice_sha256,
-   original_c70_output_sha256:t.output_sha256,...(sourceEpochC124?{c124_language_channel_sha256:t.language_channel_sha256}:{}),model_draft_used:hostLanguage,
+   original_c70_output_sha256:t.output_sha256,c124_language_channel_sha256:t.language_channel_sha256,model_draft_used:true,
    c70_ephemeral_turns:out.ephemeral_autobiography,cognitive_window_length:state.cognitive_window_length,
    ledger_event_sha256:after.last_hash,ledger_entries:after.count,
    original_c70_executed:true,original_c87_writer_executed:true,

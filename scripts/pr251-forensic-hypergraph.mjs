@@ -143,15 +143,17 @@ export function deriveProductSolution(inventory,relations){
   x.path.startsWith('.github/workflows/')).map(x=>x.path);
  const allowed=new Set(['STATIC_IMPORT','SOURCE_LITERAL','PACKAGE_LITERAL',
   'WORKFLOW_LITERAL','TEST_LITERAL']);
- function visit(roots){
+ function visit(roots,types=allowed){
   const found=new Set(roots),queue=[...roots];
   for(let i=0;i<queue.length;i++)for(const e of bySource.get(queue[i])||[]){
-   if(!allowed.has(e.type)||found.has(e.to))continue;
+   if(!types.has(e.type)||found.has(e.to))continue;
    found.add(e.to);queue.push(e.to);
   }
   return found;
  }
  const p=visit(product),q=visit(verify),pq=new Set([...p,...q]);
+ const qa=visit(verify,new Set([...allowed,'GENERATED_ATLAS_MEMBERSHIP']));
+ const assurance=new Set([...p,...qa]);
  const score=x=>[...x].reduce((n,k)=>n+(paths.get(k)?.bytes||0),0);
  const excluded=inventory.filter(x=>!pq.has(x.path));
  const docs=excluded.filter(x=>x.path.startsWith('project/docs/'));
@@ -163,6 +165,8 @@ export function deriveProductSolution(inventory,relations){
   product_observed_closure:{files:p.size,bytes:score(p)},
   verification_observed_closure:{files:q.size,bytes:score(q)},
   combined_observed_closure:{files:pq.size,bytes:score(pq)},
+  generated_document_assurance_closure:{files:assurance.size,bytes:score(assurance),
+   new_files:assurance.size-pq.size,not_runtime_equivalence:true},
   outside_observed_closure:{files:excluded.length,bytes:score(excluded.map(x=>x.path))},
   outside_paths:excluded.map(x=>({path:x.path,sha:x.sha,bytes:x.bytes,tier:x.tier})),
   documentary_retirement_hypothesis:{files:docs.length,bytes:score(docs.map(x=>x.path)),
@@ -234,6 +238,14 @@ export function buildTotalSupergraph(audit,{root=ROOT,treeText=null,read=null}={
    edge(from,target,type);
   }
  }
+ // Source-observed generated-document consumers are assurance edges, not runtime imports.
+ // Keep the operational P/Q closure unchanged for historical counterfactual replay.
+ const atlas='project/docs/IKANT_DOCUMENT_ATLAS.md',generator='scripts/ikant-document-atlas.mjs';
+ if(paths.has(atlas)&&paths.has(generator)){
+  const source=strings.get(atlas)||'',ignore=new Set(['.git','node_modules','.ikant','dist','artifacts','coverage']);
+  for(const x of rows)if(x.path.endsWith('.md')&&!x.path.split('/').some(part=>ignore.has(part))&&
+    source.includes('['+x.path+']('))edge(generator,x.path,'GENERATED_ATLAS_MEMBERSHIP');
+ }
  const directConsumers=rows.filter(r=>essential.has(r.path)||r.path.startsWith('tests/')||
   r.path.startsWith('.github/workflows/')||r.path.startsWith('src/')||
   r.path.startsWith('host/')||r.path.startsWith('scripts/')).map(x=>x.path);
@@ -245,18 +257,21 @@ export function buildTotalSupergraph(audit,{root=ROOT,treeText=null,read=null}={
  const coldDocs=rows.filter(x=>docs(x.path)&&!publicDocs.has(x.path)&&!activeDocRefs.has(x.path));
  const directLinks=rows.filter(x=>docs(x.path)&&activeDocRefs.has(x.path));
  const docPotentialBytes=coldDocs.reduce((n,x)=>n+x.bytes,0);
+ // Quotient repeated per-row linear membership scans into three source-bound sets.
+ const cold=new Set(coldDocs.map(x=>x.path)),effect=new Set(effects.map(x=>x.path)),
+  dynamic=new Set(unknownSites);
  const report=rows.map(x=>{
   const inEdges=incoming.get(x.path)||[],outEdges=refs.get(x.path)||[];
   const tier=essential.has(x.path)?'FOUNDATION_ROOT':
     x.path.startsWith('tests/')?'ASSURANCE':
     x.path.startsWith('.github/workflows/')?'CI_OWNER':
     x.path.startsWith('src/')||x.path.startsWith('host/')?'RUNTIME_OR_OWNER':
-    docs(x.path)?(coldDocs.some(r=>r.path===x.path)?'DOCUMENTARY_ARCHIVE_HYPOTHESIS':'LIVE_DOCUMENT_REFERENCE'):
+    docs(x.path)?(cold.has(x.path)?'DOCUMENTARY_ARCHIVE_HYPOTHESIS':'LIVE_DOCUMENT_REFERENCE'):
     x.path.startsWith('contracts/')?'CONTRACT_OR_PROVENANCE':
     x.path.startsWith('scripts/')?'TOOL_OR_LEGACY':'OTHER';
   return {...x,tier,incoming:inEdges.map(e=>[e.from,e.type]),
-   outgoing:outEdges.map(e=>[e.to,e.type]),effect_site:effects.some(e=>e.path===x.path),
-   dynamic_site:unknownSites.includes(x.path),
+   outgoing:outEdges.map(e=>[e.to,e.type]),effect_site:effect.has(x.path),
+   dynamic_site:dynamic.has(x.path),
    consumer_complete:false,retirement_authorized:false};
  });
  return {schema:'ikant-pr251-total-source-supergraph/v1',
@@ -277,7 +292,7 @@ export function buildTotalSupergraph(audit,{root=ROOT,treeText=null,read=null}={
   product_go:false};
 }
 
-export function observe(){
+export function observe({deep=false}={}){
  const c=JSON.parse(fs.readFileSync(path.join(ROOT,DOD),'utf8'));
  const {audit,census}=observeReticularCensusWithAudit(),epoch=qualifyPr251SourceEpoch();
  const graph=deriveHypergraph(c,audit),registry=JSON.parse(fs.readFileSync(path.join(ROOT,c.source_delta),'utf8'));
@@ -293,7 +308,7 @@ export function observe(){
   'host/c87-durable-ledger.mjs','host/c125-output-port.mjs']},frontier);
  const exactHead=execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim();
  const exactTree=execFileSync('git',['rev-parse','HEAD^{tree}'],{cwd:ROOT,encoding:'utf8'}).trim();
- return {schema:'ikant-pr251-typed-census/v2',head:exactHead,tree:exactTree,source_status:audit.status,
+ const result={schema:'ikant-pr251-typed-census/v2',head:exactHead,tree:exactTree,source_status:audit.status,
   census_observed:census.ok===true,exact_source_epoch:epoch.ok===true,
   source_files:audit.checked_files,obligations:graph.nodes.length,
   hyperedges:graph.hyperedges.length,static_edges:graph.edges.length,
@@ -303,13 +318,11 @@ export function observe(){
   behavioral_equivalence:retention.behavioral_equivalence,
   proof_blocked:retention.missing_proof_blocks_retirement},global_dod:'HOLD',product_go:false,
   external_consumers:'UNKNOWN'};
+ if(deep)result.total_source_supergraph=buildTotalSupergraph(audit);
+ return result;
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- const r=observe();
- if(process.argv.includes('--deep')){
-  const {audit}=observeReticularCensusWithAudit();
-  r.total_source_supergraph=buildTotalSupergraph(audit);
- }
+ const r=observe({deep:process.argv.includes('--deep')});
  console.log(JSON.stringify(r,null,2));
  if(!r.exact_source_epoch)process.exitCode=1;
 }

@@ -59,17 +59,17 @@ def safe(path):
         part not in ('', '.', '..') for part in path.split('/'))
 
 
-def audit(plan=None, old=None, current=None, *, worktree=True):
+def audit(plan=None, old=None, current=None, *, worktree=True, revision='HEAD'):
     problems = []
     p = plan if plan is not None else json.loads((ROOT / PLAN).read_text())
     if p.get('schema') != 'ikant-r7-v11-seven-root-contract/v1' or p.get('product_go') is not False or p.get('v10_parent') != HISTORY or p.get('v10_tree') != SOURCE_TREE or p.get('original_tree') != '4cff62ed12f79390a059784bcbf9770788a3a4d1':
         problems.append('EPOCH_CONTRACT_REWRITTEN')
     original = old if old is not None else tree(HISTORY)
-    candidate = current if current is not None else tree('HEAD')
+    candidate = current if current is not None else tree(revision)
     actual_tree = git('rev-parse', HISTORY + '^{tree}')
     if actual_tree != SOURCE_TREE:
         problems.append('HISTORIC_SOURCE_TREE_MISMATCH')
-    if subprocess.run(['git', 'merge-base', '--is-ancestor', V11_HEAD, 'HEAD'], cwd=ROOT).returncode:
+    if subprocess.run(['git', 'merge-base', '--is-ancestor', V11_HEAD, revision], cwd=ROOT).returncode:
         problems.append('V11_NOT_ANCESTOR')
     if git('show', V11_HEAD + ':' + PLAN, binary=True) != (ROOT / PLAN).read_bytes():
         problems.append('MOVE_PLAN_CHANGED_AFTER_V11')
@@ -98,7 +98,7 @@ def audit(plan=None, old=None, current=None, *, worktree=True):
     if historic_drift:
         problems.append('HISTORICAL_GOVERNANCE_BYTES_REWRITTEN:' + str(len(historic_drift)))
     sha1 = hashlib.sha1
-    if worktree:
+    if worktree and revision == 'HEAD':
         if git('status', '--porcelain', '--untracked-files=no'):
             problems.append('TRACKED_WORKTREE_DIRTY')
         if git('ls-files', '-z', binary=True).split(b'\0')[:-1] != sorted(x.encode('utf8') for x in candidate):
@@ -129,7 +129,8 @@ def audit(plan=None, old=None, current=None, *, worktree=True):
     digest = hashlib.sha256('\n'.join(src + '\t' + original[src][0] for src in governance).encode('utf8')).hexdigest()
     return {'schema': 'ikant-r7-v12-append-only-epoch/v1',
             'source_historic_commit': HISTORY, 'v11_historical_parent': V11_HEAD,
-            'candidate_head': git('rev-parse', 'HEAD'), 'candidate_tree': git('rev-parse', 'HEAD^{tree}'),
+            'candidate_head': git('rev-parse', revision), 'candidate_tree': git('rev-parse', revision + '^{tree}'),
+            'snapshot_scope': 'HISTORIC_MAIN_ONLY' if revision != 'HEAD' else 'CURRENT_CHECKOUT',
             'hist_source_files': len(original), 'candidate_files': len(candidate), 'mapped': len(mapping),
             'missing': missing[:12], 'mode_drifts': modes[:12], 'new_paths': new,
             'roots': roots, 'root_files': rootfiles, 'historical_governance_records': len(governance),
@@ -147,9 +148,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--output')
     ap.add_argument('--require-product', action='store_true')
+    ap.add_argument('--historical-main', action='store_true', help='audit exact pinned main historical source, never current-HEAD equivalence')
     a = ap.parse_args()
     try:
-        result = audit()
+        result = audit(revision='e270c6e2cc772f960126eecea9f50501339e3656' if a.historical_main else 'HEAD',
+                       worktree=not a.historical_main)
         b = json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True) + '\n'
         if a.output:
             pathlib.Path(a.output).write_text(b)

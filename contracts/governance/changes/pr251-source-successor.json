@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "PR252 grouped exact-tree replay from unmerged PR251 followed by explicit source-only multilevel quotient and value-preserving data compaction. This is a new successor Git epoch on unchanged main; original source Git objects remain addressable. All external authority remains HOLD.",
+  "notes": "PR252 exact tree successor of unmerged PR251. Actual C23 CI counterexample falsified five byte-pinned JSON value-only cuts, now restored from authentic blobs. Four non-runtime-root catalogs replace these as physical-only cuts. Native, external consumer, independent CORA, owner and provider gates remain separately open.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -122,10 +122,10 @@
       "after_mode": "100644"
     },
     {
-      "path": "contracts/chat-bootstrap-semantic.json",
+      "path": "contracts/bootstrap-composition-space.json",
       "operation": "MODIFY",
-      "before_sha": "31926add6e8d571c22f3527ad72bf815586f3232",
-      "after_sha": "a02713e07f419196e8460c0c578e63b4bd75b5d7",
+      "before_sha": "1bad6fa2eec833d53b274dd95703026d2cb81123",
+      "after_sha": "7d58539bda64c533c76fb9a5e4635a89b63f9a76",
       "before_mode": "100644",
       "after_mode": "100644"
     },
@@ -194,6 +194,14 @@
       "after_mode": "100644"
     },
     {
+      "path": "contracts/local-session-fastboot.json",
+      "operation": "MODIFY",
+      "before_sha": "50011fe418e4891f5d635bc65a3a5e7e220f2ccb",
+      "after_sha": "8eb03a3e51f9c7a43dea3dfb4b385fade0bb0916",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
       "path": "contracts/mcp-external-mutation-assurance-v2.json",
       "operation": "MODIFY",
       "before_sha": "c31ca377f26917e8dc4b02c1ebd90a1f7f422f5e",
@@ -214,6 +222,14 @@
       "operation": "MODIFY",
       "before_sha": "b98d119c17ca138800b4e77236f61b4ee52a0eee",
       "after_sha": "f04902b3c58cd260f6a10a28ca575e76cdfab4be",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/pr2-previous-bundle-crosswalk.v1.json",
+      "operation": "MODIFY",
+      "before_sha": "cc7b6c80e11022db44b8b847ac2e6a5ee690ade9",
+      "after_sha": "bf58b27b7b1937400284821a21ce003e048f9cf9",
       "before_mode": "100644",
       "after_mode": "100644"
     },
@@ -274,14 +290,6 @@
       "after_mode": "100644"
     },
     {
-      "path": "contracts/psyche-kernel.json",
-      "operation": "MODIFY",
-      "before_sha": "71de9abb6a319f2ea6ea9b0628527c3f3a9560c2",
-      "after_sha": "81edfd435af9cc867218d23ea9a5a0fd84590dfb",
-      "before_mode": "100644",
-      "after_mode": "100644"
-    },
-    {
       "path": "contracts/repository-health-v10.json",
       "operation": "MODIFY",
       "before_sha": "f0615a8e035a7ed5112bff2cf285e047fa4bdf52",
@@ -290,26 +298,10 @@
       "after_mode": "100644"
     },
     {
-      "path": "contracts/runtime-availability-dod.json",
+      "path": "contracts/repository-rename-2dim.json",
       "operation": "MODIFY",
-      "before_sha": "30e3012bca8d9ade692c746b0d35fa7b738559d9",
-      "after_sha": "60e3cf4a41ced793b6539f133304972daff44e9d",
-      "before_mode": "100644",
-      "after_mode": "100644"
-    },
-    {
-      "path": "contracts/self-world-kernel.json",
-      "operation": "MODIFY",
-      "before_sha": "98139998280b7826a4433751aedbb3f87b3dd606",
-      "after_sha": "8a0b446a6d9b29805ea66a4f8c23a032aad1eb8f",
-      "before_mode": "100644",
-      "after_mode": "100644"
-    },
-    {
-      "path": "contracts/session-chat-activation.json",
-      "operation": "MODIFY",
-      "before_sha": "1735dc4bddebeb9e7888aa92380eabf98f83b73a",
-      "after_sha": "49d48109d843edf9cfd1042fd929bf9a9ad01b3a",
+      "before_sha": "d010b9e6560618ce4e9c469298f10fa742d63286",
+      "after_sha": "b83473d1c7b4d62f77c47623dd9e971b04bc5597",
       "before_mode": "100644",
       "after_mode": "100644"
     },
@@ -661,7 +653,7 @@
       "path": "tests/pr251-forensic-hypergraph.test.mjs",
       "operation": "ADD",
       "before_sha": null,
-      "after_sha": "40c7510a64e4d2d54d888e544f82b036c6b95841",
+      "after_sha": "82becbdec386f8b346fb78bc4c094d98fe36b74a",
       "before_mode": null,
       "after_mode": "100644"
     },

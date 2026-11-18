@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "Adaptive counterfactual in separate worktrees: baseline original native checks and monotonic subset of documentary/project/script/contract/runtime groups; only native passing groups retained in candidate, no deletion applied to real PR. External authority HOLD. PR251 causal quotient sequence adds only review-required source, tests and CI classifier. No external evidence promotion; CI/runtimes must be rechecked after exact commit. Subsequent quotient slice separately reconstructs adaptive path/SHA/byte cohorts from the HEAD-bound P/Q outside set.",
+  "notes": "Adaptive counterfactual in separate worktrees: baseline original native checks and monotonic subset of documentary/project/script/contract/runtime groups; only native passing groups retained in candidate, no deletion applied to real PR. External authority HOLD. PR251 causal quotient sequence adds only review-required source, tests and CI classifier. No external evidence promotion; CI/runtimes must be rechecked after exact commit. Subsequent quotient slice separately reconstructs adaptive path/SHA/byte cohorts from the HEAD-bound P/Q outside set. Atlas L3 correction is an exact source-only documentary projection and not new authority.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -142,6 +142,14 @@
       "operation": "MODIFY",
       "before_sha": "f596bfd3946fe55e3974a491b0de5055a19870d4",
       "after_sha": "8dae03c9ba55ae417d6de5648ebcc3d268c8877d",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "before_sha": "d5651a62a37b788fd6a0f4a1219aa2118c3ed804",
+      "after_sha": "05dc96900a3f0c15ec3077939b8be4810e015fbc",
       "before_mode": "100644",
       "after_mode": "100644"
     },

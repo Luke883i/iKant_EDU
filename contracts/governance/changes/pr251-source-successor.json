@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "Adaptive counterfactual in separate worktrees: baseline original native checks and monotonic subset of documentary/project/script/contract/runtime groups; only native passing groups retained in candidate, no deletion applied to real PR. External authority HOLD. PR251 causal quotient sequence adds only review-required source, tests and CI classifier. No external evidence promotion; CI/runtimes must be rechecked after exact commit. Subsequent quotient slice separately reconstructs adaptive path/SHA/byte cohorts from the HEAD-bound P/Q outside set. Atlas L3 correction is an exact source-only documentary projection and not new authority.",
+  "notes": "Adaptive counterfactual in separate worktrees: baseline original native checks and monotonic subset of documentary/project/script/contract/runtime groups; only native passing groups retained in candidate, no deletion applied to real PR. External authority HOLD. PR251 causal quotient sequence adds only review-required source, tests and CI classifier. No external evidence promotion; CI/runtimes must be rechecked after exact commit. Subsequent quotient slice separately reconstructs adaptive path/SHA/byte cohorts from the HEAD-bound P/Q outside set. Atlas L3 correction is an exact source-only documentary projection and not new authority. A bounded physical native documentary ddmin stages source file deletions in ephemeral Git worktrees and executes original atlas and EDU/MCP source-native tests. A scoped one-minimal kernel never grants product or deletion authority.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -101,7 +101,7 @@
       "path": ".github/workflows/ci.yml",
       "operation": "MODIFY",
       "before_sha": "035aad3df89b20a91a1b9641379127eaee13292f",
-      "after_sha": "a32a97b7ceb19cbb06554d5cc57b83b7e309915e",
+      "after_sha": "527459decb75840f807ccd8cac38fea91902e933",
       "before_mode": "100644",
       "after_mode": "100644"
     },
@@ -157,7 +157,7 @@
       "path": "project/docs/PR251_CAUSAL_CONTRACTION.md",
       "operation": "ADD",
       "before_sha": null,
-      "after_sha": "5e6236f4c848dffd38d2718a36ea2105ac3982ef",
+      "after_sha": "292121ef6f2738eb1fed51c92de68b68014aef26",
       "before_mode": null,
       "after_mode": "100644"
     },
@@ -386,6 +386,14 @@
       "after_mode": "100644"
     },
     {
+      "path": "scripts/pr251-physical-ddmin.mjs",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "c753374fe8d8fe4c9d00fc4e5af945ae797cdafb",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
       "path": "scripts/r7-pr249-physical-gate.py",
       "operation": "MODIFY",
       "before_sha": "0e518c684940cd2a254cb628c353231ffff57bca",
@@ -445,7 +453,7 @@
       "path": "tests/pr251-causal-oracle.test.mjs",
       "operation": "ADD",
       "before_sha": null,
-      "after_sha": "edb1939766682a97f829ae87a7a8a89b3ecfa82c",
+      "after_sha": "285d56eadf6bd328b531c98556d9fa7ab125bce3",
       "before_mode": null,
       "after_mode": "100644"
     },
@@ -454,6 +462,14 @@
       "operation": "ADD",
       "before_sha": null,
       "after_sha": "fc5961258228b6e76978ad0a6a6b0f8173f8cefc",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/pr251-physical-ddmin.test.mjs",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "0c751eee9d6ee9e3c394696890310e75405021c4",
       "before_mode": null,
       "after_mode": "100644"
     },

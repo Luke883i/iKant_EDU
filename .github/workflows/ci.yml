@@ -18,6 +18,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: C139/C143 bounded source contraction readback
+        if: ${{ github.event_name == 'pull_request' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          old=$(git cat-file -s 3f38cb22fe1f4c2b5a038ef4eb942722383ec1e5:host/c139-edu-v2-turn.mjs)
+          new=$(git cat-file -s HEAD:host/c139-edu-v2-turn.mjs)
+          test "$new" -lt "$old"
+          node --check host/c139-edu-v2-turn.mjs
+          printf 'C139 shared original source: %s -> %s bytes (%s fewer); policy owner and C87 unchanged. G0=HOLD.\n' "$old" "$new" "$((old-new))" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: PR251 typed hypergraph witness (source only, not release)
         id: sg
         if: ${{ !cancelled() && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}

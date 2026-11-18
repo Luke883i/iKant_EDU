@@ -143,15 +143,17 @@ export function deriveProductSolution(inventory,relations){
   x.path.startsWith('.github/workflows/')).map(x=>x.path);
  const allowed=new Set(['STATIC_IMPORT','SOURCE_LITERAL','PACKAGE_LITERAL',
   'WORKFLOW_LITERAL','TEST_LITERAL']);
- function visit(roots){
+ function visit(roots,types=allowed){
   const found=new Set(roots),queue=[...roots];
   for(let i=0;i<queue.length;i++)for(const e of bySource.get(queue[i])||[]){
-   if(!allowed.has(e.type)||found.has(e.to))continue;
+   if(!types.has(e.type)||found.has(e.to))continue;
    found.add(e.to);queue.push(e.to);
   }
   return found;
  }
  const p=visit(product),q=visit(verify),pq=new Set([...p,...q]);
+ const qa=visit(verify,new Set([...allowed,'GENERATED_ATLAS_MEMBERSHIP']));
+ const assurance=new Set([...p,...qa]);
  const score=x=>[...x].reduce((n,k)=>n+(paths.get(k)?.bytes||0),0);
  const excluded=inventory.filter(x=>!pq.has(x.path));
  const docs=excluded.filter(x=>x.path.startsWith('project/docs/'));
@@ -163,6 +165,8 @@ export function deriveProductSolution(inventory,relations){
   product_observed_closure:{files:p.size,bytes:score(p)},
   verification_observed_closure:{files:q.size,bytes:score(q)},
   combined_observed_closure:{files:pq.size,bytes:score(pq)},
+  generated_document_assurance_closure:{files:assurance.size,bytes:score(assurance),
+   new_files:assurance.size-pq.size,not_runtime_equivalence:true},
   outside_observed_closure:{files:excluded.length,bytes:score(excluded.map(x=>x.path))},
   outside_paths:excluded.map(x=>({path:x.path,sha:x.sha,bytes:x.bytes,tier:x.tier})),
   documentary_retirement_hypothesis:{files:docs.length,bytes:score(docs.map(x=>x.path)),
@@ -233,6 +237,14 @@ export function buildTotalSupergraph(audit,{root=ROOT,treeText=null,read=null}={
     docs(from)?'DOCUMENT_LINK':'SOURCE_LITERAL';
    edge(from,target,type);
   }
+ }
+ // Source-observed generated-document consumers are assurance edges, not runtime imports.
+ // Keep the operational P/Q closure unchanged for historical counterfactual replay.
+ const atlas='project/docs/IKANT_DOCUMENT_ATLAS.md',generator='scripts/ikant-document-atlas.mjs';
+ if(paths.has(atlas)&&paths.has(generator)){
+  const source=strings.get(atlas)||'',ignore=new Set(['.git','node_modules','.ikant','dist','artifacts','coverage']);
+  for(const x of rows)if(x.path.endsWith('.md')&&!x.path.split('/').some(part=>ignore.has(part))&&
+    source.includes('['+x.path+']('))edge(generator,x.path,'GENERATED_ATLAS_MEMBERSHIP');
  }
  const directConsumers=rows.filter(r=>essential.has(r.path)||r.path.startsWith('tests/')||
   r.path.startsWith('.github/workflows/')||r.path.startsWith('src/')||

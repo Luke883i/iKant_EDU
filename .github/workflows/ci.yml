@@ -26,7 +26,7 @@ jobs:
           node --input-type=commonjs - <<'NODE'
           const fs=require('node:fs'),cp=require('node:child_process'),assert=require('node:assert/strict');
           const base='0b2ec2f4b4d90a448991523e726ef19f010ab34b';
-          const rows=[["contracts/oneshell-40-product-ci.json","ec8500f16c29d58946f7b7cb2b572b41462bd5aa"],["contracts/bootstrap-channel-lineage.json","64247ae90cae0fbf9839f288e2700939d678ba12"],["contracts/cora-pr-f-integrated-qualification-v1.json","2e38181460adf0deeb45dfd7b8c6e86dceb25d5b"],["contracts/cora-m2-owner-provider-metrics-v1.json","99254f133b6e0abce1ce1a1a22f043c110fc5a34"],["contracts/cora-three-streams-retrograde-v1.json","4e22c6deab3aab31654f1cd2365fdf9e0b2676ca"],["contracts/cora-reticular-hygiene-v1.json","583ff9e067d3e8daf0bd2c20362f97833a483309"],["contracts/project-pe-retrograde-dod.json","77f722079ab43dba67d14d71d007ac1a9fb105fe"],["contracts/cora-s3-source-convergence-v1.json","970ebd7a1faa9ec194ec4757ed8f5b095590a837"],["contracts/project-edu-h1-v5-dod-trace.json","ef9b2acdb03dd7d87db1b1429a0b3d6dd1febaf5"]];
+          const rows=[["contracts/mcp-external-mutation-assurance-v2.json","c31ca377f26917e8dc4b02c1ebd90a1f7f422f5e"],["contracts/supersystem-runtime-conformance-v1_1.json","29ede03add624be3dbcfd64768f12cfe095047ae"],["contracts/repository-health-v10.json","f0615a8e035a7ed5112bff2cf285e047fa4bdf52"],["contracts/project-v5c-edu-minimum-dod.json","7fa2ce18da4b349ce1719d4a2c94e085c0631c07"],["contracts/project-v5e-cognition-dod.json","9d04071f994ce3e48fa4fe072d552d2f77e1d51e"],["contracts/cora-pr-b-documentation-v1.json","aa6bf4bde2c9958bc2b7e93d5a0741440ef2b0e6"],["contracts/oneshell-40-product-ci.json","ec8500f16c29d58946f7b7cb2b572b41462bd5aa"],["contracts/bootstrap-channel-lineage.json","64247ae90cae0fbf9839f288e2700939d678ba12"],["contracts/cora-pr-f-integrated-qualification-v1.json","2e38181460adf0deeb45dfd7b8c6e86dceb25d5b"],["contracts/cora-m2-owner-provider-metrics-v1.json","99254f133b6e0abce1ce1a1a22f043c110fc5a34"],["contracts/cora-three-streams-retrograde-v1.json","4e22c6deab3aab31654f1cd2365fdf9e0b2676ca"],["contracts/cora-reticular-hygiene-v1.json","583ff9e067d3e8daf0bd2c20362f97833a483309"],["contracts/project-pe-retrograde-dod.json","77f722079ab43dba67d14d71d007ac1a9fb105fe"],["contracts/cora-s3-source-convergence-v1.json","970ebd7a1faa9ec194ec4757ed8f5b095590a837"],["contracts/project-edu-h1-v5-dod-trace.json","ef9b2acdb03dd7d87db1b1429a0b3d6dd1febaf5"]];
           const git=(...args)=>cp.execFileSync('git',args,{encoding:'utf8',maxBuffer:2097152}).trim();
           assert.equal(git('rev-parse',base+'^{commit}'),base);
           // This producer is byte-exact (native workflow cmp), not merely JSON-value-exact.
@@ -48,7 +48,7 @@ jobs:
             assert.notDeepStrictEqual(mutated,original,'FALSE_NEGATIVE_MUTANT:'+path);
             saved+=before.length-after.length;
           }
-          assert.ok(saved>=25000,'INSUFFICIENT_MEASURED_BYTE_CONTRACTION');
+          assert.ok(saved>=35000,'INSUFFICIENT_MEASURED_BYTE_CONTRACTION');
           console.log(JSON.stringify({schema:'pr251-semantic-json-quotient/v1',
             base,head:git('rev-parse','HEAD'),file_count:rows.length,
             bytes_saved:saved,mutation_rejected:rows.length,
@@ -57,7 +57,7 @@ jobs:
             global_dod:'HOLD',product_go:false}));
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
             '### PR251 original Git JSON-value quotient\n\n'+
-            '9 source catalog objects preserved; P0/P1 byte-exact generator excluded; '+saved+' tracked bytes saved. '+
+            '15 source catalog objects preserved; P0/P1 byte-exact generator excluded; '+saved+' tracked bytes saved. '+
             'Independent negative mutants rejected. Original byte identities changed; '+
             'runtime and owner/provider gates remain independent. G0=HOLD.\n');
           NODE

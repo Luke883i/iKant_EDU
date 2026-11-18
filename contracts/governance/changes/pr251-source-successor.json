@@ -27,7 +27,7 @@
     {"path":".github/workflows/c111-host-edge.yml","operation":"MODIFY","before_sha":"8f59ea7ca6a95563da2a810d513f8bacbb7fd918","after_sha":"863ae51a3f82854d33bc75f5bcce1e96e6499724","before_mode":"100644","after_mode":"100644"},
     {"path":".github/workflows/c139-epistemic-edu.yml","operation":"MODIFY","before_sha":"7e3c1fd24a59a4d9d8aa774904d3eb31a6346a25","after_sha":"e25902a5b8e7fba1083d8da448a4a9c643aec29b","before_mode":"100644","after_mode":"100644"},
     {"path":".github/workflows/c143-cp11-prepr.yml","operation":"MODIFY","before_sha":"625622d3c30b3fbfd005e986f986c07a32db62ae","after_sha":"3e7bf54719f14c9f818b13098daca83479eba325","before_mode":"100644","after_mode":"100644"},
-    {"path":".github/workflows/ci.yml","operation":"MODIFY","before_sha":"035aad3df89b20a91a1b9641379127eaee13292f","after_sha":"4d66a90a554227c49278ac47d9814300a719b060","before_mode":"100644","after_mode":"100644"},
+    {"path":".github/workflows/ci.yml","operation":"MODIFY","before_sha":"035aad3df89b20a91a1b9641379127eaee13292f","after_sha":"33b644931cb0da4307ee959e3b3a0e2559bdcfbd","before_mode":"100644","after_mode":"100644"},
     {"path":".github/workflows/oneshell-v1-qualification.yml","operation":"MODIFY","before_sha":"3963a7a6bbf23389d856380b4490c6b853011b31","after_sha":"72f0f1fb0279588fdf1a369bb178bb04611e4611","before_mode":"100644","after_mode":"100644"},
     {"path":"contracts/governance/changes/pr251-source-successor.json","operation":"ADD","before_sha":null,"after_sha":null,"before_mode":null,"after_mode":"100644"},
     {"path":"contracts/pr251-forensic-hypergraph-dod.json","operation":"ADD","before_sha":null,"after_sha":"4dbd904fda2a795bd02faaf094555416e5801233","before_mode":null,"after_mode":"100644"},

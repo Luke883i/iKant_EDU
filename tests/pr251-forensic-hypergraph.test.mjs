@@ -5,7 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import crypto from 'node:crypto';
-import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,buildTotalSupergraph,deriveProductSolution,observe} from '../scripts/pr251-forensic-hypergraph.mjs';
+import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,buildTotalSupergraph,deriveProductSolution,observe,scoreMultiLevelContraction} from '../scripts/pr251-forensic-hypergraph.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const c=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json')));
 test('PR251 retrograde 35 DoD nodes, 10 typed AND gates, no authority',()=>{
@@ -117,4 +117,58 @@ test('physical atlas counterexample becomes typed assurance dependency without l
  assert.equal(solution.generated_document_assurance_closure.not_runtime_equivalence,true);
  assert.equal(g.external_consumers,'UNKNOWN');
  assert.equal(g.product_go,false);
+});
+
+test('PR252 all-level metric rejects offsetting assurance growth and fake radical contraction',()=>{
+ const pre={files:1645,bytes:9500000,executedSourceBytes:19786};
+ const candidate={files:1628,bytes:9480000,executedSourceBytes:9820};
+ const evidence={lineage_valid:true,original_native:true,zero_write_denials:true,
+  ledger_owner_trace:true,duplicate_policy_before:2,duplicate_policy_after:1,
+  duplicate_inspector_before:2,duplicate_inspector_after:1,counterfactual_replayed:true};
+ const good=scoreMultiLevelContraction(pre,candidate,evidence);
+ assert.equal(good.physical.pass,true);assert.equal(good.implementation.pass,true);
+ assert.equal(good.architecture.owner_candidate,true);
+ assert.equal(good.source_candidate,true);assert.equal(good.global_dod,'HOLD');
+ assert.equal(good.product_go,false);assert.equal(good.architecture.external_consumers,'UNKNOWN');
+ const mutations=[
+  [{...candidate,bytes:9500001},evidence],
+  [{...candidate,files:1645},evidence],
+  [{...candidate,executedSourceBytes:10000},evidence],
+  [candidate,{...evidence,duplicate_inspector_after:2}],
+  [candidate,{...evidence,original_native:false}],
+  [candidate,{...evidence,counterfactual_replayed:false}],
+  [candidate,{...evidence,zero_write_denials:false}],
+  [candidate,{...evidence,lineage_valid:false}]
+ ];
+ for(const [a,b] of mutations)assert.equal(scoreMultiLevelContraction(pre,a,b).source_candidate,false);
+ let seed=252;for(let n=0;n<8192;n++){
+  seed=(Math.imul(seed,1664525)+1013904223)>>>0;
+  const a={...candidate},b={...evidence};
+  switch(seed%6){
+   case 0:a.files=1645;break;case 1:a.bytes=9500000;break;
+   case 2:a.executedSourceBytes=10001;break;case 3:b.duplicate_policy_after=2;break;
+   case 4:b.zero_write_denials=false;break;case 5:b.ledger_owner_trace=false;break;
+  }
+  assert.equal(scoreMultiLevelContraction(pre,a,b).source_candidate,false,'seeded mutant '+n);
+ }
+ assert.throws(()=>scoreMultiLevelContraction({...pre,bytes:-1},candidate),/BAD_TREE_METRICS/);
+});
+
+test('PR252 JSON-value cuts preserve original main data, but not byte identity or runtime certification',()=>{
+ const base='e270c6e2cc772f960126eecea9f50501339e3656';
+ const files=["pr1-64-coverage.v1.json","session-local-capability-lattice.json","runtime-availability-dod.json","cohost-context-root.json","chat-bootstrap-semantic.json","project-edu-h1-irreducible.json","project-host-tool-grounding-abi.json","self-world-kernel.json","psyche-kernel.json","session-chat-activation.json"];
+ let bytesSaved=0;
+ for(const name of files){
+  const p='contracts/'+name;
+  const pre=execFileSync('git',['show',base+':'+p],{cwd:root});
+  const post=fs.readFileSync(path.join(root,p));
+  const original=JSON.parse(pre),candidate=JSON.parse(post);
+  assert.deepStrictEqual(candidate,original,'JSON_VALUE_DRIFT:'+p);
+  assert.ok(post.length<pre.length,'NOT_A_COMPACTION:'+p);
+  const wrong=structuredClone(candidate),first=Object.keys(wrong)[0];
+  assert.ok(first,'EMPTY_MUTANT:'+p);delete wrong[first];
+  assert.notDeepStrictEqual(wrong,original,'FALSE_NEGATIVE_MUTANT:'+p);
+  bytesSaved+=pre.length-post.length;
+ }
+ assert.ok(bytesSaved>=24000,'PHYSICAL_SAVING_TOO_SMALL');
 });

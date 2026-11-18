@@ -18,6 +18,25 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: PR252 multi-level Git physical plus executable-code source witness (no release)
+        if: ${{ github.event_name == 'pull_request' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/pr251-forensic-hypergraph.mjs --convergence > "$RUNNER_TEMP/pr252-convergence.json"
+          node --input-type=commonjs - "$RUNNER_TEMP/pr252-convergence.json" <<'NODE'
+          const fs=require('node:fs'),assert=require('node:assert/strict');
+          const r=JSON.parse(fs.readFileSync(process.argv[2]));
+          assert.equal(r.assessment.schema,'ikant-pr252-multilevel-source-gate/v1');
+          assert.equal(r.before.files,1645);
+          assert.ok(r.after.files<r.before.files,'NO_FILE_CONTRACTION');
+          assert.equal(r.assessment.physical.pass,true,'NO_NET_REPO_BYTE_CONTRACTION');
+          assert.equal(r.assessment.implementation.pass,true,'NO_COMPONENT_SOURCE_HALVING');
+          assert.equal(r.assessment.global_dod,'HOLD');
+          assert.equal(r.assessment.product_go,false);
+          assert.equal(r.assessment.architecture.external_consumers,'UNKNOWN');
+          console.log(JSON.stringify({head:r.head,before:r.before,after:r.after,assessment:r.assessment},null,2));
+          NODE
       - name: PR251 lossless JSON-value quotient versus immutable Git preimages
         if: ${{ github.event_name == 'pull_request' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         shell: bash

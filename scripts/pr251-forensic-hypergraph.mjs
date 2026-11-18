@@ -321,8 +321,57 @@ export function observe({deep=false}={}){
  if(deep)result.total_source_supergraph=buildTotalSupergraph(audit);
  return result;
 }
+/** PR252: no second graph. Full-tree physical audit and noncompensatory source-level
+ * contraction metrics. Source evidence never grants external authority. */
+export function scoreMultiLevelContraction(before,after,owners={}){
+ const valid=x=>x&&Number.isSafeInteger(x.files)&&Number.isSafeInteger(x.bytes)&&
+  Number.isSafeInteger(x.executedSourceBytes)&&x.files>0&&x.bytes>0&&x.executedSourceBytes>0;
+ if(!valid(before)||!valid(after))throw Error('PR252_BAD_TREE_METRICS');
+ const physical={file_delta:after.files-before.files,byte_delta:after.bytes-before.bytes,
+   pass:after.files<before.files&&after.bytes<before.bytes};
+ const implementation={source_delta:after.executedSourceBytes-before.executedSourceBytes,
+   saved_percent:(before.executedSourceBytes-after.executedSourceBytes)*100/before.executedSourceBytes,
+   pass:after.executedSourceBytes*2<=before.executedSourceBytes};
+ const lineage=owners.lineage_valid===true, behavioral=owners.original_native===true&&
+   owners.zero_write_denials===true&&owners.ledger_owner_trace===true;
+ const architectural=owners.duplicate_policy_before===2&&owners.duplicate_policy_after===1&&
+  owners.duplicate_inspector_before===2&&owners.duplicate_inspector_after===1;
+ const counterfactual=owners.counterfactual_replayed===true;
+ const sourceCandidate=physical.pass&&implementation.pass&&architectural&&lineage&&
+   behavioral&&counterfactual;
+ return {schema:'ikant-pr252-multilevel-source-gate/v1',physical,implementation,
+   architecture:{owner_candidate:architectural,equivalence_scope:behavioral?'BOUNDED_NATIVE':'NOT_ATTESTED',
+     external_consumers:'UNKNOWN'},evidence_footprint_included:true,
+   source_candidate:sourceCandidate,independent_cora:owners.cora_independent??'DEBT_BLOCKED',
+   source_only_not_global_minimum:true,global_dod:'HOLD',product_go:false};
+}
+export function observePhysicalContraction(base='e270c6e2cc772f960126eecea9f50501339e3656'){
+ const aggregate=rev=>{
+  const raw=execFileSync('git',['ls-tree','-r','--long','-z',rev],{cwd:ROOT,maxBuffer:32*1024*1024});
+  const rows=raw.toString('utf8').split('\0').filter(Boolean);
+  let bytes=0;
+  for(const row of rows){
+   const m=/^(100644|100755) blob ([a-f0-9]{40}) +([0-9]+)\t(.+)$/u.exec(row);
+   if(!m)throw Error('PR252_NON_BLOB_OR_UNREADABLE_TREE');
+   bytes+=Number(m[3]);
+  }
+  const size=p=>Number(execFileSync('git',['cat-file','-s',rev+':'+p],
+     {cwd:ROOT,encoding:'utf8'}).trim());
+  return {files:rows.length,bytes,executedSourceBytes:
+   size('host/c139-edu-v2-turn.mjs')+size('host/c143-edu-v2-turn.mjs')};
+ };
+ return {before:aggregate(base),after:aggregate('HEAD'),
+   head:execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim(),
+   scope:'GIT_SOURCE_METRICS_NOT_INDEPENDENT_RUNTIME_CERTIFICATION'};
+}
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
- const r=observe({deep:process.argv.includes('--deep')});
- console.log(JSON.stringify(r,null,2));
- if(!r.exact_source_epoch)process.exitCode=1;
+ if(process.argv.includes('--convergence')){
+  const sizes=observePhysicalContraction();
+  const r=scoreMultiLevelContraction(sizes.before,sizes.after);
+  console.log(JSON.stringify({...sizes,assessment:r},null,2));
+ }else{
+  const r=observe({deep:process.argv.includes('--deep')});
+  console.log(JSON.stringify(r,null,2));
+  if(!r.exact_source_epoch)process.exitCode=1;
+ }
 }

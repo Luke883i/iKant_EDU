@@ -216,10 +216,31 @@ jobs:
           mkdir -p "$RUNNER_TEMP/pr251-physical-results"
           node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-physical-graph.json"
       - name: Stage and minimize real tracked deletions with original Node20 TAP
+        id: physical
         shell: bash
         run: |
           set -euo pipefail
           node scripts/pr251-physical-ddmin.mjs "$RUNNER_TEMP/pr251-physical-graph.json" "$RUNNER_TEMP/pr251-physical-results"
+          node --input-type=commonjs - <<'NODE'
+          const fs=require('node:fs'),path=require('node:path');
+          const r=JSON.parse(fs.readFileSync(path.join(process.env.RUNNER_TEMP,'pr251-physical-results','physical-ddmin.json'),'utf8'));
+          if(r.status!=='ONE_MINIMAL_NATIVE_DOCUMENTARY_COUNTEREXAMPLE'||
+             r.physical_minimization.kernel.length!==1||
+             r.global_dod!=='HOLD'||r.product_go!==false)throw Error('NOT_ONE_MINIMAL_OR_UNAUTHORIZED');
+          const kernel=r.physical_minimization.kernel[0].replace(/[^A-Za-z0-9_.\/-]/g,'_');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,'kernel='+kernel+'\nprobes='+r.physical_minimization.probes+'\n');
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+            '### Original native physical ddmin (bounded source-only)\n\n'+
+            '| Evidence | Observed |\n| --- | --- |\n'+
+            '| Exact HEAD | `'+r.source.head+'` |\n'+
+            '| Exact Git TREE | `'+r.source.tree+'` |\n'+
+            '| Original native one-minimal kernel | `'+kernel+'` |\n'+
+            '| Original ddmin probes | '+r.physical_minimization.probes+' |\n'+
+            '| Product native mutant/control | '+r.product_smoke_mutant.status+' / '+r.product_smoke_control.status+' |\n'+
+            '| Global DoD | HOLD |\n| External consumers | UNKNOWN |\n\n');
+          NODE
+      - name: "Physical original-oracle kernel [${{ steps.physical.outputs.kernel }}]; probes=${{ steps.physical.outputs.probes }}"
+        run: echo "Bounded documentary one-minimal counterexample is not proof of global equivalence or a deletion grant."
       - name: Independently readback native logs and exact Git identity
         shell: bash
         run: |

@@ -545,9 +545,9 @@ jobs:
           set -euo pipefail
           # An immutable reviewed SHA must not be confused with moving origin/main.
           git clone --quiet https://github.com/Luke883i/cora.git "$RUNNER_TEMP/cora-engine"
-          git -C "$RUNNER_TEMP/cora-engine" cat-file -e "96bb3a91e5f6e38c90eec40b9705da38f2226fc5^{commit}"
-          git -C "$RUNNER_TEMP/cora-engine" checkout --quiet --detach 96bb3a91e5f6e38c90eec40b9705da38f2226fc5
-          test "$(git -C "$RUNNER_TEMP/cora-engine" rev-parse HEAD)" = "96bb3a91e5f6e38c90eec40b9705da38f2226fc5"
+          git -C "$RUNNER_TEMP/cora-engine" cat-file -e "80dae4fd104bc633e5ca18b359e5b307f34d5fa9^{commit}"
+          git -C "$RUNNER_TEMP/cora-engine" checkout --quiet --detach 80dae4fd104bc633e5ca18b359e5b307f34d5fa9
+          test "$(git -C "$RUNNER_TEMP/cora-engine" rev-parse HEAD)" = "80dae4fd104bc633e5ca18b359e5b307f34d5fa9"
       - name: CORA independent Git source ledger and SHA revalidation
         if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}
         shell: bash
@@ -570,8 +570,10 @@ jobs:
             {'id':'ledger-writer','path':'host/c87-durable-ledger.mjs'}]
           for row in owners:
             subprocess.check_call(['git','cat-file','-e','HEAD:'+row['path']])
-          profile = {'schema':'cora-portable-target/1','target_repo':'Luke883i/iKant_EDU',
-            'revision':head,'owners':owners,'witnesses':[],'method_links':[]}
+          profile = {'schema':'cora-portable-target/3','target_repo':'Luke883i/iKant_EDU',
+            'revision':head,'owners':owners,'witnesses':[],'method_links':[],
+            'source_manifests':{'artifact_roles':'contracts/cora-source-roles.json',
+              'ontology':'contracts/cora-source-ontology.json'}}
           path = pathlib.Path(os.environ['RUNNER_TEMP'])/'cora-target-profile.json'
           path.write_text(json.dumps(profile,sort_keys=True,indent=2)+'\n',encoding='utf-8')
           PY
@@ -584,6 +586,28 @@ jobs:
           export PYTHONPATH="$RUNNER_TEMP/cora-engine/src"
           python3 -m cora.cli process-run . --revision HEAD --one-run --portable-profile "$RUNNER_TEMP/cora-target-profile.json" --output "$RUNNER_TEMP/cora-one-run.json" --atlas-html "$RUNNER_TEMP/cora-one-run.html" > "$RUNNER_TEMP/cora-portable-stdout.log" 2>&1
           result=$?
+          # Source gate: both original CORA methods must ACTUALLY execute. Missing,
+          # unconfigured, replay-only and source-partial methods never count as PASS.
+          if [ "$result" -eq 0 ]; then
+            python3 - <<'PY'
+          import json,os,pathlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])/'cora-one-run.json'
+          x=json.loads(p.read_text(encoding='utf8'))
+          source=x['source_process']
+          assert x['source_status']=='PASS_SCOPED_GIT_SOURCE_ONLY'
+          assert source['status']=='PASS_SCOPED_WITH_UNVERIFIED_GAPS'
+          methods={row['method']:row for row in source['results']}
+          for method in ('artifact_roles','python_candidate_graph'):
+              row=methods[method]
+              assert row['status']=='REUSED_SCOPED_FROM_HOLISTIC',(method,row)
+              assert isinstance(row['source_digest'],str) and row['source_digest'],method
+          assert source['manifest_paths']=={
+              'artifact_roles':'contracts/cora-source-roles.json',
+              'ontology':'contracts/cora-source-ontology.json'}
+          assert x['authorization']=='NONE'
+          assert x['behavior_status']=='BLOCKED_EXTERNAL'
+          PY
+          fi
           python3 - <<'PY'
           import json,os,pathlib
           p=pathlib.Path(os.environ['RUNNER_TEMP'])/'cora-one-run.json'

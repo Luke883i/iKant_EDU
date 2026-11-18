@@ -73,12 +73,15 @@ export function executeVersionedEduTurn(mode,{ledgerFile,nonce,request,priorMess
   if(t.input_sha256!==sha(Buffer.from(x.humanInput,'utf8'))||
    t.output_sha256!==sha(Buffer.from(t.demonstration_surface,'utf8'))||t.node_dispatch_input_bound!==true)
    return deny('ORIGINAL_C70_SAME_INPUT_BINDING');
-  // Both expected hashes are already validated as 64 lowercase hex bytes.
+  // Regex preflight accepts 64-hex representations but may coerce non-strings.
   // C139 and C143 always require C124; frozen C107 retains its legacy epoch.
   if(expectedC70OutputSha256!==t.output_sha256)
    return deny('C107_COMPUTE_FIRST_C70_PLAN_DRIFT');
   if(!verifyC124LanguageChannels(t.c124_language_channels,t.input_sha256))
    return deny('C124_SOURCE_CHANNEL_INVALID');
+  // RegExp.test coerces objects: retain this original denial edge for forged digest objects.
+  if(x.modelCandidate&&typeof expectedC124ChannelSha256!=='string')
+   return deny('C124_CHANNEL_ACK_REQUIRED');
   if(expectedC124ChannelSha256!==t.language_channel_sha256)
    return deny('C124_PREWRITE_CHANNEL_DRIFT');
   const sourceRoot=fileURLToPath(new URL('..',import.meta.url));

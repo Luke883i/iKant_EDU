@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "Adaptive counterfactual in separate worktrees: baseline original native checks and monotonic subset of documentary/project/script/contract/runtime groups; only native passing groups retained in candidate, no deletion applied to real PR. External authority HOLD. PR251 causal quotient sequence adds only review-required source, tests and CI classifier. No external evidence promotion; CI/runtimes must be rechecked after exact commit.",
+  "notes": "Adaptive counterfactual in separate worktrees: baseline original native checks and monotonic subset of documentary/project/script/contract/runtime groups; only native passing groups retained in candidate, no deletion applied to real PR. External authority HOLD. PR251 causal quotient sequence adds only review-required source, tests and CI classifier. No external evidence promotion; CI/runtimes must be rechecked after exact commit. Subsequent quotient slice separately reconstructs adaptive path/SHA/byte cohorts from the HEAD-bound P/Q outside set.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -101,7 +101,7 @@
       "path": ".github/workflows/ci.yml",
       "operation": "MODIFY",
       "before_sha": "035aad3df89b20a91a1b9641379127eaee13292f",
-      "after_sha": "c30be55ce2601281a4696a71dc3571a5882bb9f6",
+      "after_sha": "a32a97b7ceb19cbb06554d5cc57b83b7e309915e",
       "before_mode": "100644",
       "after_mode": "100644"
     },
@@ -365,7 +365,7 @@
       "path": "scripts/pr251-causal-oracle.mjs",
       "operation": "ADD",
       "before_sha": null,
-      "after_sha": "d792fa7680333b0295a8348c95685eba7190e6c8",
+      "after_sha": "de7aa990c907e4a86f52b791b2710958dd28c22c",
       "before_mode": null,
       "after_mode": "100644"
     },
@@ -437,7 +437,7 @@
       "path": "tests/pr251-causal-oracle.test.mjs",
       "operation": "ADD",
       "before_sha": null,
-      "after_sha": "cbea25c4e40800d5b2fc66db118009322c064195",
+      "after_sha": "edb1939766682a97f829ae87a7a8a89b3ecfa82c",
       "before_mode": null,
       "after_mode": "100644"
     },

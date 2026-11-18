@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "PR252 exact tree successor of unmerged PR251. Actual C23 CI counterexample falsified five byte-pinned JSON value-only cuts, now restored from authentic blobs. Four non-runtime-root catalogs replace these as physical-only cuts. Native, external consumer, independent CORA, owner and provider gates remain separately open.",
+  "notes": "PR252 strict exact Git source successor. CORA portable v3 source manifest adapter is a separate unmerged source PR #81; source-qualifying paths under contracts do not imply product authority. 85 exact deltas; G0 HOLD until original suite/independent CI+owner/provider.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -101,7 +101,7 @@
       "path": ".github/workflows/ci.yml",
       "operation": "MODIFY",
       "before_sha": "035aad3df89b20a91a1b9641379127eaee13292f",
-      "after_sha": "ba114f4b35a70f146bd477b366b4a823b4f894fd",
+      "after_sha": "f708c6a9137518f5dffeab0332201e49ae24b195",
       "before_mode": "100644",
       "after_mode": "100644"
     },
@@ -175,6 +175,22 @@
       "before_sha": "970ebd7a1faa9ec194ec4757ed8f5b095590a837",
       "after_sha": "6ccf4acc79de3c53353ade170bda3b8975cb5099",
       "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-source-ontology.json",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "5c2569b5e4df90059671d2401723a55f57d9992d",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-source-roles.json",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "c80e962bff39811bf9aed189f8e05527eab4a370",
+      "before_mode": null,
       "after_mode": "100644"
     },
     {
@@ -689,5 +705,21 @@
     "replay_exact_tree": true,
     "merged": false,
     "successor_pr": 252
+  },
+  "cora_portable_source": {
+    "engine_repo": "Luke883i/cora",
+    "source_pr": 81,
+    "source_revision": "80dae4fd104bc633e5ca18b359e5b307f34d5fa9",
+    "profile": "cora-portable-target/3",
+    "manifest_paths": [
+      "contracts/cora-source-ontology.json",
+      "contracts/cora-source-roles.json"
+    ],
+    "original_methods_required": [
+      "artifact_roles",
+      "python_candidate_graph"
+    ],
+    "source_green_without_both": false,
+    "external_host_provider_attested": false
   }
 }

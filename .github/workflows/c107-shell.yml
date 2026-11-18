@@ -4,6 +4,8 @@ on:
     paths:
       - 'host/c107-*'
       - 'scripts/c107-*'
+      - 'host/c139-edu-v2-turn.mjs'
+      - 'host/c107-edu-v2-turn.mjs'
       - 'tests/c107-*'
       - '.github/workflows/c107-shell.yml'
   workflow_dispatch:

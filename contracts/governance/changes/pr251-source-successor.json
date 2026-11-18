@@ -15,7 +15,7 @@
     "retired": true,
     "selected_commits": 6
   },
-  "notes": "Adaptive counterfactual in separate worktrees: baseline original native checks and monotonic subset of documentary/project/script/contract/runtime groups; only native passing groups retained in candidate, no deletion applied to real PR. External authority HOLD. PR251 causal quotient sequence adds only review-required source, tests and CI classifier. No external evidence promotion; CI/runtimes must be rechecked after exact commit. Subsequent quotient slice separately reconstructs adaptive path/SHA/byte cohorts from the HEAD-bound P/Q outside set. Atlas L3 correction is an exact source-only documentary projection and not new authority. A bounded physical native documentary ddmin stages source file deletions in ephemeral Git worktrees and executes original atlas and EDU/MCP source-native tests. A scoped one-minimal kernel never grants product or deletion authority.",
+  "notes": "Adaptive counterfactual in separate worktrees: baseline original native checks and monotonic subset of documentary/project/script/contract/runtime groups; only native passing groups retained in candidate, no deletion applied to real PR. External authority HOLD. PR251 causal quotient sequence adds only review-required source, tests and CI classifier. No external evidence promotion; CI/runtimes must be rechecked after exact commit. Subsequent quotient slice separately reconstructs adaptive path/SHA/byte cohorts from the HEAD-bound P/Q outside set. Atlas L3 correction is an exact source-only documentary projection and not new authority. A bounded physical native documentary ddmin stages source file deletions in ephemeral Git worktrees and executes original atlas and EDU/MCP source-native tests. A scoped one-minimal kernel never grants product or deletion authority. Native ddmin kernel and probes are displayed by the original GitHub workflow summary as source-bound diagnostic metadata; external and owner reviews remain unproven.",
   "paths": [
     {
       "path": ".github/workflows/c107-carrier-consumption.yml",
@@ -101,7 +101,7 @@
       "path": ".github/workflows/ci.yml",
       "operation": "MODIFY",
       "before_sha": "035aad3df89b20a91a1b9641379127eaee13292f",
-      "after_sha": "527459decb75840f807ccd8cac38fea91902e933",
+      "after_sha": "4d66a90a554227c49278ac47d9814300a719b060",
       "before_mode": "100644",
       "after_mode": "100644"
     },

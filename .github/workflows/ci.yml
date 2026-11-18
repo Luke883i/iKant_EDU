@@ -321,6 +321,12 @@ jobs:
       - name: "Adaptive solution baseline=${{ steps.adaptive.outputs.baseline }} files=${{ steps.adaptive.outputs.accepted_files }} bytes=${{ steps.adaptive.outputs.accepted_bytes }}"
         if: ${{ always() }}
         run: echo "Passing bounded native regression is necessary but external owner/provider review is still required."
+      - name: PR251 exact-HEAD causal counterfactual verdict (reject false green)
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/pr251-causal-oracle.mjs "$RUNNER_TEMP/pr251-adaptive.json" "$RUNNER_TEMP/pr251-cut-verdict.txt" "$RUNNER_TEMP/pr251-causal-verdict.json"
       - name: Preserve isolated cut and original native evidence
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
@@ -333,6 +339,7 @@ jobs:
             ${{ runner.temp }}/pr251-cut-contract.log
             ${{ runner.temp }}/pr251-cut-verdict.txt
             ${{ runner.temp }}/pr251-adaptive.json
+            ${{ runner.temp }}/pr251-causal-verdict.json
             ${{ runner.temp }}/pr251-stratum-*.log
           if-no-files-found: warn
           retention-days: 14

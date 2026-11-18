@@ -85,12 +85,16 @@ export function executeVersionedEduTurn(mode,{ledgerFile,nonce,request,priorMess
   if(expectedC124ChannelSha256!==t.language_channel_sha256)
    return deny('C124_PREWRITE_CHANNEL_DRIFT');
   const sourceRoot=fileURLToPath(new URL('..',import.meta.url));
-  const route=c143?qualifyC143RestrictedRoute({plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot}):
-   qualifyC139EpistemicRoute({episode:t,humanInput:x.humanInput});
-  if(!route.allowed)return deny(route.reason);
-  const review=x.modelCandidate?(c143?qualifyC143Candidate({plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot,text:x.modelCandidate.text}):
-   qualifyC139EpistemicCandidate({episode:t,humanInput:x.humanInput,text:x.modelCandidate.text})):null;
+  // The candidate policy already invokes its route policy. Do not run that same
+  // owner twice (C143 would read its original source documents twice).
+  // Without a candidate, preserve the original route-specific first denial.
+  const policy=c143?{plan:{...t,c70_original_executed:true},humanInput:x.humanInput,sourceRoot}:
+   {episode:t,humanInput:x.humanInput};
+  const review=c143?
+   (x.modelCandidate?qualifyC143Candidate({...policy,text:x.modelCandidate.text}):qualifyC143RestrictedRoute(policy)):
+   (x.modelCandidate?qualifyC139EpistemicCandidate({...policy,text:x.modelCandidate.text}):qualifyC139EpistemicRoute(policy));
   if(review?.allowed!==true)return deny(review?.reason||prefix+'_HOST_LANGUAGE_REQUIRED');
+  if(!x.modelCandidate)return deny(prefix+'_HOST_LANGUAGE_REQUIRED');
   const voice=x.modelCandidate.text;
   const plan=prepareC100CohostDraft({sourceHead:head,selection:x.selection,humanInput:x.humanInput,optIn:true});
   const bound=finalizeC100CohostDraft({plan,planSha256:plan.plan_sha256,modelText:voice});

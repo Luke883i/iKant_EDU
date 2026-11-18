@@ -194,6 +194,106 @@ jobs:
         run: npm run falsify:c38
 
 
+  physical_documentary_ddmin:
+    name: pr251-physical-documentary-ddmin
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Derive original outside-PQ candidates from exact source HEAD
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/pr251-physical-results"
+          node scripts/pr251-forensic-hypergraph.mjs --deep > "$RUNNER_TEMP/pr251-physical-graph.json"
+      - name: Stage and minimize real tracked deletions with original Node20 TAP
+        id: physical
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/pr251-physical-ddmin.mjs "$RUNNER_TEMP/pr251-physical-graph.json" "$RUNNER_TEMP/pr251-physical-results"
+          node --input-type=commonjs - <<'NODE'
+          const fs=require('node:fs'),path=require('node:path');
+          const r=JSON.parse(fs.readFileSync(path.join(process.env.RUNNER_TEMP,'pr251-physical-results','physical-ddmin.json'),'utf8'));
+          if(r.status!=='ONE_MINIMAL_NATIVE_DOCUMENTARY_COUNTEREXAMPLE'||
+             r.physical_minimization.kernel.length!==1||
+             r.global_dod!=='HOLD'||r.product_go!==false)throw Error('NOT_ONE_MINIMAL_OR_UNAUTHORIZED');
+          const kernel=r.physical_minimization.kernel[0].replace(/[^A-Za-z0-9_.\/-]/g,'_');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,'kernel='+kernel+'\nprobes='+r.physical_minimization.probes+'\n');
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+            '### Original native physical ddmin (bounded source-only)\n\n'+
+            '| Evidence | Observed |\n| --- | --- |\n'+
+            '| Exact HEAD | `'+r.source.head+'` |\n'+
+            '| Exact Git TREE | `'+r.source.tree+'` |\n'+
+            '| Original native one-minimal kernel | `'+kernel+'` |\n'+
+            '| Original ddmin probes | '+r.physical_minimization.probes+' |\n'+
+            '| Product native mutant/control | '+r.product_smoke_mutant.status+' / '+r.product_smoke_control.status+' |\n'+
+            '| Global DoD | HOLD |\n| External consumers | UNKNOWN |\n\n');
+          NODE
+      - name: "Physical original-oracle kernel [${{ steps.physical.outputs.kernel }}]; probes=${{ steps.physical.outputs.probes }}"
+        run: echo "Bounded documentary one-minimal counterexample is not proof of global equivalence or a deletion grant."
+      - name: Independently readback native logs and exact Git identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=commonjs - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto'),cp=require('node:child_process'),path=require('node:path');
+          const dir=path.join(process.env.RUNNER_TEMP,'pr251-physical-results');
+          const r=JSON.parse(fs.readFileSync(path.join(dir,'physical-ddmin.json'),'utf8'));
+          const src=cp.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+          const tree=cp.execFileSync('git',['rev-parse','HEAD^{tree}'],{encoding:'utf8'}).trim();
+          if(r.status!=='ONE_MINIMAL_NATIVE_DOCUMENTARY_COUNTEREXAMPLE'||
+             r.source.head!==src||r.source.tree!==tree||
+             r.physical_minimization.status!=='ONE_MINIMAL_FAILURE_KERNEL'||
+             r.physical_minimization.kernel.length!==1||
+             r.product_go!==false||r.global_dod!=='HOLD'||
+             r.authorized_deletion!==false||
+             r.dynamic_and_external_consumers!=='UNKNOWN')
+            throw Error('PHYSICAL_DDMIN_SCOPE_OR_CERTIFICATE_INVALID');
+          const hash=t=>crypto.createHash('sha256').update(t).digest('hex');
+          for(const trial of r.materialized_trials){
+            const file=path.join(dir,'trial-'+trial.id+'-original.tap');
+            if(!fs.existsSync(file)||hash(fs.readFileSync(file))!==trial.original_native.log_sha256)
+              throw Error('PHYSICAL_ORIGINAL_NATIVE_LOG_MISMATCH:'+trial.id);
+            if(trial.product_native){
+              const p=path.join(dir,'trial-'+trial.id+'-product.tap');
+              if(!fs.existsSync(p)||hash(fs.readFileSync(p))!==trial.product_native.log_sha256)
+                throw Error('PHYSICAL_PRODUCT_LOG_MISMATCH:'+trial.id);
+            }
+            if(trial.source_head!==src||trial.source_tree!==tree||
+               trial.product_go!==false||trial.authorized_deletion!==false)
+              throw Error('PHYSICAL_UNAUTHORIZED_PROMOTION');
+          }
+          const kernel=r.physical_minimization.kernel[0];
+          const pre=cp.execFileSync('git',['rev-parse','HEAD:'+kernel],{encoding:'utf8'}).trim();
+          if(!r.candidates.some(c=>c.path===kernel&&c.sha===pre))
+            throw Error('MINIMIZED_PREIMAGE_NOT_ORIGINAL_GIT');
+          console.log(JSON.stringify({source:src,original_oracle:r.consumer_test,
+            semantic_edge:r.consumer_hyperedge,kernel,probes:r.physical_minimization.probes,
+            native:'ONE_MINIMAL_ORIGINAL_TAP',product_smoke:r.product_smoke_mutant.status,
+            evidence:'ORIGINAL_GIT_AND_BOUNDED_NATIVE_NOT_GLOBAL',global_dod:r.global_dod}));
+          NODE
+      - name: Preserve actual Git staged-tree and original native traces
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr251-physical-ddmin-${{ github.event.pull_request.head.sha }}
+          path: |
+            ${{ runner.temp }}/pr251-physical-graph.json
+            ${{ runner.temp }}/pr251-physical-results/*.tap
+            ${{ runner.temp }}/pr251-physical-results/*.json
+          if-no-files-found: warn
+          retention-days: 14
+
   radical_counterfactual:
     name: pr251-radical-counterfactual-native
     if: ${{ github.event_name == 'pull_request' }}
@@ -321,6 +421,12 @@ jobs:
       - name: "Adaptive solution baseline=${{ steps.adaptive.outputs.baseline }} files=${{ steps.adaptive.outputs.accepted_files }} bytes=${{ steps.adaptive.outputs.accepted_bytes }}"
         if: ${{ always() }}
         run: echo "Passing bounded native regression is necessary but external owner/provider review is still required."
+      - name: PR251 exact-HEAD causal counterfactual verdict (reject false green)
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/pr251-causal-oracle.mjs "$RUNNER_TEMP/pr251-adaptive.json" "$RUNNER_TEMP/pr251-cut-verdict.txt" "$RUNNER_TEMP/pr251-graph.json" "$RUNNER_TEMP/pr251-causal-verdict.json"
       - name: Preserve isolated cut and original native evidence
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
@@ -333,6 +439,7 @@ jobs:
             ${{ runner.temp }}/pr251-cut-contract.log
             ${{ runner.temp }}/pr251-cut-verdict.txt
             ${{ runner.temp }}/pr251-adaptive.json
+            ${{ runner.temp }}/pr251-causal-verdict.json
             ${{ runner.temp }}/pr251-stratum-*.log
           if-no-files-found: warn
           retention-days: 14
@@ -361,7 +468,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          git clone --quiet --depth 1 --branch main https://github.com/Luke883i/cora.git "$RUNNER_TEMP/cora-engine"
+          # An immutable reviewed SHA must not be confused with moving origin/main.
+          git clone --quiet https://github.com/Luke883i/cora.git "$RUNNER_TEMP/cora-engine"
+          git -C "$RUNNER_TEMP/cora-engine" cat-file -e "96bb3a91e5f6e38c90eec40b9705da38f2226fc5^{commit}"
+          git -C "$RUNNER_TEMP/cora-engine" checkout --quiet --detach 96bb3a91e5f6e38c90eec40b9705da38f2226fc5
           test "$(git -C "$RUNNER_TEMP/cora-engine" rev-parse HEAD)" = "96bb3a91e5f6e38c90eec40b9705da38f2226fc5"
       - name: CORA independent Git source ledger and SHA revalidation
         if: ${{ steps.pr251_scope.outputs.enabled == 'true' }}

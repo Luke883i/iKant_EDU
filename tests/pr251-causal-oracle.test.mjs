@@ -49,9 +49,10 @@ test('missing or failing baseline, forged cut size, duplicate path and release c
 test('unknown, timeout or forged approval cannot be laundered into positive evidence',()=>{
   const r=sample();
   r.strata[0].gates.native.exit_code='TIMEOUT';
+  assert.equal(certifyCounterfactual(r,'REJECTED_BY_NATIVE_OR_CONTRACT').adaptive_strata[0].native,'UNKNOWN');
+  r.strata[0].pass=true;
   assert.throws(()=>certifyCounterfactual(r,'REJECTED_BY_NATIVE_OR_CONTRACT'),/FORGED_PASS/);
   r.strata[0].pass=false;
-  assert.equal(certifyCounterfactual(r,'REJECTED_BY_NATIVE_OR_CONTRACT').adaptive_strata[0].native,'UNKNOWN');
   assert.throws(()=>certifyCounterfactual(r,'APPROVED_FOR_RELEASE'),/UNKNOWN_RADICAL_VERDICT/);
 });
 test('seeded counterexamples with two necessary triggers yield a one-minimal failure kernel',async()=>{

@@ -1,1 +1,549 @@
-{"schema":"ikant-le-runtime-availability-dod/v5","slice":"C31.RUNTIME_LIMITED_SUPPLY_CHAIN","authority":0,"intent":"Keep ACTIVE unchanged while exposing five non-persisted service tiers and a stateless runtime-limited DOCX/telemetry turn.","principles":["DEGRADED is non-ACTIVE and cannot use iKant identity as if ACTIVE","DEGRADED is allowed only for observed availability/capability loss, never to mask integrity, consent or source contradictions","runtime-like means lifecycle/status/help can continue with an explicit loss-of-guarantee card; it does not imply repository runtime execution","business status must state what is verified, what is not guaranteed and the concrete recovery dependency","ACTIVE remains the conjunction of all source, transfer, materialization, live-host, persistence and commit gates","turn release remains separately fail-closed when required artifact presentation is unavailable","deadline unavailable/invalid/elapsed-unavailable/exceeded are distinct results; only a proven elapsed above the ceiling is DEADLINE_EXCEEDED","sticky deadline terminals require a fresh admission and cannot be crossed by manual recovery","canonical v2 ACTIVE depends on local executor, local materialization/reopen, runtime-owned probe/provenance, writer and ACTIVE readback; carrier and deadline are legacy v1 concerns","N0-N8 activation stage is a derived authority-zero projection and never a new product mode or lifecycle identity","verified opaque relay is a valid canonical byte path only after roundtrip and source/arrival samehash; model rewrite and semantic equivalence remain integrity failures","source-visible plus local processor plus relay candidate is N3_BRIDGE_PROBE_REQUIRED, not HOST_UNAVAILABLE","LOCAL_PROCESSOR and VERIFIED_BYTE_PATH are facets of LOCAL_INGRESS, not separate constitutional owners","diagnostic N8 is impossible under an integrity blocker","repository closure and external platform observation remain separate","current-host topology belongs to receipts or fixtures rather than constitutional contracts","strongest mechanically valid activation prefix survives orthogonal fault overlays while effective service remains fail-closed","canonical SESSION_CHAT_LOCAL limited ingress is materialized-runtime owned; plugin/deployment ingress is compatibility-only"],"session_states":{"DISCOVERED":"target recognized; no admission claim","ORIENTING":"source orientation in progress; no consent yet","AWAITING_ACCEPTANCE":"current Terms presented and frozen; exact human acceptance pending","ACTIVATING":"valid acceptance observed; required activation gates still unresolved","DEGRADED":"non-ACTIVE recoverable availability state with explicit missing guarantees and recovery dependency","BLOCKED_INTEGRITY":"source, consent or evidence contradiction; no degraded fallback is permitted","ACTIVE":"all mandatory activation gates passed and ACTIVE commit persisted/read back","SESSION_NONCONFORMING":"non-retroactive session breach; fresh conforming chat required","EXITED":"human exact exit completed for an ACTIVE epoch","ADMISSION_EPOCH_UNRECOVERABLE":"single-shot admission cannot be recovered in place because deadline origin/elapsed is unavailable, invalid or exceeded; fresh admission required"},"turn_states":{"IDLE":"no substantive turn in flight","PROCESSING":"ACTIVE turn entered runtime and has not completed release","RELEASE_BLOCKED":"runtime work may exist but required same-turn artifact presentation is not proven; Surface A must not be released as conforming","RELEASED":"required artifact presentation and Surface A release completed in order"},"degraded_codes":{"EVIDENCE_UNAVAILABLE":"required source-bound bootstrap evidence is absent rather than contradictory","BYTE_BRIDGE_UNAVAILABLE":"no observed byte-exact carrier-to-local-filesystem path with readback","LOCAL_ROOT_UNAVAILABLE":"runtime bytes are identified but local materialization/reopen is unavailable","HOST_CAPABILITY_UNAVAILABLE":"one or more mandatory live host capabilities are unavailable","WRITER_UNAVAILABLE":"single-writer persistence/readback is unavailable","ACTIVE_COMMIT_UNAVAILABLE":"all prior gates may be satisfied but ACTIVE persistence/readback did not complete","LOCAL_EXECUTOR_UNAVAILABLE":"the local activation executor cannot currently acquire/verify required immutable objects; same-epoch retry is allowed"},"global_dod":{"id":"DOD_GLOBAL_RUNTIME_TRUTH","requires":["DOD_I_ADMISSION","DOD_I_RUNTIME_ROOT","DOD_I_ACTIVATION_STAGE","DOD_I_EXECUTION","DOD_I_RELEASE","DOD_I_STATUS_TRUTH","DOD_I_QUALIFICATION","DOD_I_SERVICE_TIERS","DOD_I_LIMITED_TURN","DOD_I_LIMITED_SUPPLY_CHAIN","DOD_I_POST_187_CLOSURE"],"pass_condition":"all existing runtime truth DoDs plus C30 service-tier and limited-turn DoDs pass; unsafe ACTIVE=0; unsafe limited closure=0"},"intermediate_dods":[{"id":"DOD_I_ADMISSION","requires":["DOD_L_SOURCE","DOD_L_CONSENT"]},{"id":"DOD_I_RUNTIME_ROOT","requires":["DOD_L_SOURCE_OBJECT_IDENTITY","DOD_L_LOCAL_EXECUTOR","DOD_L_LOCAL_ROOT"]},{"id":"DOD_I_ACTIVATION_STAGE","requires":["DOD_L_PROCESSOR","DOD_L_BYTE_PATH","DOD_L_RELAY_SAMEHASH","DOD_L_STAGE_PROJECTION"]},{"id":"DOD_I_EXECUTION","requires":["DOD_L_HOST_PROBE","DOD_L_WRITER","DOD_L_ACTIVE_COMMIT"]},{"id":"DOD_I_RELEASE","requires":["DOD_L_ARTIFACT_RELEASE"]},{"id":"DOD_I_STATUS_TRUTH","requires":["DOD_L_STATE_EXCLUSIVITY","DOD_L_DEGRADED_CARD","DOD_L_INTEGRITY_BLOCK","DOD_L_RECOVERY_TRUTH"]},{"id":"DOD_I_QUALIFICATION","requires":["DOD_L_DISCOVERY_10M","DOD_L_QUALIFICATION_1M","DOD_L_DELETION_ORACLE","DOD_L_C27_1M"]},{"id":"DOD_I_SERVICE_TIERS","requires":["DOD_L_SERVICE_PROJECTION_ONLY","DOD_L_SERVICE_PREFIX","DOD_L_ACTIVE_UNCHANGED"]},{"id":"DOD_I_LIMITED_TURN","requires":["DOD_L_LIMITED_TIER","DOD_L_LIMITED_DISPATCH","DOD_L_LIMITED_SEAL","DOD_L_LIMITED_DOCX","DOD_L_LIMITED_TELEMETRY","DOD_L_LIMITED_NO_STATE_MUTATION","DOD_L_LIMITED_NO_ACK_CLAIM","DOD_L_C30_SELECTION_10K","DOD_L_C30_FALSIFICATION_10M"]},{"id":"DOD_I_LIMITED_SUPPLY_CHAIN","requires":["DOD_L_C31_CAPABILITY","DOD_L_C31_RUNTIME_DISPATCH","DOD_L_C31_ATOMIC_ARTIFACT","DOD_L_C31_PRODUCT_INGRESS","DOD_L_C31_FALSIFICATION_1M"]},{"id":"DOD_I_POST_187_CLOSURE","requires":["DOD_L_STRONGEST_PREFIX","DOD_L_SHELL_EVIDENCE_ONLY","DOD_L_PRE_RUNTIME_EXEC_OWNER","DOD_L_CANONICAL_LOCAL_INGRESS","DOD_L_C33_FALSIFICATION_1M"]}],"local_dods":[{"id":"DOD_L_SOURCE","test":"one immutable source head owns orientation and runtime identity"},{"id":"DOD_L_CONSENT","test":"current Terms plus later exact standalone I ACCEPT; no embedded/prior acceptance"},{"id":"DOD_L_LOCAL_ROOT","test":"authoritative materializer verifies members, atomic publish and reopen"},{"id":"DOD_L_HOST_PROBE","test":"real Node 20+, filesystem, SHA-256, clock and artifact sink evidence"},{"id":"DOD_L_WRITER","test":"single writer persistence and readback before reliance"},{"id":"DOD_L_ACTIVE_COMMIT","test":"ACTIVE only after all upstream evidence and persisted/readback commit"},{"id":"DOD_L_ARTIFACT_RELEASE","test":"required Surface B artifact is presented before conforming Surface A release"},{"id":"DOD_L_STATE_EXCLUSIVITY","test":"ACTIVE, DEGRADED, BLOCKED_INTEGRITY and SESSION_NONCONFORMING are mutually exclusive truth states"},{"id":"DOD_L_DEGRADED_CARD","test":"every DEGRADED result names missing guarantee, preserved evidence and recovery dependency in business-readable bounded text"},{"id":"DOD_L_INTEGRITY_BLOCK","test":"integrity/source/consent contradictions never become DEGRADED"},{"id":"DOD_L_RECOVERY_TRUTH","test":"recovery instructions name a concrete missing capability and never claim recovery already occurred"},{"id":"DOD_L_DISCOVERY_10M","test":"10,000,000 deterministic semantic mutation cases across all state and failure families"},{"id":"DOD_L_QUALIFICATION_1M","test":"1,000,000 independent deterministic qualification mutations on the final candidate"},{"id":"DOD_L_DELETION_ORACLE","test":"removing any retained global semantic node reopens at least one false classification or false-green case"},{"id":"DOD_L_SOURCE_OBJECT_IDENTITY","test":"orientation and runtime objects are bound by immutable Git object identity plus byte count"},{"id":"DOD_L_LOCAL_EXECUTOR","test":"executor capability is probed before acquisition; byte_path is LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY; retry is idempotent by object identity"},{"id":"DOD_L_ACTIVATION_SLO","test":"activation latency is recorded; exceeding 120000 ms is telemetry and cannot produce an integrity terminal"},{"id":"DOD_L_PROCESSOR","test":"local processor capability is derived independently from connector/app registry visibility"},{"id":"DOD_L_BYTE_PATH","test":"exactly one typed canonical byte path is used: LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY"},{"id":"DOD_L_RELAY_SAMEHASH","test":"verified opaque relay requires OPAQUE_TRANSPORT_ONLY, authority zero, no rewrite/semantic equivalence, roundtrip verification and source/arrival samehash"},{"id":"DOD_L_STAGE_PROJECTION","test":"N0-N8 stage preserves every first-unclosed physical edge; blockers remain an orthogonal fault overlay"},{"id":"DOD_L_C27_1M","test":"1,000,000 deterministic preseeded realistic semantic states yield zero candidate/oracle mismatch, zero unsafe ACTIVE and kill all 20 retained mutants"},{"id":"DOD_L_SERVICE_PROJECTION_ONLY","test":"service tier is authority-zero, non-persisted and not a lifecycle/SOT"},{"id":"DOD_L_SERVICE_PREFIX","test":"five tiers are monotonic over the existing six-edge activation relation"},{"id":"DOD_L_ACTIVE_UNCHANGED","test":"ACTIVE still requires writer plus ACTIVE readback and no integrity overlay"},{"id":"DOD_L_LIMITED_TIER","test":"limited interaction only at RUNTIME_BOUND_LIMITED with writer"},{"id":"DOD_L_LIMITED_DISPATCH","test":"same-input Node dispatch receipt required"},{"id":"DOD_L_LIMITED_SEAL","test":"seal binds tier projection, input, output and dispatch"},{"id":"DOD_L_LIMITED_DOCX","test":"deterministic DOCX is written and read back"},{"id":"DOD_L_LIMITED_TELEMETRY","test":"bounded limited telemetry completeness is 1"},{"id":"DOD_L_LIMITED_NO_STATE_MUTATION","test":"limited module does not mutate canonical ledger/state"},{"id":"DOD_L_LIMITED_NO_ACK_CLAIM","test":"platform ACK not required and never claimed"},{"id":"DOD_L_C30_SELECTION_10K","test":"10k unique mutations produce one minimum"},{"id":"DOD_L_C30_FALSIFICATION_10M","test":"10m cases: zero mismatch, zero unsafe ACTIVE/limited closure, all mutants killed"},{"id":"DOD_L_C31_CAPABILITY","test":"limited capability binds exact acceptance origin, source head, runtime root, local materialization reopen and executed provenance"},{"id":"DOD_L_C31_RUNTIME_DISPATCH","test":"Node dispatch is generated and digest/epoch/surface validated inside the limited runtime"},{"id":"DOD_L_C31_ATOMIC_ARTIFACT","test":"limited DOCX uses content-address identity, atomic publish and byte readback; absolute local path is noncanonical"},{"id":"DOD_L_C31_PRODUCT_INGRESS","test":"session-chat adapter exposes exact accept-limited and limited-turn without changing canonical ACTIVE accept/turn"},{"id":"DOD_L_C31_FALSIFICATION_1M","test":"1m seeded supply-chain mutations yield zero mismatch/unsafe closure and kill every retained requirement mutant"},{"id":"DOD_L_STRONGEST_PREFIX","test":"fault overlay may block effective service but may not erase strongest mechanically valid activation prefix"},{"id":"DOD_L_SHELL_EVIDENCE_ONLY","test":"non-ACTIVE intermediate tier in session shell requires explicit validated activation projection; raw persisted booleans cannot create it"},{"id":"DOD_L_PRE_RUNTIME_EXEC_OWNER","test":"existing direct-known runtime-root loader self-checks exact identity/H0, validates source/object samehash, materializes/reopens, emits exact runtime handoff and retires"},{"id":"DOD_L_CANONICAL_LOCAL_INGRESS","test":"materialized src/session-local-service.mjs owns limited acceptance/turn; runtime creates acceptance event; no canonical ledger mutation; legacy deployment/plugin ingress is noncanonical compatibility"},{"id":"DOD_L_C33_FALSIFICATION_1M","test":"1,000,000 deterministic post-186/187 semantic mutations: zero mismatch, zero unsafe promotion, all four action-deletion mutants killed"}],"claim_boundary":{"observable_host_surfaces_only":true,"private_chain_of_thought_not_observed":true,"mutation_pass_is_not_universal_host_proof":true,"degraded_is_not_active":true,"degraded_is_not_permission_or_execution_authority":true,"business_summary_is_not_evidence":true,"deadline_unavailable_is_not_exceeded":true,"retry_cannot_reset_acceptance_origin":true,"slo_exceeded_is_not_integrity_failure":true,"local_executor_unavailable_is_not_source_contradiction":true,"legacy_byte_bridge_is_not_v2_requirement":true,"verified_opaque_relay_is_authority":false,"stage_projection_is_runtime_truth":false,"host_unavailable_is_not_capability_stage":true,"diagnostic_stage_is_persisted_runtime_state":false,"repository_closed_is_current_host_active_proof":false,"external_gap_vector_is_repository_failure":false,"activation_service_tier_is_lifecycle_state":false,"runtime_bound_limited_is_active":false,"limited_runtime_turn_is_canonical_state":false,"limited_docx_is_platform_delivery_ack":false,"limited_output_requires_additional_platform_evidence":false,"limited_capability_is_active":false,"limited_capability_is_canonical_state":false,"limited_artifact_local_path_is_identity":false,"limited_product_ingress_is_active_ingress":false,"strongest_valid_prefix_is_effective_service":false,"compatibility_ingress_is_canonical":false,"pre_runtime_kernel_is_runtime":false,"raw_state_projection_is_service_evidence":false},"deadline_results":["DEADLINE_PASS","DEADLINE_ORIGIN_UNAVAILABLE","DEADLINE_ORIGIN_INVALID","DEADLINE_ELAPSED_UNAVAILABLE","DEADLINE_EXCEEDED"],"deadline_integrity_contract":"contracts/deadline-integrity.json","activation_stage_spectrum":{"schema":"ikant-le-local-activation-stage/v1","semantic_owner":"src/runtime-availability.mjs","stages":["N0_NON_AVAILABLE","N1_PROCESSOR_AVAILABLE","N2_SOURCE_VISIBLE","N3_BRIDGE_PROBE_REQUIRED","N4_INGRESS_EXECUTABLE","N5_MATERIALIZED_REOPENED","N6_EXECUTED_PROVENANCE_BOUND","N7_RUNTIME_BOUND_DEGRADED","N8_ACTIVE"],"projection_only":true,"persisted":false,"constitutional_boundary":false,"fault_overlay_orthogonal":true,"active_requires_no_integrity_overlay":true,"product_mode_created":false,"activation_modality_created":false},"session_closure_projection":{"schema":"ikant-le-session-closure-projection/v1","semantic_owner":"src/runtime-availability.mjs","edges":["HUMAN_GATE","SOURCE_SNAPSHOT","LOCAL_INGRESS","LOCAL_MATERIALIZATION","EXECUTED_RUNTIME_PROOF","ACTIVE_READBACK"],"exact_first_unclosed_edge":true,"external_gaps_orthogonal":true,"persisted":false,"authority":0},"activation_service_spectrum":{"schema":"ikant-le-activation-service-tier/v1","semantic_owner":"src/runtime-availability.mjs","tiers":["REPO_STUDY_ONLY","ACTIVATION_LIMITED_1","ACTIVATION_LIMITED_2","RUNTIME_BOUND_LIMITED","ACTIVE"],"projection_only":true,"persisted":false,"replaces_lifecycle":false,"prefix_monotonic":true,"active_semantics_unchanged":true,"requirements":{"REPO_STUDY_ONLY":["HUMAN_GATE","SOURCE_SNAPSHOT"],"ACTIVATION_LIMITED_1":["HUMAN_GATE","SOURCE_SNAPSHOT","LOCAL_INGRESS"],"ACTIVATION_LIMITED_2":["HUMAN_GATE","SOURCE_SNAPSHOT","LOCAL_INGRESS","LOCAL_MATERIALIZATION"],"RUNTIME_BOUND_LIMITED":["HUMAN_GATE","SOURCE_SNAPSHOT","LOCAL_INGRESS","LOCAL_MATERIALIZATION","EXECUTED_RUNTIME_PROOF","RUNTIME_BIND"],"ACTIVE":["HUMAN_GATE","SOURCE_SNAPSHOT","LOCAL_INGRESS","LOCAL_MATERIALIZATION","EXECUTED_RUNTIME_PROOF","RUNTIME_BIND","WRITER","ACTIVE_READBACK"]},"strongest_valid_prefix_preserved_under_fault":true,"effective_tier_null_under_fault":true,"fault_overlay_orthogonal_to_progress":true},"limited_runtime_turn":{"schema":"ikant-le-limited-turn-closure/v1","semantic_owner":"src/runtime-limited-turn.mjs","claim_class":"IKANT_RUNTIME_LIMITED","required_tier":"RUNTIME_BOUND_LIMITED","requires":["WRITER","SAME_INPUT_NODE_DISPATCH","RUNTIME_SEAL","DOCX_WRITE_READBACK","TELEMETRY_COMPLETE","STRUCTURED_DOWNLOAD_HANDOFF"],"platform_ack_required":false,"host_delivery_proven":false,"canonical_state_mutation":false,"persisted":false,"authority":0,"promotion_to_active_requires":"ACTIVE_READBACK","writer_semantics":"LIMITED_ARTIFACT_SINK_WRITE_READBACK","canonical_state_writer_required":false,"capability_schema":"ikant-le-limited-runtime-capability/v1","dispatch_schema":"ikant-le-node-dispatch/v1","telemetry_schema":"ikant-le-limited-runtime-telemetry/v2","artifact_schema":"ikant-le-limited-artifact/v2","turn_receipt_schema":"ikant-le-limited-turn-receipt/v2"},"limited_runtime_supply_chain":{"schema":"ikant-le-limited-runtime-supply-chain/v1","path":["EXACT_I_ACCEPT","SOURCE_BOUND_RUNTIME_ROOT","ATOMIC_MATERIALIZATION_REOPEN","EXECUTED_PROVENANCE","LIMITED_CAPABILITY","RUNTIME_OWNED_NODE_DISPATCH","RUNTIME_SEAL","COMPUTED_TELEMETRY","ATOMIC_DOCX_READBACK","STRUCTURED_HANDOFF"],"product_ingress":["ikant_le_accept_limited","ikant_le_limited_turn"],"capability_persisted_outside_canonical_ledger":true,"canonical_ledger_mutation":false,"caller_activation_booleans_forbidden":true,"caller_dispatch_receipt_forbidden":true,"platform_ack_required":false,"active_promotion":false,"first_unclosed_edge":"ACTIVE_READBACK","canonical_local_ingress":{"pre_runtime_owner":"src/runtime-root-verified.mjs#executePreRuntimeBootstrap","runtime_owner":"src/session-local-service.mjs","accept":"acceptLocalLimitedSession","turn":"runLocalLimitedTurn","contract":"contracts/pre-runtime-kernel.json"},"product_ingress_class":"COMPATIBILITY_ONLY","compatibility_ingress":["ikant_le_accept_limited","ikant_le_limited_turn"],"compatibility_ingress_is_canonical":false,"pre_runtime_kernel_reuses_existing_loader":true,"acceptance_event_identity_owner":"MATERIALIZED_RUNTIME","raw_state_intermediate_tier_claim_forbidden":true}}
+{
+  "schema": "ikant-le-runtime-availability-dod/v5",
+  "slice": "C31.RUNTIME_LIMITED_SUPPLY_CHAIN",
+  "authority": 0,
+  "intent": "Keep ACTIVE unchanged while exposing five non-persisted service tiers and a stateless runtime-limited DOCX/telemetry turn.",
+  "principles": [
+    "DEGRADED is non-ACTIVE and cannot use iKant identity as if ACTIVE",
+    "DEGRADED is allowed only for observed availability/capability loss, never to mask integrity, consent or source contradictions",
+    "runtime-like means lifecycle/status/help can continue with an explicit loss-of-guarantee card; it does not imply repository runtime execution",
+    "business status must state what is verified, what is not guaranteed and the concrete recovery dependency",
+    "ACTIVE remains the conjunction of all source, transfer, materialization, live-host, persistence and commit gates",
+    "turn release remains separately fail-closed when required artifact presentation is unavailable",
+    "deadline unavailable/invalid/elapsed-unavailable/exceeded are distinct results; only a proven elapsed above the ceiling is DEADLINE_EXCEEDED",
+    "sticky deadline terminals require a fresh admission and cannot be crossed by manual recovery",
+    "canonical v2 ACTIVE depends on local executor, local materialization/reopen, runtime-owned probe/provenance, writer and ACTIVE readback; carrier and deadline are legacy v1 concerns",
+    "N0-N8 activation stage is a derived authority-zero projection and never a new product mode or lifecycle identity",
+    "verified opaque relay is a valid canonical byte path only after roundtrip and source/arrival samehash; model rewrite and semantic equivalence remain integrity failures",
+    "source-visible plus local processor plus relay candidate is N3_BRIDGE_PROBE_REQUIRED, not HOST_UNAVAILABLE",
+    "LOCAL_PROCESSOR and VERIFIED_BYTE_PATH are facets of LOCAL_INGRESS, not separate constitutional owners",
+    "diagnostic N8 is impossible under an integrity blocker",
+    "repository closure and external platform observation remain separate",
+    "current-host topology belongs to receipts or fixtures rather than constitutional contracts",
+    "strongest mechanically valid activation prefix survives orthogonal fault overlays while effective service remains fail-closed",
+    "canonical SESSION_CHAT_LOCAL limited ingress is materialized-runtime owned; plugin/deployment ingress is compatibility-only"
+  ],
+  "session_states": {
+    "DISCOVERED": "target recognized; no admission claim",
+    "ORIENTING": "source orientation in progress; no consent yet",
+    "AWAITING_ACCEPTANCE": "current Terms presented and frozen; exact human acceptance pending",
+    "ACTIVATING": "valid acceptance observed; required activation gates still unresolved",
+    "DEGRADED": "non-ACTIVE recoverable availability state with explicit missing guarantees and recovery dependency",
+    "BLOCKED_INTEGRITY": "source, consent or evidence contradiction; no degraded fallback is permitted",
+    "ACTIVE": "all mandatory activation gates passed and ACTIVE commit persisted/read back",
+    "SESSION_NONCONFORMING": "non-retroactive session breach; fresh conforming chat required",
+    "EXITED": "human exact exit completed for an ACTIVE epoch",
+    "ADMISSION_EPOCH_UNRECOVERABLE": "single-shot admission cannot be recovered in place because deadline origin/elapsed is unavailable, invalid or exceeded; fresh admission required"
+  },
+  "turn_states": {
+    "IDLE": "no substantive turn in flight",
+    "PROCESSING": "ACTIVE turn entered runtime and has not completed release",
+    "RELEASE_BLOCKED": "runtime work may exist but required same-turn artifact presentation is not proven; Surface A must not be released as conforming",
+    "RELEASED": "required artifact presentation and Surface A release completed in order"
+  },
+  "degraded_codes": {
+    "EVIDENCE_UNAVAILABLE": "required source-bound bootstrap evidence is absent rather than contradictory",
+    "BYTE_BRIDGE_UNAVAILABLE": "no observed byte-exact carrier-to-local-filesystem path with readback",
+    "LOCAL_ROOT_UNAVAILABLE": "runtime bytes are identified but local materialization/reopen is unavailable",
+    "HOST_CAPABILITY_UNAVAILABLE": "one or more mandatory live host capabilities are unavailable",
+    "WRITER_UNAVAILABLE": "single-writer persistence/readback is unavailable",
+    "ACTIVE_COMMIT_UNAVAILABLE": "all prior gates may be satisfied but ACTIVE persistence/readback did not complete",
+    "LOCAL_EXECUTOR_UNAVAILABLE": "the local activation executor cannot currently acquire/verify required immutable objects; same-epoch retry is allowed"
+  },
+  "global_dod": {
+    "id": "DOD_GLOBAL_RUNTIME_TRUTH",
+    "requires": [
+      "DOD_I_ADMISSION",
+      "DOD_I_RUNTIME_ROOT",
+      "DOD_I_ACTIVATION_STAGE",
+      "DOD_I_EXECUTION",
+      "DOD_I_RELEASE",
+      "DOD_I_STATUS_TRUTH",
+      "DOD_I_QUALIFICATION",
+      "DOD_I_SERVICE_TIERS",
+      "DOD_I_LIMITED_TURN",
+      "DOD_I_LIMITED_SUPPLY_CHAIN",
+      "DOD_I_POST_187_CLOSURE"
+    ],
+    "pass_condition": "all existing runtime truth DoDs plus C30 service-tier and limited-turn DoDs pass; unsafe ACTIVE=0; unsafe limited closure=0"
+  },
+  "intermediate_dods": [
+    {
+      "id": "DOD_I_ADMISSION",
+      "requires": [
+        "DOD_L_SOURCE",
+        "DOD_L_CONSENT"
+      ]
+    },
+    {
+      "id": "DOD_I_RUNTIME_ROOT",
+      "requires": [
+        "DOD_L_SOURCE_OBJECT_IDENTITY",
+        "DOD_L_LOCAL_EXECUTOR",
+        "DOD_L_LOCAL_ROOT"
+      ]
+    },
+    {
+      "id": "DOD_I_ACTIVATION_STAGE",
+      "requires": [
+        "DOD_L_PROCESSOR",
+        "DOD_L_BYTE_PATH",
+        "DOD_L_RELAY_SAMEHASH",
+        "DOD_L_STAGE_PROJECTION"
+      ]
+    },
+    {
+      "id": "DOD_I_EXECUTION",
+      "requires": [
+        "DOD_L_HOST_PROBE",
+        "DOD_L_WRITER",
+        "DOD_L_ACTIVE_COMMIT"
+      ]
+    },
+    {
+      "id": "DOD_I_RELEASE",
+      "requires": [
+        "DOD_L_ARTIFACT_RELEASE"
+      ]
+    },
+    {
+      "id": "DOD_I_STATUS_TRUTH",
+      "requires": [
+        "DOD_L_STATE_EXCLUSIVITY",
+        "DOD_L_DEGRADED_CARD",
+        "DOD_L_INTEGRITY_BLOCK",
+        "DOD_L_RECOVERY_TRUTH"
+      ]
+    },
+    {
+      "id": "DOD_I_QUALIFICATION",
+      "requires": [
+        "DOD_L_DISCOVERY_10M",
+        "DOD_L_QUALIFICATION_1M",
+        "DOD_L_DELETION_ORACLE",
+        "DOD_L_C27_1M"
+      ]
+    },
+    {
+      "id": "DOD_I_SERVICE_TIERS",
+      "requires": [
+        "DOD_L_SERVICE_PROJECTION_ONLY",
+        "DOD_L_SERVICE_PREFIX",
+        "DOD_L_ACTIVE_UNCHANGED"
+      ]
+    },
+    {
+      "id": "DOD_I_LIMITED_TURN",
+      "requires": [
+        "DOD_L_LIMITED_TIER",
+        "DOD_L_LIMITED_DISPATCH",
+        "DOD_L_LIMITED_SEAL",
+        "DOD_L_LIMITED_DOCX",
+        "DOD_L_LIMITED_TELEMETRY",
+        "DOD_L_LIMITED_NO_STATE_MUTATION",
+        "DOD_L_LIMITED_NO_ACK_CLAIM",
+        "DOD_L_C30_SELECTION_10K",
+        "DOD_L_C30_FALSIFICATION_10M"
+      ]
+    },
+    {
+      "id": "DOD_I_LIMITED_SUPPLY_CHAIN",
+      "requires": [
+        "DOD_L_C31_CAPABILITY",
+        "DOD_L_C31_RUNTIME_DISPATCH",
+        "DOD_L_C31_ATOMIC_ARTIFACT",
+        "DOD_L_C31_PRODUCT_INGRESS",
+        "DOD_L_C31_FALSIFICATION_1M"
+      ]
+    },
+    {
+      "id": "DOD_I_POST_187_CLOSURE",
+      "requires": [
+        "DOD_L_STRONGEST_PREFIX",
+        "DOD_L_SHELL_EVIDENCE_ONLY",
+        "DOD_L_PRE_RUNTIME_EXEC_OWNER",
+        "DOD_L_CANONICAL_LOCAL_INGRESS",
+        "DOD_L_C33_FALSIFICATION_1M"
+      ]
+    }
+  ],
+  "local_dods": [
+    {
+      "id": "DOD_L_SOURCE",
+      "test": "one immutable source head owns orientation and runtime identity"
+    },
+    {
+      "id": "DOD_L_CONSENT",
+      "test": "current Terms plus later exact standalone I ACCEPT; no embedded/prior acceptance"
+    },
+    {
+      "id": "DOD_L_LOCAL_ROOT",
+      "test": "authoritative materializer verifies members, atomic publish and reopen"
+    },
+    {
+      "id": "DOD_L_HOST_PROBE",
+      "test": "real Node 20+, filesystem, SHA-256, clock and artifact sink evidence"
+    },
+    {
+      "id": "DOD_L_WRITER",
+      "test": "single writer persistence and readback before reliance"
+    },
+    {
+      "id": "DOD_L_ACTIVE_COMMIT",
+      "test": "ACTIVE only after all upstream evidence and persisted/readback commit"
+    },
+    {
+      "id": "DOD_L_ARTIFACT_RELEASE",
+      "test": "required Surface B artifact is presented before conforming Surface A release"
+    },
+    {
+      "id": "DOD_L_STATE_EXCLUSIVITY",
+      "test": "ACTIVE, DEGRADED, BLOCKED_INTEGRITY and SESSION_NONCONFORMING are mutually exclusive truth states"
+    },
+    {
+      "id": "DOD_L_DEGRADED_CARD",
+      "test": "every DEGRADED result names missing guarantee, preserved evidence and recovery dependency in business-readable bounded text"
+    },
+    {
+      "id": "DOD_L_INTEGRITY_BLOCK",
+      "test": "integrity/source/consent contradictions never become DEGRADED"
+    },
+    {
+      "id": "DOD_L_RECOVERY_TRUTH",
+      "test": "recovery instructions name a concrete missing capability and never claim recovery already occurred"
+    },
+    {
+      "id": "DOD_L_DISCOVERY_10M",
+      "test": "10,000,000 deterministic semantic mutation cases across all state and failure families"
+    },
+    {
+      "id": "DOD_L_QUALIFICATION_1M",
+      "test": "1,000,000 independent deterministic qualification mutations on the final candidate"
+    },
+    {
+      "id": "DOD_L_DELETION_ORACLE",
+      "test": "removing any retained global semantic node reopens at least one false classification or false-green case"
+    },
+    {
+      "id": "DOD_L_SOURCE_OBJECT_IDENTITY",
+      "test": "orientation and runtime objects are bound by immutable Git object identity plus byte count"
+    },
+    {
+      "id": "DOD_L_LOCAL_EXECUTOR",
+      "test": "executor capability is probed before acquisition; byte_path is LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY; retry is idempotent by object identity"
+    },
+    {
+      "id": "DOD_L_ACTIVATION_SLO",
+      "test": "activation latency is recorded; exceeding 120000 ms is telemetry and cannot produce an integrity terminal"
+    },
+    {
+      "id": "DOD_L_PROCESSOR",
+      "test": "local processor capability is derived independently from connector/app registry visibility"
+    },
+    {
+      "id": "DOD_L_BYTE_PATH",
+      "test": "exactly one typed canonical byte path is used: LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY"
+    },
+    {
+      "id": "DOD_L_RELAY_SAMEHASH",
+      "test": "verified opaque relay requires OPAQUE_TRANSPORT_ONLY, authority zero, no rewrite/semantic equivalence, roundtrip verification and source/arrival samehash"
+    },
+    {
+      "id": "DOD_L_STAGE_PROJECTION",
+      "test": "N0-N8 stage preserves every first-unclosed physical edge; blockers remain an orthogonal fault overlay"
+    },
+    {
+      "id": "DOD_L_C27_1M",
+      "test": "1,000,000 deterministic preseeded realistic semantic states yield zero candidate/oracle mismatch, zero unsafe ACTIVE and kill all 20 retained mutants"
+    },
+    {
+      "id": "DOD_L_SERVICE_PROJECTION_ONLY",
+      "test": "service tier is authority-zero, non-persisted and not a lifecycle/SOT"
+    },
+    {
+      "id": "DOD_L_SERVICE_PREFIX",
+      "test": "five tiers are monotonic over the existing six-edge activation relation"
+    },
+    {
+      "id": "DOD_L_ACTIVE_UNCHANGED",
+      "test": "ACTIVE still requires writer plus ACTIVE readback and no integrity overlay"
+    },
+    {
+      "id": "DOD_L_LIMITED_TIER",
+      "test": "limited interaction only at RUNTIME_BOUND_LIMITED with writer"
+    },
+    {
+      "id": "DOD_L_LIMITED_DISPATCH",
+      "test": "same-input Node dispatch receipt required"
+    },
+    {
+      "id": "DOD_L_LIMITED_SEAL",
+      "test": "seal binds tier projection, input, output and dispatch"
+    },
+    {
+      "id": "DOD_L_LIMITED_DOCX",
+      "test": "deterministic DOCX is written and read back"
+    },
+    {
+      "id": "DOD_L_LIMITED_TELEMETRY",
+      "test": "bounded limited telemetry completeness is 1"
+    },
+    {
+      "id": "DOD_L_LIMITED_NO_STATE_MUTATION",
+      "test": "limited module does not mutate canonical ledger/state"
+    },
+    {
+      "id": "DOD_L_LIMITED_NO_ACK_CLAIM",
+      "test": "platform ACK not required and never claimed"
+    },
+    {
+      "id": "DOD_L_C30_SELECTION_10K",
+      "test": "10k unique mutations produce one minimum"
+    },
+    {
+      "id": "DOD_L_C30_FALSIFICATION_10M",
+      "test": "10m cases: zero mismatch, zero unsafe ACTIVE/limited closure, all mutants killed"
+    },
+    {
+      "id": "DOD_L_C31_CAPABILITY",
+      "test": "limited capability binds exact acceptance origin, source head, runtime root, local materialization reopen and executed provenance"
+    },
+    {
+      "id": "DOD_L_C31_RUNTIME_DISPATCH",
+      "test": "Node dispatch is generated and digest/epoch/surface validated inside the limited runtime"
+    },
+    {
+      "id": "DOD_L_C31_ATOMIC_ARTIFACT",
+      "test": "limited DOCX uses content-address identity, atomic publish and byte readback; absolute local path is noncanonical"
+    },
+    {
+      "id": "DOD_L_C31_PRODUCT_INGRESS",
+      "test": "session-chat adapter exposes exact accept-limited and limited-turn without changing canonical ACTIVE accept/turn"
+    },
+    {
+      "id": "DOD_L_C31_FALSIFICATION_1M",
+      "test": "1m seeded supply-chain mutations yield zero mismatch/unsafe closure and kill every retained requirement mutant"
+    },
+    {
+      "id": "DOD_L_STRONGEST_PREFIX",
+      "test": "fault overlay may block effective service but may not erase strongest mechanically valid activation prefix"
+    },
+    {
+      "id": "DOD_L_SHELL_EVIDENCE_ONLY",
+      "test": "non-ACTIVE intermediate tier in session shell requires explicit validated activation projection; raw persisted booleans cannot create it"
+    },
+    {
+      "id": "DOD_L_PRE_RUNTIME_EXEC_OWNER",
+      "test": "existing direct-known runtime-root loader self-checks exact identity/H0, validates source/object samehash, materializes/reopens, emits exact runtime handoff and retires"
+    },
+    {
+      "id": "DOD_L_CANONICAL_LOCAL_INGRESS",
+      "test": "materialized src/session-local-service.mjs owns limited acceptance/turn; runtime creates acceptance event; no canonical ledger mutation; legacy deployment/plugin ingress is noncanonical compatibility"
+    },
+    {
+      "id": "DOD_L_C33_FALSIFICATION_1M",
+      "test": "1,000,000 deterministic post-186/187 semantic mutations: zero mismatch, zero unsafe promotion, all four action-deletion mutants killed"
+    }
+  ],
+  "claim_boundary": {
+    "observable_host_surfaces_only": true,
+    "private_chain_of_thought_not_observed": true,
+    "mutation_pass_is_not_universal_host_proof": true,
+    "degraded_is_not_active": true,
+    "degraded_is_not_permission_or_execution_authority": true,
+    "business_summary_is_not_evidence": true,
+    "deadline_unavailable_is_not_exceeded": true,
+    "retry_cannot_reset_acceptance_origin": true,
+    "slo_exceeded_is_not_integrity_failure": true,
+    "local_executor_unavailable_is_not_source_contradiction": true,
+    "legacy_byte_bridge_is_not_v2_requirement": true,
+    "verified_opaque_relay_is_authority": false,
+    "stage_projection_is_runtime_truth": false,
+    "host_unavailable_is_not_capability_stage": true,
+    "diagnostic_stage_is_persisted_runtime_state": false,
+    "repository_closed_is_current_host_active_proof": false,
+    "external_gap_vector_is_repository_failure": false,
+    "activation_service_tier_is_lifecycle_state": false,
+    "runtime_bound_limited_is_active": false,
+    "limited_runtime_turn_is_canonical_state": false,
+    "limited_docx_is_platform_delivery_ack": false,
+    "limited_output_requires_additional_platform_evidence": false,
+    "limited_capability_is_active": false,
+    "limited_capability_is_canonical_state": false,
+    "limited_artifact_local_path_is_identity": false,
+    "limited_product_ingress_is_active_ingress": false,
+    "strongest_valid_prefix_is_effective_service": false,
+    "compatibility_ingress_is_canonical": false,
+    "pre_runtime_kernel_is_runtime": false,
+    "raw_state_projection_is_service_evidence": false
+  },
+  "deadline_results": [
+    "DEADLINE_PASS",
+    "DEADLINE_ORIGIN_UNAVAILABLE",
+    "DEADLINE_ORIGIN_INVALID",
+    "DEADLINE_ELAPSED_UNAVAILABLE",
+    "DEADLINE_EXCEEDED"
+  ],
+  "deadline_integrity_contract": "contracts/deadline-integrity.json",
+  "activation_stage_spectrum": {
+    "schema": "ikant-le-local-activation-stage/v1",
+    "semantic_owner": "src/runtime-availability.mjs",
+    "stages": [
+      "N0_NON_AVAILABLE",
+      "N1_PROCESSOR_AVAILABLE",
+      "N2_SOURCE_VISIBLE",
+      "N3_BRIDGE_PROBE_REQUIRED",
+      "N4_INGRESS_EXECUTABLE",
+      "N5_MATERIALIZED_REOPENED",
+      "N6_EXECUTED_PROVENANCE_BOUND",
+      "N7_RUNTIME_BOUND_DEGRADED",
+      "N8_ACTIVE"
+    ],
+    "projection_only": true,
+    "persisted": false,
+    "constitutional_boundary": false,
+    "fault_overlay_orthogonal": true,
+    "active_requires_no_integrity_overlay": true,
+    "product_mode_created": false,
+    "activation_modality_created": false
+  },
+  "session_closure_projection": {
+    "schema": "ikant-le-session-closure-projection/v1",
+    "semantic_owner": "src/runtime-availability.mjs",
+    "edges": [
+      "HUMAN_GATE",
+      "SOURCE_SNAPSHOT",
+      "LOCAL_INGRESS",
+      "LOCAL_MATERIALIZATION",
+      "EXECUTED_RUNTIME_PROOF",
+      "ACTIVE_READBACK"
+    ],
+    "exact_first_unclosed_edge": true,
+    "external_gaps_orthogonal": true,
+    "persisted": false,
+    "authority": 0
+  },
+  "activation_service_spectrum": {
+    "schema": "ikant-le-activation-service-tier/v1",
+    "semantic_owner": "src/runtime-availability.mjs",
+    "tiers": [
+      "REPO_STUDY_ONLY",
+      "ACTIVATION_LIMITED_1",
+      "ACTIVATION_LIMITED_2",
+      "RUNTIME_BOUND_LIMITED",
+      "ACTIVE"
+    ],
+    "projection_only": true,
+    "persisted": false,
+    "replaces_lifecycle": false,
+    "prefix_monotonic": true,
+    "active_semantics_unchanged": true,
+    "requirements": {
+      "REPO_STUDY_ONLY": [
+        "HUMAN_GATE",
+        "SOURCE_SNAPSHOT"
+      ],
+      "ACTIVATION_LIMITED_1": [
+        "HUMAN_GATE",
+        "SOURCE_SNAPSHOT",
+        "LOCAL_INGRESS"
+      ],
+      "ACTIVATION_LIMITED_2": [
+        "HUMAN_GATE",
+        "SOURCE_SNAPSHOT",
+        "LOCAL_INGRESS",
+        "LOCAL_MATERIALIZATION"
+      ],
+      "RUNTIME_BOUND_LIMITED": [
+        "HUMAN_GATE",
+        "SOURCE_SNAPSHOT",
+        "LOCAL_INGRESS",
+        "LOCAL_MATERIALIZATION",
+        "EXECUTED_RUNTIME_PROOF",
+        "RUNTIME_BIND"
+      ],
+      "ACTIVE": [
+        "HUMAN_GATE",
+        "SOURCE_SNAPSHOT",
+        "LOCAL_INGRESS",
+        "LOCAL_MATERIALIZATION",
+        "EXECUTED_RUNTIME_PROOF",
+        "RUNTIME_BIND",
+        "WRITER",
+        "ACTIVE_READBACK"
+      ]
+    },
+    "strongest_valid_prefix_preserved_under_fault": true,
+    "effective_tier_null_under_fault": true,
+    "fault_overlay_orthogonal_to_progress": true
+  },
+  "limited_runtime_turn": {
+    "schema": "ikant-le-limited-turn-closure/v1",
+    "semantic_owner": "src/runtime-limited-turn.mjs",
+    "claim_class": "IKANT_RUNTIME_LIMITED",
+    "required_tier": "RUNTIME_BOUND_LIMITED",
+    "requires": [
+      "WRITER",
+      "SAME_INPUT_NODE_DISPATCH",
+      "RUNTIME_SEAL",
+      "DOCX_WRITE_READBACK",
+      "TELEMETRY_COMPLETE",
+      "STRUCTURED_DOWNLOAD_HANDOFF"
+    ],
+    "platform_ack_required": false,
+    "host_delivery_proven": false,
+    "canonical_state_mutation": false,
+    "persisted": false,
+    "authority": 0,
+    "promotion_to_active_requires": "ACTIVE_READBACK",
+    "writer_semantics": "LIMITED_ARTIFACT_SINK_WRITE_READBACK",
+    "canonical_state_writer_required": false,
+    "capability_schema": "ikant-le-limited-runtime-capability/v1",
+    "dispatch_schema": "ikant-le-node-dispatch/v1",
+    "telemetry_schema": "ikant-le-limited-runtime-telemetry/v2",
+    "artifact_schema": "ikant-le-limited-artifact/v2",
+    "turn_receipt_schema": "ikant-le-limited-turn-receipt/v2"
+  },
+  "limited_runtime_supply_chain": {
+    "schema": "ikant-le-limited-runtime-supply-chain/v1",
+    "path": [
+      "EXACT_I_ACCEPT",
+      "SOURCE_BOUND_RUNTIME_ROOT",
+      "ATOMIC_MATERIALIZATION_REOPEN",
+      "EXECUTED_PROVENANCE",
+      "LIMITED_CAPABILITY",
+      "RUNTIME_OWNED_NODE_DISPATCH",
+      "RUNTIME_SEAL",
+      "COMPUTED_TELEMETRY",
+      "ATOMIC_DOCX_READBACK",
+      "STRUCTURED_HANDOFF"
+    ],
+    "product_ingress": [
+      "ikant_le_accept_limited",
+      "ikant_le_limited_turn"
+    ],
+    "capability_persisted_outside_canonical_ledger": true,
+    "canonical_ledger_mutation": false,
+    "caller_activation_booleans_forbidden": true,
+    "caller_dispatch_receipt_forbidden": true,
+    "platform_ack_required": false,
+    "active_promotion": false,
+    "first_unclosed_edge": "ACTIVE_READBACK",
+    "canonical_local_ingress": {
+      "pre_runtime_owner": "src/runtime-root-verified.mjs#executePreRuntimeBootstrap",
+      "runtime_owner": "src/session-local-service.mjs",
+      "accept": "acceptLocalLimitedSession",
+      "turn": "runLocalLimitedTurn",
+      "contract": "contracts/pre-runtime-kernel.json"
+    },
+    "product_ingress_class": "COMPATIBILITY_ONLY",
+    "compatibility_ingress": [
+      "ikant_le_accept_limited",
+      "ikant_le_limited_turn"
+    ],
+    "compatibility_ingress_is_canonical": false,
+    "pre_runtime_kernel_reuses_existing_loader": true,
+    "acceptance_event_identity_owner": "MATERIALIZED_RUNTIME",
+    "raw_state_intermediate_tier_claim_forbidden": true
+  }
+}

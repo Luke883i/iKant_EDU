@@ -156,7 +156,7 @@ test('PR252 all-level metric rejects offsetting assurance growth and fake radica
 
 test('PR252 JSON-value cuts preserve original main data, but not byte identity or runtime certification',()=>{
  const base='e270c6e2cc772f960126eecea9f50501339e3656';
- const files=["pr1-64-coverage.v1.json","session-local-capability-lattice.json","runtime-availability-dod.json","cohost-context-root.json","chat-bootstrap-semantic.json","project-edu-h1-irreducible.json","project-host-tool-grounding-abi.json","self-world-kernel.json","psyche-kernel.json","session-chat-activation.json"];
+ const files=["pr1-64-coverage.v1.json","session-local-capability-lattice.json","cohost-context-root.json","project-edu-h1-irreducible.json","project-host-tool-grounding-abi.json","bootstrap-composition-space.json","pr2-previous-bundle-crosswalk.v1.json","repository-rename-2dim.json","local-session-fastboot.json"];
  let bytesSaved=0;
  for(const name of files){
   const p='contracts/'+name;

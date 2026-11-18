@@ -1,1 +1,331 @@
-{"schema":"ikant-le-session-chat-activation-contract/v8","slice":"C28.FULL_IKANT_SEMANTIC_ABSORPTION","authority":0,"objective":"Close every repository-owned SESSION_CHAT_LOCAL activation edge under existing owners: one human gate, immutable source, one LOCAL_INGRESS owner, materialization/reopen, executed runtime proof and persisted/read-back ACTIVE; all external facts remain explicit and non-launderable.","product_mode":"SESSION_CHAT","activation_modality":"SESSION_CHAT_LOCAL","language_engine_origin":"HOST_SUPPLIED","runtime_execution_plane":"SESSION_LOCAL_NODE","repository_transfer_per_chat":true,"hosted_runtime_required":false,"plugin_or_mcp_registration_required":false,"webapp_mode":false,"always_running_process_required":false,"fastboot_owner":"C19+C15+C18+C21+C22+C23+C24+C25+C27+C28","irreducible_lattice":["HUMAN_GATE","SOURCE_SNAPSHOT","LOCAL_INGRESS","LOCAL_MATERIALIZATION","EXECUTED_RUNTIME_PROOF","ACTIVE_READBACK"],"diagnostic_precedence":["INTEGRITY_CONTRADICTION","HOST_UNAVAILABLE","BLOCKED_REQUIREMENT","ACTIVE"],"global_dod":[{"id":"C21_G1","claim":"only SESSION_CHAT_LOCAL is canonical activation"},{"id":"C22_G2","claim":"channel planning is host-attested and explicitly non-physical; runtime physical truth starts at local reopen"},{"id":"C21_G3","claim":"one canonical NEXT executes or probes once"},{"id":"C21_G4","claim":"unchanged failed decision cannot replay until evidence changes"},{"id":"C22_G5","claim":"every source transport object has a host-attested bridge receipt; the materializer verifies loader/shards and the runtime reopens the published loader plus every runtime member before ACTIVE"},{"id":"C22_G6","claim":"executed-code provenance matches exact descriptor blob identities and the live probe is not caller-injectable"},{"id":"C21_G7","claim":"no second acceptance, source reset, deadline reset, unverified/reconstructed model-mediated bytes, false ACTIVE or hosted-profile laundering; canonical VERIFIED_OPAQUE_RELAY remains allowed only under authority-zero no-rewrite/equivalence samehash policy"},{"id":"C21_G8","claim":"ACTIVE requires live Node probe, writer persistence and persisted/read-back ACTIVE commit"},{"id":"C21_G9","claim":"10,000,000 preseeded semantic mutations pass with zero candidate/oracle mismatches and every retained mutant witnessed"},{"id":"C22_G10","claim":"bootstrap evidence missing ledger/step/bridge transcript is non-ACTIVE"},{"id":"C22_G11","claim":"legacy C20 deployment code remains non-canonical, non-exported and outside the runtime root"},{"id":"C22_G12","claim":"re-signed step receipts are non-authoritative unless every decision field recomputes exactly from the bound ledger"},{"id":"C22_G13","claim":"unchanged carrier-local evidence plus a recorded failed decision forbids replay of that carrier; unrelated channel evidence cannot requalify it"},{"id":"C23_G13","claim":"canonical pre-runtime capability terminology is HOST_ATTESTED; mechanical terminology is reserved for local runtime observation"},{"id":"C23_G14","claim":"legacy C20 deployment ontology is compatibility-only, non-exported and outside bootstrap/runtime-root/state"},{"id":"C23_G15","claim":"acceptance-origin ticket naming is activation-modality-neutral"},{"id":"C24_G16","claim":"canonical runtime code contains no legacy C20 deployment/profile vocabulary; compatibility translation occurs before the canonical runtime boundary"},{"id":"C24_G17","claim":"runtime-root shards and descriptor are deterministically regenerated and independently verified from canonical source bytes"},{"id":"C24_G18","claim":"global DoD identifiers are unique and machine-validated; compatibility checks cannot redefine product truth"},{"id":"C25_G19","claim":"canonical activation bytes never traverse the language-model context; the local activation executor owns acquisition and verification"},{"id":"C25_G20","claim":"preaccept continuity is reverified by immutable object identity after acceptance; pre-runtime SHA-256 and monotonic timestamp production are not integrity prerequisites"},{"id":"C25_G21","claim":"activation latency is SLO telemetry only; exceeding 120000 ms cannot invalidate otherwise exact source/materialization/execution evidence"},{"id":"C25_G22","claim":"same-epoch retry is idempotent by immutable object identity and never requires a second I ACCEPT, source rebase or model-mediated byte path"},{"id":"C25_G23","claim":"legacy carrier/deadline/channel-ledger requirements exist only under legacy_v1_* namespaces; unmarked legacy activation laws cannot coexist with canonical v2 truth"},{"id":"C27_G24","claim":"local processor, source visibility, byte-path availability, materialization, executed provenance, runtime binding and ACTIVE readback remain distinct evidence edges"},{"id":"C27_G25","claim":"canonical v2 byte path is exactly LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY; provider/carrier preference never creates a third path"},{"id":"C27_G26","claim":"VERIFIED_OPAQUE_RELAY permits only opaque authority-zero byte transport; rewrite and semantic equivalence are forbidden; roundtrip plus source/arrival samehash are mandatory"},{"id":"C27_G27","claim":"N0-N8 activation stages are a derived projection, not lifecycle/product identity; integrity and availability blockers are orthogonal overlays"},{"id":"C27_G28","claim":"source-visible plus local processor plus connector-text relay candidate is N3_BRIDGE_PROBE_REQUIRED rather than HOST_UNAVAILABLE"},{"id":"C27_G29","claim":"N8 ACTIVE still requires local materialization/reopen, exact executed provenance, runtime binding, writer persistence and ACTIVE readback"},{"id":"C27_G30","claim":"1,000,000 preseeded realistic semantic mutations pass with zero candidate/oracle mismatches, zero unsafe ACTIVE and every retained mutant killed"},{"id":"C28_G31","claim":"LOCAL_PROCESSOR and VERIFIED_BYTE_PATH are absorbed below the single LOCAL_INGRESS constitutional edge; no new runtime owner is created"},{"id":"C28_G32","claim":"durable Fastboot ledger is the only retry-memory owner; unchanged decision plus unchanged evidence cannot retry"},{"id":"C28_G33","claim":"first_unclosed_edge is explicit for every repository-owned closure failure and cannot be skipped by carrier/model ingenuity"},{"id":"C28_G34","claim":"N0-N8 is diagnostic-only, non-persisted and cannot become a second lifecycle state machine"},{"id":"C28_G35","claim":"current-host facts belong to receipts or fixtures, not constitutional contracts"},{"id":"C28_G36","claim":"repository closure and external platform observation are separate dimensions; external gaps cannot be closed by CI, model prose, source identity, BIND or semantic mutation"},{"id":"C28_G37","claim":"1,000 unique contract mutations select one minimum architecture and 1,000,000 closure mutations yield zero unsafe ACTIVE with all retained mutants killed"},{"id":"C29_G38","claim":"overall ontological promise is assessed from 36 source-bound atomic DoDs at >99%, with no evidence-class laundering and no second promise state machine"},{"id":"C40_G39","claim":"execute-observe-reenter is closed by the existing Fastboot owner: only typed capability/attempt receipts may advance the ledger, failed carriers are skipped at unchanged evidence, complete attempts hand off pre-runtime without claiming ACTIVE"},{"id":"C41_G40","claim":"canonical retry is ledger-only and carrier-local; complete Fastboot route fields are digest-bound and the Session Shell preserves the owner-derived NEXT into LOCAL_MATERIALIZATION without claiming ACTIVE"}],"claim_boundary":{"semantic_mutation_is_physical_bridge_proof":false,"ci_is_current_chat_host_proof":false,"degraded_is_active":false,"source_identity_is_executed_provenance":false,"legacy_deployment_code_is_canonical_activation":false,"host_channel_receipt_is_physical_proof":false,"materializer_and_runtime_root_reopen_are_physical_local_evidence":true,"pre_runtime_host_adapter_is_iKant_runtime":false,"step_receipt_digest_alone_proves_canonical_next":false,"model_generated_capability_is_host_attested_evidence":false,"host_attested_evidence_is_mechanical_runtime_proof":false,"legacy_c20_compatibility_may_define_product_mode":false,"compatibility_translation_is_runtime_product_truth":false,"runtime_root_build_receipt_is_live_runtime_proof":false,"merge_check_is_current_chat_active_proof":false,"host_attestation_is_canonical_data_plane":false,"activation_slo_breach_is_integrity_failure":false,"local_executor_receipt_without_runtime_reopen_is_active_proof":false,"legacy_v1_transfer_receipts_define_current_product_truth":false,"unmarked_v1_fastboot_fields_may_define_v2":false,"verified_opaque_model_transport_allowed":true,"model_transport_has_epistemic_or_execution_authority":false,"model_rewrite_or_semantic_equivalence_is_transfer":false,"unverified_model_mediation_is_integrity_failure":true,"diagnostic_projection_is_runtime_state":false,"current_host_reference_is_constitutional_truth":false,"repository_closed_is_external_platform_observed":false,"external_gap_may_be_laundered_by_ci_or_model":false},"edge_invariants":["ONE_HUMAN_GATE","SOURCE_OBJECT_IDENTITY","MODEL_TRANSPORT_AUTHORITY_ZERO","OPAQUE_RELAY_SAMEHASH","IDEMPOTENT_OBJECT_RETRY","SLO_NOT_INTEGRITY","COMPATIBILITY_ZERO_AUTHORITY","FIRST_UNCLOSED_EDGE","DURABLE_RETRY_LEDGER","EXTERNAL_GAP_HONESTY","TYPED_REENTRY_RECEIPT","CARRIER_LOCAL_FAILURE_EPOCH","DIGEST_BOUND_PRE_RUNTIME_ROUTE","CONTINUOUS_OWNER_DERIVED_BOOTSTRAP_UX"],"canonical_activation_model":"LOCAL_EXECUTOR_V1","legacy_v1_required":["EXACT_ACCEPT","MONOTONIC_ORIGIN_AT_INGEST","SOURCE_HEAD_PIN","TYPED_HOST_ATTESTED_CHANNEL_LEDGER","ONE_CANONICAL_NEXT","FAILURE_MEMORY_BY_DECISION_AND_CARRIER_EVIDENCE","PHYSICAL_BYTE_INGRESS","CONTENT_ADDRESSED_LOCAL_ROOT_READBACK","EXECUTED_CODE_PROVENANCE","LIVE_PROBE","WRITER_PERSISTENCE","ACTIVE_COMMIT_READBACK"],"legacy_v1_fastboot_law":["UNKNOWN capability is probed rather than guessed","AVAILABLE and UNAVAILABLE require host-observed evidence receipts; such receipts are authority-zero attestations, not physical proof","UNAVAILABLE persists until changed channel evidence","same decision_key plus same carrier-local evidence plus previous non-progress cannot be retried","changed evidence recomputes the canonical NEXT without requalifying unrelated failed carriers","exactly one NEXT and one executor are exposed","model preference never selects carrier or fallback","registry absence never proves host capability absence","failed or partial attempts never become authoritative REMOTE_HISTORY","no side infrastructure is invented during user bootstrap","the pre-runtime host adapter owns carrier selection because the runtime cannot select the carrier required to materialize itself","the authoritative materializer must verify transport loader/shard identities, and the local runtime must reopen the published loader plus every materialized runtime member before ACTIVE","the production live probe is runtime-owned and cannot be substituted by a caller callback","executed provenance must match exact descriptor blob identities and byte counts","failed decisions are persisted inside the channel ledger and do not change channel_evidence_sha256","the runtime validator recomputes the fastboot step from the bound ledger before accepting bootstrap evidence"],"canonical_v2_required":["EXACT_STANDALONE_ACCEPT","SOURCE_HEAD_PIN","ORIENTATION_OBJECT_IDENTITIES","LOCAL_EXECUTOR_CAPABILITY_PROBE","CONTENT_ADDRESSED_ACQUISITION","TYPED_BYTE_PATH","VERIFIED_RELAY_POLICY","ORIENTATION_REVERIFICATION","CONTENT_ADDRESSED_LOCAL_ROOT_READBACK","EXECUTED_CODE_PROVENANCE","LIVE_RUNTIME_OWNED_PROBE","WRITER_PERSISTENCE","ACTIVE_COMMIT_READBACK","SIX_EDGE_CANONICAL_BOUNDARY","LOCAL_INGRESS_SINGLE_OWNER","FIRST_UNCLOSED_EDGE","EXPLICIT_EXTERNAL_GAPS","TYPED_EXECUTE_OBSERVE_REENTER","CARRIER_LOCAL_FAILURE_MEMORY","DIGEST_BOUND_FASTBOOT_ROUTE","TRANSITION_CONTINUOUS_SESSION_SHELL"],"canonical_v2_executor_law":["the local activation executor owns byte-path validation and content-addressed acquisition","canonical byte_path is LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY","LOCAL_DIRECT requires model_mediated_bytes=false","VERIFIED_OPAQUE_RELAY requires model_mediated_bytes=true only as OPAQUE_TRANSPORT_ONLY with authority zero","model rewrite and semantic equivalence are forbidden on every byte path","source/arrival samehash and an opaque relay roundtrip are required before relay acquisition is complete","source and orientation/runtime object identities are immutable and content-addressed","same-object retries are idempotent within the same accepted epoch","the materializer re-verifies orientation and runtime object identities before atomic publish","the local runtime reopens published bytes and proves exact executed-code provenance","activation latency is telemetry only and never changes integrity truth","only persisted/read-back ACTIVE belongs to iKant","LOCAL_PROCESSOR and VERIFIED_BYTE_PATH are evidence/mechanism facets inside LOCAL_INGRESS, not separate lifecycle owners","retry history is owned only by the durable Fastboot ledger and keyed by decision plus evidence","N0-N8 is a non-persisted diagnostic projection only","current-host topology is receipt/fixture evidence and never constitutional truth","repository closure must list external platform gaps separately","failed carrier memory is derived from the durable ledger; callers do not supply attempted carrier classes","re-entry accepts exactly one typed capability or carrier-attempt receipt and complete attempts hand off to pre-runtime without ACTIVE","caller-supplied attempted carrier classes are rejected by canonical step derivation and Session Shell","only same-carrier evidence change can requalify that carrier after failure","complete Fastboot transition exposes one digest-bound pre-runtime action and leaves ACTIVE false"],"capability_lattice_contract":"contracts/session-local-capability-lattice.json","session_closure_projection":"ikant-le-session-closure-projection/v1","local_ingress_owner":"EXISTING_FASTBOOT_AND_BOOTSTRAP_OWNERS","diagnostic_stage_projection":{"schema":"ikant-le-local-activation-stage/v1","persisted":false,"constitutional_boundary":false},"ontological_promise_contract":"contracts/ikant-le.json#ontological_promise"}
+{
+  "schema": "ikant-le-session-chat-activation-contract/v8",
+  "slice": "C28.FULL_IKANT_SEMANTIC_ABSORPTION",
+  "authority": 0,
+  "objective": "Close every repository-owned SESSION_CHAT_LOCAL activation edge under existing owners: one human gate, immutable source, one LOCAL_INGRESS owner, materialization/reopen, executed runtime proof and persisted/read-back ACTIVE; all external facts remain explicit and non-launderable.",
+  "product_mode": "SESSION_CHAT",
+  "activation_modality": "SESSION_CHAT_LOCAL",
+  "language_engine_origin": "HOST_SUPPLIED",
+  "runtime_execution_plane": "SESSION_LOCAL_NODE",
+  "repository_transfer_per_chat": true,
+  "hosted_runtime_required": false,
+  "plugin_or_mcp_registration_required": false,
+  "webapp_mode": false,
+  "always_running_process_required": false,
+  "fastboot_owner": "C19+C15+C18+C21+C22+C23+C24+C25+C27+C28",
+  "irreducible_lattice": [
+    "HUMAN_GATE",
+    "SOURCE_SNAPSHOT",
+    "LOCAL_INGRESS",
+    "LOCAL_MATERIALIZATION",
+    "EXECUTED_RUNTIME_PROOF",
+    "ACTIVE_READBACK"
+  ],
+  "diagnostic_precedence": [
+    "INTEGRITY_CONTRADICTION",
+    "HOST_UNAVAILABLE",
+    "BLOCKED_REQUIREMENT",
+    "ACTIVE"
+  ],
+  "global_dod": [
+    {
+      "id": "C21_G1",
+      "claim": "only SESSION_CHAT_LOCAL is canonical activation"
+    },
+    {
+      "id": "C22_G2",
+      "claim": "channel planning is host-attested and explicitly non-physical; runtime physical truth starts at local reopen"
+    },
+    {
+      "id": "C21_G3",
+      "claim": "one canonical NEXT executes or probes once"
+    },
+    {
+      "id": "C21_G4",
+      "claim": "unchanged failed decision cannot replay until evidence changes"
+    },
+    {
+      "id": "C22_G5",
+      "claim": "every source transport object has a host-attested bridge receipt; the materializer verifies loader/shards and the runtime reopens the published loader plus every runtime member before ACTIVE"
+    },
+    {
+      "id": "C22_G6",
+      "claim": "executed-code provenance matches exact descriptor blob identities and the live probe is not caller-injectable"
+    },
+    {
+      "id": "C21_G7",
+      "claim": "no second acceptance, source reset, deadline reset, unverified/reconstructed model-mediated bytes, false ACTIVE or hosted-profile laundering; canonical VERIFIED_OPAQUE_RELAY remains allowed only under authority-zero no-rewrite/equivalence samehash policy"
+    },
+    {
+      "id": "C21_G8",
+      "claim": "ACTIVE requires live Node probe, writer persistence and persisted/read-back ACTIVE commit"
+    },
+    {
+      "id": "C21_G9",
+      "claim": "10,000,000 preseeded semantic mutations pass with zero candidate/oracle mismatches and every retained mutant witnessed"
+    },
+    {
+      "id": "C22_G10",
+      "claim": "bootstrap evidence missing ledger/step/bridge transcript is non-ACTIVE"
+    },
+    {
+      "id": "C22_G11",
+      "claim": "legacy C20 deployment code remains non-canonical, non-exported and outside the runtime root"
+    },
+    {
+      "id": "C22_G12",
+      "claim": "re-signed step receipts are non-authoritative unless every decision field recomputes exactly from the bound ledger"
+    },
+    {
+      "id": "C22_G13",
+      "claim": "unchanged carrier-local evidence plus a recorded failed decision forbids replay of that carrier; unrelated channel evidence cannot requalify it"
+    },
+    {
+      "id": "C23_G13",
+      "claim": "canonical pre-runtime capability terminology is HOST_ATTESTED; mechanical terminology is reserved for local runtime observation"
+    },
+    {
+      "id": "C23_G14",
+      "claim": "legacy C20 deployment ontology is compatibility-only, non-exported and outside bootstrap/runtime-root/state"
+    },
+    {
+      "id": "C23_G15",
+      "claim": "acceptance-origin ticket naming is activation-modality-neutral"
+    },
+    {
+      "id": "C24_G16",
+      "claim": "canonical runtime code contains no legacy C20 deployment/profile vocabulary; compatibility translation occurs before the canonical runtime boundary"
+    },
+    {
+      "id": "C24_G17",
+      "claim": "runtime-root shards and descriptor are deterministically regenerated and independently verified from canonical source bytes"
+    },
+    {
+      "id": "C24_G18",
+      "claim": "global DoD identifiers are unique and machine-validated; compatibility checks cannot redefine product truth"
+    },
+    {
+      "id": "C25_G19",
+      "claim": "canonical activation bytes never traverse the language-model context; the local activation executor owns acquisition and verification"
+    },
+    {
+      "id": "C25_G20",
+      "claim": "preaccept continuity is reverified by immutable object identity after acceptance; pre-runtime SHA-256 and monotonic timestamp production are not integrity prerequisites"
+    },
+    {
+      "id": "C25_G21",
+      "claim": "activation latency is SLO telemetry only; exceeding 120000 ms cannot invalidate otherwise exact source/materialization/execution evidence"
+    },
+    {
+      "id": "C25_G22",
+      "claim": "same-epoch retry is idempotent by immutable object identity and never requires a second I ACCEPT, source rebase or model-mediated byte path"
+    },
+    {
+      "id": "C25_G23",
+      "claim": "legacy carrier/deadline/channel-ledger requirements exist only under legacy_v1_* namespaces; unmarked legacy activation laws cannot coexist with canonical v2 truth"
+    },
+    {
+      "id": "C27_G24",
+      "claim": "local processor, source visibility, byte-path availability, materialization, executed provenance, runtime binding and ACTIVE readback remain distinct evidence edges"
+    },
+    {
+      "id": "C27_G25",
+      "claim": "canonical v2 byte path is exactly LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY; provider/carrier preference never creates a third path"
+    },
+    {
+      "id": "C27_G26",
+      "claim": "VERIFIED_OPAQUE_RELAY permits only opaque authority-zero byte transport; rewrite and semantic equivalence are forbidden; roundtrip plus source/arrival samehash are mandatory"
+    },
+    {
+      "id": "C27_G27",
+      "claim": "N0-N8 activation stages are a derived projection, not lifecycle/product identity; integrity and availability blockers are orthogonal overlays"
+    },
+    {
+      "id": "C27_G28",
+      "claim": "source-visible plus local processor plus connector-text relay candidate is N3_BRIDGE_PROBE_REQUIRED rather than HOST_UNAVAILABLE"
+    },
+    {
+      "id": "C27_G29",
+      "claim": "N8 ACTIVE still requires local materialization/reopen, exact executed provenance, runtime binding, writer persistence and ACTIVE readback"
+    },
+    {
+      "id": "C27_G30",
+      "claim": "1,000,000 preseeded realistic semantic mutations pass with zero candidate/oracle mismatches, zero unsafe ACTIVE and every retained mutant killed"
+    },
+    {
+      "id": "C28_G31",
+      "claim": "LOCAL_PROCESSOR and VERIFIED_BYTE_PATH are absorbed below the single LOCAL_INGRESS constitutional edge; no new runtime owner is created"
+    },
+    {
+      "id": "C28_G32",
+      "claim": "durable Fastboot ledger is the only retry-memory owner; unchanged decision plus unchanged evidence cannot retry"
+    },
+    {
+      "id": "C28_G33",
+      "claim": "first_unclosed_edge is explicit for every repository-owned closure failure and cannot be skipped by carrier/model ingenuity"
+    },
+    {
+      "id": "C28_G34",
+      "claim": "N0-N8 is diagnostic-only, non-persisted and cannot become a second lifecycle state machine"
+    },
+    {
+      "id": "C28_G35",
+      "claim": "current-host facts belong to receipts or fixtures, not constitutional contracts"
+    },
+    {
+      "id": "C28_G36",
+      "claim": "repository closure and external platform observation are separate dimensions; external gaps cannot be closed by CI, model prose, source identity, BIND or semantic mutation"
+    },
+    {
+      "id": "C28_G37",
+      "claim": "1,000 unique contract mutations select one minimum architecture and 1,000,000 closure mutations yield zero unsafe ACTIVE with all retained mutants killed"
+    },
+    {
+      "id": "C29_G38",
+      "claim": "overall ontological promise is assessed from 36 source-bound atomic DoDs at >99%, with no evidence-class laundering and no second promise state machine"
+    },
+    {
+      "id": "C40_G39",
+      "claim": "execute-observe-reenter is closed by the existing Fastboot owner: only typed capability/attempt receipts may advance the ledger, failed carriers are skipped at unchanged evidence, complete attempts hand off pre-runtime without claiming ACTIVE"
+    },
+    {
+      "id": "C41_G40",
+      "claim": "canonical retry is ledger-only and carrier-local; complete Fastboot route fields are digest-bound and the Session Shell preserves the owner-derived NEXT into LOCAL_MATERIALIZATION without claiming ACTIVE"
+    }
+  ],
+  "claim_boundary": {
+    "semantic_mutation_is_physical_bridge_proof": false,
+    "ci_is_current_chat_host_proof": false,
+    "degraded_is_active": false,
+    "source_identity_is_executed_provenance": false,
+    "legacy_deployment_code_is_canonical_activation": false,
+    "host_channel_receipt_is_physical_proof": false,
+    "materializer_and_runtime_root_reopen_are_physical_local_evidence": true,
+    "pre_runtime_host_adapter_is_iKant_runtime": false,
+    "step_receipt_digest_alone_proves_canonical_next": false,
+    "model_generated_capability_is_host_attested_evidence": false,
+    "host_attested_evidence_is_mechanical_runtime_proof": false,
+    "legacy_c20_compatibility_may_define_product_mode": false,
+    "compatibility_translation_is_runtime_product_truth": false,
+    "runtime_root_build_receipt_is_live_runtime_proof": false,
+    "merge_check_is_current_chat_active_proof": false,
+    "host_attestation_is_canonical_data_plane": false,
+    "activation_slo_breach_is_integrity_failure": false,
+    "local_executor_receipt_without_runtime_reopen_is_active_proof": false,
+    "legacy_v1_transfer_receipts_define_current_product_truth": false,
+    "unmarked_v1_fastboot_fields_may_define_v2": false,
+    "verified_opaque_model_transport_allowed": true,
+    "model_transport_has_epistemic_or_execution_authority": false,
+    "model_rewrite_or_semantic_equivalence_is_transfer": false,
+    "unverified_model_mediation_is_integrity_failure": true,
+    "diagnostic_projection_is_runtime_state": false,
+    "current_host_reference_is_constitutional_truth": false,
+    "repository_closed_is_external_platform_observed": false,
+    "external_gap_may_be_laundered_by_ci_or_model": false
+  },
+  "edge_invariants": [
+    "ONE_HUMAN_GATE",
+    "SOURCE_OBJECT_IDENTITY",
+    "MODEL_TRANSPORT_AUTHORITY_ZERO",
+    "OPAQUE_RELAY_SAMEHASH",
+    "IDEMPOTENT_OBJECT_RETRY",
+    "SLO_NOT_INTEGRITY",
+    "COMPATIBILITY_ZERO_AUTHORITY",
+    "FIRST_UNCLOSED_EDGE",
+    "DURABLE_RETRY_LEDGER",
+    "EXTERNAL_GAP_HONESTY",
+    "TYPED_REENTRY_RECEIPT",
+    "CARRIER_LOCAL_FAILURE_EPOCH",
+    "DIGEST_BOUND_PRE_RUNTIME_ROUTE",
+    "CONTINUOUS_OWNER_DERIVED_BOOTSTRAP_UX"
+  ],
+  "canonical_activation_model": "LOCAL_EXECUTOR_V1",
+  "legacy_v1_required": [
+    "EXACT_ACCEPT",
+    "MONOTONIC_ORIGIN_AT_INGEST",
+    "SOURCE_HEAD_PIN",
+    "TYPED_HOST_ATTESTED_CHANNEL_LEDGER",
+    "ONE_CANONICAL_NEXT",
+    "FAILURE_MEMORY_BY_DECISION_AND_CARRIER_EVIDENCE",
+    "PHYSICAL_BYTE_INGRESS",
+    "CONTENT_ADDRESSED_LOCAL_ROOT_READBACK",
+    "EXECUTED_CODE_PROVENANCE",
+    "LIVE_PROBE",
+    "WRITER_PERSISTENCE",
+    "ACTIVE_COMMIT_READBACK"
+  ],
+  "legacy_v1_fastboot_law": [
+    "UNKNOWN capability is probed rather than guessed",
+    "AVAILABLE and UNAVAILABLE require host-observed evidence receipts; such receipts are authority-zero attestations, not physical proof",
+    "UNAVAILABLE persists until changed channel evidence",
+    "same decision_key plus same carrier-local evidence plus previous non-progress cannot be retried",
+    "changed evidence recomputes the canonical NEXT without requalifying unrelated failed carriers",
+    "exactly one NEXT and one executor are exposed",
+    "model preference never selects carrier or fallback",
+    "registry absence never proves host capability absence",
+    "failed or partial attempts never become authoritative REMOTE_HISTORY",
+    "no side infrastructure is invented during user bootstrap",
+    "the pre-runtime host adapter owns carrier selection because the runtime cannot select the carrier required to materialize itself",
+    "the authoritative materializer must verify transport loader/shard identities, and the local runtime must reopen the published loader plus every materialized runtime member before ACTIVE",
+    "the production live probe is runtime-owned and cannot be substituted by a caller callback",
+    "executed provenance must match exact descriptor blob identities and byte counts",
+    "failed decisions are persisted inside the channel ledger and do not change channel_evidence_sha256",
+    "the runtime validator recomputes the fastboot step from the bound ledger before accepting bootstrap evidence"
+  ],
+  "canonical_v2_required": [
+    "EXACT_STANDALONE_ACCEPT",
+    "SOURCE_HEAD_PIN",
+    "ORIENTATION_OBJECT_IDENTITIES",
+    "LOCAL_EXECUTOR_CAPABILITY_PROBE",
+    "CONTENT_ADDRESSED_ACQUISITION",
+    "TYPED_BYTE_PATH",
+    "VERIFIED_RELAY_POLICY",
+    "ORIENTATION_REVERIFICATION",
+    "CONTENT_ADDRESSED_LOCAL_ROOT_READBACK",
+    "EXECUTED_CODE_PROVENANCE",
+    "LIVE_RUNTIME_OWNED_PROBE",
+    "WRITER_PERSISTENCE",
+    "ACTIVE_COMMIT_READBACK",
+    "SIX_EDGE_CANONICAL_BOUNDARY",
+    "LOCAL_INGRESS_SINGLE_OWNER",
+    "FIRST_UNCLOSED_EDGE",
+    "EXPLICIT_EXTERNAL_GAPS",
+    "TYPED_EXECUTE_OBSERVE_REENTER",
+    "CARRIER_LOCAL_FAILURE_MEMORY",
+    "DIGEST_BOUND_FASTBOOT_ROUTE",
+    "TRANSITION_CONTINUOUS_SESSION_SHELL"
+  ],
+  "canonical_v2_executor_law": [
+    "the local activation executor owns byte-path validation and content-addressed acquisition",
+    "canonical byte_path is LOCAL_DIRECT or VERIFIED_OPAQUE_RELAY",
+    "LOCAL_DIRECT requires model_mediated_bytes=false",
+    "VERIFIED_OPAQUE_RELAY requires model_mediated_bytes=true only as OPAQUE_TRANSPORT_ONLY with authority zero",
+    "model rewrite and semantic equivalence are forbidden on every byte path",
+    "source/arrival samehash and an opaque relay roundtrip are required before relay acquisition is complete",
+    "source and orientation/runtime object identities are immutable and content-addressed",
+    "same-object retries are idempotent within the same accepted epoch",
+    "the materializer re-verifies orientation and runtime object identities before atomic publish",
+    "the local runtime reopens published bytes and proves exact executed-code provenance",
+    "activation latency is telemetry only and never changes integrity truth",
+    "only persisted/read-back ACTIVE belongs to iKant",
+    "LOCAL_PROCESSOR and VERIFIED_BYTE_PATH are evidence/mechanism facets inside LOCAL_INGRESS, not separate lifecycle owners",
+    "retry history is owned only by the durable Fastboot ledger and keyed by decision plus evidence",
+    "N0-N8 is a non-persisted diagnostic projection only",
+    "current-host topology is receipt/fixture evidence and never constitutional truth",
+    "repository closure must list external platform gaps separately",
+    "failed carrier memory is derived from the durable ledger; callers do not supply attempted carrier classes",
+    "re-entry accepts exactly one typed capability or carrier-attempt receipt and complete attempts hand off to pre-runtime without ACTIVE",
+    "caller-supplied attempted carrier classes are rejected by canonical step derivation and Session Shell",
+    "only same-carrier evidence change can requalify that carrier after failure",
+    "complete Fastboot transition exposes one digest-bound pre-runtime action and leaves ACTIVE false"
+  ],
+  "capability_lattice_contract": "contracts/session-local-capability-lattice.json",
+  "session_closure_projection": "ikant-le-session-closure-projection/v1",
+  "local_ingress_owner": "EXISTING_FASTBOOT_AND_BOOTSTRAP_OWNERS",
+  "diagnostic_stage_projection": {
+    "schema": "ikant-le-local-activation-stage/v1",
+    "persisted": false,
+    "constitutional_boundary": false
+  },
+  "ontological_promise_contract": "contracts/ikant-le.json#ontological_promise"
+}

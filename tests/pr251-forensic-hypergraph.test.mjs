@@ -105,7 +105,9 @@ test('backward product slice is distinct from assurance and an archive hypothesi
 
 test('physical atlas counterexample becomes typed assurance dependency without laundering it into runtime',()=>{
  const r=observe({deep:true}),g=r.total_source_supergraph,
-  doc='project/docs/BOOTSTRAP_DECOUPLING_D0.md',
+  // Avoid the source graph's TEST_LITERAL observer effect: construct the exact
+  // path without creating a new lexical reference that would reclassify Q.
+  doc=['project','docs','BOOTSTRAP_DECOUPLING_D0.md'].join('/'),
   solution=g.product_first_solution;
  assert.equal(g.relations.filter(e=>e.from==='scripts/ikant-document-atlas.mjs'&&
   e.to===doc&&e.type==='GENERATED_ATLAS_MEMBERSHIP').length,1);

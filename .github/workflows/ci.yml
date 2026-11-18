@@ -18,6 +18,46 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: PR251 lossless JSON-value quotient versus immutable Git preimages
+        if: ${{ github.event_name == 'pull_request' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --input-type=commonjs - <<'NODE'
+          const fs=require('node:fs'),cp=require('node:child_process'),assert=require('node:assert/strict');
+          const base='0b2ec2f4b4d90a448991523e726ef19f010ab34b';
+          const rows=[["contracts/p0p1-100-selection.json","6a0ee424bfe189b2f2defeeb2c81f12b1d38ba2a"],["contracts/oneshell-40-product-ci.json","ec8500f16c29d58946f7b7cb2b572b41462bd5aa"],["contracts/bootstrap-channel-lineage.json","64247ae90cae0fbf9839f288e2700939d678ba12"],["contracts/cora-pr-f-integrated-qualification-v1.json","2e38181460adf0deeb45dfd7b8c6e86dceb25d5b"],["contracts/cora-m2-owner-provider-metrics-v1.json","99254f133b6e0abce1ce1a1a22f043c110fc5a34"],["contracts/cora-three-streams-retrograde-v1.json","4e22c6deab3aab31654f1cd2365fdf9e0b2676ca"],["contracts/cora-reticular-hygiene-v1.json","583ff9e067d3e8daf0bd2c20362f97833a483309"],["contracts/project-pe-retrograde-dod.json","77f722079ab43dba67d14d71d007ac1a9fb105fe"],["contracts/cora-s3-source-convergence-v1.json","970ebd7a1faa9ec194ec4757ed8f5b095590a837"],["contracts/project-edu-h1-v5-dod-trace.json","ef9b2acdb03dd7d87db1b1429a0b3d6dd1febaf5"]];
+          const git=(...args)=>cp.execFileSync('git',args,{encoding:'utf8',maxBuffer:2097152}).trim();
+          assert.equal(git('rev-parse',base+'^{commit}'),base);
+          let saved=0;
+          for(const [path,preimage] of rows){
+            assert.equal(git('rev-parse',base+':'+path),preimage,'ORIGINAL_PREIMAGE_CHANGED:'+path);
+            const before=cp.execFileSync('git',['show',base+':'+path],{maxBuffer:2097152});
+            const after=fs.readFileSync(path);
+            const original=JSON.parse(before.toString('utf8'));
+            const quotient=JSON.parse(after.toString('utf8'));
+            assert.deepStrictEqual(quotient,original,'VALUE_DRIFT:'+path);
+            assert.ok(after.length<before.length,'NO_PHYSICAL_CONTRACTION:'+path);
+            assert.deepStrictEqual(JSON.parse(JSON.stringify(quotient)),original,'ROUNDTRIP_DRIFT:'+path);
+            const mutated=structuredClone(quotient),first=Object.keys(mutated)[0];
+            assert.ok(first,'MUTANT_REQUIRES_ROOT_FIELD:'+path);
+            delete mutated[first];
+            assert.notDeepStrictEqual(mutated,original,'FALSE_NEGATIVE_MUTANT:'+path);
+            saved+=before.length-after.length;
+          }
+          assert.ok(saved>=30000,'INSUFFICIENT_MEASURED_BYTE_CONTRACTION');
+          console.log(JSON.stringify({schema:'pr251-semantic-json-quotient/v1',
+            base,head:git('rev-parse','HEAD'),file_count:rows.length,
+            bytes_saved:saved,mutation_rejected:rows.length,
+            typed_value_equivalence:true,raw_byte_identity:false,
+            runtime_equivalence:'NOT_INFERRED',external_consumers:'UNKNOWN',
+            global_dod:'HOLD',product_go:false}));
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
+            '### PR251 original Git JSON-value quotient\n\n'+
+            '10 source catalog objects preserved; '+saved+' tracked bytes saved. '+
+            'Independent negative mutants rejected. Original byte identities changed; '+
+            'runtime and owner/provider gates remain independent. G0=HOLD.\n');
+          NODE
       - name: C139/C143 bounded source contraction readback
         if: ${{ github.event_name == 'pull_request' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         shell: bash

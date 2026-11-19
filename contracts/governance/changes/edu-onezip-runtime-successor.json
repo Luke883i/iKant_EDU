@@ -1,0 +1,126 @@
+{
+  "schema": "ikant-edu-exact-source-successor/v1",
+  "self_path": "contracts/governance/changes/edu-onezip-runtime-successor.json",
+  "source_main": "888a5878a30864e6db7813b3d8b236cde46cce40",
+  "source_tree": "6dab517b2ef0462b9c1222dc9ec2a8c164344977",
+  "authority": 0,
+  "product_go": false,
+  "human_review_attested": false,
+  "external_consumers_resolved": false,
+  "paths": [
+    {
+      "path": ".github/workflows/edu-onezip-experimental.yml",
+      "before": "274cd844150175e5d371040fc0b68b71ddae72b1",
+      "after": "b5a4236aea206d10596bee6e439bf5169db27017",
+      "mode": "100644"
+    },
+    {
+      "path": "contracts/edu-onezip-retirement-review.json",
+      "before": null,
+      "after": "112a8046d217a09d17264553ec42638dbe995cf8",
+      "mode": "100644"
+    },
+    {
+      "path": "contracts/governance/changes/edu-onezip-runtime-successor.json",
+      "before": null,
+      "after": null,
+      "mode": "100644"
+    },
+    {
+      "path": "contracts/project-edu-onezip-field-route.json",
+      "before": "bbc6cc60f34216d4c21630e94c030a3bb3c2bd10",
+      "after": "a159dba89d0c2c1d4e0274beca1b1e37dd1afe50",
+      "mode": "100644"
+    },
+    {
+      "path": "contracts/project-session-source.json",
+      "before": "f0bb48d119f8867e062f0f1c75c1b895193aa2fa",
+      "after": "e16f357235cddfad15c6e01de22a833a1ae00de7",
+      "mode": "100644"
+    },
+    {
+      "path": "project/docs/EDU_ONEZIP_SESSION_RUNTIME.md",
+      "before": null,
+      "after": "581099414c35118b8e0dca18235e5b8bcb013b66",
+      "mode": "100644"
+    },
+    {
+      "path": "project/session-chat/PROMPT.txt",
+      "before": "4c828707c1d3dff3bee91282ccaa83f1a2c4b286",
+      "after": "dc845eb2b4d00698a89ab2517b3bc894c075c66a",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-language-stdio.mjs",
+      "before": "ead8382479318c324325a2deea92d7457ad45936",
+      "after": "a6cc180412ccd1dba4072caa5630e882d1978551",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-onezip-falsify-10m.mjs",
+      "before": null,
+      "after": "1a849846f2c233298761821d7aa1914d4603ccf6",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-onezip-ingress.py",
+      "before": null,
+      "after": "34f485e3593ad45ad09aee87f5462afada4431ae",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-onezip-local.mjs",
+      "before": null,
+      "after": "b0bcadbb962c14fb902a10c6610d430a30e9c499",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-onezip-session.mjs",
+      "before": "8af06e58c674ac07aaf8dee3e8ad7b13a42af8a9",
+      "after": "7e31b9c4268bee2d6cd7d19f943e227142fbe029",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-retirement-census.mjs",
+      "before": null,
+      "after": "21b489849d8e2ae50cc0590a18887c4b73cf129c",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-prompt-seven-three-guard.mjs",
+      "before": "0662ea19fb43980f675a8c80d1aeb861aa1615d6",
+      "after": "c9f017e18e5160b4ddebd1beccf9afc48a492860",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-source-manifest.mjs",
+      "before": "be2abe3857aed443a3dd433704acdc693d2f16a9",
+      "after": "98aa58ad0d2b267fec2c717b6415329d4b888a9d",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "before": "01e0277cd9cac22f4a16e8851fdef14dce1a3b4a",
+      "after": "36a256fb0842c3df131da4d7a61ac8628f739712",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/artifacts/qualification/edu-onezip-model-10m.json",
+      "before": null,
+      "after": "e4ca419f5110cf51002741690df1f59d2ba57485",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-edu-onezip-session-local.test.mjs",
+      "before": null,
+      "after": "01195b9fd65346dfb82e8872749a529afcab03f8",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "before": "69bb9528bdef46f2d25b40e6c9b069fb9c91a396",
+      "after": "57df09bf4039d4951723b7acf0b891806ce9bd80",
+      "mode": "100644"
+    }
+  ]
+}

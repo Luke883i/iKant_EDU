@@ -180,7 +180,7 @@ test('prospective C72 source-epoch register is exact, cannot upgrade prior recei
 });
 
 test('PR251 new source epoch is exact, read-only and does not certify product or provider',()=>{
- const r=qualifyPr251SourceEpoch();
+ const r=qualifyPr251SourceEpoch('888a5878a30864e6db7813b3d8b236cde46cce40');
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.status,'PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED');
  assert.equal(r.product_go,false);

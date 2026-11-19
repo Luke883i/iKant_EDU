@@ -23,6 +23,7 @@ test('first failing step labels preserve the original failure and reject noisy m
 test('first detail exposes observed TAP actual while preserving fail-closed path',()=>{
  const sample="not ok 6 - original EDU\n  ---\n  error: |-\n    Expected values to be strictly equal:\n    + actual - expected\n    + 'C72_SOURCE_PACKET_INVALID'\n    - true\n  code: 'ERR_ASSERTION'\n";
  assert.match(firstFailureDetail(sample,'tap'),/C72_SOURCE_PACKET_INVALID/);
+ assert.match(firstFailureDetail("not ok 1 - a\n  actual: 32\n  expected: 14\n",'tap'),/actual:_32_expected:_14/);
  assert.equal(firstFailureDetail('ok 1 - pass','tap'),'UNSTRUCTURED_FAILURE');
  assert(!firstFailureDetail('not ok 1 - x\n  error: %::warning::injected','tap').includes('%'));
 });

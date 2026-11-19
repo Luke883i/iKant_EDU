@@ -5,6 +5,7 @@ on:
       - 'host/c125-exclusive-shell.mjs'
       - 'host/c135-edu-v2-owner.mjs'
       - 'host/c139-*.mjs'
+      - 'host/c107-edu-v2-turn.mjs'
       - 'scripts/c107-pack.mjs'
       - 'tests/c139-epistemic-edu-v2.test.mjs'
       - '.github/workflows/c139-epistemic-edu.yml'

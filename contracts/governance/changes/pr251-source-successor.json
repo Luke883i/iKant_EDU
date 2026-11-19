@@ -1,0 +1,725 @@
+{
+  "schema": "ikant-pr251-git-source-successor/v1",
+  "self_path": "contracts/governance/changes/pr251-source-successor.json",
+  "source_main": "e270c6e2cc772f960126eecea9f50501339e3656",
+  "source_tree": "c4a0ce6315696107482198b03cbdc489968287f6",
+  "authority": 0,
+  "product_go": false,
+  "release": "HOLD",
+  "human_review_attested": false,
+  "provider_attested": false,
+  "external_consumers_resolved": false,
+  "historical_pins_modified": false,
+  "source_pr_250": {
+    "merged": false,
+    "retired": true,
+    "selected_commits": 6
+  },
+  "notes": "PR252 anchored to CORA PR81 exact source Git revision 900399; tests moved into native PR50 suite after CORA finite-module CI falsifier, no new CORA test module. 85 exact target Git deltas. Both source methods must execute, replay and preserve external BLOCKED/none authority. G0 HOLD until all evidence.",
+  "paths": [
+    {
+      "path": ".github/workflows/c107-carrier-consumption.yml",
+      "operation": "MODIFY",
+      "before_sha": "4e7169ef1f4e4d38bdb5e8f56a1e4dda9b8eab84",
+      "after_sha": "c8de8970a32aab680f82b6c316a39a902e79a349",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/c107-experimental.yml",
+      "operation": "MODIFY",
+      "before_sha": "c6d2e4bbfe1c5fab88315d405258f5b051370b3c",
+      "after_sha": "23bfdfc7bcd6715d5e747a5e1a5de62518514009",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/c107-host-language.yml",
+      "operation": "MODIFY",
+      "before_sha": "1eb4a545fe7798b0a40618dce0fc774590a6310b",
+      "after_sha": "e9c7b974869b9be3ead8e9b4256d78601a8f42bf",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/c107-shell.yml",
+      "operation": "MODIFY",
+      "before_sha": "49ae95b328e42dde030aaa40d051cf51997fb96a",
+      "after_sha": "0d8f5cd0fce3df5fef7d2244a1026f7a99a8cc09",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/c108-equivalence.yml",
+      "operation": "MODIFY",
+      "before_sha": "f0dcbde5525cbc7403c310230a0d8e3c6ea871c8",
+      "after_sha": "477bc463088b1dc33a3b04879e10b4ac47b2f7eb",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/c109-chat-shell.yml",
+      "operation": "MODIFY",
+      "before_sha": "d32643585102d4c43e473a0ac6779a426d97be16",
+      "after_sha": "a1435f0736450c6489df3d0e83ac4920ca0addeb",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/c110-experimental-lattice.yml",
+      "operation": "MODIFY",
+      "before_sha": "5d691c573ea1100cd8101605da73195c33d78c5c",
+      "after_sha": "a671f17384b3088e98d9a7a0e820ebc77d49891b",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/c111-host-edge.yml",
+      "operation": "MODIFY",
+      "before_sha": "8f59ea7ca6a95563da2a810d513f8bacbb7fd918",
+      "after_sha": "863ae51a3f82854d33bc75f5bcce1e96e6499724",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/c139-epistemic-edu.yml",
+      "operation": "MODIFY",
+      "before_sha": "7e3c1fd24a59a4d9d8aa774904d3eb31a6346a25",
+      "after_sha": "e25902a5b8e7fba1083d8da448a4a9c643aec29b",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/c143-cp11-prepr.yml",
+      "operation": "MODIFY",
+      "before_sha": "625622d3c30b3fbfd005e986f986c07a32db62ae",
+      "after_sha": "3e7bf54719f14c9f818b13098daca83479eba325",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "operation": "MODIFY",
+      "before_sha": "035aad3df89b20a91a1b9641379127eaee13292f",
+      "after_sha": "eb905c345a02b548111469bf14cda663519e9bfd",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": ".github/workflows/oneshell-v1-qualification.yml",
+      "operation": "MODIFY",
+      "before_sha": "3963a7a6bbf23389d856380b4490c6b853011b31",
+      "after_sha": "72f0f1fb0279588fdf1a369bb178bb04611e4611",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/bootstrap-channel-lineage.json",
+      "operation": "MODIFY",
+      "before_sha": "64247ae90cae0fbf9839f288e2700939d678ba12",
+      "after_sha": "e1fb74df5cd6ae55f284ccfcdb2334563edb29bf",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/bootstrap-composition-space.json",
+      "operation": "MODIFY",
+      "before_sha": "1bad6fa2eec833d53b274dd95703026d2cb81123",
+      "after_sha": "7d58539bda64c533c76fb9a5e4635a89b63f9a76",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cohost-context-root.json",
+      "operation": "MODIFY",
+      "before_sha": "6a7fc1ca0e0403bf6f50ccc23052b94520f83b54",
+      "after_sha": "e2bee416671d8ef0c6d76881f9360bee56681e67",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-m2-owner-provider-metrics-v1.json",
+      "operation": "MODIFY",
+      "before_sha": "99254f133b6e0abce1ce1a1a22f043c110fc5a34",
+      "after_sha": "5a2a4fdce47c20e904b59ee6a226d592bd7604c9",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-pr-b-documentation-v1.json",
+      "operation": "MODIFY",
+      "before_sha": "aa6bf4bde2c9958bc2b7e93d5a0741440ef2b0e6",
+      "after_sha": "338d6f8de09b9138b1e1d9fb3b234cc4c12b9661",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-pr-f-integrated-qualification-v1.json",
+      "operation": "MODIFY",
+      "before_sha": "2e38181460adf0deeb45dfd7b8c6e86dceb25d5b",
+      "after_sha": "9c9212c1d444e8ac3a04900dec7f832dad538078",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-reticular-hygiene-v1.json",
+      "operation": "MODIFY",
+      "before_sha": "583ff9e067d3e8daf0bd2c20362f97833a483309",
+      "after_sha": "94cb8128100b790eef677bf9a0de3c7228e7798e",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-s3-source-convergence-v1.json",
+      "operation": "MODIFY",
+      "before_sha": "970ebd7a1faa9ec194ec4757ed8f5b095590a837",
+      "after_sha": "6ccf4acc79de3c53353ade170bda3b8975cb5099",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-source-ontology.json",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "5c2569b5e4df90059671d2401723a55f57d9992d",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-source-roles.json",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "c80e962bff39811bf9aed189f8e05527eab4a370",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/cora-three-streams-retrograde-v1.json",
+      "operation": "MODIFY",
+      "before_sha": "4e22c6deab3aab31654f1cd2365fdf9e0b2676ca",
+      "after_sha": "fe9999022584ad98c3fe53d9b8cf7a11c1141692",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/governance/changes/pr251-source-successor.json",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": null,
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/local-session-fastboot.json",
+      "operation": "MODIFY",
+      "before_sha": "50011fe418e4891f5d635bc65a3a5e7e220f2ccb",
+      "after_sha": "8eb03a3e51f9c7a43dea3dfb4b385fade0bb0916",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/mcp-external-mutation-assurance-v2.json",
+      "operation": "MODIFY",
+      "before_sha": "c31ca377f26917e8dc4b02c1ebd90a1f7f422f5e",
+      "after_sha": "b48bc21094a28199d8d6e13f795c729f23b6310a",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/oneshell-40-product-ci.json",
+      "operation": "MODIFY",
+      "before_sha": "ec8500f16c29d58946f7b7cb2b572b41462bd5aa",
+      "after_sha": "b3e0f56fb2c77fec6a61bc0dc1bd81ca157e4ff8",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/pr1-64-coverage.v1.json",
+      "operation": "MODIFY",
+      "before_sha": "b98d119c17ca138800b4e77236f61b4ee52a0eee",
+      "after_sha": "f04902b3c58cd260f6a10a28ca575e76cdfab4be",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/pr2-previous-bundle-crosswalk.v1.json",
+      "operation": "MODIFY",
+      "before_sha": "cc7b6c80e11022db44b8b847ac2e6a5ee690ade9",
+      "after_sha": "bf58b27b7b1937400284821a21ce003e048f9cf9",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/pr251-forensic-hypergraph-dod.json",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "04800e231492c9708ef75bb6541f31b890978e2f",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/project-edu-h1-irreducible.json",
+      "operation": "MODIFY",
+      "before_sha": "21c13bd06d5f1851180ac1cb139a55109c899c50",
+      "after_sha": "5b290d0dde65e4fb2bbca4d3b571b81d1b54470d",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/project-edu-h1-v5-dod-trace.json",
+      "operation": "MODIFY",
+      "before_sha": "ef9b2acdb03dd7d87db1b1429a0b3d6dd1febaf5",
+      "after_sha": "f92193d8654fdc3cc746c4b2016d17a51a594a06",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/project-host-tool-grounding-abi.json",
+      "operation": "MODIFY",
+      "before_sha": "5d882060167f12d76cb2250fca87bd3e808d241a",
+      "after_sha": "c7945d99747ddfed4cec3e844fb334b97a799707",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/project-pe-retrograde-dod.json",
+      "operation": "MODIFY",
+      "before_sha": "77f722079ab43dba67d14d71d007ac1a9fb105fe",
+      "after_sha": "c46ea86372920ff3a5dc6d913275837f861c5baf",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/project-v5c-edu-minimum-dod.json",
+      "operation": "MODIFY",
+      "before_sha": "7fa2ce18da4b349ce1719d4a2c94e085c0631c07",
+      "after_sha": "2c12919d553ccd9c38de6b80fa07e886a82727ca",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/project-v5e-cognition-dod.json",
+      "operation": "MODIFY",
+      "before_sha": "9d04071f994ce3e48fa4fe072d552d2f77e1d51e",
+      "after_sha": "e61bbe46e64339f0f816c67e72f4f36eb020bf79",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/repository-health-v10.json",
+      "operation": "MODIFY",
+      "before_sha": "f0615a8e035a7ed5112bff2cf285e047fa4bdf52",
+      "after_sha": "b22ed490863cf22e64cd7e390dc7e7cc53e15be2",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/repository-rename-2dim.json",
+      "operation": "MODIFY",
+      "before_sha": "d010b9e6560618ce4e9c469298f10fa742d63286",
+      "after_sha": "b83473d1c7b4d62f77c47623dd9e971b04bc5597",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "contracts/session-local-capability-lattice.json",
+      "operation": "MODIFY",
+      "before_sha": "3f6ff2aa8f92c91a036a4742773287db2dbe50b8",
+      "after_sha": "7719101d57824a1e2711768c21daa8223e986289",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "host/c139-edu-v2-turn.mjs",
+      "operation": "MODIFY",
+      "before_sha": "4041c731ed43e92c7628dc2c21c0c17347e4cda4",
+      "after_sha": "862324654ca01fec3d6eb57aebec62a760fc39c2",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "host/c143-edu-v2-turn.mjs",
+      "operation": "MODIFY",
+      "before_sha": "f596bfd3946fe55e3974a491b0de5055a19870d4",
+      "after_sha": "8dae03c9ba55ae417d6de5648ebcc3d268c8877d",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
+      "operation": "MODIFY",
+      "before_sha": "d5651a62a37b788fd6a0f4a1219aa2118c3ed804",
+      "after_sha": "05dc96900a3f0c15ec3077939b8be4810e015fbc",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "project/docs/PR251_CAUSAL_CONTRACTION.md",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "6abdf6935d5d12efe176fef7630b9805fd1138fb",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "scripts/c1-combine.mjs",
+      "operation": "REMOVE",
+      "before_sha": "0ea01b536d3adb045f1a23804429c4e17940ee28",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c1-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "355db474c4f2c9bc0725c28e364a39cdc8ed0d46",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c2-combine.mjs",
+      "operation": "REMOVE",
+      "before_sha": "965eabfbc4285f7df5b53223d8ac7e9f6b230040",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c2-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "ff842d58bb5e074b6957e9f389264bb02ddf4db8",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c2-run.mjs",
+      "operation": "REMOVE",
+      "before_sha": "434fab0ea628e0a893d2c603cc19122d077e0cdc",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c3-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "3d68ded721f5c83f33405a390efb02715c7d164e",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c4-combine.mjs",
+      "operation": "REMOVE",
+      "before_sha": "b585159bdf1bde5dfc3d58324b73f50870e7bab7",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c4-run.mjs",
+      "operation": "REMOVE",
+      "before_sha": "8599e83c5f833cd97658c931ac267fff7f07e7c6",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c4-runtime-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "766c389037973f1bc804f0c5a2788c978c0186b7",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c4-session-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "87682c5f61748e849f68b7b6ea1ed703ce1be8d1",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c59-composition-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "36bf0d7d95ff0ae90a3326c18be7dc5c48e06e53",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c59-composition-select.mjs",
+      "operation": "REMOVE",
+      "before_sha": "8893b9ce71f988ede3bae1b655fc3f63a4aa102b",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c90-host-release-cli.mjs",
+      "operation": "REMOVE",
+      "before_sha": "e20b7af7bacb814fb4581965b0d3437c1114a10b",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c91-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "7cc170a05249b9bbd910cb3ddf0cf47a97da5d57",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c92-live-cli.mjs",
+      "operation": "REMOVE",
+      "before_sha": "4c195691815c69e48ddb1df2048b8b70af09360f",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c94-auto-cold-cli.mjs",
+      "operation": "REMOVE",
+      "before_sha": "06c807e8bb5fc67504d5749cf36d469c12fd2c0e",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c94-derivative-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "11d85d9a3194b8b4db7734851baa9ab33e782e83",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c94-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "8a46c8dc0943c3094c8bb18ca17542e1b4c973b9",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c94-qualify.sh",
+      "operation": "REMOVE",
+      "before_sha": "62a1f5eba6c140f65fad89a93e1800ea1cb2e1e9",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c94-targeted-attack.mjs",
+      "operation": "REMOVE",
+      "before_sha": "3177e31ef8350b7dacfa0b62f1ec3dcca3be2d11",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c95-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "7778775faf8a2fbcc5708e29f8a1a6a27fabb90f",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c98-evidence-audit.mjs",
+      "operation": "REMOVE",
+      "before_sha": "a9d357f61ed93ef875897ff01ec465b49a3d149f",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/c98-host-gap-census.mjs",
+      "operation": "REMOVE",
+      "before_sha": "4e31ff78c25b6e85ce71c687cf24b28dfa78649a",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/ci-failure-annotations.mjs",
+      "operation": "MODIFY",
+      "before_sha": "8385232370cf80ba4ab44aa0d0ca1ff6e2b84f34",
+      "after_sha": "695c48e70284f42a57e26d382ad8721306398f1b",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "scripts/combine-receipts.mjs",
+      "operation": "REMOVE",
+      "before_sha": "de268498030e2b73aac898d66a5868a205383a7c",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/cora-minimal-absorption.mjs",
+      "operation": "MODIFY",
+      "before_sha": "88dc44e90ea54c7806a96e9605d0ad8123401b41",
+      "after_sha": "e0a3b3289673935d35a9d342b5b8c0477d179b50",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "scripts/pr251-causal-oracle.mjs",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "de7aa990c907e4a86f52b791b2710958dd28c22c",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "scripts/pr251-forensic-hypergraph.mjs",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "8277c51c1ad6708eef327ed71e9b57fa28574e45",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "scripts/pr251-physical-ddmin.mjs",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "c753374fe8d8fe4c9d00fc4e5af945ae797cdafb",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "scripts/r7-pr249-physical-gate.py",
+      "operation": "MODIFY",
+      "before_sha": "0e518c684940cd2a254cb628c353231ffff57bca",
+      "after_sha": "4c5407665a7ebfa18a1e38320e1cc8b1986b29e5",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "scripts/r7-v12-epoch-audit.py",
+      "operation": "MODIFY",
+      "before_sha": "fd2c31f8b1c26f0ca57acc66a0fbdca5896001de",
+      "after_sha": "aa350205f5820399564285f19650f63e1e4dc7f6",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "scripts/repository-health-v10.mjs",
+      "operation": "MODIFY",
+      "before_sha": "a3ac1c3ffac2b400b9b7d66ef991ff957ee6672f",
+      "after_sha": "94d229b7d19e6a560223717f1721a680b8eb3097",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "scripts/s02-bridge-falsify.mjs",
+      "operation": "REMOVE",
+      "before_sha": "76b30a0e5d145ff2a5f1f3d4e21365bf4638d4da",
+      "after_sha": null,
+      "before_mode": "100644",
+      "after_mode": null
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "operation": "MODIFY",
+      "before_sha": "62fed4fe253843f2a9ebbdc789a32a73c1d3de76",
+      "after_sha": "01e0277cd9cac22f4a16e8851fdef14dce1a3b4a",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/c139-epistemic-edu-v2.test.mjs",
+      "operation": "MODIFY",
+      "before_sha": "030cd7cd84b055b73145ba7fb8b820861d542ba1",
+      "after_sha": "e09553744acd659b32e41b9f02c56128480ebfa7",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/ci-failure-annotations.test.mjs",
+      "operation": "MODIFY",
+      "before_sha": "bd2aa260da5cb752868a5ebee3776d8f08b0bb08",
+      "after_sha": "92345a3774b786dfc29bab253ce628121d3486df",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/cp11-guarded-prepr.test.mjs",
+      "operation": "MODIFY",
+      "before_sha": "0efee74e0a13063bffd23f251be1b6e7c69a2b94",
+      "after_sha": "555a1e84f92b83571b24a340ee432106782cd38c",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/pr251-causal-oracle.test.mjs",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "86a0f9a78d9b5be380750f29e3038272e80cf3fd",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/pr251-forensic-hypergraph.test.mjs",
+      "operation": "ADD",
+      "before_sha": null,
+      "after_sha": "82becbdec386f8b346fb78bc4c094d98fe36b74a",
+      "before_mode": null,
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/r7-v12-epoch-audit.test.mjs",
+      "operation": "MODIFY",
+      "before_sha": "1a808ffbdfb913d0f22d20e65b1106677fa812c4",
+      "after_sha": "2096b2e82239669707e3f23593c7e9b56c9fcc0e",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/repository-health-v10.test.mjs",
+      "operation": "MODIFY",
+      "before_sha": "67c6230d8ba74b4aff7fd642803c09467b3b819c",
+      "after_sha": "a41287dd4c71fab11e3a37dc5bd4a1916c0c2faf",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    },
+    {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "operation": "MODIFY",
+      "before_sha": "85d40a1fbfb7f8135d2d115e8d7d99ad9cd3760c",
+      "after_sha": "69bb9528bdef46f2d25b40e6c9b069fb9c91a396",
+      "before_mode": "100644",
+      "after_mode": "100644"
+    }
+  ],
+  "source_pr_251": {
+    "source_head": "ab8187ab3a44706b81a1f249179746ae43e648ed",
+    "source_tree": "9ed76bddd24062c1f6a33312ca4f91817482228b",
+    "semantic_replay_commit": "e40a8b5d92a9baf7bc537aeb72339a05b1d2a754",
+    "replay_exact_tree": true,
+    "merged": false,
+    "successor_pr": 252
+  },
+  "cora_portable_source": {
+    "engine_repo": "Luke883i/cora",
+    "source_pr": 81,
+    "source_revision": "900399b5b5b6e7074e37c206f6c566ddf72b9dc6",
+    "profile": "cora-portable-target/3",
+    "manifest_paths": [
+      "contracts/cora-source-ontology.json",
+      "contracts/cora-source-roles.json"
+    ],
+    "original_methods_required": [
+      "artifact_roles",
+      "python_candidate_graph"
+    ],
+    "source_green_without_both": false,
+    "external_host_provider_attested": false
+  }
+}

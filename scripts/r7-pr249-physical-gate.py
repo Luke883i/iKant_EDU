@@ -78,21 +78,31 @@ def assess(repo, fixture=False):
                                "--is-ancestor", FOUNDING, "HEAD"],
                               capture_output=True).returncode != 0:
                 issues.append("PR249_FOUNDING_NOT_ANCESTOR")
+            # Preserve the original PR249 epoch independently. A later PR251
+            # may only qualify via the complete HEAD-exact V5-B successor; never
+            # inherit an older source receipt or infer human/provider approval.
+            pr251 = (repo / "contracts/governance/changes/pr251-source-successor.json").is_file()
+            fn = "qualifyPr251SourceEpoch" if pr251 else "qualifyPr249SourceEpoch"
+            expected = ("PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED" if pr251 else
+                        "PR249_CHECKOUT_REPAIR_SOURCE_ONLY_REVIEW_REQUIRED")
             probe = subprocess.run([
                 "node", "--input-type=module", "-e",
-                "import {qualifyPr249SourceEpoch} from './scripts/v5b-repository-governance-audit.mjs';"
-                "process.stdout.write(JSON.stringify(qualifyPr249SourceEpoch()));"
+                f"import {{{fn}}} from './scripts/v5b-repository-governance-audit.mjs';"
+                f"process.stdout.write(JSON.stringify({fn}()));"
             ], cwd=repo, capture_output=True, text=True, timeout=45)
             if probe.returncode != 0:
-                issues.append("PR249_SUCCESSOR_CHECK_UNEXECUTABLE")
+                issues.append("SOURCE_SUCCESSOR_CHECK_UNEXECUTABLE")
             else:
                 qualification = json.loads(probe.stdout)
+                review = qualification.get("review" if pr251 else "owner_review")
                 if (qualification.get("ok") is not True
-                        or qualification.get("status") != "PR249_CHECKOUT_REPAIR_SOURCE_ONLY_REVIEW_REQUIRED"
+                        or qualification.get("status") != expected
                         or qualification.get("authority") != 0
                         or qualification.get("product_go") is not False
-                        or qualification.get("owner_review") != "NOT_ATTESTED"):
-                    issues.append("PR249_SUCCESSOR_SOURCE_UNQUALIFIED:" +
+                        or review != "NOT_ATTESTED"
+                        or (pr251 and qualification.get("source_main") !=
+                            "e270c6e2cc772f960126eecea9f50501339e3656")):
+                    issues.append("SOURCE_SUCCESSOR_NOT_QUALIFIED:" +
                                   str(qualification.get("edge", "UNKNOWN"))[:100])
         current = listing(repo, FOUNDING)
         roots = sorted({p.split("/", 1)[0] for p in observed if "/" in p})

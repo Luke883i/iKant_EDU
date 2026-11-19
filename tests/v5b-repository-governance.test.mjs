@@ -3,7 +3,7 @@ import crypto from 'node:crypto';
 const requireIndependentSha=bytes=>crypto.createHash('sha1').update('blob '+bytes.length+String.fromCharCode(0)).update(bytes).digest('hex');
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession,gitBlobSha1,qualifyRegisteredC72SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
+import {classifyWorkflow,evaluateMutationGate,referencePredicate,provisionalRole,auditRepository,parseStagedGitEntries,qualifyWorkingTreeDifference,auditWorkflowRetirements,qualifyRegisterSuccession,gitBlobSha1,qualifyRegisteredC72SourceEpoch,qualifyPr251SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 
 test('canonical Git hash helper is byte-accurate for UTF-8 and binary, reject object coercion',()=>{
  const cryptoSha=bytes=>{
@@ -177,4 +177,14 @@ test('prospective C72 source-epoch register is exact, cannot upgrade prior recei
  assert.equal(run(base,current,'f'.repeat(40)).ok,false);
  assert.equal(qualifyRegisteredC72SourceEpoch({path:'host/c135-edu-v2-owner.mjs',historicalBlobSha1:old,observedBlobSha1:current,registration:base}).ok,false);
  const unchanged=run(base,old);assert.equal(unchanged.ok,true);assert.equal(unchanged.amended,false);
+});
+
+test('PR251 new source epoch is exact, read-only and does not certify product or provider',()=>{
+ const r=qualifyPr251SourceEpoch();
+ assert.equal(r.ok,true,JSON.stringify(r));
+ assert.equal(r.status,'PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED');
+ assert.equal(r.product_go,false);
+ assert.equal(r.authority,0);
+ assert.equal(r.review,'NOT_ATTESTED');
+ assert.equal(r.provider,'NOT_ATTESTED');
 });

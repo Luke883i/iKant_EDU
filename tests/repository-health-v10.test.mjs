@@ -33,16 +33,21 @@ test('V10 historical 1630 source files remain Git-addressable; V13 owner drift i
  assert.equal(out.ci_on_candidate,'NOT_RUN');
 });
 
-test('V10 inherited lexical debt is SHA-pinned, not confused with new V13 paths',()=>{
- const out=auditV10({runNative:false});
- assert.equal(out.import_lexical_edges>=1720,true);
- assert.ok(out.legacy_unresolved>=32);
- assert.ok(out.new_unresolved.length>0); // lexical V10 ledger is bound to older source paths and blob SHAs.
- assert.equal(out.dynamic_census.epistemic_status,'SOURCE_LEXICAL_CENSUS_NOT_RUNTIME_REACHABILITY');
- assert.equal(out.gate_results.I,'FAIL'); // MUST NOT promote a migrated checkout under V10 conditions.
- assert.equal(spec.inherited_unresolved_lexical_edges.length,32);
+test('V10 historic lexical debt is immutable; CURRENT lexical obligations use current Git bytes',()=>{
  const historical=execFileSync('git',['show',`${HISTORIC}:contracts/repository-health-v10.json`],{cwd:root,encoding:'utf8'});
- assert.equal(JSON.parse(historical).inherited_unresolved_lexical_edges.length,32);
+ const original=JSON.parse(historical);
+ assert.equal(original.inherited_unresolved_lexical_edges.length,32);
+ assert.deepEqual(spec.inherited_unresolved_lexical_edges,original.inherited_unresolved_lexical_edges);
+ const out=auditV10({runNative:false});
+ const paths=execFileSync('git',['ls-files','--cached','-z'],{cwd:root}).toString('utf8').split(String.fromCharCode(0)).filter(Boolean);
+ const observed=scanLiteralRelative(root,paths);
+ const pending=newUnresolved(observed,spec.inherited_unresolved_lexical_edges);
+ assert.equal(out.import_lexical_edges,observed.length);
+ assert.equal(out.legacy_unresolved,observed.filter(x=>!x.valid).length);
+ assert.deepEqual(out.new_unresolved,pending.map(x=>({source:x.source,kind:x.kind,specifier:x.specifier})));
+ assert.equal(out.dynamic_census.epistemic_status,'SOURCE_LEXICAL_CENSUS_NOT_RUNTIME_REACHABILITY');
+ assert.equal(out.gate_results.I,(out.contract_integrity&&pending.length===0)?'PASS':'FAIL');
+ assert.equal(out.product_go,false);assert.equal(out.passed,false);
 });
 
 test('V10 adversary: new broken literal import is rejected, never declassified as old debt',()=>{
@@ -57,6 +62,22 @@ test('V10 adversary: new broken literal import is rejected, never declassified a
   assert.equal(edges[0].valid,false);
   assert.equal(newUnresolved(edges,spec.inherited_unresolved_lexical_edges).length,1);
   assert.equal(newUnresolved(edges,[{...edges[0],source_blob:'0'.repeat(40)}]).length,1);
+ }finally{fs.rmSync(dir,{recursive:true,force:true});}
+});
+
+test('V10 lexical root normalization is metamorphic and preserves traversal denial',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'v10-root-meta-'));
+ try{
+  fs.mkdirSync(path.join(dir,'host'));fs.mkdirSync(path.join(dir,'src'));
+  fs.writeFileSync(path.join(dir,'src','ok.mjs'),'export const ok=1;');
+  fs.writeFileSync(path.join(dir,'host','a.mjs'),"import {ok} from '../src/ok.mjs';");
+  const clean=scanLiteralRelative(dir,['host/a.mjs']);
+  const trailing=scanLiteralRelative(dir+path.sep,['host/a.mjs']);
+  assert.deepEqual(trailing,clean);
+  assert.equal(clean.length,1);assert.equal(clean[0].valid,true);
+  fs.writeFileSync(path.join(dir,'host','a.mjs'),"import {x} from '../../escape.mjs';");
+  const escaped=scanLiteralRelative(dir+path.sep,['host/a.mjs']);
+  assert.equal(escaped[0].valid,false);
  }finally{fs.rmSync(dir,{recursive:true,force:true});}
 });
 

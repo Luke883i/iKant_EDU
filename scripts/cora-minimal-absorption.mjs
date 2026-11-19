@@ -95,7 +95,7 @@ export function sourcePathsPresent(c,root=ROOT){
  * All owner/accountability and external-delivery columns remain UNKNOWN.
  */
 import {execFileSync} from 'node:child_process';
-import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch,qualifyR7OwnerSourceEpoch,qualifyPr249SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch,qualifyR7OwnerSourceEpoch,qualifyPr249SourceEpoch,qualifyPr251SourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {reopenR7SourceEpoch} from './r7-v13-epoch-bridge.mjs';
 const reticularPath='contracts/cora-reticular-hygiene-v1.json';
 const reticularIds=[
@@ -358,7 +358,8 @@ export function reopenV13WorkflowEpoch(c){
   // Reopen the immutable original PR249 workflow epoch only when the entire
   // current successor is independently source-pinned by V5-B. This is not CI,
   // owner review, provider evidence, or permission to release.
-  const successor=qualifyPr249SourceEpoch();
+  const successor=fs.existsSync(path.join(ROOT,'contracts/governance/changes/pr251-source-successor.json'))
+    ?qualifyPr251SourceEpoch():qualifyPr249SourceEpoch();
   const projectionRef=successor.ok===true?'7cd95a485f71008dd6aa7c3da6aa76bd0f3ead65':'HEAD';
   const currentWorkflowTree=git('rev-parse',projectionRef+':.github/workflows');
   if(git('rev-parse',v10+':.github/workflows')!==oldTree||

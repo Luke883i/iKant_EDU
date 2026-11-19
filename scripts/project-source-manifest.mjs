@@ -14,7 +14,7 @@ const roots=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md
  'contracts/project-session-capsule.json','contracts/project-c72-receipt-transit.json','contracts/project-oneshell-irred-e15.json','contracts/project-host-followthrough.json','contracts/project-host-capability-port.json','contracts/project-oneshell-compact-continuity.json','contracts/project-oneshell-visual-v2.json','contracts/project-oneshell-do-d.json','contracts/project-oneshell-focus-app.json','contracts/project-oneshell-inchat-presentation.json','contracts/project-c72-preaccept-gate.json','contracts/project-oneshell-host-scope.json','contracts/project-oneshell-semantic-slides.json',
  'project/docs/PROJECT_EDU_E16_UNIFIED_INGRESS.md','project/docs/PROJECT_SESSION_REPO_FIRST.md','project/docs/ONESHELL_POSTACCEPT_RAIL_AUDIT_E9.md','project/docs/ONESHELL_E12_FOCUS_APP_POST182.md',
  'host/project-oneshell-postaccept-rail.mjs','contracts/project-oneshell-cx-humanist.json','project/docs/EDU_ONEZIP_POSTACCEPT_FIELD_ROUTE.md','contracts/project-edu-onezip-field-route.json',
- 'scripts/project-edu-zip-tree.py','scripts/project-edu-onezip-admission.mjs',
+ 'scripts/project-edu-zip-tree.py','scripts/project-edu-onezip-ingress.py','scripts/project-edu-onezip-admission.mjs',
  'scripts/project-edu-language-stdio.mjs','scripts/project-edu-onezip-session.mjs','scripts/project-oneshell-continuous-cli.mjs',
  boot.post_accept_fastboot.runtime_root.loader.path,...boot.post_accept_fastboot.remote_paths,
  ...boot.post_accept_fastboot.runtime_root.members.map(x=>x.path),...C107_FILES];

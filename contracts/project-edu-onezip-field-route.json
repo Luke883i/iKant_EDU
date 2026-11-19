@@ -15,7 +15,10 @@
     "zip_verification": "GIT_BLOB_SHA_FOR_VERIFIER_PLUS_FULL_ZIP_GIT_TREE_ROOT_AGAINST_PINNED_COMMIT_TREE",
     "tree_entries": "ZIP_DERIVED_NOT_INDEPENDENT_API_TREE",
     "existing_loader": "scripts/project-repo-loader.mjs",
-    "legacy_postedu_zip_unchanged": true
+    "legacy_postedu_zip_unchanged": true,
+    "default_project_route": "SINGLE_OFFICIAL_GITHUB_COMMIT_ZIP_AFTER_CONSENT_WITNESS_AND_OBSERVED_PREFLIGHT",
+    "capability": "NODE_20_SAME_PROCESS_TASK_REPLY_AND_SEPARATE_PRIVATE_FILE_READBACK",
+    "ingress": "scripts/project-edu-onezip-ingress.py"
   },
   "owners": {
     "acceptance": "host/c72-public-mode-admission.mjs",
@@ -37,7 +40,11 @@
     "checkpoint_required_for_cross_process_turn": true,
     "source_epoch_frozen": true,
     "owner_receipts_must_be_reopened": true,
-    "native_delivery_attested": false
+    "native_delivery_attested": false,
+    "project_continuity": "SESSION_LOCAL_ORIGINAL_C87_COLD_REBIND",
+    "reopen_view": "READ_ONLY_ORIGINAL_RECEIPT_AND_C87_REVALIDATION",
+    "cross_filesystem_restore": false,
+    "native_ui_attested": false
   },
   "release": {
     "software_fixture_pass_is_not_field_pass": true,

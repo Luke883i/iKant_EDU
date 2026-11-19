@@ -29,7 +29,7 @@ function writeOnce(p,body){const b=Buffer.from(JSON.stringify(body)+'\n');const 
  try{fs.writeFileSync(fd,b);fs.fsyncSync(fd)}finally{fs.closeSync(fd)}
  if(!fs.readFileSync(p).equals(b))throw Error('EDU_RECEIPT_READBACK_INVALID');}
 export async function runOneZipOriginalTurn(q){
- let session=null,attempted=false,local=null;
+ let session=null,attempted=false,local=null,languagePort=null;
  const view=q?.action==='REOPEN_VIEW';
  const useLocal=q?.continuity==='SESSION_LOCAL';
  try{
@@ -55,6 +55,8 @@ export async function runOneZipOriginalTurn(q){
   if(useLocal){
    const ledger=await import(pathToFileURL(path.join(dir,'host/c87-durable-ledger.mjs')).href);
    local=openLocalOneZip(q.privateRoot,{head:q.head,tree:source.source_tree,readLedger:ledger.reopenC87Ledger});
+   if(!view&&fs.existsSync(path.join(q.privateRoot,'edu-turn-attempt-'+q.nonce+'.json')))
+    return fail('EDU_LOCAL_NONCE_ALREADY_ATTEMPTED');
    if(view){
     if(!local.latest)return fail('EDU_LOCAL_VIEW_NOT_READY');
     const r=local.latest;
@@ -66,7 +68,7 @@ export async function runOneZipOriginalTurn(q){
   const one=await import(pathToFileURL(path.join(dir,'host/project-oneshell-edu.mjs')).href);
   session=await one.startOneShellEdu({selection:c72.selection,sourceRoot:dir,
     sourceBinding:{head:q.head,tree:source.source_tree},privateParent:q.privateRoot,
-    languagePort:createOneShellLanguageStdio(),afterAcceptWitness:{accepted:true,scope:'HOST_WITNESSED_ONLY'},
+    languagePort:(languagePort=createOneShellLanguageStdio()),afterAcceptWitness:{accepted:true,scope:'HOST_WITNESSED_ONLY'},
     resumeFrom:local?local.resumeFrom:q.resumeFrom??null});
   if(!session.ok||!session.runtime_ready)return fail(session.frame?.slots?.EDGE||'EDU_C135_NOT_READY');
   writeOnce(path.join(q.privateRoot,'edu-turn-attempt-'+q.nonce+'.json'),{nonce:q.nonce,head:q.head,state:'ATTEMPTED'});
@@ -91,7 +93,7 @@ export async function runOneZipOriginalTurn(q){
   writeOnce(path.join(q.privateRoot,'edu-turn-receipt-'+q.nonce+'.json'),portable);
   return portable;
  }catch(e){return fail(attempted?'EDU_OWNER_OUTCOME_UNKNOWN_NO_RETRY':'EDU_PREOWNER_STOP:'+String(e.message||'UNKNOWN').slice(0,90));}
- finally{try{if(session?.close)session.close();}finally{local?.close();}}
+ finally{try{if(session?.close)session.close();}finally{try{languagePort?.close();}finally{local?.close();}}}
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
  const qpath=process.argv[2];

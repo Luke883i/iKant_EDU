@@ -140,6 +140,7 @@
     "scripts/project-c72-verified-staging.mjs",
     "scripts/project-edu-language-stdio.mjs",
     "scripts/project-edu-onezip-admission.mjs",
+    "scripts/project-edu-onezip-ingress.py",
     "scripts/project-edu-onezip-local.mjs",
     "scripts/project-edu-onezip-session.mjs",
     "scripts/project-edu-zip-tree.py",

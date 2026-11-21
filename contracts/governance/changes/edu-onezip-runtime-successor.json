@@ -237,6 +237,12 @@
       "mode": "100644"
     },
     {
+      "path": "tests/project-bootstrap-cut-audit.test.mjs",
+      "before": "8141829a26544f260b8f617dd1aa68e32b74da2b",
+      "after": "24a5e5545fe9f3bfb384b11fc4b25b1aaa3b50ab",
+      "mode": "100644"
+    },
+    {
       "path": "tests/project-bootstrap-d123.test.mjs",
       "before": "5e2e05187d97a149b6bebc2ecf0632aa7a02d435",
       "after": "208ae0be876223ca9074e690082d10fdc29917c7",

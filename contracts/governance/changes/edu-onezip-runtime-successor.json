@@ -11,7 +11,7 @@
     {
       "path": ".github/workflows/ci.yml",
       "before": "eb905c345a02b548111469bf14cda663519e9bfd",
-      "after": "94814c6c3ecaa90e547888f3881578d4be9bc2ad",
+      "after": "7f9ff110d6fda2ad192e45e2bd4f7f0986a45fb9",
       "mode": "100644"
     },
     {
@@ -209,7 +209,7 @@
     {
       "path": "tests/cora-pr-f-qualification.test.mjs",
       "before": "e4690ee814c4fbcc5580faac7237bb4382588268",
-      "after": "d72d3fb42cb572655f6a350fb7202f4653eff01a",
+      "after": "1add4ed5817b9d2d9a761469371836341367cf5b",
       "mode": "100644"
     },
     {

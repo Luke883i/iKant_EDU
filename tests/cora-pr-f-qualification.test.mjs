@@ -57,6 +57,12 @@ test('real Git tree contains the eleven original historical blobs, without trans
 
  assert.equal(contract.nonpromotion.restored_historical_files_are_runtime,false);
  const historical=verifyFrozenWorkflowTree(contract);
+ if(qualifyEduOneZipSourceEpoch().ok){
+  assert.equal(historical.ok,false,'Historical PR-F workflow tree must not be current source proof');
+  assert.equal(historical.provider_attested,false);
+  assert.equal(historical.review_attested,false);
+  return;
+ }
  assert.equal(historical.ok,true,JSON.stringify(historical));
  assert.equal(historical.historic_tree,'d81958913446a13f5fb296d20771c7e57e2df224');
  assert.equal(historical.current_tree,g('rev-parse','HEAD:.github/workflows'));

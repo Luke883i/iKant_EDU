@@ -33,6 +33,7 @@ jobs:
           (cd "$RUNNER_TEMP/pr251-epoch" && node --test tests/cora-m1-shared-evidence.test.mjs)
           (cd "$RUNNER_TEMP/pr251-epoch" && node --test tests/cora-m2-owner-provider-metrics.test.mjs)
           (cd "$RUNNER_TEMP/pr251-epoch" && node --test --test-name-pattern='real Git checkout preserves historical owner pin ledger' tests/cora-pr-d1-blob-dedup.test.mjs)
+          (cd "$RUNNER_TEMP/pr251-epoch" && node --test --test-name-pattern='real Git tree contains the eleven original historical blobs' tests/cora-pr-f-qualification.test.mjs)
           # Historical source observers are tested on their immutable Git epoch,
           # while current PR253 tests assert that they cannot inherit that proof.
           (cd "$RUNNER_TEMP/pr251-epoch" && node --test --test-name-pattern='actual checkout|real Git-indexed V5-B/CORA|actual HEAD Git|single original audit readback|D2 exposes one original V5-B audit|actual Git-indexed V5-B census|real original source observer|exact main checkout' tests/cora-pr-a-backlog.test.mjs tests/cora-pr-b-docs.test.mjs tests/cora-pr-c-ci.test.mjs tests/cora-pr-d2-single-audit.test.mjs tests/cora-pr-f-qualification.test.mjs tests/cora-pr-g-evidence-readback.test.mjs tests/cora-reticular-hygiene.test.mjs)

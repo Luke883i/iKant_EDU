@@ -8,7 +8,7 @@ const words=[
  ['PRIMO messaggio','ORIENTATION','HOST_ENGINEERING','I ACCEPT⇒C72','EDU⇒selezione','Ogni scelta legacy⇒STOP','EXIT IKANT','CONFERMO EXIT IKANT','ANNULLA EXIT IKANT'],
  ['Avanza ⇔','evento umano distinto','effetto osservato','readback indipendente','ricevuta owner','non certificano origine'],
  ['UNKNOWN⇒STOP senza retry','POST-ACCEPT','mai consenso/stato/receipt','C87/checkpoint'],
- ['ESITO | A | B | PROVA | EDGE | NEXT','NO_VOICE','owner-bound','Host:','@Host','SEMANTIC_RETENTION_NOT_ATTESTED'],
+ ['ESITO | A | B | PROVA | EDGE | NEXT','NO_VOICE','owner-bound','Host:','@Host','SEMANTIC_RETENTION_NOT_ATTESTED','oneshell_utf8','for dummies','allegato UTF-8','non tagliare A'],
  ['ORIENTATION','GitHub tool disponibile','SOLO HEAD','README.md, BOOTSTRAP.json, ADMISSION.json, AGENTS.md, TERMS.md','cinque SHA in PROVA','ZERO letture','NO TREE','gateway scaricato','STOP'],
  ['I ACCEPT autentico','GOLD_FIRST','MACHINE_POST_ACCEPT=contracts/project-host-tool-grounding-abi.json','probe fisico obbligatorio','Node ≥20','nonce alla stessa istanza','archive/<HEAD>.zip','una volta','L’upload non è consenso','project-edu-onezip-ingress.py','SESSION_LOCAL','REOPEN_VIEW','C72 originale UNA volta','INTEGRE','Dopo EDU distinto','project/session-chat/PROMPT.txt','C135/C87/C125/S03'],
  ['original required_ack','stesso turno','NEGATIVE={TOOL_GUESSED,TWO_TOOLS_AUTO_BRIDGE,UNOBSERVED_TRANSFER,SELF_SIGNED_SHA,OWNER_UNKNOWN,FAKE_RECEIPT}','piano≠esecuzione','C72_SOURCE_BRIDGE_UNBOUND','INSTALLED_PROMPT_EQUIVALENCE_UNKNOWN','STOP_PROMPT_HEAD_PREFLIGHT','STOP_PROJECT_PROMPT_STALE_INSTALLATION','PR merged','POST-MERGE','EXPLICIT_REPIN_REQUIRES_FRESH_C72']

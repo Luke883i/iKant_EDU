@@ -26,6 +26,11 @@ jobs:
         node: [20, 22]
     steps:
       - uses: actions/checkout@v4
+        with:
+          # PR merge refs are synthetic; qualify the exact proposed source HEAD.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          # The retirement census also reads the pinned historical main object.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}

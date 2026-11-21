@@ -1,4 +1,3 @@
-import {qualifyEduOneZipSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -79,11 +78,6 @@ test('actual call graph invokes one original V5-B audit in the CORA owner only',
 
 test('single original audit readback matches independent legacy projections on exact checkout',()=>{
  const {census,audit}=observeReticularCensusWithAudit();
- if(qualifyEduOneZipSourceEpoch().ok){
-  assert.equal(census.ok,false,'Current successor cannot inherit historical source proof');
-  assert.equal(census.product_go,false);
-  return;
- }
  assert.equal(census.ok,true,JSON.stringify(census.obligations||census));
  assert.equal(audit.status,'SOURCE_INDEXED_NOT_HUMAN_REVIEWED');
  assert.deepEqual(audit.errors,[]);

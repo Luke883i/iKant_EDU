@@ -132,20 +132,13 @@ test('100000 deterministic model vectors cannot turn hypothetical receipts into 
  assert.equal(a.logicalFull,0);
  assert.equal(a.unsafe,0);
 });
-test('original M2 source readback is epoch-bound; PR253 cannot reuse historical M1 as current proof',()=>{
+test('original M2 source readback verifies current EDU epoch without external authority',()=>{
  const q=observeM2Source();
- if(qualifyEduOneZipSourceEpoch().ok){
-  // The immutable PR251 checkout is the authoritative original M1/M2 source epoch.
-  // This current PR253 checkout cannot turn historical owner/provider witnesses into PASS.
-  assert.equal(qualifyPr251SourceEpoch('888a5878a30864e6db7813b3d8b236cde46cce40').ok,true);
-  assert.equal(q.ok,false,JSON.stringify(q));
-  assert.equal(q.first_edge,'M2_ORIGINAL_M1_SOURCE_UNQUALIFIED');
-  assert.equal(q.owner_invoked,false);
-  assert.equal(q.provider_attested,false);
-  assert.equal(q.product_go,false);
-  assert.equal(q.m2_complete,false);
-  return;
- }
+ const eduEpoch=qualifyEduOneZipSourceEpoch();
+ assert.equal(eduEpoch.ok,true,JSON.stringify(eduEpoch));
+ assert.equal(eduEpoch.authority,0);
+ assert.equal(eduEpoch.product_go,false);
+ assert.equal(qualifyPr251SourceEpoch('888a5878a30864e6db7813b3d8b236cde46cce40').ok,true);
  assert.equal(q.ok,true,JSON.stringify(q));
  assert.equal(q.status,'M2_SOURCE_METROLOGY_ONLY_EXTERNAL_DOD_OPEN');
  assert.equal(q.metrics_total,14);

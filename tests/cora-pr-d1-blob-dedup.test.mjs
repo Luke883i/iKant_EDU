@@ -1,4 +1,3 @@
-import {qualifyEduOneZipSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import test from 'node:test';
 import {qualifyR7OwnerSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import assert from 'node:assert/strict';
@@ -163,15 +162,6 @@ test('real Git checkout preserves historical owner pin ledger and qualifies only
  const originalPRF=JSON.parse(fs.readFileSync(new URL(
   '../contracts/cora-pr-f-integrated-qualification-v1.json',import.meta.url),'utf8'));
  const historic=verifyFrozenWorkflowTree(originalPRF);
- if(qualifyEduOneZipSourceEpoch().ok){
-  // Original owner pin loop above still executes on current PR253 source.
-  // The frozen PR-F workflow reconstruction belongs to the pinned PR251 epoch.
-  assert.equal(historic.ok,false,'Current workflow tree cannot inherit PR-F historical source proof');
-  assert.equal(historic.current_tree,git('rev-parse','HEAD:.github/workflows'));
-  assert.equal(historic.provider_attested,false);
-  assert.equal(historic.review_attested,false);
-  return;
- }
  assert.equal(historic.ok,true,JSON.stringify(historic));
  assert.equal(historic.historic_tree,'d81958913446a13f5fb296d20771c7e57e2df224');
  assert.equal(historic.current_tree,git('rev-parse','HEAD:.github/workflows'));

@@ -179,61 +179,13 @@
     {
       "path": "tests/cora-m1-shared-evidence.test.mjs",
       "before": "7ce24e598de1fb7120df044aedef09b760e1ae6e",
-      "after": "af53086c77a3823cc4da0c9167a744153d77f3c3",
+      "after": "519b69a4b1913f50d17c168e56343f824358c123",
       "mode": "100644"
     },
     {
       "path": "tests/cora-m2-owner-provider-metrics.test.mjs",
       "before": "d9aff49ff5fdc6d500e61967dbfb23ade1ffe454",
-      "after": "2796a0096fe58c9fb4e41a7fb2e3c2d0e3942f58",
-      "mode": "100644"
-    },
-    {
-      "path": "tests/cora-pr-a-backlog.test.mjs",
-      "before": "ae7f44f3aa78ef365817827c7c20421c1a2f7c7e",
-      "after": "d867bb8b6e01ea4e6365e00da7278d2d1fb87c37",
-      "mode": "100644"
-    },
-    {
-      "path": "tests/cora-pr-b-docs.test.mjs",
-      "before": "fb11f327aedd6cc7a96a313ac584c647259ed173",
-      "after": "5ca5c894f1e008804d4e1d1a2862b735c19205ae",
-      "mode": "100644"
-    },
-    {
-      "path": "tests/cora-pr-c-ci.test.mjs",
-      "before": "4bffc44d3fe97f81e88fd0ef7fcf88cbe11c2f37",
-      "after": "d5788157ea64913e266e039d7aeea9be49f887ab",
-      "mode": "100644"
-    },
-    {
-      "path": "tests/cora-pr-d1-blob-dedup.test.mjs",
-      "before": "e04120431e6c078439b0311dcbf0c9132aeb4810",
-      "after": "4a97abe6f8f64ae47c15cd3b57021a8fab665f99",
-      "mode": "100644"
-    },
-    {
-      "path": "tests/cora-pr-d2-single-audit.test.mjs",
-      "before": "4cb2395dc1a535dc36bfbae9e07bd27d5abb68e1",
-      "after": "5c9309570034ab96135fe6eaff1a4753fd1cc6d0",
-      "mode": "100644"
-    },
-    {
-      "path": "tests/cora-pr-f-qualification.test.mjs",
-      "before": "e4690ee814c4fbcc5580faac7237bb4382588268",
-      "after": "1add4ed5817b9d2d9a761469371836341367cf5b",
-      "mode": "100644"
-    },
-    {
-      "path": "tests/cora-pr-g-evidence-readback.test.mjs",
-      "before": "0a752c978a99f393ab99cce344cbf4ab54c4d95b",
-      "after": "f3e733297c39725a3b6bda4e0e97c5ff684d3dd5",
-      "mode": "100644"
-    },
-    {
-      "path": "tests/cora-reticular-hygiene.test.mjs",
-      "before": "c6f9b568b7a90100398dc82d95e8c31d294d7c03",
-      "after": "dfbdce41afadaf20d241b25ad735dc8a94f60dbe",
+      "after": "bc3ca1be1088c45ec7a7a15a0b1b4c9cdf3e80e8",
       "mode": "100644"
     },
     {

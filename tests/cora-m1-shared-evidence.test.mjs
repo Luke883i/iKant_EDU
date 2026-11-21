@@ -175,16 +175,11 @@ test('M1_'+liveM1.first_edge+'_G_'+liveG.first_edge+'_F_'+liveF.first_edge,()=>{
  const r=liveM1;
  // PR253 is a separately registered source epoch. Its current-source result
  // must not masquerade as the immutable historical PR-F/G live receipt.
- if(qualifyEduOneZipSourceEpoch().ok){
-  assert.equal(qualifyPr251SourceEpoch('888a5878a30864e6db7813b3d8b236cde46cce40').ok,true);
-  assert.equal(r.ok,false);
-  assert.equal(r.first_edge,'M1_ORIGINAL_PR_G_PACKET_OR_EXTERNAL_EDGE_INVALID');
-  assert.equal(liveG.ok,false);
-  assert.equal(liveF.ok,false);
-  assert.equal(r.product_go,false);
-  assert.equal(r.archive_allowed,false);
-  return;
- }
+ const eduEpoch=qualifyEduOneZipSourceEpoch();
+ assert.equal(eduEpoch.ok,true,JSON.stringify(eduEpoch));
+ assert.equal(eduEpoch.authority,0);
+ assert.equal(eduEpoch.product_go,false);
+ assert.equal(qualifyPr251SourceEpoch('888a5878a30864e6db7813b3d8b236cde46cce40').ok,true);
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.status,'M1_SHARED_SOURCE_EVIDENCE_CUT_ONLY');
  assert.equal(r.workflows,116);

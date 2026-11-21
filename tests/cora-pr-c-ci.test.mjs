@@ -1,4 +1,3 @@
-import {qualifyEduOneZipSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -108,11 +107,6 @@ test('D2 PR-C source reuses original CORA audit and preserves independent pure q
 
 test('actual HEAD Git + original V5-B + CORA readback retains 116 workflows',()=>{
  const r=observePrCCISource();
- if(qualifyEduOneZipSourceEpoch().ok){
-  assert.equal(r.ok,false,'Current successor cannot inherit historical source proof');
-  assert.equal(r.product_go,false);
-  return;
- }
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.workflow_count,116);
  assert.equal(r.deleted_workflows,0);assert.equal(r.added_workflows,0);

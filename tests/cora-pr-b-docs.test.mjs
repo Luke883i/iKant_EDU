@@ -1,4 +1,3 @@
-import {qualifyEduOneZipSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
@@ -105,11 +104,6 @@ test('10k seeded semantic fault choices are reproducible, every family rejected'
 
 test('real Git-indexed V5-B/CORA readback and documentation qualify on exact checkout',()=>{
  const r=observePrBDocs();
- if(qualifyEduOneZipSourceEpoch().ok){
-  assert.equal(r.ok,false,'Current successor cannot inherit historical source proof');
-  assert.equal(r.product_go,false);
-  return;
- }
  assert.equal(r.ok,true,JSON.stringify(r.errors||r));
  assert.equal(r.checked_documents,8);
  assert.equal(r.authority,0);

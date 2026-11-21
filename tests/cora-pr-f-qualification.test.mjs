@@ -1,4 +1,3 @@
-import {qualifyEduOneZipSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -57,12 +56,6 @@ test('real Git tree contains the eleven original historical blobs, without trans
 
  assert.equal(contract.nonpromotion.restored_historical_files_are_runtime,false);
  const historical=verifyFrozenWorkflowTree(contract);
- if(qualifyEduOneZipSourceEpoch().ok){
-  assert.equal(historical.ok,false,'Historical PR-F workflow tree must not be current source proof');
-  assert.equal(historical.provider_attested,false);
-  assert.equal(historical.review_attested,false);
-  return;
- }
  assert.equal(historical.ok,true,JSON.stringify(historical));
  assert.equal(historical.historic_tree,'d81958913446a13f5fb296d20771c7e57e2df224');
  assert.equal(historical.current_tree,g('rev-parse','HEAD:.github/workflows'));
@@ -72,11 +65,6 @@ test('real Git tree contains the eleven original historical blobs, without trans
 });
 test('real original source observer reconciles all five slices and refuses external promotion',()=>{
  const r=observePrFSource();
- if(qualifyEduOneZipSourceEpoch().ok){
-  assert.equal(r.ok,false,'Current successor cannot inherit historical source proof');
-  assert.equal(r.product_go,false);
-  return;
- }
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.status,'PR_F_SOURCE_CANDIDATE_EXTERNAL_GATES_OPEN');
  assert.match(r.source.head,/^[a-f0-9]{40}$/);

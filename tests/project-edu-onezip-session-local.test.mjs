@@ -88,17 +88,24 @@ test('OneZIP SESSION_LOCAL: real C72 and two fresh C135 workers, same C87, reope
   const one=await physicalTurn({...base,humanInput:humanText,nonce:'local-project-turn-0001',priorMessages:[]},
    path.join(privateRoot,'one.json'));
   assert.equal(one.turn_index,1);
+ assert.equal(one.oneshell_sha256,sha(one.oneshell_utf8));
+ assert.equal(one.oneshell_utf8.split('\n').length>=6,true);
+ assert(one.oneshell_utf8.includes('iKant (Superficie A) | '+answerText));
   assert.equal(one.checkpoint,undefined,'no copied or portable ledger by default in Project');
   assert.equal(JSON.stringify(one).includes(privateRoot),false,'no filesystem path in host response');
   const before=await view();
   assert.equal(before.ok,true,JSON.stringify(before)); assert.equal(before.turn_index,1);
   assert.deepEqual(before.frame,one.frame);
+ assert.equal(before.oneshell_utf8,one.oneshell_utf8);
+ assert.equal(before.oneshell_sha256,one.oneshell_sha256);
   const two=await physicalTurn({...base,humanInput:secondText,nonce:'local-project-turn-0002',priorMessages:[],resetContext:true},
    path.join(privateRoot,'two.json'));
   assert.equal(two.turn_index,2);
   assert.notEqual(two.original_c87_last_hash,one.original_c87_last_hash);
   assert.equal(two.native_delivery_attested,false);
   const after=await view();assert.equal(after.turn_index,2);assert.deepEqual(after.frame,two.frame);
+ assert.equal(after.oneshell_utf8,two.oneshell_utf8);
+ assert.equal(after.oneshell_sha256,sha(two.oneshell_utf8));
   const denied=await runOneZipOriginalTurn({...base,humanInput:secondText,nonce:'local-project-turn-0002',priorMessages:[]});
   assert.equal(denied.ok,false);
   assert.equal((await view()).original_c87_last_hash,two.original_c87_last_hash);

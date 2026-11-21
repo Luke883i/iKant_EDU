@@ -20,6 +20,8 @@ export function verifyOneZipOriginalC125Evidence(frame,evidence){
     voice==='NO_VOICE'||typeof transport!=='string'||!transport.length||
     frame.original_voice_sha256!==sha(voice)||
     evidence.original_c125_sha256!==sha(transport)||
+    transport.split('<<<VOICE_UTF8_START>>>\n').length!==2||
+    transport.split('\n<<<VOICE_UTF8_END>>>').length!==2||
     !transport.includes('<<<VOICE_UTF8_START>>>\n'+voice+'\n<<<VOICE_UTF8_END>>>')||
     evidence.original_c87_readback?.status!=='C107_LEDGER_REOPENED')
     return false;
@@ -61,7 +63,8 @@ export async function runOneZipOriginalTurn(q){
     if(!local.latest)return fail('EDU_LOCAL_VIEW_NOT_READY');
     const r=local.latest;
     return {ok:true,kind:'EDU_REOPENED_SESSION_VIEW',frame:r.frame,turn_index:r.turn_index,
-     original_c87_last_hash:r.original_c87_last_hash,active:false,native_delivery_attested:false,authority:0};
+     original_c87_last_hash:r.original_c87_last_hash,oneshell_utf8:r.oneshell_utf8,
+     oneshell_sha256:r.oneshell_sha256,active:false,native_delivery_attested:false,authority:0};
    }
   }
   const priorMessages=local?.priorMessages??q.priorMessages;
@@ -78,7 +81,11 @@ export async function runOneZipOriginalTurn(q){
   const e=session.getLastEvidence();
   if(!verifyOneZipOriginalC125Evidence(f,e))
     return fail(f?.slots?.EDGE||'EDU_ORIGINAL_VOICE_NOT_REOPENED');
+  // The original same-process renderer refuses a forged or rehydrated A frame.
+  // Serialize its exact six-slot output once; later cold reopen reads the sealed bytes.
+  const oneshell_utf8=one.renderOneShellCompact(f);
   const receipt={ok:true,schema:'ikant-edu-onezip-original-turn/v1',head:q.head,tree:source.source_tree,
+    oneshell_utf8,oneshell_sha256:sha(oneshell_utf8),
     frame:f,owner:'C135_EDU_V2',original_c125_sha256:e.original_c125_sha256,original_voice_sha256:f.original_voice_sha256,
     active:false,native_delivery_attested:false,authority:0};
   if(local){

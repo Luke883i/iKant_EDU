@@ -40,6 +40,11 @@ test('C125 full frame is distinct from byte-exact original voice; fail closed on
    original_c87_readback:{status:'C107_LEDGER_REOPENED',count:1}};
  assert.notEqual(transport,voice);
  assert.equal(verifyOneZipOriginalC125Evidence(frame,evidence),true);
+ assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,
+   original_c125_utf8:transport+transport,original_c125_sha256:sha(transport+transport)}),false);
+ const duplicatedEnd=transport+'\n<<<VOICE_UTF8_END>>>';
+ assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,
+   original_c125_utf8:duplicatedEnd,original_c125_sha256:sha(duplicatedEnd)}),false);
  assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,original_c125_sha256:sha(voice)}),false);
  assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,original_c125_utf8:voice}),false);
  assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,original_c87_readback:null}),false);

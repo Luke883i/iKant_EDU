@@ -36,6 +36,9 @@ export function openLocalOneZip(root,{head,tree,readLedger}) {
     Number.isSafeInteger(r.turn_index)&&r.turn_index>0&&r.native_delivery_attested===false&&
     r.frame?.voice_origin==='HOST_BOUND_LOCAL'&&typeof r.frame.slots?.A==='string'&&
     r.original_voice_sha256===hash(r.frame.slots.A)&&r.original_c125_sha256===hash(r.original_c125_utf8||'')&&
+    typeof r.oneshell_utf8==='string'&&r.oneshell_sha256===hash(r.oneshell_utf8)&&
+    r.oneshell_utf8===['ESITO','A','B','PROVA','EDGE','NEXT'].map((k)=>
+      ({A:'iKant (Superficie A)',B:'Host (Superficie B)'}[k]||k)+' | '+r.frame.slots?.[k]).join('\n')&&
     r.original_c125_utf8.includes('<<<VOICE_UTF8_START>>>\n'+r.frame.slots.A+'\n<<<VOICE_UTF8_END>>>')&&
     H64.test(r.original_c87_last_hash||'')&&Array.isArray(r.local_window)&&r.local_window.length<=4&&
     r.local_window.every(v=>typeof v==='string'&&v.trim()&&Buffer.byteLength(v,'utf8')<=12000),

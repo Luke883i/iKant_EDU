@@ -10,11 +10,16 @@ test('physical gate: original V13 tree and explicit new files only',()=>{
  assert.equal(x.status,0,x.stderr+x.stdout);
  const result=JSON.parse(x.stdout);assert.equal(result.issue_count,0);
  assert.equal(result.status,'SOURCE_ONLY_PASS_FIXTURE');
+ assert.equal(result.qualified_epoch,'EDU_ONEZIP_SOURCE_ONLY_REVIEW_REQUIRED');
+ assert.equal(result.global_dod,'HOLD');
+ assert.equal(result.product_go,false);
  assert.equal(result.roots.length,7);assert.equal(result.root_files.length,9);
  assert.equal(result.source_files,1639);
 });
 test('physical gate: --require-global cannot be satisfied by source check alone',()=>{
  const x=spawnSync('python3',['scripts/r7-pr249-physical-gate.py','--fixture','--require-global'],{cwd:root,encoding:'utf8'});
  assert.equal(x.status,20,x.stderr+x.stdout);
- const result=JSON.parse(x.stdout);assert.equal(result.global_dod,'HOLD');
+ const result=JSON.parse(x.stdout);assert.equal(result.issue_count,0);
+ assert.equal(result.qualified_epoch,'EDU_ONEZIP_SOURCE_ONLY_REVIEW_REQUIRED');
+ assert.equal(result.global_dod,'HOLD');
 });

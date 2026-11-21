@@ -50,6 +50,7 @@ def listing(repo, revision):
 
 def assess(repo, fixture=False):
     issues = []
+    qualified_epoch = None
     try:
         head = cmd(repo, "rev-parse", "HEAD").decode().strip()
         observed_tree = cmd(repo, "rev-parse", "HEAD^{tree}").decode().strip()
@@ -82,28 +83,88 @@ def assess(repo, fixture=False):
             # may only qualify via the complete HEAD-exact V5-B successor; never
             # inherit an older source receipt or infer human/provider approval.
             pr251 = (repo / "contracts/governance/changes/pr251-source-successor.json").is_file()
-            fn = "qualifyPr251SourceEpoch" if pr251 else "qualifyPr249SourceEpoch"
-            expected = ("PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED" if pr251 else
-                        "PR249_CHECKOUT_REPAIR_SOURCE_ONLY_REVIEW_REQUIRED")
-            probe = subprocess.run([
-                "node", "--input-type=module", "-e",
-                f"import {{{fn}}} from './scripts/v5b-repository-governance-audit.mjs';"
-                f"process.stdout.write(JSON.stringify({fn}()));"
-            ], cwd=repo, capture_output=True, text=True, timeout=45)
-            if probe.returncode != 0:
-                issues.append("SOURCE_SUCCESSOR_CHECK_UNEXECUTABLE")
+            edu = (repo / "contracts/governance/changes/edu-onezip-runtime-successor.json").is_file()
+            # Successor proofs are epoch-specific AND leaves. Never reuse the
+            # earlier PR251 HEAD-exact receipt for the later PR253 checkout.
+            if edu:
+                if not pr251:
+                    issues.append("EDU_PREDECESSOR_REGISTER_MISSING")
+                else:
+                    command = (
+                        "import {qualifyPr251SourceEpoch,qualifyEduOneZipSourceEpoch} "
+                        "from './scripts/v5b-repository-governance-audit.mjs';"
+                        "const predecessor=qualifyPr251SourceEpoch("
+                        "'888a5878a30864e6db7813b3d8b236cde46cce40');"
+                        "const current=qualifyEduOneZipSourceEpoch();"
+                        "process.stdout.write(JSON.stringify({predecessor,current}));"
+                    )
+                    probe = subprocess.run(
+                        ["node", "--input-type=module", "-e", command],
+                        cwd=repo, capture_output=True, text=True, timeout=45,
+                    )
+                    if probe.returncode != 0:
+                        issues.append("EDU_SOURCE_EPOCH_CHECK_UNEXECUTABLE")
+                    else:
+                        try:
+                            evidence = json.loads(probe.stdout)
+                            predecessor = evidence["predecessor"]
+                            current_edu = evidence["current"]
+                        except (ValueError, KeyError, TypeError):
+                            issues.append("EDU_SOURCE_EPOCH_READBACK_INVALID")
+                        else:
+                            if (predecessor.get("ok") is not True
+                                    or predecessor.get("status") !=
+                                    "PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED"
+                                    or predecessor.get("source_main") !=
+                                    "e270c6e2cc772f960126eecea9f50501339e3656"
+                                    or predecessor.get("review") != "NOT_ATTESTED"
+                                    or predecessor.get("provider") != "NOT_ATTESTED"
+                                    or predecessor.get("authority") != 0
+                                    or predecessor.get("product_go") is not False):
+                                issues.append("PR251_HISTORIC_SOURCE_UNQUALIFIED:" +
+                                              str(predecessor.get("edge", "UNKNOWN"))[:100])
+                            if (current_edu.get("ok") is not True
+                                    or current_edu.get("status") !=
+                                    "EDU_ONEZIP_SOURCE_ONLY_REVIEW_REQUIRED"
+                                    or current_edu.get("source_main") !=
+                                    "888a5878a30864e6db7813b3d8b236cde46cce40"
+                                    or current_edu.get("review") != "NOT_ATTESTED"
+                                    or current_edu.get("provider") != "NOT_ATTESTED"
+                                    or current_edu.get("authority") != 0
+                                    or current_edu.get("product_go") is not False):
+                                issues.append("EDU_CURRENT_SOURCE_UNQUALIFIED:" +
+                                              str(current_edu.get("edge", "UNKNOWN"))[:100])
+                            elif (predecessor.get("ok") is True):
+                                qualified_epoch = "EDU_ONEZIP_SOURCE_ONLY_REVIEW_REQUIRED"
             else:
-                qualification = json.loads(probe.stdout)
-                review = qualification.get("review" if pr251 else "owner_review")
-                if (qualification.get("ok") is not True
-                        or qualification.get("status") != expected
-                        or qualification.get("authority") != 0
-                        or qualification.get("product_go") is not False
-                        or review != "NOT_ATTESTED"
-                        or (pr251 and qualification.get("source_main") !=
-                            "e270c6e2cc772f960126eecea9f50501339e3656")):
-                    issues.append("SOURCE_SUCCESSOR_NOT_QUALIFIED:" +
-                                  str(qualification.get("edge", "UNKNOWN"))[:100])
+                fn = "qualifyPr251SourceEpoch" if pr251 else "qualifyPr249SourceEpoch"
+                expected = ("PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED" if pr251 else
+                            "PR249_CHECKOUT_REPAIR_SOURCE_ONLY_REVIEW_REQUIRED")
+                probe = subprocess.run([
+                    "node", "--input-type=module", "-e",
+                    f"import {{{fn}}} from './scripts/v5b-repository-governance-audit.mjs';"
+                    f"process.stdout.write(JSON.stringify({fn}()));"
+                ], cwd=repo, capture_output=True, text=True, timeout=45)
+                if probe.returncode != 0:
+                    issues.append("SOURCE_SUCCESSOR_CHECK_UNEXECUTABLE")
+                else:
+                    try:
+                        qualification = json.loads(probe.stdout)
+                    except ValueError:
+                        issues.append("SOURCE_SUCCESSOR_INVALID_READBACK")
+                    else:
+                        review = qualification.get("review" if pr251 else "owner_review")
+                        if (qualification.get("ok") is not True
+                                or qualification.get("status") != expected
+                                or qualification.get("authority") != 0
+                                or qualification.get("product_go") is not False
+                                or review != "NOT_ATTESTED"
+                                or (pr251 and qualification.get("source_main") !=
+                                    "e270c6e2cc772f960126eecea9f50501339e3656")):
+                            issues.append("SOURCE_SUCCESSOR_NOT_QUALIFIED:" +
+                                          str(qualification.get("edge", "UNKNOWN"))[:100])
+                        else:
+                            qualified_epoch = expected
         current = listing(repo, FOUNDING)
         roots = sorted({p.split("/", 1)[0] for p in observed if "/" in p})
         root_files = sorted(p for p in observed if "/" not in p)
@@ -169,7 +230,8 @@ def assess(repo, fixture=False):
                 "head_tree":observed_tree,"v13_source":V13, "source_files":len(source),
                 "observed_files":len(observed), "new_additions":len(extras),"roots":roots,
                 "root_files":root_files,"issues":issues[:90],"issue_count":len(issues),
-                "scope":"SOURCE_ONLY_NOT_OWNER_OR_RUNTIME_EVIDENCE", "global_dod":"HOLD", "product_go":False}
+                "scope":"SOURCE_ONLY_NOT_OWNER_OR_RUNTIME_EVIDENCE", "qualified_epoch":qualified_epoch if not issues else None,
+                "global_dod":"HOLD", "product_go":False}
     except Exception as exc:
         return {"schema":"r7-pr249-physical-gate/v1", "status":"BLOCKED", "issues":[str(exc)],
                 "issue_count":1, "global_dod":"HOLD", "product_go":False}

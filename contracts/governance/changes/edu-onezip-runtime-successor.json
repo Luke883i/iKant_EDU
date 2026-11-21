@@ -153,6 +153,12 @@
       "mode": "100644"
     },
     {
+      "path": "scripts/r7-pr249-physical-gate.py",
+      "before": "4c5407665a7ebfa18a1e38320e1cc8b1986b29e5",
+      "after": "e0aa33f21d0834e0f215ce618e73d3bb46208d8e",
+      "mode": "100644"
+    },
+    {
       "path": "scripts/v5b-repository-governance-audit.mjs",
       "before": "01e0277cd9cac22f4a16e8851fdef14dce1a3b4a",
       "after": "36a256fb0842c3df131da4d7a61ac8628f739712",
@@ -288,6 +294,12 @@
       "path": "tests/project-pe-single-path-audit.test.mjs",
       "before": "58f20f01811b929c0083e48ed04ba39260afec67",
       "after": "833ea6c8edfdd3289ceae4ac4a59ef798fd3bb65",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/r7-pr249-physical-gate.test.mjs",
+      "before": "22b3c626b808685199b7543900e5fddd1471d93e",
+      "after": "ac63bb5818edcde9be7069ecac1228942e6c72bb",
       "mode": "100644"
     },
     {

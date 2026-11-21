@@ -82,8 +82,27 @@ jobs:
           python scripts/project-edu-onezip-ingress.py --archive "$EDU_TMP/source.zip" --head "$EDU_HEAD" --tree "$EDU_TREE" --private-root "$PRIVATE" --helper-pins \
             "$(git rev-parse "$EDU_HEAD:scripts/project-edu-zip-tree.py")" \
             "$(git rev-parse "$EDU_HEAD:scripts/project-manual-source.py")" \
-            "$(git rev-parse "$EDU_HEAD:scripts/project-repo-loader.mjs")"
-          EDU_TEST_SOURCE_ROOT="$PRIVATE/source" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" node --test tests/project-edu-onezip-session-local.test.mjs
+            "$(git rev-parse "$EDU_HEAD:scripts/project-repo-loader.mjs")" 2>&1 | tee "$RUNNER_TEMP/edu-onezip-step.log"
+          EDU_TEST_SOURCE_ROOT="$PRIVATE/source" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" node --test tests/project-edu-onezip-session-local.test.mjs 2>&1 | tee -a "$RUNNER_TEMP/edu-onezip-step.log"
+      - name: Capture exact local OneZIP failure (diagnostic only)
+        if: ${{ failure() }}
+        id: local_failure
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'edu-onezip-step.log'
+          rows=p.read_text(errors='replace').splitlines() if p.exists() else []
+          candidates=[line.strip() for line in rows if re.search(r'not ok|error:|EDU_|ERR_|FAIL|AssertionError',line,re.I)]
+          line=(candidates[-1] if candidates else 'ONEZIP_STEP_FAILURE_NO_LOG')[:110]
+          line=re.sub(r'[^A-Za-z0-9_.: -]','_',line)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as output:
+            output.write('detail='+line+'\n')
+          PY
+      - name: "Local OneZIP first failure [${{ steps.local_failure.outputs.detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; original test exit status retained"
       - name: Seeded defensive model and conservative retirement census
         run: |
           node scripts/project-edu-onezip-falsify-10m.mjs > "$RUNNER_TEMP/edu-onezip-model.json"

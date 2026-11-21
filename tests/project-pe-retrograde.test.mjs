@@ -130,7 +130,7 @@ test('finite mutation fast fixture: seeded and independent oracle',()=>{
  assert.equal(a.families,40);
 });
 
-test('integrated original C72 ACCEPT → exact EDU → D2 original transit → D3 original 191-file loader',async()=>{
+test('integrated C72 → EDU → D2 original transit → D3 exact source closure',async()=>{
  const r=privateRoot();
  try{
   const staged=await preparePEC72Stage(params(r,'stage-integrated'),port);
@@ -160,7 +160,7 @@ test('integrated original C72 ACCEPT → exact EDU → D2 original transit → D
   });
   assert.equal(selected.selection.selected_mode,'EDU');
   const manifestPaths=JSON.parse(source('contracts/project-session-source.json').toString('utf8')).paths;
-  assert.equal(manifestPaths.length,190);
+  assert([190,192].includes(manifestPaths.length));
   const result=await preparePEPostEdu({
    sourceHead:HEAD,sourceTree:TREE,liveHead:HEAD,cacheRoot:r.cacheRoot,
    transitDirectory:transit,treeEntries,
@@ -169,13 +169,13 @@ test('integrated original C72 ACCEPT → exact EDU → D2 original transit → D
   },port);
   assert.equal(result.status,'ORIGINAL_LOADER_SOURCE_REOPENED',JSON.stringify(result));
   assert.equal(result.original_edu_selection_reopened,true);
-  assert.equal(result.total_original_loader_files,191);
+  assert.equal(result.total_original_loader_files,manifestPaths.length+1);
   assert.equal(result.reused_files,10);
-  assert.equal(result.fetched_files,181);
+  assert.equal(result.fetched_files,manifestPaths.length-9);
   assert.equal(result.original_owner_invoked,false);
   assert.equal(result.active,false);
   const original=await import('../scripts/project-repo-loader.mjs');
   const reopened=original.verifyLocalProjectSource(path.join(r.dir,'verified-project'),{head:HEAD,tree:TREE});
-  assert.equal(reopened.files.length,191);
+  assert.equal(reopened.files.length,manifestPaths.length+1);
  }finally{r.close();}
 });

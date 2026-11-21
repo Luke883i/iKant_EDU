@@ -72,8 +72,8 @@ test('tool-assisted local input is unsafe on relative path, public file, symlink
 });
 test('portable project prompt routes callable Host tool to physical relay before STOP',()=>{
  const p=fs.readFileSync(new URL('../project/session-chat/PROMPT.txt',import.meta.url),'utf8');
- for(const s of ['GitHub connector→argomento tool→file privato/Node','DNS Node fallito≠relay fallito',
-  'C72_SOURCE_BRIDGE_UNBOUND','readback 10/10 e 9/9',
+ for(const s of ['HOST_TOOL_ARG_RELAY','DNS Node fallito≠relay fallito',
+  'C72_SOURCE_BRIDGE_UNBOUND','project-edu-onezip-ingress.py',
   'GitHub tool disponibile','Tool non vincolato⇒STOP_UNBOUND',
   'MACHINE_CAPS={GITHUB_SOURCE,NODE_EXEC,HOST_TOOL_ARGUMENT_COURIER}',
   'JSON≠binding','C72 originale UNA volta'])

@@ -87,9 +87,12 @@ test('10,000 independently evaluated mutated mapping cases are rejected and trac
 });
 
 
-test('E16 Project host prompt distinguishes eight-source packet from ninth transit carrier',()=>{
+test('Project EDU prompt selects one verified ZIP without silently replacing C72 transit',()=>{
  const prompt=read(matrix.source_prompt);
- assert(prompt.includes('sourcePacket (8 blob), transitSourcePacket (carrier)'));
+ assert(prompt.includes('project-edu-onezip-ingress.py'));
+ assert(prompt.includes('archive/<HEAD>.zip'));
+ assert(prompt.includes('C72 originale UNA volta'));
+ assert(!prompt.includes('sourcePacket (8 blob), transitSourcePacket (carrier)'), 'legacy copy is not canonical');
  const pin=boot.postaccept_original_c72_transit_pin;
  assert.equal(pin?.path,'host/project-c72-receipt-transit.mjs');
  assert.match(pin?.blob_sha1||'',/^[0-9a-f]{40}$/u);

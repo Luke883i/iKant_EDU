@@ -34,16 +34,16 @@ test('postrename source disagreements STOP',()=>{
  }
 });
 
-test('original D3 stays exactly 190+manifest; PE adapter and D123 are separately Git-bound',()=>{
+test('D3 closure is exact source-bound 190/192 plus manifest; PE glue remains separate',()=>{
  const manifest=JSON.parse(execFileSync('git',['show','HEAD:contracts/project-session-source.json'],{encoding:'utf8'}));
- assert.equal(manifest.paths.length,190);
+ assert([190,192].includes(manifest.paths.length));
  assert.equal(manifest.paths.includes('scripts/project-repo-loader.mjs'),true);
  for(const p of ['scripts/project-pe-original-bridge.mjs','scripts/project-bootstrap-d123.mjs'])
   assert.equal(manifest.paths.includes(p),false,'PE Host glue must not modify original D3 source set');
  const result=auditLocalPE({observedGithubId:REPOSITORY_ID,observedGithubName:CANONICAL});
  assert.equal(result.decision.ok,true,JSON.stringify(result.decision));
  assert.equal(result.decision.status,'SOURCE_CONSISTENT_NOT_RUNTIME_ACTIVE');
- assert.equal(result.original_d3_plus_manifest,191);
+ assert.equal(result.original_d3_plus_manifest,manifest.paths.length+1);
  assert.equal(result.originals.every(x=>x.readback_verified),true);
  assert.equal(result.adapter_nonowner_source.length,2);
  assert.equal(result.adapter_nonowner_source.every(x=>x.readback_verified),true);

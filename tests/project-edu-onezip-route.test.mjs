@@ -68,6 +68,8 @@ test('every source path gets a conservative EDU/MCP/legacy status; legacy is not
  const cases=[
   ['host/c135-edu-v2-owner.mjs','EDU_NAMED_EXECUTION_CLOSURE'],
   ['project/plugins/ikant-le-session-chat/server/server.mjs','MCP_DIRECT_KEEP'],
+  ['project/edu-oneshell/PROMPT_INNESCO.txt','EDU_DISTRIBUTION_DERIVED_KEEP'],
+  ['scripts/c131-build-project-bundle.py','EDU_DISTRIBUTION_DERIVED_KEEP'],
   ['tests/mcp-session.test.mjs','MCP_ASSURANCE_KEEP'],
   ['tests/project-edu-onezip-route.test.mjs','EDU_ASSURANCE_KEEP'],
   ['project/docs/C78_PROJECT_HOST_ADAPTER.txt','CANDIDATO_AL_RITIRO_DOCUMENTALE_REVIEW_REQUIRED'],

@@ -14,6 +14,9 @@ const treeRows=ref=>git('ls-tree','-r','-z',ref).split('\0').filter(Boolean).map
 });
 export function classifyEduMcpFile(p,manifest,candidates){
  if(manifest.has(p))return 'EDU_NAMED_EXECUTION_CLOSURE';
+ if(['project/edu-oneshell/PROMPT_INNESCO.txt',
+     'scripts/c131-build-project-bundle.py','scripts/project-edu-entrypoint.mjs'].includes(p))
+   return 'EDU_DISTRIBUTION_DERIVED_KEEP';
  if(p.startsWith('project/plugins/ikant-le-session-chat/')||
     p==='project/release/render.mcp-standalone.candidate.yaml')return 'MCP_DIRECT_KEEP';
  if(candidates.has(p))return 'CANDIDATO_AL_RITIRO_DOCUMENTALE_REVIEW_REQUIRED';

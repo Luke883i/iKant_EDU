@@ -9,7 +9,7 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {HISTORIC,mapR7SourcePath} from './r7-v13-epoch-bridge.mjs';
 import {observeReticularCensusWithAudit} from './cora-minimal-absorption.mjs';
-import {qualifyPr251SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {qualifyPr251SourceEpoch,qualifyEduOneZipSourceEpoch} from './v5b-repository-governance-audit.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const DOD='contracts/pr251-forensic-hypergraph-dod.json';
 export function validateDod(c){
@@ -292,9 +292,34 @@ export function buildTotalSupergraph(audit,{root=ROOT,treeText=null,read=null}={
   product_go:false};
 }
 
+/** Forensic provenance: a later EDU tree must qualify on its *own* SHA,
+ * never inherit PR251's source certificate by mere ancestry. Retains old
+ * exact-HEAD fixtures for PR251, while admitting only the V5B-verified EDU
+ * successor with its own per-blob register. Negative mutation unit-tested.
+ */
+export function qualifyGraphSourceEpoch(audit,historic,successor){
+ const verified=audit?.status==='SOURCE_INDEXED_NOT_HUMAN_REVIEWED'&&
+  audit?.source_epoch_projection?.ok===true&&
+  audit?.source_epoch_projection?.product_go===false;
+ if(!verified)return {ok:false,kind:'UNQUALIFIED_SOURCE_AUDIT'};
+ if(historic?.ok===true&&historic?.product_go===false&&
+    audit.source_epoch_projection.status==='PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED')
+  return {ok:true,kind:'PR251_EXACT_SOURCE_HEAD'};
+ if(successor?.ok===true&&successor?.product_go===false&&
+    successor?.source_main==='888a5878a30864e6db7813b3d8b236cde46cce40'&&
+    audit.source_epoch_projection.status==='EDU_ONEZIP_SOURCE_ONLY_REVIEW_REQUIRED')
+  return {ok:true,kind:'EDU_EXACT_SUCCESSOR_HEAD_NOT_PR251_EQUIVALENCE'};
+ return {ok:false,kind:'UNQUALIFIED_SOURCE_EPOCH'};
+}
+
 export function observe({deep=false}={}){
  const c=JSON.parse(fs.readFileSync(path.join(ROOT,DOD),'utf8'));
- const {audit,census}=observeReticularCensusWithAudit(),epoch=qualifyPr251SourceEpoch();
+ const {audit,census}=observeReticularCensusWithAudit();
+ // A PR251 witness on a later source tree is valid only when the *current* HEAD
+ // has its own exact reviewed source successor and the PR251 baseline is retained.
+ // It is not a PR251 cut acceptance or proof of external consumer equivalence.
+ const historic=qualifyPr251SourceEpoch(),successor=qualifyEduOneZipSourceEpoch();
+ const qualified=qualifyGraphSourceEpoch(audit,historic,successor);
  const graph=deriveHypergraph(c,audit),registry=JSON.parse(fs.readFileSync(path.join(ROOT,c.source_delta),'utf8'));
  const retention=assessHistoricalRetirements(c,audit,historicalGitPaths());
  const imported=new Set(graph.edges.map(x=>x.to));
@@ -309,7 +334,9 @@ export function observe({deep=false}={}){
  const exactHead=execFileSync('git',['rev-parse','HEAD'],{cwd:ROOT,encoding:'utf8'}).trim();
  const exactTree=execFileSync('git',['rev-parse','HEAD^{tree}'],{cwd:ROOT,encoding:'utf8'}).trim();
  const result={schema:'ikant-pr251-typed-census/v2',head:exactHead,tree:exactTree,source_status:audit.status,
-  census_observed:census.ok===true,exact_source_epoch:epoch.ok===true,
+  census_observed:census.ok===true,exact_source_epoch:qualified.ok,
+  source_epoch_kind:qualified.kind,legacy_pr251_current_head:historic.ok===true,
+  edu_successor_current_head:successor.ok===true,
   source_files:audit.checked_files,obligations:graph.nodes.length,
   hyperedges:graph.hyperedges.length,static_edges:graph.edges.length,
   dynamic_sites:graph.dynamic_sites,retired_paths:registry.paths.filter(x=>x.operation==='REMOVE').length,

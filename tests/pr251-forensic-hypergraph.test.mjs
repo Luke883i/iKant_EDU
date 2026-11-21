@@ -5,7 +5,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import crypto from 'node:crypto';
-import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,buildTotalSupergraph,deriveProductSolution,observe,scoreMultiLevelContraction} from '../scripts/pr251-forensic-hypergraph.mjs';
+import {validateDod,deriveHypergraph,exactBoundedCut,assessHistoricalRetirements,buildTotalSupergraph,deriveProductSolution,observe,scoreMultiLevelContraction,qualifyGraphSourceEpoch} from '../scripts/pr251-forensic-hypergraph.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const c=JSON.parse(fs.readFileSync(path.join(root,'contracts/pr251-forensic-hypergraph-dod.json')));
 test('PR251 retrograde 35 DoD nodes, 10 typed AND gates, no authority',()=>{
@@ -15,6 +15,26 @@ test('PR251 retrograde 35 DoD nodes, 10 typed AND gates, no authority',()=>{
  assert.equal(graph.nodes.length,35);assert.equal(graph.hyperedges.length,10);
  assert.equal(graph.edges.length,1);assert.equal(graph.product_go,false);
 });
+test('PR253 successor needs its own verified register, not PR251 historical ancestry',()=>{
+ const projection={ok:true,product_go:false,status:'EDU_ONEZIP_SOURCE_ONLY_REVIEW_REQUIRED'};
+ const audit={status:'SOURCE_INDEXED_NOT_HUMAN_REVIEWED',source_epoch_projection:projection};
+ const successor={ok:true,product_go:false,
+   source_main:'888a5878a30864e6db7813b3d8b236cde46cce40'};
+ assert.equal(qualifyGraphSourceEpoch(audit,{ok:false},successor).ok,true);
+ assert.equal(qualifyGraphSourceEpoch(audit,{ok:false},successor).kind,
+  'EDU_EXACT_SUCCESSOR_HEAD_NOT_PR251_EQUIVALENCE');
+ for(const [a,h,s] of [
+  [{...audit,status:'FAIL'},{ok:false},successor],
+  [{...audit,source_epoch_projection:{...projection,ok:false}},{ok:false},successor],
+  [{...audit,source_epoch_projection:{...projection,product_go:true}},{ok:false},successor],
+  [audit,{ok:false},{...successor,ok:false}],
+  [audit,{ok:false},{...successor,product_go:true}],
+  [audit,{ok:false},{...successor,source_main:'f'.repeat(40)}],
+  [{...audit,source_epoch_projection:{...projection,status:'PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED'}},
+   {ok:false},successor],
+ ])assert.equal(qualifyGraphSourceEpoch(a,h,s).ok,false);
+});
+
 test('2048 deterministic negative mutations reject DoD omission and forged authority',()=>{
  let seed=251;const rng=()=>((seed=(Math.imul(seed,1664525)+1013904223)>>>0)%4);
  for(let i=0;i<2048;i++){
@@ -38,7 +58,7 @@ test('bounded mincut enumerates all 8 subsets, blocks live consumer and keeps a 
  assert.deepEqual(locked.selected,[]);assert.equal(locked.bounded_static_bytes,0);
  assert.throws(()=>exactBoundedCut(graph,Array.from({length:17},(_,i)=>'n'+i)),/BOUND_16/);
 });
-test('original V5-B/CORA source witness remains source-only; PR251 exact epoch is required',()=>{
+test('source witness requires exact PR251 epoch or separately pinned EDU successor',()=>{
  const r=observe();
  assert.equal(r.exact_source_epoch,true,JSON.stringify(r));
  assert.equal(r.retired_paths,25);assert.equal(r.obligations,35);

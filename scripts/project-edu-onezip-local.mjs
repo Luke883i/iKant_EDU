@@ -23,6 +23,20 @@ export function openLocalOneZip(root,{head,tree,readLedger}) {
   const attempts=members.filter(n=>n.startsWith('edu-turn-attempt-'));
   const receipts=members.filter(n=>n.startsWith('edu-turn-receipt-'));
   enforce(attempts.length===receipts.length&&receipts.length<1000,'EDU_LOCAL_ATTEMPT_RECONCILE');
+  // An attempt is a one-way forensic marker; do not accept a repaired receipt
+  // paired with a rewritten, symlinked or non-canonical attempt record.
+  for(const name of attempts){
+   const nonce=name.slice('edu-turn-attempt-'.length,-'.json'.length);
+   const f=path.join(root,name), st=fs.lstatSync(f);
+   enforce(name.endsWith('.json')&&NONCE.test(nonce)&&
+    receipts.includes('edu-turn-receipt-'+nonce+'.json')&&
+    st.isFile()&&!st.isSymbolicLink()&&st.nlink===1&&
+    (st.mode&0o077)===0&&st.size>0&&st.size<=400,
+    'EDU_LOCAL_ATTEMPT_UNSAFE');
+   const record=fs.readFileSync(f,'utf8');
+   enforce(record===JSON.stringify({nonce,head,state:'ATTEMPTED'})+'\n',
+    'EDU_LOCAL_ATTEMPT_TAMPERED');
+  }
   const prior=receipts.map(n=>{
    const nonce=n.slice('edu-turn-receipt-'.length,-'.json'.length), f=path.join(root,n);
    const st=fs.lstatSync(f);

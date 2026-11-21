@@ -6,6 +6,7 @@ import path from 'node:path';
 import {spawn} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {runOneZipOriginalTurn} from '../scripts/project-edu-onezip-session.mjs';
+import {openLocalOneZip} from '../scripts/project-edu-onezip-local.mjs';
 import {createHash} from 'node:crypto';
 import {runOneZipOriginalAdmission} from '../scripts/project-edu-onezip-admission.mjs';
 
@@ -15,6 +16,30 @@ const humanText='Valuta una fonte e rendi espliciti i limiti.';
 const secondText='Prosegui sullo stesso contesto con una verifica.';
 const answerText='Risposta originale EDU verificabile.';
 const script=fileURLToPath(new URL('../scripts/project-edu-onezip-session.mjs',import.meta.url));
+
+test('SESSION_LOCAL attempt custody rejects rewritten and unsafe attempt markers before ledger reopen',()=>{
+ const root=fs.mkdtempSync(path.join(os.tmpdir(),'edu-onezip-attempt-check-'));
+ fs.chmodSync(root,0o700);
+ const head='a'.repeat(40),tree='b'.repeat(40),nonce='local-test-nonce-001';
+ const attempt=path.join(root,'edu-turn-attempt-'+nonce+'.json');
+ const receipt=path.join(root,'edu-turn-receipt-'+nonce+'.json');
+ try{
+  const virgin=openLocalOneZip(root,{head,tree,readLedger:()=>{throw Error('NOT_EXPECTED')}});
+  assert.equal(virgin.turnIndex,1);virgin.close();
+  fs.writeFileSync(attempt,JSON.stringify({nonce,head,state:'ATTEMPTED'})+'\n',{mode:0o600});
+  fs.writeFileSync(receipt,'{}\\n',{mode:0o600});
+  assert.throws(()=>openLocalOneZip(root,{head,tree,readLedger:()=>{throw Error('NOT_EXPECTED')}}),
+   /EDU_LOCAL_RECEIPT_INVALID/);
+  fs.writeFileSync(attempt,JSON.stringify({nonce,head:'f'.repeat(40),state:'ATTEMPTED'})+'\n');
+  assert.throws(()=>openLocalOneZip(root,{head,tree,readLedger:()=>{throw Error('NOT_EXPECTED')}}),
+   /EDU_LOCAL_ATTEMPT_TAMPERED/);
+  fs.unlinkSync(attempt);
+  fs.symlinkSync(receipt,attempt);
+  assert.throws(()=>openLocalOneZip(root,{head,tree,readLedger:()=>{throw Error('NOT_EXPECTED')}}),
+   /EDU_LOCAL_ATTEMPT_UNSAFE/);
+ }finally{fs.rmSync(root,{recursive:true,force:true});}
+});
+
 
 async function physicalTurn(request,requestPath){
  fs.writeFileSync(requestPath,JSON.stringify(request)+'\n',{flag:'wx',mode:0o600});

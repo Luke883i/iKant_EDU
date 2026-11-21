@@ -8,6 +8,7 @@ import {parseGitObjects,qualifyM1Snapshot,evaluateM1Reticulum,observeM1Source}
  from '../scripts/cora-m1-shared-evidence.mjs';
 import {validateFContract,observePrFSource} from '../scripts/cora-pr-f-qualification.mjs';
 import {observePrGEvidence} from '../scripts/cora-pr-g-evidence-readback.mjs';
+import {qualifyEduOneZipSourceEpoch,qualifyPr251SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const CONTRACT=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/cora-pr-f-integrated-qualification-v1.json'),'utf8'));
 const SHA=x=>x.repeat(40);
@@ -172,6 +173,18 @@ const liveG=observePrGEvidence();
 const liveF=observePrFSource();
 test('M1_'+liveM1.first_edge+'_G_'+liveG.first_edge+'_F_'+liveF.first_edge,()=>{
  const r=liveM1;
+ // PR253 is a separately registered source epoch. Its current-source result
+ // must not masquerade as the immutable historical PR-F/G live receipt.
+ if(qualifyEduOneZipSourceEpoch().ok){
+  assert.equal(qualifyPr251SourceEpoch('888a5878a30864e6db7813b3d8b236cde46cce40').ok,true);
+  assert.equal(r.ok,false);
+  assert.equal(r.first_edge,'M1_ORIGINAL_PR_G_PACKET_OR_EXTERNAL_EDGE_INVALID');
+  assert.equal(liveG.ok,false);
+  assert.equal(liveF.ok,false);
+  assert.equal(r.product_go,false);
+  assert.equal(r.archive_allowed,false);
+  return;
+ }
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.status,'M1_SHARED_SOURCE_EVIDENCE_CUT_ONLY');
  assert.equal(r.workflows,116);

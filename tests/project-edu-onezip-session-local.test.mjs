@@ -27,7 +27,7 @@ test('SESSION_LOCAL attempt custody rejects rewritten and unsafe attempt markers
   const virgin=openLocalOneZip(root,{head,tree,readLedger:()=>{throw Error('NOT_EXPECTED')}});
   assert.equal(virgin.turnIndex,1);virgin.close();
   fs.writeFileSync(attempt,JSON.stringify({nonce,head,state:'ATTEMPTED'})+'\n',{mode:0o600});
-  fs.writeFileSync(receipt,'{}\\n',{mode:0o600});
+  fs.writeFileSync(receipt,'{}\n',{mode:0o600});
   assert.throws(()=>openLocalOneZip(root,{head,tree,readLedger:()=>{throw Error('NOT_EXPECTED')}}),
    /EDU_LOCAL_RECEIPT_INVALID/);
   fs.writeFileSync(attempt,JSON.stringify({nonce,head:'f'.repeat(40),state:'ATTEMPTED'})+'\n');

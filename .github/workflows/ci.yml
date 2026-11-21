@@ -28,6 +28,9 @@ jobs:
           test "$(git -C "$RUNNER_TEMP/pr251-epoch" rev-parse HEAD)" = "888a5878a30864e6db7813b3d8b236cde46cce40"
           test "$(git -C "$RUNNER_TEMP/pr251-epoch" rev-parse HEAD^{tree})" = "6dab517b2ef0462b9c1222dc9ec2a8c164344977"
           echo 'Current exact-source HEAD gate passed; historical PR251 checks are isolated, not current EDU qualification.' >> "$GITHUB_STEP_SUMMARY"
+          # Independent historical M1 oracle: run on the original immutable epoch,
+          # not on the successor PR253 checkout.
+          (cd "$RUNNER_TEMP/pr251-epoch" && node --test tests/cora-m1-shared-evidence.test.mjs)
       - name: PR252 multi-level Git physical plus executable-code source witness (no release)
         if: ${{ github.event_name == 'pull_request' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         shell: bash

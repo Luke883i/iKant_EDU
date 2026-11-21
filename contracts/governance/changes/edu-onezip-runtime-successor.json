@@ -11,7 +11,7 @@
     {
       "path": ".github/workflows/ci.yml",
       "before": "eb905c345a02b548111469bf14cda663519e9bfd",
-      "after": "adb694396170825f9de31349e4ff77c8bddf2194",
+      "after": "929f3b1dc75d1d80da1b0f12402ad9403fbd3dac",
       "mode": "100644"
     },
     {
@@ -159,6 +159,12 @@
       "mode": "100644"
     },
     {
+      "path": "tests/cora-m1-shared-evidence.test.mjs",
+      "before": "7ce24e598de1fb7120df044aedef09b760e1ae6e",
+      "after": "af53086c77a3823cc4da0c9167a744153d77f3c3",
+      "mode": "100644"
+    },
+    {
       "path": "tests/pr251-forensic-hypergraph.test.mjs",
       "before": "82becbdec386f8b346fb78bc4c094d98fe36b74a",
       "after": "11a821a9c02290e4a09f6f5726211f1471842990",
@@ -203,7 +209,7 @@
     {
       "path": "tests/project-edu-onezip-session-local.test.mjs",
       "before": null,
-      "after": "d655bc4239c9013af7c9aa07d2940f21e084173b",
+      "after": "a483b8703a38aea5d6038633e2f618582b9c4147",
       "mode": "100644"
     },
     {

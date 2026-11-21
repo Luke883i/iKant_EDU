@@ -11,7 +11,7 @@
     {
       "path": ".github/workflows/ci.yml",
       "before": "eb905c345a02b548111469bf14cda663519e9bfd",
-      "after": "29c0bb09268fbfdcee67fa95379d4b39649c3508",
+      "after": "94814c6c3ecaa90e547888f3881578d4be9bc2ad",
       "mode": "100644"
     },
     {
@@ -192,6 +192,12 @@
       "path": "tests/cora-pr-c-ci.test.mjs",
       "before": "4bffc44d3fe97f81e88fd0ef7fcf88cbe11c2f37",
       "after": "d5788157ea64913e266e039d7aeea9be49f887ab",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/cora-pr-d1-blob-dedup.test.mjs",
+      "before": "e04120431e6c078439b0311dcbf0c9132aeb4810",
+      "after": "4a97abe6f8f64ae47c15cd3b57021a8fab665f99",
       "mode": "100644"
     },
     {

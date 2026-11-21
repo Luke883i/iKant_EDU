@@ -1,3 +1,4 @@
+import {qualifyEduOneZipSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -128,6 +129,11 @@ test('D2 PR-A source imports one CORA-owned audit snapshot without secondary V5-
 
 test('actual checkout: original V5-B and CORA full readback generates finite backlog',()=>{
  const r=observePrABacklog();
+ if(qualifyEduOneZipSourceEpoch().ok){
+  assert.equal(r.ok,false,'Current successor cannot inherit historical source proof');
+  assert.equal(r.product_go,false);
+  return;
+ }
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.rows.length,r.counted_files);
  assert(r.counted_files>=1500);

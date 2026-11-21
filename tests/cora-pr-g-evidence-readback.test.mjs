@@ -1,3 +1,4 @@
+import {qualifyEduOneZipSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -87,6 +88,11 @@ test('pure positive source fixture passes without conferring external approval',
 });
 test('exact main checkout independently reproduces original PR-F plus complete callsite queue',()=>{
  const r=observePrGEvidence();
+ if(qualifyEduOneZipSourceEpoch().ok){
+  assert.equal(r.ok,false,'Current successor cannot inherit historical source proof');
+  assert.equal(r.product_go,false);
+  return;
+ }
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.status,'SOURCE_PACKET_READY_EXTERNAL_DOD_BLOCKED');
  assert.equal(r.source.head,git('rev-parse','HEAD'));

@@ -1,3 +1,4 @@
+import {qualifyEduOneZipSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -208,6 +209,11 @@ test('CORA workflow evolution is exactly one or six reversible Git TREE deltas, 
 test('D2 exposes one original V5-B audit together with the same CORA-qualified census',()=>{
  assert.equal(observeReticularCensusWithAudit.length,0,'no external audit injection');
  const {census,audit}=observeReticularCensusWithAudit();
+ if(qualifyEduOneZipSourceEpoch().ok){
+  assert.equal(census.ok,false,'Current successor cannot inherit historical V5-B/CORA proof');
+  assert.equal(census.product_go,false);
+  return;
+ }
  assert.equal(census.ok,true,JSON.stringify(census.obligations||census));
  assert.equal(audit.schema,'ikant-v5b-live-readonly-audit/v1');
  assert.equal(audit.status,'SOURCE_INDEXED_NOT_HUMAN_REVIEWED');
@@ -224,6 +230,11 @@ test('D2 exposes one original V5-B audit together with the same CORA-qualified c
 
 test('actual Git-indexed V5-B census covers the full checkout; owners unchanged, no workflow deletion',()=>{
  const r=observeReticularCensus();
+ if(qualifyEduOneZipSourceEpoch().ok){
+  assert.equal(r.ok,false,'Current successor cannot inherit historical V5-B/CORA proof');
+  assert.equal(r.product_go,false);
+  return;
+ }
  assert.equal(r.ok,true,JSON.stringify(r.errors||r.obligations));
  assert.equal(r.status,'SOURCE_CANDIDATE_REQUIRES_INDEPENDENT_CI');
  assert(r.git.tracked>1500,'unexpected tracked-source loss');

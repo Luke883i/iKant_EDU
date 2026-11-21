@@ -32,6 +32,9 @@ jobs:
           # not on the successor PR253 checkout.
           (cd "$RUNNER_TEMP/pr251-epoch" && node --test tests/cora-m1-shared-evidence.test.mjs)
           (cd "$RUNNER_TEMP/pr251-epoch" && node --test tests/cora-m2-owner-provider-metrics.test.mjs)
+          # Historical source observers are tested on their immutable Git epoch,
+          # while current PR253 tests assert that they cannot inherit that proof.
+          (cd "$RUNNER_TEMP/pr251-epoch" && node --test --test-name-pattern='actual checkout|real Git-indexed V5-B/CORA|actual HEAD Git|single original audit readback|D2 exposes one original V5-B audit|actual Git-indexed V5-B census|real original source observer|exact main checkout' tests/cora-pr-a-backlog.test.mjs tests/cora-pr-b-docs.test.mjs tests/cora-pr-c-ci.test.mjs tests/cora-pr-d2-single-audit.test.mjs tests/cora-pr-f-qualification.test.mjs tests/cora-pr-g-evidence-readback.test.mjs tests/cora-reticular-hygiene.test.mjs)
       - name: PR252 multi-level Git physical plus executable-code source witness (no release)
         if: ${{ github.event_name == 'pull_request' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         shell: bash

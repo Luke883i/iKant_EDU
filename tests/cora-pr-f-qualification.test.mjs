@@ -1,3 +1,4 @@
+import {qualifyEduOneZipSourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -65,6 +66,11 @@ test('real Git tree contains the eleven original historical blobs, without trans
 });
 test('real original source observer reconciles all five slices and refuses external promotion',()=>{
  const r=observePrFSource();
+ if(qualifyEduOneZipSourceEpoch().ok){
+  assert.equal(r.ok,false,'Current successor cannot inherit historical source proof');
+  assert.equal(r.product_go,false);
+  return;
+ }
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.status,'PR_F_SOURCE_CANDIDATE_EXTERNAL_GATES_OPEN');
  assert.match(r.source.head,/^[a-f0-9]{40}$/);

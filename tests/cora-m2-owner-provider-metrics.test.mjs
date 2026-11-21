@@ -5,6 +5,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {validateM2Profile,modelM2Cut,observeM2Source} from '../scripts/cora-m2-owner-provider-metrics.mjs';
+import {qualifyEduOneZipSourceEpoch,qualifyPr251SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const PROFILE=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/cora-m2-owner-provider-metrics-v1.json'),'utf8'));
 const copy=x=>JSON.parse(JSON.stringify(x));
@@ -131,8 +132,20 @@ test('100000 deterministic model vectors cannot turn hypothetical receipts into 
  assert.equal(a.logicalFull,0);
  assert.equal(a.unsafe,0);
 });
-test('actual HEAD source readback: seven source metrics, seven external metrics remain NOT_ATTESTED',()=>{
+test('original M2 source readback is epoch-bound; PR253 cannot reuse historical M1 as current proof',()=>{
  const q=observeM2Source();
+ if(qualifyEduOneZipSourceEpoch().ok){
+  // The immutable PR251 checkout is the authoritative original M1/M2 source epoch.
+  // This current PR253 checkout cannot turn historical owner/provider witnesses into PASS.
+  assert.equal(qualifyPr251SourceEpoch('888a5878a30864e6db7813b3d8b236cde46cce40').ok,true);
+  assert.equal(q.ok,false,JSON.stringify(q));
+  assert.equal(q.first_edge,'M2_ORIGINAL_M1_SOURCE_UNQUALIFIED');
+  assert.equal(q.owner_invoked,false);
+  assert.equal(q.provider_attested,false);
+  assert.equal(q.product_go,false);
+  assert.equal(q.m2_complete,false);
+  return;
+ }
  assert.equal(q.ok,true,JSON.stringify(q));
  assert.equal(q.status,'M2_SOURCE_METROLOGY_ONLY_EXTERNAL_DOD_OPEN');
  assert.equal(q.metrics_total,14);

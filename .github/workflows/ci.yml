@@ -31,6 +31,7 @@ jobs:
           # Independent historical M1 oracle: run on the original immutable epoch,
           # not on the successor PR253 checkout.
           (cd "$RUNNER_TEMP/pr251-epoch" && node --test tests/cora-m1-shared-evidence.test.mjs)
+          (cd "$RUNNER_TEMP/pr251-epoch" && node --test tests/cora-m2-owner-provider-metrics.test.mjs)
       - name: PR252 multi-level Git physical plus executable-code source witness (no release)
         if: ${{ github.event_name == 'pull_request' && hashFiles('contracts/pr251-forensic-hypergraph-dod.json') != '' }}
         shell: bash

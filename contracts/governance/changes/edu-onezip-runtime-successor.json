@@ -11,13 +11,19 @@
     {
       "path": ".github/workflows/ci.yml",
       "before": "eb905c345a02b548111469bf14cda663519e9bfd",
-      "after": "929f3b1dc75d1d80da1b0f12402ad9403fbd3dac",
+      "after": "1d9a27913a0a4d1726dd27be8473bca29b730422",
       "mode": "100644"
     },
     {
       "path": ".github/workflows/edu-onezip-experimental.yml",
       "before": "274cd844150175e5d371040fc0b68b71ddae72b1",
       "after": "73c5a26006ca0429cfd24061b0f86452fb0062b1",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/host-negative-semantic-r3.yml",
+      "before": "224e79f4f688af0d0c20dd4e037399ba4b1d3162",
+      "after": "d6e8b940c79bc0fb948f73fd47a63fb400c67999",
       "mode": "100644"
     },
     {
@@ -162,6 +168,12 @@
       "path": "tests/cora-m1-shared-evidence.test.mjs",
       "before": "7ce24e598de1fb7120df044aedef09b760e1ae6e",
       "after": "af53086c77a3823cc4da0c9167a744153d77f3c3",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/cora-m2-owner-provider-metrics.test.mjs",
+      "before": "d9aff49ff5fdc6d500e61967dbfb23ade1ffe454",
+      "after": "2796a0096fe58c9fb4e41a7fb2e3c2d0e3942f58",
       "mode": "100644"
     },
     {

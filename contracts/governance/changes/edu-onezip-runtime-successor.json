@@ -11,7 +11,7 @@
     {
       "path": ".github/workflows/edu-onezip-experimental.yml",
       "before": "274cd844150175e5d371040fc0b68b71ddae72b1",
-      "after": "b5a4236aea206d10596bee6e439bf5169db27017",
+      "after": "929b9e4f9089520be16f0c38f3641437deaf9782",
       "mode": "100644"
     },
     {
@@ -41,13 +41,19 @@
     {
       "path": "project/docs/EDU_ONEZIP_SESSION_RUNTIME.md",
       "before": null,
-      "after": "581099414c35118b8e0dca18235e5b8bcb013b66",
+      "after": "3f31f8296bafe71d8168598ea891cd6e552ee7e3",
       "mode": "100644"
     },
     {
       "path": "project/session-chat/PROMPT.txt",
       "before": "4c828707c1d3dff3bee91282ccaa83f1a2c4b286",
-      "after": "dc845eb2b4d00698a89ab2517b3bc894c075c66a",
+      "after": "4a24ea5722d221e641d6d6e7bdcc33be8d2b5c78",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-bootstrap-d123.mjs",
+      "before": "4784577d0fec1b39439417db1bd5ffe6b7b55a54",
+      "after": "03945ae6658bb7c981517b6d3d9cfa074dbf958c",
       "mode": "100644"
     },
     {
@@ -71,25 +77,31 @@
     {
       "path": "scripts/project-edu-onezip-local.mjs",
       "before": null,
-      "after": "b0bcadbb962c14fb902a10c6610d430a30e9c499",
+      "after": "e977f918c6ecb0da845069f9534412b2ad7bc3fa",
       "mode": "100644"
     },
     {
       "path": "scripts/project-edu-onezip-session.mjs",
       "before": "8af06e58c674ac07aaf8dee3e8ad7b13a42af8a9",
-      "after": "7e31b9c4268bee2d6cd7d19f943e227142fbe029",
+      "after": "e5422c392c90955b9b037b4d1255ccaf1d982366",
       "mode": "100644"
     },
     {
       "path": "scripts/project-edu-retirement-census.mjs",
       "before": null,
-      "after": "21b489849d8e2ae50cc0590a18887c4b73cf129c",
+      "after": "b9aad0ea30c99b054c191cd3baea173fcb3c904a",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-pe-single-path-audit.mjs",
+      "before": "0a6f66ecd1730ca55a85b3299dd18a276a637722",
+      "after": "e4d615a2e7c1679ca5a3a92720dcf66276936b9e",
       "mode": "100644"
     },
     {
       "path": "scripts/project-prompt-seven-three-guard.mjs",
       "before": "0662ea19fb43980f675a8c80d1aeb861aa1615d6",
-      "after": "c9f017e18e5160b4ddebd1beccf9afc48a492860",
+      "after": "13e5b7dec8b305d2f0e4961795f31757eb0e9cef",
       "mode": "100644"
     },
     {
@@ -111,9 +123,51 @@
       "mode": "100644"
     },
     {
+      "path": "tests/project-bootstrap-d123.test.mjs",
+      "before": "5e2e05187d97a149b6bebc2ecf0632aa7a02d435",
+      "after": "208ae0be876223ca9074e690082d10fdc29917c7",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-bootstrap-responsibility-matrix.test.mjs",
+      "before": "07acbfd08f7f929e0f2f3f39f038c0c392b070e2",
+      "after": "f9eff555334f94d183e67c872e1b6e58cd8dc559",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-c72-host-assisted-local-file.test.mjs",
+      "before": "be52afcdaa4faf0ceabbc498078443ad5786965a",
+      "after": "c38a6c9b07fa452c9e9a6a23ee889d65ec2593ca",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-edu-onezip-full-source-transport.test.mjs",
+      "before": "261c2a1b0f46185813fd68f41301e3a5aa482afb",
+      "after": "75c18f671de492163ea90ea4707789b9482f452b",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-edu-onezip-route.test.mjs",
+      "before": "854f28ede02da5535432bd09aae0b5eb299442d5",
+      "after": "58d47065c0a709220a0e04141b66442cc1023471",
+      "mode": "100644"
+    },
+    {
       "path": "tests/project-edu-onezip-session-local.test.mjs",
       "before": null,
-      "after": "01195b9fd65346dfb82e8872749a529afcab03f8",
+      "after": "37ec2d9368635b5993d5200ad91ac451e7b70d8f",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-pe-retrograde.test.mjs",
+      "before": "ab285afe3ca710962c8da58be34286d18e14fc99",
+      "after": "0d972a9c49a21515aff1aef7b5e64e89ff458e43",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-pe-single-path-audit.test.mjs",
+      "before": "58f20f01811b929c0083e48ed04ba39260afec67",
+      "after": "833ea6c8edfdd3289ceae4ac4a59ef798fd3bb65",
       "mode": "100644"
     },
     {

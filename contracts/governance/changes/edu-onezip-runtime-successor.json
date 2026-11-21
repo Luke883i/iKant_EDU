@@ -9,6 +9,12 @@
   "external_consumers_resolved": false,
   "paths": [
     {
+      "path": ".github/workflows/ci.yml",
+      "before": "eb905c345a02b548111469bf14cda663519e9bfd",
+      "after": "adb694396170825f9de31349e4ff77c8bddf2194",
+      "mode": "100644"
+    },
+    {
       "path": ".github/workflows/edu-onezip-experimental.yml",
       "before": "274cd844150175e5d371040fc0b68b71ddae72b1",
       "after": "929b9e4f9089520be16f0c38f3641437deaf9782",
@@ -54,6 +60,18 @@
       "path": "project/session-chat/PROMPT.txt",
       "before": "4c828707c1d3dff3bee91282ccaa83f1a2c4b286",
       "after": "4a24ea5722d221e641d6d6e7bdcc33be8d2b5c78",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/pr251-forensic-hypergraph.mjs",
+      "before": "8277c51c1ad6708eef327ed71e9b57fa28574e45",
+      "after": "60f5de008bb5ce0f36871568e5e8055f3fc622d6",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/pr253-epoch-qualification.mjs",
+      "before": null,
+      "after": "abbfce6d0a0d96e7d5e2a3975b9f6277d14755a9",
       "mode": "100644"
     },
     {
@@ -126,6 +144,18 @@
       "path": "tests/artifacts/qualification/edu-onezip-model-10m.json",
       "before": null,
       "after": "e4ca419f5110cf51002741690df1f59d2ba57485",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/pr251-forensic-hypergraph.test.mjs",
+      "before": "82becbdec386f8b346fb78bc4c094d98fe36b74a",
+      "after": "11a821a9c02290e4a09f6f5726211f1471842990",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/pr253-epoch-qualification.test.mjs",
+      "before": null,
+      "after": "b8fecf16e1778387dc23d8a579f16f19ca9dbbb5",
       "mode": "100644"
     },
     {

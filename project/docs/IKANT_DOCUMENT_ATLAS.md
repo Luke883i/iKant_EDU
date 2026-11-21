@@ -152,6 +152,7 @@
 - [project/docs/EDU_HOST_WHAT_HOW_V2.md](EDU_HOST_WHAT_HOW_V2.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/EDU_MVP_HOSTBOUND_RELEASE_PATH.md](EDU_MVP_HOSTBOUND_RELEASE_PATH.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/EDU_ONEZIP_POSTACCEPT_FIELD_ROUTE.md](EDU_ONEZIP_POSTACCEPT_FIELD_ROUTE.md): Documentazione specialistica. Stato di review: **da verificare**.
+- [project/docs/EDU_ONEZIP_SESSION_RUNTIME.md](EDU_ONEZIP_SESSION_RUNTIME.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/EDU_ORIGINAL_C135_COLD_REBIND_DOD.md](EDU_ORIGINAL_C135_COLD_REBIND_DOD.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/EDU_SINGLE_EXPERIMENTAL_PRODUCT_RUNTIME.md](EDU_SINGLE_EXPERIMENTAL_PRODUCT_RUNTIME.md): Documentazione specialistica. Stato di review: **da verificare**.
 - [project/docs/EDU_V10_POST122_MIND_TERMINAL.md](EDU_V10_POST122_MIND_TERMINAL.md): Documentazione specialistica. Stato di review: **da verificare**.

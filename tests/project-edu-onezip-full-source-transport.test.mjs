@@ -53,6 +53,8 @@ async function physicalTurn(request,requestPath){
  assert.equal(receipt.original_voice_sha256,sha(answerText));
  assert.notEqual(receipt.original_c125_sha256,sha(answerText));
  assert.equal(receipt.native_delivery_attested,false);
+ assert.equal(receipt.oneshell_sha256,sha(receipt.oneshell_utf8));
+ assert(receipt.oneshell_utf8.includes('iKant (Superficie A) | '+answerText));
  return receipt;
 }
 

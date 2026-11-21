@@ -1,0 +1,276 @@
+{
+  "schema": "ikant-edu-exact-source-successor/v1",
+  "self_path": "contracts/governance/changes/edu-onezip-runtime-successor.json",
+  "source_main": "888a5878a30864e6db7813b3d8b236cde46cce40",
+  "source_tree": "6dab517b2ef0462b9c1222dc9ec2a8c164344977",
+  "authority": 0,
+  "product_go": false,
+  "human_review_attested": false,
+  "external_consumers_resolved": false,
+  "paths": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "before": "eb905c345a02b548111469bf14cda663519e9bfd",
+      "after": "7f9ff110d6fda2ad192e45e2bd4f7f0986a45fb9",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/edu-onezip-experimental.yml",
+      "before": "274cd844150175e5d371040fc0b68b71ddae72b1",
+      "after": "73c5a26006ca0429cfd24061b0f86452fb0062b1",
+      "mode": "100644"
+    },
+    {
+      "path": ".github/workflows/host-negative-semantic-r3.yml",
+      "before": "224e79f4f688af0d0c20dd4e037399ba4b1d3162",
+      "after": "936ddf3bdd1cf8230fb05b3527d4546bde21f786",
+      "mode": "100644"
+    },
+    {
+      "path": "contracts/edu-onezip-retirement-review.json",
+      "before": null,
+      "after": "112a8046d217a09d17264553ec42638dbe995cf8",
+      "mode": "100644"
+    },
+    {
+      "path": "contracts/governance/changes/edu-onezip-runtime-successor.json",
+      "before": null,
+      "after": null,
+      "mode": "100644"
+    },
+    {
+      "path": "contracts/project-edu-onezip-field-route.json",
+      "before": "bbc6cc60f34216d4c21630e94c030a3bb3c2bd10",
+      "after": "a159dba89d0c2c1d4e0274beca1b1e37dd1afe50",
+      "mode": "100644"
+    },
+    {
+      "path": "contracts/project-session-source.json",
+      "before": "f0bb48d119f8867e062f0f1c75c1b895193aa2fa",
+      "after": "e16f357235cddfad15c6e01de22a833a1ae00de7",
+      "mode": "100644"
+    },
+    {
+      "path": "project/docs/EDU_ONEZIP_SESSION_RUNTIME.md",
+      "before": null,
+      "after": "3f31f8296bafe71d8168598ea891cd6e552ee7e3",
+      "mode": "100644"
+    },
+    {
+      "path": "project/docs/IKANT_DOCUMENT_ATLAS.md",
+      "before": "05dc96900a3f0c15ec3077939b8be4810e015fbc",
+      "after": "ed416e2903e3cd6899e658d719aa4e4231da953f",
+      "mode": "100644"
+    },
+    {
+      "path": "project/docs/START_HERE.md",
+      "before": "97ecaeefae2ae27781d633a1d2867956a9556b40",
+      "after": "33f5bf76080909608bc6948c8a9eadf353ece52e",
+      "mode": "100644"
+    },
+    {
+      "path": "project/edu-oneshell/PROMPT_INNESCO.txt",
+      "before": "f68e9a58fe10d2a152acb2641c9a90c31678c53e",
+      "after": "201cab4ebe5a23bfef69a4064d23170010f06e9a",
+      "mode": "100644"
+    },
+    {
+      "path": "project/session-chat/PROMPT.txt",
+      "before": "4c828707c1d3dff3bee91282ccaa83f1a2c4b286",
+      "after": "4a24ea5722d221e641d6d6e7bdcc33be8d2b5c78",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/cora-minimal-absorption.mjs",
+      "before": "e0a3b3289673935d35a9d342b5b8c0477d179b50",
+      "after": "79918cb22689dcaee609fd1f654df9f6a6413e8f",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/pr251-forensic-hypergraph.mjs",
+      "before": "8277c51c1ad6708eef327ed71e9b57fa28574e45",
+      "after": "60f5de008bb5ce0f36871568e5e8055f3fc622d6",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/pr253-epoch-qualification.mjs",
+      "before": null,
+      "after": "abbfce6d0a0d96e7d5e2a3975b9f6277d14755a9",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-bootstrap-d123.mjs",
+      "before": "4784577d0fec1b39439417db1bd5ffe6b7b55a54",
+      "after": "03945ae6658bb7c981517b6d3d9cfa074dbf958c",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-language-stdio.mjs",
+      "before": "ead8382479318c324325a2deea92d7457ad45936",
+      "after": "a6cc180412ccd1dba4072caa5630e882d1978551",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-onezip-falsify-10m.mjs",
+      "before": null,
+      "after": "1a849846f2c233298761821d7aa1914d4603ccf6",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-onezip-ingress.py",
+      "before": null,
+      "after": "34f485e3593ad45ad09aee87f5462afada4431ae",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-onezip-local.mjs",
+      "before": null,
+      "after": "5817cfae2344b81626fa8382a54541f97866c48a",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-onezip-session.mjs",
+      "before": "8af06e58c674ac07aaf8dee3e8ad7b13a42af8a9",
+      "after": "e5422c392c90955b9b037b4d1255ccaf1d982366",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-edu-retirement-census.mjs",
+      "before": null,
+      "after": "c1e9cd0604c7f36db2a9d31fc5db90ed1685a12e",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-pe-single-path-audit.mjs",
+      "before": "0a6f66ecd1730ca55a85b3299dd18a276a637722",
+      "after": "e4d615a2e7c1679ca5a3a92720dcf66276936b9e",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-prompt-seven-three-guard.mjs",
+      "before": "0662ea19fb43980f675a8c80d1aeb861aa1615d6",
+      "after": "13e5b7dec8b305d2f0e4961795f31757eb0e9cef",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/project-source-manifest.mjs",
+      "before": "be2abe3857aed443a3dd433704acdc693d2f16a9",
+      "after": "98aa58ad0d2b267fec2c717b6415329d4b888a9d",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/r7-pr249-physical-gate.py",
+      "before": "4c5407665a7ebfa18a1e38320e1cc8b1986b29e5",
+      "after": "e0aa33f21d0834e0f215ce618e73d3bb46208d8e",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/v5b-repository-governance-audit.mjs",
+      "before": "01e0277cd9cac22f4a16e8851fdef14dce1a3b4a",
+      "after": "36a256fb0842c3df131da4d7a61ac8628f739712",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/artifacts/qualification/edu-onezip-model-10m.json",
+      "before": null,
+      "after": "e4ca419f5110cf51002741690df1f59d2ba57485",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/cora-m1-shared-evidence.test.mjs",
+      "before": "7ce24e598de1fb7120df044aedef09b760e1ae6e",
+      "after": "519b69a4b1913f50d17c168e56343f824358c123",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/cora-m2-owner-provider-metrics.test.mjs",
+      "before": "d9aff49ff5fdc6d500e61967dbfb23ade1ffe454",
+      "after": "bc3ca1be1088c45ec7a7a15a0b1b4c9cdf3e80e8",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/pr251-forensic-hypergraph.test.mjs",
+      "before": "82becbdec386f8b346fb78bc4c094d98fe36b74a",
+      "after": "11a821a9c02290e4a09f6f5726211f1471842990",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/pr253-epoch-qualification.test.mjs",
+      "before": null,
+      "after": "b8fecf16e1778387dc23d8a579f16f19ca9dbbb5",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-bootstrap-cut-audit.test.mjs",
+      "before": "8141829a26544f260b8f617dd1aa68e32b74da2b",
+      "after": "24a5e5545fe9f3bfb384b11fc4b25b1aaa3b50ab",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-bootstrap-d123.test.mjs",
+      "before": "5e2e05187d97a149b6bebc2ecf0632aa7a02d435",
+      "after": "208ae0be876223ca9074e690082d10fdc29917c7",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-bootstrap-responsibility-matrix.test.mjs",
+      "before": "07acbfd08f7f929e0f2f3f39f038c0c392b070e2",
+      "after": "f9eff555334f94d183e67c872e1b6e58cd8dc559",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-c72-host-assisted-local-file.test.mjs",
+      "before": "be52afcdaa4faf0ceabbc498078443ad5786965a",
+      "after": "c38a6c9b07fa452c9e9a6a23ee889d65ec2593ca",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-edu-onezip-full-source-transport.test.mjs",
+      "before": "261c2a1b0f46185813fd68f41301e3a5aa482afb",
+      "after": "75c18f671de492163ea90ea4707789b9482f452b",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-edu-onezip-route.test.mjs",
+      "before": "854f28ede02da5535432bd09aae0b5eb299442d5",
+      "after": "ec58c212e68999fed4953d470da5294816791a42",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-edu-onezip-session-local.test.mjs",
+      "before": null,
+      "after": "a483b8703a38aea5d6038633e2f618582b9c4147",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-pe-retrograde.test.mjs",
+      "before": "ab285afe3ca710962c8da58be34286d18e14fc99",
+      "after": "0d972a9c49a21515aff1aef7b5e64e89ff458e43",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/project-pe-single-path-audit.test.mjs",
+      "before": "58f20f01811b929c0083e48ed04ba39260afec67",
+      "after": "833ea6c8edfdd3289ceae4ac4a59ef798fd3bb65",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/r7-pr249-physical-gate.test.mjs",
+      "before": "22b3c626b808685199b7543900e5fddd1471d93e",
+      "after": "ac63bb5818edcde9be7069ecac1228942e6c72bb",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/r7-v13-epoch-bridge.test.mjs",
+      "before": "c526ac8142d29c9e0d47e47a23d0d6b4210cd538",
+      "after": "f505c8aaaccd653b3478a9a63565ddb5e0807049",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/v5b-repository-governance.test.mjs",
+      "before": "69bb9528bdef46f2d25b40e6c9b069fb9c91a396",
+      "after": "57df09bf4039d4951723b7acf0b891806ce9bd80",
+      "mode": "100644"
+    }
+  ]
+}

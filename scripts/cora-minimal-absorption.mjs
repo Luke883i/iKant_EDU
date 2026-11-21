@@ -95,7 +95,7 @@ export function sourcePathsPresent(c,root=ROOT){
  * All owner/accountability and external-delivery columns remain UNKNOWN.
  */
 import {execFileSync} from 'node:child_process';
-import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch,qualifyR7OwnerSourceEpoch,qualifyPr249SourceEpoch,qualifyPr251SourceEpoch} from './v5b-repository-governance-audit.mjs';
+import {auditRepository,parseStagedGitEntries,provisionalRole,qualifyRegisteredC72SourceEpoch,qualifyR7OwnerSourceEpoch,qualifyPr249SourceEpoch,qualifyPr251SourceEpoch,qualifyEduOneZipSourceEpoch} from './v5b-repository-governance-audit.mjs';
 import {reopenR7SourceEpoch} from './r7-v13-epoch-bridge.mjs';
 const reticularPath='contracts/cora-reticular-hygiene-v1.json';
 const reticularIds=[
@@ -358,9 +358,27 @@ export function reopenV13WorkflowEpoch(c){
   // Reopen the immutable original PR249 workflow epoch only when the entire
   // current successor is independently source-pinned by V5-B. This is not CI,
   // owner review, provider evidence, or permission to release.
-  const successor=fs.existsSync(path.join(ROOT,'contracts/governance/changes/pr251-source-successor.json'))
-    ?qualifyPr251SourceEpoch():qualifyPr249SourceEpoch();
-  const projectionRef=successor.ok===true?'7cd95a485f71008dd6aa7c3da6aa76bd0f3ead65':'HEAD';
+  const hasEduSuccessor=fs.existsSync(path.join(ROOT,
+   'contracts/governance/changes/edu-onezip-runtime-successor.json'));
+  const hasPr251=fs.existsSync(path.join(ROOT,
+   'contracts/governance/changes/pr251-source-successor.json'));
+  // PR251's exact-HEAD oracle is historical after PR253. Reopen it at the
+  // pinned PR251 source commit and independently qualify the current EDU HEAD.
+  const historicPr251=hasEduSuccessor?
+   qualifyPr251SourceEpoch('888a5878a30864e6db7813b3d8b236cde46cce40'):null;
+  const successor=hasEduSuccessor?qualifyEduOneZipSourceEpoch():
+   hasPr251?qualifyPr251SourceEpoch():qualifyPr249SourceEpoch();
+  const expectedStatus=hasEduSuccessor?'EDU_ONEZIP_SOURCE_ONLY_REVIEW_REQUIRED':
+   hasPr251?'PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED':
+   'PR249_CHECKOUT_REPAIR_SOURCE_ONLY_REVIEW_REQUIRED';
+  const qualified=successor.ok===true&&successor.status===expectedStatus&&
+   successor.authority===0&&successor.product_go===false&&
+   (successor.review??successor.owner_review)==='NOT_ATTESTED'&&
+   (!hasEduSuccessor||historicPr251?.ok===true&&
+    historicPr251.status==='PR251_EXACT_SOURCE_ONLY_REVIEW_REQUIRED'&&
+    historicPr251.authority===0&&historicPr251.product_go===false&&
+    historicPr251.review==='NOT_ATTESTED');
+  const projectionRef=qualified?'7cd95a485f71008dd6aa7c3da6aa76bd0f3ead65':'HEAD';
   const currentWorkflowTree=git('rev-parse',projectionRef+':.github/workflows');
   if(git('rev-parse',v10+':.github/workflows')!==oldTree||
      git('rev-parse',v12+':.github/workflows')!==newTree)
@@ -430,7 +448,8 @@ export function reopenV13WorkflowEpoch(c){
   if(!earlierEvolution.ok)return deny('V13_WORKFLOW_PRIOR_EVOLUTION_INVALID:'+earlierEvolution.edge);
   return {ok:true,status:'SOURCE_EPOCH_WORKFLOW_PROJECTION_REVIEW_REQUIRED',
    original_w1_reopened:true,original_evolution_reopened:true,
-   before:oldTree,current:currentWorkflowTree,changed_workflow_sources:75,
+   before:oldTree,current:currentWorkflowTree,projection_ref:projectionRef,
+   source_successor_status:successor.status,changed_workflow_sources:75,
    prospective_pr249_workflow_changes:prospectiveWorkflowChanges,
    authority:0,review_attested:false,provider_attested:false,product_go:false};
  }catch(e){return deny('V13_WORKFLOW_HISTORICAL_SOURCE_UNREADABLE:'+String(e).slice(0,100));}

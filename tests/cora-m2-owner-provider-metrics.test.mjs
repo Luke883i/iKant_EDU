@@ -5,6 +5,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {validateM2Profile,modelM2Cut,observeM2Source} from '../scripts/cora-m2-owner-provider-metrics.mjs';
+import {qualifyEduOneZipSourceEpoch,qualifyPr251SourceEpoch} from '../scripts/v5b-repository-governance-audit.mjs';
 const ROOT=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const PROFILE=JSON.parse(fs.readFileSync(path.join(ROOT,'contracts/cora-m2-owner-provider-metrics-v1.json'),'utf8'));
 const copy=x=>JSON.parse(JSON.stringify(x));
@@ -131,8 +132,13 @@ test('100000 deterministic model vectors cannot turn hypothetical receipts into 
  assert.equal(a.logicalFull,0);
  assert.equal(a.unsafe,0);
 });
-test('actual HEAD source readback: seven source metrics, seven external metrics remain NOT_ATTESTED',()=>{
+test('original M2 source readback verifies current EDU epoch without external authority',()=>{
  const q=observeM2Source();
+ const eduEpoch=qualifyEduOneZipSourceEpoch();
+ assert.equal(eduEpoch.ok,true,JSON.stringify(eduEpoch));
+ assert.equal(eduEpoch.authority,0);
+ assert.equal(eduEpoch.product_go,false);
+ assert.equal(qualifyPr251SourceEpoch('888a5878a30864e6db7813b3d8b236cde46cce40').ok,true);
  assert.equal(q.ok,true,JSON.stringify(q));
  assert.equal(q.status,'M2_SOURCE_METROLOGY_ONLY_EXTERNAL_DOD_OPEN');
  assert.equal(q.metrics_total,14);

@@ -10,6 +10,8 @@ on:
       - 'project/session-chat/PROMPT.txt'
       - 'BOOTSTRAP.json'
       - 'tests/project-edu-onezip-route.test.mjs'
+      - 'tests/project-edu-onezip-session-local.test.mjs'
+      - 'contracts/edu-onezip-retirement-review.json'
       - 'tests/test_edu_zip_tree.py'
       - 'tests/project-edu-onezip-full-source.test.mjs'
       - 'tests/project-edu-onezip-full-source-transport.test.mjs'
@@ -24,6 +26,11 @@ jobs:
         node: [20, 22]
     steps:
       - uses: actions/checkout@v4
+        with:
+          # PR merge refs are synthetic; qualify the exact proposed source HEAD.
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          # The retirement census also reads the pinned historical main object.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
@@ -66,5 +73,47 @@ jobs:
         run: EDU_TEST_SOURCE_ROOT="$EDU_TMP/materialized" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" EDU_TEST_PHASE=C135_SECOND node --test tests/project-edu-onezip-full-source.test.mjs
       - name: Full source 6 - physically mediated OneZIP admission and two original C135 worker turns
         run: EDU_TEST_SOURCE_ROOT="$EDU_TMP/materialized" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" node --test tests/project-edu-onezip-full-source-transport.test.mjs
+      - name: One handoff then local session continuity and read-only reopen
+        shell: bash
+        run: |
+          set -euo pipefail
+          PRIVATE="$(mktemp -d)"
+          chmod 700 "$PRIVATE"
+          python scripts/project-edu-onezip-ingress.py --archive "$EDU_TMP/source.zip" --head "$EDU_HEAD" --tree "$EDU_TREE" --private-root "$PRIVATE" --helper-pins \
+            "$(git rev-parse "$EDU_HEAD:scripts/project-edu-zip-tree.py")" \
+            "$(git rev-parse "$EDU_HEAD:scripts/project-manual-source.py")" \
+            "$(git rev-parse "$EDU_HEAD:scripts/project-repo-loader.mjs")" 2>&1 | tee "$RUNNER_TEMP/edu-onezip-step.log"
+          EDU_TEST_SOURCE_ROOT="$PRIVATE/source" EDU_TEST_HEAD="$EDU_HEAD" EDU_TEST_TREE="$EDU_TREE" node --test tests/project-edu-onezip-session-local.test.mjs 2>&1 | tee -a "$RUNNER_TEMP/edu-onezip-step.log"
+      - name: Capture exact local OneZIP failure (diagnostic only)
+        if: ${{ failure() }}
+        id: local_failure
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os,re
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'edu-onezip-step.log'
+          rows=p.read_text(errors='replace').splitlines() if p.exists() else []
+          tests=[line.strip() for line in rows if re.match(r'^\s*not ok\s+\d+',line)]
+          errors=[line.strip() for line in rows if re.match(r'^\s*(?:error:|code:|failureType:)',line)]
+          line=((tests[0] if tests else next((x.strip() for x in rows if '"edge"' in x), 'ONEZIP_STEP_FAILURE'))+' '+(errors[0] if errors else ''))[:110]
+          line=re.sub(r'[^A-Za-z0-9_.: -]','_',line)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as output:
+            output.write('detail='+line+'\n')
+          PY
+      - name: "Local OneZIP first failure [${{ steps.local_failure.outputs.detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; original test exit status retained"
+      - name: Seeded defensive model and conservative retirement census
+        run: |
+          node scripts/project-edu-onezip-falsify-10m.mjs > "$RUNNER_TEMP/edu-onezip-model.json"
+          cmp "$RUNNER_TEMP/edu-onezip-model.json" tests/artifacts/qualification/edu-onezip-model-10m.json
+          node scripts/project-edu-retirement-census.mjs > "$RUNNER_TEMP/edu-objects.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: edu-onezip-assurance-node-${{ matrix.node }}
+          path: |
+            ${{ runner.temp }}/edu-onezip-model.json
+            ${{ runner.temp }}/edu-objects.json
       - name: Regression original C135 portable C87 and Project prompt
         run: node --test tests/project-session-e2e.test.mjs tests/project-oneshell-prompt.test.mjs

@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import {createHash} from 'node:crypto';
+import {openLocalOneZip,sealLocalTurn} from './project-edu-onezip-local.mjs';
 import {createOneShellLanguageStdio} from './project-edu-language-stdio.mjs';
 const H40=/^[a-f0-9]{40}$/u;
 const fail=edge=>Object.freeze({ok:false,edge,voice:'NO_VOICE',active:false,native_delivery_attested:false,authority:0});
@@ -19,6 +20,8 @@ export function verifyOneZipOriginalC125Evidence(frame,evidence){
     voice==='NO_VOICE'||typeof transport!=='string'||!transport.length||
     frame.original_voice_sha256!==sha(voice)||
     evidence.original_c125_sha256!==sha(transport)||
+    transport.split('<<<VOICE_UTF8_START>>>\n').length!==2||
+    transport.split('\n<<<VOICE_UTF8_END>>>').length!==2||
     !transport.includes('<<<VOICE_UTF8_START>>>\n'+voice+'\n<<<VOICE_UTF8_END>>>')||
     evidence.original_c87_readback?.status!=='C107_LEDGER_REOPENED')
     return false;
@@ -28,14 +31,18 @@ function writeOnce(p,body){const b=Buffer.from(JSON.stringify(body)+'\n');const 
  try{fs.writeFileSync(fd,b);fs.fsyncSync(fd)}finally{fs.closeSync(fd)}
  if(!fs.readFileSync(p).equals(b))throw Error('EDU_RECEIPT_READBACK_INVALID');}
 export async function runOneZipOriginalTurn(q){
- let session=null,attempted=false;
+ let session=null,attempted=false,local=null,languagePort=null;
+ const view=q?.action==='REOPEN_VIEW';
+ const useLocal=q?.continuity==='SESSION_LOCAL';
  try{
-  if(q?.schema!=='ikant-edu-onezip-turn/v1'||q.humanTurnWitnessed!==true||
-    !H40.test(q.head||'')||typeof q.humanInput!=='string'||!q.humanInput.trim()||
+  if(q?.schema!=='ikant-edu-onezip-turn/v1'||(!view&&q.humanTurnWitnessed!==true)||
+    (q.continuity!==undefined&&!useLocal)||(!useLocal&&view)||
+    (useLocal&&q.resumeFrom!==undefined)||
+    !H40.test(q.head||'')||(!view&&(typeof q.humanInput!=='string'||!q.humanInput.trim()||
     Buffer.byteLength(q.humanInput,'utf8')>12000||
     !/^[A-Za-z0-9._-]{12,128}$/.test(q.nonce||'')||
     !Array.isArray(q.priorMessages)||q.priorMessages.length>4||
-    q.priorMessages.some(x=>typeof x!=='string'||Buffer.byteLength(x,'utf8')>12000)||
+    q.priorMessages.some(x=>typeof x!=='string'||Buffer.byteLength(x,'utf8')>12000)))||
     !path.isAbsolute(q.sourceRoot||'')||!path.isAbsolute(q.privateRoot||'')||
     (fs.lstatSync(q.privateRoot).mode&0o077)!==0)return fail('EDU_ONEZIP_TURN_GATE_INVALID');
   const dir=q.sourceRoot;
@@ -47,28 +54,53 @@ export async function runOneZipOriginalTurn(q){
   const c72=JSON.parse(fs.readFileSync(path.join(q.privateRoot,'c72-selection.json'),'utf8'));
   if(c72.head!==q.head||!owner.validateC72V2ModeSelection(c72.selection,{mode:'EDU',sourceHead:q.head}))
     return fail('EDU_C72_MODE_RECEIPT_INVALID');
+  if(useLocal){
+   const ledger=await import(pathToFileURL(path.join(dir,'host/c87-durable-ledger.mjs')).href);
+   local=openLocalOneZip(q.privateRoot,{head:q.head,tree:source.source_tree,readLedger:ledger.reopenC87Ledger});
+   if(!view&&fs.existsSync(path.join(q.privateRoot,'edu-turn-attempt-'+q.nonce+'.json')))
+    return fail('EDU_LOCAL_NONCE_ALREADY_ATTEMPTED');
+   if(view){
+    if(!local.latest)return fail('EDU_LOCAL_VIEW_NOT_READY');
+    const r=local.latest;
+    return {ok:true,kind:'EDU_REOPENED_SESSION_VIEW',frame:r.frame,turn_index:r.turn_index,
+     original_c87_last_hash:r.original_c87_last_hash,oneshell_utf8:r.oneshell_utf8,
+     oneshell_sha256:r.oneshell_sha256,active:false,native_delivery_attested:false,authority:0};
+   }
+  }
+  const priorMessages=local?.priorMessages??q.priorMessages;
   const one=await import(pathToFileURL(path.join(dir,'host/project-oneshell-edu.mjs')).href);
   session=await one.startOneShellEdu({selection:c72.selection,sourceRoot:dir,
     sourceBinding:{head:q.head,tree:source.source_tree},privateParent:q.privateRoot,
-    languagePort:createOneShellLanguageStdio(),afterAcceptWitness:{accepted:true,scope:'HOST_WITNESSED_ONLY'},
-    resumeFrom:q.resumeFrom??null});
+    languagePort:(languagePort=createOneShellLanguageStdio()),afterAcceptWitness:{accepted:true,scope:'HOST_WITNESSED_ONLY'},
+    resumeFrom:local?local.resumeFrom:q.resumeFrom??null});
   if(!session.ok||!session.runtime_ready)return fail(session.frame?.slots?.EDGE||'EDU_C135_NOT_READY');
   writeOnce(path.join(q.privateRoot,'edu-turn-attempt-'+q.nonce+'.json'),{nonce:q.nonce,head:q.head,state:'ATTEMPTED'});
   attempted=true;
   const f=await session.publishTurn({humanInput:q.humanInput,nonce:q.nonce,
-    priorMessages:q.priorMessages,resetContext:q.resetContext===true});
+    priorMessages,resetContext:local?local.turnIndex===1:q.resetContext===true});
   const e=session.getLastEvidence();
   if(!verifyOneZipOriginalC125Evidence(f,e))
     return fail(f?.slots?.EDGE||'EDU_ORIGINAL_VOICE_NOT_REOPENED');
-  const cp=session.exportPortableC87({priorMessages:[...q.priorMessages,q.humanInput].slice(-4)});
-  if(cp?.schema!=='ikant-le-c135-portable-c87/v1')return fail(cp?.first_edge||'EDU_C87_CHECKPOINT_DENIED');
+  // The original same-process renderer refuses a forged or rehydrated A frame.
+  // Serialize its exact six-slot output once; later cold reopen reads the sealed bytes.
+  const oneshell_utf8=one.renderOneShellCompact(f);
   const receipt={ok:true,schema:'ikant-edu-onezip-original-turn/v1',head:q.head,tree:source.source_tree,
-    frame:f,checkpoint:cp,owner:'C135_EDU_V2',original_c125_sha256:e.original_c125_sha256,original_voice_sha256:f.original_voice_sha256,
+    oneshell_utf8,oneshell_sha256:sha(oneshell_utf8),
+    frame:f,owner:'C135_EDU_V2',original_c125_sha256:e.original_c125_sha256,original_voice_sha256:f.original_voice_sha256,
     active:false,native_delivery_attested:false,authority:0};
-  writeOnce(path.join(q.privateRoot,'edu-turn-receipt-'+q.nonce+'.json'),receipt);
-  return receipt;
+  if(local){
+   const sealed=sealLocalTurn(receipt,{local,nonce:q.nonce,evidence:e,ledgerFile:session.readSessionState()?.ledger_file,humanInput:q.humanInput});
+   writeOnce(path.join(q.privateRoot,'edu-turn-receipt-'+q.nonce+'.json'),sealed);
+   return {...receipt,continuity:'SESSION_LOCAL',turn_index:sealed.turn_index,original_c87_last_hash:sealed.original_c87_last_hash};
+  }
+  const cp=session.exportPortableC87({priorMessages:[...priorMessages,q.humanInput].slice(-4)});
+  if(cp?.schema!=='ikant-le-c135-portable-c87/v1')
+   return {...fail(cp?.first_edge||'EDU_C87_CHECKPOINT_DENIED'),effect:'C87_COMMITTED_RECONCILE_READ_ONLY',retryable:false};
+  const portable={...receipt,checkpoint:cp};
+  writeOnce(path.join(q.privateRoot,'edu-turn-receipt-'+q.nonce+'.json'),portable);
+  return portable;
  }catch(e){return fail(attempted?'EDU_OWNER_OUTCOME_UNKNOWN_NO_RETRY':'EDU_PREOWNER_STOP:'+String(e.message||'UNKNOWN').slice(0,90));}
- finally{if(session?.close)try{session.close()}catch{}}
+ finally{try{if(session?.close)session.close();}finally{try{languagePort?.close();}finally{local?.close();}}}
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
  const qpath=process.argv[2];

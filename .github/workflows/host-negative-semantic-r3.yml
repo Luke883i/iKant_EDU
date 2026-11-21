@@ -90,7 +90,24 @@ jobs:
         with:
           node-version: '22'
       - name: Full existing test suite (owner and history regression)
-        run: npm test
+        shell: bash
+        run: |
+          set -o pipefail
+          npm test 2>&1 | tee "$RUNNER_TEMP/r3-full-repository-tap.log"
+      - name: Capture first failing full-repository TAP (diagnostic only)
+        if: ${{ failure() }}
+        id: r3_edge
+        run: node scripts/ci-failure-annotations.mjs first-edge tap "$RUNNER_TEMP/r3-full-repository-tap.log" first_edge
+      - name: "R3 first TAP failure [${{ steps.r3_edge.outputs.first_edge }}]"
+        if: ${{ failure() }}
+        run: echo "Original full-repository test remains blocking"
+      - name: Capture first failing full-repository assertion detail
+        if: ${{ failure() }}
+        id: r3_detail
+        run: node scripts/ci-failure-annotations.mjs first-detail tap "$RUNNER_TEMP/r3-full-repository-tap.log" first_detail
+      - name: "R3 first TAP detail [${{ steps.r3_detail.outputs.first_detail }}]"
+        if: ${{ failure() }}
+        run: echo "Diagnostic only; full-repository test remains blocking"
       - name: Repository checks
         run: npm run check
       - name: Runtime-root verify

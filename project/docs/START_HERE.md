@@ -19,7 +19,7 @@ Chiedi: «Confronta due ipotesi scientifiche». Un normale LLM può dare una ris
 
 ## Due prodotti: sessione Project e servizio MCP
 
-Per parlare con iKant EDU **nella chat di un Project**, si installano istruzioni Project e si rispettano i tre turni distinti (ORIENTATION, `I ACCEPT`, `EDU`); il codice Node non viene installato dal prompt. Per usare l'**app MCP esterna**, occorre invece un server realmente distribuito, OAuth e un collegamento del client: non e un'altra modalita C72, ne prova C59 CANONICAL. [Confronto e passi verificabili](I10_TWO_PRODUCTS.md).
+Per parlare con iKant EDU **nella chat di un Project**, si installano istruzioni Project e si rispettano i tre turni distinti (ORIENTATION, `I ACCEPT`, `EDU`); il codice Node non viene installato dal prompt. Per usare l'**app MCP esterna**, occorre invece un server realmente distribuito, OAuth e un collegamento del client: non e un'altra modalita C72, ne prova C59 CANONICAL. [Confronto e passi verificabili](I10_TWO_PRODUCTS.md). Per il percorso sperimentale **OneZIP in sessione-chat**, leggi [il contratto operativo, la voce originale e i limiti di riapertura](EDU_ONEZIP_SESSION_RUNTIME.md); non equivale a installazione o disponibilità della UI nativa.
 
 ## Da dove iniziare
 

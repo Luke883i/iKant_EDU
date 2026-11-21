@@ -1,0 +1,40 @@
+{
+  "schema": "ikant-edu-retirement-review/v1",
+  "authority": 0,
+  "source_main": "888a5878a30864e6db7813b3d8b236cde46cce40",
+  "source_tree": "6dab517b2ef0462b9c1222dc9ec2a8c164344977",
+  "base_file_count": 1630,
+  "removal_authorized": false,
+  "external_consumers": "UNKNOWN",
+  "unresolved": "HOLD_UNCLASSIFIED_NOT_RETIRED",
+  "criteria": [
+    "Pinned file at the reviewed HEAD",
+    "Not in EDU named execution closure",
+    "No observed live EDU/MCP importer, CI input or deployment entry",
+    "No current product description after successor; history does not prove runtime need",
+    "Recheck dynamic/external users and human review before any removal"
+  ],
+  "candidates": [
+    {
+      "path": "project/docs/C78_PROJECT_HOST_ADAPTER.txt",
+      "git_blob": "0779e3d4199000b4476c90ae9eead2021bb95063",
+      "reason": "Historical experimental relay prompt targeting old iKant_LE identity; superseded by canonical Project prompt and OneZIP."
+    },
+    {
+      "path": "project/docs/C79_PROJECT_HOST_ADAPTER.txt",
+      "git_blob": "f9adbee18809e3d8a9b34d66979e2d46620f7bdc",
+      "reason": "Historical first-turn presentation prompt for the old repo, not C72/v2 or current OneZIP."
+    },
+    {
+      "path": "project/docs/C97_PROJECT_PROMPT_PROJECTION.txt",
+      "git_blob": "c9a626e9fe89e1115bcd71e4815d8ebe44a3d578",
+      "reason": "Uninstalled six-field render candidate; not used by current C125/S03 or MCP widget."
+    }
+  ],
+  "preserved": [
+    "canonical Project prompt",
+    "EDU named execution closure",
+    "MCP package, OAuth and deployment candidate",
+    "dynamic, ambiguous and historical replay consumers"
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "schema": "ikant-edu-onezip-model-falsification/v1",
+  "scope": "TYPED_DEFENSIVE_MODEL_NOT_LIVE_ATTACKS_OR_NATIVE_PROJECT",
+  "total": 10000000,
+  "model_disagreements": 0,
+  "digest_sha256": "b6da6f22f649d690bd30f302a29d1c27be1dae4db98fb31fe052106617c8e634",
+  "families": [
+    {
+      "family": "orientation",
+      "checks": [
+        "preconsent source reads",
+        "prior event distinct",
+        "terms/source witness"
+      ],
+      "seed": "862960b3",
+      "single_fault": 468752,
+      "multi_fault": 468556,
+      "semantics_preserving_controls": 62692,
+      "guard_mutant_kills": 468752
+    },
+    {
+      "family": "handoff",
+      "checks": [
+        "single ZIP",
+        "node task-reply binding",
+        "private file readback"
+      ],
+      "seed": "c61db501",
+      "single_fault": 468771,
+      "multi_fault": 468979,
+      "semantics_preserving_controls": 62250,
+      "guard_mutant_kills": 468771
+    },
+    {
+      "family": "source",
+      "checks": [
+        "exact pinned HEAD",
+        "TREE/blobs reopened",
+        "no second ZIP"
+      ],
+      "seed": "a1d20695",
+      "single_fault": 469723,
+      "multi_fault": 467697,
+      "semantics_preserving_controls": 62580,
+      "guard_mutant_kills": 469723
+    },
+    {
+      "family": "consent",
+      "checks": [
+        "explicit human I ACCEPT",
+        "distinct later EDU",
+        "C72 receipt reopened"
+      ],
+      "seed": "b19ece8d",
+      "single_fault": 469065,
+      "multi_fault": 468908,
+      "semantics_preserving_controls": 62027,
+      "guard_mutant_kills": 469065
+    },
+    {
+      "family": "runtime",
+      "checks": [
+        "C135 original task",
+        "same-worker reply",
+        "exact acknowledgement"
+      ],
+      "seed": "d74a3071",
+      "single_fault": 469383,
+      "multi_fault": 467967,
+      "semantics_preserving_controls": 62650,
+      "guard_mutant_kills": 469383
+    },
+    {
+      "family": "write",
+      "checks": [
+        "fresh nonce",
+        "exclusive attempt",
+        "no unresolved prior write"
+      ],
+      "seed": "4f6b8b45",
+      "single_fault": 468474,
+      "multi_fault": 468989,
+      "semantics_preserving_controls": 62537,
+      "guard_mutant_kills": 468474
+    },
+    {
+      "family": "resume",
+      "checks": [
+        "old worker closed",
+        "C87 count/hash exact",
+        "same private epoch"
+      ],
+      "seed": "e3212263",
+      "single_fault": 469135,
+      "multi_fault": 468501,
+      "semantics_preserving_controls": 62364,
+      "guard_mutant_kills": 469135
+    },
+    {
+      "family": "view",
+      "checks": [
+        "original C125 bytes",
+        "same-turn S03",
+        "no unseen partial commit"
+      ],
+      "seed": "f510d771",
+      "single_fault": 468665,
+      "multi_fault": 468822,
+      "semantics_preserving_controls": 62513,
+      "guard_mutant_kills": 468665
+    },
+    {
+      "family": "scope",
+      "checks": [
+        "no native inference",
+        "no cross-chat inference",
+        "no MCP promotion"
+      ],
+      "seed": "84a698a5",
+      "single_fault": 469141,
+      "multi_fault": 468418,
+      "semantics_preserving_controls": 62441,
+      "guard_mutant_kills": 469141
+    },
+    {
+      "family": "delivery",
+      "checks": [
+        "local store visible",
+        "not a forged host trace",
+        "no retry after uncertainty"
+      ],
+      "seed": "30077cf5",
+      "single_fault": 468358,
+      "multi_fault": 469448,
+      "semantics_preserving_controls": 62194,
+      "guard_mutant_kills": 468358
+    }
+  ],
+  "native_event_attested": false,
+  "provider_persistence_attested": false,
+  "product_go": false
+}

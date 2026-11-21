@@ -475,7 +475,7 @@ export function qualifyPr249SourceEpoch(){
  * Circular SHA problem: self manifest is constrained by path+schema+exact delta,
  * while its own Git SHA is intentionally not claimed inside the same blob.
  */
-export function qualifyPr251SourceEpoch(){
+export function qualifyPr251SourceEpoch(revision='HEAD'){
  const fail=edge=>({ok:false,edge,authority:0,product_go:false,review:'NOT_ATTESTED'});
  const self='contracts/governance/changes/pr251-source-successor.json';
  try{
@@ -488,7 +488,7 @@ export function qualifyPr251SourceEpoch(){
      doc.external_consumers_resolved!==false||doc.historical_pins_modified!==false||
      !Array.isArray(doc.paths))return fail('PR251_SOURCE_MANIFEST_AUTHORITY_OR_BASE');
   if(git('rev-parse',base+'^{tree}')!==doc.source_tree)return fail('PR251_BASE_TREE_MISMATCH');
-  git('merge-base','--is-ancestor',base,'HEAD');
+  git('merge-base','--is-ancestor',base,revision);
   function listing(rev){
    const entries=execFileSync('git',['ls-tree','-r','-z',rev],{cwd:ROOT,maxBuffer:64_000_000}).toString('utf8').split('\0').filter(Boolean);
    const result=new Map();
@@ -499,7 +499,7 @@ export function qualifyPr251SourceEpoch(){
    }
    return result;
   }
-  const prior=listing(base),current=listing('HEAD');
+  const prior=listing(base),current=listing(revision);
   if(!prior||!current||prior.size!==1645)return fail('PR251_BASE_INDEX_INCOMPLETE');
   const delta=[];
   for(const name of [...new Set([...prior.keys(),...current.keys()])].sort()){
@@ -522,6 +522,42 @@ export function qualifyPr251SourceEpoch(){
    source_sha_verified:true,review:'NOT_ATTESTED',provider:'NOT_ATTESTED',
    external:'UNKNOWN',authority:0,product_go:false};
  }catch(e){return fail('PR251_EPOCH_UNREADABLE:'+String(e).slice(0,120));}
+}
+
+// Exact reviewed scope for this successor; never a general exemption or field release.
+export function qualifyEduOneZipSourceEpoch(){
+ const fail=edge=>({ok:false,edge,authority:0,product_go:false});
+ const base='888a5878a30864e6db7813b3d8b236cde46cce40', tree='6dab517b2ef0462b9c1222dc9ec2a8c164344977';
+ const self='contracts/governance/changes/edu-onezip-runtime-successor.json';
+ try{
+  if(!qualifyPr251SourceEpoch(base).ok||git('rev-parse',base+'^{tree}')!==tree)return fail('EDU_SUCCESSOR_BASE_UNVERIFIED');
+  git('merge-base','--is-ancestor',base,'HEAD');
+  const d=json(self);
+  if(d.schema!=='ikant-edu-exact-source-successor/v1'||d.source_main!==base||d.source_tree!==tree||
+     d.self_path!==self||d.authority!==0||d.product_go!==false||d.human_review_attested!==false||
+     d.external_consumers_resolved!==false||!Array.isArray(d.paths))return fail('EDU_SUCCESSOR_DOMAIN_UNVERIFIED');
+  const parse=rev=>{
+   const lines=git('ls-tree','-r','-z',rev).split('\0').filter(Boolean);
+   return new Map(lines.map(x=>{
+    const m=/^(100644|100755) blob ([a-f0-9]{40})\t([^\0]+)$/u.exec(x);
+    if(!m)throw Error('EDU_SUCCESSOR_TREE_MODE_INVALID');
+    return [m[3],{sha:m[2],mode:m[1]}];
+   }));
+  };
+  const before=parse(base),now=parse('HEAD'),changed=[];
+  if(before.size!==1630)return fail('EDU_SUCCESSOR_BASE_FILE_COUNT');
+  for(const path of [...new Set([...before.keys(),...now.keys()])].sort()){
+   const b=before.get(path),n=now.get(path);
+   if(b?.sha===n?.sha&&b?.mode===n?.mode)continue;
+   if(!n||b&&b.mode!==n.mode||/^project\/plugins\/|^project\/release\/|^src\/|^host\//.test(path))
+    return fail('EDU_SUCCESSOR_SCOPE_FORBIDDEN');
+   changed.push({path,before:b?.sha??null,after:path===self?null:n.sha,mode:n.mode});
+  }
+  if(changed.filter(x=>x.path===self&&x.before===null).length!==1||
+     JSON.stringify(changed)!==JSON.stringify(d.paths))return fail('EDU_SUCCESSOR_CHANGED_PATHS_UNVERIFIED');
+  return {ok:true,status:'EDU_ONEZIP_SOURCE_ONLY_REVIEW_REQUIRED',source_main:base,current_count:now.size,
+    exact_changed_paths:changed.length,review:'NOT_ATTESTED',provider:'NOT_ATTESTED',external:'UNKNOWN',authority:0,product_go:false};
+ }catch(e){return fail('EDU_SUCCESSOR_UNREADABLE:'+String(e).slice(0,100));}
 }
 
 export function auditRepository(){
@@ -639,7 +675,8 @@ export function auditRepository(){
  // Retain the legacy error evidence separately so the projection is auditable.
  const historicalProjection=qualifyV13V5BEpochProjection();
  const pr251ManifestPresent=fs.existsSync(path.join(ROOT,'contracts/governance/changes/pr251-source-successor.json'));
- const scoped=pr251ManifestPresent?qualifyPr251SourceEpoch():
+ const eduOneZipSuccessor=fs.existsSync(path.join(ROOT,'contracts/governance/changes/edu-onezip-runtime-successor.json'));
+ const scoped=eduOneZipSuccessor?qualifyEduOneZipSourceEpoch():pr251ManifestPresent?qualifyPr251SourceEpoch():
   (historicalProjection.ok?historicalProjection:qualifyPr249SourceEpoch());
  if(scoped.ok&&errors.every(x=>/^(?:UNREGISTERED_MODIFICATION|UNREGISTERED_ADDITION|UNREGISTERED_DELETION|DECLARED_BUT_ABSENT):/.test(x))){
   audit.original_epoch_errors=errors;

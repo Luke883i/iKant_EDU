@@ -15,7 +15,7 @@ export function createOneShellLanguageStdio({input=process.stdin,output=process.
    if(waiter){const f=waiter;waiter=null;f(line);}else queue.push(line);});
  rx.on('close',()=>{broken=true;if(waiter){const f=waiter;waiter=null;f(null);}});
  const receive=()=>queue.length?Promise.resolve(queue.shift()):broken?Promise.resolve(null):new Promise(resolve=>waiter=resolve);
- return async (task,hostHumanistContext=null)=>{
+ const port=async (task,hostHumanistContext=null)=>{
    if(busy||broken||!plain(task))throw Error('LANGUAGE_BRIDGE_BUSY_OR_UNAVAILABLE');
    busy=true;
    try{
@@ -39,4 +39,6 @@ export function createOneShellLanguageStdio({input=process.stdin,output=process.
      return Object.freeze(originalResponse);
    }finally{busy=false;}
  };
+ Object.defineProperty(port,'close',{value:()=>rx.close()});
+ return port;
 }

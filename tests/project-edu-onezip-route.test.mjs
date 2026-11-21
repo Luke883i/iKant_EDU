@@ -40,9 +40,40 @@ test('C125 full frame is distinct from byte-exact original voice; fail closed on
    original_c87_readback:{status:'C107_LEDGER_REOPENED',count:1}};
  assert.notEqual(transport,voice);
  assert.equal(verifyOneZipOriginalC125Evidence(frame,evidence),true);
+ assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,
+   original_c125_utf8:transport+transport,original_c125_sha256:sha(transport+transport)}),false);
+ const duplicatedEnd=transport+'\n<<<VOICE_UTF8_END>>>';
+ assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,
+   original_c125_utf8:duplicatedEnd,original_c125_sha256:sha(duplicatedEnd)}),false);
  assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,original_c125_sha256:sha(voice)}),false);
  assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,original_c125_utf8:voice}),false);
  assert.equal(verifyOneZipOriginalC125Evidence(frame,{...evidence,original_c87_readback:null}),false);
  assert.equal(verifyOneZipOriginalC125Evidence({...frame,slots:{A:'NO_VOICE'}},evidence),false);
  assert.equal(verifyOneZipOriginalC125Evidence({...frame,original_voice_sha256:'0'.repeat(64)},evidence),false);
+});
+
+// Contract tests are about source instructions, not proof of Project installation.
+import fs from 'node:fs';
+import {assertSevenThreePrompt} from '../scripts/project-prompt-seven-three-guard.mjs';
+import {classifyEduMcpFile} from '../scripts/project-edu-retirement-census.mjs';
+test('Project prompt cannot silently delete compact lossless and original A duties',()=>{
+ const original=fs.readFileSync(new URL('../project/session-chat/PROMPT.txt',import.meta.url),'utf8');
+ assert.equal(assertSevenThreePrompt(original).provider_installed,false);
+ for(const word of ['oneshell_utf8','for dummies','allegato UTF-8','non tagliare A'])
+  assert.throws(()=>assertSevenThreePrompt(original.replaceAll(word,'OMITTED')),/PROMPT_7X3_REQUIRED/);
+});
+test('every source path gets a conservative EDU/MCP/legacy status; legacy is not deletion',()=>{
+ const edu=new Set(['host/c135-edu-v2-owner.mjs']);
+ const docs=new Map([['project/docs/C78_PROJECT_HOST_ADAPTER.txt',{}]]);
+ const cases=[
+  ['host/c135-edu-v2-owner.mjs','EDU_NAMED_EXECUTION_CLOSURE'],
+  ['project/plugins/ikant-le-session-chat/server/server.mjs','MCP_DIRECT_KEEP'],
+  ['project/edu-oneshell/PROMPT_INNESCO.txt','EDU_DISTRIBUTION_DERIVED_KEEP'],
+  ['scripts/c131-build-project-bundle.py','EDU_DISTRIBUTION_DERIVED_KEEP'],
+  ['tests/mcp-session.test.mjs','MCP_ASSURANCE_KEEP'],
+  ['tests/project-edu-onezip-route.test.mjs','EDU_ASSURANCE_KEEP'],
+  ['project/docs/C78_PROJECT_HOST_ADAPTER.txt','CANDIDATO_AL_RITIRO_DOCUMENTALE_REVIEW_REQUIRED'],
+  ['docs/unknown-old-notebook.md','LEGACY_CANDIDATE_UNKNOWN_CONSUMERS_REVIEW_REQUIRED'],
+ ];
+ for(const [path,status] of cases)assert.equal(classifyEduMcpFile(path,edu,docs),status,path);
 });

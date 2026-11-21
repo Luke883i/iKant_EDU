@@ -121,7 +121,7 @@ test('D3 source request rejects invalid 190-set and drift before any file write'
  assert.equal(fetches,0);assert.equal(fs.existsSync(s.destination),false);
 }));
 const gitAvailable=fs.existsSync(path.join(top,'.git'))&&fs.existsSync(path.join(top,'scripts/project-repo-loader.mjs'));
-test('D1+D3 original Git TREE and original loader: 10 reused, 181 fetched, 191 reopened',
+test('D1+D3 original TREE: 10 reused, all other manifest files fetched and reopened',
  {skip:!gitAvailable},()=>sandbox(async s=>{
  const git=(...args)=>execFileSync('git',args,{cwd:top,encoding:'utf8'}).trim();
  const head=git('rev-parse','HEAD'),tree=git('rev-parse','HEAD^{tree}');
@@ -131,7 +131,7 @@ test('D1+D3 original Git TREE and original loader: 10 reused, 181 fetched, 191 r
   if(!m)throw Error('BAD_GIT_TREE_ENTRY');return{mode:m[1],type:m[2],sha:m[3],path:m[4]};});
  const byPath=new Map(items.map(x=>[x.path,x]));
  const manifest=JSON.parse(fs.readFileSync(path.join(top,'contracts/project-session-source.json'),'utf8')).paths;
- assert.equal(manifest.length,190);const entries=manifest.map(p=>({path:p,sha:byPath.get(p).sha}));
+ assert([190,192].includes(manifest.length));const entries=manifest.map(p=>({path:p,sha:byPath.get(p).sha}));
  const c72=['README.md','BOOTSTRAP.json','ADMISSION.json','AGENTS.md','TERMS.md',
   'contracts/c72-public-mode-admission-v2.json','host/c72-public-mode-admission.mjs',
   'host/project-c72-postaccept-reentry.mjs','host/project-c72-receipt-transit.mjs',
@@ -149,11 +149,11 @@ test('D1+D3 original Git TREE and original loader: 10 reused, 181 fetched, 191 r
   entries,treeEntries:items,manifestPaths:manifest,destination:s.destination,readMain:async()=>head,
   fetchPinned:async (p)=>{fetches++;return fs.readFileSync(path.join(top,p));}});
  assert.equal(r.status,'ORIGINAL_LOADER_SOURCE_REOPENED');assert.equal(r.original_loader_invoked,true);
- assert.equal(r.reused_files,10);assert.equal(r.fetched_files,181);assert.equal(fetches,181);
+ assert.equal(r.reused_files,10);assert.equal(r.fetched_files,manifest.length-9);assert.equal(fetches,manifest.length-9);
  assert.equal(r.fetched_bytes,gitBytes(manifest)+gitBytes(['contracts/project-session-source.json'])-hitBytes);
  const original=await import('../scripts/project-repo-loader.mjs');
  const again=original.verifyLocalProjectSource(s.destination,{head,tree});
- assert.equal(again.files.length,191);assert.equal(r.total_original_loader_files,191);
+ assert.equal(again.files.length,manifest.length+1);assert.equal(r.total_original_loader_files,manifest.length+1);
  // The original C72/EDU source remains physically available; no owner is claimed.
  assert.equal(r.original_owner_invoked,false);assert.equal(r.native_provider_attested,false);
 }));

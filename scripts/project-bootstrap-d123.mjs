@@ -85,14 +85,15 @@ export async function materializeD123WithOriginalLoader({cacheRoot,head,tree,liv
   treeEntries,entries,manifestPaths,fetchPinned,readMain,destination}={}){
  checkLock(head,tree,liveHead);checkRoot(cacheRoot);
  if(typeof fetchPinned!=='function'||typeof readMain!=='function'||!Array.isArray(treeEntries)||
- !Array.isArray(entries)||!Array.isArray(manifestPaths)||entries.length!==190||manifestPaths.length!==190||
- new Set(manifestPaths).size!==190||entries.some((e,i)=>e.path!==manifestPaths[i])||
+ !Array.isArray(entries)||!Array.isArray(manifestPaths)||
+ ![190,192].includes(manifestPaths.length)||entries.length!==manifestPaths.length||
+ new Set(manifestPaths).size!==manifestPaths.length||entries.some((e,i)=>e.path!==manifestPaths[i])||
  C72.some(p=>!manifestPaths.includes(p)))stop('D3_ORIGINAL_MANIFEST_SET_INVALID');
  if(typeof destination!=='string'||!path.isAbsolute(destination)||path.resolve(destination)!==destination||
  fs.existsSync(destination))stop('D3_DESTINATION_NOT_FRESH');checkRoot(path.dirname(destination));
  if(await readMain()!==head)stop('STOP_SOURCE_LOCK_STALE');
  const treeMap=new Map(treeEntries.filter(x=>x.type==='blob').map(x=>[x.path,x]));
- if(treeMap.size<191||entries.some(e=>!treeMap.has(e.path)||treeMap.get(e.path).sha!==e.sha))stop('D3_TREE_BINDING_INVALID');
+ if(treeMap.size<manifestPaths.length+1||entries.some(e=>!treeMap.has(e.path)||treeMap.get(e.path).sha!==e.sha))stop('D3_TREE_BINDING_INVALID');
  const manifestName='contracts/project-session-source.json',manifestEntry=treeMap.get(manifestName);
  if(!manifestEntry||!H40.test(manifestEntry.sha||''))stop('D3_MANIFEST_NOT_IN_TREE');
  const bytes=new Map();let transferred=0,count=0,reused=0;
@@ -115,10 +116,11 @@ export async function materializeD123WithOriginalLoader({cacheRoot,head,tree,liv
  original.verifyRepositoryPlan(plan,{head,tree});
  const receipt=original.materializeRepositoryPlan(plan,{head,tree,destination});
  const reopened=original.verifyLocalProjectSource(destination,{head,tree});
- if(reopened.files.length!==191||receipt.files.length!==191)stop('D3_ORIGINAL_LOADER_REOPEN_MISMATCH');
+ if(reopened.files.length!==manifestPaths.length+1||receipt.files.length!==manifestPaths.length+1)
+  stop('D3_ORIGINAL_LOADER_REOPEN_MISMATCH');
  if(await readMain()!==head)stop('STOP_SOURCE_LOCK_STALE_AFTER_SOURCE_WRITE');
  return Object.freeze({status:'ORIGINAL_LOADER_SOURCE_REOPENED',source_head:head,source_tree:tree,
-  total_original_loader_files:191,manifest_paths:190,reused_files:reused,
+  total_original_loader_files:manifestPaths.length+1,manifest_paths:manifestPaths.length,reused_files:reused,
   fetched_files:count,fetched_bytes:transferred,original_loader_invoked:true,
   original_owner_invoked:false,original_c72_receipt_issued:false,native_provider_attested:false,authority:0,active:false});
 }

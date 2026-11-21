@@ -57,13 +57,13 @@ export function auditLocalPE({observedGithubId=null,observedGithubName=null,obse
  const orient=JSON.parse(show('contracts/orientation-capsule.json'));
  const prompt=show('project/session-chat/PROMPT.txt');
  const manifest=JSON.parse(show('contracts/project-session-source.json'));
- // The original D3 loader is fixed at 190 file paths plus the manifest itself.
- // PE Host glue is source-bound separately; adding it to D3 would alter the original owner.
+ // D3 allows exactly the historical 190 or the reviewed EDU 192 file closure.
+ // PE Host glue remains source-bound separately, never a new owner.
  const identity=SOURCE.map(sourceReadback);
  const adapterSource=ADAPTER_PATHS.map(sourceReadback);
  const treePaths=new Set(git('ls-tree','-r','--name-only','HEAD').split('\n').filter(Boolean));
  const sourceSetComplete=manifest.schema==='ikant-le-project-session-source/v1'&&
-  manifest.paths.length===190&&new Set(manifest.paths).size===190&&
+  [190,192].includes(manifest.paths.length)&&new Set(manifest.paths).size===manifest.paths.length&&
   manifest.paths.every(p=>treePaths.has(p))&&treePaths.has('contracts/project-session-source.json');
  const allOriginals=sourceSetComplete&&identity.every(x=>x.readback_verified&&treePaths.has(x.path));
  const peAdapterBound=adapterSource.every(x=>x.readback_verified&&treePaths.has(x.path)&&

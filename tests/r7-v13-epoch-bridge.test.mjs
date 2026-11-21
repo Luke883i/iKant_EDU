@@ -30,6 +30,9 @@ test('V13 workflow epoch preserves original W1 and six-delta chain, never CI aut
  const r=reopenV13WorkflowEpoch(c);
  assert.equal(r.ok,true,JSON.stringify(r));
  assert.equal(r.changed_workflow_sources,75);
+ assert.equal(r.projection_ref,'7cd95a485f71008dd6aa7c3da6aa76bd0f3ead65');
+ assert.equal(r.source_successor_status,'EDU_ONEZIP_SOURCE_ONLY_REVIEW_REQUIRED');
+ assert.equal(r.product_go,false);
  assert.equal(r.original_w1_reopened,true);
  assert.equal(r.original_evolution_reopened,true);
  assert.equal(r.provider_attested,false);

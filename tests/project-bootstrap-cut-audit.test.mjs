@@ -97,7 +97,7 @@ test('mutational: 256 independently changed transit bytes never pass',()=>atRoot
 
 /** Repo checkout control: Git commit/TREE/index sources are independent of
  * the local BOM calculator; this is NOT a Host tool or provider receipt. */
-test('integrated checkout: 8 C72 + transit + seed, 190 EDU paths, exact byte budgets and Git HEAD blob identities',()=>{
+test('integrated checkout: 8 C72 + transit + seed, exact manifest EDU paths and Git blob identities',()=>{
  const root=path.resolve(fileURLToPath(new URL('../',import.meta.url)));
  const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8',
   maxBuffer:32*1024*1024,timeout:30000}).trim();
@@ -107,11 +107,14 @@ test('integrated checkout: 8 C72 + transit + seed, 190 EDU paths, exact byte bud
  assert.match(tree,/^[a-f0-9]{40}$/u);
  assert.equal(git('rev-parse',commit+'^{tree}'),tree);
  const report=computeBootstrapCuts(root);
+ const manifest=JSON.parse(fs.readFileSync(path.join(root,'contracts/project-session-source.json'),'utf8'));
+ assert(Array.isArray(manifest.paths)&&manifest.paths.length>=190);
+ assert.deepEqual(report.current.post_edu.paths,manifest.paths,'post-EDU closure must equal pinned source manifest');
  assert.deepEqual(report.current.orientation.paths,names.slice(0,5));
  assert.deepEqual(report.current.c72.paths,[...names,transit,seed]);
  assert.equal(report.current.orientation.files,5);
  assert.equal(report.current.c72.files,10);
- assert.equal(report.current.post_edu.files,190);
+ assert.equal(report.current.post_edu.files,manifest.paths.length);
  assert.equal(report.overlap.c72_in_post_edu,10);
  assert.equal(report.hypothetical.owner_related_subset.status,
   'NOT_EXECUTABLE_WITH_CURRENT_OWNER_GATE');
@@ -132,7 +135,7 @@ test('integrated checkout: 8 C72 + transit + seed, 190 EDU paths, exact byte bud
  assert.equal(report.current.post_edu.bytes,treeBytes(report.current.post_edu.paths));
  const all=[...new Set([...report.current.orientation.paths,
   ...report.current.c72.paths,...report.current.post_edu.paths])];
- assert.equal(all.length,190,'all C72 files must be in Project EDU closure');
+ assert.equal(all.length,manifest.paths.length,'all C72 files must be included once in the source manifest');
  let bytesChecked=0;
  for(const p of all){
   const entry=gitBlobs.get(p);
@@ -144,5 +147,5 @@ test('integrated checkout: 8 C72 + transit + seed, 190 EDU paths, exact byte bud
   bytesChecked+=bytes.length;
   assert.equal(blob(bytes),entry.sha,'Git SHA-1 differs from local readback: '+p);
  }
- assert.equal(bytesChecked,treeBytes(report.current.post_edu.paths),'all 190 local source bytes verified against HEAD TREE');
+ assert.equal(bytesChecked,treeBytes(report.current.post_edu.paths),'all declared local source bytes verified against HEAD TREE');
 });
